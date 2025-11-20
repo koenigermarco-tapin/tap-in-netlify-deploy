@@ -126,13 +126,15 @@
   "de": {
     "lang_en": "EN",
     "lang_de": "DE",
-    "hero_title": "🎯 TAP‑IN Leadership Assessments",
+    "hero_title": "🎯 TAP-IN Leadership Assessments",
     "hero_tagline": "Entdecke dein komplettes Führungsprofil & transformiere dein Team",
     "hero_subtitle": "Kostenlose, wissenschaftlich fundierte Assessments, die Arbeitsstil, Führungsansatz und Teamdynamik kombinieren. Erhalte in wenigen Minuten sofortige Einblicke.",
     "start_worker": "Worker Type Assessment starten →",
     "start_leadership": "Leadership Assessment starten →",
     "start_team": "Team Assessment starten →",
     "start_complete": "Komplettes Profil starten →",
+    "start_mental": "Mental Health Assessment starten →",
+    "start_worklife": "Work-Life Balance Assessment starten →",
     "cta_start_free": "Starte dein kostenloses Assessment",
     "back_to_assessments": "← Zurück zu Assessments",
     "schedule_session": "📅 Strategie-Sitzung buchen",
@@ -145,13 +147,14 @@
     "worker_header": "🏃 Worker Type Assessment",
     "worker_subtitle": "Finde heraus, ob du ein Sprinter, Jogger oder Ultrarunner bist. Verstehe deinen natürlichen Arbeitsrhythmus und optimiere deine Leistung in nur 5 Minuten.",
     "leadership_header": "🎯 Leadership Style Assessment",
-    "leadership_subtitle": "Entdecke deinen natürlichen Führungs‑Archetyp",
-  "mental_header": "🧠 Mental Health & Wellness Assessment",
-  "mental_subtitle": "Verstehe dein komplettes Wohlbefinden (5 Minuten)",
-  "start_mental": "Mental Health Assessment starten →",
-  "worklife_header": "⚖️ Work-Life-Balance Assessment",
-  "worklife_subtitle": "Entdecke dein Profil für nachhaltige Leistung",
-  "start_worklife": "Work-Life Assessment starten →",
+    "leadership_subtitle": "Entdecke deinen natürlichen Führungs-Archetyp",
+    "team_header": "� Team-Dynamik-Assessment",
+    "team_subtitle": "Ein strukturiertes Assessment, um Stärken, Rollen und Zusammenarbeit im Team sichtbar zu machen. Dauer: ca. 7 Minuten.",
+    "team_submit": "Ergebnisse anzeigen →",
+    "mental_header": "🧠 Mental Health Assessment",
+    "mental_subtitle": "Bewerte dein aktuelles mentales Wohlbefinden und erhalte personalisierte Empfehlungen",
+    "worklife_header": "⚖️ Work-Life Balance Assessment",
+    "worklife_subtitle": "Entdecke, wie gut du Arbeit und Privatleben in Einklang bringst",
     "intro_heading": "Was du entdecken wirst:",
     "intro_paragraph": "Dieses Assessment identifiziert deinen primären Führungsstil basierend darauf, wie du natürlich Herausforderungen angehst, mit Teams zusammenarbeitest und Ergebnisse erzielst.",
     "archetype_visionary": "Visionärer Leader",
@@ -159,37 +162,55 @@
     "archetype_facilitator": "Facilitator Coach",
     "archetype_executor": "Executor Driver",
     "progress_label": "Fortschritt:",
-  "question_label": "Frage",
-    "team_header": "Team Assessment — Verbesserte Version",
-    "team_submit": "Ergebnisse anzeigen",
-    "team_subtitle": "Ein strukturiertes Assessment, um Stärken, Rollen und Zusammenarbeit im Team sichtbar zu machen. Dauer: ca. 7 Minuten.",
-    "team": {
-      "q1": "Mein Team arbeitet klar auf gemeinsame Ziele hin.",
-      "q2": "Kommunikation innerhalb des Teams ist offen und klar.",
-      "q3": "Rollen und Verantwortlichkeiten sind gut definiert.",
-      "q4": "Entscheidungen werden effizient getroffen.",
-      "q5": "Wir nutzen die jeweiligen Stärken der Teammitglieder.",
-      "q6": "Das Team reagiert gut auf Veränderungen."
+    "question_label": "Frage",
+    "cta_paragraph": "Erfahre, wie du ausgewogene Teams mit der richtigen Mischung aus Sprintern, Joggern und Ultraläufern aufbaust.",
+    "scale": {
+      "never": "Nie",
+      "rarely": "Selten",
+      "sometimes": "Manchmal",
+      "often": "Oft",
+      "always": "Immer"
     },
-  "cta_paragraph": "Erfahre, wie du ausgewogene Teams mit der richtigen Mischung aus Sprintern, Joggern und Ultraläufern aufbaust.",
+    "team": {
+      "q1": "Teammitglieder geben offen ihre Fehler und Schwächen zu",
+      "q2": "Personen fragen ohne Zögern um Hilfe",
+      "q3": "Teammitglieder geben einander das Benefit of the Doubt",
+      "q4": "Personen entschuldigen sich schnell und aufrichtig, wenn sie Fehler machen",
+      "q5": "Team-Meetings beinhalten leidenschaftliche, ungefilterte Debatten",
+      "q6": "Personen äußern Meinungsverschiedenheiten während Meetings (nicht danach)",
+      "q7": "Konflikte werden schnell und konstruktiv gelöst",
+      "q8": "Teammitglieder hinterfragen respektvoll die Ideen der anderen",
+      "q9": "Entscheidungen werden mit Klarheit und Buy-in von allen getroffen",
+      "q10": "Teammitglieder verlassen Meetings mit Zuversicht über die Richtung",
+      "q11": "Personen halten sich an Entscheidungen, auch wenn sie anfangs anderer Meinung waren",
+      "q12": "Deadlines und Prioritäten sind kristallklar für alle",
+      "q13": "Teammitglieder sprechen sich gegenseitig auf Performance-Probleme an",
+      "q14": "Personen übernehmen Verantwortung, wenn Dinge schiefgehen",
+      "q15": "Standards werden eingehalten, auch wenn es unangenehm ist",
+      "q16": "Teammitglieder fordern Peers, ihre Verpflichtungen einzuhalten",
+      "q17": "Das Team feiert kollektive Erfolge über individuelle Leistungen",
+      "q18": "Personen opfern persönliche Agenden für Teamziele",
+      "q19": "Erfolgsmetriken sind klar definiert und werden verfolgt",
+      "q20": "Teammitglieder sind wirklich besorgt, Teamkollegen zu enttäuschen"
+    },
     "worker": {
       "q0": {
         "question": "Ich bevorzuge Projekte, die:",
-        "opt0": "Schnelle Erfolge und sofortige Ergebnisse",
-        "opt1": "Stetigen Fortschritt über Wochen/Monate",
-        "opt2": "Langfristige Wirkung über Jahre"
+        "opt0": "Schnelle Erfolge und sofortige Ergebnisse liefern",
+        "opt1": "Stetigen Fortschritt über Wochen/Monate zeigen",
+        "opt2": "Langfristige Wirkung über Jahre entfalten"
       },
       "q1": {
         "question": "Mein ideales Arbeitszeitmodell sieht so aus:",
-        "opt0": "Intensive Phasen mit Pausen",
+        "opt0": "Intensive Phasen mit Pausen dazwischen",
         "opt1": "Konstante tägliche Routine",
-        "opt2": "Marathon-Sessions, wenn inspiriert"
+        "opt2": "Marathon-Sessions, wenn ich inspiriert bin"
       },
       "q2": {
         "question": "Wenn ich vor einer Herausforderung stehe, dann:",
         "opt0": "Treibe ich hart, bis es schnell gelöst ist",
         "opt1": "Arbeite ich methodisch von Tag zu Tag",
-        "opt2": "Sehe ich es als Teil einer langen Reise"
+        "opt2": "Sehe ich es als Teil einer längeren Reise"
       },
       "q3": {
         "question": "Ich fühle mich am energiegeladensten, wenn:",
@@ -199,8 +220,8 @@
       },
       "q4": {
         "question": "Meine Art, neue Fähigkeiten zu erlernen:",
-        "opt0": "Crash‑Kurse und schnelle Beherrschung",
-        "opt1": "Regelmäßige Übung und Verbesserung",
+        "opt0": "Crash-Kurse und schnelle Beherrschung",
+        "opt1": "Regelmäßige Übung und schrittweise Verbesserung",
         "opt2": "Tiefes Studium und Meisterschaft über Zeit"
       },
       "q5": {
@@ -213,7 +234,7 @@
         "question": "Meine Produktivität ist am besten beschrieben als:",
         "opt0": "Hohe Intensität, kürzere Dauer",
         "opt1": "Konsistent und verlässlich",
-        "opt2": "Nimmt über lange Zeit zu"
+        "opt2": "Nimmt über längere Zeiträume zu"
       },
       "q7": {
         "question": "Beim Setzen von Zielen bevorzuge ich:",
@@ -229,14 +250,14 @@
       },
       "q9": {
         "question": "Ich kommuniziere am besten durch:",
-        "opt0": "Schnelle Updates und Action‑Items",
-        "opt1": "Regelmäßige Check‑ins und Reports",
+        "opt0": "Schnelle Updates und Action-Items",
+        "opt1": "Regelmäßige Check-ins und Reports",
         "opt2": "Tiefgehende Diskussionen und Strategie"
       },
       "q10": {
         "question": "Meine ideale Projektdauer:",
-        "opt0": "1–4 Wochen",
-        "opt1": "2–6 Monate",
+        "opt0": "1-4 Wochen",
+        "opt1": "2-6 Monate",
         "opt2": "1+ Jahre"
       },
       "q11": {
