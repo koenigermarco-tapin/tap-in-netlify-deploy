@@ -75,8 +75,8 @@
     <!-- language switcher (EN / DE) -->
     <div id="lang-switch" style="position:fixed;top:16px;right:16px;z-index:1200;font-family:inherit;">
         <div style="background:white;border-radius:999px;padding:8px 12px;box-shadow:0 6px 20px rgba(0,0,0,0.15);font-size:0.95em;">
-            <a href="mental-health-assessment.html?lang=en" style="color:#a93226;text-decoration:none;font-weight:700;margin-right:10px;">EN</a>
-            <a href="mental-health-assessment_de.html?lang=de" style="color:#333;text-decoration:none;font-weight:700;border-left:1px solid #eee;padding-left:10px;margin-left:10px;">DE</a>
+            <a href="mental-health-assessment.html" style="color:#333;text-decoration:none;font-weight:700;margin-right:10px;">EN</a>
+            <a href="mental-health-assessment.de.html" style="color:#a93226;text-decoration:none;font-weight:700;border-left:1px solid #eee;padding-left:10px;margin-left:10px;">DE</a>
         </div>
     </div>
     <div class="container">
@@ -84,19 +84,19 @@
         <div id="assessmentForm">
             <div class="header">
                 <h1>🧠 Mentale Gesundheit & Wellness Assessment</h1>
-                <p class="subtitle">Verstehe dein vollständiges Wohlbefindens-Profil</p>
+                <p class="subtitle">Verstehe dein vollständiges Wohlbefindensprofil</p>
                 <p class="duration">⏱️ 5 Minuten • 20 Fragen</p>
             </div>
 
             <div class="intro-section">
                 <h3>Was du herausfinden wirst:</h3>
-                <p>Dieses umfassende Assessment bewertet fünf kritische Dimensionen mentaler und körperlicher Gesundheit:</p>
+                <p>Dieses umfassende Assessment bewertet fünf kritische Dimensionen der mentalen und physischen Gesundheit:</p>
                 <ul style="margin-left: 20px; margin-top: 10px;">
                     <li><strong>Emotionales Wohlbefinden:</strong> Deine mentale Klarheit und emotionale Stabilität</li>
-                    <li><strong>Körperliche Vitalität:</strong> Energielevel, Schlafqualität und physische Gesundheit</li>
-                    <li><strong>Stress-Resilienz:</strong> Deine Fähigkeit, Druck zu bewältigen und zu erholen</li>
+                    <li><strong>Körperliche Vitalität:</strong> Energielevel, Schlafqualität und körperliche Gesundheit</li>
+                    <li><strong>Stressresilienz:</strong> Deine Fähigkeit, mit Druck umzugehen und dich zu erholen</li>
                     <li><strong>Soziale Verbindung:</strong> Qualität deiner Beziehungen und Unterstützungssysteme</li>
-                    <li><strong>Sinn & Bedeutung:</strong> Gefühl von Richtung und Lebenserfüllung</li>
+                    <li><strong>Sinn & Zweck:</strong> Gefühl von Richtung und Lebenserfüllung</li>
                 </ul>
                 <p style="margin-top: 15px;">Basierend auf WHO Mental Health Frameworks, Neurowissenschaft und TAP-INs Embodied Wellness Ansatz.</p>
             </div>
@@ -110,8 +110,9 @@
 
             <form id="healthForm">
         <!-- SECTION 1: EMOTIONAL WELL-BEING -->
-        <div class="section-header"><h3>💚 Bereich 1: Emotionales Wohlbefinden & Mentale Klarheit</h3></div>
-        <!-- 1-4 -->
+        <div class="section-header">
+            <h3>💚 Abschnitt 1: Emotionales Wohlbefinden & Mentale Klarheit</h3>
+        </div>
         <div class="question-section"><div class="question-number">Frage 1 von 20</div><div class="question-text">Ich fühle mich emotional stabil und habe meine Reaktionen unter Kontrolle</div><div class="rating-scale">
             <div class="rating-option"><input type="radio" name="q1" value="1" id="q1-1" required><label for="q1-1">1<br>Nie</label></div>
             <div class="rating-option"><input type="radio" name="q1" value="2" id="q1-2"><label for="q1-2">2<br>Selten</label></div>
@@ -119,7 +120,7 @@
             <div class="rating-option"><input type="radio" name="q1" value="4" id="q1-4"><label for="q1-4">4<br>Oft</label></div>
             <div class="rating-option"><input type="radio" name="q1" value="5" id="q1-5"><label for="q1-5">5<br>Immer</label></div>
         </div></div>
-        <div class="question-section"><div class="question-number">Frage 2 von 20</div><div class="question-text">Mein Kopf fühlt sich klar an und ich kann mich konzentrieren, wenn nötig</div><div class="rating-scale">
+        <div class="question-section"><div class="question-number">Frage 2 von 20</div><div class="question-text">Mein Kopf fühlt sich klar an und ich kann mich bei Bedarf konzentrieren</div><div class="rating-scale">
             <div class="rating-option"><input type="radio" name="q2" value="1" id="q2-1" required><label for="q2-1">1<br>Nie</label></div>
             <div class="rating-option"><input type="radio" name="q2" value="2" id="q2-2"><label for="q2-2">2<br>Selten</label></div>
             <div class="rating-option"><input type="radio" name="q2" value="3" id="q2-3"><label for="q2-3">3<br>Manchmal</label></div>
@@ -141,16 +142,15 @@
             <div class="rating-option"><input type="radio" name="q4" value="5" id="q4-5"><label for="q4-5">5<br>Immer</label></div>
         </div></div>
         <!-- SECTION 2: PHYSICAL VITALITY -->
-        <div class="section-header"><h3>⚡ Bereich 2: Körperliche Gesundheit & Vitalität</h3></div>
-        <!-- 5-8 -->
-        <div class="question-section"><div class="question-number">Frage 5 von 20</div><div class="question-text">Ich habe gleichbleibende Energie über den ganzen Tag</div><div class="rating-scale">
+        <div class="section-header"><h3>⚡ Abschnitt 2: Körperliche Gesundheit & Vitalität</h3></div>
+        <div class="question-section"><div class="question-number">Frage 5 von 20</div><div class="question-text">Ich habe durchgehend Energie über den Tag hinweg</div><div class="rating-scale">
             <div class="rating-option"><input type="radio" name="q5" value="1" id="q5-1" required><label for="q5-1">1<br>Nie</label></div>
             <div class="rating-option"><input type="radio" name="q5" value="2" id="q5-2"><label for="q5-2">2<br>Selten</label></div>
             <div class="rating-option"><input type="radio" name="q5" value="3" id="q5-3"><label for="q5-3">3<br>Manchmal</label></div>
             <div class="rating-option"><input type="radio" name="q5" value="4" id="q5-4"><label for="q5-4">4<br>Oft</label></div>
             <div class="rating-option"><input type="radio" name="q5" value="5" id="q5-5"><label for="q5-5">5<br>Immer</label></div>
         </div></div>
-        <div class="question-section"><div class="question-number">Frage 6 von 20</div><div class="question-text">Ich schlafe gut und wache erholt auf</div><div class="rating-scale">
+        <div class="question-section"><div class="question-number">Frage 6 von 20</div><div class="question-text">Ich schlafe gut und wache erfrischt auf</div><div class="rating-scale">
             <div class="rating-option"><input type="radio" name="q6" value="1" id="q6-1" required><label for="q6-1">1<br>Nie</label></div>
             <div class="rating-option"><input type="radio" name="q6" value="2" id="q6-2"><label for="q6-2">2<br>Selten</label></div>
             <div class="rating-option"><input type="radio" name="q6" value="3" id="q6-3"><label for="q6-3">3<br>Manchmal</label></div>
@@ -171,9 +171,8 @@
             <div class="rating-option"><input type="radio" name="q8" value="4" id="q8-4"><label for="q8-4">4<br>Oft</label></div>
             <div class="rating-option"><input type="radio" name="q8" value="5" id="q8-5"><label for="q8-5">5<br>Immer</label></div>
         </div></div>
-        <!-- SECTION 3: STRESS-RESILIENZ -->
-        <div class="section-header"><h3>🧘 Bereich 3: Stress-Resilienz</h3></div>
-        <!-- 9-12 -->
+        <!-- SECTION 3: STRESS RESILIENCE -->
+        <div class="section-header"><h3>🧘 Abschnitt 3: Stressresilienz</h3></div>
         <div class="question-section"><div class="question-number">Frage 9 von 20</div><div class="question-text">Ich gehe gut mit Stress um und erhole mich schnell</div><div class="rating-scale">
             <div class="rating-option"><input type="radio" name="q9" value="1" id="q9-1" required><label for="q9-1">1<br>Nie</label></div>
             <div class="rating-option"><input type="radio" name="q9" value="2" id="q9-2"><label for="q9-2">2<br>Selten</label></div>
@@ -181,7 +180,7 @@
             <div class="rating-option"><input type="radio" name="q9" value="4" id="q9-4"><label for="q9-4">4<br>Oft</label></div>
             <div class="rating-option"><input type="radio" name="q9" value="5" id="q9-5"><label for="q9-5">5<br>Immer</label></div>
         </div></div>
-        <div class="question-section"><div class="question-number">Frage 10 von 20</div><div class="question-text">Ich fühle mich selten von den täglichen Anforderungen überwältigt</div><div class="rating-scale">
+        <div class="question-section"><div class="question-number">Frage 10 von 20</div><div class="question-text">Ich fühle mich selten von täglichen Anforderungen überfordert</div><div class="rating-scale">
             <div class="rating-option"><input type="radio" name="q10" value="1" id="q10-1" required><label for="q10-1">1<br>Nie</label></div>
             <div class="rating-option"><input type="radio" name="q10" value="2" id="q10-2"><label for="q10-2">2<br>Selten</label></div>
             <div class="rating-option"><input type="radio" name="q10" value="3" id="q10-3"><label for="q10-3">3<br>Manchmal</label></div>
@@ -195,16 +194,15 @@
             <div class="rating-option"><input type="radio" name="q11" value="4" id="q11-4"><label for="q11-4">4<br>Oft</label></div>
             <div class="rating-option"><input type="radio" name="q11" value="5" id="q11-5"><label for="q11-5">5<br>Immer</label></div>
         </div></div>
-        <div class="question-section"><div class="question-number">Frage 12 von 20</div><div class="question-text">Ich kann mich entspannen und abschalten, wenn nötig</div><div class="rating-scale">
+        <div class="question-section"><div class="question-number">Frage 12 von 20</div><div class="question-text">Ich kann bei Bedarf entspannen und abschalten</div><div class="rating-scale">
             <div class="rating-option"><input type="radio" name="q12" value="1" id="q12-1" required><label for="q12-1">1<br>Nie</label></div>
             <div class="rating-option"><input type="radio" name="q12" value="2" id="q12-2"><label for="q12-2">2<br>Selten</label></div>
             <div class="rating-option"><input type="radio" name="q12" value="3" id="q12-3"><label for="q12-3">3<br>Manchmal</label></div>
             <div class="rating-option"><input type="radio" name="q12" value="4" id="q12-4"><label for="q12-4">4<br>Oft</label></div>
             <div class="rating-option"><input type="radio" name="q12" value="5" id="q12-5"><label for="q12-5">5<br>Immer</label></div>
         </div></div>
-        <!-- SECTION 4: SOZIALE VERBINDUNG -->
-        <div class="section-header"><h3>🤝 Bereich 4: Soziale Verbindung</h3></div>
-        <!-- 13-16 -->
+        <!-- SECTION 4: SOCIAL CONNECTION -->
+        <div class="section-header"><h3>🤝 Abschnitt 4: Soziale Verbindung</h3></div>
         <div class="question-section"><div class="question-number">Frage 13 von 20</div><div class="question-text">Ich habe starke, unterstützende Beziehungen</div><div class="rating-scale">
             <div class="rating-option"><input type="radio" name="q13" value="1" id="q13-1" required><label for="q13-1">1<br>Nie</label></div>
             <div class="rating-option"><input type="radio" name="q13" value="2" id="q13-2"><label for="q13-2">2<br>Selten</label></div>
@@ -233,39 +231,40 @@
             <div class="rating-option"><input type="radio" name="q16" value="4" id="q16-4"><label for="q16-4">4<br>Oft</label></div>
             <div class="rating-option"><input type="radio" name="q16" value="5" id="q16-5"><label for="q16-5">5<br>Immer</label></div>
         </div></div>
-        <!-- SECTION 5: SINN & BEDEUTUNG -->
-        <div class="section-header"><h3>🌱 Bereich 5: Sinn & Bedeutung</h3></div>
-        <!-- 17-20 -->
-        <div class="question-section"><div class="question-number">Frage 17 von 20</div><div class="question-text">Ich empfinde mein Leben als sinnvoll und bedeutsam</div><div class="rating-scale">
+        <!-- SECTION 5: MEANING & PURPOSE -->
+        <div class="section-header"><h3>🌱 Abschnitt 5: Sinn & Zweck</h3></div>
+        <div class="question-section"><div class="question-number">Frage 17 von 20</div><div class="question-text">Ich fühle, dass mein Leben Bedeutung und Zweck hat</div><div class="rating-scale">
             <div class="rating-option"><input type="radio" name="q17" value="1" id="q17-1" required><label for="q17-1">1<br>Nie</label></div>
             <div class="rating-option"><input type="radio" name="q17" value="2" id="q17-2"><label for="q17-2">2<br>Selten</label></div>
             <div class="rating-option"><input type="radio" name="q17" value="3" id="q17-3"><label for="q17-3">3<br>Manchmal</label></div>
             <div class="rating-option"><input type="radio" name="q17" value="4" id="q17-4"><label for="q17-4">4<br>Oft</label></div>
             <div class="rating-option"><input type="radio" name="q17" value="5" id="q17-5"><label for="q17-5">5<br>Immer</label></div>
         </div></div>
-        <div class="question-section"><div class="question-number">Frage 18 von 20</div><div class="question-text">Ich werde von Zielen motiviert, die mir wichtig sind</div><div class="rating-scale">
+        <div class="question-section"><div class="question-number">Frage 18 von 20</div><div class="question-text">Ich bin motiviert durch Ziele, die mir wichtig sind</div><div class="rating-scale">
             <div class="rating-option"><input type="radio" name="q18" value="1" id="q18-1" required><label for="q18-1">1<br>Nie</label></div>
             <div class="rating-option"><input type="radio" name="q18" value="2" id="q18-2"><label for="q18-2">2<br>Selten</label></div>
             <div class="rating-option"><input type="radio" name="q18" value="3" id="q18-3"><label for="q18-3">3<br>Manchmal</label></div>
             <div class="rating-option"><input type="radio" name="q18" value="4" id="q18-4"><label for="q18-4">4<br>Oft</label></div>
             <div class="rating-option"><input type="radio" name="q18" value="5" id="q18-5"><label for="q18-5">5<br>Immer</label></div>
         </div></div>
-        <div class="question-section"><div class="question-number">Frage 19 von 20</div><div class="question-text">Ich empfinde meine täglichen Aktivitäten als erfüllend</div><div class="rating-scale">
+        <div class="question-section"><div class="question-number">Frage 19 von 20</div><div class="question-text">Ich fühle mich durch meine täglichen Aktivitäten erfüllt</div><div class="rating-scale">
             <div class="rating-option"><input type="radio" name="q19" value="1" id="q19-1" required><label for="q19-1">1<br>Nie</label></div>
             <div class="rating-option"><input type="radio" name="q19" value="2" id="q19-2"><label for="q19-2">2<br>Selten</label></div>
             <div class="rating-option"><input type="radio" name="q19" value="3" id="q19-3"><label for="q19-3">3<br>Manchmal</label></div>
             <div class="rating-option"><input type="radio" name="q19" value="4" id="q19-4"><label for="q19-4">4<br>Oft</label></div>
             <div class="rating-option"><input type="radio" name="q19" value="5" id="q19-5"><label for="q19-5">5<br>Immer</label></div>
         </div></div>
-        <div class="question-section"><div class="question-number">Frage 20 von 20</div><div class="question-text">Ich bin optimistisch in Bezug auf meine Zukunft und mein Wachstum</div><div class="rating-scale">
+        <div class="question-section"><div class="question-number">Frage 20 von 20</div><div class="question-text">Ich bin optimistisch bezüglich meiner Zukunft und meines Wachstums</div><div class="rating-scale">
             <div class="rating-option"><input type="radio" name="q20" value="1" id="q20-1" required><label for="q20-1">1<br>Nie</label></div>
             <div class="rating-option"><input type="radio" name="q20" value="2" id="q20-2"><label for="q20-2">2<br>Selten</label></div>
             <div class="rating-option"><input type="radio" name="q20" value="3" id="q20-3"><label for="q20-3">3<br>Manchmal</label></div>
             <div class="rating-option"><input type="radio" name="q20" value="4" id="q20-4"><label for="q20-4">4<br>Oft</label></div>
             <div class="rating-option"><input type="radio" name="q20" value="5" id="q20-5"><label for="q20-5">5<br>Immer</label></div>
         </div></div>
-
-                <!-- (rest of file omitted for brevity) -->
+                <div class="submit-section">
+                    <button type="submit" class="submit-btn">Ergebnisse anzeigen →</button>
+                    <div class="validation-message" id="validationMsg" style="display:none;">Bitte beantworte alle Fragen, bevor du absendest.</div>
+                </div>
             </form>
         </div>
 
@@ -274,75 +273,190 @@
             <div class="results-header">
                 <h2>🧠 Dein Mentale Gesundheit & Wellness Profil</h2>
             </div>
-
             <div class="total-score">
                 <div class="score-number"><span id="totalScore">0</span>/100</div>
-                <div class="score-text"><span id="totalCategory">Assessment-Kategorie</span></div>
+                <div class="score-text"><span id="totalCategory">Bewertungskategorie</span></div>
             </div>
-
             <div class="section-scores" id="sectionScores">
                 <!-- Populated by JavaScript -->
             </div>
-
             <div class="recommendation-box" id="recommendations">
                 <!-- Populated by JavaScript -->
             </div>
-
             <div class="cta-section">
                 <h3>Bereit, dein Wohlbefinden zu transformieren?</h3>
-                <p>TAP-INs Embodied Leadership Programme verbessern mentale Gesundheit durch körperliche Praxis, nicht nur Theorie.</p>
+                <p>TAP-INs Embodied Leadership Programme adressieren mentale Gesundheit durch körperliche Praxis, nicht nur Theorie.</p>
                 <div class="cta-buttons">
-                    <a href="mailto:contact@tap-in-academy.com" class="cta-btn">Strategie-Session Buchen</a>
-                    <a href="https://www.tap-in-academy.com" class="cta-btn secondary">Mehr über TAP-IN</a>
+                    <a href="mailto:contact@tap-in-academy.com" class="cta-btn">Strategie-Sitzung buchen</a>
+                    <a href="index.de.html" class="cta-btn secondary">← Zurück zu Assessments</a>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Progress tracking
+        // Robust carousel-style logic for Mental Health Assessment
         const form = document.getElementById('healthForm');
-        const totalQuestions = 20;
-        let answeredQuestions = 0;
+        const allQuestions = Array.from(document.querySelectorAll('.question-section'));
+        const progressText = document.getElementById('progressText');
+        const progressBar = document.getElementById('progressBar');
+        const validationMsg = document.getElementById('validationMsg');
+        const resultsContainer = document.getElementById('results');
+        const assessmentForm = document.getElementById('assessmentForm');
+        const totalQuestions = allQuestions.length;
+        let current = 0;
 
-        form.querySelectorAll('input[type="radio"]').forEach(input => {
-            input.addEventListener('change', function() {
-                const questionName = this.name;
-                const wasAnswered = form.querySelector(`input[name="${questionName}"]:checked`) !== this;
-                
-                if (!wasAnswered) {
-                    answeredQuestions++;
-                }
+        // Hide all questions except the first
+        allQuestions.forEach((q, i) => { q.style.display = i === 0 ? '' : 'none'; });
+        updateProgress();
 
-                updateProgress();
+        // Add Next/Back buttons dynamically
+        allQuestions.forEach((q, i) => {
+            const navDiv = document.createElement('div');
+            navDiv.style = 'display:flex;justify-content:space-between;align-items:center;margin-top:18px;';
+            if (i > 0) {
+                const backBtn = document.createElement('button');
+                backBtn.type = 'button';
+                backBtn.className = 'submit-btn';
+                backBtn.style = 'background:#ccc;color:#333;font-size:1em;padding:10px 24px;min-width:100px;';
+                backBtn.textContent = '← Zurück';
+                backBtn.onclick = () => showQuestion(i - 1);
+                navDiv.appendChild(backBtn);
+            }
+            if (i < totalQuestions - 1) {
+                const nextBtn = document.createElement('button');
+                nextBtn.type = 'button';
+                nextBtn.className = 'submit-btn';
+                nextBtn.style = 'font-size:1em;padding:10px 24px;min-width:100px;';
+                nextBtn.textContent = 'Weiter →';
+                nextBtn.onclick = () => {
+                    if (!isAnswered(i)) {
+                        validationMsg.style.display = 'block';
+                        setTimeout(() => { validationMsg.style.display = 'none'; }, 1500);
+                        return;
+                    }
+                    showQuestion(i + 1);
+                };
+                navDiv.appendChild(nextBtn);
+            }
+            q.appendChild(navDiv);
+        });
+
+        function showQuestion(idx) {
+            allQuestions.forEach((q, i) => { q.style.display = i === idx ? '' : 'none'; });
+            current = idx;
+            updateProgress();
+            validationMsg.style.display = 'none';
+            // Scroll to top of form for mobile
+            form.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+
+        function isAnswered(idx) {
+            const inputs = allQuestions[idx].querySelectorAll('input[type="radio"]');
+            return Array.from(inputs).some(input => input.checked);
+        }
+
+        function updateProgress() {
+            // Count answered questions
+            let answered = 0;
+            for (let i = 0; i < totalQuestions; i++) {
+                const inputs = allQuestions[i].querySelectorAll('input[type="radio"]');
+                if (Array.from(inputs).some(input => input.checked)) answered++;
+            }
+            progressText.textContent = `${answered}/${totalQuestions}`;
+            progressBar.style.width = `${(answered/totalQuestions)*100}%`;
+        }
+
+        // Update progress on answer
+        allQuestions.forEach((q, i) => {
+            const radios = q.querySelectorAll('input[type="radio"]');
+            radios.forEach(radio => {
+                radio.addEventListener('change', updateProgress);
             });
         });
 
-        function updateProgress() {
-            const progress = (answeredQuestions / totalQuestions) * 100;
-            document.getElementById('progressBar').style.width = progress + '%';
-            document.getElementById('progressText').textContent = `${answeredQuestions}/${totalQuestions}`;
-        }
-
-        // Form submission
+        // Form submit handler
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-
             // Validate all questions answered
-            for(let i = 1; i <= totalQuestions; i++) {
-                if(!form.querySelector(`input[name="q${i}"]:checked`)) {
-                    document.getElementById('validationMsg').style.display = 'block';
-                    return;
+            let allAnswered = true;
+            for (let i = 0; i < totalQuestions; i++) {
+                if (!isAnswered(i)) {
+                    showQuestion(i);
+                    validationMsg.style.display = 'block';
+                    allAnswered = false;
+                    break;
                 }
             }
-
-            // Calculate scores (omitted)
-
-            // Hide form, show results
-            document.getElementById('assessmentForm').style.display = 'none';
-            document.getElementById('results').classList.add('active');
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            if (!allAnswered) return;
+            // Calculate results
+            showResults();
         });
+
+        function showResults() {
+            // Hide form, show results
+            assessmentForm.style.display = 'none';
+            resultsContainer.classList.add('active');
+            // Calculate total and section scores
+            let total = 0;
+            const sectionRanges = [ [0,3], [4,7], [8,11], [12,15], [16,19] ];
+            const sectionNames = [
+                'Emotionales Wohlbefinden',
+                'Körperliche Vitalität',
+                'Stressresilienz',
+                'Soziale Verbindung',
+                'Sinn & Zweck'
+            ];
+            const sectionScores = [];
+            for (let s = 0; s < sectionRanges.length; s++) {
+                let sectionTotal = 0;
+                for (let q = sectionRanges[s][0]; q <= sectionRanges[s][1]; q++) {
+                    const val = parseInt(form[`q${q+1}`].value, 10);
+                    sectionTotal += val;
+                    total += val;
+                }
+                sectionScores.push(sectionTotal);
+            }
+            // Display total score
+            document.getElementById('totalScore').textContent = total;
+            // Category
+            let cat = '';
+            if (total >= 85) cat = 'Ausgezeichnetes Wohlbefinden';
+            else if (total >= 70) cat = 'Gutes Wohlbefinden';
+            else if (total >= 55) cat = 'Moderates Wohlbefinden';
+            else if (total >= 40) cat = 'Braucht Aufmerksamkeit';
+            else cat = 'Kritisch: Unterstützung suchen';
+            document.getElementById('totalCategory').textContent = cat;
+            // Section scores
+            const sectionScoresDiv = document.getElementById('sectionScores');
+            sectionScoresDiv.innerHTML = '';
+            for (let s = 0; s < sectionScores.length; s++) {
+                let interp = '';
+                const score = sectionScores[s];
+                if (score >= 17) interp = 'Ausgezeichnet';
+                else if (score >= 14) interp = 'Gut';
+                else if (score >= 11) interp = 'Moderat';
+                else if (score >= 8) interp = 'Braucht Aufmerksamkeit';
+                else interp = 'Kritisch';
+                sectionScoresDiv.innerHTML += `<div class="section-score"><h4>${sectionNames[s]}</h4><div class="score">${score}/20</div><div class="interpretation">${interp}</div></div>`;
+            }
+            // Recommendations
+            const recDiv = document.getElementById('recommendations');
+            let recHtml = '';
+            if (total >= 85) {
+                recHtml = `<h4>Hervorragendes Wohlbefinden</h4><p>Du blühst in allen Bereichen auf. Behalte deine gesunden Gewohnheiten bei und unterstütze andere auf ihrer Reise!</p>`;
+            } else if (total >= 70) {
+                recHtml = `<h4>Gutes Wohlbefinden</h4><p>Du machst insgesamt gut. Behalte deine Routinen bei und adressiere Bereiche mit niedrigeren Werten für noch bessere Ergebnisse.</p>`;
+            } else if (total >= 55) {
+                recHtml = `<h4>Moderates Wohlbefinden</h4><p>Einige Bereiche benötigen möglicherweise Aufmerksamkeit. Überprüfe deine Abschnittswerte und erwäge kleine Änderungen, um dein Wohlbefinden zu steigern.</p>`;
+            } else if (total >= 40) {
+                recHtml = `<h4>Braucht Aufmerksamkeit</h4><p>Mehrere Bereiche benötigen Fokus. Erwäge, Unterstützung zu suchen und Selbstfürsorge zur Priorität zu machen.</p>`;
+            } else {
+                recHtml = `<h4>Kritisch: Unterstützung suchen</h4><p>Dein Wohlbefinden ist gefährdet. Bitte erwäge, mit einem Fachmann oder einer vertrauenswürdigen Person um Hilfe zu sprechen.</p>`;
+            }
+            recDiv.innerHTML = recHtml;
+            window.scrollTo(0, 0);
+        }
     </script>
 </body>
 </html>
