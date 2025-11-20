@@ -1,8 +1,6 @@
 // Netlify Function to collect anonymous assessment results
 // No PII collected - only aggregate statistics
 
-const faunadb = require('faunadb');
-
 // For production: Use Fauna DB or similar
 // For now: Simple in-memory storage (resets on deploy)
 let resultsCache = {

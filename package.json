@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "description": "Netlify Functions for TAP-IN assessments",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {},
+  "scripts": {
+    "build": "echo 'No build step required'"
+  }
 }
