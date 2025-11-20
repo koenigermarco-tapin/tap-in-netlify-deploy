@@ -1753,10 +1753,246 @@
             }
         }
 
+        // Generate personalized wisdom and action steps
+        function getPersonalizedInsights(workerType, leadershipStyle, teamScores) {
+            const insights = {
+                // Worker Type + Leadership Style combinations
+                combinations: {
+                    'sprinter-visionary': {
+                        quote: '"Die Disziplin besteht darin, zu tun, was getan werden muss, auch wenn du es nicht tun willst." – Jocko Willink',
+                        insight: 'Deine explosive Energie kombiniert mit visionärem Denken macht dich zum Katalysator für Wandel. Aber Vorsicht: Auch Raketen brauchen einen stabilen Kurs.',
+                        actions: [
+                            '⚡ Setze 90-Tage-Sprints für große Ziele, dann plane Erholungsphasen ein',
+                            '🎯 Kommuniziere deine Vision täglich – wiederhole sie, bis dein Team sie im Schlaf aufsagen kann',
+                            '🔥 Identifiziere 1-2 "Execution Champions" die deine Vision in die Realität umsetzen, während du neue Horizonte erkundest'
+                        ]
+                    },
+                    'sprinter-architect': {
+                        quote: '"Perfektion wird nicht erreicht, wenn es nichts mehr hinzuzufügen gibt, sondern wenn es nichts mehr wegzunehmen gibt." – Marcus Aurelius',
+                        insight: 'Du entwirfst brillante Systeme in Rekordzeit. Aber selbst der beste Plan scheitert ohne konsequente Umsetzung.',
+                        actions: [
+                            '🏗️ Baue deine Systeme in "MVPs" – Minimum Viable Processes. Teste schnell, iteriere schneller',
+                            '📊 Setze klare "Definition of Done" für jeden Sprint. Kein System ist fertig, bis es getestet ist',
+                            '⏸️ Plane bewusst "Systemreview-Wochen" ein: Was funktioniert? Was nicht? Was anpassen?'
+                        ]
+                    },
+                    'sprinter-facilitator': {
+                        quote: '"Führung beginnt nicht mit der Macht über andere, sondern mit dem Verstehen ihrer Bedürfnisse." – Simon Sinek',
+                        insight: 'Du bringst Menschen schnell zusammen und schaffst Momentum. Achte darauf, dass du nicht schneller läufst als dein Team folgen kann.',
+                        actions: [
+                            '🤝 Starte Meetings mit "Check-ins": Wie geht es jedem wirklich? Verbindung vor Content',
+                            '🔄 Nach intensiven Phasen: Team-Retrospektiven. Was lief gut? Was hat uns ausgelaugt?',
+                            '💬 Etabliere "1-on-1 Power Hours" mit jedem Teammitglied – monatlich, unverhandelbar'
+                        ]
+                    },
+                    'sprinter-executor': {
+                        quote: '"Extreme Ownership: Übernimm die volle Verantwortung für alles in deinem Einflussbereich." – Jocko Willink',
+                        insight: 'Du bist eine Umsetzungsmaschine. Aber manchmal ist Geschwindigkeit ohne Richtung nur organisiertes Chaos.',
+                        actions: [
+                            '🎯 "Commander\'s Intent" definieren: Was ist DAS EINE Ziel dieses Sprints?',
+                            '⚡ Implementiere "Daily Stand-ups" (max. 15min): Was blockiert Fortschritt JETZT?',
+                            '🔴 Lerne "Nein" zu sagen: Fokus > Multitasking. Extreme Ownership = Extreme Priorisierung'
+                        ]
+                    },
+                    'jogger-visionary': {
+                        quote: '"Menschen folgen keinem Titel. Sie folgen dem Mut." – Simon Sinek',
+                        insight: 'Deine konstante Inspiration hält Teams auf Kurs. Aber Visionen ohne Erdung werden zu Träumereien.',
+                        actions: [
+                            '🎯 Übersetze deine Vision in monatliche Meilensteine: "Was bedeutet das für diesen Monat?"',
+                            '📅 Implementiere "Vision Fridays": Jeden Freitag 30min zur Reflexion – sind wir noch auf Kurs?',
+                            '🗣️ Erzähle Stories, keine Strategien: Menschen merken sich Geschichten, nicht Bullet Points'
+                        ]
+                    },
+                    'jogger-architect': {
+                        quote: '"Das Hindernis ist der Weg." – Marcus Aurelius',
+                        insight: 'Du baust nachhaltige Systeme mit Bedacht. Das ist deine Superkraft – nutze sie voll aus.',
+                        actions: [
+                            '🏗️ Dokumentiere ALLES: Deine Systeme sind wertvoll. Mach sie replizierbar',
+                            '📈 Quarterly "Systems Audit": Welche Prozesse laufen noch? Welche sind tot?',
+                            '🎓 Bilde "System Champions" aus: Deine Systeme überleben nur, wenn andere sie verstehen'
+                        ]
+                    },
+                    'jogger-facilitator': {
+                        quote: '"Start with Why: Menschen kaufen nicht WAS du machst, sondern WARUM du es machst." – Simon Sinek',
+                        insight: 'Du schaffst nachhaltige Teamkultur. Deine Stärke ist Marathon-Teambuilding.',
+                        actions: [
+                            '🌱 Etabliere "Team Rituale": Wöchentliche Check-ins, monatliche Retros, quarterly Offsites',
+                            '💡 Schaffe "Psychologische Sicherheit": Fehler feiern als Lernmöglichkeiten',
+                            '🎯 "Team Purpose Workshop": Warum existiert unser Team? Was ist unsere Mission?'
+                        ]
+                    },
+                    'jogger-executor': {
+                        quote: '"Disziplin gleicht Freiheit." – Jocko Willink',
+                        insight: 'Du lieferst konsistent, Tag für Tag. Das ist die Grundlage aller Exzellenz.',
+                        actions: [
+                            '📊 Baue "Performance Dashboards": Was messen wir? Täglich sichtbar für alle',
+                            '✅ Implementiere "Definition of Done": Kein Task ist fertig, bis er diese Kriterien erfüllt',
+                            '🔄 "Process Improvement Sprints": Jeden Monat 1 Prozess optimieren'
+                        ]
+                    },
+                    'ultrarunner-visionary': {
+                        quote: '"Der Sinn des Lebens ist ein Leben voller Sinn." – Marcus Aurelius',
+                        insight: 'Du spielst das lange Spiel mit klarer Vision. Deine Gefahr: Den Boden unter den Füßen zu verlieren.',
+                        actions: [
+                            '🎯 "North Star Metric" definieren: Das EINE Ziel der nächsten 5 Jahre',
+                            '📅 "Backwards Planning": Von der Vision zurück zu heute. Was braucht es JETZT?',
+                            '🌟 Kommuniziere den "Infinite Game": Wir spielen nicht um zu gewinnen, sondern um weiterzuspielen'
+                        ]
+                    },
+                    'ultrarunner-architect': {
+                        quote: '"Gehe nicht weiter, indem du einen Fuß vor den anderen setzt. Gehe weiter, indem du den Weg vor dir siehst." – Marcus Aurelius',
+                        insight: 'Du baust Kathedralen, keine Hütten. Deine Systeme überdauern Generationen.',
+                        actions: [
+                            '🏛️ "Legacy Systems Design": Was soll in 10 Jahren noch funktionieren?',
+                            '📚 Erstelle "System Playbooks": Umfassende Dokumentation für Nachfolger',
+                            '🎓 Mentoring-Programm: Bilde die nächste Generation von Architekten aus'
+                        ]
+                    },
+                    'ultrarunner-facilitator': {
+                        quote: '"Leaders eat last: Die besten Führer opfern sich für ihre Leute." – Simon Sinek',
+                        insight: 'Du baust Teams, die Stürme überstehen. Deine Investition in Menschen zahlt sich langfristig aus.',
+                        actions: [
+                            '🌱 "Career Development Plans": Wo will jedes Teammitglied in 3 Jahren sein?',
+                            '🤝 "Psychological Safety Audits": Quarterly check – fühlt sich jeder sicher?',
+                            '💪 "Succession Planning": Wer könnte dich ersetzen? Bilde sie aktiv aus'
+                        ]
+                    },
+                    'ultrarunner-executor': {
+                        quote: '"Es ist nicht der Berg, den wir bezwingen, sondern uns selbst." – Edmund Hillary',
+                        insight: 'Du bist der Fels in der Brandung. Was andere aufgeben, führst du zu Ende.',
+                        actions: [
+                            '🎯 "10-Year Roadmap": Wo soll dein Bereich in 10 Jahren stehen?',
+                            '📈 "Leading Indicators": Welche Metriken zeigen HEUTE den Erfolg von MORGEN?',
+                            '🔥 "Resilience Training": Baue mentale Stärke – für dich und dein Team'
+                        ]
+                    }
+                },
+                
+                // Team dysfunction insights
+                teamInsights: {
+                    trust: {
+                        critical: {
+                            quote: '"Vertrauen ist die Währung der Führung." – Simon Sinek',
+                            message: '🚨 KRITISCH: Ohne Vertrauen ist dein Team ein Kartenhaus. Priorität #1.',
+                            action: 'Starte HEUTE: "Vulnerability Round" – jeder teilt einen Fehler der letzten Woche. Du gehst voran.'
+                        },
+                        low: {
+                            quote: '"Extreme Ownership beginnt mit Verletzlichkeit." – Jocko Willink',
+                            message: '⚠️ Dein Team spielt es safe. Echtes Vertrauen entsteht nur durch Verletzlichkeit.',
+                            action: 'Diese Woche: Teile einen persönlichen Misserfolg. Zeige, dass Fehler OK sind.'
+                        },
+                        good: {
+                            quote: '"Vertrauen ist der Klebstoff des Lebens." – Stephen Covey',
+                            message: '✅ Solides Fundament. Jetzt: Vertiefe es.',
+                            action: 'Monthly "Trust-Building Sessions": Team-Offsites, gemeinsame Challenges, echte Gespräche.'
+                        },
+                        excellent: {
+                            quote: '"Das Fundament von Größe ist Vertrauen." – Simon Sinek',
+                            message: '🌟 EXZELLENT: Dein Team hat psychologische Sicherheit. Schütze sie wie Gold.',
+                            action: 'Wird Mentor: Zeige anderen Teams, wie ihr das geschafft habt.'
+                        }
+                    },
+                    conflict: {
+                        critical: {
+                            quote: '"Konfliktvermeidung ist der Feind der Wahrheit." – Patrick Lencioni',
+                            message: '🚨 Künstliche Harmonie zerstört Teams langsam aber sicher.',
+                            action: 'Implementiere "Disagree & Commit": Explizit erlauben zu widersprechen. Kein Konsens nötig, nur Commitment.'
+                        },
+                        low: {
+                            quote: '"Ohne Reibung kein Fortschritt." – Marcus Aurelius',
+                            message: '⚠️ Zu viel Harmonie = Stagnation. Produktiver Konflikt fehlt.',
+                            action: 'Meetings neu denken: 30min "Devil\'s Advocate Time" – jemand MUSS widersprechen.'
+                        },
+                        good: {
+                            quote: '"Die besten Teams streiten über Ideen, nicht über Personen." – Jocko Willink',
+                            message: '✅ Guter Konflikt-Modus. Fokus auf Ideen, nicht Ego.',
+                            action: 'Establish "Conflict Norms": WIE streiten wir produktiv? Dokumentieren + einhalten.'
+                        },
+                        excellent: {
+                            quote: '"Echter Respekt zeigt sich im produktiven Streit." – Ray Dalio',
+                            message: '🌟 Meisterklasse in gesundem Konflikt. Das ist selten.',
+                            action: 'Teile euer "Conflict Playbook" mit anderen Teams. Das ist wertvoll.'
+                        }
+                    },
+                    commitment: {
+                        critical: {
+                            quote: '"Klarheit ist Freundlichkeit." – Brené Brown',
+                            message: '🚨 Ohne Commitment verpufft alle Energie. Niemand weiß wofür.',
+                            action: 'After JEDES Meeting: "What did we decide? Who does what by when?" Email an alle.'
+                        },
+                        low: {
+                            quote: '"Ein klares NEIN ist besser als ein halbes JA." – Jocko Willink',
+                            message: '⚠️ Schwammige Entscheidungen = keine Entscheidungen.',
+                            action: '"Decision Log" starten: Alle Entscheidungen dokumentieren. Transparent für alle.'
+                        },
+                        good: {
+                            quote: '"Commitment braucht keine Perfektion, nur Klarheit." – Simon Sinek',
+                            message: '✅ Gute Clarity. Jetzt: Accountability verstärken.',
+                            action: 'Weekly "Commitment Check": Hat jeder seine Zusagen erfüllt? Warum (nicht)?'
+                        },
+                        excellent: {
+                            quote: '"Wo Klarheit herrscht, folgt Exzellenz." – Marcus Aurelius',
+                            message: '🌟 Kristallklare Commitments. So sehen High-Performer aus.',
+                            action: 'Dokumentiere eure "Decision-Making Principles". Neue Teammitglieder lernen davon.'
+                        }
+                    },
+                    accountability: {
+                        critical: {
+                            quote: '"Extreme Ownership: Du bist verantwortlich für ALLES in deiner Welt." – Jocko Willink',
+                            message: '🚨 Keine Accountability = keine Standards = Mittelmäßigkeit.',
+                            action: 'Sofort: "Accountability Chart" – Wer ist wofür verantwortlich? Keine Grauzonen.'
+                        },
+                        low: {
+                            quote: '"Verantwortung kann nicht delegiert werden." – Marcus Aurelius',
+                            message: '⚠️ Standards existieren nur, wenn sie eingefordert werden.',
+                            action: 'Implementiere "Peer Reviews": Teams halten sich gegenseitig accountable, nicht nur der Boss.'
+                        },
+                        good: {
+                            quote: '"Accountability beginnt mit Selbst-Accountability." – Jocko Willink',
+                            message: '✅ Solide Accountability-Kultur. Weiter ausbauen.',
+                            action: 'Monthly "Performance Reviews" – nicht nur top-down, auch peer-to-peer.'
+                        },
+                        excellent: {
+                            quote: '"Die höchste Form von Ownership ist Selbst-Kritik." – Ray Dalio',
+                            message: '🌟 ELITE-Level Accountability. Dein Team reguliert sich selbst.',
+                            action: 'Share your playbook: Wie habt ihr diese Kultur geschaffen?'
+                        }
+                    },
+                    results: {
+                        critical: {
+                            quote: '"Ein Team ist nur so gut wie seine Ergebnisse." – Patrick Lencioni',
+                            message: '🚨 Ohne Results-Fokus seid ihr ein Social Club, kein Team.',
+                            action: '"Scoreboard" aufhängen: Was ist unsere #1 Metrik? Täglich für alle sichtbar.'
+                        },
+                        low: {
+                            quote: '"Das, was gemessen wird, wird gemacht." – Peter Drucker',
+                            message: '⚠️ Unklare Ziele = diffuse Energie = schwache Results.',
+                            action: 'Define OKRs (Objectives & Key Results): Klare Ziele, messbare Fortschritte. Quarterly.'
+                        },
+                        good: {
+                            quote: '"Ergebnisse sind der einzige Beweis von Kompetenz." – Jocko Willink',
+                            message: '✅ Guter Results-Fokus. Optimiere weiter.',
+                            action: 'Weekly "Wins & Learnings": Was haben wir erreicht? Was gelernt?'
+                        },
+                        excellent: {
+                            quote: '"Exzellenz ist kein Ziel, sondern eine Gewohnheit." – Aristoteles',
+                            message: '🌟 PEAK PERFORMANCE: Euer Team liefert konsistent.',
+                            action: 'Dokumentiere euren "Winning Playbook": Wie schafft ihr das? Repliziere es.'
+                        }
+                    }
+                }
+            };
+            
+            return insights;
+        }
+
         function showResults(workerType, leadershipStyle, teamScores) {
             document.getElementById('assessmentForm').style.display = 'none';
             const resultsContainer = document.getElementById('resultsContainer');
             resultsContainer.classList.add('active');
+
+            // Get personalized insights
+            const insights = getPersonalizedInsights(workerType, leadershipStyle, teamScores);
 
             // Type data
             const workerData = {
@@ -1855,28 +2091,135 @@
                 </div>
 
                 <div class="detailed-results">
-                    <h3>Wie geht's weiter?</h3>
-                    <p>Dein komplettes Führungsprofil zeigt einzigartige Entwicklungsmöglichkeiten:</p>
-                    <ul>
-                        <li><strong>Nutze deinen Arbeitsstil:</strong> Strukturiere deinen Tag, um deinem ${workerData[workerType].name}-Rhythmus zu entsprechen</li>
-                        <li><strong>Verstärke deine Führung:</strong> Baue auf deinen ${leadershipData[leadershipStyle].name}-Stärken auf</li>
-                        <li><strong>Adressiere Team-Dynamik:</strong> Fokussiere dich zuerst auf deine niedrigste Dysfunktion</li>
-                        <li><strong>Baue komplementäre Teams:</strong> Partner mit verschiedenen Stilen, um blinde Flecken abzudecken</li>
-                    </ul>
+                    <h3>💡 Deine personalisierte Führungs-Weisheit</h3>
+                    ${(() => {
+                        const comboKey = `${workerType}-${leadershipStyle}`;
+                        const combo = insights.combinations[comboKey];
+                        return `
+                            <div style="background: #f8f9fa; padding: 20px; border-left: 4px solid #a93226; margin: 20px 0; border-radius: 8px;">
+                                <p style="font-style: italic; color: #666; margin-bottom: 15px;">${combo.quote}</p>
+                                <p style="font-weight: 500; color: #333; margin-bottom: 20px;">${combo.insight}</p>
+                                <h4 style="color: #a93226; margin-bottom: 15px;">🎯 Deine Top 3 Prioritäten:</h4>
+                                <ul style="list-style: none; padding: 0;">
+                                    ${combo.actions.map(action => `<li style="margin-bottom: 12px; padding-left: 10px;">${action}</li>`).join('')}
+                                </ul>
+                            </div>
+                        `;
+                    })()}
                 </div>
 
-                <div class="cta-section">
-                    <h3>Bereit, deine Führung zu transformieren?</h3>
-                    <p>Entdecke, wie TAP-INs Embodied Leadership Programme dir helfen können, dieses Profil zu nutzen, um leistungsstarke Teams aufzubauen.</p>
-                    <div class="cta-buttons">
-                        <a href="mailto:contact@tap-in-academy.com?subject=Komplettes%20Führungsprofil%20-%20${workerData[workerType].name}%20${leadershipData[leadershipStyle].name}" class="cta-btn">
-                            Strategie-Sitzung buchen
+                <div class="detailed-results">
+                    <h3>🔍 Deine Team-Dynamik Deep-Dive</h3>
+                    ${(() => {
+                        let html = '<div style="margin-top: 20px;">';
+                        
+                        // Analyze each dysfunction
+                        const dysfunctions = [
+                            { key: 'trust', label: 'Vertrauen', score: teamScores.trust },
+                            { key: 'conflict', label: 'Konflikt', score: teamScores.conflict },
+                            { key: 'commitment', label: 'Commitment', score: teamScores.commitment },
+                            { key: 'accountability', label: 'Verantwortlichkeit', score: teamScores.accountability },
+                            { key: 'results', label: 'Ergebnisse', score: teamScores.results }
+                        ];
+                        
+                        dysfunctions.forEach(dysfunction => {
+                            let level;
+                            if (dysfunction.score < 8) level = 'critical';
+                            else if (dysfunction.score < 13) level = 'low';
+                            else if (dysfunction.score < 17) level = 'good';
+                            else level = 'excellent';
+                            
+                            const insight = insights.teamInsights[dysfunction.key][level];
+                            
+                            html += `
+                                <div style="background: white; padding: 20px; margin-bottom: 20px; border-radius: 12px; border: 2px solid ${level === 'critical' ? '#c0392b' : level === 'low' ? '#e67e22' : level === 'good' ? '#3498db' : '#27ae60'};">
+                                    <h4 style="color: #333; margin-bottom: 10px;">${dysfunction.label}: ${dysfunction.score}/20</h4>
+                                    <p style="font-style: italic; color: #666; font-size: 0.95em; margin-bottom: 10px;">${insight.quote}</p>
+                                    <p style="font-weight: 500; color: #333; margin-bottom: 12px;">${insight.message}</p>
+                                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 3px solid #a93226;">
+                                        <strong style="color: #a93226;">Sofort-Action:</strong> ${insight.action}
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        
+                        html += '</div>';
+                        return html;
+                    })()}
+                </div>
+
+                <div class="detailed-results">
+                    <h3>Team-Dynamik-Aufschlüsselung</h3>
+                    <div class="scores-grid">
+                        <div class="score-card">
+                            <div class="label">Vertrauen</div>
+                            <div class="score">${teamScores.trust}/20</div>
+                            <div class="score-bar">
+                                <div class="score-bar-fill" style="width: ${(teamScores.trust/20)*100}%"></div>
+                            </div>
+                        </div>
+                        <div class="score-card">
+                            <div class="label">Konflikt</div>
+                            <div class="score">${teamScores.conflict}/20</div>
+                            <div class="score-bar">
+                                <div class="score-bar-fill" style="width: ${(teamScores.conflict/20)*100}%"></div>
+                            </div>
+                        </div>
+                        <div class="score-card">
+                            <div class="label">Commitment</div>
+                            <div class="score">${teamScores.commitment}/20</div>
+                            <div class="score-bar">
+                                <div class="score-bar-fill" style="width: ${(teamScores.commitment/20)*100}%"></div>
+                            </div>
+                        </div>
+                        <div class="score-card">
+                            <div class="label">Verantwortlichkeit</div>
+                            <div class="score">${teamScores.accountability}/20</div>
+                            <div class="score-bar">
+                                <div class="score-bar-fill" style="width: ${(teamScores.accountability/20)*100}%"></div>
+                            </div>
+                        </div>
+                        <div class="score-card">
+                            <div class="label">Ergebnisse</div>
+                            <div class="score">${teamScores.results}/20</div>
+                            <div class="score-bar">
+                                <div class="score-bar-fill" style="width: ${(teamScores.results/20)*100}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-section" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); padding: 40px; border-radius: 20px; margin: 40px 0; text-align: center; color: white;">
+                    <h3 style="font-size: 2em; margin-bottom: 20px; color: white;">🚀 Bereit für den nächsten Level?</h3>
+                    <p style="font-size: 1.2em; margin-bottom: 30px; opacity: 0.95;">Tritt der TAP-IN Leadership Community bei</p>
+                    
+                    <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; margin-bottom: 30px;">
+                        <h4 style="color: #fff; margin-bottom: 15px;">In unserer Skool Community bekommst du:</h4>
+                        <ul style="text-align: left; max-width: 600px; margin: 0 auto; line-height: 2;">
+                            <li>✅ Wöchentliche Live-Sessions mit Führungsexperten</li>
+                            <li>✅ Personalisiertes Feedback zu deinem Führungsprofil</li>
+                            <li>✅ Exclusive Playbooks & Templates (Jocko, Sinek, etc.)</li>
+                            <li>✅ Peer-Learning mit 200+ Führungskräften</li>
+                            <li>✅ 90-Tage Transformation Challenges</li>
+                            <li>✅ Direkte Antworten auf deine spezifischen Team-Probleme</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <a href="https://www.skool.com/tap-in-academy" target="_blank" class="cta-btn" style="background: #a93226; color: white; padding: 20px 50px; font-size: 1.3em; border-radius: 12px; text-decoration: none; display: inline-block; font-weight: bold; box-shadow: 0 5px 20px rgba(169, 50, 38, 0.4); transition: transform 0.2s;">
+                            🎯 Jetzt Community beitreten →
                         </a>
-                        <a href="index.de.html" class="cta-btn secondary">
-                            Zurück zur Startseite
+                    </div>
+                    
+                    <p style="font-size: 0.9em; opacity: 0.8; margin-top: 15px;">Erste 7 Tage kostenlos • Jederzeit kündbar</p>
+                    
+                    <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.2);">
+                        <p style="font-size: 1.1em; margin-bottom: 20px;">Oder buche eine kostenlose Strategie-Session:</p>
+                        <a href="mailto:contact@tap-in-academy.com?subject=Führungsprofil%20Strategie-Session%20-%20${workerData[workerType].name}%20${leadershipData[leadershipStyle].name}" class="cta-btn secondary" style="background: transparent; border: 2px solid white; color: white; padding: 15px 35px; border-radius: 10px; text-decoration: none; display: inline-block; font-weight: bold; margin: 0 10px;">
+                            📅 Kostenlose Strategie-Session
                         </a>
-                        <a href="statistics.de.html" class="cta-btn secondary">
-                            📊 Statistiken ansehen
+                        <a href="index.de.html" class="cta-btn secondary" style="background: transparent; border: 2px solid white; color: white; padding: 15px 35px; border-radius: 10px; text-decoration: none; display: inline-block; font-weight: bold; margin: 0 10px;">
+                            ← Zurück zur Startseite
                         </a>
                     </div>
                 </div>
