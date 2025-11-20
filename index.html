@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#2d2d2d">
+    <meta name="description" content="Free leadership and team assessments from TAP-IN. Discover your complete leadership profile: work style, leadership approach, and team dynamics in minutes.">
+    <meta name="keywords" content="leadership assessment, team dynamics, worker type, leadership style, team performance, leadership development, embodied leadership">
+    <title>TAP-IN Assessments - Discover Your Complete Leadership Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: clamp(2em, 6vw, 3.5em);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .tagline {
+            font-size: clamp(1.1em, 3vw, 1.5em);
+            opacity: 0.95;
+            margin-bottom: 15px;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(0.95em, 2.5vw, 1.2em);
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: clamp(2em, 5vw, 3em);
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: clamp(0.9em, 2.5vw, 1.1em);
+            opacity: 0.95;
+        }
+
+        /* Assessment Cards */
+        .assessments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px 0;
+        }
+
+        .assessment-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .assessment-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .assessment-card .icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .assessment-card h2 {
+            color: #a93226;
+            font-size: clamp(1.4em, 3vw, 1.8em);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .assessment-card .duration {
+            text-align: center;
+            color: #999;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .assessment-card p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .assessment-card .features {
+            margin: 20px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .assessment-card .features li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .assessment-card .features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #a93226;
+            font-weight: bold;
+        }
+
+        .assessment-card .btn {
+            display: block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #a93226 0%, #7a241b 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.2s;
+            margin-top: auto;
+        }
+
+        .assessment-card .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(169, 50, 38, 0.4);
+        }
+
+        .assessment-card .btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Featured Card */
+        .assessment-card.featured {
+            border: 3px solid #FFD700;
+            position: relative;
+        }
+
+        .assessment-card.featured:before {
+            content: "⭐ RECOMMENDED";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #FFD700;
+            color: #333;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .about h2 {
+            color: #a93226;
+            font-size: clamp(1.8em, 4vw, 2.5em);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .about-item {
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #a93226;
+        }
+
+        .about-item h3 {
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 1.3em;
+        }
+
+        .about-item p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px 40px;
+            text-align: center;
+            color: white;
+            margin: 40px 0;
+        }
+
+        .cta h2 {
+            font-size: clamp(1.8em, 4vw, 2.5em);
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: clamp(1em, 2.5vw, 1.3em);
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            background: white;
+            color: #a93226;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.2s;
+        }
+
+        .cta .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255,255,255,0.4);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            opacity: 0.9;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: opacity 0.2s;
+        }
+
+        .footer a:hover {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px 30px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .assessments {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                padding: 30px 20px;
+            }
+
+            .cta {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>🎯 TAP-IN Leadership Assessments</h1>
+            <p class="tagline">Discover Your Complete Leadership Profile & Transform Your Team</p>
+            <p class="subtitle">Free, science-backed assessments combining work style, leadership approach, and team dynamics. Get instant insights in minutes.</p>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="stat-item">
+                <div class="stat-number">5-18</div>
+                <div class="stat-label">Minutes to Complete</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Free Forever</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Assessment Options</div>
+            </div>
+        </section>
+
+        <!-- Assessment Cards -->
+        <section class="assessments">
+            <!-- Worker Type Assessment -->
+            <div class="assessment-card">
+                <div class="icon">🏃</div>
+                <h2>Worker Type Assessment</h2>
+                <div class="duration">⏱️ 5 minutes • 12 questions</div>
+                <p>Discover if you're a <strong>Sprinter</strong>, <strong>Jogger</strong>, or <strong>Ultrarunner</strong>. Understand your natural work rhythm and optimize your performance.</p>
+                <ul class="features">
+                    <li>Identify your natural work style</li>
+                    <li>Optimize energy management</li>
+                    <li>Perfect for recruiting decisions</li>
+                    <li>Instant personalized results</li>
+                </ul>
+                <a href="worker-type-assessment.html" class="btn">Start Worker Type Assessment →</a>
+            </div>
+
+            <!-- Leadership Style Assessment -->
+            <div class="assessment-card">
+                <div class="icon">🎯</div>
+                <h2>Leadership Style Assessment</h2>
+                <div class="duration">⏱️ 6 minutes • 14 questions</div>
+                <p>Discover if you're a <strong>Visionary Leader</strong>, <strong>Architect Strategist</strong>, <strong>Facilitator Coach</strong>, or <strong>Executor Driver</strong>.</p>
+                <ul class="features">
+                    <li>Identify your natural leadership style</li>
+                    <li>Understand strengths & growth edges</li>
+                    <li>Learn how you handle conflict</li>
+                    <li>Get personalized development tips</li>
+                </ul>
+                <a href="leadership-style-assessment.html" class="btn">Start Leadership Assessment →</a>
+            </div>
+
+            <!-- Team Dynamics Assessment -->
+            <div class="assessment-card">
+                <div class="icon">🤝</div>
+                <h2>Team Dynamics Assessment</h2>
+                <div class="duration">⏱️ 7 minutes • 20 questions</div>
+                <p>Uncover your team's hidden performance blockers based on <strong>Patrick Lencioni's 5 Dysfunctions</strong> model.</p>
+                <ul class="features">
+                    <li>Measure trust & psychological safety</li>
+                    <li>Identify conflict patterns</li>
+                    <li>Evaluate accountability culture</li>
+                    <li>Get actionable recommendations</li>
+                </ul>
+                <a href="team-assessment-enhanced-v2.html" class="btn">Start Team Assessment →</a>
+            </div>
+
+            <!-- Combined Assessment -->
+            <div class="assessment-card featured">
+                <div class="icon">⚡</div>
+                <h2>Complete Leadership Profile</h2>
+                <div class="duration">⏱️ 18 minutes • 46 questions</div>
+                <p>Get the <strong>complete picture</strong>: work style + leadership approach + team dynamics. The ultimate assessment for leaders and HR professionals.</p>
+                <ul class="features">
+                    <li>All three assessments in one flow</li>
+                    <li>Comprehensive leadership profile</li>
+                    <li>Team composition insights</li>
+                    <li>Personalized development roadmap</li>
+                </ul>
+                <a href="combined-leadership-profile.html" class="btn">Start Complete Profile →</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <h2>Why TAP-IN Assessments?</h2>
+            <div class="about-content">
+                <div class="about-item">
+                    <h3>🎓 Science-Backed</h3>
+                    <p>Built on proven frameworks from Patrick Lencioni, Google's Project Aristotle, and Harvard Business School research.</p>
+                </div>
+                <div class="about-item">
+                    <h3>⚡ Instant Results</h3>
+                    <p>No waiting for emails or reports. Get your personalized insights immediately after completing the assessment.</p>
+                </div>
+                <div class="about-item">
+                    <h3>🔒 Private & Secure</h3>
+                    <p>Your responses stay in your browser. We don't collect or store any personal data without your permission.</p>
+                </div>
+                <div class="about-item">
+                    <h3>💼 Practical Insights</h3>
+                    <p>Get actionable recommendations based on your results, not just theoretical scores.</p>
+                </div>
+                <div class="about-item">
+                    <h3>📱 Mobile-Friendly</h3>
+                    <p>Take the assessment on any device - desktop, tablet, or smartphone. Beautiful experience on all screens.</p>
+                </div>
+                <div class="about-item">
+                    <h3>🎯 Proven Results</h3>
+                    <p>Used by companies that reduced turnover by 50%+ and improved team performance by 18%+.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <h2>Ready to Transform Your Leadership?</h2>
+            <p>Take the first step toward building a high-performing, trust-based team culture.</p>
+            <a href="combined-leadership-profile.html" class="btn">Start Your Free Assessment</a>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2025 TAP-IN Labs • Embodied Leadership Training</p>
+            <p>
+                <a href="https://tap-in-academy.com">Website</a>
+                <a href="https://www.linkedin.com/company/tap-in-labs">LinkedIn</a>
+                <a href="mailto:contact@tap-in-academy.com">Contact</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple analytics tracking
+        console.log('TAP-IN Assessments loaded successfully');
+        
+        // Track button clicks
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const assessmentType = this.textContent.includes('Worker Type') ? 'worker-type' :
+                                      this.textContent.includes('Leadership') && !this.textContent.includes('Complete') ? 'leadership-style' :
+                                      this.textContent.includes('Team') ? 'team-dynamics' : 'complete-profile';
+                console.log('Assessment clicked:', assessmentType);
+            });
+        });
+    </script>
+</body>
+</html>

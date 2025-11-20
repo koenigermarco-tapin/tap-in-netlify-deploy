@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#2d2d2d">
+    <title>Complete Leadership Profile - TAP-IN Assessment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #f0f0f0;
+        }
+
+        .header h1 {
+            color: #a93226;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .header .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .header .duration {
+            color: #999;
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        .section-intro {
+            background: linear-gradient(135deg, #a93226 0%, #7a241b 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .section-intro h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .section-intro p {
+            opacity: 0.95;
+            font-size: 1.1em;
+        }
+
+        .progress-bar {
+            position: sticky;
+            top: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #a93226, #d64436);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .question-section {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .question-section:hover {
+            background: #f0f2f5;
+        }
+
+        .question-number {
+            color: #a93226;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .question-text {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            display: flex;
+            align-items: flex-start;
+            padding: 18px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option:hover {
+            border-color: #a93226;
+            background: #fff8f7;
+            transform: translateX(5px);
+        }
+
+        .option input[type="radio"] {
+            margin-right: 12px;
+            margin-top: 4px;
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            accent-color: #a93226;
+        }
+
+        .option-label {
+            cursor: pointer;
+            color: #555;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .submit-section {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #a93226 0%, #7a241b 100%);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(169, 50, 38, 0.4);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .validation-message {
+            color: #a93226;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        /* Results Styles */
+        .results-container {
+            display: none;
+        }
+
+        .results-container.active {
+            display: block;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .results-header h2 {
+            color: #a93226;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .results-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, #a93226 0%, #7a241b 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .summary-card .icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .summary-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .summary-card .result {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .summary-card .subtitle {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+
+        .detailed-results {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border-left: 4px solid #a93226;
+        }
+
+        .detailed-results h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+        }
+
+        .detailed-results p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .detailed-results ul {
+            margin-left: 20px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .detailed-results ul li {
+            margin-bottom: 10px;
+        }
+
+        .scores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .score-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+
+        .score-card .label {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+
+        .score-card .score {
+            color: #a93226;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .score-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .score-bar-fill {
+            height: 100%;
+            background: #a93226;
+            transition: width 0.5s ease;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-section h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            background: white;
+            color: #a93226;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255,255,255,0.3);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .results-summary {
+                grid-template-columns: 1fr;
+            }
+
+            .scores-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Assessment Form -->
+        <div id="assessmentForm">
+            <div class="header">
+                <h1>⚡ Complete Leadership Profile</h1>
+                <p class="subtitle">Work Style + Leadership Approach + Team Dynamics</p>
+                <p class="duration">⏱️ 18 minutes • 46 questions • Comprehensive insights</p>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-text">Progress: <span id="progressText">0/46</span></div>
+                <div class="progress-fill">
+                    <div class="progress-fill-bar" id="progressBar"></div>
+                </div>
+            </div>
+
+            <form id="completeProfileForm">
+                <!-- SECTION 1: WORKER TYPE (12 questions) -->
+                <div class="section-intro">
+                    <h2>🏃 Part 1: Your Work Style</h2>
+                    <p>How do you naturally approach work and manage your energy?</p>
+                </div>
+
+                <!-- Worker Type Questions 1-12 -->
+                <div class="question-section">
+                    <div class="question-number">Question 1 of 46 - Work Style</div>
+                    <div class="question-text">How do you prefer to tackle your work?</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="w1" value="sprinter" required>
+                            <span class="option-label">In intense bursts with breaks in between</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w1" value="jogger">
+                            <span class="option-label">At a steady, consistent pace throughout the day</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w1" value="ultrarunner">
+                            <span class="option-label">Slow and methodical, sustainable over long periods</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 2 of 46 - Work Style</div>
+                    <div class="question-text">When facing a deadline, you:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="w2" value="sprinter" required>
+                            <span class="option-label">Thrive under pressure and work best at the last minute</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w2" value="jogger">
+                            <span class="option-label">Maintain steady progress to finish on time</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w2" value="ultrarunner">
+                            <span class="option-label">Start early and pace yourself to avoid stress</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 3 of 46 - Work Style</div>
+                    <div class="question-text">Your energy levels throughout the day are:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="w3" value="sprinter" required>
+                            <span class="option-label">Peaks and valleys - high energy then need recovery</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w3" value="jogger">
+                            <span class="option-label">Relatively stable and predictable</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w3" value="ultrarunner">
+                            <span class="option-label">Steady and enduring, rarely fluctuate</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 4 of 46 - Work Style</div>
+                    <div class="question-text">How do you handle multiple projects?</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="w4" value="sprinter" required>
+                            <span class="option-label">Focus intensely on one, complete it, then move to the next</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w4" value="jogger">
+                            <span class="option-label">Balance time across projects throughout the week</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w4" value="ultrarunner">
+                            <span class="option-label">Make slow, consistent progress on all simultaneously</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 5 of 46 - Work Style</div>
+                    <div class="question-text">Your ideal work environment allows you to:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="w5" value="sprinter" required>
+                            <span class="option-label">Work in short, focused sessions with flexibility for breaks</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w5" value="jogger">
+                            <span class="option-label">Maintain a regular routine and consistent schedule</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w5" value="ultrarunner">
+                            <span class="option-label">Work at your own pace without time pressure</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 6 of 46 - Work Style</div>
+                    <div class="question-text">After completing a major project, you:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="w6" value="sprinter" required>
+                            <span class="option-label">Need significant downtime before the next challenge</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w6" value="jogger">
+                            <span class="option-label">Transition smoothly to the next project</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w6" value="ultrarunner">
+                            <span class="option-label">Already well into the next long-term initiative</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 7 of 46 - Work Style</div>
+                    <div class="question-text">When learning something new, you prefer to:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="w7" value="sprinter" required>
+                            <span class="option-label">Dive in intensely and master it quickly</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w7" value="jogger">
+                            <span class="option-label">Learn consistently through regular practice</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w7" value="ultrarunner">
+                            <span class="option-label">Take time to deeply understand before moving forward</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 8 of 46 - Work Style</div>
+                    <div class="question-text">Your productivity is highest when:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="w8" value="sprinter" required>
+                            <span class="option-label">There's a clear deadline creating urgency</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w8" value="jogger">
+                            <span class="option-label">You have a structured routine to follow</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w8" value="ultrarunner">
+                            <span class="option-label">You have ample time to do thorough work</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 9 of 46 - Work Style</div>
+                    <div class="question-text">How do you recharge?</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="w9" value="sprinter" required>
+                            <span class="option-label">Complete breaks from work - clear boundaries</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w9" value="jogger">
+                            <span class="option-label">Regular short breaks throughout the day</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w9" value="ultrarunner">
+                            <span class="option-label">Rarely feel drained - work is sustainable</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 10 of 46 - Work Style</div>
+                    <div class="question-text">In a typical work week, you prefer:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="w10" value="sprinter" required>
+                            <span class="option-label">Variety and intensity - different challenges daily</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w10" value="jogger">
+                            <span class="option-label">Predictable structure with some variety</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w10" value="ultrarunner">
+                            <span class="option-label">Consistency - similar tasks and rhythms</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 11 of 46 - Work Style</div>
+                    <div class="question-text">Your approach to meetings is:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="w11" value="sprinter" required>
+                            <span class="option-label">Short and intense - get in, decide, get out</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w11" value="jogger">
+                            <span class="option-label">Scheduled regularly with clear agendas</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w11" value="ultrarunner">
+                            <span class="option-label">Thorough discussions - take time needed</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 12 of 46 - Work Style</div>
+                    <div class="question-text">When stressed, you perform best by:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="w12" value="sprinter" required>
+                            <span class="option-label">Channeling it into rapid, focused action</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w12" value="jogger">
+                            <span class="option-label">Maintaining your normal routine and pace</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="w12" value="ultrarunner">
+                            <span class="option-label">Staying calm and methodical</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: LEADERSHIP STYLE (14 questions) -->
+                <div class="section-intro">
+                    <h2>🎯 Part 2: Your Leadership Style</h2>
+                    <p>How do you naturally lead, collaborate, and drive results?</p>
+                </div>
+
+                <!-- Leadership Style Questions 13-26 (w1-w12 become l1-l14) -->
+                <div class="question-section">
+                    <div class="question-number">Question 13 of 46 - Leadership</div>
+                    <div class="question-text">When starting a new project, what's your first instinct?</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="l1" value="visionary" required>
+                            <span class="option-label">Paint the big picture and inspire the team with the vision</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l1" value="architect">
+                            <span class="option-label">Map out the system, processes, and dependencies</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l1" value="facilitator">
+                            <span class="option-label">Bring everyone together to build alignment and clarity</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l1" value="executor">
+                            <span class="option-label">Identify quick wins and start executing immediately</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 14 of 46 - Leadership</div>
+                    <div class="question-text">During team conflicts, you naturally:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="l2" value="visionary" required>
+                            <span class="option-label">Redirect focus to the shared mission and bigger purpose</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l2" value="architect">
+                            <span class="option-label">Analyze the root cause and design better processes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l2" value="facilitator">
+                            <span class="option-label">Create safe space for all perspectives to be heard</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l2" value="executor">
+                            <span class="option-label">Push for quick resolution so we can get back to work</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 15 of 46 - Leadership</div>
+                    <div class="question-text">What energizes you most at work?</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="l3" value="visionary" required>
+                            <span class="option-label">Inspiring others and creating momentum toward a bold future</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l3" value="architect">
+                            <span class="option-label">Solving complex problems and building elegant systems</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l3" value="facilitator">
+                            <span class="option-label">Helping team members grow and collaborate effectively</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l3" value="executor">
+                            <span class="option-label">Checking off completed tasks and delivering results</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 16 of 46 - Leadership</div>
+                    <div class="question-text">When facing a major obstacle, your approach is to:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="l4" value="visionary" required>
+                            <span class="option-label">Reframe it as an opportunity and rally the team forward</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l4" value="architect">
+                            <span class="option-label">Break it down systematically and redesign the approach</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l4" value="facilitator">
+                            <span class="option-label">Bring the team together to collectively problem-solve</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l4" value="executor">
+                            <span class="option-label">Find the fastest path around or through it</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 17 of 46 - Leadership</div>
+                    <div class="question-text">In meetings, you're most likely to:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="l5" value="visionary" required>
+                            <span class="option-label">Challenge the team to think bigger and aim higher</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l5" value="architect">
+                            <span class="option-label">Question the underlying assumptions and logic</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l5" value="facilitator">
+                            <span class="option-label">Ensure all voices are heard and synthesize perspectives</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l5" value="executor">
+                            <span class="option-label">Push for decisions and clear next steps</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 18 of 46 - Leadership</div>
+                    <div class="question-text">Your team would describe you as someone who:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="l6" value="visionary" required>
+                            <span class="option-label">Sees possibilities others miss and makes them feel achievable</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l6" value="architect">
+                            <span class="option-label">Thinks deeply and designs smart solutions to complex problems</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l6" value="facilitator">
+                            <span class="option-label">Creates connection, trust, and brings out everyone's best</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l6" value="executor">
+                            <span class="option-label">Gets things done no matter what obstacles appear</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 19 of 46 - Leadership</div>
+                    <div class="question-text">What frustrates you most in a team setting?</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="l7" value="visionary" required>
+                            <span class="option-label">Playing too small and settling for incremental improvements</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l7" value="architect">
+                            <span class="option-label">Sloppy thinking and poorly designed processes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l7" value="facilitator">
+                            <span class="option-label">People not listening to each other or working in silos</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l7" value="executor">
+                            <span class="option-label">Endless discussion without decisions or action</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 20 of 46 - Leadership</div>
+                    <div class="question-text">When delegating work, you focus on:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="l8" value="visionary" required>
+                            <span class="option-label">The 'why' and desired impact, trusting the team on the 'how'</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l8" value="architect">
+                            <span class="option-label">Clear frameworks and decision rights so people can operate independently</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l8" value="facilitator">
+                            <span class="option-label">Matching tasks to people's strengths and development goals</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l8" value="executor">
+                            <span class="option-label">Specific deliverables, deadlines, and accountability checkpoints</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 21 of 46 - Leadership</div>
+                    <div class="question-text">Under pressure, you tend to:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="l9" value="visionary" required>
+                            <span class="option-label">Double down on the vision and inspire urgency</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l9" value="architect">
+                            <span class="option-label">Step back to analyze and redesign the approach</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l9" value="facilitator">
+                            <span class="option-label">Rally the team and ensure everyone's aligned and supported</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l9" value="executor">
+                            <span class="option-label">Go into high gear and drive execution relentlessly</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 22 of 46 - Leadership</div>
+                    <div class="question-text">Your ideal work environment is one where:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="l10" value="visionary" required>
+                            <span class="option-label">Innovation and bold ideas are encouraged and celebrated</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l10" value="architect">
+                            <span class="option-label">Systems are clean, processes are optimized, and logic prevails</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l10" value="facilitator">
+                            <span class="option-label">People feel safe, valued, and work together seamlessly</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l10" value="executor">
+                            <span class="option-label">Goals are clear, momentum is high, and results come fast</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 23 of 46 - Leadership</div>
+                    <div class="question-text">When giving feedback, you emphasize:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="l11" value="visionary" required>
+                            <span class="option-label">Connecting their work to the bigger mission and potential</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l11" value="architect">
+                            <span class="option-label">The logic and framework behind what works and what doesn't</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l11" value="facilitator">
+                            <span class="option-label">Their growth journey and building their confidence</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l11" value="executor">
+                            <span class="option-label">Specific behaviors to change and results to achieve</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 24 of 46 - Leadership</div>
+                    <div class="question-text">Success for you is best measured by:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="l12" value="visionary" required>
+                            <span class="option-label">Creating lasting impact and transformation</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l12" value="architect">
+                            <span class="option-label">Building systems that scale and endure</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l12" value="facilitator">
+                            <span class="option-label">Developing people and strengthening team capability</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l12" value="executor">
+                            <span class="option-label">Hitting targets and delivering tangible results</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 25 of 46 - Leadership</div>
+                    <div class="question-text">How do you prefer to communicate important information?</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="l13" value="visionary" required>
+                            <span class="option-label">Through stories and compelling narratives that inspire action</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l13" value="architect">
+                            <span class="option-label">With detailed frameworks, diagrams, and logical structure</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l13" value="facilitator">
+                            <span class="option-label">In dialogue format, ensuring everyone understands and buys in</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l13" value="executor">
+                            <span class="option-label">Clear action items, deadlines, and accountability assignments</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 26 of 46 - Leadership</div>
+                    <div class="question-text">Your leadership superpower is:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="l14" value="visionary" required>
+                            <span class="option-label">Painting a compelling future people want to follow</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l14" value="architect">
+                            <span class="option-label">Designing smart solutions to complex challenges</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l14" value="facilitator">
+                            <span class="option-label">Bringing out the best in people and building great teams</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="l14" value="executor">
+                            <span class="option-label">Turning strategy into reality through flawless execution</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: TEAM DYNAMICS (20 questions) -->
+                <div class="section-intro">
+                    <h2>🤝 Part 3: Your Team Dynamics</h2>
+                    <p>Assess your team's performance across the 5 core dysfunctions</p>
+                </div>
+
+                <!-- Team Dynamics Questions 27-46 (t1-t20) -->
+                <!-- TRUST (Q27-30) -->
+                <div class="question-section">
+                    <div class="question-number">Question 27 of 46 - Trust</div>
+                    <div class="question-text">Team members openly admit their mistakes and weaknesses</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t1" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t1" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t1" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t1" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t1" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 28 of 46 - Trust</div>
+                    <div class="question-text">People ask for help without hesitation</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t2" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t2" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t2" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t2" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t2" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 29 of 46 - Trust</div>
+                    <div class="question-text">Team members give each other benefit of the doubt</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t3" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t3" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t3" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t3" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t3" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 30 of 46 - Trust</div>
+                    <div class="question-text">People apologize quickly and genuinely when they mess up</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t4" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t4" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t4" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t4" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t4" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- CONFLICT (Q31-34) -->
+                <div class="question-section">
+                    <div class="question-number">Question 31 of 46 - Conflict</div>
+                    <div class="question-text">Team meetings include passionate, unfiltered debate</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t5" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t5" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t5" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t5" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t5" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 32 of 46 - Conflict</div>
+                    <div class="question-text">People voice disagreements during meetings (not after)</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t6" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t6" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t6" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t6" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t6" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 33 of 46 - Conflict</div>
+                    <div class="question-text">Conflicts get resolved quickly and cleanly</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t7" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t7" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t7" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t7" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t7" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 34 of 46 - Conflict</div>
+                    <div class="question-text">Team members challenge each other's ideas respectfully</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t8" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t8" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t8" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t8" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t8" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- COMMITMENT (Q35-38) -->
+                <div class="question-section">
+                    <div class="question-number">Question 35 of 46 - Commitment</div>
+                    <div class="question-text">Decisions are made with clarity and buy-in from everyone</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t9" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t9" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t9" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t9" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t9" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 36 of 46 - Commitment</div>
+                    <div class="question-text">Team members leave meetings confident about direction</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t10" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t10" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t10" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t10" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t10" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 37 of 46 - Commitment</div>
+                    <div class="question-text">People stick to decisions even when they initially disagreed</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t11" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t11" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t11" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t11" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t11" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 38 of 46 - Commitment</div>
+                    <div class="question-text">Deadlines and priorities are crystal clear to everyone</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t12" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t12" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t12" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t12" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t12" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- ACCOUNTABILITY (Q39-42) -->
+                <div class="question-section">
+                    <div class="question-number">Question 39 of 46 - Accountability</div>
+                    <div class="question-text">Team members call each other out on performance issues</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t13" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t13" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t13" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t13" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t13" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 40 of 46 - Accountability</div>
+                    <div class="question-text">People take ownership when things go wrong</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t14" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t14" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t14" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t14" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t14" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 41 of 46 - Accountability</div>
+                    <div class="question-text">Standards are upheld even when it's uncomfortable</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t15" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t15" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t15" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t15" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t15" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 42 of 46 - Accountability</div>
+                    <div class="question-text">Team members pressure peers to deliver on commitments</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t16" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t16" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t16" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t16" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t16" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- RESULTS (Q43-46) -->
+                <div class="question-section">
+                    <div class="question-number">Question 43 of 46 - Results</div>
+                    <div class="question-text">Team celebrates collective wins over individual achievements</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t17" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t17" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t17" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t17" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t17" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 44 of 46 - Results</div>
+                    <div class="question-text">People sacrifice personal agendas for team goals</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t18" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t18" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t18" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t18" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t18" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 45 of 46 - Results</div>
+                    <div class="question-text">Success metrics are clearly defined and tracked</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t19" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t19" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t19" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t19" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t19" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <div class="question-number">Question 46 of 46 - Results</div>
+                    <div class="question-text">Team members are genuinely concerned about letting teammates down</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="t20" value="1" required>
+                            <span class="option-label">1 - Never</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t20" value="2">
+                            <span class="option-label">2 - Rarely</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t20" value="3">
+                            <span class="option-label">3 - Sometimes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t20" value="4">
+                            <span class="option-label">4 - Usually</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="t20" value="5">
+                            <span class="option-label">5 - Always</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="submit-section">
+                    <button type="submit" class="submit-btn" id="submitBtn">See My Complete Leadership Profile →</button>
+                    <div class="validation-message" id="validationMessage"></div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Results Container -->
+        <div id="resultsContainer" class="results-container">
+            <!-- Results will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        // Progress tracking
+        const form = document.getElementById('completeProfileForm');
+        const totalQuestions = 46;
+        let answeredQuestions = new Set();
+
+        // Update progress bar
+        function updateProgress() {
+            const answered = answeredQuestions.size;
+            const percentage = (answered / totalQuestions) * 100;
+            document.getElementById('progressText').textContent = `${answered}/${totalQuestions}`;
+            document.getElementById('progressBar').style.width = `${percentage}%`;
+        }
+
+        // Track all radio buttons
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                answeredQuestions.add(this.name);
+                updateProgress();
+                
+                // Smooth scroll to next question
+                const currentQuestion = this.closest('.question-section');
+                const nextQuestion = currentQuestion.nextElementSibling;
+                if (nextQuestion && (nextQuestion.classList.contains('question-section') || nextQuestion.classList.contains('section-intro'))) {
+                    setTimeout(() => {
+                        nextQuestion.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 200);
+                }
+            });
+        });
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate all questions answered
+            if (answeredQuestions.size < totalQuestions) {
+                document.getElementById('validationMessage').textContent = 
+                    `Please answer all questions (${answeredQuestions.size}/${totalQuestions} completed)`;
+                return;
+            }
+
+            // Calculate Worker Type scores
+            const workerScores = { sprinter: 0, jogger: 0, ultrarunner: 0 };
+            for (let i = 1; i <= 12; i++) {
+                const answer = document.querySelector(`input[name="w${i}"]:checked`);
+                if (answer) workerScores[answer.value]++;
+            }
+            const workerType = Object.entries(workerScores).sort((a, b) => b[1] - a[1])[0][0];
+
+            // Calculate Leadership Style scores
+            const leadershipScores = { visionary: 0, architect: 0, facilitator: 0, executor: 0 };
+            for (let i = 1; i <= 14; i++) {
+                const answer = document.querySelector(`input[name="l${i}"]:checked`);
+                if (answer) leadershipScores[answer.value]++;
+            }
+            const leadershipStyle = Object.entries(leadershipScores).sort((a, b) => b[1] - a[1])[0][0];
+
+            // Calculate Team Dynamics scores
+            const teamScores = { trust: 0, conflict: 0, commitment: 0, accountability: 0, results: 0 };
+            for (let i = 1; i <= 4; i++) teamScores.trust += parseInt(document.querySelector(`input[name="t${i}"]:checked`).value);
+            for (let i = 5; i <= 8; i++) teamScores.conflict += parseInt(document.querySelector(`input[name="t${i}"]:checked`).value);
+            for (let i = 9; i <= 12; i++) teamScores.commitment += parseInt(document.querySelector(`input[name="t${i}"]:checked`).value);
+            for (let i = 13; i <= 16; i++) teamScores.accountability += parseInt(document.querySelector(`input[name="t${i}"]:checked`).value);
+            for (let i = 17; i <= 20; i++) teamScores.results += parseInt(document.querySelector(`input[name="t${i}"]:checked`).value);
+
+            // Show results
+            showResults(workerType, leadershipStyle, teamScores);
+        });
+
+        function showResults(workerType, leadershipStyle, teamScores) {
+            document.getElementById('assessmentForm').style.display = 'none';
+            const resultsContainer = document.getElementById('resultsContainer');
+            resultsContainer.classList.add('active');
+
+            // Type data
+            const workerData = {
+                sprinter: { icon: '🏃', name: 'Sprinter', desc: 'High intensity, focused bursts' },
+                jogger: { icon: '🏃‍♂️', name: 'Jogger', desc: 'Steady, consistent pace' },
+                ultrarunner: { icon: '🏃‍♀️', name: 'Ultrarunner', desc: 'Sustainable, long-term endurance' }
+            };
+
+            const leadershipData = {
+                visionary: { icon: '🎯', name: 'Visionary Leader', desc: 'Sets direction & inspires' },
+                architect: { icon: '🏗️', name: 'Architect Strategist', desc: 'Designs systems & solves problems' },
+                facilitator: { icon: '🤝', name: 'Facilitator Coach', desc: 'Enables collaboration & development' },
+                executor: { icon: '⚡', name: 'Executor Driver', desc: 'Turns strategy into reality' }
+            };
+
+            resultsContainer.innerHTML = `
+                <div class="results-header">
+                    <h2>Your Complete Leadership Profile</h2>
+                    <p style="color: #666; font-size: 1.1em;">A comprehensive view of your work style, leadership approach, and team dynamics</p>
+                </div>
+
+                <div class="results-summary">
+                    <div class="summary-card">
+                        <div class="icon">${workerData[workerType].icon}</div>
+                        <h3>Work Style</h3>
+                        <div class="result">${workerData[workerType].name}</div>
+                        <div class="subtitle">${workerData[workerType].desc}</div>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="icon">${leadershipData[leadershipStyle].icon}</div>
+                        <h3>Leadership Style</h3>
+                        <div class="result">${leadershipData[leadershipStyle].name}</div>
+                        <div class="subtitle">${leadershipData[leadershipStyle].desc}</div>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="icon">🤝</div>
+                        <h3>Team Health</h3>
+                        <div class="result">${Math.round((teamScores.trust + teamScores.conflict + teamScores.commitment + teamScores.accountability + teamScores.results) / 5)}/20</div>
+                        <div class="subtitle">Average across 5 dysfunctions</div>
+                    </div>
+                </div>
+
+                <div class="detailed-results">
+                    <h3>Your Leadership Combination</h3>
+                    <p>As a <strong>${workerData[workerType].name}</strong> with a <strong>${leadershipData[leadershipStyle].name}</strong> approach, you bring unique strengths to your team.</p>
+                    
+                    <p><strong>What this means:</strong></p>
+                    <ul>
+                        <li>Your ${workerData[workerType].desc} work style means you're most effective when projects match your natural rhythm</li>
+                        <li>Your ${leadershipData[leadershipStyle].name} approach influences how you lead, make decisions, and collaborate</li>
+                        <li>Together, these create your unique leadership signature</li>
+                    </ul>
+                </div>
+
+                <div class="detailed-results">
+                    <h3>Team Dynamics Breakdown</h3>
+                    <div class="scores-grid">
+                        <div class="score-card">
+                            <div class="label">Trust</div>
+                            <div class="score">${teamScores.trust}/20</div>
+                            <div class="score-bar">
+                                <div class="score-bar-fill" style="width: ${(teamScores.trust/20)*100}%"></div>
+                            </div>
+                        </div>
+                        <div class="score-card">
+                            <div class="label">Conflict</div>
+                            <div class="score">${teamScores.conflict}/20</div>
+                            <div class="score-bar">
+                                <div class="score-bar-fill" style="width: ${(teamScores.conflict/20)*100}%"></div>
+                            </div>
+                        </div>
+                        <div class="score-card">
+                            <div class="label">Commitment</div>
+                            <div class="score">${teamScores.commitment}/20</div>
+                            <div class="score-bar">
+                                <div class="score-bar-fill" style="width: ${(teamScores.commitment/20)*100}%"></div>
+                            </div>
+                        </div>
+                        <div class="score-card">
+                            <div class="label">Accountability</div>
+                            <div class="score">${teamScores.accountability}/20</div>
+                            <div class="score-bar">
+                                <div class="score-bar-fill" style="width: ${(teamScores.accountability/20)*100}%"></div>
+                            </div>
+                        </div>
+                        <div class="score-card">
+                            <div class="label">Results</div>
+                            <div class="score">${teamScores.results}/20</div>
+                            <div class="score-bar">
+                                <div class="score-bar-fill" style="width: ${(teamScores.results/20)*100}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detailed-results">
+                    <h3>What's Next?</h3>
+                    <p>Your complete leadership profile reveals unique opportunities for development:</p>
+                    <ul>
+                        <li><strong>Leverage your work style:</strong> Structure your day to match your ${workerData[workerType].name} rhythm</li>
+                        <li><strong>Amplify your leadership:</strong> Build on your ${leadershipData[leadershipStyle].name} strengths</li>
+                        <li><strong>Address team dynamics:</strong> Focus on your lowest-scoring dysfunction first</li>
+                        <li><strong>Build complementary teams:</strong> Partner with different styles to cover blind spots</li>
+                    </ul>
+                </div>
+
+                <div class="cta-section">
+                    <h3>Ready to Transform Your Leadership?</h3>
+                    <p>Discover how TAP-IN's embodied leadership programs can help you leverage this profile to build high-performing teams.</p>
+                    <div class="cta-buttons">
+                        <a href="mailto:contact@tap-in-academy.com?subject=Complete%20Leadership%20Profile%20-%20${workerData[workerType].name}%20${leadershipData[leadershipStyle].name}" class="cta-btn">
+                            Schedule Strategy Session
+                        </a>
+                        <a href="index.html" class="cta-btn secondary">
+                            Back to Home
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+</body>
+</html>

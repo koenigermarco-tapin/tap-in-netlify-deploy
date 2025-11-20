@@ -1,0 +1,41 @@
+📁 tap-in-netlify-deploy/
+│
+├── 🏠 index.html (Landing Page with 4 Assessments)
+│
+├── 🏃 worker-type-assessment.html
+│   └── 5 min • 12 questions
+│       Sprinter / Jogger / Ultrarunner
+│
+├── 🎯 leadership-style-assessment.html ⭐ NEW!
+│   └── 6 min • 14 questions  
+│       Visionary / Architect / Facilitator / Executor
+│
+├── 🤝 team-assessment-enhanced-v2.html
+│   └── 7 min • 20 questions
+│       5 Dysfunctions Framework
+│
+├── ⚡ combined-leadership-profile.html ⭐ NEW! FLAGSHIP
+│   └── 18 min • 46 questions
+│       Complete 3-Dimension Assessment:
+│       • Work Style (12 questions)
+│       • Leadership Style (14 questions)
+│       • Team Dynamics (20 questions)
+│
+├── 📄 netlify.toml (Deployment config)
+│
+├── 📚 Documentation:
+│   ├── START-HERE.md (Read this first!)
+│   ├── README.md (Complete documentation)
+│   ├── QUICK-START.md (5-minute deployment)
+│   ├── DEPLOYMENT-CHECKLIST.md (Pre/post-launch tasks)
+│   └── FILE-STRUCTURE.txt (This file)
+│
+└── ✅ Ready to deploy to Netlify!
+
+═══════════════════════════════════════════════════════════
+
+TOTAL: 10 files, 212KB, fully optimized
+
+NEXT STEP: Drag this entire folder to netlify.com
+
+═══════════════════════════════════════════════════════════
