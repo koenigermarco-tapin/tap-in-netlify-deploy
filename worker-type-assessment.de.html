@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +8,6 @@
     <meta name="theme-color" content="#2d2d2d">
     <title>Arbeitstyp-Assessment - TAP-IN</title>
     <style>
-        /* Keep same styles as English file */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%); min-height: 100vh; padding: 20px; color: #333; }
         .container { max-width: 900px; margin: 0 auto; }
@@ -52,158 +53,163 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1>🏃 Arbeitstyp-Assessment</h1>
-            <p class="subtitle">Entdecke, ob du ein Sprinter, Jogger oder Ultraläufer bist. Verstehe deinen natürlichen Arbeitsrhythmus und optimiere deine Leistung in nur 5 Minuten.</p>
+    <div id="lang-switch" style="position:fixed;top:16px;right:16px;z-index:1200;font-family:inherit;">
+        <div style="background:white;border-radius:999px;padding:8px 12px;box-shadow:0 6px 20px rgba(0,0,0,0.15);font-size:0.95em;">
+            <a href="worker-type-assessment.html?lang=en" style="color:#333;text-decoration:none;font-weight:700;margin-right:10px;">EN</a>
+            <a href="worker-type-assessment.de.html?lang=de" style="color:#a93226;text-decoration:none;font-weight:700;border-left:1px solid #eee;padding-left:10px;margin-left:10px;">DE</a>
         </div>
-
-        <!-- Progress Bar -->
+    </div>
+    <div class="container">
+        <div class="header">
+            <h1 data-i18n="worker_header">🏃 Arbeitstyp-Assessment</h1>
+            <p class="subtitle" data-i18n="worker_subtitle">Entdecke, ob du ein Sprinter, Jogger oder Ultraläufer bist. Verstehe deinen natürlichen Arbeitsrhythmus und optimiere deine Leistung in nur 5 Minuten.</p>
+        </div>
         <div class="progress-container">
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
             <div class="progress-text" id="progressText">Frage 1 von 12</div>
         </div>
-
-        <!-- Assessment Form -->
         <div id="assessmentForm">
             <div class="assessment-card" id="questionCard">
                 <!-- Questions will be dynamically inserted here -->
             </div>
-
             <div class="nav-buttons">
-                <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" style="display: none;">← Zurück</button>
-                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Weiter →</button>
+                <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" style="display: none;" data-i18n="prev_btn">← Zurück</button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled data-i18n="next_btn">Weiter →</button>
             </div>
         </div>
-
-        <!-- Results Section -->
         <div id="results" class="results">
             <div class="assessment-card">
                 <div id="resultContent"></div>
-                
-                <!-- CTA -->
-                <div class="cta-box">
-                    <h3>Willst du dein Team optimieren?</h3>
-                    <p>Finde heraus, wie du ausgewogene Teams mit der richtigen Mischung aus Sprintern, Joggern und Ultraläufern aufbaust.</p>
-                    <a href="/cdn-cgi/l/email-protection#40232f2e34212334003421306d292e6d21232124252d396e232f2d7f3335222a2523347d172f322b253260143930256013343221342527396013253333292f2e" class="btn" style="background: white; color: #a93226;">📅 Strategie-Session buchen</a>
-                    <div style="margin-top: 20px;">
-                        <a href="index.html" class="btn" style="background: transparent; border: 2px solid white; color: white;">← Zurück zu Assessments</a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        const questions = [
+    <script src="/i18n/i18n.js"></script>
+    <script>
+        // fallback English questions (used if translations missing)
+        const fallbackQuestions = [
             {
-                question: 'Ich arbeite am liebsten an Projekten, die:',
+                question: 'I prefer working on projects that have:',
                 options: [
-                    { value: 'sprint', label: 'Schnelle Erfolge und sofortige Ergebnisse' },
-                    { value: 'jog', label: 'Stetiger Fortschritt über Wochen/Monate' },
-                    { value: 'ultra', label: 'Langfristige Wirkung über Jahre' }
+                    { value: 'sprint', label: 'Quick wins and immediate results' },
+                    { value: 'jog', label: 'Steady progress over weeks/months' },
+                    { value: 'ultra', label: 'Long-term impact over years' }
                 ]
             },
             {
-                question: 'Mein idealer Arbeitsplan sieht so aus:',
+                question: 'My ideal work schedule looks like:',
                 options: [
-                    { value: 'sprint', label: 'Intensive Phasen mit Pausen' },
-                    { value: 'jog', label: 'Konstante tägliche Routine' },
-                    { value: 'ultra', label: 'Marathon-Sessions bei Inspiration' }
+                    { value: 'sprint', label: 'Intense bursts with breaks' },
+                    { value: 'jog', label: 'Consistent daily routine' },
+                    { value: 'ultra', label: 'Marathon sessions when inspired' }
                 ]
             },
             {
-                question: 'Wenn ich vor einer Herausforderung stehe,',
+                question: 'When facing a challenge, I:',
                 options: [
-                    { value: 'sprint', label: 'kämpfe ich hart, bis sie schnell gelöst ist' },
-                    { value: 'jog', label: 'arbeite ich methodisch Tag für Tag' },
-                    { value: 'ultra', label: 'nehme ich sie als Teil der Reise an' }
+                    { value: 'sprint', label: 'Push hard until resolved quickly' },
+                    { value: 'jog', label: 'Work methodically day by day' },
+                    { value: 'ultra', label: 'Embrace it as part of the journey' }
                 ]
             },
             {
-                question: 'Ich fühle mich am energiereichsten, wenn:',
+                question: 'I feel most energized when:',
                 options: [
-                    { value: 'sprint', label: 'ich gegen enge Deadlines ankämpfe' },
-                    { value: 'jog', label: 'ich stetigen, messbaren Fortschritt mache' },
-                    { value: 'ultra', label: 'ich auf eine sinnvolle Vision hinarbeite' }
+                    { value: 'sprint', label: 'Racing against tight deadlines' },
+                    { value: 'jog', label: 'Making steady measurable progress' },
+                    { value: 'ultra', label: 'Working toward a meaningful vision' }
                 ]
             },
             {
-                question: 'Meine Herangehensweise beim Lernen neuer Fähigkeiten:',
+                question: 'My approach to learning new skills:',
                 options: [
-                    { value: 'sprint', label: 'Crash-Kurse und schnelle Einarbeitung' },
-                    { value: 'jog', label: 'Regelmäßiges Üben und Verbesserung' },
-                    { value: 'ultra', label: 'Tiefes Studium und Meisterschaft über Zeit' }
+                    { value: 'sprint', label: 'Crash courses and quick mastery' },
+                    { value: 'jog', label: 'Regular practice and improvement' },
+                    { value: 'ultra', label: 'Deep study and mastery over time' }
                 ]
             },
             {
-                question: 'Ich werde frustriert, wenn:',
+                question: 'I get frustrated when:',
                 options: [
-                    { value: 'sprint', label: 'Dinge zu langsam vorankommen' },
-                    { value: 'jog', label: 'Routinen unterbrochen werden' },
-                    { value: 'ultra', label: 'Der Fokus auf kurzfristige Erfolge gelegt wird' }
+                    { value: 'sprint', label: 'Things move too slowly' },
+                    { value: 'jog', label: 'Routines get disrupted' },
+                    { value: 'ultra', label: 'Focus shifts to short-term wins' }
                 ]
             },
             {
-                question: 'Meine Produktivität lässt sich am besten beschreiben als:',
+                question: 'My productivity is best described as:',
                 options: [
-                    { value: 'sprint', label: 'Hohe Intensität, kürzere Dauer' },
-                    { value: 'jog', label: 'Konstant und zuverlässig' },
-                    { value: 'ultra', label: 'Steigend über längere Zeiträume' }
+                    { value: 'sprint', label: 'High intensity, shorter duration' },
+                    { value: 'jog', label: 'Consistent and reliable' },
+                    { value: 'ultra', label: 'Increasing over extended periods' }
                 ]
             },
             {
-                question: 'Bei der Zielsetzung bevorzuge ich:',
+                question: 'When setting goals, I prefer:',
                 options: [
-                    { value: 'sprint', label: 'Dringend, in Tagen/Wochen erreichbar' },
-                    { value: 'jog', label: 'Monatliche oder vierteljährliche Meilensteine' },
-                    { value: 'ultra', label: 'Mehrjährige, transformative Ziele' }
+                    { value: 'sprint', label: 'Urgent, achievable within days/weeks' },
+                    { value: 'jog', label: 'Monthly or quarterly milestones' },
+                    { value: 'ultra', label: 'Multi-year transformational outcomes' }
                 ]
             },
             {
-                question: 'Mein Umgang mit Stress:',
+                question: 'My relationship with stress:',
                 options: [
-                    { value: 'sprint', label: 'Treibstoff für kurzfristige Leistung' },
-                    { value: 'jog', label: 'Etwas, das ich konstant manage' },
-                    { value: 'ultra', label: 'Teil bedeutungsvoller Arbeit, die ich aushalte' }
+                    { value: 'sprint', label: 'Fuel for short-term performance' },
+                    { value: 'jog', label: 'Something I manage consistently' },
+                    { value: 'ultra', label: 'Part of meaningful work I endure' }
                 ]
             },
             {
-                question: 'Ich kommuniziere am besten durch:',
+                question: 'I communicate best through:',
                 options: [
-                    { value: 'sprint', label: 'Kurze Updates und Aktionspunkte' },
-                    { value: 'jog', label: 'Regelmäßige Check-ins und Berichte' },
-                    { value: 'ultra', label: 'Tiefgehende Diskussionen und Strategie' }
+                    { value: 'sprint', label: 'Quick updates and action items' },
+                    { value: 'jog', label: 'Regular check-ins and reports' },
+                    { value: 'ultra', label: 'Deep discussions and strategy' }
                 ]
             },
             {
-                question: 'Meine ideale Projektdauer:',
+                question: 'My ideal project duration:',
                 options: [
-                    { value: 'sprint', label: '1-4 Wochen' },
-                    { value: 'jog', label: '2-6 Monate' },
-                    { value: 'ultra', label: '1+ Jahre' }
+                    { value: 'sprint', label: '1-4 weeks' },
+                    { value: 'jog', label: '2-6 months' },
+                    { value: 'ultra', label: '1+ years' }
                 ]
             },
             {
-                question: 'Ich blühe in Umgebungen auf, die Wert legen auf:',
+                question: 'I thrive in environments that value:',
                 options: [
-                    { value: 'sprint', label: 'Geschwindigkeit und entschlossenes Handeln' },
-                    { value: 'jog', label: 'Zuverlässigkeit und Beständigkeit' },
-                    { value: 'ultra', label: 'Vision und Zweck' }
+                    { value: 'sprint', label: 'Speed and decisive action' },
+                    { value: 'jog', label: 'Reliability and consistency' },
+                    { value: 'ultra', label: 'Vision and purpose' }
                 ]
             }
         ];
-
+        function getQuestionsFromI18n() {
+            const i18n = window.__i18n;
+            if (!i18n || !i18n.t) return fallbackQuestions;
+            const out = [];
+            for (let i = 0; i < fallbackQuestions.length; i++) {
+                const base = `worker.q${i}`;
+                const qText = i18n.t(`${base}.question`) || fallbackQuestions[i].question;
+                const opts = [];
+                for (let j = 0; j < 3; j++) {
+                    const optKey = `${base}.opt${j}`;
+                    const label = i18n.t(optKey) || fallbackQuestions[i].options[j].label;
+                    const value = fallbackQuestions[i].options[j].value;
+                    opts.push({ value, label });
+                }
+                out.push({ question: qText, options: opts });
+            }
+            return out;
+        }
+        const questions = getQuestionsFromI18n();
         let currentQuestion = 0;
         let answers = {};
-
         function renderQuestion() {
             const q = questions[currentQuestion];
             const card = document.getElementById('questionCard');
-            
             let html = `
                 <div class="question">
                     <div class="question-text">
@@ -212,10 +218,8 @@
                     </div>
                     <div class="options">
             `;
-            
             q.options.forEach((opt) => {
                 const selected = answers[currentQuestion] === opt.value ? 'selected' : '';
-                // pass the label element (this) to the handler so it can mark it selected reliably
                 html += `
                     <label class="option ${selected}" onclick="selectOption(this, '${opt.value}')">
                         <input type="radio" name="q${currentQuestion}" value="${opt.value}">
@@ -223,43 +227,41 @@
                     </label>
                 `;
             });
-            
             html += `
                     </div>
                 </div>
             `;
-            
             card.innerHTML = html;
             updateProgress();
             updateButtons();
         }
-
         function selectOption(el, value) {
-            // el is the clicked label element
             answers[currentQuestion] = value;
             document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
             if (el && el.classList) el.classList.add('selected');
-            // also set the underlying radio input to checked for accessibility
             const input = el.querySelector('input[type="radio"]');
             if (input) input.checked = true;
             document.getElementById('nextBtn').disabled = false;
         }
-
         function updateProgress() {
             const progress = ((currentQuestion + 1) / questions.length) * 100;
             document.getElementById('progressFill').style.width = progress + '%';
-            document.getElementById('progressText').textContent = `Frage ${currentQuestion + 1} von ${questions.length}`;
+            const i18n = window.__i18n;
+            const questionLabel = (i18n && i18n.t) ? i18n.t('question_label') || 'Frage' : 'Frage';
+            document.getElementById('progressText').textContent = `${questionLabel} ${currentQuestion + 1} von ${questions.length}`;
         }
-
         function updateButtons() {
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
-            
+            const i18n = window.__i18n;
+            const prevText = (i18n && i18n.t) ? i18n.t('prev_btn') || '← Zurück' : '← Zurück';
+            const nextText = (i18n && i18n.t) ? i18n.t('next_btn') || 'Weiter →' : 'Weiter →';
+            const seeResultsText = (i18n && i18n.t) ? (i18n.t('see_results') || 'Ergebnisse anzeigen →') : 'Ergebnisse anzeigen →';
             prevBtn.style.display = currentQuestion > 0 ? 'block' : 'none';
-            nextBtn.textContent = currentQuestion === questions.length - 1 ? 'Ergebnisse anzeigen →' : 'Weiter →';
+            prevBtn.textContent = prevText;
+            nextBtn.textContent = currentQuestion === questions.length - 1 ? seeResultsText : nextText;
             nextBtn.disabled = !answers.hasOwnProperty(currentQuestion);
         }
-
         function nextQuestion() {
             if (currentQuestion < questions.length - 1) {
                 currentQuestion++;
@@ -269,7 +271,6 @@
                 showResults();
             }
         }
-
         function previousQuestion() {
             if (currentQuestion > 0) {
                 currentQuestion--;
@@ -277,80 +278,310 @@
                 window.scrollTo(0, 0);
             }
         }
-
         function showResults() {
             const answerValues = Object.values(answers);
             const sprintCount = answerValues.filter(a => a === 'sprint').length;
             const jogCount = answerValues.filter(a => a === 'jog').length;
             const ultraCount = answerValues.filter(a => a === 'ultra').length;
-            
             let type, icon, description, strengths, challenges, teamFit, recommendations;
-            
             if (sprintCount >= jogCount && sprintCount >= ultraCount) {
                 type = 'Sprinter';
                 icon = '🏃‍♂️';
-                description = 'Du lebst von Dringlichkeit und schnellen Erfolgen. Du bringst explosive Energie und schnelle Umsetzung in kurzfristige Herausforderungen.';
+                description = 'Du blühst auf bei Dringlichkeit und schnellen Erfolgen. Du bringst explosive Energie und schnelle Umsetzung für kurzfristige Herausforderungen. Am besten bist du, wenn es ein klares Ziel gibt und der Druck steigt.';
                 strengths = [
                     'Hohe Intensität und explosive Energie',
-                    'Schnelle Entscheidungsfindung unter Druck',
+                    'Schnelle Entscheidungen unter Druck',
                     'Krisenmanagement und schnelle Reaktion',
                     'Schnelles Prototyping und Experimentieren',
                     'Kurze Durchlaufzeiten'
                 ];
                 challenges = [
-                    'Kann mit Routine- oder Wartungsarbeiten kämpfen',
+                    'Routine- oder Wartungsarbeiten fallen schwer',
                     'Kann ausbrennen, wenn das Tempo zu lange anhält',
-                    'Verliert möglicherweise das Interesse an langfristigen Projekten',
+                    'Verliert bei Langzeitprojekten das Interesse',
                     'Risiko, vor Abschluss weiterzuziehen',
                     'Braucht klare Endpunkte und Deadlines'
                 ];
-                teamFit = 'Sprinter sind ideal für Startups, Krisensituationen und zeitkritische Projekte.';
-                recommendations = 'Plane Erholungszeiten zwischen Sprints ein. Konzentriere dich auf Projekte mit klaren Deadlines.';
+                teamFit = 'Sprinter glänzen in Startups, Krisensituationen und zeitkritischen Projekten. Kombiniere sie mit Joggern für nachhaltige Umsetzung und Ultraläufern für strategische Ausrichtung.';
+                recommendations = 'Plane Erholungsphasen zwischen Sprints ein. Fokussiere dich auf Projekte mit klaren Deadlines. Wechsle zwischen Hochdruck- und Entspannungsphasen.';
             } else if (ultraCount >= jogCount) {
                 type = 'Ultraläufer';
                 icon = '🏔️';
-                description = 'Du glänzt durch langfristige Vision und Ausdauer. Du bringst strategisches Denken und Durchhaltevermögen in transformative Projekte.';
+                description = 'Du bist stark in langfristiger Vision und Ausdauer. Du bringst strategisches Denken und Durchhaltevermögen für Transformationen. Du wirst von sinnvollen Herausforderungen über Jahre hinweg motiviert.';
                 strengths = [
-                    'Strategisches Denken und langfristige Planung',
-                    'Außergewöhnliche Belastbarkeit und Durchhaltevermögen',
-                    'Großes Bild und Systemdenken',
-                    'Orientierung an bedeutender Wirkung',
-                    'Fähigkeit, Motivation über Jahre aufrechtzuerhalten'
+                    'Strategisches Denken und Langzeitplanung',
+                    'Außergewöhnliche Resilienz und Ausdauer',
+                    'Fokus auf das große Ganze und Systemdenken',
+                    'Sinn- und Wirkungsorientierung',
+                    'Motivation über Jahre hinweg aufrechterhalten'
                 ];
                 challenges = [
-                    'Kann von kurzfristigen Pivot-Entscheidungen frustriert sein',
-                    'Kann in dringenden Angelegenheiten langsam wirken',
-                    'Kann zu viel in aufgegebene Projekte investieren',
-                    'Risiko, Team zu verlieren, wenn Vision nicht geteilt wird',
-                    'Braucht klare langfristige Ziele'
+                    'Frustriert bei kurzfristigen Wendungen',
+                    'Kann bei Dringlichkeit langsam wirken',
+                    'Investiert zu viel in abgebrochene Projekte',
+                    'Risiko, das Team zu verlieren, wenn Vision nicht geteilt wird',
+                    'Braucht klare Langzeitziele'
                 ];
-                teamFit = 'Ultraläufer gedeihen in Transformationsprojekten, F&E und strategischen Rollen.';
-                recommendations = 'Stelle sicher, dass Projekte mit langfristiger Vision übereinstimmen. Baue Meilensteine zur Motivation ein.';
+                teamFit = 'Ultraläufer sind ideal für Transformation, Forschung & Entwicklung und strategische Rollen. Ergänze sie mit Sprintern für schnelle Erfolge und Joggern für kontinuierliche Umsetzung.';
+                recommendations = 'Achte darauf, dass Projekte zur Langzeitvision passen. Baue Meilensteine für Motivation ein. Arbeite mit Sprintern für kurzfristige Ziele zusammen.';
             } else {
                 type = 'Jogger';
                 icon = '🏃';
-                description = 'Du glänzt durch Beständigkeit und Zuverlässigkeit. Du bringst stetige Leistung und methodischen Fortschritt ins Team.';
+                description = 'Du bist stark in Beständigkeit und Zuverlässigkeit. Du bringst stetige Leistung und methodischen Fortschritt ins Team. Du bist das Rückgrat, das den Betrieb Tag für Tag am Laufen hält.';
                 strengths = [
                     'Beständigkeit und Zuverlässigkeit',
-                    'Prozess-Exzellenz und Detailorientierung',
-                    'Nachhaltiges Tempo ohne Burnout',
+                    'Prozessexzellenz und Detailgenauigkeit',
+                    'Nachhaltiges Tempo ohne Ausbrennen',
                     'Starker Rhythmus und Routine',
-                    'Vorhersehbar hochwertige Ergebnisse'
+                    'Vorhersehbare, hochwertige Ergebnisse'
                 ];
                 challenges = [
-                    'Kann mit plötzlichen Veränderungen kämpfen',
-                    'Kann durch Dringlichkeitsspitzen gestört werden',
-                    'Kann sich gegen schnelle Pivot-Entscheidungen wehren',
-                    'Risiko, zu routinenorientiert zu werden',
-                    'Braucht eine stabile, vorhersehbare Umgebung'
+                    'Plötzliche Veränderungen sind schwierig',
+                    'Dringlichkeit bringt Routinen durcheinander',
+                    'Schnelle Wendungen werden abgelehnt',
+                    'Zu starke Fokussierung auf Routine',
+                    'Braucht stabiles, vorhersehbares Umfeld'
                 ];
-                teamFit = 'Jogger sind essenziell für Betrieb, laufende Projekte und prozessgetriebene Arbeit.';
-                recommendations = 'Baue starke Routinen und Prozesse auf. Bereite dich im Voraus auf Störungen vor.';
+                teamFit = 'Jogger sind essenziell für Betrieb, laufende Projekte und prozessorientierte Arbeit. Unterstütze Sprinter mit nachhaltigem Einsatz und erde Ultraläufer mit praktischer Umsetzung.';
+                recommendations = 'Baue starke Routinen und Prozesse auf. Bereite dich auf Störungen vor. Kommuniziere Änderungen frühzeitig.';
             }
-            
             document.getElementById('assessmentForm').classList.add('hidden');
             document.getElementById('results').classList.add('active');
+            document.getElementById('resultContent').innerHTML = `
+                <div class="result-card">
+                    <h2>${icon} Du bist ein ${type}!</h2>
+                    <p class="subtitle">${description}</p>
+                </div>
+                <div class="details-card">
+                    <h3>💪 Deine Stärken</h3>
+                    <ul>
+                        ${strengths.map(s => `<li>${s}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="details-card">
+                    <h3>⚠️ Achte auf</h3>
+                    <ul>
+                        ${challenges.map(c => `<li>${c}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="details-card">
+                    <h3>👥 Team Fit</h3>
+                    <p>${teamFit}</p>
+                </div>
+                <div class="details-card">
+                    <h3>🎯 Empfehlungen</h3>
+                    <p>${recommendations}</p>
+                </div>
+                <div class="cta-box">
+                    <h3 id="ctaHeading">Willst du dein Team optimieren?</h3>
+                    <p id="ctaParagraph">Finde heraus, wie du ausgewogene Teams mit der richtigen Mischung aus Sprintern, Joggern und Ultraläufern aufbaust.</p>
+                    <a id="ctaBackBtn" href="index.de.html" class="btn btn-secondary">← Zurück zu Assessments</a>
+                </div>
+            `;
+            const i18n = window.__i18n;
+            if (i18n && i18n.t) {
+                const want = i18n.t('want_optimize_team') || document.getElementById('ctaHeading').textContent;
+                const para = i18n.t('cta_paragraph') || document.getElementById('ctaParagraph').textContent;
+                const back = i18n.t('back_to_assessments') || document.getElementById('ctaBackBtn').textContent;
+                document.getElementById('ctaHeading').textContent = want;
+                document.getElementById('ctaParagraph').textContent = para;
+                document.getElementById('ctaBackBtn').textContent = back;
+            }
+            window.scrollTo(0, 0);
+            document.querySelector('.result-card').focus?.();
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            renderQuestion();
+        });
+    </script>
+</body>
+</html>
+                                        'Nachhaltiges Tempo ohne Ausbrennen',
+                                        'Starker Rhythmus und Routine',
+                                        'Vorhersehbare, hochwertige Ergebnisse'
+                                    ];
+                                    challenges = [
+                                        'Plötzliche Veränderungen sind schwierig',
+                                        'Dringlichkeit bringt Routinen durcheinander',
+                                        'Schnelle Wendungen werden abgelehnt',
+                                        'Zu starke Fokussierung auf Routine',
+                                        'Braucht stabiles, vorhersehbares Umfeld'
+                                    ];
+                                    teamFit = 'Jogger sind essenziell für Betrieb, laufende Projekte und prozessorientierte Arbeit. Unterstütze Sprinter mit nachhaltigem Einsatz und erde Ultraläufer mit praktischer Umsetzung.';
+                                    recommendations = 'Baue starke Routinen und Prozesse auf. Bereite dich auf Störungen vor. Kommuniziere Änderungen frühzeitig.';
+                                }
+                                document.getElementById('assessmentForm').classList.add('hidden');
+                                document.getElementById('results').classList.add('active');
+                                document.getElementById('resultContent').innerHTML = `
+                                    <div class="result-card">
+                                        <h2>${icon} Du bist ein ${type}!</h2>
+                                        <p class="subtitle">${description}</p>
+                                    </div>
+                                    <div class="details-card">
+                                        <h3>💪 Deine Stärken</h3>
+                                        <ul>
+                                            ${strengths.map(s => `<li>${s}</li>`).join('')}
+                                        </ul>
+                                    </div>
+                                    <div class="details-card">
+                                        <h3>⚠️ Achte auf</h3>
+                                        <ul>
+                                            ${challenges.map(c => `<li>${c}</li>`).join('')}
+                                        </ul>
+                                    </div>
+                                    <div class="details-card">
+                                        <h3>👥 Team Fit</h3>
+                                        <p>${teamFit}</p>
+                                    </div>
+                                    <div class="details-card">
+                                        <h3>🎯 Empfehlungen</h3>
+                                        <p>${recommendations}</p>
+                                    </div>
+                                    <div class="cta-box">
+                                        <h3 id="ctaHeading">Willst du dein Team optimieren?</h3>
+                                        <p id="ctaParagraph">Finde heraus, wie du ausgewogene Teams mit der richtigen Mischung aus Sprintern, Joggern und Ultraläufern aufbaust.</p>
+                                        <a id="ctaBackBtn" href="index.de.html" class="btn btn-secondary">← Zurück zu Assessments</a>
+                                    </div>
+                                `;
+                                const i18n = window.__i18n;
+                                if (i18n && i18n.t) {
+                                    const want = i18n.t('want_optimize_team') || document.getElementById('ctaHeading').textContent;
+                                    const para = i18n.t('cta_paragraph') || document.getElementById('ctaParagraph').textContent;
+                                    const back = i18n.t('back_to_assessments') || document.getElementById('ctaBackBtn').textContent;
+                                    document.getElementById('ctaHeading').textContent = want;
+                                    document.getElementById('ctaParagraph').textContent = para;
+                                    document.getElementById('ctaBackBtn').textContent = back;
+                                }
+                                window.scrollTo(0, 0);
+                                document.querySelector('.result-card').focus?.();
+                            }
+                            document.addEventListener('DOMContentLoaded', function() {
+                                renderQuestion();
+                            });
+                        </script>
+                    }
+                }
+
+                function showResults() {
+                    const answerValues = Object.values(answers);
+                    const sprintCount = answerValues.filter(a => a === 'sprint').length;
+                    const jogCount = answerValues.filter(a => a === 'jog').length;
+                    const ultraCount = answerValues.filter(a => a === 'ultra').length;
             
+                    let type, icon, description, strengths, challenges, teamFit, recommendations;
+            
+                    if (sprintCount >= jogCount && sprintCount >= ultraCount) {
+                        type = 'Sprinter';
+                        icon = '🏃‍♂️';
+                        description = 'Du blühst auf bei Dringlichkeit und schnellen Erfolgen. Du bringst explosive Energie und schnelle Umsetzung für kurzfristige Herausforderungen. Am besten bist du, wenn es ein klares Ziel gibt und der Druck steigt.';
+                        strengths = [
+                            'Hohe Intensität und explosive Energie',
+                            'Schnelle Entscheidungen unter Druck',
+                            'Krisenmanagement und schnelle Reaktion',
+                            'Schnelles Prototyping und Experimentieren',
+                            'Kurze Durchlaufzeiten'
+                        ];
+                        challenges = [
+                            'Routine- oder Wartungsarbeiten fallen schwer',
+                            'Kann ausbrennen, wenn das Tempo zu lange anhält',
+                            'Verliert bei Langzeitprojekten das Interesse',
+                            'Risiko, vor Abschluss weiterzuziehen',
+                            'Braucht klare Endpunkte und Deadlines'
+                        ];
+                        teamFit = 'Sprinter glänzen in Startups, Krisensituationen und zeitkritischen Projekten. Kombiniere sie mit Joggern für nachhaltige Umsetzung und Ultraläufern für strategische Ausrichtung.';
+                        recommendations = 'Plane Erholungsphasen zwischen Sprints ein. Fokussiere dich auf Projekte mit klaren Deadlines. Wechsle zwischen Hochdruck- und Entspannungsphasen.';
+                    } else if (ultraCount >= jogCount) {
+                        type = 'Ultraläufer';
+                        icon = '🏔️';
+                        description = 'Du bist stark in langfristiger Vision und Ausdauer. Du bringst strategisches Denken und Durchhaltevermögen für Transformationen. Du wirst von sinnvollen Herausforderungen über Jahre hinweg motiviert.';
+                        strengths = [
+                            'Strategisches Denken und Langzeitplanung',
+                            'Außergewöhnliche Resilienz und Ausdauer',
+                            'Fokus auf das große Ganze und Systemdenken',
+                            'Sinn- und Wirkungsorientierung',
+                            'Motivation über Jahre hinweg aufrechterhalten'
+                        ];
+                        challenges = [
+                            'Frustriert bei kurzfristigen Wendungen',
+                            'Kann bei Dringlichkeit langsam wirken',
+                            'Investiert zu viel in abgebrochene Projekte',
+                            'Risiko, das Team zu verlieren, wenn Vision nicht geteilt wird',
+                            'Braucht klare Langzeitziele'
+                        ];
+                        teamFit = 'Ultraläufer sind ideal für Transformation, Forschung & Entwicklung und strategische Rollen. Ergänze sie mit Sprintern für schnelle Erfolge und Joggern für kontinuierliche Umsetzung.';
+                        recommendations = 'Achte darauf, dass Projekte zur Langzeitvision passen. Baue Meilensteine für Motivation ein. Arbeite mit Sprintern für kurzfristige Ziele zusammen.';
+                    } else {
+                        type = 'Jogger';
+                        icon = '🏃';
+                        description = 'Du bist stark in Beständigkeit und Zuverlässigkeit. Du bringst stetige Leistung und methodischen Fortschritt ins Team. Du bist das Rückgrat, das den Betrieb Tag für Tag am Laufen hält.';
+                        strengths = [
+                            'Beständigkeit und Zuverlässigkeit',
+                            'Prozessexzellenz und Detailgenauigkeit',
+                            'Nachhaltiges Tempo ohne Ausbrennen',
+                            'Starker Rhythmus und Routine',
+                            'Vorhersehbare, hochwertige Ergebnisse'
+                        ];
+                        challenges = [
+                            'Plötzliche Veränderungen sind schwierig',
+                            'Dringlichkeit bringt Routinen durcheinander',
+                            'Schnelle Wendungen werden abgelehnt',
+                            'Zu starke Fokussierung auf Routine',
+                            'Braucht stabiles, vorhersehbares Umfeld'
+                        ];
+                        teamFit = 'Jogger sind essenziell für Betrieb, laufende Projekte und prozessorientierte Arbeit. Unterstütze Sprinter mit nachhaltigem Einsatz und erde Ultraläufer mit praktischer Umsetzung.';
+                        recommendations = 'Baue starke Routinen und Prozesse auf. Bereite dich auf Störungen vor. Kommuniziere Änderungen frühzeitig.';
+                    }
+                    document.getElementById('assessmentForm').classList.add('hidden');
+                    document.getElementById('results').classList.add('active');
+                    document.getElementById('resultContent').innerHTML = `
+                        <div class="result-card">
+                            <h2>${icon} Du bist ein ${type}!</h2>
+                            <p class="subtitle">${description}</p>
+                        </div>
+                        <div class="details-card">
+                            <h3>💪 Deine Stärken</h3>
+                            <ul>
+                                ${strengths.map(s => `<li>${s}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="details-card">
+                            <h3>⚠️ Achte auf</h3>
+                            <ul>
+                                ${challenges.map(c => `<li>${c}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="details-card">
+                            <h3>👥 Team Fit</h3>
+                            <p>${teamFit}</p>
+                        </div>
+                        <div class="details-card">
+                            <h3>🎯 Empfehlungen</h3>
+                            <p>${recommendations}</p>
+                        </div>
+                        <div class="cta-box">
+                            <h3 id="ctaHeading">Willst du dein Team optimieren?</h3>
+                            <p id="ctaParagraph">Finde heraus, wie du ausgewogene Teams mit der richtigen Mischung aus Sprintern, Joggern und Ultraläufern aufbaust.</p>
+                            <a id="ctaBackBtn" href="index.de.html" class="btn btn-secondary">← Zurück zu Assessments</a>
+                        </div>
+                    `;
+                    // apply runtime i18n to small CTA strings
+                    const i18n = window.__i18n;
+                    if (i18n && i18n.t) {
+                        const want = i18n.t('want_optimize_team') || document.getElementById('ctaHeading').textContent;
+                        const para = i18n.t('cta_paragraph') || document.getElementById('ctaParagraph').textContent;
+                        const back = i18n.t('back_to_assessments') || document.getElementById('ctaBackBtn').textContent;
+                        document.getElementById('ctaHeading').textContent = want;
+                        document.getElementById('ctaParagraph').textContent = para;
+                        document.getElementById('ctaBackBtn').textContent = back;
+                    }
+                    window.scrollTo(0, 0);
+                    document.querySelector('.result-card').focus?.();
+                }
+
+                document.addEventListener('DOMContentLoaded', function() {
+                    renderQuestion();
+                });
+            </script>
             document.getElementById('resultContent').innerHTML = `
                 <div class="result-card">
                     <h2>${icon} Du bist ein(e) ${type}!</h2>

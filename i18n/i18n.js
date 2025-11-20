@@ -24,6 +24,18 @@
   ]).then(([map, translations])=>{
     const page = location.pathname.split('/').pop() || 'index.html';
     // If map has a mapping for this page and requestedLang is 'de', redirect to mapped file
+    // attach a small runtime API so other scripts can use translations
+    window.__i18n = {
+      lang: requestedLang || 'en',
+      dict: translations || {},
+      t: function(key){
+        try{
+          const lang = this.lang || 'en';
+          return this.dict[lang] && this.dict[lang][key] ? this.dict[lang][key] : undefined;
+        }catch(e){ return undefined; }
+      }
+    };
+
     if(requestedLang !== 'en' && map && map[page]){
       const target = '/' + map[page];
       if(location.pathname.endsWith(map[page])) {

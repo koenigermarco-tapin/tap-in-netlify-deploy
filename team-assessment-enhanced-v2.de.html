@@ -5,9 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="theme-color" content="#2d2d2d">
     <title>Team-Dynamik-Assessment - TAP-IN</title>
-    <!-- ...existing styles from English version... -->
     <style>
-        /* ...existing styles from English version... */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%); min-height: 100vh; padding: 20px; color: #333; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header { background: white; border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+        .header h1 { color: #a93226; font-size: clamp(1.8em, 5vw, 2.5em); margin-bottom: 15px; }
+        .header .subtitle { color: #666; font-size: clamp(1em, 2.5vw, 1.2em); line-height: 1.6; margin-bottom: 15px; }
+        .header .note { background: #fff5f4; padding: 15px; border-radius: 10px; border-left: 4px solid #a93226; color: #666; font-size: 0.95em; }
+        .progress-container { background: white; border-radius: 15px; padding: 20px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .progress-bar { background: #e0e0e0; border-radius: 10px; height: 12px; overflow: hidden; margin-bottom: 10px; }
+        .progress-fill { background: linear-gradient(90deg, #a93226 0%, #c9513f 100%); height: 100%; width: 0%; transition: width 0.3s ease; }
+        .progress-text { text-align: center; color: #666; font-size: 0.95em; }
+        .assessment-card { background: white; border-radius: 20px; padding: 40px 30px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+        .section-header { background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 30px; border-left: 5px solid #a93226; }
+        .section-title { color: #a93226; font-size: clamp(1.3em, 3vw, 1.6em); margin-bottom: 10px; }
+        .section-description { color: #666; line-height: 1.6; }
+        .question { margin-bottom: 35px; padding-bottom: 25px; border-bottom: 1px solid #e0e0e0; }
+        .question:last-child { border-bottom: none; }
+        .question-text { color: #333; font-size: clamp(1em, 2.5vw, 1.15em); margin-bottom: 15px; font-weight: 500; line-height: 1.5; }
+        .question-number { color: #a93226; font-weight: bold; margin-right: 8px; }
+        .scale-options { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+        .scale-option { display: flex; flex-direction: column; align-items: center; cursor: pointer; padding: 15px; border: 2px solid #e0e0e0; border-radius: 12px; transition: all 0.2s; min-width: 80px; flex: 1; background: white; }
+        .scale-option:hover { border-color: #a93226; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(169, 50, 38, 0.15); }
+        .scale-option.selected { border-color: #a93226; background: #fff5f4; }
+        .scale-option input[type="radio"] { display: none; }
+        .scale-value { font-size: 1.5em; font-weight: bold; color: #a93226; margin-bottom: 5px; }
+        .scale-label { font-size: 0.85em; color: #666; text-align: center; }
+        .nav-buttons { display: flex; justify-content: space-between; gap: 15px; margin-top: 30px; }
+        .btn { padding: 15px 35px; border: none; border-radius: 10px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; text-align: center; }
+        .btn-primary { background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; }
+        .btn-primary:hover:not(:disabled) { transform: scale(1.05); box-shadow: 0 5px 20px rgba(169, 50, 38, 0.4); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-secondary { background: #e0e0e0; color: #333; }
+        .btn-secondary:hover { background: #d0d0d0; }
+        .results { display: none; }
+        .results.active { display: block; }
+        .overall-score { background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; border-radius: 20px; padding: 40px; text-align: center; margin-bottom: 30px; }
+        .overall-score h2 { font-size: clamp(2em, 5vw, 3em); margin-bottom: 15px; }
+        .overall-score .score { font-size: clamp(3em, 8vw, 5em); font-weight: bold; margin-bottom: 15px; }
+        .score-section { background: #f8f9fa; border-radius: 15px; padding: 25px; margin-bottom: 25px; border-left: 5px solid #a93226; }
+        .score-section h3 { color: #a93226; margin-bottom: 15px; font-size: 1.4em; }
+        .score-display { font-size: 2em; font-weight: bold; color: #a93226; margin-bottom: 10px; }
+        .score-bar { background: #e0e0e0; height: 20px; border-radius: 10px; overflow: hidden; margin-bottom: 15px; }
+        .score-bar-fill { background: linear-gradient(90deg, #a93226 0%, #c9513f 100%); height: 100%; transition: width 0.5s ease; }
+        .score-interpretation { color: #666; line-height: 1.7; margin-bottom: 15px; }
+        .recommendation { background: white; padding: 20px; border-radius: 10px; margin-top: 15px; }
+        .recommendation h4 { color: #333; margin-bottom: 10px; }
+        .cta-box { background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; border-radius: 15px; padding: 30px; text-align: center; margin-top: 30px; }
+        .cta-box h3 { margin-bottom: 15px; font-size: 1.6em; }
+        .cta-box p { margin-bottom: 20px; opacity: 0.95; }
+        .hidden { display: none; }
+        @media (max-width: 768px) { .header, .assessment-card { padding: 25px 20px; } .scale-options { gap: 8px; } .scale-option { min-width: 60px; padding: 12px 8px; } .nav-buttons { flex-direction: column; } .btn { width: 100%; } .overall-score { padding: 30px 20px; } }
     </style>
 </head>
 <body>
@@ -62,19 +111,118 @@
         </div>
     </div>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Use i18n for all questions and scale labels
+        // fallbackQuestions holds the English/default question set. We will try to load questions
+        // from the runtime translations (i18n) when available so pages can progressively translate.
+        const fallbackQuestions = [
+            // TRUST (4 questions)
+            {
+                section: 'Vertrauen',
+                sectionDesc: 'Die Grundlage von Teamarbeit ist vertrauensvolle Offenheit.',
+                question: 'Teammitglieder geben offen ihre Fehler und Schwächen zu',
+                category: 'trust'
+            },
+            {
+                question: 'Personen fragen ohne Zögern um Hilfe',
+                category: 'trust'
+            },
+            {
+                question: 'Teammitglieder geben einander das Benefit of the Doubt',
+                category: 'trust'
+            },
+            {
+                question: 'Personen entschuldigen sich schnell und aufrichtig, wenn sie Fehler machen',
+                category: 'trust'
+            },
+            // CONFLICT (4 questions)
+            {
+                section: 'Konflikt',
+                sectionDesc: 'Gesunde Teams führen leidenschaftliche, ungefilterte Debatten.',
+                question: 'Team-Meetings beinhalten leidenschaftliche, ungefilterte Debatten',
+                category: 'conflict'
+            },
+            {
+                question: 'Personen äußern Meinungsverschiedenheiten während Meetings (nicht danach)',
+                category: 'conflict'
+            },
+            {
+                question: 'Konflikte werden schnell und konstruktiv gelöst',
+                category: 'conflict'
+            },
+            {
+                question: 'Teammitglieder hinterfragen respektvoll die Ideen der anderen',
+                category: 'conflict'
+            },
+            // COMMITMENT (4 questions)
+            {
+                section: 'Commitment',
+                sectionDesc: 'Teams, die effektiv debattieren, erreichen echtes Buy-in und Commitment.',
+                question: 'Entscheidungen werden mit Klarheit und Buy-in von allen getroffen',
+                category: 'commitment'
+            },
+            {
+                question: 'Teammitglieder verlassen Meetings mit Zuversicht über die Richtung',
+                category: 'commitment'
+            },
+            {
+                question: 'Personen halten sich an Entscheidungen, auch wenn sie anfangs anderer Meinung waren',
+                category: 'commitment'
+            },
+            {
+                question: 'Deadlines und Prioritäten sind kristallklar für alle',
+                category: 'commitment'
+            },
+            // ACCOUNTABILITY (4 questions)
+            {
+                section: 'Verantwortlichkeit',
+                sectionDesc: 'Engagierte Teams nehmen sich gegenseitig für hohe Standards in die Pflicht.',
+                question: 'Teammitglieder sprechen sich gegenseitig auf Performance-Probleme an',
+                category: 'accountability'
+            },
+            {
+                question: 'Personen übernehmen Verantwortung, wenn Dinge schiefgehen',
+                category: 'accountability'
+            },
+            {
+                question: 'Standards werden eingehalten, auch wenn es unangenehm ist',
+                category: 'accountability'
+            },
+            {
+                question: 'Teammitglieder fordern Peers, ihre Verpflichtungen einzuhalten',
+                category: 'accountability'
+            },
+            // RESULTS (4 questions)
+            {
+                section: 'Ergebnisse',
+                sectionDesc: 'Verantwortliche Teams fokussieren sich auf kollektive Ergebnisse über individuelle Ziele.',
+                question: 'Das Team feiert kollektive Erfolge über individuelle Leistungen',
+                category: 'results'
+            },
+            {
+                question: 'Personen opfern persönliche Agenden für Teamziele',
+                category: 'results'
+            },
+            {
+                question: 'Erfolgsmetriken sind klar definiert und werden verfolgt',
+                category: 'results'
+            },
+            {
+                question: 'Teammitglieder sind wirklich besorgt, Teamkollegen zu enttäuschen',
+                category: 'results'
+            }
+        ];
         function getQuestionsFromI18n(){
             try{
                 const t = window.__i18n && window.__i18n.t ? window.__i18n.t.bind(window.__i18n) : null;
-                if(!t) return [];
+                if(!t) return fallbackQuestions.slice();
                 const out = [];
-                for(let i=1;i<=20;i++){
+                for(let i=1;i<=20 && i<=fallbackQuestions.length;i++){
                     const key = `team.q${i}`;
-                    const txt = t(key);
-                    out.push({ question: txt || `Frage ${i}` });
+                    let txt = t(key);
+                    if(typeof txt !== 'string' || !txt.trim()) txt = fallbackQuestions[i-1].question;
+                    out.push(Object.assign({}, fallbackQuestions[i-1], { question: txt }));
                 }
                 return out;
-            }catch(e){ return []; }
+            }catch(e){ return fallbackQuestions.slice(); }
         }
         let questions = getQuestionsFromI18n();
         let currentQuestion = 0;
@@ -83,6 +231,14 @@
             const q = questions[currentQuestion];
             const card = document.getElementById('questionCard');
             let html = '';
+            if (q.section) {
+                html += `
+                    <div class="section-header">
+                        <div class="section-title">Abschnitt ${Math.floor(currentQuestion/4) + 1}: ${q.section}</div>
+                        <div class="section-description">${q.sectionDesc}</div>
+                    </div>
+                `;
+            }
             html += `
                 <div class="question">
                     <div class="question-text">
@@ -91,8 +247,7 @@
                     </div>
                     <div class="scale-options">
             `;
-            const t = window.__i18n && window.__i18n.t ? window.__i18n.t.bind(window.__i18n) : null;
-            const labels = t && t('scale') ? [t('scale.never'), t('scale.rarely'), t('scale.sometimes'), t('scale.often'), t('scale.always')] : ['Nie', 'Selten', 'Manchmal', 'Oft', 'Immer'];
+            const labels = ['Nie', 'Selten', 'Manchmal', 'Oft', 'Immer'];
             for (let i = 1; i <= 5; i++) {
                 const selected = answers[currentQuestion] === i ? 'selected' : '';
                 html += `
@@ -120,16 +275,14 @@
         function updateProgress() {
             const progress = ((currentQuestion + 1) / questions.length) * 100;
             document.getElementById('progressFill').style.width = progress + '%';
-            const t = window.__i18n && window.__i18n.t ? window.__i18n.t.bind(window.__i18n) : null;
-            const qLabel = (t && t('question_label')) || 'Frage';
+            const qLabel = 'Frage';
             document.getElementById('progressText').textContent = `${qLabel} ${currentQuestion + 1} von ${questions.length}`;
         }
         function updateButtons() {
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
-            const t = window.__i18n && window.__i18n.t ? window.__i18n.t.bind(window.__i18n) : null;
             prevBtn.style.display = currentQuestion > 0 ? 'block' : 'none';
-            nextBtn.textContent = currentQuestion === questions.length - 1 ? (t && t('see_results') || 'Ergebnisse anzeigen →') : (t && t('next_btn') || 'Weiter →');
+            nextBtn.textContent = currentQuestion === questions.length - 1 ? 'Ergebnisse anzeigen →' : 'Weiter →';
             nextBtn.disabled = !answers.hasOwnProperty(currentQuestion);
         }
         function nextQuestion() {
@@ -148,11 +301,130 @@
                 window.scrollTo(0, 0);
             }
         }
+        // --- Results logic copied and translated from English version ---
+        function getScoreInterpretation(score, category) {
+            const interpretations = {
+                trust: {
+                    high: { level: 'Starke Basis', desc: 'Dein Team hat psychologische Sicherheit und vertrauensvolle Offenheit. Mitglieder fühlen sich sicher, Risiken einzugehen und authentisch zu sein.', color: '#27ae60' },
+                    medium: { level: 'Vertrauen im Aufbau', desc: 'Etwas Vertrauen ist vorhanden, aber nicht immer unter Druck. Teammitglieder sind selektiv mit Offenheit.', color: '#f39c12' },
+                    low: { level: 'Vertrauenslücken', desc: 'Es gibt deutliche Probleme. Menschen spielen auf Nummer sicher, verstecken Probleme und vermeiden Offenheit.', color: '#e67e22' },
+                    critical: { level: 'Kritisch', desc: 'Das Team agiert im Überlebensmodus. Angst und Selbstschutz dominieren die Interaktionen.', color: '#c0392b' }
+                },
+                conflict: {
+                    high: { level: 'Gesunde Debatte', desc: 'Dein Team hat eine produktive Konfliktkultur. Meinungsverschiedenheiten führen zu besseren Entscheidungen.', color: '#27ae60' },
+                    medium: { level: 'Selektive Beteiligung', desc: 'Einige Debatten finden statt, aber gewisse Themen bleiben tabu. Künstliche Harmonie herrscht gelegentlich.', color: '#f39c12' },
+                    low: { level: 'Konfliktvermeidung', desc: 'Wichtige Themen werden unter den Teppich gekehrt. Meinungsverschiedenheiten finden nach, nicht während Meetings statt.', color: '#e67e22' },
+                    critical: { level: 'Toxische Harmonie', desc: 'Das Team priorisiert Frieden über Fortschritt. Kritische Themen kommen nie auf.', color: '#c0392b' }
+                },
+                commitment: {
+                    high: { level: 'Klare Ausrichtung', desc: 'Jeder kennt seine Rolle und Prioritäten. Entscheidungen werden mit echtem Buy-in getroffen.', color: '#27ae60' },
+                    medium: { level: 'Allgemeine Zustimmung', desc: 'Meistens ausgerichtet, aber gelegentlich Verwirrung über Richtung und Prioritäten.', color: '#f39c12' },
+                    low: { level: 'Gemischte Signale', desc: 'Entscheidungen werden unterschiedlich interpretiert. Mangelnde Klarheit führt zu Fehlanpassungen.', color: '#e67e22' },
+                    critical: { level: 'Chaos', desc: 'Das Team ändert ständig die Richtung. Niemand ist sicher bezüglich Prioritäten.', color: '#c0392b' }
+                },
+                accountability: {
+                    high: { level: 'Peer-Accountability', desc: 'Das Team reguliert die Leistung selbst. Mitglieder nehmen sich gegenseitig in die Pflicht.', color: '#27ae60' },
+                    medium: { level: 'Selektive Standards', desc: 'Accountability variiert je nach Person und Situation. Inkonsistente Durchsetzung.', color: '#f39c12' },
+                    low: { level: 'Manager-abhängig', desc: 'Nur Führungskräfte sprechen Probleme an. Peers vermeiden schwierige Gespräche.', color: '#e67e22' },
+                    critical: { level: 'Keine Standards', desc: 'Schlechte Leistung bleibt unadressiert. Niemand hält andere zur Verantwortung.', color: '#c0392b' }
+                },
+                results: {
+                    high: { level: 'Team-First Mindset', desc: 'Kollektiver Erfolg steht im Vordergrund. Das Team feiert und scheitert gemeinsam.', color: '#27ae60' },
+                    medium: { level: 'Meist ausgerichtet', desc: 'Die meisten priorisieren Teamziele, aber individuelle Agenden konkurrieren gelegentlich.', color: '#f39c12' },
+                    low: { level: 'Konkurrenzierende Prioritäten', desc: 'Individueller Erfolg steht oft über Teamzielen. Gemischte Loyalität.', color: '#e67e22' },
+                    critical: { level: 'Silos', desc: 'Jeder fokussiert auf eigenen Erfolg. Kein gemeinsames Engagement für Ergebnisse.', color: '#c0392b' }
+                }
+            };
+            const level = score >= 16 ? 'high' : score >= 11 ? 'medium' : score >= 6 ? 'low' : 'critical';
+            return interpretations[category][level];
+        }
+        function getRecommendation(score, category) {
+            const recommendations = {
+                trust: {
+                    high: 'Halte diese Basis durch kontinuierliche Offenheit und authentische Kommunikation aufrecht.',
+                    medium: 'Fördere konsequente Offenheit, besonders unter Druck.',
+                    low: 'Starte mit kleinen Vertrauensübungen und schaffe psychologische Sicherheit.',
+                    critical: 'Erwäge TAP-INs White Belt Fundamentals Programm – intensiver Vertrauensaufbau.'
+                },
+                conflict: {
+                    high: 'Fördere weiterhin gesunde Debatten bei gegenseitigem Respekt.',
+                    medium: 'Arbeite daran, alle Themen besprechbar zu machen, nicht nur die angenehmen.',
+                    low: 'Führe strukturierte Konfliktprotokolle und übe schwierige Gespräche.',
+                    critical: 'TAP-INs Conflict Sparring Labs können eure Konfliktkultur in 90 Tagen transformieren.'
+                },
+                commitment: {
+                    high: 'Halte Entscheidungsprozesse klar und sorge für konsequente Umsetzung.',
+                    medium: 'Verbessere Dokumentation und Überprüfung von Entscheidungen.',
+                    low: 'Etabliere explizite Entscheidungsprotokolle und Bestätigungsprozesse.',
+                    critical: 'TAP-INs Blue Belt Rhythm Lab schafft klare Entscheidungsroutinen.'
+                },
+                accountability: {
+                    high: 'Stärke Peer-Accountability durch kontinuierliche Verstärkung der Standards.',
+                    medium: 'Baue Peer-Feedback-Skills und Accountability-Rituale auf.',
+                    low: 'Führe Teamvereinbarungen und Peer-Accountability-Praktiken ein.',
+                    critical: 'TAP-INs Purple Belt Sync Programm baut systematische Accountability auf.'
+                },
+                results: {
+                    high: 'Halte die Ausrichtung von individuellen und Teamzielen für nachhaltigen Erfolg.',
+                    medium: 'Stärke die Verbindung zwischen persönlichem Erfolg und Teamergebnissen.',
+                    low: 'Klare Teammetriken und geteilte Verantwortung für Ergebnisse schaffen.',
+                    critical: 'TAP-INs ergebnisorientiertes Coaching richtet Teamprioritäten neu aus.'
+                }
+            };
+            const level = score >= 16 ? 'high' : score >= 11 ? 'medium' : score >= 6 ? 'low' : 'critical';
+            return recommendations[category][level];
+        }
         function showResults() {
-            // ...existing scoring and results logic from English version...
+            // Berechne Scores pro Kategorie
+            const trustScore = [0,1,2,3].reduce((sum, i) => sum + (answers[i] || 0), 0);
+            const conflictScore = [4,5,6,7].reduce((sum, i) => sum + (answers[i] || 0), 0);
+            const commitmentScore = [8,9,10,11].reduce((sum, i) => sum + (answers[i] || 0), 0);
+            const accountabilityScore = [12,13,14,15].reduce((sum, i) => sum + (answers[i] || 0), 0);
+            const resultsScore = [16,17,18,19].reduce((sum, i) => sum + (answers[i] || 0), 0);
+            const totalScore = trustScore + conflictScore + commitmentScore + accountabilityScore + resultsScore;
+            const categories = [
+                { name: 'Vertrauen', score: trustScore, cat: 'trust', icon: '🤝' },
+                { name: 'Konfliktnavigation', score: conflictScore, cat: 'conflict', icon: '💬' },
+                { name: 'Commitment', score: commitmentScore, cat: 'commitment', icon: '🎯' },
+                { name: 'Verantwortlichkeit', score: accountabilityScore, cat: 'accountability', icon: '✅' },
+                { name: 'Ergebnisorientierung', score: resultsScore, cat: 'results', icon: '🏆' }
+            ];
+            const overallLevel = totalScore >= 80 ? 
+                { emoji: '🌟', text: 'High-Performing Team', desc: 'Starke Basis für Exzellenz mit Chancen zur Skalierung.' } :
+                totalScore >= 60 ?
+                { emoji: '✅', text: 'Funktionales Team', desc: 'Solide Grundlagen mit klaren Verbesserungsmöglichkeiten.' } :
+                totalScore >= 40 ?
+                { emoji: '⚠️', text: 'Struggelndes Team', desc: 'Deutliche Herausforderungen, die gezielte Entwicklung erfordern.' } :
+                { emoji: '🚨', text: 'Kritischer Handlungsbedarf', desc: 'Grundlegende Dysfunktionen erfordern sofortige Transformation.' };
             document.getElementById('assessmentForm').classList.add('hidden');
             document.getElementById('results').classList.add('active');
-            // ...existing results rendering logic...
+            let html = `
+                <div class="overall-score">
+                    <h2>${overallLevel.emoji} ${overallLevel.text}</h2>
+                    <div class="score">${totalScore}/100</div>
+                    <p>${overallLevel.desc}</p>
+                </div>
+            `;
+            categories.forEach(cat => {
+                const interp = getScoreInterpretation(cat.score, cat.cat);
+                const recommendation = getRecommendation(cat.score, cat.cat);
+                const percentage = (cat.score / 20) * 100;
+                html += `
+                    <div class="score-section">
+                        <h3>${cat.icon} ${cat.name}: ${cat.score}/20</h3>
+                        <div class="score-bar">
+                            <div class="score-bar-fill" style="width: ${percentage}%; background: ${interp.color};"></div>
+                        </div>
+                        <div class="score-display" style="color: ${interp.color};">${interp.level}</div>
+                        <p class="score-interpretation">${interp.desc}</p>
+                        <div class="recommendation">
+                            <h4>💡 Empfehlung:</h4>
+                            <p>${recommendation}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('resultContent').innerHTML = html;
         }
         renderQuestion();
     </script>

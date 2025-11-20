@@ -524,9 +524,10 @@
                 if(!t) return fallbackQuestions.slice();
                 const out = [];
                 for(let i=1;i<=20 && i<=fallbackQuestions.length;i++){
-                    // Team page has a shorter set; try to read team.q1..team.q6 (or fallback)
                     const key = `team.q${i}`;
-                    const txt = t(key) || fallbackQuestions[i-1].question;
+                    let txt = t(key);
+                    // If translation is missing or blank, use fallback
+                    if(typeof txt !== 'string' || !txt.trim()) txt = fallbackQuestions[i-1].question;
                     out.push(Object.assign({}, fallbackQuestions[i-1], { question: txt }));
                 }
                 return out;
