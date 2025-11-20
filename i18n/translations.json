@@ -1,0 +1,20 @@
+{
+  "en": {
+    "lang_en": "EN",
+    "lang_de": "DE",
+    "back_to_assessments": "← Back to Assessments",
+    "schedule_session": "📅 Schedule Strategy Session",
+    "want_optimize_team": "Want to Optimize Your Team?",
+    "results": "Results",
+    "start_assessment": "Start Assessment →"
+  },
+  "de": {
+    "lang_en": "EN",
+    "lang_de": "DE",
+    "back_to_assessments": "← Zurück zu Assessments",
+    "schedule_session": "📅 Strategie-Sitzung buchen",
+    "want_optimize_team": "Willst du dein Team optimieren?",
+    "results": "Ergebnisse",
+    "start_assessment": "Assessment starten →"
+  }
+}
