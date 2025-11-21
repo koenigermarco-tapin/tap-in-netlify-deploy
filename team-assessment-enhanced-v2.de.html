@@ -30,11 +30,14 @@
         .question { margin-bottom: 30px; }
         .question-text { color: #333; font-size: clamp(1.05em, 2.5vw, 1.2em); margin-bottom: 18px; font-weight: 500; line-height: 1.5; }
         .scale-options { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-        .scale-option { flex: 1; min-width: 100px; }
+        .scale-option { flex: 1; min-width: 100px; display: block; text-align: center; padding: 15px 10px; background: white; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
         .scale-option input[type="radio"] { display: none; }
-        .scale-option label { display: block; text-align: center; padding: 15px 10px; background: white; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer; transition: all 0.2s; font-size: 0.95em; color: #333; font-weight: 500; }
-        .scale-option input[type="radio"]:checked + label { background: #a93226; color: white; border-color: #a93226; transform: scale(1.05); }
-        .scale-option label:hover { border-color: #a93226; background: #fff5f4; }
+        .scale-option.selected { background: #a93226; color: white; border-color: #a93226; transform: scale(1.05); }
+        .scale-option:hover { border-color: #a93226; background: #fff5f4; }
+        .scale-option.selected:hover { background: #a93226; }
+        .scale-value { font-size: 1.3em; font-weight: bold; margin-bottom: 5px; }
+        .scale-label { font-size: 0.85em; opacity: 0.8; }
+        .scale-option.selected .scale-label { opacity: 1; }
         .nav-buttons { display: flex; justify-content: space-between; gap: 15px; margin-top: 30px; }
         .btn { padding: 15px 35px; border: none; border-radius: 10px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; text-align: center; }
         .btn-primary { background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; }
@@ -60,32 +63,36 @@
         .cta-box p { margin-bottom: 20px; opacity: 0.95; }
         .hidden { display: none; }
         
-        /* Stats Banner */
+        /* Lencioni's 5 Dysfunktionen Banner */
         .stats-banner { 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); 
             color: white; 
-            padding: 15px 20px; 
+            padding: 20px; 
             border-radius: 12px; 
             display: flex; 
-            justify-content: center; 
+            justify-content: space-around; 
             align-items: center; 
-            gap: 30px; 
+            gap: 15px; 
             margin-bottom: 30px; 
             flex-wrap: wrap;
-            font-size: 0.9em;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 4px 15px rgba(169, 50, 38, 0.3);
         }
         .stats-banner .stat-item { 
             display: flex; 
+            flex-direction: column;
             align-items: center; 
-            gap: 8px; 
+            gap: 8px;
+            text-align: center;
+            min-width: 80px;
         }
         .stats-banner .stat-number { 
             font-size: 1.4em; 
             font-weight: bold; 
         }
         .stats-banner .stat-label { 
-            opacity: 0.9; 
+            opacity: 0.95;
+            font-size: 0.9em;
+            font-weight: 500;
         }
         
         @media (max-width: 768px) { .header, .assessment-card { padding: 25px 20px; } .scale-options { gap: 8px; } .scale-option { min-width: 60px; padding: 12px 8px; } .nav-buttons { flex-direction: column; } .btn { width: 100%; } .overall-score { padding: 30px 20px; } .stats-banner { gap: 15px; font-size: 0.85em; } }
@@ -115,27 +122,27 @@
 <body>
     <div class="container">
         <!-- Stats Banner -->
+        <!-- Lencioni's 5 Dysfunktionen Framework -->
         <div class="stats-banner">
             <div class="stat-item">
-                <span>🌟</span>
-                <div>
-                    <div class="stat-number" id="totalUsers">1.247+</div>
-                    <div class="stat-label">Führungskräfte</div>
-                </div>
+                <span style="font-size: 1.8em;">🛡️</span>
+                <div class="stat-label">Vertrauen</div>
             </div>
             <div class="stat-item">
-                <span>📊</span>
-                <div>
-                    <div class="stat-number" id="totalAssessments">2.340</div>
-                    <div class="stat-label">Assessments</div>
-                </div>
+                <span style="font-size: 1.8em;">⚔️</span>
+                <div class="stat-label">Konflikt</div>
             </div>
             <div class="stat-item">
-                <span>🌍</span>
-                <div>
-                    <div class="stat-number" id="countries">47</div>
-                    <div class="stat-label">Länder</div>
-                </div>
+                <span style="font-size: 1.8em;">🎯</span>
+                <div class="stat-label">Commitment</div>
+            </div>
+            <div class="stat-item">
+                <span style="font-size: 1.8em;">✓</span>
+                <div class="stat-label">Verantwortung</div>
+            </div>
+            <div class="stat-item">
+                <span style="font-size: 1.8em;">🏆</span>
+                <div class="stat-label">Ergebnisse</div>
             </div>
         </div>
 
