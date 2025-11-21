@@ -1,8 +1,11 @@
 {
   "name": "tap-in-netlify-functions",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "Netlify Functions for TAP-IN assessments",
-  "dependencies": {},
+  "private": true,
+  "dependencies": {
+    "@supabase/supabase-js": "^2.47.10"
+  },
   "devDependencies": {},
   "scripts": {
     "build": "echo 'No build step required'"
