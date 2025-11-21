@@ -429,94 +429,130 @@
                 const sprintCount = answerValues.filter(a => a === 'sprint').length;
                 const jogCount = answerValues.filter(a => a === 'jog').length;
                 const ultraCount = answerValues.filter(a => a === 'ultra').length;
-                let type, icon, description, strengths, challenges, teamFit, recommendations;
+                
+                // Calculate percentages
+                const total = sprintCount + jogCount + ultraCount;
+                const sprintPct = Math.round((sprintCount / total) * 100);
+                const jogPct = Math.round((jogCount / total) * 100);
+                const ultraPct = Math.round((ultraCount / total) * 100);
+                
+                let type, icon, description, strengths, challenges, teamFit, recommendations, primaryColor, secondaryColor, accentColor;
                 if (sprintCount >= jogCount && sprintCount >= ultraCount) {
                     type = 'Sprinter';
-                    icon = '🏃‍♂️';
+                    icon = '⚡';
+                    primaryColor = '#e63946';
+                    secondaryColor = '#f1faee';
+                    accentColor = '#d62828';
                     description = 'You thrive on urgency and quick wins. You bring explosive energy and rapid execution to short-term challenges. You\'re at your best when there\'s a clear finish line and the pressure is on.';
                     strengths = [
-                        'High intensity and explosive energy',
-                        'Quick decision-making under pressure',
-                        'Crisis management and rapid response',
-                        'Rapid prototyping and experimentation',
-                        'Short turnaround times'
+                        '<strong>High-intensity bursts:</strong> You deliver exceptional output in short, focused periods',
+                        '<strong>Crisis excellence:</strong> Pressure activates your best performance',
+                        '<strong>Rapid prototyping:</strong> You move from idea to execution faster than others',
+                        '<strong>Quick pivots:</strong> You adapt and change direction without hesitation',
+                        '<strong>Deadline mastery:</strong> Time pressure is fuel, not friction'
                     ];
                     challenges = [
-                        'May struggle with routine or maintenance work',
-                        'Can burn out if pace is sustained too long',
-                        'May lose interest in long-term projects',
-                        'Risk of moving on before completion',
-                        'Need clear endpoints and deadlines'
+                        '<strong>Routine fatigue:</strong> Maintenance work drains your energy',
+                        '<strong>Burnout risk:</strong> Recovery periods are essential, not optional',
+                        '<strong>Long-term patience:</strong> Multi-year projects may lose your interest',
+                        '<strong>Completion gaps:</strong> Starting is easy; finishing requires discipline',
+                        '<strong>Over-commitment:</strong> Saying yes to everything leads to scattered energy'
                     ];
-                    teamFit = 'Sprinters excel in startups, crisis situations, and time-sensitive projects. Pair them with Joggers for sustained execution and Ultrarunners for strategic direction.';
-                    recommendations = 'Build in recovery time between sprints. Focus on projects with clear deadlines. Consider rotating between high-intensity and lower-pressure work.';
+                    teamFit = 'Sprinters excel in <strong>startups, crisis situations, and time-sensitive projects</strong>. You shine in environments with rapid iteration and clear deadlines. Pair with Joggers for sustained execution and Ultrarunners for strategic vision.';
+                    recommendations = '<strong>Build recovery rhythms:</strong> Schedule downtime between sprints as rigorously as you schedule work. <strong>Rotate intensity:</strong> Alternate between high-pressure projects and lower-stakes work. <strong>Define finish lines:</strong> Break long projects into sprint-sized chunks with clear endpoints.';
                 } else if (ultraCount >= jogCount) {
                     type = 'Ultrarunner';
-                    icon = '🏔️';
+                    icon = '�';
+                    primaryColor = '#2a9d8f';
+                    secondaryColor = '#e9f5f3';
+                    accentColor = '#1d7a6f';
                     description = 'You excel at long-term vision and sustained effort. You bring strategic thinking and endurance to transformational projects. You\'re energized by meaningful challenges that unfold over years.';
                     strengths = [
-                        'Strategic thinking and long-term planning',
-                        'Exceptional resilience and persistence',
-                        'Big-picture focus and systems thinking',
-                        'Meaningful impact orientation',
-                        'Ability to maintain motivation over years'
+                        '<strong>Strategic patience:</strong> You see connections others miss by thinking in decades',
+                        '<strong>Exceptional persistence:</strong> Obstacles are checkpoints, not roadblocks',
+                        '<strong>Systems thinking:</strong> You understand how pieces fit together over time',
+                        '<strong>Meaning-driven:</strong> Purpose fuels your marathon-level commitment',
+                        '<strong>Compound impact:</strong> Your work gains value exponentially over years'
                     ];
                     challenges = [
-                        'May get frustrated with short-term pivots',
-                        'Can seem slow to move on urgent matters',
-                        'May over-invest in abandoned projects',
-                        'Risk of losing team if vision isn\'t shared',
-                        'Need clear long-term goals'
+                        '<strong>Short-term frustration:</strong> Constant pivots feel chaotic and wasteful',
+                        '<strong>Urgency tension:</strong> "Drop everything" requests disrupt your rhythm',
+                        '<strong>Sunk cost attachment:</strong> Hard to let go of long-term investments',
+                        '<strong>Vision clarity:</strong> Others may not see the destination you\'re heading toward',
+                        '<strong>Milestone design:</strong> Years between wins can demotivate without markers'
                     ];
-                    teamFit = 'Ultrarunners thrive in transformation projects, R&D, and strategic roles. Balance them with Sprinters for quick wins and Joggers for consistent execution.';
-                    recommendations = 'Ensure projects align with long-term vision. Build in milestones for motivation. Partner with Sprinters for short-term needs.';
+                    teamFit = 'Ultrarunners thrive in <strong>transformation projects, R&D, and strategic roles</strong>. You excel where vision matters more than speed. Balance with Sprinters for tactical quick wins and Joggers for consistent day-to-day execution.';
+                    recommendations = '<strong>Ensure vision alignment:</strong> Only commit to multi-year projects that align with your long-term goals. <strong>Create milestone celebrations:</strong> Build checkpoints every 3-6 months to maintain motivation. <strong>Partner strategically:</strong> Delegate urgent work to Sprinters while you focus on the horizon.';
                 } else {
                     type = 'Jogger';
                     icon = '🏃';
+                    primaryColor = '#457b9d';
+                    secondaryColor = '#e8f1f7';
+                    accentColor = '#2d5a75';
                     description = 'You excel at consistency and reliability. You bring steady performance and methodical progress to any team. You\'re the backbone that keeps things running smoothly day after day.';
                     strengths = [
-                        'Consistency and reliability',
-                        'Process excellence and attention to detail',
-                        'Sustainable pace without burnout',
-                        'Strong rhythm and routine',
-                        'Predictable high-quality output'
+                        '<strong>Unwavering consistency:</strong> Your output is predictable and reliable',
+                        '<strong>Process mastery:</strong> You build systems that eliminate chaos',
+                        '<strong>Sustainable pace:</strong> You avoid burnout through disciplined rhythm',
+                        '<strong>Quality focus:</strong> Steady attention produces higher quality than rushed work',
+                        '<strong>Team stability:</strong> Your reliability anchors others\' planning'
                     ];
                     challenges = [
-                        'May struggle with sudden changes',
-                        'Can be disrupted by urgency spikes',
-                        'May resist rapid pivots',
-                        'Risk of becoming too routine-focused',
-                        'Need stable, predictable environment'
+                        '<strong>Change resistance:</strong> Sudden shifts disrupt your optimized flow',
+                        '<strong>Urgency spikes:</strong> Crisis mode feels unnatural and draining',
+                        '<strong>Innovation pressure:</strong> Constant experimentation conflicts with proven processes',
+                        '<strong>Routine trap:</strong> Risk of optimizing for comfort over growth',
+                        '<strong>Flexibility demand:</strong> Need advance warning to adjust pace effectively'
                     ];
-                    teamFit = 'Joggers are essential for operations, ongoing projects, and process-driven work. Support Sprinters with sustained effort and ground Ultrarunners with practical execution.';
-                    recommendations = 'Build strong routines and processes. Prepare for disruptions in advance. Communicate changes early to allow adaptation.';
+                    teamFit = 'Joggers are essential for <strong>operations, ongoing projects, and process-driven work</strong>. You provide the reliable foundation that lets Sprinters sprint and Ultrarunners dream. Your consistency makes chaos manageable.';
+                    recommendations = '<strong>Build protective routines:</strong> Design your day to minimize disruptions. <strong>Prepare for volatility:</strong> Create playbooks for common interruptions. <strong>Communicate early:</strong> Request advance notice of changes to adapt your systems.';
                 }
                 document.getElementById('assessmentForm').classList.add('hidden');
                 document.getElementById('results').classList.add('active');
                 document.getElementById('resultContent').innerHTML = `
-                    <div class="result-card">
+                    <div class="result-card" style="background: linear-gradient(135deg, ${primaryColor} 0%, ${accentColor} 100%);">
                         <h2>${icon} You're a ${type}!</h2>
                         <p class="subtitle">${description}</p>
+                        <div style="margin-top: 25px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                            <div style="background: rgba(255,255,255,0.2); padding: 12px 20px; border-radius: 8px;">
+                                <div style="font-size: 1.8em; font-weight: bold;">${sprintPct}%</div>
+                                <div style="font-size: 0.9em; opacity: 0.9;">Sprinter</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.2); padding: 12px 20px; border-radius: 8px;">
+                                <div style="font-size: 1.8em; font-weight: bold;">${jogPct}%</div>
+                                <div style="font-size: 0.9em; opacity: 0.9;">Jogger</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.2); padding: 12px 20px; border-radius: 8px;">
+                                <div style="font-size: 1.8em; font-weight: bold;">${ultraPct}%</div>
+                                <div style="font-size: 0.9em; opacity: 0.9;">Ultrarunner</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="details-card">
-                        <h3>💪 Your Strengths</h3>
-                        <ul>
-                            ${strengths.map(s => `<li>${s}</li>`).join('')}
+                    <div class="details-card" style="background: ${secondaryColor}; border-left: 4px solid ${primaryColor};">
+                        <h3 style="color: ${primaryColor};">💪 Your Strengths</h3>
+                        <ul style="list-style: none; padding-left: 0;">
+                            ${strengths.map(s => `<li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: ${primaryColor};">✓</span>
+                                ${s}
+                            </li>`).join('')}
                         </ul>
                     </div>
-                    <div class="details-card">
-                        <h3>⚠️ Watch Out For</h3>
-                        <ul>
-                            ${challenges.map(c => `<li>${c}</li>`).join('')}
+                    <div class="details-card" style="background: #fff5f0; border-left: 4px solid #ff6b35;">
+                        <h3 style="color: #ff6b35;">⚠️ Watch Out For</h3>
+                        <ul style="list-style: none; padding-left: 0;">
+                            ${challenges.map(c => `<li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #ff6b35;">!</span>
+                                ${c}
+                            </li>`).join('')}
                         </ul>
                     </div>
-                    <div class="details-card">
-                        <h3>👥 Team Fit</h3>
-                        <p>${teamFit}</p>
+                    <div class="details-card" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 4px solid ${primaryColor};">
+                        <h3 style="color: ${primaryColor};">👥 Team Fit</h3>
+                        <p style="line-height: 1.8;">${teamFit}</p>
                     </div>
-                    <div class="details-card">
-                        <h3>🎯 Recommendations</h3>
-                        <p>${recommendations}</p>
+                    <div class="details-card" style="background: ${secondaryColor}; border-left: 4px solid ${accentColor};">
+                        <h3 style="color: ${accentColor};">🎯 Action Plan</h3>
+                        <p style="line-height: 1.8;">${recommendations}</p>
                     </div>
                     <div class="cta-box">
                         <h3>Want to Optimize Your Team?</h3>
