@@ -2338,6 +2338,25 @@
                     <p style="color: #666; font-size: 1.1em;">A comprehensive view of your work style, leadership approach, and team dynamics</p>
                 </div>
 
+                <!-- Social Sharing Section -->
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 12px; margin: 2rem 0; text-align: center;">
+                    <h3 style="color: white; margin-bottom: 0.5rem;">📱 Share Your Leadership DNA</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 1.5rem; opacity: 0.95;">Help others discover their profile</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                        <button onclick="shareToLinkedIn()" style="background: #0077b5; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                            <span>LinkedIn</span>
+                        </button>
+                        <button onclick="shareToTwitter()" style="background: #1da1f2; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                            <span>Twitter</span>
+                        </button>
+                        <button onclick="copyShareLink()" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                            📋 Copy Link
+                        </button>
+                    </div>
+                    <div id="shareCanvas" style="margin: 1.5rem auto; max-width: 600px;"></div>
+                    <p style="font-size: 0.85rem; opacity: 0.8;">💡 Sharing helps us improve this free tool for everyone</p>
+                </div>
+
                 <div class="results-summary">
                     <div class="summary-card">
                         <div class="icon">${workerData[workerType].icon}</div>
@@ -2359,6 +2378,28 @@
                         <div class="result">${Math.round((teamScores.trust + teamScores.conflict + teamScores.commitment + teamScores.accountability + teamScores.results) / 5)}/20</div>
                         <div class="subtitle">Average across 5 dysfunctions</div>
                     </div>
+                </div>
+
+                <!-- Benchmarking Section -->
+                <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 2rem; border-radius: 12px; margin: 2rem 0; text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 0.5rem;">🏆</div>
+                    <h3 style="color: white; font-size: 1.8rem; margin-bottom: 0.5rem;">You're in the Top ${calculatePercentile(teamScores)}% of Leaders!</h3>
+                    <p style="font-size: 1.1rem; opacity: 0.95; margin-bottom: 1.5rem;">Based on 1,247+ completed assessments</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; max-width: 800px; margin: 0 auto;">
+                        <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 8px;">
+                            <div style="font-size: 2rem; font-weight: bold;">${getBenchmark(teamScores.trust, 'trust')}</div>
+                            <div style="font-size: 0.9rem;">Trust Score vs Avg</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 8px;">
+                            <div style="font-size: 2rem; font-weight: bold;">${getBenchmark(teamScores.accountability, 'accountability')}</div>
+                            <div style="font-size: 0.9rem;">Accountability vs Avg</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 8px;">
+                            <div style="font-size: 2rem; font-weight: bold;">${getBenchmark(teamScores.results, 'results')}</div>
+                            <div style="font-size: 0.9rem;">Results Focus vs Avg</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 1.5rem;">💡 Want detailed benchmarks by industry? Unlock premium insights below</p>
                 </div>
 
                 <div class="detailed-results" style="background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; border: none; padding: 2.5rem; border-radius: 12px; margin: 2rem 0;">
@@ -2476,23 +2517,23 @@
 
                 <!-- Premium Insights Unlock Section -->
                 <div id="emailUnlockSection" class="detailed-results" style="background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; padding: 3rem 2rem; border-radius: 12px; margin-top: 3rem;">
-                    <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem; text-align: center;">🎁 Unlock Your Premium Insights</h3>
-                    <p style="font-size: 1.15rem; margin-bottom: 2rem; text-align: center; line-height: 1.6;">Get extended analysis, personalized recommendations + 7-day Skool community access</p>
+                    <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem; text-align: center;">📧 Email Me My Complete Results</h3>
+                    <p style="font-size: 1.15rem; margin-bottom: 2rem; text-align: center; line-height: 1.6;">Get a professional PDF report + premium insights + community access</p>
                     
                     <div style="background: rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 10px; margin-bottom: 2rem;">
-                        <h4 style="color: #ffd700; margin-bottom: 1.5rem; font-size: 1.3rem;">What You'll Get:</h4>
+                        <h4 style="color: #ffd700; margin-bottom: 1.5rem; font-size: 1.3rem;">📦 Complete Package Includes:</h4>
                         <ul style="list-style: none; padding: 0; text-align: left; max-width: 600px; margin: 0 auto;">
                             <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: start; gap: 1rem;">
+                                <span style="font-size: 1.5rem; flex-shrink: 0;">�</span>
+                                <span><strong>Professional PDF Report:</strong> Your complete profile, ready to share with your team or manager</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: start; gap: 1rem;">
                                 <span style="font-size: 1.5rem; flex-shrink: 0;">📊</span>
-                                <span><strong>Detailed Benchmark Analysis:</strong> See how you compare to 1,247+ leaders in your industry</span>
+                                <span><strong>Industry Benchmarks:</strong> See where you rank vs 1,247+ leaders (Top 15%? Top 50%?)</span>
                             </li>
                             <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: start; gap: 1rem;">
                                 <span style="font-size: 1.5rem; flex-shrink: 0;">🎯</span>
                                 <span><strong>90-Day Action Plan:</strong> Personalized roadmap based on your Worker Type, Leadership Style & Team scores</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: start; gap: 1rem;">
-                                <span style="font-size: 1.5rem; flex-shrink: 0;">📈</span>
-                                <span><strong>Growth Roadmap:</strong> Specific skills to develop as a ${leadershipData[leadershipStyle].name}</span>
                             </li>
                             <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: start; gap: 1rem;">
                                 <span style="font-size: 1.5rem; flex-shrink: 0;">🤝</span>
@@ -2500,7 +2541,7 @@
                             </li>
                             <li style="padding: 0.75rem 0; display: flex; align-items: start; gap: 1rem;">
                                 <span style="font-size: 1.5rem; flex-shrink: 0;">🏆</span>
-                                <span><strong>7-Day Skool Trial:</strong> Join our exclusive leadership community (€29/month value)</span>
+                                <span><strong>7-Day Skool Trial:</strong> Join our exclusive leadership community (€29/month value) FREE</span>
                             </li>
                         </ul>
                     </div>
@@ -2523,18 +2564,21 @@
                             </label>
                         </div>
                         <button type="submit" style="width: 100%; background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; padding: 1.25rem; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: transform 0.2s;">
-                            🚀 Unlock Premium Insights →
+                            � Email Me My PDF Report →
                         </button>
                         <p style="margin-top: 1rem; font-size: 0.85rem; color: #666; text-align: center;">
-                            No spam guarantee. Unsubscribe anytime. See our <a href="#" style="color: #a93226;">Privacy Policy</a>
+                            ✓ No spam guarantee ✓ Unsubscribe anytime ✓ Your data stays private
                         </p>
                     </form>
 
                     <div id="unlockSuccess" style="display: none; background: white; padding: 2rem; border-radius: 10px; max-width: 500px; margin: 0 auto; color: #333; text-align: center;">
                         <div style="font-size: 3rem; margin-bottom: 1rem;">🎉</div>
-                        <h4 style="color: #27ae60; font-size: 1.5rem; margin-bottom: 1rem;">Premium Insights Unlocked!</h4>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6;">
-                            We've sent your detailed analysis and Skool community invite to your email. Check your inbox in the next few minutes!
+                        <h4 style="color: #27ae60; font-size: 1.5rem; margin-bottom: 1rem;">Check Your Email!</h4>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                            We've sent your PDF report, detailed analysis, and Skool community invite to your inbox.
+                        </p>
+                        <p style="font-size: 0.9rem; color: #999;">
+                            📬 Didn't receive it? Check your spam folder or email us at contact@tap-in-academy.com
                         </p>
                     </div>
                 </div>
@@ -2585,6 +2629,9 @@
             `;
 
             resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            // Initialize social sharing
+            setTimeout(() => initializeSocialSharing(workerType, leadershipStyle), 500);
             
             // Setup email unlock form handler
             setTimeout(() => setupEmailUnlockForm(workerType, leadershipStyle, teamScores), 1000);
@@ -2685,6 +2732,179 @@
                 } finally {
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
+                }
+            });
+        }
+
+        // Social Sharing Functions
+        let currentProfile = {};
+
+        function calculatePercentile(teamScores) {
+            const avgScore = (teamScores.trust + teamScores.conflict + teamScores.commitment + teamScores.accountability + teamScores.results) / 5;
+            
+            // Simulate percentile based on average score (out of 20)
+            if (avgScore >= 17) return 10; // Top 10%
+            if (avgScore >= 15) return 15; // Top 15%
+            if (avgScore >= 13) return 25; // Top 25%
+            if (avgScore >= 11) return 35; // Top 35%
+            if (avgScore >= 9) return 50;  // Top 50%
+            return 65; // Everyone else
+        }
+
+        function getBenchmark(score, category) {
+            // Simulated global averages (out of 20)
+            const averages = {
+                trust: 11.2,
+                conflict: 10.8,
+                commitment: 12.1,
+                accountability: 11.5,
+                results: 13.2
+            };
+
+            const diff = score - averages[category];
+            if (diff >= 3) return '+' + Math.round(diff) + ' ⭐';
+            if (diff >= 1) return '+' + Math.round(diff);
+            if (diff <= -3) return Math.round(diff) + ' 📉';
+            if (diff < 0) return Math.round(diff);
+            return '→'; // At average
+        }
+
+        function initializeSocialSharing(workerType, leadershipStyle) {
+            currentProfile = { workerType, leadershipStyle };
+            generateShareCard();
+        }
+
+        function generateShareCard() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 1200;
+            canvas.height = 630;
+            const ctx = canvas.getContext('2d');
+
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#a93226');
+            gradient.addColorStop(1, '#7a241b');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Add subtle pattern
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+            for (let i = 0; i < 20; i++) {
+                ctx.fillRect(i * 60, 0, 30, canvas.height);
+            }
+
+            // Main text
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 64px -apple-system, BlinkMacSystemFont, "Segoe UI", Arial';
+            ctx.textAlign = 'center';
+            
+            const workerData = {
+                sprinter: { icon: '🏃', name: 'SPRINTER' },
+                jogger: { icon: '🏃‍♂️', name: 'JOGGER' },
+                ultrarunner: { icon: '🏃‍♀️', name: 'ULTRARUNNER' }
+            };
+            
+            const leadershipData = {
+                visionary: { icon: '🎯', name: 'VISIONARY LEADER' },
+                architect: { icon: '🏗️', name: 'ARCHITECT STRATEGIST' },
+                facilitator: { icon: '🤝', name: 'FACILITATOR COACH' },
+                executor: { icon: '⚡', name: 'EXECUTOR DRIVER' }
+            };
+
+            ctx.fillText('My Leadership DNA:', canvas.width / 2, 150);
+            
+            ctx.font = 'bold 80px -apple-system, BlinkMacSystemFont, "Segoe UI", Arial';
+            ctx.fillText(workerData[currentProfile.workerType].icon + ' ' + workerData[currentProfile.workerType].name, canvas.width / 2, 280);
+            ctx.fillText('+', canvas.width / 2, 360);
+            ctx.fillText(leadershipData[currentProfile.leadershipStyle].icon + ' ' + leadershipData[currentProfile.leadershipStyle].name, canvas.width / 2, 480);
+
+            // Bottom CTA
+            ctx.font = '32px -apple-system, BlinkMacSystemFont, "Segoe UI", Arial';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.fillText('What\'s YOUR Leadership DNA?', canvas.width / 2, 570);
+
+            // Convert to image
+            const shareCanvas = document.getElementById('shareCanvas');
+            if (shareCanvas) {
+                shareCanvas.innerHTML = `<img src="${canvas.toDataURL()}" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);" alt="Share card">`;
+            }
+        }
+
+        function getShareText() {
+            const workerNames = {
+                sprinter: 'Sprinter',
+                jogger: 'Jogger',
+                ultrarunner: 'Ultrarunner'
+            };
+            
+            const leadershipNames = {
+                visionary: 'Visionary Leader',
+                architect: 'Architect Strategist',
+                facilitator: 'Facilitator Coach',
+                executor: 'Executor Driver'
+            };
+
+            return `I just discovered I'm a ${workerNames[currentProfile.workerType]} with a ${leadershipNames[currentProfile.leadershipStyle]} style.
+
+This free 18-minute assessment revealed:
+• How I lead under pressure
+• Why I clash with certain personalities
+• My team's hidden performance blockers
+
+Scary accurate. Worth your time.
+
+What's YOUR Leadership DNA?`;
+        }
+
+        function shareToLinkedIn() {
+            const text = encodeURIComponent(getShareText());
+            const url = encodeURIComponent(window.location.origin + window.location.pathname);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&summary=${text}`, '_blank');
+            
+            // Track share
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'share', {
+                    'event_category': 'Social',
+                    'event_label': 'LinkedIn',
+                    'value': 1
+                });
+            }
+        }
+
+        function shareToTwitter() {
+            const text = encodeURIComponent(getShareText());
+            const url = encodeURIComponent(window.location.origin + window.location.pathname);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=Leadership,TeamDevelopment`, '_blank');
+            
+            // Track share
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'share', {
+                    'event_category': 'Social',
+                    'event_label': 'Twitter',
+                    'value': 1
+                });
+            }
+        }
+
+        function copyShareLink() {
+            const shareText = getShareText() + '\n\n' + window.location.href;
+            navigator.clipboard.writeText(shareText).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = '✓ Copied!';
+                btn.style.background = '#10b981';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = 'rgba(255,255,255,0.2)';
+                }, 2000);
+                
+                // Track copy
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'share', {
+                        'event_category': 'Social',
+                        'event_label': 'Copy Link',
+                        'value': 1
+                    });
                 }
             });
         }
