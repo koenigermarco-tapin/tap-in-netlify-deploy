@@ -502,18 +502,7 @@
     </div>
 
     <script>
-        // Simple analytics tracking
-        console.log('TAP-IN Assessments loaded successfully');
-        
-        // Track button clicks
-        document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const assessmentType = this.textContent.includes('Worker Type') ? 'worker-type' :
-                                      this.textContent.includes('Leadership') && !this.textContent.includes('Complete') ? 'leadership-style' :
-                                      this.textContent.includes('Team') ? 'team-dynamics' : 'complete-profile';
-                console.log('Assessment clicked:', assessmentType);
-            });
-        });
+        // Simple analytics tracking (analytics removed for production)
     </script>
 </body>
 </html>
