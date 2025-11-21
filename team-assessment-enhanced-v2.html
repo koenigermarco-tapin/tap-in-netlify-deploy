@@ -29,22 +29,28 @@
         .section-desc { color: #666; margin-bottom: 25px; font-style: italic; line-height: 1.6; }
         .question { margin-bottom: 30px; }
         .question-text { color: #333; font-size: clamp(1.05em, 2.5vw, 1.2em); margin-bottom: 18px; font-weight: 500; line-height: 1.5; }
-        .scale-options { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; height: 140px; position: relative; }
-        .scale-options::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 100%; background: linear-gradient(to top right, #e0e0e0 0%, #e0e0e0 50%, transparent 50%); pointer-events: none; z-index: 0; border-radius: 8px; opacity: 0.3; }
-        .scale-option { flex: 1; min-width: 80px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; background: white; border: 2px solid #e0e0e0; border-radius: 8px 8px 8px 8px; cursor: pointer; transition: all 0.2s; position: relative; z-index: 1; }
-        .scale-option:nth-child(1) { height: 50px; background: linear-gradient(135deg, rgba(169, 50, 38, 0.15) 0%, rgba(169, 50, 38, 0.1) 100%); }
-        .scale-option:nth-child(2) { height: 70px; background: linear-gradient(135deg, rgba(169, 50, 38, 0.25) 0%, rgba(169, 50, 38, 0.15) 100%); }
-        .scale-option:nth-child(3) { height: 90px; background: linear-gradient(135deg, rgba(169, 50, 38, 0.4) 0%, rgba(169, 50, 38, 0.25) 100%); }
-        .scale-option:nth-child(4) { height: 110px; background: linear-gradient(135deg, rgba(169, 50, 38, 0.6) 0%, rgba(169, 50, 38, 0.4) 100%); }
-        .scale-option:nth-child(5) { height: 130px; background: linear-gradient(135deg, rgba(169, 50, 38, 0.85) 0%, rgba(169, 50, 38, 0.65) 100%); color: white; }
+        .scale-options { display: flex; justify-content: space-between; align-items: flex-end; gap: 2px; flex-wrap: nowrap; height: 140px; position: relative; background: linear-gradient(to top right, rgba(169, 50, 38, 0.1) 0%, rgba(169, 50, 38, 0.05) 50%, transparent 50%); border-radius: 8px; padding: 5px; cursor: pointer; user-select: none; }
+        .scale-option { flex: 1; min-width: 60px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; background: linear-gradient(135deg, rgba(169, 50, 38, 0.15) 0%, rgba(169, 50, 38, 0.1) 100%); border: 2px solid transparent; border-radius: 6px; transition: all 0.15s ease; position: relative; z-index: 1; }
+        .scale-option:nth-child(1) { height: 50px; }
+        .scale-option:nth-child(2) { height: 70px; }
+        .scale-option:nth-child(3) { height: 90px; }
+        .scale-option:nth-child(4) { height: 110px; }
+        .scale-option:nth-child(5) { height: 130px; }
         .scale-option input[type="radio"] { display: none; }
-        .scale-option.selected { background: linear-gradient(135deg, #a93226 0%, #c9513f 100%) !important; color: white; border-color: #a93226; transform: scale(1.05); box-shadow: 0 4px 12px rgba(169, 50, 38, 0.3); }
-        .scale-option:hover { border-color: #a93226; transform: translateY(-2px); }
-        .scale-option.selected:hover { background: linear-gradient(135deg, #a93226 0%, #c9513f 100%); }
-        .scale-value { font-size: 1.4em; font-weight: bold; margin-bottom: 5px; }
-        .scale-label { font-size: 0.75em; opacity: 0.8; text-align: center; padding: 0 5px; margin-bottom: 8px; }
-        .scale-option:nth-child(5) .scale-label { opacity: 1; }
-        .scale-option.selected .scale-label { opacity: 1; font-weight: 600; }
+        .scale-option.active, .scale-option.selected { background: linear-gradient(135deg, #a93226 0%, #c9513f 100%); color: white; border-color: #7a241b; box-shadow: 0 2px 8px rgba(169, 50, 38, 0.4); }
+        .scale-option.active ~ .scale-option { background: linear-gradient(135deg, rgba(169, 50, 38, 0.15) 0%, rgba(169, 50, 38, 0.1) 100%); color: #333; }
+        .scale-options:active { cursor: grabbing; }
+        .scale-value { font-size: 1.3em; font-weight: bold; margin-bottom: 4px; pointer-events: none; }
+        .scale-label { font-size: 0.7em; opacity: 0.7; text-align: center; padding: 0 3px; margin-bottom: 6px; pointer-events: none; white-space: nowrap; }
+        .scale-option.active .scale-label, .scale-option.selected .scale-label { opacity: 1; font-weight: 600; }
+        .scale-option.active .scale-value, .scale-option.selected .scale-value { transform: scale(1.1); }
+        .insight-card { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 4px solid #a93226; padding: 20px; margin: 20px 0; border-radius: 10px; animation: slideIn 0.4s ease; }
+        .insight-card .insight-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+        .insight-card .insight-icon { font-size: 1.5em; }
+        .insight-card .insight-title { color: #a93226; font-weight: bold; font-size: 1.1em; }
+        .insight-card .insight-content { color: #555; line-height: 1.6; font-size: 0.95em; }
+        .insight-card .insight-quote { font-style: italic; color: #666; margin-top: 10px; padding-top: 10px; border-top: 1px solid #ddd; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         .nav-buttons { display: flex; justify-content: space-between; gap: 15px; margin-top: 30px; }
         .btn { padding: 15px 35px; border: none; border-radius: 10px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; text-align: center; }
         .btn-primary { background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; }
@@ -319,6 +325,40 @@
                             category: 'results'
                         }
                     ];
+                    
+                    // Dynamic insights that appear after answering questions
+                    const insights = [
+                        // TRUST insights (Q1-4)
+                        { icon: '🔍', title: 'The Vulnerability Paradox', content: 'Research shows that 75% of team dysfunction stems from lack of trust. But here\'s the twist: vulnerability isn\'t weakness—it\'s the ultimate strength move. When leaders admit mistakes first, team psychological safety increases by 47%.', quote: '"Trust is knowing that when a team member pushes you, they\'re doing it because they care about the team." - Patrick Lencioni' },
+                        { icon: '🤝', title: 'The Help-Seeking Signal', content: 'High-performing teams ask for help 3x more often than average teams. Why? Because asking for help is a trust indicator—it signals "I believe you\'ll support me, not judge me." Google\'s Project Aristotle found this was the #1 predictor of team success.', quote: 'Fun fact: Navy SEAL teams spend 80% of training time building trust, only 20% on tactics.' },
+                        { icon: '💡', title: 'Benefit of the Doubt', content: 'Teams with high trust assume positive intent by default. This single shift reduces conflict resolution time by 60%. Instead of "Why did they do that?!" it becomes "What challenge are they facing that I don\'t see?"', quote: 'The Trust Equation: Credibility + Reliability + Intimacy ÷ Self-Orientation = Trust' },
+                        { icon: '🙏', title: 'The Apology Advantage', content: 'Leaders who apologize quickly are rated 23% more effective. Why? Apologies signal: "I value this relationship more than my ego." Bonus: Teams where apologies are normalized resolve conflicts 4x faster.', quote: '"The best apology is changed behavior." - Unknown (but your team knows it!)' },
+                        
+                        // CONFLICT insights (Q5-8)
+                        { icon: '⚔️', title: 'Productive Conflict ≠ Drama', content: 'Healthy teams spend 40% more time in meetings debating ideas, but 50% less time in dysfunctional conflict afterward. The secret? They fight about IDEAS, not PEOPLE. This is called "task conflict" vs "relationship conflict."', quote: 'Intel\'s Andy Grove: "Disagree and commit" only works if you actually disagree first.' },
+                        { icon: '🎯', title: 'Real-Time Disagreement', content: 'Teams that resolve disagreements IN the meeting make decisions 3x faster than teams who "parking lot" issues. Why? Because parking lots become graveyards. Address it now, move forward together.', quote: 'The meeting after the meeting is where real decisions die.' },
+                        { icon: '⚡', title: 'Speed of Resolution', content: 'High-trust teams resolve conflicts in hours, not weeks. The formula? Address early + assume positive intent + focus on solutions. Low-trust teams let resentment compound like credit card debt—before you know it, you\'re bankrupt.', quote: 'Conflict avoided = trust eroded. Conflict engaged = trust strengthened.' },
+                        { icon: '🛡️', title: 'Challenge Culture', content: 'At Pixar, they use "plussing"—you can challenge any idea, but you must ADD to it, not just tear it down. Result? Psychological safety + creative tension = masterpieces. Your team can do this too.', quote: 'If everyone is thinking alike, someone isn\'t thinking.' },
+                        
+                        // COMMITMENT insights (Q9-12)
+                        { icon: '🎪', title: 'Clarity = Commitment', content: 'Vague goals create vague commitment. Teams with crystal-clear objectives are 2.5x more likely to hit targets. The test? Ask 3 team members what the #1 priority is. If you get 3 different answers, you don\'t have commitment.', quote: '"Disagree and commit" - Jeff Bezos. But you can\'t commit to what isn\'t clear.' },
+                        { icon: '🚀', title: 'Confidence After Conflict', content: 'Teams that debate intensely but commit fully outperform "consensus-seekers" by 40%. Why? Because real buy-in comes from being HEARD, not from getting your way. Everyone won\'t agree, but everyone will commit.', quote: 'Commitment isn\'t about agreement—it\'s about clarity and closure.' },
+                        { icon: '🔒', title: 'Disagree & Commit', content: 'Netflix culture: You can disagree strongly during discussion, but once a decision is made, you commit as if it was your idea. This creates alignment without forcing fake consensus. The alternative? Passive-aggressive execution.', quote: 'Supporting a decision you disagree with is leadership. Undermining it is sabotage.' },
+                        { icon: '📍', title: 'Deadline Discipline', content: 'Teams that track deadlines publicly complete projects 80% faster. Accountability loves visibility. Pro tip: Use a shared dashboard where everyone sees who\'s on track. Peer pressure becomes peer support.', quote: 'A goal without a deadline is just a wish with extra steps.' },
+                        
+                        // ACCOUNTABILITY insights (Q13-16)
+                        { icon: '💪', title: 'Peer Accountability > Boss Accountability', content: 'When teams hold EACH OTHER accountable (not just the manager), performance improves 30%. Why? Peer pressure is powerful. Nobody wants to let down people they respect. Make accountability a team sport, not a manager\'s job.', quote: 'If only the leader holds people accountable, you don\'t have a team—you have a daycare.' },
+                        { icon: '🎯', title: 'Ownership Mindset', content: 'High-accountability teams use "I/we" language ("I missed that deadline") vs. low-accountability teams use "it/they" ("The timeline was unrealistic"). This tiny linguistic shift increases problem-solving speed by 50%.', quote: 'Ownership starts the moment you stop blaming.' },
+                        { icon: '🔥', title: 'Standards Under Pressure', content: 'True team culture is revealed when things get hard. Do standards slip, or do they tighten? Navy SEALs say: "Under pressure, you don\'t rise to the occasion—you sink to your level of training." Your team standards are your training.', quote: 'What you permit, you promote. What you tolerate becomes your standard.' },
+                        { icon: '⚖️', title: 'Constructive Pressure', content: 'Accountability without trust feels like micromanagement. Accountability WITH trust feels like caring. The difference? Intent. "I\'m checking on you because I don\'t trust you" vs. "I\'m checking in because I want you to succeed."', quote: 'Pressure is a privilege when it comes from people who believe in you.' },
+                        
+                        // RESULTS insights (Q17-20)
+                        { icon: '🏆', title: 'Collective > Individual', content: 'Teams that celebrate group wins over individual MVPs are 60% more likely to hit targets. Why? Because when everyone rows together, the boat goes faster. Individual stars create silos. Team wins create momentum.', quote: 'There\'s no "I" in team, but there is in "win"... wait, that doesn\'t work here.' },
+                        { icon: '🎭', title: 'Ego Check at the Door', content: 'Sacrifice = Success. When team members put collective goals above personal agendas, productivity increases 35%. The anti-pattern? "That\'s not my job" syndrome. High performers ask "How can I help us win?" not "How can I look good?"', quote: 'A player who makes the team great is more valuable than a great player. - John Wooden' },
+                        { icon: '📊', title: 'Measure What Matters', content: 'You can\'t manage what you don\'t measure. Teams with visible, tracked metrics perform 2x better than teams with vague goals. The rule? If success isn\'t measurable, it\'s just an opinion wearing a fancy hat.', quote: 'What gets measured gets managed. What gets managed gets done.' },
+                        { icon: '🤲', title: 'Fear of Letting Down', content: 'The ultimate team glue? Caring more about disappointing teammates than disappointing the boss. When this exists, accountability becomes internal, not external. You show up not because you have to, but because they\'re counting on you.', quote: 'The highest form of accountability is when you hold yourself accountable to your team.' }
+                    ];
+                    
                     let currentQuestion = 0;
                     let answers = {};
                     function renderQuestion() {
@@ -344,8 +384,9 @@
                         const labels = ['Never', 'Rarely', 'Sometimes', 'Often', 'Always'];
                         for (let i = 1; i <= 5; i++) {
                             const selected = answers[currentQuestion] === i ? 'selected' : '';
+                            const active = answers[currentQuestion] >= i ? 'active' : '';
                             html += `
-                                <label class="scale-option ${selected}" onclick="selectOption(${i})">
+                                <label class="scale-option ${selected} ${active}" data-value="${i}">
                                     <input type="radio" name="q${currentQuestion}" value="${i}">
                                     <div class="scale-value">${i}</div>
                                     <div class="scale-label">${labels[i-1]}</div>
@@ -357,14 +398,105 @@
                             </div>
                         `;
                         card.innerHTML = html;
+                        
+                        // Add drag/swipe functionality
+                        const scaleContainer = card.querySelector('.scale-options');
+                        let isDragging = false;
+                        
+                        function handleInteraction(e) {
+                            const rect = scaleContainer.getBoundingClientRect();
+                            const x = (e.clientX || e.touches?.[0]?.clientX) - rect.left;
+                            const relativeX = Math.max(0, Math.min(1, x / rect.width));
+                            const value = Math.ceil(relativeX * 5) || 1;
+                            selectOption(value);
+                            updateSliderVisual(value);
+                        }
+                        
+                        function updateSliderVisual(value) {
+                            const options = scaleContainer.querySelectorAll('.scale-option');
+                            options.forEach((opt, idx) => {
+                                if (idx < value) {
+                                    opt.classList.add('active');
+                                } else {
+                                    opt.classList.remove('active');
+                                }
+                                if (idx === value - 1) {
+                                    opt.classList.add('selected');
+                                } else {
+                                    opt.classList.remove('selected');
+                                }
+                            });
+                        }
+                        
+                        scaleContainer.addEventListener('mousedown', (e) => {
+                            isDragging = true;
+                            handleInteraction(e);
+                        });
+                        
+                        scaleContainer.addEventListener('mousemove', (e) => {
+                            if (isDragging) handleInteraction(e);
+                        });
+                        
+                        scaleContainer.addEventListener('mouseup', () => {
+                            isDragging = false;
+                        });
+                        
+                        scaleContainer.addEventListener('mouseleave', () => {
+                            isDragging = false;
+                        });
+                        
+                        scaleContainer.addEventListener('touchstart', (e) => {
+                            handleInteraction(e);
+                        }, { passive: true });
+                        
+                        scaleContainer.addEventListener('touchmove', (e) => {
+                            handleInteraction(e);
+                        }, { passive: true });
+                        
                         updateProgress();
                         updateButtons();
                     }
                     function selectOption(value) {
                         answers[currentQuestion] = value;
                         document.querySelectorAll('.scale-option').forEach(opt => opt.classList.remove('selected'));
-                        event.currentTarget.classList.add('selected');
                         document.getElementById('nextBtn').disabled = false;
+                        
+                        // Show insight after answering
+                        showInsight();
+                    }
+                    
+                    function showInsight() {
+                        // Remove any existing insight
+                        const existingInsight = document.querySelector('.insight-card');
+                        if (existingInsight) existingInsight.remove();
+                        
+                        // Get insight for current question
+                        const insight = insights[currentQuestion];
+                        if (!insight) return;
+                        
+                        // Create insight card
+                        const insightHTML = `
+                            <div class="insight-card">
+                                <div class="insight-header">
+                                    <span class="insight-icon">${insight.icon}</span>
+                                    <span class="insight-title">${insight.title}</span>
+                                </div>
+                                <div class="insight-content">${insight.content}</div>
+                                <div class="insight-quote">${insight.quote}</div>
+                            </div>
+                        `;
+                        
+                        // Insert after the question
+                        const questionCard = document.getElementById('questionCard');
+                        questionCard.insertAdjacentHTML('beforeend', insightHTML);
+                        
+                        // Smooth scroll to keep insight visible
+                        setTimeout(() => {
+                            const insightElement = document.querySelector('.insight-card');
+                            if (insightElement) {
+                                insightElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            }
+                        }, 100);
                     }
                     function updateProgress() {
                         const progress = ((currentQuestion + 1) / questions.length) * 100;

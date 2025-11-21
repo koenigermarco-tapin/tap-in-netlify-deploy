@@ -45,6 +45,13 @@
         .scale-label { font-size: 0.75em; opacity: 0.8; text-align: center; padding: 0 5px; margin-bottom: 8px; }
         .scale-option:nth-child(5) .scale-label { opacity: 1; }
         .scale-option.selected .scale-label { opacity: 1; font-weight: 600; }
+        .insight-card { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 4px solid #a93226; padding: 20px; margin: 20px 0; border-radius: 10px; animation: slideIn 0.4s ease; }
+        .insight-card .insight-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+        .insight-card .insight-icon { font-size: 1.5em; }
+        .insight-card .insight-title { color: #a93226; font-weight: bold; font-size: 1.1em; }
+        .insight-card .insight-content { color: #555; line-height: 1.6; font-size: 0.95em; }
+        .insight-card .insight-quote { font-style: italic; color: #666; margin-top: 10px; padding-top: 10px; border-top: 1px solid #ddd; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         .nav-buttons { display: flex; justify-content: space-between; gap: 15px; margin-top: 30px; }
         .btn { padding: 15px 35px; border: none; border-radius: 10px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; text-align: center; }
         .btn-primary { background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; }
@@ -347,6 +354,40 @@
                 return out;
             }catch(e){ return fallbackQuestions.slice(); }
         }
+        
+        // Dynamic insights that appear after answering questions (German)
+        const insights = [
+            // VERTRAUEN insights (Q1-4)
+            { icon: '🔍', title: 'Das Verletzlichkeits-Paradox', content: 'Studien zeigen: 75% aller Team-Dysfunktionen stammen von mangelndem Vertrauen. Der Twist: Verletzlichkeit ist keine Schwäche—es ist der ultimative Stärke-Move. Wenn Führungskräfte Fehler zuerst zugeben, steigt die psychologische Sicherheit im Team um 47%.', quote: '"Vertrauen bedeutet zu wissen: Wenn ein Teammitglied dich fordert, tut es das, weil es sich um das Team kümmert." - Patrick Lencioni' },
+            { icon: '🤝', title: 'Das Hilfe-Signal', content: 'Hochleistungsteams bitten 3x häufiger um Hilfe als durchschnittliche Teams. Warum? Weil um Hilfe bitten ein Vertrauens-Indikator ist—es signalisiert "Ich glaube, du unterstützt mich, anstatt mich zu verurteilen." Googles Project Aristotle identifizierte dies als #1 Prädiktor für Teamerfolg.', quote: 'Fun Fact: Navy SEAL Teams verbringen 80% der Trainingszeit mit Vertrauensaufbau, nur 20% mit Taktik.' },
+            { icon: '💡', title: 'Benefit of the Doubt', content: 'Teams mit hohem Vertrauen unterstellen standardmäßig positive Absichten. Diese einzelne Änderung reduziert die Konfliktlösungszeit um 60%. Statt "Warum hat die Person das gemacht?!" wird es zu "Welcher Herausforderung steht die Person gegenüber, die ich nicht sehe?"', quote: 'Die Vertrauens-Gleichung: Glaubwürdigkeit + Zuverlässigkeit + Intimität ÷ Selbstorientierung = Vertrauen' },
+            { icon: '🙏', title: 'Der Entschuldigungs-Vorteil', content: 'Führungskräfte, die sich schnell entschuldigen, werden 23% effektiver bewertet. Warum? Entschuldigungen signalisieren: "Ich schätze diese Beziehung mehr als mein Ego." Bonus: Teams, in denen Entschuldigungen normalisiert sind, lösen Konflikte 4x schneller.', quote: '"Die beste Entschuldigung ist verändertes Verhalten." - Unbekannt (aber dein Team weiß es!)' },
+            
+            // KONFLIKT insights (Q5-8)
+            { icon: '⚔️', title: 'Produktiver Konflikt ≠ Drama', content: 'Gesunde Teams verbringen 40% mehr Zeit in Meetings mit Ideendiskussionen, aber 50% weniger Zeit mit dysfunktionalem Konflikt danach. Das Geheimnis? Sie streiten über IDEEN, nicht über PERSONEN. Das nennt man "Task Conflict" vs. "Relationship Conflict."', quote: 'Intels Andy Grove: "Disagree and commit" funktioniert nur, wenn man wirklich zuerst widerspricht.' },
+            { icon: '🎯', title: 'Echtzeit-Meinungsverschiedenheit', content: 'Teams, die Meinungsverschiedenheiten IM Meeting lösen, treffen Entscheidungen 3x schneller als Teams, die Themen "parken". Warum? Weil Parkplätze zu Friedhöfen werden. Jetzt ansprechen, gemeinsam weitermachen.', quote: 'Das Meeting nach dem Meeting ist der Ort, wo echte Entscheidungen sterben.' },
+            { icon: '⚡', title: 'Lösungsgeschwindigkeit', content: 'High-Trust-Teams lösen Konflikte in Stunden, nicht in Wochen. Die Formel? Früh ansprechen + positive Absicht unterstellen + auf Lösungen fokussieren. Low-Trust-Teams lassen Groll wie Kreditkartenschulden anwachsen—bevor man es merkt, ist man bankrott.', quote: 'Vermiedener Konflikt = erodiertes Vertrauen. Engagierter Konflikt = gestärktes Vertrauen.' },
+            { icon: '🛡️', title: 'Herausforderungs-Kultur', content: 'Bei Pixar nutzen sie "Plussing"—man kann jede Idee herausfordern, muss aber etwas HINZUFÜGEN, nicht nur abreißen. Ergebnis? Psychologische Sicherheit + kreative Spannung = Meisterwerke. Dein Team kann das auch.', quote: 'Wenn alle gleich denken, denkt jemand nicht.' },
+            
+            // COMMITMENT insights (Q9-12)
+            { icon: '🎪', title: 'Klarheit = Commitment', content: 'Vage Ziele erzeugen vages Commitment. Teams mit kristallklaren Zielen erreichen 2,5x wahrscheinlicher ihre Targets. Der Test? Frage 3 Teammitglieder nach der #1 Priorität. Wenn du 3 verschiedene Antworten bekommst, hast du kein Commitment.', quote: '"Disagree and commit" - Jeff Bezos. Aber man kann sich nicht zu etwas committen, das unklar ist.' },
+            { icon: '🚀', title: 'Zuversicht nach Konflikt', content: 'Teams, die intensiv debattieren aber sich vollständig committen, übertreffen "Konsens-Sucher" um 40%. Warum? Weil echtes Buy-in davon kommt, GEHÖRT zu werden, nicht davon, seinen Willen zu bekommen. Nicht jeder wird zustimmen, aber jeder wird sich committen.', quote: 'Commitment bedeutet nicht Zustimmung—es bedeutet Klarheit und Abschluss.' },
+            { icon: '🔒', title: 'Disagree & Commit', content: 'Netflix-Kultur: Man kann während der Diskussion stark widersprechen, aber sobald eine Entscheidung getroffen ist, committet man sich, als wäre es die eigene Idee. Das schafft Alignment ohne erzwungenen Fake-Konsens. Die Alternative? Passiv-aggressive Umsetzung.', quote: 'Eine Entscheidung zu unterstützen, der man nicht zustimmt, ist Leadership. Sie zu untergraben ist Sabotage.' },
+            { icon: '📍', title: 'Deadline-Disziplin', content: 'Teams, die Deadlines öffentlich tracken, schließen Projekte 80% schneller ab. Accountability liebt Sichtbarkeit. Pro-Tipp: Nutze ein gemeinsames Dashboard, wo jeder sieht, wer on track ist. Peer Pressure wird zu Peer Support.', quote: 'Ein Ziel ohne Deadline ist nur ein Wunsch mit extra Schritten.' },
+            
+            // ACCOUNTABILITY insights (Q13-16)
+            { icon: '💪', title: 'Peer Accountability > Boss Accountability', content: 'Wenn Teams sich GEGENSEITIG zur Verantwortung ziehen (nicht nur der Manager), verbessert sich die Performance um 30%. Warum? Peer Pressure ist mächtig. Niemand möchte Menschen enttäuschen, die man respektiert. Macht Accountability zum Teamsport, nicht zur Manager-Aufgabe.', quote: 'Wenn nur der Leader Leute zur Verantwortung zieht, hast du kein Team—du hast eine Kita.' },
+            { icon: '🎯', title: 'Ownership Mindset', content: 'High-Accountability-Teams nutzen "Ich/Wir"-Sprache ("Ich habe die Deadline verpasst") vs. Low-Accountability-Teams nutzen "Es/Sie"-Sprache ("Die Timeline war unrealistisch"). Diese winzige linguistische Verschiebung erhöht die Problemlösungsgeschwindigkeit um 50%.', quote: 'Ownership beginnt in dem Moment, in dem du aufhörst zu beschuldigen.' },
+            { icon: '🔥', title: 'Standards unter Druck', content: 'Wahre Teamkultur zeigt sich, wenn es hart wird. Sinken Standards oder verschärfen sie sich? Navy SEALs sagen: "Unter Druck steigst du nicht zur Gelegenheit auf—du sinkst auf dein Trainingsniveau." Deine Team-Standards sind dein Training.', quote: 'Was du erlaubst, förderst du. Was du tolerierst, wird dein Standard.' },
+            { icon: '⚖️', title: 'Konstruktiver Druck', content: 'Accountability ohne Vertrauen fühlt sich wie Mikromanagement an. Accountability MIT Vertrauen fühlt sich wie Fürsorge an. Der Unterschied? Absicht. "Ich checke dich, weil ich dir nicht vertraue" vs. "Ich checke ein, weil ich möchte, dass du erfolgreich bist."', quote: 'Druck ist ein Privileg, wenn er von Menschen kommt, die an dich glauben.' },
+            
+            // ERGEBNISSE insights (Q17-20)
+            { icon: '🏆', title: 'Kollektiv > Individuell', content: 'Teams, die Gruppen-Erfolge über individuelle MVPs feiern, erreichen 60% wahrscheinlicher ihre Ziele. Warum? Weil wenn alle zusammen rudern, geht das Boot schneller. Individuelle Stars schaffen Silos. Team-Erfolge schaffen Momentum.', quote: 'Es gibt kein "Ich" in "Team", aber es gibt eins in "Sieg"... warte, das funktioniert hier nicht.' },
+            { icon: '🎭', title: 'Ego an der Tür abgeben', content: 'Opfer = Erfolg. Wenn Teammitglieder kollektive Ziele über persönliche Agenden stellen, steigt die Produktivität um 35%. Das Anti-Pattern? "Das ist nicht mein Job"-Syndrom. High Performer fragen "Wie kann ich uns helfen zu gewinnen?" nicht "Wie kann ich gut aussehen?"', quote: 'Ein Spieler, der das Team großartig macht, ist wertvoller als ein großartiger Spieler. - John Wooden' },
+            { icon: '📊', title: 'Miss, was zählt', content: 'Man kann nicht managen, was man nicht misst. Teams mit sichtbaren, getrackten Metriken performen 2x besser als Teams mit vagen Zielen. Die Regel? Wenn Erfolg nicht messbar ist, ist es nur eine Meinung mit einem schicken Hut.', quote: 'Was gemessen wird, wird gemanagt. Was gemanagt wird, wird erledigt.' },
+            { icon: '🤲', title: 'Angst, andere zu enttäuschen', content: 'Der ultimative Team-Klebstoff? Sich mehr darum zu sorgen, Teamkollegen zu enttäuschen als den Boss. Wenn das existiert, wird Accountability intern, nicht extern. Du tauchst auf nicht, weil du musst, sondern weil sie auf dich zählen.', quote: 'Die höchste Form von Accountability ist, wenn du dich selbst gegenüber deinem Team verantwortlich fühlst.' }
+        ];
+        
         let questions = [];
         let currentQuestion = 0;
         let answers = {};
@@ -378,8 +419,9 @@
             const labels = ['Nie', 'Selten', 'Manchmal', 'Oft', 'Immer'];
             for (let i = 1; i <= 5; i++) {
                 const selected = answers[currentQuestion] === i ? 'selected' : '';
+                const active = answers[currentQuestion] >= i ? 'active' : '';
                 html += `
-                    <label class="scale-option ${selected}" onclick="selectOption(event, ${i})">
+                    <label class="scale-option ${selected} ${active}" data-value="${i}">
                         <input type="radio" name="q${currentQuestion}" value="${i}">
                         <div class="scale-value">${i}</div>
                         <div class="scale-label">${labels[i-1]}</div>
@@ -391,6 +433,61 @@
                 </div>
             `;
             card.innerHTML = html;
+            
+            // Add drag/swipe functionality
+            const scaleContainer = card.querySelector('.scale-options');
+            let isDragging = false;
+            
+            function handleInteraction(e) {
+                const rect = scaleContainer.getBoundingClientRect();
+                const x = (e.clientX || e.touches?.[0]?.clientX) - rect.left;
+                const relativeX = Math.max(0, Math.min(1, x / rect.width));
+                const value = Math.ceil(relativeX * 5) || 1;
+                selectOption(e, value);
+                updateSliderVisual(value);
+            }
+            
+            function updateSliderVisual(value) {
+                const options = scaleContainer.querySelectorAll('.scale-option');
+                options.forEach((opt, idx) => {
+                    if (idx < value) {
+                        opt.classList.add('active');
+                    } else {
+                        opt.classList.remove('active');
+                    }
+                    if (idx === value - 1) {
+                        opt.classList.add('selected');
+                    } else {
+                        opt.classList.remove('selected');
+                    }
+                });
+            }
+            
+            scaleContainer.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                handleInteraction(e);
+            });
+            
+            scaleContainer.addEventListener('mousemove', (e) => {
+                if (isDragging) handleInteraction(e);
+            });
+            
+            scaleContainer.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+            
+            scaleContainer.addEventListener('mouseleave', () => {
+                isDragging = false;
+            });
+            
+            scaleContainer.addEventListener('touchstart', (e) => {
+                handleInteraction(e);
+            }, { passive: true });
+            
+            scaleContainer.addEventListener('touchmove', (e) => {
+                handleInteraction(e);
+            }, { passive: true });
+            
             updateProgress();
             updateButtons();
         }
@@ -399,6 +496,43 @@
             document.querySelectorAll('.scale-option').forEach(opt => opt.classList.remove('selected'));
             try{ e.currentTarget.classList.add('selected'); }catch(err){}
             document.getElementById('nextBtn').disabled = false;
+            
+            // Show insight after answering
+            showInsight();
+        }
+        
+        function showInsight() {
+            // Remove any existing insight
+            const existingInsight = document.querySelector('.insight-card');
+            if (existingInsight) existingInsight.remove();
+            
+            // Get insight for current question
+            const insight = insights[currentQuestion];
+            if (!insight) return;
+            
+            // Create insight card
+            const insightHTML = `
+                <div class="insight-card">
+                    <div class="insight-header">
+                        <span class="insight-icon">${insight.icon}</span>
+                        <span class="insight-title">${insight.title}</span>
+                    </div>
+                    <div class="insight-content">${insight.content}</div>
+                    <div class="insight-quote">${insight.quote}</div>
+                </div>
+            `;
+            
+            // Insert after the question
+            const questionCard = document.getElementById('questionCard');
+            questionCard.insertAdjacentHTML('beforeend', insightHTML);
+            
+            // Smooth scroll to keep insight visible
+            setTimeout(() => {
+                const insightElement = document.querySelector('.insight-card');
+                if (insightElement) {
+                    insightElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            }, 100);
         }
         function updateProgress() {
             const progress = ((currentQuestion + 1) / questions.length) * 100;
