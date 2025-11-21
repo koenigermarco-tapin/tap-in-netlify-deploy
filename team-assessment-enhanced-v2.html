@@ -624,6 +624,25 @@
                         document.getElementById('assessmentForm').classList.add('hidden');
                         document.getElementById('results').classList.add('active');
                         let html = `
+                            <!-- Social Sharing Section -->
+                            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 12px; margin-bottom: 2rem; text-align: center;">
+                                <h3 style="color: white; margin-bottom: 0.5rem;">📱 Share Your Team Score</h3>
+                                <p style="font-size: 0.95rem; margin-bottom: 1.5rem; opacity: 0.95;">Help other teams improve</p>
+                                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                                    <button onclick="shareToLinkedIn()" style="background: #0077b5; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                                        LinkedIn
+                                    </button>
+                                    <button onclick="shareToTwitter()" style="background: #1da1f2; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                                        Twitter
+                                    </button>
+                                    <button onclick="copyShareLink()" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                                        📋 Copy Link
+                                    </button>
+                                </div>
+                                <div id="shareCanvas" style="margin: 1.5rem auto; max-width: 600px;"></div>
+                                <p style="font-size: 0.85rem; opacity: 0.8;">💡 Great teams share their learnings</p>
+                            </div>
+                            
                             <div class="overall-score">
                                 <h2>${overallLevel.emoji} ${overallLevel.text}</h2>
                                 <div class="score">${totalScore}/100</div>
@@ -651,6 +670,123 @@
                         });
                         document.getElementById('resultContent').innerHTML = html;
                         window.scrollTo(0, 0);
+                        
+                        // Initialize social sharing
+                        setTimeout(() => initializeSocialSharing(totalScore, overallLevel.text), 500);
+                    }
+                    
+                    // Social Sharing Functions
+                    let currentProfile = {};
+
+                    function initializeSocialSharing(totalScore, levelText) {
+                        currentProfile = { totalScore, levelText };
+                        generateShareCard();
+                    }
+
+                    function generateShareCard() {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = 1200;
+                        canvas.height = 630;
+                        const ctx = canvas.getContext('2d');
+
+                        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                        gradient.addColorStop(0, '#a93226');
+                        gradient.addColorStop(1, '#7a241b');
+                        ctx.fillStyle = gradient;
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                        ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+                        for (let i = 0; i < 20; i++) {
+                            ctx.fillRect(i * 60, 0, 30, canvas.height);
+                        }
+
+                        ctx.fillStyle = 'white';
+                        ctx.font = 'bold 56px -apple-system, BlinkMacSystemFont, "Segoe UI", Arial';
+                        ctx.textAlign = 'center';
+
+                        ctx.fillText('Our Team Health Score:', canvas.width / 2, 180);
+                        
+                        ctx.font = 'bold 120px -apple-system, BlinkMacSystemFont, "Segoe UI", Arial';
+                        ctx.fillText(currentProfile.totalScore + '/100', canvas.width / 2, 330);
+                        
+                        ctx.font = 'bold 48px -apple-system, BlinkMacSystemFont, "Segoe UI", Arial';
+                        ctx.fillText(currentProfile.levelText, canvas.width / 2, 420);
+
+                        ctx.font = '32px -apple-system, BlinkMacSystemFont, "Segoe UI", Arial';
+                        ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                        ctx.fillText('How healthy is YOUR team?', canvas.width / 2, 550);
+
+                        const shareCanvas = document.getElementById('shareCanvas');
+                        if (shareCanvas) {
+                            shareCanvas.innerHTML = `<img src="${canvas.toDataURL()}" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);" alt="Share card">`;
+                        }
+                    }
+
+                    function getShareText() {
+                        return `Our team scored ${currentProfile.totalScore}/100 on the Team Health Assessment!
+
+Level: ${currentProfile.levelText}
+
+Based on Patrick Lencioni's 5 Dysfunctions:
+• Trust
+• Conflict Navigation
+• Commitment
+• Accountability
+• Results Focus
+
+Free assessment, instant insights.
+
+How healthy is YOUR team?`;
+                    }
+
+                    function shareToLinkedIn() {
+                        const text = encodeURIComponent(getShareText());
+                        const url = encodeURIComponent(window.location.href);
+                        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&summary=${text}`, '_blank');
+                        
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'share', {
+                                'event_category': 'Social',
+                                'event_label': 'LinkedIn_Team',
+                                'value': 1
+                            });
+                        }
+                    }
+
+                    function shareToTwitter() {
+                        const text = encodeURIComponent(getShareText());
+                        const url = encodeURIComponent(window.location.href);
+                        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=TeamHealth,Leadership`, '_blank');
+                        
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'share', {
+                                'event_category': 'Social',
+                                'event_label': 'Twitter_Team',
+                                'value': 1
+                            });
+                        }
+                    }
+
+                    function copyShareLink() {
+                        const shareText = getShareText() + '\n\n' + window.location.href;
+                        navigator.clipboard.writeText(shareText).then(() => {
+                            const btn = event.target;
+                            const originalText = btn.textContent;
+                            btn.textContent = '✓ Copied!';
+                            btn.style.background = '#10b981';
+                            setTimeout(() => {
+                                btn.textContent = originalText;
+                                btn.style.background = 'rgba(255,255,255,0.2)';
+                            }, 2000);
+                            
+                            if (typeof gtag !== 'undefined') {
+                                gtag('event', 'share', {
+                                    'event_category': 'Social',
+                                    'event_label': 'Copy_Link_Team',
+                                    'value': 1
+                                });
+                            }
+                        });
                     }
                     
                     // Load stats from stats.json
