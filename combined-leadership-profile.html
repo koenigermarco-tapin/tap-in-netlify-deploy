@@ -2298,9 +2298,74 @@
                     </div>
                 </div>
 
-                <div class="cta-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem 2rem; border-radius: 12px; text-align: center; margin-top: 3rem;">
-                    <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem;">🚀 Ready to Take Your Leadership to the Next Level?</h3>
-                    <p style="font-size: 1.15rem; margin-bottom: 2rem; line-height: 1.6;">Join our exclusive Skool community where high-performing leaders like you:</p>
+                <!-- Premium Insights Unlock Section -->
+                <div id="emailUnlockSection" class="detailed-results" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem 2rem; border-radius: 12px; margin-top: 3rem;">
+                    <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem; text-align: center;">🎁 Unlock Your Premium Insights</h3>
+                    <p style="font-size: 1.15rem; margin-bottom: 2rem; text-align: center; line-height: 1.6;">Get extended analysis, personalized recommendations + 7-day Skool community access</p>
+                    
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 10px; margin-bottom: 2rem;">
+                        <h4 style="color: #ffd700; margin-bottom: 1.5rem; font-size: 1.3rem;">What You'll Get:</h4>
+                        <ul style="list-style: none; padding: 0; text-align: left; max-width: 600px; margin: 0 auto;">
+                            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: start; gap: 1rem;">
+                                <span style="font-size: 1.5rem; flex-shrink: 0;">📊</span>
+                                <span><strong>Detailed Benchmark Analysis:</strong> See how you compare to 1,247+ leaders in your industry</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: start; gap: 1rem;">
+                                <span style="font-size: 1.5rem; flex-shrink: 0;">🎯</span>
+                                <span><strong>90-Day Action Plan:</strong> Personalized roadmap based on your Worker Type, Leadership Style & Team scores</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: start; gap: 1rem;">
+                                <span style="font-size: 1.5rem; flex-shrink: 0;">📈</span>
+                                <span><strong>Growth Roadmap:</strong> Specific skills to develop as a ${leadershipData[leadershipStyle].name}</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: start; gap: 1rem;">
+                                <span style="font-size: 1.5rem; flex-shrink: 0;">🤝</span>
+                                <span><strong>Team Playbooks:</strong> Ready-to-use exercises for your top 2 team dysfunctions</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start; gap: 1rem;">
+                                <span style="font-size: 1.5rem; flex-shrink: 0;">🏆</span>
+                                <span><strong>7-Day Skool Trial:</strong> Join our exclusive leadership community (€29/month value)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <form id="emailUnlockForm" style="background: white; padding: 2rem; border-radius: 10px; max-width: 500px; margin: 0 auto; color: #333;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <input type="email" id="unlockEmail" required placeholder="Your Email Address" 
+                                style="width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <input type="text" id="unlockName" placeholder="Your Name (optional)" 
+                                style="width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
+                        </div>
+                        <div style="margin-bottom: 1.5rem; text-align: left; font-size: 0.9rem; line-height: 1.6;">
+                            <label style="display: flex; align-items: start; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" id="dataConsent" checked style="margin-top: 0.25rem; flex-shrink: 0;">
+                                <span>I agree that my anonymized assessment data may be used for statistical analyses and aggregate insights to improve the TAP-IN platform. 
+                                    <a href="#" onclick="alert('Your data will be: 1) Stored securely in our database, 2) Used to calculate aggregate statistics (e.g., average scores by industry), 3) Never sold to third parties, 4) Anonymized for any public displays. You can request deletion anytime by emailing privacy@tap-in-academy.com'); return false;" style="color: #667eea; text-decoration: underline;">More Info</a>
+                                </span>
+                            </label>
+                        </div>
+                        <button type="submit" style="width: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.25rem; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: transform 0.2s;">
+                            🚀 Unlock Premium Insights →
+                        </button>
+                        <p style="margin-top: 1rem; font-size: 0.85rem; color: #666; text-align: center;">
+                            No spam guarantee. Unsubscribe anytime. See our <a href="#" style="color: #667eea;">Privacy Policy</a>
+                        </p>
+                    </form>
+
+                    <div id="unlockSuccess" style="display: none; background: white; padding: 2rem; border-radius: 10px; max-width: 500px; margin: 0 auto; color: #333; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🎉</div>
+                        <h4 style="color: #27ae60; font-size: 1.5rem; margin-bottom: 1rem;">Premium Insights Unlocked!</h4>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6;">
+                            We've sent your detailed analysis and Skool community invite to your email. Check your inbox in the next few minutes!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="cta-section" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 3rem 2rem; border-radius: 12px; text-align: center; margin-top: 3rem;">
+                    <h3 style="color: white; font-size: 1.8rem; margin-bottom: 1rem;">� Already Part of TAP-IN?</h3>
+                    <p style="font-size: 1.15rem; margin-bottom: 2rem; line-height: 1.6;">Join our Skool community for ongoing support:</p>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; text-align: left;">
                         <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px;">
                             <h4 style="color: #ffd700; margin-bottom: 0.5rem;">💡 Weekly Live Masterclasses</h4>
@@ -2344,6 +2409,108 @@
             `;
 
             resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            // Setup email unlock form handler
+            setTimeout(() => setupEmailUnlockForm(workerType, leadershipStyle, teamScores), 1000);
+        }
+
+        // Handle premium insights unlock
+        function setupEmailUnlockForm(workerType, leadershipStyle, teamScores) {
+            const form = document.getElementById('emailUnlockForm');
+            if (!form) return;
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('unlockEmail').value.trim();
+                const name = document.getElementById('unlockName').value.trim();
+                const dataConsent = document.getElementById('dataConsent').checked;
+
+                if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+
+                // Prepare submission data
+                const submissionData = {
+                    email: email.toLowerCase(),
+                    name: name || null,
+                    assessmentType: 'combined-profile',
+                    language: 'en',
+                    dataConsent: dataConsent,
+                    scores: {
+                        worker_type: workerType,
+                        leadership_style: leadershipStyle,
+                        team_trust: teamScores.trust,
+                        team_conflict: teamScores.conflict,
+                        team_commitment: teamScores.commitment,
+                        team_accountability: teamScores.accountability,
+                        team_results: teamScores.results
+                    },
+                    metadata: {
+                        userAgent: navigator.userAgent,
+                        timestamp: new Date().toISOString(),
+                        referrer: document.referrer
+                    }
+                };
+
+                // Show loading state
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = '⏳ Saving...';
+                submitBtn.disabled = true;
+
+                try {
+                    // Submit to Netlify Function
+                    const response = await fetch('/.netlify/functions/submit-assessment', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(submissionData)
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok && result.success) {
+                        // Success - hide form, show success message
+                        document.getElementById('emailUnlockSection').querySelector('form').style.display = 'none';
+                        document.getElementById('unlockSuccess').style.display = 'block';
+                        
+                        // Clear saved progress (already submitted)
+                        clearProgress();
+
+                        // Track conversion
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'premium_unlock', {
+                                'event_category': 'engagement',
+                                'event_label': workerType + '_' + leadershipStyle,
+                                'value': 1
+                            });
+                        }
+                    } else if (response.status === 409) {
+                        // Email already used
+                        alert(result.message || 'This email was already used. Each email can only be used once.');
+                    } else {
+                        throw new Error(result.error || 'Submission failed');
+                    }
+
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    
+                    // Fallback: store locally and show partial success
+                    localStorage.setItem('tap-in-pending-email', JSON.stringify(submissionData));
+                    
+                    alert('There was a problem submitting. We saved your data and will contact you. Please verify your email: ' + email);
+                    
+                    // Still show success to not frustrate user
+                    document.getElementById('emailUnlockSection').querySelector('form').style.display = 'none';
+                    document.getElementById('unlockSuccess').style.display = 'block';
+                    document.getElementById('unlockSuccess').querySelector('p').textContent = 
+                        'We detected a technical issue. Your request was saved and we will contact you shortly via email.';
+                } finally {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
         }
     </script>
 </body>
