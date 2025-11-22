@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2d2d2d">
+    <title>Complete Leadership Profile - TAP-IN Assessment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #a93226;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .header .info {
+            color: #999;
+            font-size: 0.95em;
+        }
+
+        .progress-container {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #a93226 0%, #d67059 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .section-indicator {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .section-indicator-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 0.75em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .section-indicator-item.completed {
+            background: #a93226;
+            color: white;
+        }
+
+        .section-indicator-item.active {
+            background: #d67059;
+            color: white;
+        }
+
+        .section-indicator-item.upcoming {
+            background: #f0f0f0;
+            color: #999;
+        }
+
+        .question-container {
+            min-height: 400px;
+        }
+
+        .celebration-card {
+            background: linear-gradient(135deg, #a93226 0%, #7a241b 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .celebration-card .icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .celebration-card h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .celebration-card p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .celebration-card .next-section {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .celebration-card .next-section h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .question-card {
+            background: white;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .question-number {
+            color: #a93226;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .question-text {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        /* Insight Card Styles */
+        .insight-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 4px solid #a93226;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .insight-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .insight-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #a93226;
+            margin-bottom: 12px;
+        }
+
+        .insight-content {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .insight-quote {
+            font-style: italic;
+            color: #666;
+            padding-left: 15px;
+            border-left: 3px solid #a93226;
+            margin-top: 12px;
+            font-size: 0.95em;
+        }
+
+        /* Radio Button Styles (for Leadership questions) */
+        .radio-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .radio-option {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .radio-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .radio-option-label {
+            display: block;
+            padding: 18px 20px 18px 50px;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            font-size: 1.05em;
+            line-height: 1.5;
+        }
+
+        .radio-option input:checked + .radio-option-label {
+            background: #fff5f4;
+            border-color: #a93226;
+            font-weight: 600;
+        }
+
+        .radio-option-label:hover {
+            border-color: #a93226;
+            background: #fff5f4;
+        }
+
+        .radio-option-label::before {
+            content: '';
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid #a93226;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .radio-option input:checked + .radio-option-label::after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #a93226;
+        }
+
+        /* Scale Options (for Worker Type & Mental Health questions) */
+        .scale-options {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .scale-option {
+            flex: 1;
+            text-align: center;
+            padding: 20px 10px;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .scale-option span {
+            display: block;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #a93226;
+            margin-bottom: 8px;
+        }
+
+        .scale-option small {
+            display: block;
+            font-size: 0.85em;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .scale-option:hover {
+            border-color: #a93226;
+            background: #fff5f4;
+            transform: translateY(-2px);
+        }
+
+        .scale-option.selected {
+            background: #fff5f4;
+            border-color: #a93226;
+            border-width: 3px;
+            font-weight: 700;
+        }
+
+        /* Slider Styles (for Team Dynamics questions) */
+        .slider-container {
+            padding: 30px 0;
+        }
+
+        .slider-value-display {
+            text-align: center;
+            font-size: 3em;
+            font-weight: 700;
+            color: #a93226;
+            margin-bottom: 20px;
+        }
+
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #e0e0e0 0%, #a93226 100%);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #a93226;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(169, 50, 38, 0.4);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #a93226;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 8px rgba(169, 50, 38, 0.4);
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: #e0e0e0;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #a93226 0%, #7a241b 100%);
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(169, 50, 38, 0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Results Styles */
+        .results-container {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .results-header {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #a93226 0%, #7a241b 100%);
+            color: white;
+            border-radius: 16px;
+            margin-bottom: 40px;
+        }
+
+        .results-header h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .results-section {
+            margin-bottom: 40px;
+        }
+
+        .results-section h3 {
+            color: #a93226;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f0f0f0;
+        }
+
+        .archetype-result {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 5px solid #a93226;
+        }
+
+        .archetype-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .archetype-icon {
+            font-size: 3em;
+        }
+
+        .archetype-info h4 {
+            font-size: 1.6em;
+            color: #a93226;
+            margin-bottom: 5px;
+        }
+
+        .archetype-tagline {
+            color: #666;
+            font-size: 1.1em;
+            font-style: italic;
+        }
+
+        .archetype-percentage {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #a93226;
+            margin-left: auto;
+        }
+
+        .archetype-description {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .strengths-list, .challenges-list {
+            margin-top: 15px;
+        }
+
+        .strengths-list h5, .challenges-list h5 {
+            color: #a93226;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .strengths-list ul, .challenges-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .strengths-list li, .challenges-list li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .strengths-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #a93226;
+            font-weight: 700;
+        }
+
+        .challenges-list li::before {
+            content: '⚠';
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Complete Leadership Profile</h1>
+            <p class="subtitle">Comprehensive Assessment Across All Dimensions</p>
+            <p class="info">46 questions • 15-20 minutes • Worker Type + Leadership + Team Dynamics</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-text" id="progressText">Question 1 of 46</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="section-indicator">
+                <div class="section-indicator-item active" id="section1">Worker Type</div>
+                <div class="section-indicator-item upcoming" id="section2">Leadership</div>
+                <div class="section-indicator-item upcoming" id="section3">Team Dynamics</div>
+            </div>
+        </div>
+
+        <div class="question-container" id="questionContainer"></div>
+
+        <div class="navigation-buttons">
+            <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>← Previous</button>
+            <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next →</button>
+        </div>
+    </div>
+
+    <script>
+        // Questions data - 46 questions total
+        const questions = [
+            // SECTION 1: WORKER TYPE (Questions 1-12) - Scale type, insights after
+            {
+                section: 'worker',
+                number: 1,
+                text: 'How do you prefer to tackle your work?',
+                type: 'scale',
+                labels: ['Intense bursts', 'Steady pace', 'Slow/methodical', 'Structured', 'Flexible'],
+                insight: {
+                    icon: '⚡',
+                    title: 'Your Work Rhythm is Your Superpower',
+                    content: 'David Goggins structures his day in intense focus blocks (Sprinter mentality), while Warren Buffett spends 80% of his time reading and thinking (Ultrarunner approach). Both are wildly successful – it\'s about finding your natural rhythm.',
+                    quote: '📊 Stanford study: Employees who understand their natural work style are 40% more productive and 60% less likely to burn out.'
+                }
+            },
+            {
+                section: 'worker',
+                number: 2,
+                text: 'When facing a deadline, you:',
+                type: 'scale',
+                labels: ['Thrive under pressure', 'Steady progress', 'Start early', 'Plan ahead', 'Last minute'],
+                insight: {
+                    icon: '⏱️',
+                    title: 'Deadline Response Reveals Your Fuel Source',
+                    content: 'Some people use deadline pressure as rocket fuel (urgency-motivated), while others perform best with buffer time (security-motivated). Neither is wrong—understanding your pattern helps you manage workload and stress effectively.',
+                    quote: '"Pressure is a privilege." - Billie Jean King (for urgency-motivated types)'
+                }
+            },
+            {
+                section: 'worker',
+                number: 3,
+                text: 'Your energy levels throughout the day are:',
+                type: 'scale',
+                labels: ['Peaks & valleys', 'Stable', 'Steady/enduring', 'Variable', 'Consistent'],
+                insight: {
+                    icon: '🔋',
+                    title: 'Energy Signature Shapes Performance',
+                    content: 'Tony Schwartz (Energy Project) found: Sprinters need complete shutdowns (90min on, 20min off). Joggers benefit from micro-breaks every 2 hours. Ultrarunners have the slowest pace but highest consistency over months.',
+                    quote: '⚡ Most people don\'t know their type – and fight their natural rhythm.'
+                }
+            },
+            {
+                section: 'worker',
+                number: 4,
+                text: 'How do you handle multiple projects?',
+                type: 'scale',
+                labels: ['One at a time', 'Balance time', 'Slow/steady all', 'Sequential', 'Parallel'],
+                insight: {
+                    icon: '�',
+                    title: 'Focus Pattern = Productivity Pattern',
+                    content: 'Cal Newport (Deep Work) champions single-tasking. David Allen (GTD) structures multi-project balance. Both work—but only if they match your wiring. Forcing yourself into the wrong pattern creates burnout.',
+                    quote: 'Elite performers match their project load to their focus style.'
+                }
+            },
+            {
+                section: 'worker',
+                number: 5,
+                text: 'Your ideal work environment allows you to:',
+                type: 'scale',
+                labels: ['Focused sessions', 'Regular routine', 'Own pace', 'Structured', 'Flexible'],
+                insight: {
+                    icon: '🏢',
+                    title: 'Environment Impacts Performance by 30%',
+                    content: 'Studies show workspace preferences are deeply personal. Introverts often excel in quiet focus zones while extroverts thrive in collaborative spaces. Forcing mismatched environments kills productivity and engagement.',
+                    quote: 'Design your environment to support your nature, not fight it.'
+                }
+            },
+            {
+                section: 'worker',
+                number: 6,
+                text: 'After completing a major project, you:',
+                type: 'scale',
+                labels: ['Need downtime', 'Smooth transition', 'Already working', 'Quick break', 'Rest first'],
+                insight: {
+                    icon: '�',
+                    title: 'Recovery Pattern = Sustainability',
+                    content: 'Ray Dalio focuses on quality over quantity: "I make as few decisions as possible." He prioritizes deep thinking (Ultrarunner). Meanwhile, Sara Blakely thrives on high-energy rapid execution (Sprinter). Know your recovery needs.',
+                    quote: '💡 The trick: Recognize your pattern instead of fighting against it.'
+                }
+            },
+            {
+                section: 'worker',
+                number: 7,
+                text: 'When learning something new, you prefer to:',
+                type: 'scale',
+                labels: ['Dive in fast', 'Regular practice', 'Deep understanding', 'Try first', 'Study first'],
+                insight: {
+                    icon: '📚',
+                    title: 'Learning Style Impacts Mastery Speed',
+                    content: 'Research on expertise shows that matching learning approach to personal style accelerates skill acquisition by 60%. Theory-first learners need frameworks before practice. Action-first learners need experimentation before concepts.',
+                    quote: '"Tell me and I forget. Teach me and I remember. Involve me and I learn." - Benjamin Franklin'
+                }
+            },
+            {
+                section: 'worker',
+                number: 8,
+                text: 'Your productivity is highest when:',
+                type: 'scale',
+                labels: ['Clear deadline', 'Structured routine', 'Ample time', 'Urgent', 'Planned'],
+                insight: {
+                    icon: '🚀',
+                    title: 'Productivity Trigger = Performance Catalyst',
+                    content: 'Some brains need deadline adrenaline. Others need spaciousness to think. High performers know their trigger and structure work accordingly—not based on generic productivity advice.',
+                    quote: 'Work with your wiring, not against it.'
+                }
+            },
+            {
+                section: 'worker',
+                number: 9,
+                text: 'How do you recharge?',
+                type: 'scale',
+                labels: ['Complete breaks', 'Short breaks', 'Rarely drained', 'Weekends', 'Micro-breaks'],
+                insight: {
+                    icon: '⚡',
+                    title: 'Recovery = Performance Multiplier',
+                    content: 'Elite athletes know: Recovery is training. Same for knowledge workers. Sprinters need full disconnection. Joggers need regular micro-breaks. Ultrarunners have inherent sustainability. Match your recovery to your rhythm.',
+                    quote: '🔋 Most burnout comes from wrong recovery pattern, not overwork.'
+                }
+            },
+            {
+                section: 'worker',
+                number: 10,
+                text: 'In a typical work week, you prefer:',
+                type: 'scale',
+                labels: ['Variety/intensity', 'Predictable structure', 'Consistency', 'Mixed', 'Routine'],
+                insight: {
+                    icon: '�',
+                    title: 'Weekly Pattern Shapes Sustainability',
+                    content: 'Your ideal week rhythm is as personal as your fingerprint. Variety-seekers get bored with routine. Consistency-cravers get stressed by chaos. Neither is better—both need the right structure.',
+                    quote: 'Design your week around your nature, not "best practices."'
+                }
+            },
+            {
+                section: 'worker',
+                number: 11,
+                text: 'Your approach to meetings is:',
+                type: 'scale',
+                labels: ['Short/intense', 'Scheduled/clear', 'Thorough', 'Quick decisions', 'Deep discussion'],
+                insight: {
+                    icon: '🤝',
+                    title: 'Meeting Style Reveals Communication Pattern',
+                    content: 'Amazon (Bezos): No PowerPoint, 6-page memos, deep reading. Apple (Jobs): Fast, decisive, action-oriented. Both built trillion-dollar companies with opposite meeting styles. Match meetings to your processing style.',
+                    quote: 'Great leaders design meetings for output, not optics.'
+                }
+            },
+            {
+                section: 'worker',
+                number: 12,
+                text: 'When stressed, you perform best by:',
+                type: 'scale',
+                labels: ['Rapid action', 'Normal routine', 'Stay calm', 'Channel energy', 'Methodical'],
+                insight: {
+                    icon: '�',
+                    title: 'Stress Response = Your Default Mode',
+                    content: 'Crisis doesn\'t build character—it reveals it. Some people use stress as fuel. Others need calm to think. Elite performers know their stress response and structure accordingly. Your pattern isn\'t a flaw—it\'s your wiring.',
+                    quote: 'Awareness transforms your reflex into a choice.'
+                }
+            },
+
+            // SECTION 2: LEADERSHIP STYLE (Questions 13-26) - Radio type, insights BEFORE, auto-advance
+            {
+                section: 'leadership',
+                number: 13,
+                text: 'When starting a new project or initiative, your first instinct is to:',
+                type: 'radio',
+                insight: {
+                    icon: '🎯',
+                    title: 'First Moves Reveal Your Leadership DNA',
+                    content: 'How you start reveals how you lead. Visionaries inspire with possibility. Architects design the structure. Facilitators build the team. Executors launch into action. Commanders establish authority. Coaches develop capability. Your first move isn\'t random—it\'s your leadership operating system.'
+                },
+                options: [
+                    {value: 'visionary', text: 'Paint an inspiring vision of what success could look like'},
+                    {value: 'architect', text: 'Map out the strategy, structure, and dependencies'},
+                    {value: 'facilitator', text: 'Bring everyone together to build alignment and clarity'},
+                    {value: 'executor', text: 'Identify quick wins and start executing immediately'},
+                    {value: 'commander', text: 'Define clear objectives, roles, and chain of command'},
+                    {value: 'coach', text: 'Ask powerful questions to help the team discover the path forward'},
+                ]
+            },
+            {
+                section: 'leadership',
+                number: 14,
+                text: 'During team conflicts, you naturally:',
+                type: 'radio',
+                insight: {
+                    icon: '⚖️',
+                    title: 'Conflict Style = Your Leadership Signature',
+                    content: 'How you handle conflict reveals your core operating system. Visionaries reframe toward purpose. Architects solve root causes. Facilitators build bridges. Executors push for resolution. Commanders make the call. Coaches develop capability. Your conflict style is not a weakness—it is your strength under pressure.'
+                },
+                options: [
+                    {value: 'visionary', text: 'Reframe the conflict around shared purpose and bigger goals'},
+                    {value: 'architect', text: 'Analyze root causes and design better processes'},
+                    {value: 'facilitator', text: 'Create space for everyone to be heard and find common ground'},
+                    {value: 'executor', text: 'Push for quick resolution so the team can move forward'},
+                    {value: 'commander', text: 'Make the final call and expect alignment'},
+                    {value: 'coach', text: 'Help people work through it themselves with guided questions'},
+                ]
+            },
+            {
+                section: 'leadership',
+                number: 15,
+                text: 'What energizes you most at work?',
+                type: 'radio',
+                insight: {
+                    icon: '⚡',
+                    title: 'Energy = Your Leadership Fuel Source',
+                    content: 'Sustainable leadership comes from doing work that energizes you. If you\'re constantly drained, you\'re likely leading against your archetype. Elite leaders structure their roles around their energy source—delegating tasks that deplete them.'
+                },
+                options: [
+                    {value: 'visionary', text: 'Brainstorming big ideas and exploring new possibilities'},
+                    {value: 'architect', text: 'Solving complex problems and designing elegant solutions'},
+                    {value: 'facilitator', text: 'Helping people connect, grow, and work well together'},
+                    {value: 'executor', text: 'Checking off completed tasks and hitting milestones'},
+                    {value: 'commander', text: 'Making tough decisions and winning against competition'},
+                    {value: 'coach', text: 'Watching people have breakthroughs and level up'},
+                ]
+            },
+            {
+                section: 'leadership',
+                number: 16,
+                text: 'How do you prefer to communicate important information?',
+                type: 'radio',
+                insight: {
+                    icon: '💬',
+                    title: 'Communication = Your Leadership Language',
+                    content: 'Elite leaders know their communication default and adapt to their audience. Visionaries inspire through stories. Architects persuade with data. Facilitators connect through dialogue. Executors drive with clarity. Commanders command with directness. Coaches develop through questions. Know your language. Learn others.'
+                },
+                options: [
+                    {value: 'visionary', text: 'Through storytelling and painting compelling pictures'},
+                    {value: 'architect', text: 'With data, frameworks, and logical reasoning'},
+                    {value: 'facilitator', text: 'In dialogue, ensuring everyone understands and feels heard'},
+                    {value: 'executor', text: 'Clearly and concisely with specific action items'},
+                    {value: 'commander', text: 'Directly and decisively with clear expectations'},
+                    {value: 'coach', text: 'Through questions that help others discover insights'},
+                ]
+            },
+            {
+                section: 'leadership',
+                number: 17,
+                text: 'When facing a major obstacle, your approach is to:',
+                type: 'radio',
+                insight: {
+                    icon: '🏔️',
+                    title: 'Obstacles Reveal Character',
+                    content: 'Pressure does not create character—it reveals it. How you respond to obstacles shows your true leadership DNA. Visionaries see opportunity. Architects engineer solutions. Facilitators mobilize people. Executors find the path. Commanders take charge. Coaches build capability. Your obstacle response is your leadership reflex.'
+                },
+                options: [
+                    {value: 'visionary', text: 'Reframe it as an opportunity and inspire creative solutions'},
+                    {value: 'architect', text: 'Break it down systematically and engineer a solution'},
+                    {value: 'facilitator', text: 'Rally the team to tackle it together'},
+                    {value: 'executor', text: 'Find the fastest path around or through it'},
+                    {value: 'commander', text: 'Take charge, make the tough calls, and push through'},
+                    {value: 'coach', text: 'Challenge your team to find the solution themselves'},
+                ]
+            },
+            {
+                section: 'leadership',
+                number: 18,
+                text: 'In meetings, you are most likely to:',
+                type: 'radio',
+                insight: {
+                    icon: '🤝',
+                    title: 'Meeting Behavior = Leadership in Action',
+                    content: 'Patrick Lencioni: "Meetings are where culture is created and destroyed." Your default meeting behavior shapes team dynamics. Visionaries elevate ambition. Architects question assumptions. Facilitators ensure inclusion. Executors drive decisions. Commanders set direction. Coaches develop thinking. Your meeting style is your culture blueprint.'
+                },
+                options: [
+                    {value: 'visionary', text: 'Challenge the team to think bigger and aim higher'},
+                    {value: 'architect', text: 'Question the underlying assumptions and logic'},
+                    {value: 'facilitator', text: 'Ensure all voices are heard and synthesize perspectives'},
+                    {value: 'executor', text: 'Push for decisions and clear next steps'},
+                    {value: 'commander', text: 'Set the agenda, drive conclusions, and assign accountability'},
+                    {value: 'coach', text: 'Ask probing questions that shift perspectives'},
+                ]
+            },
+            {
+                section: 'leadership',
+                number: 19,
+                text: 'Your team would describe you as someone who:',
+                type: 'radio',
+                insight: {
+                    icon: '🎭',
+                    title: 'External Perception = Your Leadership Brand',
+                    content: 'How others see you matters. Your perceived strengths become your opportunities—or your limitations. Self-aware leaders know their brand and actively shape it. You can\'t be all things to all people. Own your archetype.'
+                },
+                options: [
+                    {value: 'visionary', text: 'Sees possibilities others miss and makes them feel achievable'},
+                    {value: 'architect', text: 'Thinks deeply and designs smart solutions to complex problems'},
+                    {value: 'facilitator', text: 'Creates connection, trust, and brings out everyone\'s best'},
+                    {value: 'executor', text: 'Gets things done no matter what obstacles appear'},
+                    {value: 'commander', text: 'Provides clear direction and holds high standards'},
+                    {value: 'coach', text: 'Develops people through powerful questions and feedback'},
+                ]
+            },
+            {
+                section: 'leadership',
+                number: 20,
+                text: 'What frustrates you most in a team setting?',
+                type: 'radio',
+                insight: {
+                    icon: '😤',
+                    title: 'Frustrations Reveal Values',
+                    content: 'What frustrates you most reveals what you value most. Visionaries cannot stand small thinking. Architects hate sloppy execution. Facilitators resist silos. Executors despise inaction. Commanders reject indiscipline. Coaches resent passivity. Your frustration is not a flaw—it is your value system speaking.'
+                },
+                options: [
+                    {value: 'visionary', text: 'Playing too small and settling for incremental improvements'},
+                    {value: 'architect', text: 'Sloppy thinking and poorly designed processes'},
+                    {value: 'facilitator', text: 'People not listening to each other or working in silos'},
+                    {value: 'executor', text: 'Endless discussion without decisions or action'},
+                    {value: 'commander', text: 'Lack of discipline, accountability, and follow-through'},
+                    {value: 'coach', text: 'People not taking ownership of their own development'},
+                ]
+            },
+            {
+                section: 'leadership',
+                number: 21,
+                text: 'When delegating work, you focus on:',
+                type: 'radio',
+                insight: {
+                    icon: '📋',
+                    title: 'Delegation = Leadership Leverage',
+                    content: 'How you delegate reveals how you scale. Visionaries delegate execution, not vision. Architects delegate tasks within systems. Facilitators delegate through strengths. Executors delegate with checkpoints. Commanders delegate with authority. Coaches delegate through questions. Elite leaders delegate the work—not the accountability.'
+                },
+                options: [
+                    {value: 'visionary', text: 'The \'why\' and desired impact, trusting the team on the \'how\''},
+                    {value: 'architect', text: 'Clear frameworks and decision rights so people can operate independently'},
+                    {value: 'facilitator', text: 'Matching tasks to people\'s strengths and development goals'},
+                    {value: 'executor', text: 'Specific deliverables, deadlines, and accountability checkpoints'},
+                    {value: 'commander', text: 'Clear orders with expected outcomes and reporting structure'},
+                    {value: 'coach', text: 'Challenging questions that help them figure out their own path'},
+                ]
+            },
+            {
+                section: 'leadership',
+                number: 22,
+                text: 'Under pressure, you tend to:',
+                type: 'radio',
+                insight: {
+                    icon: '🔥',
+                    title: 'Pressure Reveals Your Default Mode',
+                    content: 'Crisis does not build leaders—it exposes them. Under pressure, you default to your archetype. Visionaries inspire through chaos. Architects impose order. Facilitators steady the ship. Executors accelerate action. Commanders seize control. Coaches develop resilience. Awareness transforms your reflex into a choice.'
+                },
+                options: [
+                    {value: 'visionary', text: 'Double down on the vision and inspire urgency'},
+                    {value: 'architect', text: 'Step back to analyze and redesign the approach'},
+                    {value: 'facilitator', text: 'Rally the team and ensure everyone\'s aligned and supported'},
+                    {value: 'executor', text: 'Go into high gear and drive execution relentlessly'},
+                    {value: 'commander', text: 'Take control, make decisive calls, and eliminate distractions'},
+                    {value: 'coach', text: 'Stay calm and help the team navigate through it together'},
+                ]
+            },
+            {
+                section: 'leadership',
+                number: 23,
+                text: 'Your ideal work environment is one where:',
+                type: 'radio',
+                insight: {
+                    icon: '🏢',
+                    title: 'Culture Eats Strategy',
+                    content: 'Peter Drucker\'s famous line holds true. Your ideal environment reveals the culture you create. Visionaries build innovation labs. Architects optimize operations. Facilitators foster safety. Executors demand results. Commanders enforce standards. Coaches develop people. You don\'t join a culture—you radiate one.'
+                },
+                options: [
+                    {value: 'visionary', text: 'Innovation and bold ideas are encouraged and celebrated'},
+                    {value: 'architect', text: 'Systems are clean, processes are optimized, and logic prevails'},
+                    {value: 'facilitator', text: 'People feel safe, valued, and work together seamlessly'},
+                    {value: 'executor', text: 'Goals are clear, momentum is high, and results come fast'},
+                    {value: 'commander', text: 'Standards are high, roles are clear, and everyone executes'},
+                    {value: 'coach', text: 'People are challenged to grow and take ownership'},
+                ]
+            },
+            {
+                section: 'leadership',
+                number: 24,
+                text: 'When giving feedback, you emphasize:',
+                type: 'radio',
+                insight: {
+                    icon: '💭',
+                    title: 'Feedback Is Leadership in Real-Time',
+                    content: 'Kim Scott (Radical Candor): The best feedback is caring personally while challenging directly. Visionaries connect to mission. Architects explain logic. Facilitators build confidence. Executors specify actions. Commanders set standards. Coaches ask questions. All can be radically candid—just in different languages.'
+                },
+                options: [
+                    {value: 'visionary', text: 'Connecting their work to the bigger mission and potential'},
+                    {value: 'architect', text: 'The logic and framework behind what works and what doesn\'t'},
+                    {value: 'facilitator', text: 'Their growth journey and building their confidence'},
+                    {value: 'executor', text: 'Specific behaviors to change and results to achieve'},
+                    {value: 'commander', text: 'Clear standards and where they need to step up'},
+                    {value: 'coach', text: 'Questions that help them discover their own insights'},
+                ]
+            },
+            {
+                section: 'leadership',
+                number: 25,
+                text: 'Success for you is best measured by:',
+                type: 'radio',
+                insight: {
+                    icon: '📊',
+                    title: 'Success Metrics Define You',
+                    content: 'What you measure reveals what you value. Visionaries track transformation. Architects measure scalability. Facilitators count developed leaders. Executors monitor results. Commanders track wins. Coaches measure growth. Your scorecard isn\'t neutral—it shapes behavior. Choose metrics that align with your archetype.'
+                },
+                options: [
+                    {value: 'visionary', text: 'Creating lasting impact and transformation'},
+                    {value: 'architect', text: 'Building systems that scale and endure'},
+                    {value: 'facilitator', text: 'Developing people and strengthening team capability'},
+                    {value: 'executor', text: 'Hitting targets and delivering tangible results'},
+                    {value: 'commander', text: 'Winning decisively and outperforming competition'},
+                    {value: 'coach', text: 'How many people you\'ve helped reach their potential'},
+                ]
+            },
+            {
+                section: 'leadership',
+                number: 26,
+                text: 'Your leadership superpower is:',
+                type: 'radio',
+                insight: {
+                    icon: '⭐',
+                    title: 'Superpower = Consistent Excellence',
+                    content: 'Your superpower isn\'t what you can do occasionally—it\'s what you deliver consistently under pressure. Mandela inspired through decades in prison. Jobs designed through failure and success. Rogers connected for 33 years. Know your power. Use it wisely.'
+                },
+                options: [
+                    {value: 'visionary', text: 'Painting a compelling future people want to follow'},
+                    {value: 'architect', text: 'Designing smart solutions to complex challenges'},
+                    {value: 'facilitator', text: 'Bringing out the best in people and building great teams'},
+                    {value: 'executor', text: 'Turning strategy into reality through flawless execution'},
+                    {value: 'commander', text: 'Making tough calls and leading decisively in chaos'},
+                    {value: 'coach', text: 'Developing people who go on to do great things'},
+                ]
+            },
+
+            // SECTION 3: TEAM DYNAMICS (Questions 27-46) - Scale type (1-5 rating)
+            // Based on Lencioni's 5 Dysfunctions: Trust, Conflict, Commitment, Accountability, Results
+            {
+                section: 'team',
+                number: 27,
+                text: 'Team members openly admit their mistakes and weaknesses',
+                type: 'scale',
+                insight: {
+                    icon: '🔒',
+                    title: 'Trust is the Foundation of Everything',
+                    content: 'Patrick Lencioni: "Without trust, teams can never engage in productive conflict, achieve genuine commitment, hold one another accountable, or prioritize collective results." Vulnerability-based trust is the bedrock.',
+                    quote: '📊 High-trust teams are 2.5x more productive and have 74% less stress (Harvard Business Review)'
+                }
+            },
+            {
+                section: 'team',
+                number: 28,
+                text: 'People ask for help without hesitation',
+                type: 'scale',
+                insight: {
+                    icon: '🤝',
+                    title: 'Asking for Help = Sign of Strength',
+                    content: 'In high-trust teams, asking for help is normalized—not stigmatized. Elite performers know their limits and leverage the team. Lone wolves lose to coordinated packs.',
+                    quote: 'Great teams make it safe to be human.'
+                }
+            },
+            {
+                section: 'team',
+                number: 29,
+                text: 'Team members give each other benefit of the doubt',
+                type: 'scale',
+                insight: {
+                    icon: '💡',
+                    title: 'Assume Positive Intent',
+                    content: 'Low-trust teams assume malice. High-trust teams assume good intentions—even when execution fails. This one shift transforms team dynamics.',
+                    quote: 'Trust = believing the best in people, even when they mess up.'
+                }
+            },
+            {
+                section: 'team',
+                number: 30,
+                text: 'People apologize quickly and genuinely when they mess up',
+                type: 'scale',
+                insight: {
+                    icon: '🙏',
+                    title: 'Apology Culture = Accountability Culture',
+                    content: 'Teams that apologize quickly move faster. Teams that hide mistakes compound them. Fast apologies = fast learning = fast improvement.',
+                    quote: 'Speed of apology = speed of trust restoration.'
+                }
+            },
+            {
+                section: 'team',
+                number: 31,
+                text: 'Team meetings include passionate, unfiltered debate',
+                type: 'scale',
+                insight: {
+                    icon: '⚡',
+                    title: 'Conflict is Productive (When Done Right)',
+                    content: 'Artificial harmony is the enemy of truth. Great teams engage in fierce ideological debate—while maintaining personal respect. Conflict around ideas, not people.',
+                    quote: 'If everyone is thinking alike, then somebody isn\'t thinking. - George Patton'
+                }
+            },
+            {
+                section: 'team',
+                number: 32,
+                text: 'People voice disagreements during meetings (not after)',
+                type: 'scale',
+                insight: {
+                    icon: '🎤',
+                    title: 'Real-Time Dissent > Hallway Complaints',
+                    content: 'The most toxic phrase in business: "I didn\'t want to say anything in the meeting, but..." Great teams hash it out in the room, then commit.',
+                    quote: 'Disagree and commit > Pretend agreement and sabotage.'
+                }
+            },
+            {
+                section: 'team',
+                number: 33,
+                text: 'Conflicts get resolved quickly and cleanly',
+                type: 'scale',
+                insight: {
+                    icon: '⚖️',
+                    title: 'Fast Resolution = High Performance',
+                    content: 'Unresolved conflict festers and spreads. Elite teams address tensions immediately—no passive-aggressive lingering. Clear the air, move forward.',
+                    quote: 'Speed of conflict resolution = speed of team learning.'
+                }
+            },
+            {
+                section: 'team',
+                number: 34,
+                text: 'Team members challenge each other\'s ideas respectfully',
+                type: 'scale',
+                insight: {
+                    icon: '🥊',
+                    title: 'Challenge Ideas, Not People',
+                    content: 'Ray Dalio (Bridgewater): "Thoughtful disagreement is the engine of excellence." Attack the idea with logic. Respect the person always. This distinction changes everything.',
+                    quote: 'Great teams have fierce debates and deep respect—simultaneously.'
+                }
+            },
+            {
+                section: 'team',
+                number: 35,
+                text: 'Decisions are made with clarity and buy-in from everyone',
+                type: 'scale',
+                insight: {
+                    icon: '✅',
+                    title: 'Commitment Requires Clarity',
+                    content: 'Ambiguous decisions create confusion and excuses. Great leaders ensure: (1) What was decided? (2) Who owns it? (3) By when? Clarity enables commitment.',
+                    quote: 'Lack of commitment is usually lack of clarity in disguise.'
+                }
+            },
+            {
+                section: 'team',
+                number: 36,
+                text: 'Once a decision is made, everyone commits—even if they initially disagreed',
+                type: 'scale',
+                insight: {
+                    icon: '🤝',
+                    title: 'Disagree and Commit',
+                    content: 'Jeff Bezos: "Have backbone; disagree and commit." You can fight hard in the debate, but once the decision is made—you\'re all in. No sabotage, no passive resistance.',
+                    quote: 'Commitment means: "I may not agree, but I will execute with excellence."'
+                }
+            },
+            {
+                section: 'team',
+                number: 37,
+                text: 'Team goals are more important than individual agendas',
+                type: 'scale',
+                insight: {
+                    icon: '🎯',
+                    title: 'Collective Goals > Individual Glory',
+                    content: 'The best teams subordinate ego to mission. Individual wins that hurt the team are celebrated in dysfunctional cultures, punished in elite ones.',
+                    quote: 'Great teams reward team success more than individual heroics.'
+                }
+            },
+            {
+                section: 'team',
+                number: 38,
+                text: 'People follow through on commitments without being reminded',
+                type: 'scale',
+                insight: {
+                    icon: '📋',
+                    title: 'Accountability = Keeping Commitments',
+                    content: 'Low-accountability teams need constant follow-up. High-accountability teams self-police. When you commit in front of peers, you deliver—or explain why not.',
+                    quote: 'Accountability isn\'t punishment—it\'s keeping promises.'
+                }
+            },
+            {
+                section: 'team',
+                number: 39,
+                text: 'Team members hold each other accountable (not just the leader)',
+                type: 'scale',
+                insight: {
+                    icon: '👥',
+                    title: 'Peer Accountability > Top-Down Control',
+                    content: 'In great teams, peers hold each other to high standards—not just the boss. When the team owns the standard, performance skyrockets.',
+                    quote: 'Elite teams police themselves. Average teams wait for the boss.'
+                }
+            },
+            {
+                section: 'team',
+                number: 40,
+                text: 'Poor performers are confronted directly and quickly',
+                type: 'scale',
+                insight: {
+                    icon: '🚨',
+                    title: 'Fast Feedback = Fast Improvement',
+                    content: 'Letting poor performance linger destroys team morale. Great teams address it immediately—with candor and support. Tolerating mediocrity is choosing it.',
+                    quote: 'What you tolerate, you endorse. What you endorse, you multiply.'
+                }
+            },
+            {
+                section: 'team',
+                number: 41,
+                text: 'People are willing to make personal sacrifices for team success',
+                type: 'scale',
+                insight: {
+                    icon: '🏆',
+                    title: 'Sacrifice = Commitment Test',
+                    content: 'When the stakes are high, are people willing to stay late, take on extra work, or shift priorities? Great teams do this naturally because mission > comfort.',
+                    quote: 'Great teams don\'t ask "What\'s in it for me?" They ask "What does the team need?"'
+                }
+            },
+            {
+                section: 'team',
+                number: 42,
+                text: 'Team members celebrate each other\'s successes',
+                type: 'scale',
+                insight: {
+                    icon: '🎉',
+                    title: 'Celebrate Wins, Share Success',
+                    content: 'Toxic teams downplay others\' wins. Great teams amplify them. Recognition culture compounds success. What gets celebrated gets repeated.',
+                    quote: 'Great teams make individual wins collective celebrations.'
+                }
+            },
+            {
+                section: 'team',
+                number: 43,
+                text: 'Results and outcomes are prioritized over politics and process',
+                type: 'scale',
+                insight: {
+                    icon: '📈',
+                    title: 'Results > Politics',
+                    content: 'Dysfunctional teams optimize for looking good. High-performing teams optimize for being good. Process serves results—not the other way around.',
+                    quote: 'Focus on results, and the politics disappear. Focus on politics, and the results disappear.'
+                }
+            },
+            {
+                section: 'team',
+                number: 44,
+                text: 'The team regularly reviews performance and adjusts strategy',
+                type: 'scale',
+                insight: {
+                    icon: '🔄',
+                    title: 'Review, Reflect, Improve',
+                    content: 'Great teams treat performance reviews as learning sessions, not report cards. What worked? What didn\'t? What do we change? Continuous improvement is the standard.',
+                    quote: 'The best teams are learning machines, not performance machines.'
+                }
+            },
+            {
+                section: 'team',
+                number: 45,
+                text: 'Success is defined by achieving collective goals, not individual metrics',
+                type: 'scale',
+                insight: {
+                    icon: '🎖️',
+                    title: 'Team Wins > Individual Stats',
+                    content: 'Phil Jackson (11 NBA championships): "The strength of the team is each individual member. The strength of each member is the team." Collective success compounds individual growth.',
+                    quote: 'Great teams make everyone better. Average teams make stars look ordinary.'
+                }
+            },
+            {
+                section: 'team',
+                number: 46,
+                text: 'The team has a shared sense of purpose that drives daily work',
+                type: 'scale',
+                insight: {
+                    icon: '🌟',
+                    title: 'Purpose = Performance Multiplier',
+                    content: 'Simon Sinek: "People don\'t buy what you do; they buy why you do it." Teams with clear purpose outperform teams with clear targets. Purpose fuels resilience when things get hard.',
+                    quote: 'Great teams know WHY they exist—and it shows in everything they do.'
+                }
+            },
+        ];
+
+        // State
+        let currentQuestionIndex = 0;
+        let answers = {};
+        let autoAdvanceEnabled = false;
+
+        // Initialize
+        renderQuestion(currentQuestionIndex);
+        updateProgress();
+
+        function renderQuestion(index) {
+            const q = questions[index];
+            const container = document.getElementById('questionContainer');
+            
+            let html = '';
+
+            // Check if this is a new section (celebration card)
+            if (shouldShowCelebration(index)) {
+                html = renderCelebration(index);
+            } else {
+                html = `<div class="question-card">`;
+                
+                // Question number and text
+                html += `
+                    <div class="question-number">Question ${q.number} of 46 - ${getSectionName(q.section)}</div>
+                    <div class="question-text">${q.text}</div>
+                `;
+
+                // Render based on question type
+                if (q.type === 'scale') {
+                    // Visual bar chart (1-5 scale)
+                    html += `
+                        <div class="scale-options">
+                            ${[1,2,3,4,5].map(val => `
+                                <div class="scale-option ${answers[index] === val ? 'selected' : ''}" 
+                                     data-value="${val}" 
+                                     onclick="selectScaleOption(${val})">
+                                    <span>${val}</span>
+                                    <small>${['Never', 'Rarely', 'Sometimes', 'Often', 'Always'][val-1]}</small>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div id="insightContainer"></div>
+                    `;
+                } else if (q.type === 'radio') {
+                    // Leadership questions with radio buttons + insights first
+                    if (q.insight) {
+                        html += `
+                            <div class="insight-card">
+                                <div class="insight-icon">${q.insight.icon || '💡'}</div>
+                                <div class="insight-title">${q.insight.title}</div>
+                                <div class="insight-content">${q.insight.content}</div>
+                                ${q.insight.quote ? `<div class="insight-quote">${q.insight.quote}</div>` : ''}
+                            </div>
+                        `;
+                    }
+                    
+                    html += `<div class="radio-options">`;
+                    q.options.forEach((opt, i) => {
+                        const isChecked = answers[index] === opt.value ? 'checked' : '';
+                        html += `
+                            <label class="radio-option">
+                                <input type="radio" 
+                                       name="q${index}" 
+                                       value="${opt.value}" 
+                                       ${isChecked}
+                                       onchange="selectRadioOption('${opt.value}')">
+                                <span class="radio-option-label">${opt.text}</span>
+                            </label>
+                        `;
+                    });
+                    html += `</div>`;
+                } else if (q.type === 'slider') {
+                    // Team dynamics questions with percentage slider
+                    const currentValue = answers[index] || 50;
+                    html += `
+                        <div class="slider-container">
+                            <div class="slider-value-display" id="sliderValue">${currentValue}%</div>
+                            <input type="range" 
+                                   min="0" 
+                                   max="100" 
+                                   value="${currentValue}" 
+                                   class="slider" 
+                                   id="percentageSlider"
+                                   oninput="updateSliderValue(this.value)"
+                                   onchange="selectSliderOption(this.value)">
+                            <div class="slider-labels">
+                                <span>${q.leftLabel || 'Not at all'}</span>
+                                <span>${q.rightLabel || 'Completely'}</span>
+                            </div>
+                        </div>
+                        <div id="insightContainer"></div>
+                    `;
+                }
+
+                html += `</div>`;
+            }
+
+            container.innerHTML = html;
+            
+            // Update button states
+            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+            document.getElementById('nextBtn').disabled = !answers[currentQuestionIndex];
+            document.getElementById('nextBtn').textContent = currentQuestionIndex === questions.length - 1 ? 'See Results 🎯' : 'Next →';
+        }
+
+        function shouldShowCelebration(index) {
+            // Show celebration at section boundaries: Q12→Q13 (Worker→Leadership), Q26→Q27 (Leadership→Team)
+            return index === 12 || index === 26;
+        }
+
+        function renderCelebration(index) {
+            const celebrations = {
+                12: {
+                    icon: '🎉',
+                    title: 'Worker Type Complete!',
+                    message: 'Great start! You\'ve completed 12 questions and revealed your work style preferences.',
+                    nextSection: 'Leadership Style',
+                    nextDescription: 'Next, discover how you naturally lead, inspire, and drive results. This section uses a different format with research insights before each question.',
+                    progress: '26%'
+                },
+                26: {
+                    icon: '🚀',
+                    title: 'Leadership Assessment Complete!',
+                    message: 'Excellent progress! You\'ve completed 26 of 46 questions. Your leadership archetype is taking shape.',
+                    nextSection: 'Team Dynamics',
+                    nextDescription: 'Final section! Explore how you collaborate, build trust, and create high-performing teams.',
+                    progress: '57%'
+                }
+            };
+
+            const cel = celebrations[index];
+            return `
+                <div class="celebration-card">
+                    <div class="icon">${cel.icon}</div>
+                    <h2>${cel.title}</h2>
+                    <p>${cel.message}</p>
+                    <div class="next-section">
+                        <h3>📊 Next: ${cel.nextSection}</h3>
+                        <p>${cel.nextDescription}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getSectionName(section) {
+            const names = {
+                worker: 'Worker Type',
+                leadership: 'Leadership',
+                team: 'Team Dynamics'
+            };
+            return names[section] || section;
+        }
+
+        function selectScaleOption(value) {
+            answers[currentQuestionIndex] = value;
+            
+            // Update visual feedback
+            document.querySelectorAll('.scale-option').forEach(opt => {
+                opt.classList.remove('selected');
+                if (parseInt(opt.dataset.value) === value) {
+                    opt.classList.add('selected');
+                }
+            });
+
+            // Show insight after selection
+            const q = questions[currentQuestionIndex];
+            if (q.insight) {
+                showInsight(q.insight);
+            }
+
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        function selectRadioOption(value) {
+            answers[currentQuestionIndex] = value;
+            document.getElementById('nextBtn').disabled = false;
+
+            // Auto-advance for leadership questions (after short delay)
+            setTimeout(() => {
+                if (currentQuestionIndex < questions.length - 1) {
+                    nextQuestion();
+                }
+            }, 300);
+        }
+
+        function updateSliderValue(value) {
+            document.getElementById('sliderValue').textContent = value + '%';
+            answers[currentQuestionIndex] = parseInt(value);
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        function selectSliderOption(value) {
+            answers[currentQuestionIndex] = parseInt(value);
+            
+            // Show insight after slider change
+            const q = questions[currentQuestionIndex];
+            if (q.insight) {
+                showInsight(q.insight);
+            }
+        }
+
+        function showInsight(insight) {
+            const container = document.getElementById('insightContainer');
+            if (!container) return;
+            
+            container.innerHTML = `
+                <div class="insight-card" style="margin-top: 20px; animation: slideIn 0.3s ease-out;">
+                    <div class="insight-icon">${insight.icon || '💡'}</div>
+                    <div class="insight-title">${insight.title}</div>
+                    <div class="insight-content">${insight.content}</div>
+                    ${insight.quote ? `<div class="insight-quote">${insight.quote}</div>` : ''}
+                </div>
+            `;
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion(currentQuestionIndex);
+                updateProgress();
+                updateSectionIndicator();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                showResults();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion(currentQuestionIndex);
+                updateProgress();
+                updateSectionIndicator();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+        }
+
+        function updateSectionIndicator() {
+            const section1 = document.getElementById('section1');
+            const section2 = document.getElementById('section2');
+            const section3 = document.getElementById('section3');
+
+            // Reset all
+            [section1, section2, section3].forEach(s => {
+                s.classList.remove('active', 'completed', 'upcoming');
+            });
+
+            // Update based on current question
+            if (currentQuestionIndex < 12) {
+                section1.classList.add('active');
+                section2.classList.add('upcoming');
+                section3.classList.add('upcoming');
+            } else if (currentQuestionIndex < 26) {
+                section1.classList.add('completed');
+                section2.classList.add('active');
+                section3.classList.add('upcoming');
+            } else {
+                section1.classList.add('completed');
+                section2.classList.add('completed');
+                section3.classList.add('active');
+            }
+        }
+
+        function showResults() {
+            // TODO: Implement comprehensive results display
+            // This will show integrated results across all 3 sections
+            const container = document.getElementById('questionContainer');
+            container.innerHTML = `
+                <div class="results-container">
+                    <div class="results-header">
+                        <h2>🎯 Your Complete Leadership Profile</h2>
+                        <p>Comprehensive analysis across all dimensions</p>
+                    </div>
+                    <div class="results-section">
+                        <h3>Results calculation in progress...</h3>
+                        <p>This will show your integrated profile across Worker Type, Leadership Style, and Team Dynamics.</p>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('prevBtn').style.display = 'none';
+            document.getElementById('nextBtn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
