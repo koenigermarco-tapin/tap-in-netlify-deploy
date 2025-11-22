@@ -29,21 +29,22 @@
         .question-number { color: #a93226; font-weight: bold; font-size: 0.9em; margin-bottom: 10px; }
         .question-text { font-size: 1.2em; color: #333; margin-bottom: 25px; font-weight: 500; line-height: 1.5; }
         
-        .scale-options { display: flex; justify-content: space-between; align-items: flex-end; gap: 2px; flex-wrap: nowrap; height: 140px; position: relative; border-radius: 8px; padding: 5px; cursor: pointer; user-select: none; }
-        .scale-option { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; border: 2px solid transparent; border-radius: 6px; transition: all 0.15s ease; position: relative; z-index: 1; }
-        .scale-option:nth-child(1) { height: 50px; background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%); }
-        .scale-option:nth-child(2) { height: 70px; background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%); }
-        .scale-option:nth-child(3) { height: 90px; background: linear-gradient(135deg, #ced4da 0%, #adb5bd 100%); }
-        .scale-option:nth-child(4) { height: 110px; background: linear-gradient(135deg, #d67059 0%, #c9513f 100%); }
-        .scale-option:nth-child(5) { height: 130px; background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); }
-        .scale-option span { font-size: 1.3em; font-weight: bold; margin-bottom: 5px; }
-        .scale-option:nth-child(1) span, .scale-option:nth-child(2) span, .scale-option:nth-child(3) span { color: #333; }
-        .scale-option:nth-child(4) span, .scale-option:nth-child(5) span { color: white; }
-        .scale-option small { font-size: 0.75em; text-align: center; }
-        .scale-option:nth-child(1) small, .scale-option:nth-child(2) small, .scale-option:nth-child(3) small { color: #666; }
-        .scale-option:nth-child(4) small, .scale-option:nth-child(5) small { color: rgba(255,255,255,0.9); }
+        .scale-options { display: flex; justify-content: space-between; align-items: flex-end; gap: 2px; flex-wrap: nowrap; height: 140px; position: relative; background: linear-gradient(to top right, rgba(169, 50, 38, 0.1) 0%, rgba(169, 50, 38, 0.05) 50%, transparent 50%); border-radius: 8px; padding: 5px; cursor: pointer; user-select: none; }
+        .scale-option { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; background: linear-gradient(135deg, rgba(169, 50, 38, 0.15) 0%, rgba(169, 50, 38, 0.1) 100%); border: 2px solid transparent; border-radius: 6px; transition: all 0.15s ease; position: relative; z-index: 1; }
+        .scale-option:nth-child(1) { height: 50px; opacity: 0.15; }
+        .scale-option:nth-child(2) { height: 70px; opacity: 0.35; }
+        .scale-option:nth-child(3) { height: 90px; opacity: 0.55; }
+        .scale-option:nth-child(4) { height: 110px; opacity: 0.75; }
+        .scale-option:nth-child(5) { height: 130px; opacity: 0.85; }
+        .scale-option span { font-size: 1.3em; font-weight: bold; color: #333; margin-bottom: 5px; }
+        .scale-option small { font-size: 0.75em; color: #666; text-align: center; }
         .scale-option:hover { transform: scale(1.05); border-color: #a93226; }
-        .scale-option.active, .scale-option.selected { border-color: #7a241b; box-shadow: 0 2px 8px rgba(169, 50, 38, 0.4); }
+        .scale-option.active, .scale-option.selected { background: linear-gradient(135deg, #a93226 0%, #c9513f 100%); color: white; border-color: #7a241b; box-shadow: 0 2px 8px rgba(169, 50, 38, 0.4); }
+        .scale-option.active ~ .scale-option { background: linear-gradient(135deg, rgba(169, 50, 38, 0.15) 0%, rgba(169, 50, 38, 0.1) 100%); color: #333; }
+        .scale-option.active span, .scale-option.selected span { color: white; }
+        .scale-option.active small, .scale-option.selected small { color: rgba(255,255,255,0.9); }
+        .scale-option.active ~ .scale-option span { color: #333; }
+        .scale-option.active ~ .scale-option small { color: #666; }
         
         .insight-card { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 4px solid #a93226; padding: 20px; margin: 20px 0; border-radius: 10px; animation: slideIn 0.4s ease; }
         .insight-icon { font-size: 2rem; margin-bottom: 10px; }
@@ -97,6 +98,8 @@
         <div id="assessmentForm">
             <div class="header">
                 <h1>🧠 Mental Health & Wellness Assessment</h1>
+                <p class="subtitle">Discover Your Emotional Resilience Profile</p>
+                <p class="duration">⏱️ 5 Minutes • 20 Questions</p>
             </div>
 
             <!-- Intro Section (shows before Q1) -->
@@ -141,7 +144,6 @@
         <div id="resultsContainer" class="results-container">
             <div class="header">
                 <h1>🧠 Your Mental Health & Wellness Profile</h1>
-                <p class="subtitle" id="resultsCounter">Based on insights from professionals assessed</p>
             </div>
 
             <div class="overall-score">
@@ -191,9 +193,9 @@
             <div class="score-categories" id="categoryScores"></div>
 
             <div class="cta-box">
-                <h3>Ready to Transform Your Well-being?</h3>
-                <p>TAP-IN's embodied leadership programs address mental health through physical practice, not just theory.</p>
-                <a href="mailto:contact@tap-in-academy.com" class="cta-btn">Book Strategy Session</a>
+                <h3>Ready to Transform Your Balance?</h3>
+                <p>Join TAP-IN's leadership program for personalized coaching and sustainable performance strategies.</p>
+                <a href="#" class="cta-btn">Book Your Free Consultation</a>
             </div>
         </div>
     </div>
@@ -587,13 +589,21 @@
             }
             
             updateSliderVisual(value);
-            
-            // Show insight AFTER selection (like work-life balance)
-            if (insights[currentQuestionIndex]) {
-                showInsight(insights[currentQuestionIndex]);
-            }
-            
             document.getElementById('nextBtn').disabled = false;
+            showInsight(insights[currentQuestionIndex]);
+        }
+
+        function showInsight(insight) {
+            const container = document.getElementById('insightContainer');
+            container.innerHTML = `
+                <div class="insight-card">
+                    <div class="insight-icon">${insight.icon}</div>
+                    <div class="insight-title">${insight.title}</div>
+                    <div class="insight-content">${insight.content}</div>
+                    <div class="insight-quote">${insight.quote}</div>
+                </div>
+            `;
+            container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
         function nextQuestion() {
@@ -629,31 +639,8 @@
             }
         }
 
-        function showInsight(insight) {
-            const container = document.getElementById('insightContainer');
-            if (!container) return;
-            
-            container.innerHTML = `
-                <div class="insight-card" style="margin-top: 20px; animation: slideIn 0.3s ease-out;">
-                    <div class="insight-icon">${insight.icon}</div>
-                    <div class="insight-title">${insight.title}</div>
-                    <div class="insight-content">${insight.content}</div>
-                    <div class="insight-quote">${insight.quote}</div>
-                </div>
-            `;
-            
-            // Smooth scroll to show the insight
-            container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
         function showResults() {
                         clearProgress();
-            
-            // Dynamic counter
-            const baseCount = 1247;
-            const totalAssessments = baseCount + Math.floor(Math.random() * 50);
-            document.getElementById('resultsCounter').textContent = `Based on ${totalAssessments.toLocaleString()} professionals assessed`;
-            
             const scores = {
                 energy: 0,
                 boundaries: 0,

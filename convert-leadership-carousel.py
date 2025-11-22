@@ -25,6 +25,10 @@ questions = [
     {
         "number": 2,
         "text": "During team conflicts, you naturally:",
+        "insight": {
+            "title": "Conflict Reveals Your Leadership Core",
+            "content": "How you handle conflict shows your true leadership DNA. Visionaries redirect to purpose. Architects redesign systems. Facilitators create dialogue. Executors push for resolution. Commanders make decisive calls. Coaches develop capability through challenge. Patrick Lencioni: teams that avoid conflict make worse decisions.",
+        },
         "options": [
             {"value": "visionary", "text": "Reframe the conflict around shared purpose and bigger goals"},
             {"value": "architect", "text": "Analyze root causes and design better processes"},
@@ -53,6 +57,10 @@ questions = [
     {
         "number": 4,
         "text": "How do you prefer to communicate important information?",
+        "insight": {
+            "title": "Communication Style = Leadership Signature",
+            "content": "Your communication pattern is your leadership fingerprint. Jobs storytold. Bezos used data. Nadella created dialogue. Ardern gave clarity. Patton commanded. Campbell questioned. Research shows leaders are most effective when communicating in their natural style—not mimicking others.",
+        },
         "options": [
             {"value": "visionary", "text": "Through storytelling and painting compelling pictures"},
             {"value": "architect", "text": "With data, frameworks, and logical reasoning"},
@@ -65,6 +73,10 @@ questions = [
     {
         "number": 5,
         "text": "When facing a major obstacle, your approach is to:",
+        "insight": {
+            "title": "Obstacles Reveal Character Under Pressure",
+            "content": "Pressure doesn't build character—it reveals it. How you handle obstacles shows your default operating system. Visionaries reframe. Architects redesign. Facilitators unite. Executors find paths. Commanders take charge. Coaches develop. Your crisis response is your leadership truth.",
+        },
         "options": [
             {"value": "visionary", "text": "Reframe it as an opportunity and inspire creative solutions"},
             {"value": "architect", "text": "Break it down systematically and engineer a solution"},
@@ -77,6 +89,10 @@ questions = [
     {
         "number": 6,
         "text": "In meetings, you're most likely to:",
+        "insight": {
+            "title": "Meetings Show Your Leadership in Action",
+            "content": "Meetings are leadership laboratories. Your meeting behavior predicts your culture. Visionaries elevate thinking. Architects question assumptions. Facilitators ensure inclusion. Executors drive decisions. Commanders set agendas. Coaches shift perspectives. Amazon's Jeff Bezos: if you're not adding value in a meeting, leave.",
+        },
         "options": [
             {"value": "visionary", "text": "Challenge the team to think bigger and aim higher"},
             {"value": "architect", "text": "Question the underlying assumptions and logic"},
@@ -105,6 +121,10 @@ questions = [
     {
         "number": 8,
         "text": "What frustrates you most in a team setting?",
+        "insight": {
+            "title": "Frustrations Reveal Your Values",
+            "content": "What frustrates you most reveals what you value most. Visionaries hate small thinking. Architects hate sloppy work. Facilitators hate silos. Executors hate inaction. Commanders hate lack of discipline. Coaches hate dependency. Your frustration is your value system speaking. Use it as data.",
+        },
         "options": [
             {"value": "visionary", "text": "Playing too small and settling for incremental improvements"},
             {"value": "architect", "text": "Sloppy thinking and poorly designed processes"},
