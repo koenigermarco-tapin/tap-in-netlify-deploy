@@ -105,69 +105,98 @@
         }
 
         .question-section {
-            margin-bottom: 35px;
-            padding: 25px;
-            background: #f8f9fa;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .question-section:hover {
-            background: #f0f2f5;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #e8e8e8;
         }
 
         .question-number {
             color: #a93226;
-            font-weight: bold;
-            font-size: 0.9em;
-            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 0.85em;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .question-text {
-            font-size: 1.2em;
-            color: #333;
-            margin-bottom: 20px;
-            font-weight: 500;
-            line-height: 1.5;
+            font-size: 1.3em;
+            color: #222;
+            margin-bottom: 25px;
+            font-weight: 600;
+            line-height: 1.4;
         }
 
         .options {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .option {
             display: flex;
             align-items: flex-start;
-            padding: 18px;
+            padding: 20px;
             background: white;
             border: 2px solid #e0e0e0;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
+            margin-bottom: 12px;
         }
 
         .option:hover {
             border-color: #a93226;
             background: #fff8f7;
-            transform: translateX(5px);
+            transform: translateX(3px);
+            box-shadow: 0 2px 8px rgba(169, 50, 38, 0.1);
         }
 
         .option input[type="radio"] {
-            margin-right: 12px;
-            margin-top: 4px;
+            appearance: none;
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #d0d0d0;
+            border-radius: 50%;
+            margin-right: 15px;
+            margin-top: 2px;
             cursor: pointer;
-            width: 20px;
-            height: 20px;
-            accent-color: #a93226;
+            position: relative;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .option input[type="radio"]:hover {
+            border-color: #a93226;
+        }
+
+        .option input[type="radio"]:checked {
+            border-color: #a93226;
+            border-width: 2px;
+        }
+
+        .option input[type="radio"]:checked::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #a93226;
         }
 
         .option-label {
             cursor: pointer;
-            color: #555;
-            line-height: 1.5;
+            color: #333;
+            line-height: 1.6;
             flex: 1;
+            font-size: 1.05rem;
         }
 
         .progress-bar {
@@ -200,6 +229,27 @@
             background: linear-gradient(90deg, #a93226, #d64436);
             width: 0%;
             transition: width 0.3s ease;
+        }
+
+        .insight-card {
+            background: linear-gradient(135deg, #fff8f7 0%, #fef3f0 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 35px 0;
+            border-left: 4px solid #a93226;
+            box-shadow: 0 2px 8px rgba(169, 50, 38, 0.08);
+        }
+
+        .insight-card h4 {
+            color: #a93226;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .insight-card p {
+            color: #555;
+            line-height: 1.7;
+            margin: 0;
         }
 
         .submit-section {
