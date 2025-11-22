@@ -1524,24 +1524,291 @@
         }
 
         function showResults() {
-            // TODO: Implement comprehensive results display
-            // This will show integrated results across all 3 sections
+            // Calculate Worker Type (Questions 1-12)
+            const workerScores = { sprinter: 0, jogger: 0, ultrarunner: 0 };
+            for (let i = 0; i < 12; i++) {
+                const value = answers[i];
+                if (value <= 2) workerScores.sprinter++;
+                else if (value === 3) workerScores.jogger++;
+                else workerScores.ultrarunner++;
+            }
+            const workerType = Object.entries(workerScores).sort((a, b) => b[1] - a[1])[0][0];
+
+            // Calculate Leadership Style (Questions 12-25, indices 12-25)
+            const leadershipScores = {
+                visionary: 0,
+                architect: 0,
+                facilitator: 0,
+                executor: 0,
+                commander: 0,
+                coach: 0
+            };
+            for (let i = 12; i < 26; i++) {
+                const value = answers[i];
+                if (value) leadershipScores[value]++;
+            }
+            const sortedLeadership = Object.entries(leadershipScores)
+                .sort((a, b) => b[1] - a[1])
+                .map(([type, score]) => ({
+                    type,
+                    score,
+                    percentage: Math.round((score / 14) * 100)
+                }));
+            const primaryLeadership = sortedLeadership[0];
+
+            // Calculate Team Dynamics (Questions 26-45, indices 26-45)
+            // Average scores for each dysfunction area
+            const trust = [26, 27, 28, 29].map(i => answers[i] || 0).reduce((a, b) => a + b, 0) / 4;
+            const conflict = [30, 31, 32, 33].map(i => answers[i] || 0).reduce((a, b) => a + b, 0) / 4;
+            const commitment = [34, 35, 36].map(i => answers[i] || 0).reduce((a, b) => a + b, 0) / 3;
+            const accountability = [37, 38, 39, 40].map(i => answers[i] || 0).reduce((a, b) => a + b, 0) / 4;
+            const results = [41, 42, 43, 44, 45].map(i => answers[i] || 0).reduce((a, b) => a + b, 0) / 5;
+            const teamOverall = ((trust + conflict + commitment + accountability + results) / 5);
+
+            // Worker Type Data
+            const workerData = {
+                sprinter: {
+                    name: 'The Sprinter',
+                    icon: '⚡',
+                    tagline: 'High-Intensity Bursts with Recovery',
+                    description: 'You thrive on intense focus periods followed by complete breaks. Like elite athletes, you perform best in sprints—not marathons. Your productivity comes in waves of deep work followed by recovery.',
+                    strengths: ['Intense focus when engaged', 'Thrive under pressure', 'High output in short bursts', 'Excel at deadline-driven work'],
+                    tips: ['Schedule 90-min deep work blocks', 'Build in recovery time', 'Protect your peak hours', 'Don\'t fight your rhythm']
+                },
+                jogger: {
+                    name: 'The Jogger',
+                    icon: '🏃',
+                    tagline: 'Steady, Consistent, Reliable',
+                    description: 'You maintain a sustainable pace throughout the day. Like a marathon runner, you excel at consistent output over time. Your reliability and predictability make you invaluable to teams.',
+                    strengths: ['Consistent daily output', 'Reliable and predictable', 'Sustainable over time', 'Great at routine excellence'],
+                    tips: ['Build strong daily routines', 'Avoid over-committing to sprints', 'Leverage your consistency', 'Create systems for success']
+                },
+                ultrarunner: {
+                    name: 'The Ultrarunner',
+                    icon: '🎯',
+                    tagline: 'Deep Work, Long Game, Endurance',
+                    description: 'You excel at deep, methodical work over extended periods. Like ultramarathon runners, you have extraordinary endurance and rarely burn out. Your superpower is sustainability.',
+                    strengths: ['Exceptional endurance', 'Deep focus for hours', 'Rarely burn out', 'Excel at complex, long-term projects'],
+                    tips: ['Embrace your slow-and-steady approach', 'Avoid artificial urgency', 'Take on ambitious long-term projects', 'Trust your endurance']
+                }
+            };
+
+            // Leadership Type Data
+            const leadershipData = {
+                visionary: {
+                    name: 'The Visionary Leader',
+                    icon: '🔮',
+                    tagline: 'You Set Direction & Inspire Others',
+                    color: '#8b5cf6',
+                    description: 'You lead with vision and purpose. Your superpower is seeing possibilities others miss and making them feel achievable. You inspire teams by connecting their work to a bigger mission.',
+                    strengths: ['Strategic thinking', 'Inspiring communication', 'Creating alignment', 'Navigating ambiguity'],
+                    challenges: ['May overlook details', 'Can move too fast', 'Need to balance vision with execution']
+                },
+                architect: {
+                    name: 'The Architect Leader',
+                    icon: '🏗️',
+                    tagline: 'You Design Systems & Optimize Performance',
+                    color: '#3b82f6',
+                    description: 'You lead through intelligent design. Your superpower is building systems that scale. You turn chaos into order and complexity into clarity.',
+                    strengths: ['Systems thinking', 'Analytical problem-solving', 'Process optimization', 'Strategic planning'],
+                    challenges: ['Can over-engineer', 'May miss emotional dynamics', 'Need to balance logic with people']
+                },
+                facilitator: {
+                    name: 'The Facilitator Leader',
+                    icon: '🤝',
+                    tagline: 'You Build Teams & Create Connection',
+                    color: '#10b981',
+                    description: 'You lead through people. Your superpower is creating trust, alignment, and bringing out everyone\'s best. You build high-performing teams.',
+                    strengths: ['Building trust', 'Creating alignment', 'Conflict resolution', 'Team development'],
+                    challenges: ['Can avoid tough decisions', 'May prioritize harmony over results', 'Need to balance care with candor']
+                },
+                executor: {
+                    name: 'The Executor Leader',
+                    icon: '⚡',
+                    tagline: 'You Drive Results & Make Things Happen',
+                    color: '#f59e0b',
+                    description: 'You lead through action. Your superpower is turning strategy into reality. You get things done no matter what obstacles appear.',
+                    strengths: ['Bias for action', 'Overcoming obstacles', 'Driving results', 'Creating momentum'],
+                    challenges: ['Can rush strategy', 'May overlook people development', 'Need to balance speed with sustainability']
+                },
+                commander: {
+                    name: 'The Commander Leader',
+                    icon: '⚔️',
+                    tagline: 'You Make Tough Calls & Win',
+                    color: '#ef4444',
+                    description: 'You lead through decisive action. Your superpower is clarity under pressure. You make the tough calls others avoid and drive your team to victory.',
+                    strengths: ['Decisive leadership', 'Clear direction', 'High standards', 'Crisis management'],
+                    challenges: ['Can be too directive', 'May not delegate enough', 'Need to develop others\' autonomy']
+                },
+                coach: {
+                    name: 'The Coach Leader',
+                    icon: '🎓',
+                    tagline: 'You Develop People & Build Capability',
+                    color: '#8b5cf6',
+                    description: 'You lead through questions. Your superpower is developing others. You help people discover their own answers and reach their potential.',
+                    strengths: ['Developing talent', 'Asking powerful questions', 'Building capability', 'Long-term thinking'],
+                    challenges: ['Can be too patient', 'May under-direct when needed', 'Need to balance development with delivery']
+                }
+            };
+
             const container = document.getElementById('questionContainer');
+            const worker = workerData[workerType];
+            const leadership = leadershipData[primaryLeadership.type];
+
             container.innerHTML = `
                 <div class="results-container">
                     <div class="results-header">
-                        <h2>🎯 Your Complete Leadership Profile</h2>
-                        <p>Comprehensive analysis across all dimensions</p>
+                        <div class="icon">🎯</div>
+                        <h2>Your Complete Leadership Profile</h2>
+                        <p>Comprehensive analysis across all three dimensions</p>
                     </div>
+
+                    <!-- Worker Type Results -->
                     <div class="results-section">
-                        <h3>Results calculation in progress...</h3>
-                        <p>This will show your integrated profile across Worker Type, Leadership Style, and Team Dynamics.</p>
+                        <h3>💼 Your Work Style: ${worker.name}</h3>
+                        <div class="archetype-result">
+                            <div class="archetype-header">
+                                <div class="archetype-icon">${worker.icon}</div>
+                                <div class="archetype-info">
+                                    <h4>${worker.name}</h4>
+                                    <div class="archetype-tagline">${worker.tagline}</div>
+                                </div>
+                            </div>
+                            <div class="archetype-description">${worker.description}</div>
+                            <div class="strengths-list">
+                                <h5>✓ Your Strengths:</h5>
+                                <ul>
+                                    ${worker.strengths.map(s => `<li>${s}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="challenges-list">
+                                <h5>💡 Optimize Your Work Style:</h5>
+                                <ul>
+                                    ${worker.tips.map(t => `<li>${t}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Leadership Style Results -->
+                    <div class="results-section">
+                        <h3>🎯 Your Leadership Style: ${leadership.name}</h3>
+                        <div class="archetype-result">
+                            <div class="archetype-header">
+                                <div class="archetype-icon">${leadership.icon}</div>
+                                <div class="archetype-info">
+                                    <h4>${leadership.name}</h4>
+                                    <div class="archetype-tagline">${leadership.tagline}</div>
+                                </div>
+                                <div class="archetype-percentage">${primaryLeadership.percentage}%</div>
+                            </div>
+                            <div class="archetype-description">${leadership.description}</div>
+                            <div class="strengths-list">
+                                <h5>✓ Your Leadership Strengths:</h5>
+                                <ul>
+                                    ${leadership.strengths.map(s => `<li>${s}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="challenges-list">
+                                <h5>⚠ Watch Out For:</h5>
+                                <ul>
+                                    ${leadership.challenges.map(c => `<li>${c}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Secondary Leadership Styles -->
+                        ${sortedLeadership[1].percentage > 15 ? `
+                        <div style="margin-top: 20px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
+                            <h5 style="color: #a93226; margin-bottom: 10px;">🔄 Your Secondary Styles:</h5>
+                            ${sortedLeadership.slice(1, 3).map(s => `
+                                <div style="margin: 10px 0;">
+                                    <strong>${leadershipData[s.type].name}</strong>: ${s.percentage}%
+                                </div>
+                            `).join('')}
+                            <p style="margin-top: 15px; font-size: 0.9em; color: #666;">
+                                💡 Elite leaders develop secondary styles. Your versatility is a strength.
+                            </p>
+                        </div>
+                        ` : ''}
+                    </div>
+
+                    <!-- Team Dynamics Results -->
+                    <div class="results-section">
+                        <h3>🤝 Your Team Dynamics Health</h3>
+                        <div class="archetype-result">
+                            <div class="archetype-description" style="margin-bottom: 20px;">
+                                Based on Patrick Lencioni's 5 Dysfunctions of a Team. Scores show team health across five critical areas.
+                            </div>
+                            
+                            <div style="display: grid; gap: 15px;">
+                                ${[
+                                    { name: 'Trust', score: trust, icon: '🔒', color: trust >= 4 ? '#10b981' : trust >= 3 ? '#f59e0b' : '#ef4444' },
+                                    { name: 'Healthy Conflict', score: conflict, icon: '⚡', color: conflict >= 4 ? '#10b981' : conflict >= 3 ? '#f59e0b' : '#ef4444' },
+                                    { name: 'Commitment', score: commitment, icon: '✅', color: commitment >= 4 ? '#10b981' : commitment >= 3 ? '#f59e0b' : '#ef4444' },
+                                    { name: 'Accountability', score: accountability, icon: '📋', color: accountability >= 4 ? '#10b981' : accountability >= 3 ? '#f59e0b' : '#ef4444' },
+                                    { name: 'Results Focus', score: results, icon: '🎯', color: results >= 4 ? '#10b981' : results >= 3 ? '#f59e0b' : '#ef4444' }
+                                ].map(area => `
+                                    <div style="display: flex; align-items: center; gap: 15px; padding: 15px; background: white; border-radius: 8px; border-left: 4px solid ${area.color};">
+                                        <div style="font-size: 2em;">${area.icon}</div>
+                                        <div style="flex: 1;">
+                                            <div style="font-weight: 600; margin-bottom: 5px;">${area.name}</div>
+                                            <div style="display: flex; gap: 5px;">
+                                                ${[1,2,3,4,5].map(i => `
+                                                    <div style="width: 40px; height: 8px; background: ${i <= area.score ? area.color : '#e0e0e0'}; border-radius: 4px;"></div>
+                                                `).join('')}
+                                            </div>
+                                        </div>
+                                        <div style="font-size: 1.5em; font-weight: 700; color: ${area.color};">
+                                            ${area.score.toFixed(1)}/5
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+
+                            <div style="margin-top: 25px; padding: 20px; background: ${teamOverall >= 4 ? '#d1fae5' : teamOverall >= 3 ? '#fef3c7' : '#fee2e2'}; border-radius: 12px;">
+                                <h5 style="color: #333; margin-bottom: 10px;">📊 Overall Team Health: ${teamOverall.toFixed(1)}/5.0</h5>
+                                <p style="color: #555; line-height: 1.6; margin: 0;">
+                                    ${teamOverall >= 4 
+                                        ? '🏆 Strong team! Focus on maintaining high standards and continuous improvement.'
+                                        : teamOverall >= 3 
+                                        ? '⚠️ Solid foundation with room to grow. Focus on the lowest-scoring areas first.'
+                                        : '🚨 Critical gaps exist. Start with trust-building and creating psychological safety.'}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Integration & Next Steps -->
+                    <div class="results-section">
+                        <h3>🚀 Your Integrated Profile</h3>
+                        <div class="archetype-result">
+                            <div class="archetype-description">
+                                <strong>You are a ${worker.name.split(' ')[1]} ${leadership.name.split(' ')[1]}</strong> 
+                                — combining ${workerType === 'sprinter' ? 'high-intensity bursts' : workerType === 'jogger' ? 'steady consistency' : 'deep endurance'} 
+                                with ${primaryLeadership.type === 'visionary' ? 'inspiring vision' : primaryLeadership.type === 'architect' ? 'systematic design' : primaryLeadership.type === 'facilitator' ? 'team development' : primaryLeadership.type === 'executor' ? 'relentless execution' : primaryLeadership.type === 'commander' ? 'decisive leadership' : 'people development'}.
+                            </div>
+                            
+                            <div style="margin-top: 25px; padding: 25px; background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; border-radius: 12px;">
+                                <h4 style="margin-bottom: 15px; font-size: 1.3em;">💡 Your Unique Advantage</h4>
+                                <p style="line-height: 1.7; margin: 0; opacity: 0.95;">
+                                    ${workerType === 'sprinter' && primaryLeadership.type === 'visionary' ? 'You create explosive momentum behind big ideas. Your ability to inspire AND execute in bursts makes you unstoppable in startup environments and turnarounds.' :
+                                      workerType === 'sprinter' && primaryLeadership.type === 'executor' ? 'You are a force of nature. Your combination of intensity and action-orientation makes you exceptional at crisis leadership and rapid execution.' :
+                                      workerType === 'jogger' && primaryLeadership.type === 'architect' ? 'You build systems that last. Your steady approach combined with design thinking creates sustainable excellence.' :
+                                      workerType === 'jogger' && primaryLeadership.type === 'facilitator' ? 'You create stable, high-trust teams. Your consistency and people-focus build cultures that endure.' :
+                                      workerType === 'ultrarunner' && primaryLeadership.type === 'architect' ? 'You are a master builder. Your endurance and systems-thinking create transformational, lasting change.' :
+                                      workerType === 'ultrarunner' && primaryLeadership.type === 'coach' ? 'You develop leaders who develop leaders. Your patience and coaching create compounding impact over time.' :
+                                      'Your unique combination of work style and leadership approach creates distinctive value. Lean into it.'}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             `;
             
             document.getElementById('prevBtn').style.display = 'none';
             document.getElementById('nextBtn').style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
