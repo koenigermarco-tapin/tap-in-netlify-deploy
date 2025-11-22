@@ -443,7 +443,7 @@
             }
             
             html += `
-                <div class="question-card">`
+                <div class="question-card">
                     <div class="question-number">Frage ${index + 1} von 20</div>
                     <div class="question-text">${q.question}</div>
                     <div class="scale-options" id="scaleContainer">
@@ -458,6 +458,7 @@
                 </div>
             `;
             
+            container.innerHTML = html;
             container.innerHTML = html;
             document.getElementById('currentQ').textContent = index + 1;
             updateProgress();
