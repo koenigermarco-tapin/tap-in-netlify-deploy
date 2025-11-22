@@ -497,21 +497,7 @@
             }
             
             html += `
-                <div class="question-card">`;
-            
-            // Show per-question insight FIRST (before the question)
-            if (insights[index]) {
-                html += `
-                    <div class="insight-card" style="margin-bottom: 20px;">
-                        <div class="insight-icon">${insights[index].icon}</div>
-                        <div class="insight-title">${insights[index].title}</div>
-                        <div class="insight-content">${insights[index].content}</div>
-                        <div class="insight-quote">${insights[index].quote}</div>
-                    </div>
-                `;
-            }
-            
-            html += `
+                <div class="question-card">
                     <div class="question-number">Question ${index + 1} of 20</div>
                     <div class="question-text">${q.question}</div>
                     <div class="scale-options" id="scaleContainer">
@@ -522,6 +508,7 @@
                             </div>
                         `).join('')}
                     </div>
+                    <div id="insightContainer"></div>
                 </div>
             `;
             
@@ -602,14 +589,13 @@
             }
             
             updateSliderVisual(value);
-            document.getElementById('nextBtn').disabled = false;
             
-            // Auto-advance to next question after selection
-            if (currentQuestionIndex < questions.length - 1) {
-                setTimeout(() => {
-                    nextQuestion();
-                }, 300);
+            // Show insight AFTER selection (like work-life balance)
+            if (insights[currentQuestionIndex]) {
+                showInsight(insights[currentQuestionIndex]);
             }
+            
+            document.getElementById('nextBtn').disabled = false;
         }
 
         function nextQuestion() {
@@ -643,6 +629,23 @@
             if (currentQuestionIndex === questions.length - 1) {
                 document.getElementById('nextBtn').textContent = 'See Results 🎯';
             }
+        }
+
+        function showInsight(insight) {
+            const container = document.getElementById('insightContainer');
+            if (!container) return;
+            
+            container.innerHTML = `
+                <div class="insight-card" style="margin-top: 20px; animation: slideIn 0.3s ease-out;">
+                    <div class="insight-icon">${insight.icon}</div>
+                    <div class="insight-title">${insight.title}</div>
+                    <div class="insight-content">${insight.content}</div>
+                    <div class="insight-quote">${insight.quote}</div>
+                </div>
+            `;
+            
+            // Smooth scroll to show the insight
+            container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
         function showResults() {
