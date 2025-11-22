@@ -791,23 +791,32 @@
                     }
                     
                     function convertToCSV(data) {
-                        let csv = 'Team Dynamics Assessment Results\n';
-                        csv += `Date,${data.timestamp}\n`;
-                        csv += `Overall Score,${data.totalScore}/${data.maxScore}\n`;
-                        csv += `Team Health,${data.levelText}\n`;
+                        let csv = 'Team Dynamics Assessment Results
+';
+                        csv += `Date,${data.timestamp}
+`;
+                        csv += `Overall Score,${data.totalScore}/${data.maxScore}
+`;
+                        csv += `Team Health,${data.levelText}
+`;
                         csv += '\n';
                         
                         csv += 'Category Scores\n';
                         csv += 'Category,Score,Max,Percentage\n';
                         data.categories.forEach(cat => {
-                            csv += `${cat.name},${cat.score},${cat.maxScore},${cat.percentage}%\n`;
+                            csv += `${cat.name},${cat.score},${cat.maxScore},${cat.percentage}%
+`;
                         });
                         
-                        csv += '\nDetailed Responses\n';
-                        csv += 'Question #,Category,Question,Score,Max\n';
+                        csv += '
+Detailed Responses
+';
+                        csv += 'Question #,Category,Question,Score,Max
+';
                         data.details.forEach(row => {
                             const question = row.Question.replace(/"/g, '""');
-                            csv += `${row['Question #']},${row.Category},"${question}",${row.Score},${row['Max Score']}\n`;
+                            csv += `${row['Question #']},${row.Category},"${question}",${row.Score},${row['Max Score']}
+`;
                         });
                         
                         return csv;
@@ -986,7 +995,9 @@ How healthy is YOUR team?`;
                     }
 
                     function copyShareLink() {
-                        const shareText = getShareText() + '\n\n' + window.location.href;
+                        const shareText = getShareText() + '
+
+' + window.location.href;
                         navigator.clipboard.writeText(shareText).then(() => {
                             const btn = event.target;
                             const originalText = btn.textContent;

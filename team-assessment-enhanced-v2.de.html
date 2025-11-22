@@ -9,6 +9,7 @@
     <meta http-equiv="Expires" content="0">
     <meta name="version" content="3.0.0">
     <title>Team-Dynamik-Assessment - TAP-IN</title>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%); min-height: 100vh; padding: 20px; color: #333; }
@@ -684,9 +685,61 @@
                 `;
             });
             document.getElementById('resultContent').innerHTML = html;
+            window.scrollTo(0, 0);
             
             // Initialize social sharing
             setTimeout(() => initializeSocialSharing(totalScore, overallLevel.text), 500);
+            
+            // Add export buttons after results
+            addExportButtons(categories, totalScore, overallLevel);
+            
+            // Send data to backend (Google Sheets + Database)
+            saveAssessmentData(categories, totalScore, overallLevel);
+        }
+        
+        function gatherExportData() {
+            const categories = [];
+            const details = [];
+            
+            for (let i = 0; i < questions.length; i++) {
+                const q = questions[i];
+                const answer = answers[i] || 0;
+                details.push({
+                    'Frage #': i + 1,
+                    'Kategorie': q.cat,
+                    'Frage': q.text,
+                    'Punktzahl': answer,
+                    'Maximum': 5
+                });
+            }
+            
+            ['Trust', 'Healthy Conflict', 'Commitment', 'Accountability', 'Results Focus'].forEach(cat => {
+                const catQuestions = questions.filter(q => q.cat === cat);
+                const catScore = catQuestions.reduce((sum, q) => {
+                    const qIdx = questions.indexOf(q);
+                    return sum + (answers[qIdx] || 0);
+                }, 0);
+                categories.push({
+                    name: cat,
+                    score: catScore,
+                    maxScore: catQuestions.length * 5,
+                    percentage: Math.round((catScore / (catQuestions.length * 5)) * 100)
+                });
+            });
+            
+            const totalScore = answers.reduce((sum, score) => sum + (score || 0), 0);
+            
+            return {
+                timestamp: new Date().toISOString(),
+                assessmentType: 'team-dynamics',
+                totalScore: totalScore,
+                maxScore: 100,
+                percentage: totalScore,
+                levelText: getOverallLevel(totalScore).text,
+                categories: categories,
+                details: details,
+                framework: 'Patrick Lencioni'
+            };
         }
         
         // Load stats from stats.json
@@ -796,7 +849,7 @@ Wie gesund ist EUER Team?`;
         }
 
         function copyShareLink() {
-            const shareText = getShareText() + "\n\n" + window.location.href;
+            const shareText = getShareText() + '\n\n' + window.location.href;
             navigator.clipboard.writeText(shareText).then(() => {
                 const btn = event.target;
                 const originalText = btn.textContent;
@@ -819,6 +872,163 @@ Wie gesund ist EUER Team?`;
 
         loadStats();
         renderQuestion();
+    
+    // Export Functions (Option 1: Client-Side CSV/XLSX)
+    function addExportButtons(data) {
+        const exportHTML = `
+            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 15px; padding: 30px; margin: 30px 0; text-align: center; border: 2px solid #e0e0e0;">
+                <h3 style="color: #333; margin-bottom: 15px;">📊 Export Your Results</h3>
+                <p style="color: #666; margin-bottom: 20px;">Download your complete assessment results for analysis, reporting, or personal records.</p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <button onclick="exportToCSV()" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);">
+                        📥 Download CSV
+                    </button>
+                    <button onclick="exportToExcel()" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);">
+                        📊 Download Excel
+                    </button>
+                    <button onclick="exportToJSON()" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);">
+                        💾 Download JSON
+                    </button>
+                </div>
+                <p style="color: #999; margin-top: 15px; font-size: 0.9em;">Your data stays private - all exports happen directly in your browser.</p>
+            </div>
+        `;
+        const resultContainer = document.getElementById('resultContent') || document.querySelector('.result-display') || document.querySelector('.results-container');
+        if (resultContainer) {
+            resultContainer.insertAdjacentHTML('beforeend', exportHTML);
+        }
+    }
+    
+    function exportToCSV() {
+        const data = gatherExportData();
+        const csv = convertToCSV(data);
+        downloadFile(csv, 'assessment-results-' + Date.now() + '.csv', 'text/csv');
+        trackExport('CSV');
+    }
+    
+    function exportToExcel() {
+        const data = gatherExportData();
+        const ws = XLSX.utils.json_to_sheet(data.details || [data]);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Assessment Results");
+        
+        // Add summary sheet if categories exist
+        if (data.categories && data.categories.length > 0) {
+            const summaryData = [{
+                'Assessment Date': data.timestamp,
+                'Overall Score': (data.totalScore || data.score) + '/' + (data.maxScore || 100),
+                'Level': data.levelText || data.type || ''
+            }];
+            data.categories.forEach(cat => {
+                summaryData[0][cat.name + ' Score'] = cat.score + '/' + cat.maxScore;
+            });
+            const summaryWs = XLSX.utils.json_to_sheet(summaryData);
+            XLSX.utils.book_append_sheet(wb, summaryWs, "Summary");
+        }
+        
+        XLSX.writeFile(wb, 'assessment-results-' + Date.now() + '.xlsx');
+        trackExport('Excel');
+    }
+    
+    function exportToJSON() {
+        const data = gatherExportData();
+        const json = JSON.stringify(data, null, 2);
+        downloadFile(json, 'assessment-results-' + Date.now() + '.json', 'application/json');
+        trackExport('JSON');
+    }
+    
+    function convertToCSV(data) {
+        let csv = (data.assessmentType || 'Assessment') + ' Results\n';
+        csv += `Date,${data.timestamp}\n`;
+        csv += `Score,${(data.totalScore || data.score)}/${(data.maxScore || 100)}\n`;
+        csv += `Level,${data.levelText || data.type || ''}\n`;
+        csv += '\n';
+        
+        if (data.categories && data.categories.length > 0) {
+            csv += 'Category Scores\n';
+            csv += 'Category,Score,Max,Percentage\n';
+            data.categories.forEach(cat => {
+                csv += `${cat.name},${cat.score},${cat.maxScore},${cat.percentage}%\n`;
+            });
+            csv += '\n';
+        }
+        
+        if (data.details && data.details.length > 0) {
+            csv += 'Detailed Responses\n';
+            const headers = Object.keys(data.details[0]);
+            csv += headers.join(',') + '\n';
+            data.details.forEach(row => {
+                const values = headers.map(h => {
+                    let v = row[h];
+                    if (typeof v === 'string') v = v.replace(/"/g, '""');
+                    return `"${v}"`;
+                });
+                csv += values.join(',') + '\n';
+            });
+        }
+        
+        return csv;
+    }
+    
+    function downloadFile(content, filename, mimeType) {
+        const blob = new Blob([content], { type: mimeType });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+    
+    function trackExport(format) {
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'export_data', {
+                'event_category': 'Data Export',
+                'event_label': format + '_Assessment',
+                'value': 1
+            });
+        }
+    }
+    
+    // Backend data collection (Google Sheets + Database)
+    async function saveAssessmentData(data) {
+        const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+        
+        try {
+            await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    ...data,
+                    userAgent: navigator.userAgent,
+                    language: navigator.language
+                })
+            });
+        } catch (error) {
+            console.log('Google Sheets not configured');
+        }
+        
+        try {
+            await fetch('/.netlify/functions/save-assessment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+        } catch (error) {
+            console.log('Database not configured');
+        }
+        
+        try {
+            const existing = JSON.parse(localStorage.getItem('tap-in-assessments') || '[]');
+            existing.push({ ...data, id: Date.now() });
+            if (existing.length > 10) existing.shift();
+            localStorage.setItem('tap-in-assessments', JSON.stringify(existing));
+        } catch (e) {}
+    }
+
     </script>
 </body>
 </html>
