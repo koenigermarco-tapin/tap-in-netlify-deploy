@@ -282,6 +282,101 @@
 
         let currentQuestionIndex = 0;
         let answers = {};
+                    // Progress Saving System
+                    const STORAGE_KEY = 'work-life-progress';
+                    
+                    function saveProgress() {
+                        const progressData = {
+                            currentQuestion,
+                            answers,
+                            timestamp: new Date().toISOString(),
+                            version: '3.0.0'
+                        };
+                        try {
+                            localStorage.setItem(STORAGE_KEY, JSON.stringify(progressData));
+                        } catch (e) {
+                            console.log('Could not save progress');
+                        }
+                    }
+                    
+                    function loadProgress() {
+                        try {
+                            const saved = localStorage.getItem(STORAGE_KEY);
+                            if (saved) {
+                                const data = JSON.parse(saved);
+                                const savedDate = new Date(data.timestamp);
+                                const daysSince = (new Date() - savedDate) / (1000 * 60 * 60 * 24);
+                                if (daysSince < 7 && data.version === '3.0.0') {
+                                    return data;
+                                }
+                            }
+                        } catch (e) {
+                            console.log('Could not load progress');
+                        }
+                        return null;
+                    }
+                    
+                    function clearProgress() {
+                        try {
+                            localStorage.removeItem(STORAGE_KEY);
+                        } catch (e) {}
+                    }
+                    
+                    function showResumePrompt() {
+                        const saved = loadProgress();
+                        if (!saved) return;
+                        
+                        const completedQuestions = Object.keys(saved.answers).length;
+                        const totalQuestions = 20;
+                        const percentage = Math.round((completedQuestions / totalQuestions) * 100);
+                        
+                        const resumeHTML = `
+                            <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 9999; display: flex; align-items: center; justify-content: center; animation: fadeIn 0.3s ease;" id="resumeModal">
+                                <div style="background: white; border-radius: 20px; padding: 40px; max-width: 500px; text-align: center; animation: slideUp 0.3s ease;">
+                                    <div style="font-size: 3em; margin-bottom: 20px;">🎯</div>
+                                    <h2 style="color: #a93226; margin-bottom: 15px;">Welcome Back!</h2>
+                                    <p style="color: #666; font-size: 1.1em; margin-bottom: 10px;">You've already completed <strong>${completedQuestions} of ${totalQuestions} questions</strong></p>
+                                    <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
+                                        <div style="font-size: 2.5em; font-weight: bold; color: #a93226; margin-bottom: 5px;">${percentage}%</div>
+                                        <div style="color: #666;">Progress Complete</div>
+                                    </div>
+                                    <div style="display: flex; gap: 15px; margin-top: 25px;">
+                                        <button onclick="resumeAssessment()" style="flex: 1; background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; border: none; padding: 15px 20px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer;">
+                                            ▶️ Resume
+                                        </button>
+                                        <button onclick="startFresh()" style="flex: 1; background: white; color: #666; border: 2px solid #e0e0e0; padding: 15px 20px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer;">
+                                            🔄 Start Over
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        
+                        document.body.insertAdjacentHTML('beforeend', resumeHTML);
+                    }
+                    
+                    function resumeAssessment() {
+                        const saved = loadProgress();
+                        if (saved) {
+                            currentQuestion = saved.currentQuestion;
+                            answers = saved.answers;
+                            document.getElementById('resumeModal')?.remove();
+                            setTimeout(() => showResumePrompt(), 500);
+                    renderQuestion();
+                            updateProgress();
+                        }
+                    }
+                    
+                    function startFresh() {
+                        clearProgress();
+                        currentQuestion = 0;
+                        answers = {};
+                        document.getElementById('resumeModal')?.remove();
+                        renderQuestion();
+                        updateProgress();
+                    }
+                    
+
         let isDragging = false;
 
         function renderQuestion(index) {
@@ -461,6 +556,7 @@
         }
 
         function showResults() {
+                        clearProgress();
             const scores = {
                 energy: 0,
                 boundaries: 0,
