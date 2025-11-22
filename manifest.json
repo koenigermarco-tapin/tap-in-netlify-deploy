@@ -1,0 +1,37 @@
+{
+  "name": "TAP-IN Leadership Assessments",
+  "short_name": "TAP-IN",
+  "description": "Track your leadership development journey with comprehensive assessments",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2d2d2d",
+  "theme_color": "#a93226",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "education", "business"],
+  "shortcuts": [
+    {
+      "name": "My Dashboard",
+      "url": "/dashboard.html",
+      "description": "View your assessment history"
+    },
+    {
+      "name": "New Assessment",
+      "url": "/combined-leadership-profile.html",
+      "description": "Take complete leadership profile"
+    }
+  ]
+}
