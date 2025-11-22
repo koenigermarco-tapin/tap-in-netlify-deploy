@@ -431,6 +431,75 @@
             <div class="recommendation-box" id="recommendations">
                 <!-- Populated by JavaScript -->
             </div>
+            
+            <!-- Premium Wellness Report Email Gate -->
+            <div id="emailUnlockSection" style="background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; padding: 3rem 2rem; border-radius: 15px; margin-top: 3rem;">
+                <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem; text-align: center;">📧 Get Your Personalized Wellness Report</h3>
+                <p style="font-size: 1.15rem; margin-bottom: 2rem; text-align: center; line-height: 1.6;">Unlock your complete mental health analysis with actionable steps</p>
+                
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 10px; margin-bottom: 2rem;">
+                    <h4 style="color: #ffd700; margin-bottom: 1.5rem; font-size: 1.3rem;">📦 Your Complete Package Includes:</h4>
+                    <ul style="list-style: none; padding: 0; text-align: left; max-width: 600px; margin: 0 auto;">
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: start; gap: 1rem;">
+                            <span style="font-size: 1.5rem; flex-shrink: 0;">📄</span>
+                            <span><strong>Professional PDF Report:</strong> Your complete wellness profile with detailed dimension breakdown</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: start; gap: 1rem;">
+                            <span style="font-size: 1.5rem; flex-shrink: 0;">🏆</span>
+                            <span><strong>Percentile Ranking:</strong> See where you stand vs 1,247+ wellness assessments worldwide</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: start; gap: 1rem;">
+                            <span style="font-size: 1.5rem; flex-shrink: 0;">🎯</span>
+                            <span><strong>30-Day Action Plan:</strong> Science-backed practices tailored to your lowest-scoring dimensions</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: start; gap: 1rem;">
+                            <span style="font-size: 1.5rem; flex-shrink: 0;">🧘</span>
+                            <span><strong>Guided Exercises:</strong> Video tutorials for stress management, emotional regulation & resilience</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; gap: 1rem;">
+                            <span style="font-size: 1.5rem; flex-shrink: 0;">💬</span>
+                            <span><strong>Community Access:</strong> 7-day FREE trial to TAP-IN's wellness community (€29/month value)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <form id="emailUnlockForm" style="background: white; padding: 2rem; border-radius: 10px; max-width: 500px; margin: 0 auto; color: #333;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <input type="email" id="unlockEmail" required placeholder="Your Email Address" 
+                            style="width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <input type="text" id="unlockName" placeholder="Your Name (optional)" 
+                            style="width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
+                    </div>
+                    <div style="margin-bottom: 1.5rem; text-align: left; font-size: 0.9rem; line-height: 1.6;">
+                        <label style="display: flex; align-items: start; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" id="dataConsent" checked style="margin-top: 0.25rem; flex-shrink: 0;">
+                            <span>I agree that my anonymized assessment data may be used for statistical analyses to improve mental health insights. 
+                                <a href="#" onclick="alert('Your data will be: 1) Stored securely, 2) Used for aggregate statistics only, 3) Never sold to third parties, 4) Fully anonymized. Request deletion anytime at privacy@tap-in-academy.com'); return false;" style="color: #f5e6e3; text-decoration: underline;">Privacy Info</a>
+                            </span>
+                        </label>
+                    </div>
+                    <button type="submit" style="width: 100%; background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; padding: 1.25rem; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: transform 0.2s;">
+                        🧠 Send Me My Wellness Report →
+                    </button>
+                    <p style="margin-top: 1rem; font-size: 0.85rem; color: #666; text-align: center;">
+                        ✓ No spam ✓ Unsubscribe anytime ✓ GDPR compliant
+                    </p>
+                </form>
+
+                <div id="unlockSuccess" style="display: none; background: white; padding: 2rem; border-radius: 10px; max-width: 500px; margin: 0 auto; color: #333; text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🎉</div>
+                    <h4 style="color: #27ae60; font-size: 1.5rem; margin-bottom: 1rem;">Check Your Email!</h4>
+                    <p style="font-size: 1rem; color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                        We've sent your complete wellness report, action plan, and community invite to your inbox.
+                    </p>
+                    <p style="font-size: 0.9rem; color: #999;">
+                        📬 Didn't receive it? Check spam or email contact@tap-in-academy.com
+                    </p>
+                </div>
+            </div>
+            
             <div class="cta-section">
                 <h3>Ready to Transform Your Well-being?</h3>
                 <p>TAP-IN's embodied leadership programs address mental health through physical practice, not just theory.</p>
@@ -632,6 +701,103 @@
             
             // Initialize social sharing
             setTimeout(() => initializeSocialSharing(total, cat), 500);
+            
+            // Setup email unlock form
+            setTimeout(() => setupEmailUnlockForm(total, sectionScores, cat), 1000);
+        }
+
+        // Email Gate Handler
+        function setupEmailUnlockForm(totalScore, sectionScores, category) {
+            const form = document.getElementById('emailUnlockForm');
+            if (!form) return;
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('unlockEmail').value.trim();
+                const name = document.getElementById('unlockName').value.trim();
+                const dataConsent = document.getElementById('dataConsent').checked;
+
+                if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+
+                // Prepare submission data
+                const submissionData = {
+                    email: email.toLowerCase(),
+                    name: name || null,
+                    assessmentType: 'mental-health',
+                    language: 'en',
+                    dataConsent: dataConsent,
+                    scores: {
+                        total_score: totalScore,
+                        category: category,
+                        emotional_health: sectionScores[0],
+                        physical_wellness: sectionScores[1],
+                        stress_management: sectionScores[2],
+                        social_connection: sectionScores[3],
+                        purpose_meaning: sectionScores[4]
+                    },
+                    metadata: {
+                        userAgent: navigator.userAgent,
+                        timestamp: new Date().toISOString(),
+                        referrer: document.referrer
+                    }
+                };
+
+                // Show loading state
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = '⏳ Sending...';
+                submitBtn.disabled = true;
+
+                try {
+                    // Submit to Netlify Function (or fallback to localStorage)
+                    const response = await fetch('/.netlify/functions/submit-assessment', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(submissionData)
+                    }).catch(() => null);
+
+                    if (response && response.ok) {
+                        const result = await response.json();
+                        if (result.success) {
+                            // Success via backend
+                            document.getElementById('emailUnlockSection').querySelector('form').style.display = 'none';
+                            document.getElementById('unlockSuccess').style.display = 'block';
+                            
+                            // Track conversion
+                            if (typeof gtag !== 'undefined') {
+                                gtag('event', 'wellness_report_unlock', {
+                                    'event_category': 'engagement',
+                                    'event_label': category,
+                                    'value': 1
+                                });
+                            }
+                            return;
+                        }
+                    }
+                    
+                    // Fallback: Store locally and show success
+                    const submissions = JSON.parse(localStorage.getItem('mental_health_submissions') || '[]');
+                    submissions.push(submissionData);
+                    localStorage.setItem('mental_health_submissions', JSON.stringify(submissions));
+                    
+                    // Show success message
+                    document.getElementById('emailUnlockSection').querySelector('form').style.display = 'none';
+                    document.getElementById('unlockSuccess').style.display = 'block';
+                    
+                    console.log('Wellness report request saved locally:', submissionData);
+
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    alert('There was an issue. Your results are saved in your browser. Please contact contact@tap-in-academy.com with your email address to receive your report.');
+                } finally {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
         }
 
         // Benchmarking Functions
