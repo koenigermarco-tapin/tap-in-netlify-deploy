@@ -968,6 +968,23 @@
                         </div>
                     `).join('')}
                 </div>
+
+                <!-- Download Sektion -->
+                <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 15px; padding: 30px; margin: 30px 0; text-align: center; border: 2px solid #e0e0e0;">
+                    <h3 style="color: #333; margin-bottom: 15px;">📊 Ergebnisse Exportieren</h3>
+                    <p style="color: #666; margin-bottom: 20px;">Lade dein Team-Impact-Profil für deine Unterlagen, Berichte oder Coaching-Sessions herunter.</p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <button onclick="exportToCSV()" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);">
+                            📥 CSV Download
+                        </button>
+                        <button onclick="exportToExcel()" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);">
+                            📊 Excel Download
+                        </button>
+                        <button onclick="exportToJSON()" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);">
+                            💾 JSON Download
+                        </button>
+                    </div>
+                </div>
                 
                 <div class="type-description">
                     <h3>Nächste Schritte</h3>
@@ -985,6 +1002,92 @@
             `;
             
             window.scrollTo(0, 0);
+        }
+
+        // Export Funktionen
+        function exportToCSV() {
+            const scores = calculateScores();
+            const sortedScores = Object.entries(scores)
+                .map(([type, score]) => ({
+                    type,
+                    percentage: Math.round((score / totalAnswered) * 100)
+                }))
+                .sort((a, b) => b.percentage - a.percentage);
+            
+            let csv = 'Team-Impact-Profil Assessment Ergebnisse\n\n';
+            csv += 'Assessment-Typ,Team-Impact-Profil\n';
+            csv += 'Datum,' + new Date().toLocaleDateString('de-DE') + '\n';
+            csv += 'Uhrzeit,' + new Date().toLocaleTimeString('de-DE') + '\n\n';
+            csv += 'Impact-Typ,Prozentsatz\n';
+            
+            sortedScores.forEach(item => {
+                csv += `${item.type},${item.percentage}%\n`;
+            });
+            
+            csv += '\nPrimärer Typ,' + sortedScores[0].type + '\n';
+            
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'team-impact-profil-' + new Date().toISOString().slice(0,10) + '.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function exportToExcel() {
+            const scores = calculateScores();
+            const sortedScores = Object.entries(scores)
+                .map(([type, score]) => ({
+                    type,
+                    percentage: Math.round((score / totalAnswered) * 100)
+                }))
+                .sort((a, b) => b.percentage - a.percentage);
+            
+            let html = '<html><head><meta charset="utf-8"><title>Team-Impact-Profil Ergebnisse</title></head><body>';
+            html += '<h1>Team-Impact-Profil Assessment Ergebnisse</h1>';
+            html += '<p><strong>Datum:</strong> ' + new Date().toLocaleDateString('de-DE') + '</p>';
+            html += '<p><strong>Uhrzeit:</strong> ' + new Date().toLocaleTimeString('de-DE') + '</p>';
+            html += '<h2>Dein Impact-Mix</h2>';
+            html += '<table border="1" cellpadding="10" cellspacing="0">';
+            html += '<tr><th>Impact-Typ</th><th>Prozentsatz</th></tr>';
+            
+            sortedScores.forEach(item => {
+                html += `<tr><td>${item.type}</td><td>${item.percentage}%</td></tr>`;
+            });
+            
+            html += '</table>';
+            html += '<p><strong>Primärer Typ:</strong> ' + sortedScores[0].type + '</p>';
+            html += '</body></html>';
+            
+            const blob = new Blob([html], { type: 'application/vnd.ms-excel' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'team-impact-profil-' + new Date().toISOString().slice(0,10) + '.xls';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function exportToJSON() {
+            const scores = calculateScores();
+            const data = {
+                assessmentType: 'Team-Impact-Profil',
+                datum: new Date().toISOString(),
+                ergebnisse: {
+                    scores: scores,
+                    antworten: answers
+                }
+            };
+            
+            const json = JSON.stringify(data, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'team-impact-profil-' + new Date().toISOString().slice(0,10) + '.json';
+            a.click();
+            window.URL.revokeObjectURL(url);
         }
 
         // Assessment will be initialized when user clicks "Start Assessment" button

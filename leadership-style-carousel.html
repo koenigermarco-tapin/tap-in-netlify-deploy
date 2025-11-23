@@ -1167,9 +1167,6 @@
             answers[currentQuestion] = value;
             renderQuestion();
             
-            // 🎮 Show motivation message
-            showMotivationMessage();
-            
             // Auto-advance after short delay
             setTimeout(() => {
                 if (currentQuestion < questions.length - 1) {
@@ -1472,6 +1469,23 @@
                         </div>
                     `).join('')}
                 </div>
+
+                <!-- Download Section -->
+                <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 15px; padding: 30px; margin: 30px 0; text-align: center; border: 2px solid #e0e0e0;">
+                    <h3 style="color: #333; margin-bottom: 15px;">📊 Export Your Results</h3>
+                    <p style="color: #666; margin-bottom: 20px;">Download your Team Impact Profile for your records, reporting, or coaching sessions.</p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <button onclick="exportToCSV()" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);">
+                            📥 Download CSV
+                        </button>
+                        <button onclick="exportToExcel()" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);">
+                            📊 Download Excel
+                        </button>
+                        <button onclick="exportToJSON()" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);">
+                            💾 Download JSON
+                        </button>
+                    </div>
+                </div>
             `;
 
             document.getElementById('resultContent').innerHTML = resultsHtml;
@@ -1630,11 +1644,7 @@
                 toast.classList.add('show');
                 setTimeout(() => toast.classList.remove('show'), 4000);
                 
-                // Play sound if available
-                try {
-                    const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBkSX3fPTgjMGHm7A7+OZRQ0PV6vo66FMEgoRZbzo55xLEAhQo+PyvWkcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBkSX3fPTgjMGHm7A7+OZRQ0PV6vo66FMEgoRZbzo55xLEAhQo+PyvWkcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBkSX3fPTgjMGHm7A7+OZRQ0PV6vo66FMEgoRZbzo55xLEAhQo+PyvWkcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBkSX3fPTgjMGHm7A7+OZRQ0PV6vo66FMEg==');
-                    audio.play().catch(() => {});
-                } catch (e) {}
+                // Sound removed per user feedback
             },
             
             // Unlock achievement
@@ -1770,6 +1780,87 @@
             `;
             
             document.getElementById('resultContent').innerHTML += miniLessonHtml;
+        }
+
+        // Export Functions
+        function exportToCSV() {
+            const scores = calculateScores();
+            const percentages = scores.percentages;
+            const sortedTypes = Object.entries(percentages).sort((a, b) => b[1] - a[1]);
+            
+            let csv = 'Team Impact Profile Assessment Results\n\n';
+            csv += 'Assessment Type,Team Impact Profile\n';
+            csv += 'Date,' + new Date().toLocaleDateString() + '\n';
+            csv += 'Time,' + new Date().toLocaleTimeString() + '\n\n';
+            csv += 'Impact Type,Percentage\n';
+            
+            sortedTypes.forEach(([type, pct]) => {
+                const typeName = type.charAt(0).toUpperCase() + type.slice(1);
+                csv += `${typeName},${pct}%\n`;
+            });
+            
+            csv += '\nPrimary Type,' + sortedTypes[0][0].charAt(0).toUpperCase() + sortedTypes[0][0].slice(1) + '\n';
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'team-impact-profile-' + new Date().toISOString().slice(0,10) + '.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function exportToExcel() {
+            const scores = calculateScores();
+            const percentages = scores.percentages;
+            const sortedTypes = Object.entries(percentages).sort((a, b) => b[1] - a[1]);
+            
+            let html = '<html><head><meta charset="utf-8"><title>Team Impact Profile Results</title></head><body>';
+            html += '<h1>Team Impact Profile Assessment Results</h1>';
+            html += '<p><strong>Date:</strong> ' + new Date().toLocaleDateString() + '</p>';
+            html += '<p><strong>Time:</strong> ' + new Date().toLocaleTimeString() + '</p>';
+            html += '<h2>Your Impact Mix</h2>';
+            html += '<table border="1" cellpadding="10" cellspacing="0">';
+            html += '<tr><th>Impact Type</th><th>Percentage</th></tr>';
+            
+            sortedTypes.forEach(([type, pct]) => {
+                const typeName = type.charAt(0).toUpperCase() + type.slice(1);
+                html += `<tr><td>${typeName}</td><td>${pct}%</td></tr>`;
+            });
+            
+            html += '</table>';
+            html += '<p><strong>Primary Type:</strong> ' + sortedTypes[0][0].charAt(0).toUpperCase() + sortedTypes[0][0].slice(1) + '</p>';
+            html += '</body></html>';
+            
+            const blob = new Blob([html], { type: 'application/vnd.ms-excel' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'team-impact-profile-' + new Date().toISOString().slice(0,10) + '.xls';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function exportToJSON() {
+            const scores = calculateScores();
+            const data = {
+                assessmentType: 'Team Impact Profile',
+                date: new Date().toISOString(),
+                results: {
+                    percentages: scores.percentages,
+                    primaryType: Object.entries(scores.percentages).sort((a, b) => b[1] - a[1])[0][0],
+                    answers: answers
+                }
+            };
+            
+            const json = JSON.stringify(data, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'team-impact-profile-' + new Date().toISOString().slice(0,10) + '.json';
+            a.click();
+            window.URL.revokeObjectURL(url);
         }
     </script>
 </body>

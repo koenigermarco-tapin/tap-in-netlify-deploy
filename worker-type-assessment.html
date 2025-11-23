@@ -127,10 +127,16 @@
             </div>
 
             <p style="margin-top: 15px; font-style: italic; color: #94a3b8; font-size: 0.9em; text-align: center;">"The key is not to prioritize what's on your schedule, but to schedule your priorities." — Stephen Covey</p>
+            
+            <div style="text-align: center; margin-top: 25px;">
+                <button class="btn btn-primary" onclick="startAssessment()" style="font-size: 1.2em; padding: 18px 40px;">
+                    Start Assessment →
+                </button>
+            </div>
         </div>
 
         <!-- Progress Bar -->
-        <div class="progress-container">
+        <div class="progress-container" style="display: none;">
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
@@ -138,7 +144,7 @@
         </div>
 
         <!-- Assessment Form -->
-        <div id="assessmentForm">
+        <div id="assessmentForm" style="display: none;">
             <div class="assessment-card" id="questionCard">
                 <!-- Questions will be dynamically inserted here -->
             </div>
@@ -426,8 +432,10 @@
                             currentQuestion = saved.currentQuestion;
                             answers = saved.answers;
                             document.getElementById('resumeModal')?.remove();
-                            setTimeout(() => showResumePrompt(), 500);
-                    renderQuestion();
+                            document.getElementById('introSection').style.display = 'none';
+                            document.querySelector('.progress-container').style.display = 'block';
+                            document.getElementById('assessmentForm').style.display = 'block';
+                            renderQuestion();
                             updateProgress();
                         }
                     }
@@ -437,11 +445,20 @@
                         currentQuestion = 0;
                         answers = {};
                         document.getElementById('resumeModal')?.remove();
+                        document.getElementById('introSection').style.display = 'none';
+                        document.querySelector('.progress-container').style.display = 'block';
+                        document.getElementById('assessmentForm').style.display = 'block';
                         renderQuestion();
                         updateProgress();
                     }
-                    
-
+                
+            function startAssessment() {
+                document.getElementById('introSection').style.display = 'none';
+                document.querySelector('.progress-container').style.display = 'block';
+                document.getElementById('assessmentForm').style.display = 'block';
+                renderQuestion();
+                updateProgress();
+            }
 
         function renderQuestion() {
             const q = questions[currentQuestion];
@@ -898,9 +915,7 @@ What's YOUR worker type?`;
             }
 
             function copyShareLink() {
-                const shareText = getShareText() + '
-
-' + window.location.href;
+                const shareText = getShareText() + '\n\n' + window.location.href;
                 navigator.clipboard.writeText(shareText).then(() => {
                     const btn = event.target;
                     const originalText = btn.textContent;
@@ -922,7 +937,7 @@ What's YOUR worker type?`;
             }
 
             document.addEventListener('DOMContentLoaded', function() {
-                renderQuestion();
+                showResumePrompt();
             });
     
     // Export Functions (Option 1: Client-Side CSV/XLSX)
