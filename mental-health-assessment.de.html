@@ -127,16 +127,22 @@
                     </div>
                 </div>
                 <p style="margin-top: 15px; font-size: 0.9em; color: #666;">Basierend auf WHO Mental Health Frameworks, Stoischer Philosophie, CBT-Forschung und TAP-INs Embodied Wellness Ansatz.</p>
+                
+                <div style="text-align: center; margin-top: 25px;">
+                    <button class="btn btn-primary" type="button" onclick="startAssessment()" style="font-size: 1.2em; padding: 18px 50px;">
+                        Assessment starten →
+                    </button>
+                </div>
             </div>
 
-            <div class="progress-bar">
+            <div class="progress-bar" style="display: none;">
                 <div class="progress-text">Fortschritt: <span id="progressText">0/20</span></div>
                 <div class="progress-fill">
                     <div class="progress-fill-bar" id="progressBar"></div>
                 </div>
             </div>
 
-            <form id="healthForm">
+            <form id="healthForm" style="display: none;">
         <!-- SECTION 1: EMOTIONAL WELL-BEING -->
         <div class="section-header">
             <h3>💚 Abschnitt 1: Emotionales Wohlbefinden & Mentale Klarheit</h3>
@@ -555,9 +561,16 @@
         const totalQuestions = allQuestions.length;
         let current = 0;
 
-        // Hide all questions except the first
-        allQuestions.forEach((q, i) => { q.style.display = i === 0 ? '' : 'none'; });
-        updateProgress();
+        function startAssessment() {
+            document.getElementById('introSection').style.display = 'none';
+            document.querySelector('.progress-bar').style.display = 'block';
+            document.getElementById('healthForm').style.display = 'block';
+            // Initialize: hide all questions except the first
+            allQuestions.forEach((q, i) => { q.style.display = i === 0 ? '' : 'none'; });
+            updateProgress();
+        }
+
+        // Don't auto-initialize - wait for button click
 
         // Add Next/Back buttons dynamically
         allQuestions.forEach((q, i) => {

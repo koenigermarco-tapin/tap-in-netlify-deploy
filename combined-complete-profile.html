@@ -645,10 +645,16 @@
             <div class="note">
                 ⏱ <strong>Takes 18 minutes</strong> • 46 questions total • One question at a time
             </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn btn-primary" onclick="startAssessment()" style="font-size: 1.2em; padding: 18px 50px;">
+                    Start Complete Profile →
+                </button>
+            </div>
         </div>
 
         <!-- Overall Progress -->
-        <div class="overall-progress">
+        <div class="overall-progress" id="overallProgress" style="display: none;">
             <h3>Your Progress</h3>
             <div class="progress-bar">
                 <div class="progress-fill" id="overallProgressFill" style="width: 0%"></div>
@@ -677,7 +683,7 @@
         </div>
 
         <!-- Question Cards Container -->
-        <div id="questionsContainer"></div>
+        <div id="questionsContainer" style="display: none;"></div>
 
         <!-- Results Section -->
         <div class="results" id="results">
@@ -1127,9 +1133,16 @@
         // Initialize
         function init() {
             loadProgress();
+            // Don't auto-start - wait for user to click button
+            setupKeyboardNavigation();
+        }
+
+        function startAssessment() {
+            document.querySelector('.header .btn').parentElement.style.display = 'none';
+            document.getElementById('overallProgress').style.display = 'block';
+            document.getElementById('questionsContainer').style.display = 'block';
             renderCurrentQuestion();
             updateProgress();
-            setupKeyboardNavigation();
         }
 
         // Render Question

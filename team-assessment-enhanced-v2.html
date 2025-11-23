@@ -222,7 +222,7 @@
                         </p>
 
                         <div style="text-align: center; margin-top: 30px;">
-                            <button onclick="startAssessment()" style="background: linear-gradient(135deg, #a93226 0%, #8b2a1f 100%); color: white; border: none; padding: 18px 40px; font-size: 1.1em; border-radius: 12px; cursor: pointer; font-weight: 600; box-shadow: 0 4px 15px rgba(169, 50, 38, 0.3); transition: all 0.3s ease;">
+                            <button class="btn btn-primary" onclick="startAssessment()" style="font-size: 1.2em; padding: 18px 50px;">
                                 Start Assessment →
                             </button>
                         </div>
@@ -708,14 +708,6 @@
                             window.scrollTo(0, 0);
                         }
                     }
-                    
-                    function startAssessment() {
-                        document.querySelector('.intro-section').style.display = 'none';
-                        document.querySelector('.progress-container').style.display = 'block';
-                        document.getElementById('assessmentForm').style.display = 'block';
-                        renderQuestion();
-                        window.scrollTo(0, 0);
-                    }
                     function getScoreInterpretation(score, category) {
                         const interpretations = {
                             trust: {
@@ -1044,32 +1036,23 @@
                     }
                     
                     function convertToCSV(data) {
-                        let csv = 'Team Dynamics Assessment Results
-';
-                        csv += `Date,${data.timestamp}
-`;
-                        csv += `Overall Score,${data.totalScore}/${data.maxScore}
-`;
-                        csv += `Team Health,${data.levelText}
-`;
+                        let csv = 'Team Dynamics Assessment Results\n';
+                        csv += `Date,${data.timestamp}\n`;
+                        csv += `Overall Score,${data.totalScore}/${data.maxScore}\n`;
+                        csv += `Team Health,${data.levelText}\n`;
                         csv += '\n';
                         
                         csv += 'Category Scores\n';
                         csv += 'Category,Score,Max,Percentage\n';
                         data.categories.forEach(cat => {
-                            csv += `${cat.name},${cat.score},${cat.maxScore},${cat.percentage}%
-`;
+                            csv += `${cat.name},${cat.score},${cat.maxScore},${cat.percentage}%\n`;
                         });
                         
-                        csv += '
-Detailed Responses
-';
-                        csv += 'Question #,Category,Question,Score,Max
-';
+                        csv += '\nDetailed Responses\n';
+                        csv += 'Question #,Category,Question,Score,Max\n';
                         data.details.forEach(row => {
                             const question = row.Question.replace(/"/g, '""');
-                            csv += `${row['Question #']},${row.Category},"${question}",${row.Score},${row['Max Score']}
-`;
+                            csv += `${row['Question #']},${row.Category},"${question}",${row.Score},${row['Max Score']}\n`;
                         });
                         
                         return csv;
@@ -1284,9 +1267,7 @@ How healthy is YOUR team?`;
                     }
 
                     function copyShareLink() {
-                        const shareText = getShareText() + '
-
-' + window.location.href;
+                        const shareText = getShareText() + '\n\n' + window.location.href;
                         navigator.clipboard.writeText(shareText).then(() => {
                             const btn = event.target;
                             const originalText = btn.textContent;
@@ -1326,7 +1307,14 @@ How healthy is YOUR team?`;
                     // Check for saved progress and show resume prompt
                     setTimeout(() => showResumePrompt(), 500);
                     
-                    // Assessment will be initialized when user clicks "Start Assessment" button
+                    // Don't auto-start - wait for user to click button
+
+                function startAssessment() {
+                    document.querySelector('.intro-section').style.display = 'none';
+                    document.querySelector('.progress-container').style.display = 'block';
+                    document.getElementById('assessmentForm').style.display = 'block';
+                    renderQuestion();
+                }
                 </script>
             </body>
             </html>

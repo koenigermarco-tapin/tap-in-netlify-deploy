@@ -105,21 +105,24 @@
             <!-- Intro Section (shows before Q1) -->
             <div id="introSection" style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #a93226;">
                 <h3 style="color: #333; margin-bottom: 15px;">⚖️ Why Work-Life Balance Matters</h3>
-                <p style="color: #666; line-height: 1.7; margin-bottom: 0;">
+                <p style="color: #666; line-height: 1.7; margin-bottom: 20px;">
                     Research shows that leaders who score high in work-life balance are <strong>23% more productive</strong>, have <strong>40% better decision-making</strong>, and their teams show <strong>31% higher engagement</strong>. This isn't about doing less—it's about performing sustainably.
                 </p>
+                <button onclick="startAssessment()" style="background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(169, 50, 38, 0.3); display: block; margin: 20px auto 0; width: auto;">
+                    Start Assessment →
+                </button>
             </div>
 
-            <div class="progress-bar">
+            <div class="progress-bar" style="display: none;">
                 <div class="progress-text"><span id="currentSection">Energy Management</span> • Question <span id="currentQ">1</span> of 20</div>
                 <div class="progress-fill">
                     <div class="progress-fill-bar" id="progressBar"></div>
                 </div>
             </div>
 
-            <div id="questionContainer"></div>
+            <div id="questionContainer" style="display: none;"></div>
 
-            <div class="nav-buttons">
+            <div class="nav-buttons" style="display: none;">
                 <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>← Previous</button>
                 <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next →</button>
             </div>
@@ -963,8 +966,15 @@ How sustainable is YOUR pace?`;
             });
         }
 
-        // Initialize
-        renderQuestion(0);
+        function startAssessment() {
+            document.getElementById('introSection').style.display = 'none';
+            document.querySelector('.progress-bar').style.display = 'block';
+            document.getElementById('questionContainer').style.display = 'block';
+            document.querySelector('.nav-buttons').style.display = 'flex';
+            renderQuestion(0);
+        }
+
+        // Don't auto-initialize - wait for button click
     
     // Export Functions (Option 1: Client-Side CSV/XLSX)
     function addExportButtons(data) {

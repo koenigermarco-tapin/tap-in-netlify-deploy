@@ -579,9 +579,15 @@
         <div class="header">
             <h1>Vollständiges Impact-Profil</h1>
             <p>Vervollständige alle drei Bewertungen für dein umfassendes Profil</p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn btn-primary" onclick="startAssessment()" style="font-size: 1.2em; padding: 18px 50px;">
+                    Assessment starten →
+                </button>
+            </div>
         </div>
 
-        <div class="section-progress">
+        <div class="section-progress" id="sectionProgress" style="display: none;">
             <div class="section-indicator-item active" data-section="1">
                 <div class="section-icon">⚡</div>
                 <div class="section-name">Arbeitstyp</div>
@@ -596,14 +602,14 @@
             </div>
         </div>
 
-        <div class="progress-bar-container">
+        <div class="progress-bar-container" id="progressBarContainer" style="display: none;">
             <div class="progress-text">Fortschritt: <span id="progressText">0 von 46</span></div>
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
         </div>
 
-        <div id="questionsContainer"></div>
+        <div id="questionsContainer" style="display: none;"></div>
 
         <div class="results-section" id="resultsSection">
             <div class="results-header">
@@ -1210,8 +1216,19 @@
 
         function init() {
             loadProgress();
+            // Don't auto-start - wait for user to click button
+        }
+
+        function startAssessment() {
+            document.querySelector('.header .btn').parentElement.style.display = 'none';
+            document.getElementById('sectionProgress').style.display = 'flex';
+            document.getElementById('progressBarContainer').style.display = 'block';
+            document.getElementById('questionsContainer').style.display = 'block';
             renderCurrentQuestion();
             updateProgress();
+        }
+
+        function renderCurrentQuestion() {
             setupKeyboardNavigation();
         }
 

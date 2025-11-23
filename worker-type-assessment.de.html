@@ -107,15 +107,21 @@
             <p style="margin-top: 15px; font-style: italic; color: #888; font-size: 0.9em; text-align: center;">
                 "Der Schlüssel ist nicht, zu priorisieren, was auf deinem Zeitplan steht, sondern deine Prioritäten einzuplanen." — Stephen Covey
             </p>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn btn-primary" onclick="startAssessment()" style="font-size: 1.2em; padding: 18px 50px;">
+                    Assessment starten →
+                </button>
+            </div>
         </div>
 
-        <div class="progress-container">
+        <div class="progress-container" style="display: none;">
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
             <div class="progress-text" id="progressText">Frage 1 von 12</div>
         </div>
-        <div id="assessmentForm">
+        <div id="assessmentForm" style="display: none;">
             <div class="assessment-card" id="questionCard">
                 <!-- Questions will be dynamically inserted here -->
             </div>
@@ -654,8 +660,17 @@
             window.scrollTo(0, 0);
             document.querySelector('.result-card').focus?.();
         }
-        document.addEventListener('DOMContentLoaded', function() {
+
+        function startAssessment() {
+            document.getElementById('introSection').style.display = 'none';
+            document.querySelector('.progress-container').style.display = 'block';
+            document.getElementById('assessmentForm').style.display = 'block';
             renderQuestion();
+            updateProgress();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Don't auto-start - wait for user to click button
         });
 
         // Social Sharing Functions

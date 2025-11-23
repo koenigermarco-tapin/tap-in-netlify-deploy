@@ -139,18 +139,24 @@
                 <p style="color: #666; line-height: 1.7; margin-top: 15px; padding: 15px; background: #f0f4ff; border-radius: 8px; font-size: 0.95em;">
                     <strong>Clinical insight:</strong> Research shows that Stoic-based CBT reduces anxiety by 32% and depression by 28% in just 8 weeks. This assessment identifies which mental muscles need training—just like the ancient philosophers prescribed.
                 </p>
+
+                <div style="text-align: center; margin-top: 25px;">
+                    <button class="btn btn-primary" onclick="startAssessment()" style="font-size: 1.2em; padding: 18px 50px;">
+                        Start Assessment →
+                    </button>
+                </div>
             </div>
 
-            <div class="progress-bar">
+            <div class="progress-bar" style="display: none;">
                 <div class="progress-text"><span id="currentSection">Emotional Well-being</span> • Question <span id="currentQ">1</span> of 20</div>
                 <div class="progress-fill">
                     <div class="progress-fill-bar" id="progressBar"></div>
                 </div>
             </div>
 
-            <div id="questionContainer"></div>
+            <div id="questionContainer" style="display: none;"></div>
 
-            <div class="nav-buttons">
+            <div class="nav-buttons" style="display: none;">
                 <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>← Previous</button>
                 <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next →</button>
             </div>
@@ -1096,8 +1102,15 @@ How sustainable is YOUR pace?`;
             });
         }
 
-        // Initialize
-        renderQuestion(0);
+        function startAssessment() {
+            document.getElementById('introSection').style.display = 'none';
+            document.querySelector('.progress-bar').style.display = 'block';
+            document.getElementById('questionContainer').style.display = 'block';
+            document.querySelector('.nav-buttons').style.display = 'flex';
+            renderQuestion(0);
+        }
+
+        // Don't auto-initialize - wait for button click
     
     // Export Functions (Option 1: Client-Side CSV/XLSX)
     function addExportButtons(data) {
