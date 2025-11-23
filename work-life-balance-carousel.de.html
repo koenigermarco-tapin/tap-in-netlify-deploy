@@ -105,21 +105,24 @@
             <!-- Intro Section (shows before Q1) -->
             <div id="introSection" style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #a93226;">
                 <h3 style="color: #333; margin-bottom: 15px;">⚖️ Warum Work-Life-Balance wichtig ist</h3>
-                <p style="color: #666; line-height: 1.7; margin-bottom: 0;">
+                <p style="color: #666; line-height: 1.7; margin-bottom: 20px;">
                     Forschung zeigt, dass Führungskräfte mit hoher Work-Life-Balance <strong>23% produktiver</strong> sind, <strong>40% bessere Entscheidungen</strong> treffen und ihre Teams <strong>31% höheres Engagement</strong> zeigen. Es geht nicht darum, weniger zu tun—sondern nachhaltig zu performen.
                 </p>
+                <button onclick="startAssessment()" style="background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(169, 50, 38, 0.3); display: block; margin: 20px auto 0; width: auto;">
+                    Assessment starten →
+                </button>
             </div>
 
-            <div class="progress-bar">
+            <div class="progress-bar" style="display: none;">
                 <div class="progress-text"><span id="currentSection">Energiemanagement</span> • Frage <span id="currentQ">1</span> von 20</div>
                 <div class="progress-fill">
                     <div class="progress-fill-bar" id="progressBar"></div>
                 </div>
             </div>
 
-            <div id="questionContainer"></div>
+            <div id="questionContainer" style="display: none;"></div>
 
-            <div class="nav-buttons">
+            <div class="nav-buttons" style="display: none;">
                 <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>← Zurück</button>
                 <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Weiter →</button>
             </div>
