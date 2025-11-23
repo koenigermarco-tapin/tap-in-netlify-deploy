@@ -1,5 +1,5 @@
 // TAP-IN Service Worker - Offline Support & Caching
-const CACHE_NAME = 'tap-in-v4';
+const CACHE_NAME = 'tap-in-v5';
 const urlsToCache = [
   '/',
   '/index.html',
