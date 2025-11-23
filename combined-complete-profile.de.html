@@ -423,11 +423,36 @@
         }
         
         @media (max-width: 768px) {
-            .header h1 { font-size: 2em; }
-            .question-text { font-size: 1.2em; }
-            .scale-options { grid-template-columns: repeat(3, 1fr); }
+            body { padding: 10px; }
+            .header { padding: 25px; border-radius: 15px; }
+            .header h1 { font-size: 1.8em; }
+            .header p { font-size: 1em; }
+            .section-progress { flex-direction: column; }
+            .section-indicator-item { min-width: 100%; }
+            .progress-bar-container { padding: 15px; }
+            .question-card { padding: 25px; border-radius: 15px; }
+            .question-text { font-size: 1.2em; line-height: 1.4; }
+            .scale-options { 
+                grid-template-columns: repeat(5, 1fr); 
+                gap: 8px; 
+            }
+            .scale-option { 
+                padding: 12px 8px; 
+                border-radius: 8px;
+            }
+            .scale-number { font-size: 1.2em; }
+            .scale-label { font-size: 0.7em; }
+            .scale-labels { font-size: 0.75em; }
             .nav-buttons { flex-direction: column; gap: 10px; }
+            .nav-btn { width: 100%; padding: 15px; }
             .nav-btn.next { margin-left: 0; }
+            .celebration-card { padding: 40px 25px; }
+            .celebration-card h2 { font-size: 2em; }
+            .celebration-card p { font-size: 1.1em; }
+            .results-header { padding: 25px; }
+            .results-header h2 { font-size: 2em; }
+            .result-section { padding: 25px; }
+            .result-section h3 { font-size: 1.5em; }
         }
     </style>
 </head>
