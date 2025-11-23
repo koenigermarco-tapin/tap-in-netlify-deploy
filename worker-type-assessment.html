@@ -44,7 +44,7 @@
         .results { display: none; }
         .results.active { display: block; animation: fadeIn 0.5s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .result-card { background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; border-radius: 20px; padding: 50px 40px; text-align: center; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(169, 50, 38, 0.3); }
+        .result-card { background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; border-radius: 20px; padding: 50px 40px; text-align: center; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(26, 54, 93, 0.3); }
         .result-card h2 { font-size: clamp(2.5em, 6vw, 4em); margin-bottom: 20px; }
         .result-card .subtitle { font-size: clamp(1.2em, 3vw, 1.6em); opacity: 0.95; margin-bottom: 30px; }
         
@@ -55,9 +55,9 @@
         .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
         .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .flip-card-front { background: white; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
-        .flip-card-back { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); transform: rotateY(180deg); overflow-y: auto; }
-        .flip-card-front h3 { color: #a93226; margin-bottom: 20px; font-size: 1.5em; display: flex; align-items: center; gap: 10px; }
-        .flip-card-front .summary { color: #666; line-height: 1.7; font-size: 1.05em; margin-bottom: 20px; }
+        .flip-card-back { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); transform: rotateY(180deg); overflow-y: auto; }
+        .flip-card-front h3 { color: #1a365d; margin-bottom: 20px; font-size: 1.5em; display: flex; align-items: center; gap: 10px; font-weight: 600; }
+        .flip-card-front .summary { color: #64748b; line-height: 1.7; font-size: 1.05em; margin-bottom: 20px; }
         .flip-card-front .flip-hint { color: #999; font-size: 0.85em; margin-top: auto; display: flex; align-items: center; gap: 5px; }
         .flip-card-back h3 { color: #a93226; margin-bottom: 20px; font-size: 1.4em; border-bottom: 2px solid #a93226; padding-bottom: 10px; }
         .flip-card-back .detail-section { margin-bottom: 20px; }
@@ -99,36 +99,34 @@
         </div>
 
         <!-- Context Section -->
-        <div class="intro-section" id="introSection" style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #a93226;">
-            <h3 style="color: #333; margin-bottom: 15px;">🏆 Why Your Work Rhythm Matters</h3>
-            <p style="color: #666; line-height: 1.7; margin-bottom: 15px;">
+        <div class="intro-section" id="introSection" style="background: #f8fafc; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #1a365d;">
+            <h3 style="color: #1e293b; margin-bottom: 15px; font-weight: 600;">🏆 Why Your Work Rhythm Matters</h3>
+            <p style="color: #64748b; line-height: 1.7; margin-bottom: 15px;">
                 <strong>Steve Jobs</strong> worked in intense creative bursts with walks between sessions (Sprinter). <strong>Angela Merkel</strong> built success through steady, methodical decision-making over decades (Jogger). <strong>David Attenborough</strong> built a 70-year career through patient, long-term commitment to his vision (Ultrarunner).
             </p>
-            <p style="color: #666; line-height: 1.7; margin-bottom: 20px;">
+            <p style="color: #64748b; line-height: 1.7; margin-bottom: 20px;">
                 There's no "best" type—but <em>misalignment kills performance</em>. Research from Stanford and MIT shows that when your work style matches your natural rhythm, productivity increases by 40% and burnout drops by 60%.
             </p>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
-                <div style="background: white; padding: 15px; border-radius: 8px; text-align: center; border-top: 3px solid #e63946;">
+                <div style="background: white; padding: 15px; border-radius: 8px; text-align: center; border-top: 3px solid #1a365d;">
                     <div style="font-size: 2em; margin-bottom: 5px;">⚡</div>
-                    <strong style="color: #e63946;">Sprinter</strong><br>
-                    <span style="font-size: 0.85em; color: #666;">High intensity, short bursts</span>
+                    <strong style="color: #1a365d;">Sprinter</strong><br>
+                    <span style="font-size: 0.85em; color: #64748b;">High intensity, short bursts</span>
                 </div>
-                <div style="background: white; padding: 15px; border-radius: 8px; text-align: center; border-top: 3px solid #457b9d;">
+                <div style="background: white; padding: 15px; border-radius: 8px; text-align: center; border-top: 3px solid #1a365d;">
                     <div style="font-size: 2em; margin-bottom: 5px;">🏃</div>
-                    <strong style="color: #457b9d;">Jogger</strong><br>
-                    <span style="font-size: 0.85em; color: #666;">Steady, consistent pace</span>
+                    <strong style="color: #1a365d;">Jogger</strong><br>
+                    <span style="font-size: 0.85em; color: #64748b;">Steady, consistent pace</span>
                 </div>
-                <div style="background: white; padding: 15px; border-radius: 8px; text-align: center; border-top: 3px solid #2a9d8f;">
+                <div style="background: white; padding: 15px; border-radius: 8px; text-align: center; border-top: 3px solid #1a365d;">
                     <div style="font-size: 2em; margin-bottom: 5px;">🎯</div>
-                    <strong style="color: #2a9d8f;">Ultrarunner</strong><br>
-                    <span style="font-size: 0.85em; color: #666;">Marathon mindset, long vision</span>
+                    <strong style="color: #1a365d;">Ultrarunner</strong><br>
+                    <span style="font-size: 0.85em; color: #64748b;">Marathon mindset, long vision</span>
                 </div>
             </div>
 
-            <p style="margin-top: 15px; font-style: italic; color: #888; font-size: 0.9em; text-align: center;">
-                "The key is not to prioritize what's on your schedule, but to schedule your priorities." — Stephen Covey
-            </p>
+            <p style="margin-top: 15px; font-style: italic; color: #94a3b8; font-size: 0.9em; text-align: center;">"The key is not to prioritize what's on your schedule, but to schedule your priorities." — Stephen Covey</p>
         </div>
 
         <!-- Progress Bar -->
