@@ -194,23 +194,17 @@
             <p style="margin-top: 15px; font-style: italic; color: #888; font-size: 0.9em;">
                 "Nicht Finanzen. Nicht Strategie. Nicht Technologie. Es ist Teamarbeit, die den ultimativen Wettbewerbsvorteil darstellt." — Patrick Lencioni
             </p>
-
-            <div style="text-align: center; margin-top: 30px;">
-                <button onclick="startAssessment()" style="background: linear-gradient(135deg, #a93226 0%, #8b2a1f 100%); color: white; border: none; padding: 18px 40px; font-size: 1.1em; border-radius: 12px; cursor: pointer; font-weight: 600; box-shadow: 0 4px 15px rgba(169, 50, 38, 0.3); transition: all 0.3s ease;">
-                    Assessment starten →
-                </button>
-            </div>
         </div>
 
         <!-- Progress Bar -->
-        <div class="progress-container" style="display: none;">
+        <div class="progress-container">
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
             <div class="progress-text" id="progressText">Frage 1 von 20</div>
         </div>
         <!-- Assessment Form -->
-        <div id="assessmentForm" style="display: none;">
+        <div id="assessmentForm">
             <div class="assessment-card" id="questionCard">
                 <!-- Questions will be dynamically inserted here -->
             </div>
@@ -664,14 +658,6 @@
                 window.scrollTo(0, 0);
             }
         }
-        
-        function startAssessment() {
-            document.querySelector('.intro-section').style.display = 'none';
-            document.querySelector('.progress-container').style.display = 'block';
-            document.getElementById('assessmentForm').style.display = 'block';
-            renderQuestion();
-            window.scrollTo(0, 0);
-        }
         // --- Results logic copied and translated from English version ---
         function getScoreInterpretation(score, category) {
             const interpretations = {
@@ -796,6 +782,26 @@
                     </div>
                 `;
             });
+
+            // Add download section before final output
+            html += `
+                <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 15px; padding: 30px; margin: 30px 0; text-align: center; border: 2px solid #e0e0e0;">
+                    <h3 style="color: #333; margin-bottom: 15px;">📊 Ergebnisse Exportieren</h3>
+                    <p style="color: #666; margin-bottom: 20px;">Lade deine Teamdynamik-Ergebnisse für Analysen, Berichte oder Team-Workshops herunter.</p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <button onclick="exportToCSV()" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);">
+                            📥 CSV Download
+                        </button>
+                        <button onclick="exportToExcel()" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);">
+                            📊 Excel Download
+                        </button>
+                        <button onclick="exportToJSON()" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);">
+                            💾 JSON Download
+                        </button>
+                    </div>
+                </div>
+            `;
+
             document.getElementById('resultContent').innerHTML = html;
             window.scrollTo(0, 0);
             
@@ -983,7 +989,7 @@ Wie gesund ist EUER Team?`;
         }
 
         loadStats();
-        // Assessment wird initialisiert, wenn der Benutzer auf die "Assessment starten" Schaltfläche klickt
+        renderQuestion();
     
     // Export Functions (Option 1: Client-Side CSV/XLSX)
     function addExportButtons(data) {
@@ -1139,6 +1145,104 @@ Wie gesund ist EUER Team?`;
             if (existing.length > 10) existing.shift();
             localStorage.setItem('tap-in-assessments', JSON.stringify(existing));
         } catch (e) {}
+    }
+
+    // Export Funktionen
+    function exportToCSV() {
+        const dimensions = ['trust', 'conflict', 'commitment', 'accountability', 'results'];
+        const dimensionNames = {
+            'trust': 'Vertrauen',
+            'conflict': 'Konfliktkompetenz',
+            'commitment': 'Verbindlichkeit',
+            'accountability': 'Verantwortung',
+            'results': 'Ergebnisorientierung'
+        };
+        
+        let csv = 'Teamdynamik Assessment Ergebnisse\n\n';
+        csv += 'Assessment-Typ,Teamdynamik (5 Dysfunktionen)\n';
+        csv += 'Datum,' + new Date().toLocaleDateString('de-DE') + '\n';
+        csv += 'Uhrzeit,' + new Date().toLocaleTimeString('de-DE') + '\n\n';
+        csv += 'Dimension,Punktzahl,Level\n';
+        
+        dimensions.forEach(dim => {
+            const scores = answers.filter((_, i) => questions[i].dimension === dim).map(a => parseInt(a));
+            const avg = scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
+            const level = avg >= 80 ? 'Exzellent' : avg >= 60 ? 'Gut' : avg >= 40 ? 'Entwicklungsbedarf' : 'Kritisch';
+            csv += `${dimensionNames[dim]},${avg},${level}\n`;
+        });
+        
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'teamdynamik-' + new Date().toISOString().slice(0,10) + '.csv';
+        a.click();
+        window.URL.revokeObjectURL(url);
+    }
+
+    function exportToExcel() {
+        const dimensions = ['trust', 'conflict', 'commitment', 'accountability', 'results'];
+        const dimensionNames = {
+            'trust': 'Vertrauen',
+            'conflict': 'Konfliktkompetenz',
+            'commitment': 'Verbindlichkeit',
+            'accountability': 'Verantwortung',
+            'results': 'Ergebnisorientierung'
+        };
+        
+        let html = '<html><head><meta charset="utf-8"><title>Teamdynamik Ergebnisse</title></head><body>';
+        html += '<h1>Teamdynamik Assessment Ergebnisse</h1>';
+        html += '<p><strong>Datum:</strong> ' + new Date().toLocaleDateString('de-DE') + '</p>';
+        html += '<p><strong>Uhrzeit:</strong> ' + new Date().toLocaleTimeString('de-DE') + '</p>';
+        html += '<h2>Dimensionen</h2>';
+        html += '<table border="1" cellpadding="10" cellspacing="0">';
+        html += '<tr><th>Dimension</th><th>Punktzahl</th><th>Level</th></tr>';
+        
+        dimensions.forEach(dim => {
+            const scores = answers.filter((_, i) => questions[i].dimension === dim).map(a => parseInt(a));
+            const avg = scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
+            const level = avg >= 80 ? 'Exzellent' : avg >= 60 ? 'Gut' : avg >= 40 ? 'Entwicklungsbedarf' : 'Kritisch';
+            html += `<tr><td>${dimensionNames[dim]}</td><td>${avg}</td><td>${level}</td></tr>`;
+        });
+        
+        html += '</table></body></html>';
+        
+        const blob = new Blob([html], { type: 'application/vnd.ms-excel' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'teamdynamik-' + new Date().toISOString().slice(0,10) + '.xls';
+        a.click();
+        window.URL.revokeObjectURL(url);
+    }
+
+    function exportToJSON() {
+        const dimensions = ['trust', 'conflict', 'commitment', 'accountability', 'results'];
+        const results = {};
+        
+        dimensions.forEach(dim => {
+            const scores = answers.filter((_, i) => questions[i].dimension === dim).map(a => parseInt(a));
+            results[dim] = {
+                scores: scores,
+                average: scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0
+            };
+        });
+        
+        const data = {
+            assessmentType: 'Teamdynamik (5 Dysfunktionen)',
+            datum: new Date().toISOString(),
+            ergebnisse: results,
+            antworten: answers
+        };
+        
+        const json = JSON.stringify(data, null, 2);
+        const blob = new Blob([json], { type: 'application/json' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'teamdynamik-' + new Date().toISOString().slice(0,10) + '.json';
+        a.click();
+        window.URL.revokeObjectURL(url);
     }
 
     </script>
