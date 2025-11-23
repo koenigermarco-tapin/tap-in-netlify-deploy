@@ -1865,10 +1865,12 @@
     </div>
 
     <script>
-        // Progress tracking
-        const form = document.getElementById('completeProfileForm');
-        const totalQuestions = 46;
-        let answeredQuestions = new Set();
+        // Wait for DOM to be fully loaded before initializing
+        document.addEventListener('DOMContentLoaded', function() {
+            // Progress tracking
+            const form = document.getElementById('completeProfileForm');
+            const totalQuestions = 46;
+            let answeredQuestions = new Set();
 
         // Load saved progress on page load
         function loadSavedProgress() {
@@ -2993,9 +2995,7 @@ What's YOUR Leadership DNA?`;
         }
 
         function copyShareLink() {
-            const shareText = getShareText() + '
-
-' + window.location.href;
+            const shareText = getShareText() + '\n\n' + window.location.href;
             navigator.clipboard.writeText(shareText).then(() => {
                 const btn = event.target;
                 const originalText = btn.textContent;
@@ -3176,6 +3176,8 @@ What's YOUR Leadership DNA?`;
             localStorage.setItem('tap-in-assessments', JSON.stringify(existing));
         } catch (e) {}
     }
+
+        }); // End DOMContentLoaded
 
     </script>
 </body>
