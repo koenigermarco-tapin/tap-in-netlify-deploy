@@ -640,6 +640,10 @@
 
         function nextQuestion() {
             if (currentQuestionIndex < questions.length - 1) {
+                GAMIFICATION.addXP(GAMIFICATION.xpPerQuestion);
+                if (currentQuestionIndex + 1 === 10) {
+                    GAMIFICATION.unlockAchievement('halfway');
+                }
                 currentQuestionIndex++;
                 renderQuestion(currentQuestionIndex);
                 document.getElementById('prevBtn').disabled = false;
@@ -690,6 +694,15 @@
 
         function showResults() {
                         clearProgress();
+            
+            GAMIFICATION.addXP(GAMIFICATION.xpPerQuestion);
+            GAMIFICATION.addXP(GAMIFICATION.xpForCompletion);
+            GAMIFICATION.unlockAchievement('complete');
+            const elapsed = (Date.now() - window.assessmentStartTime) / 1000;
+            if (elapsed < 300) {
+                GAMIFICATION.unlockAchievement('speed_demon');
+            }
+            celebrateCompletion();
             
             // Dynamic counter
             const baseCount = 1247;
@@ -916,6 +929,8 @@
             `}).join('');
 
             document.getElementById('categoryScores').innerHTML = categoryHTML;
+            
+            setTimeout(() => addAchievementBadges(), 500);
             
             // Add analysis section before CTA
             const ctaBox = document.querySelector('.cta-box');
