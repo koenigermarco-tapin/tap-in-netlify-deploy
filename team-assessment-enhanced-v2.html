@@ -220,16 +220,22 @@
                         <p style="margin-top: 15px; font-style: italic; color: #888; font-size: 0.9em;">
                             "Not finance. Not strategy. Not technology. It is teamwork that remains the ultimate competitive advantage." — Patrick Lencioni
                         </p>
+
+                        <div style="text-align: center; margin-top: 30px;">
+                            <button onclick="startAssessment()" style="background: linear-gradient(135deg, #a93226 0%, #8b2a1f 100%); color: white; border: none; padding: 18px 40px; font-size: 1.1em; border-radius: 12px; cursor: pointer; font-weight: 600; box-shadow: 0 4px 15px rgba(169, 50, 38, 0.3); transition: all 0.3s ease;">
+                                Start Assessment →
+                            </button>
+                        </div>
                     </div>
                     <!-- Progress Bar -->
-                    <div class="progress-container">
+                    <div class="progress-container" style="display: none;">
                         <div class="progress-bar">
                             <div class="progress-fill" id="progressFill"></div>
                         </div>
                         <div class="progress-text" id="progressText">Question 1 of 20</div>
                     </div>
                     <!-- Assessment Form -->
-                    <div id="assessmentForm">
+                    <div id="assessmentForm" style="display: none;">
                         <div class="assessment-card" id="questionCard">
                             <!-- Questions will be dynamically inserted here -->
                         </div>
@@ -701,6 +707,14 @@
                             renderQuestion();
                             window.scrollTo(0, 0);
                         }
+                    }
+                    
+                    function startAssessment() {
+                        document.querySelector('.intro-section').style.display = 'none';
+                        document.querySelector('.progress-container').style.display = 'block';
+                        document.getElementById('assessmentForm').style.display = 'block';
+                        renderQuestion();
+                        window.scrollTo(0, 0);
                     }
                     function getScoreInterpretation(score, category) {
                         const interpretations = {
@@ -1312,7 +1326,7 @@ How healthy is YOUR team?`;
                     // Check for saved progress and show resume prompt
                     setTimeout(() => showResumePrompt(), 500);
                     
-                    renderQuestion();
+                    // Assessment will be initialized when user clicks "Start Assessment" button
                 </script>
             </body>
             </html>
