@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2d2d2d">
+    <title>Vollständiges Führungsprofil - TAP-IN Assessment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2001;
+            background: white;
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .menu-toggle:hover {
+            background: #f8f9fa;
+            transform: scale(1.05);
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #a93226;
+            margin: 5px 0;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .slide-menu {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 320px;
+            height: 100vh;
+            background: white;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+            z-index: 2000;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            padding: 80px 0 30px;
+        }
+
+        .slide-menu.active {
+            left: 0;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #a93226;
+            padding: 0 25px 20px;
+            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 10px;
+        }
+
+        .menu-section {
+            padding: 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .menu-section:last-child {
+            border-bottom: none;
+        }
+
+        .menu-section-title {
+            font-size: 0.75em;
+            font-weight: bold;
+            color: #999;
+            text-transform: uppercase;
+            padding: 0 25px 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .menu-section a {
+            display: flex;
+            align-items: center;
+            padding: 12px 25px;
+            color: #333;
+            text-decoration: none;
+            font-size: 1em;
+            transition: all 0.2s;
+            gap: 12px;
+        }
+
+        .menu-section a:hover {
+            background: rgba(169,50,38,0.05);
+            color: #a93226;
+            padding-left: 30px;
+        }
+
+        .menu-section a.primary {
+            background: linear-gradient(135deg, #a93226 0%, #7a241b 100%);
+            color: white;
+            margin: 10px 15px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .menu-section a.primary:hover {
+            padding-left: 25px;
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(169,50,38,0.3);
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+            background: white;
+            border-radius: 25px;
+            padding: 8px 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .lang-switch a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 5px 10px;
+            transition: all 0.2s;
+        }
+
+        .lang-switch a.active {
+            color: #a93226;
+        }
+
+        .lang-switch a:hover {
+            color: #a93226;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #a93226;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .header .info {
+            color: #999;
+            font-size: 0.95em;
+        }
+
+        .progress-container {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #a93226 0%, #d67059 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .section-indicator {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .section-indicator-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 0.75em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .section-indicator-item.completed {
+            background: #a93226;
+            color: white;
+        }
+
+        .section-indicator-item.active {
+            background: #d67059;
+            color: white;
+        }
+
+        .section-indicator-item.upcoming {
+            background: #f0f0f0;
+            color: #999;
+        }
+
+        .question-container {
+            min-height: 400px;
+        }
+
+        .celebration-card {
+            background: linear-gradient(135deg, #a93226 0%, #7a241b 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .celebration-card .icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .celebration-card h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .celebration-card p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .celebration-card .next-section {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .celebration-card .next-section h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .question-card {
+            background: white;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .question-number {
+            color: #a93226;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .question-text {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        /* Insight Card Styles */
+        .insight-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 4px solid #a93226;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .insight-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .insight-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #a93226;
+            margin-bottom: 12px;
+        }
+
+        .insight-content {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .insight-quote {
+            font-style: italic;
+            color: #666;
+            padding-left: 15px;
+            border-left: 3px solid #a93226;
+            margin-top: 12px;
+            font-size: 0.95em;
+        }
+
+        /* Radio Button Styles (for Leadership questions) */
+        .radio-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .radio-option {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .radio-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }

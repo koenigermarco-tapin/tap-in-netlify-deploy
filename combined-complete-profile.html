@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Leadership Profile - TAP-IN</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        
+        /* Hamburger Menu */
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2001;
+            background: white;
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .menu-toggle:hover { background: #f8f9fa; transform: scale(1.05); }
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #a93226;
+            margin: 5px 0;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+        
+        .slide-menu {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 320px;
+            height: 100vh;
+            background: white;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+            z-index: 2000;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            padding: 80px 0 30px;
+        }
+        .slide-menu.active { left: 0; }
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .menu-overlay.active { opacity: 1; pointer-events: auto; }
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #a93226;
+            padding: 0 25px 20px;
+            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 10px;
+        }
+        .menu-section {
+            padding: 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .menu-section:last-child { border-bottom: none; }
+        .menu-section-title {
+            font-size: 0.75em;
+            font-weight: bold;
+            color: #999;
+            text-transform: uppercase;
+            padding: 0 25px 10px;
+            letter-spacing: 0.5px;
+        }
+        .menu-section a {
+            display: flex;
+            align-items: center;
+            padding: 12px 25px;
+            color: #333;
+            text-decoration: none;
+            font-size: 1em;
+            transition: all 0.2s;
+            gap: 12px;
+        }
+        .menu-section a:hover {
+            background: rgba(169,50,38,0.05);
+            color: #a93226;
+            padding-left: 30px;
+        }
+        .menu-section a.primary {
+            background: linear-gradient(135deg, #a93226 0%, #7a241b 100%);
+            color: white;
+            margin: 10px 15px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+        .menu-section a.primary:hover {
+            padding-left: 25px;
+            transform: scale(1.02);
+        }
+        
+        /* Language Switcher */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+            background: white;
+            border-radius: 25px;
+            padding: 8px 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .lang-switch a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 5px 10px;
+            transition: all 0.2s;
+        }
+        .lang-switch a.active { color: #a93226; }
+        .lang-switch a:hover { color: #a93226; }
+        
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .header h1 {
+            color: #a93226;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        .header .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .header .note {
+            background: #fff8f7;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #a93226;
+            color: #555;
+        }
+        
+        /* Overall Progress */
+        .overall-progress {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .overall-progress h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        .progress-bar {
+            background: #e0e0e0;
+            border-radius: 10px;
+            height: 12px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, #a93226 0%, #e74c3c 100%);
+            height: 100%;
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+        .progress-text {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        .assessment-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .section-badge {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .section-badge.completed {
+            border-color: #28a745;
+            background: #f0fff4;
+        }
+        .section-badge.active {
+            border-color: #a93226;
+            background: #fff8f7;
+        }
+        .section-badge .icon {
+            font-size: 2em;
+            margin-bottom: 8px;
+        }
+        .section-badge .title {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95em;
+        }
+        .section-badge .status {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        /* Question Card */
+        .question-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            display: none;
+        }
+        .question-card.active {
+            display: block;
+            animation: slideIn 0.4s ease;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-header {
+            background: linear-gradient(135deg, #a93226 0%, #7a241b 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        
+        .question-number {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .question-text {
+            color: #333;
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        /* Answer Options */
+        .answer-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        .answer-option {
+            background: #f8f9fa;
+            padding: 18px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+            font-size: 1.05em;
+            color: #333;
+        }
+        .answer-option:hover {
+            border-color: #a93226;
+            background: #fff8f7;
+            transform: translateX(5px);
+        }
+        .answer-option.selected {
+            border-color: #a93226;
+            background: #fff8f7;
+            font-weight: 600;
+        }
+        
+        /* Scale Options (for team assessment) */
+        .scale-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        .scale-option {
+            background: #f8f9fa;
+            padding: 20px 15px;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .scale-option:hover {
+            border-color: #a93226;
+            background: #fff8f7;
+            transform: scale(1.05);
+        }
+        .scale-option.selected {
+            border-color: #a93226;
+            background: #fff8f7;
+            box-shadow: 0 4px 12px rgba(169, 50, 38, 0.3);
+        }
+        .scale-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #a93226;
+            margin-bottom: 5px;
+        }
+        .scale-label {
+            font-size: 0.85em;
+            color: #666;
+        }
+        
+        /* Navigation */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .nav-btn {
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.05em;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            min-width: 120px;
+        }
+        .nav-btn.prev {
+            background: #e0e0e0;
+            color: #666;
+        }
+        .nav-btn.prev:hover {
+            background: #d0d0d0;
+            transform: translateX(-5px);
+        }
+        .nav-btn.next {
+            background: linear-gradient(135deg, #a93226 0%, #7a241b 100%);
+            color: white;
+            margin-left: auto;
+        }
+        .nav-btn.next:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(169, 50, 38, 0.4);
+        }
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        /* Results */
+        .results {
+            display: none;
+        }
+        .results.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .results-header {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .results-header h2 {
+            color: #a93226;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        .result-section {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .result-section h3 {
+            color: #a93226;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .result-badge {
+            display: inline-block;
+            font-size: 3em;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff8f7 0%, #ffe8e6 100%);
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2em; }
+            .question-text { font-size: 1.2em; }
+            .scale-options { grid-template-columns: repeat(3, 1fr); }
+            .nav-buttons { flex-direction: column; }
+            .nav-btn.next { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hamburger Menu -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Slide-out Menu -->
+    <nav class="slide-menu" id="slideMenu">
+        <div class="logo">🎯 TAP-IN</div>
+        
+        <div class="menu-section">
+            <div class="menu-section-title">Main</div>
+            <a href="dashboard.html" class="primary">📊 My Dashboard</a>
+            <a href="team-dashboard.html">🏢 Team Dashboard</a>
+            <a href="recruiter-portal.html">🎯 Recruiter Portal</a>
+        </div>
+
+        <div class="menu-section">
+            <div class="menu-section-title">Assessments</div>
+            <a href="worker-type-assessment.html">👤 Worker Type</a>
+            <a href="leadership-style-carousel.html">🎯 Leadership Style</a>
+            <a href="team-assessment-enhanced-v2.html">👥 Team Dynamics</a>
+            <a href="combined-complete-profile.html">⭐ Complete Profile</a>
+        </div>
+
+        <div class="menu-section">
+            <div class="menu-section-title">Analytics & Insights</div>
+            <a href="advanced-analytics.html">📈 Advanced Analytics</a>
+            <a href="achievement-badges.html">🏆 Achievements</a>
+            <a href="goals.html">🎯 Goals & Progress</a>
+        </div>
+
+        <div class="menu-section">
+            <div class="menu-section-title">Management Tools</div>
+            <a href="data-manager.html">💾 Data Manager</a>
+            <a href="notifications.html">🔔 Notifications</a>
+            <a href="calendar-integration.html">📅 Calendar</a>
+        </div>
+
+        <div class="menu-section">
+            <div class="menu-section-title">Settings</div>
+            <a href="white-label-customization.html">🎨 White Label</a>
+            <a href="QUICK-ADD-DEMO-DATA.html">🎬 Demo Data</a>
+        </div>
+    </nav>
+
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+        <a href="combined-complete-profile.html" class="active">EN</a>
+        <span style="color: #ddd;">|</span>
+        <a href="combined-complete-profile.de.html">DE</a>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🎯 Complete Leadership Profile</h1>
+            <p class="subtitle">
+                Discover your complete leadership DNA through three powerful assessments: Worker Type, Leadership Style, and Team Dynamics.
+            </p>
+            <div class="note">
+                ⏱️ <strong>Takes 18 minutes</strong> • 46 questions total • One question at a time
+            </div>
+        </div>
+
+        <!-- Overall Progress -->
+        <div class="overall-progress">
+            <h3>Your Progress</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="overallProgressFill" style="width: 0%"></div>
+            </div>
+            <div class="progress-text">
+                Question <span id="currentQuestionNum">0</span> of <span id="totalQuestions">46</span>
+            </div>
+            
+            <div class="assessment-sections">
+                <div class="section-badge active" id="section1Badge">
+                    <div class="icon">👤</div>
+                    <div class="title">Worker Type</div>
+                    <div class="status">In Progress</div>
+                </div>
+                <div class="section-badge" id="section2Badge">
+                    <div class="icon">🎯</div>
+                    <div class="title">Leadership Style</div>
+                    <div class="status">Not Started</div>
+                </div>
+                <div class="section-badge" id="section3Badge">
+                    <div class="icon">👥</div>
+                    <div class="title">Team Dynamics</div>
+                    <div class="status">Not Started</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question Cards Container -->
+        <div id="questionsContainer"></div>
+
+        <!-- Results Section -->
+        <div class="results" id="results">
+            <div class="results-header">
+                <h2>🎉 Your Complete Leadership Profile</h2>
+                <p style="color: #666; font-size: 1.1em; margin-top: 10px;">
+                    Here's your comprehensive analysis across all three dimensions
+                </p>
+            </div>
+
+            <div id="resultsContent"></div>
+
+            <div class="result-section" style="text-align: center;">
+                <a href="dashboard.html" class="nav-btn next" style="display: inline-block; text-decoration: none;">
+                    View Full Dashboard →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Assessment Data Structure
+        const assessmentData = {
+            section1: {
+                title: "Worker Type Assessment",
+                icon: "👤",
+                questions: [
+                    {
+                        text: "How do you prefer to approach work projects?",
+                        options: [
+                            { text: "Intense bursts of productivity, then take a break", type: "sprinter" },
+                            { text: "Steady, consistent pace throughout", type: "jogger" },
+                            { text: "Marathon sessions when deeply engaged", type: "ultrarunner" }
+                        ]
+                    },
+                    {
+                        text: "What's your ideal work schedule?",
+                        options: [
+                            { text: "Short, focused sprints with clear deadlines", type: "sprinter" },
+                            { text: "Regular 9-5 with predictable routine", type: "jogger" },
+                            { text: "Long, immersive sessions when inspired", type: "ultrarunner" }
+                        ]
+                    },
+                    {
+                        text: "How do you handle multiple projects?",
+                        options: [
+                            { text: "Tackle them one at a time, intensely", type: "sprinter" },
+                            { text: "Balance them evenly across my time", type: "jogger" },
+                            { text: "Deep dive into one until completion", type: "ultrarunner" }
+                        ]
+                    },
+                    {
+                        text: "What energizes you most at work?",
+                        options: [
+                            { text: "Quick wins and immediate results", type: "sprinter" },
+                            { text: "Making steady progress every day", type: "jogger" },
+                            { text: "Being fully absorbed in challenging work", type: "ultrarunner" }
+                        ]
+                    },
+                    {
+                        text: "How do you recharge after work?",
+                        options: [
+                            { text: "I need frequent breaks between intense work", type: "sprinter" },
+                            { text: "A relaxing evening after a productive day", type: "jogger" },
+                            { text: "I often don't need to—I'm still energized", type: "ultrarunner" }
+                        ]
+                    },
+                    {
+                        text: "What's your relationship with deadlines?",
+                        options: [
+                            { text: "I thrive under pressure and tight deadlines", type: "sprinter" },
+                            { text: "I work steadily to meet them comfortably", type: "jogger" },
+                            { text: "I lose track of time when deeply engaged", type: "ultrarunner" }
+                        ]
+                    },
+                    {
+                        text: "How do you handle creative work?",
+                        options: [
+                            { text: "Burst of intense creativity, then step back", type: "sprinter" },
+                            { text: "Allocate specific time for creative thinking", type: "jogger" },
+                            { text: "Get into flow state for hours", type: "ultrarunner" }
+                        ]
+                    },
+                    {
+                        text: "What's your preferred meeting style?",
+                        options: [
+                            { text: "Short, action-oriented stand-ups", type: "sprinter" },
+                            { text: "Scheduled, well-structured meetings", type: "jogger" },
+                            { text: "Deep-dive strategy sessions", type: "ultrarunner" }
+                        ]
+                    },
+                    {
+                        text: "How do you learn new skills?",
+                        options: [
+                            { text: "Intensive bootcamps or workshops", type: "sprinter" },
+                            { text: "Regular practice over time", type: "jogger" },
+                            { text: "Total immersion until mastery", type: "ultrarunner" }
+                        ]
+                    },
+                    {
+                        text: "What's your ideal work environment?",
+                        options: [
+                            { text: "Dynamic with variety and change", type: "sprinter" },
+                            { text: "Stable and predictable", type: "jogger" },
+                            { text: "Quiet space for deep focus", type: "ultrarunner" }
+                        ]
+                    },
+                    {
+                        text: "How do you measure success?",
+                        options: [
+                            { text: "Quick, visible achievements", type: "sprinter" },
+                            { text: "Consistent progress toward goals", type: "jogger" },
+                            { text: "Depth and quality of work", type: "ultrarunner" }
+                        ]
+                    },
+                    {
+                        text: "What's your communication preference?",
+                        options: [
+                            { text: "Quick messages and rapid responses", type: "sprinter" },
+                            { text: "Scheduled check-ins and updates", type: "jogger" },
+                            { text: "In-depth conversations when needed", type: "ultrarunner" }
+                        ]
+                    }
+                ]
+            },
+            section2: {
+                title: "Leadership Style Assessment",
+                icon: "🎯",
+                questions: [
+                    {
+                        text: "When faced with a major decision, what's your first instinct?",
+                        options: [
+                            { text: "Paint the big picture and long-term vision", type: "visionary" },
+                            { text: "Map out systems and processes", type: "architect" },
+                            { text: "Bring people together to discuss", type: "facilitator" },
+                            { text: "Focus on action steps and execution", type: "executor" },
+                            { text: "Make the call and drive forward", type: "commander" },
+                            { text: "Consider team development opportunities", type: "coach" }
+                        ]
+                    },
+                    {
+                        text: "What energizes you most as a leader?",
+                        options: [
+                            { text: "Inspiring others with possibility", type: "visionary" },
+                            { text: "Building robust frameworks", type: "architect" },
+                            { text: "Creating harmony and collaboration", type: "facilitator" },
+                            { text: "Delivering tangible results", type: "executor" },
+                            { text: "Overcoming challenges decisively", type: "commander" },
+                            { text: "Developing people's potential", type: "coach" }
+                        ]
+                    },
+                    {
+                        text: "How do you approach team meetings?",
+                        options: [
+                            { text: "Share inspiring vision and strategy", type: "visionary" },
+                            { text: "Review structures and workflows", type: "architect" },
+                            { text: "Ensure everyone's voice is heard", type: "facilitator" },
+                            { text: "Focus on action items and accountability", type: "executor" },
+                            { text: "Make decisions and assign tasks", type: "commander" },
+                            { text: "Use them as coaching opportunities", type: "coach" }
+                        ]
+                    },
+                    {
+                        text: "What's your leadership blind spot?",
+                        options: [
+                            { text: "Getting lost in future possibilities", type: "visionary" },
+                            { text: "Over-engineering solutions", type: "architect" },
+                            { text: "Avoiding necessary conflict", type: "facilitator" },
+                            { text: "Focusing too much on tasks vs. people", type: "executor" },
+                            { text: "Being too directive or impatient", type: "commander" },
+                            { text: "Spending too much time developing others", type: "coach" }
+                        ]
+                    },
+                    {
+                        text: "How do you handle conflict in your team?",
+                        options: [
+                            { text: "Refocus on shared vision", type: "visionary" },
+                            { text: "Create clear processes to prevent it", type: "architect" },
+                            { text: "Mediate and find common ground", type: "facilitator" },
+                            { text: "Address it directly and move on", type: "executor" },
+                            { text: "Make a firm decision to resolve it", type: "commander" },
+                            { text: "Use it as a growth opportunity", type: "coach" }
+                        ]
+                    },
+                    {
+                        text: "What motivates your work as a leader?",
+                        options: [
+                            { text: "Creating transformative change", type: "visionary" },
+                            { text: "Building something that lasts", type: "architect" },
+                            { text: "Fostering strong relationships", type: "facilitator" },
+                            { text: "Achieving concrete outcomes", type: "executor" },
+                            { text: "Winning and being the best", type: "commander" },
+                            { text: "Seeing others succeed and grow", type: "coach" }
+                        ]
+                    },
+                    {
+                        text: "How do you communicate expectations?",
+                        options: [
+                            { text: "Through inspiring stories and vision", type: "visionary" },
+                            { text: "With detailed documentation", type: "architect" },
+                            { text: "Through collaborative discussions", type: "facilitator" },
+                            { text: "Clear objectives and metrics", type: "executor" },
+                            { text: "Direct commands and directives", type: "commander" },
+                            { text: "Personalized conversations", type: "coach" }
+                        ]
+                    },
+                    {
+                        text: "What's your approach to strategic planning?",
+                        options: [
+                            { text: "Start with inspiring future state", type: "visionary" },
+                            { text: "Design comprehensive frameworks", type: "architect" },
+                            { text: "Gather input from stakeholders", type: "facilitator" },
+                            { text: "Focus on executable milestones", type: "executor" },
+                            { text: "Set ambitious goals and push hard", type: "commander" },
+                            { text: "Consider team capabilities first", type: "coach" }
+                        ]
+                    },
+                    {
+                        text: "How do you celebrate success?",
+                        options: [
+                            { text: "Connect it to bigger purpose", type: "visionary" },
+                            { text: "Document lessons learned", type: "architect" },
+                            { text: "Recognize everyone's contributions", type: "facilitator" },
+                            { text: "Quickly move to next goal", type: "executor" },
+                            { text: "Public acknowledgment of victory", type: "commander" },
+                            { text: "Highlight individual growth", type: "coach" }
+                        ]
+                    },
+                    {
+                        text: "When hiring, what matters most?",
+                        options: [
+                            { text: "Alignment with vision and values", type: "visionary" },
+                            { text: "Skills matching system needs", type: "architect" },
+                            { text: "Cultural fit and team chemistry", type: "facilitator" },
+                            { text: "Track record of results", type: "executor" },
+                            { text: "Competence and capability", type: "commander" },
+                            { text: "Potential for development", type: "coach" }
+                        ]
+                    },
+                    {
+                        text: "How do you handle underperformance?",
+                        options: [
+                            { text: "Reconnect to purpose", type: "visionary" },
+                            { text: "Review processes and systems", type: "architect" },
+                            { text: "Understand underlying issues", type: "facilitator" },
+                            { text: "Set clear improvement metrics", type: "executor" },
+                            { text: "Make swift, tough decisions", type: "commander" },
+                            { text: "Create development plan", type: "coach" }
+                        ]
+                    },
+                    {
+                        text: "What's your meeting pet peeve?",
+                        options: [
+                            { text: "Lack of strategic thinking", type: "visionary" },
+                            { text: "Disorganized agendas", type: "architect" },
+                            { text: "People talking over each other", type: "facilitator" },
+                            { text: "Talking without action items", type: "executor" },
+                            { text: "Indecisiveness", type: "commander" },
+                            { text: "Ignoring people's development", type: "coach" }
+                        ]
+                    },
+                    {
+                        text: "How would your team describe you?",
+                        options: [
+                            { text: "Inspiring and forward-thinking", type: "visionary" },
+                            { text: "Organized and systematic", type: "architect" },
+                            { text: "Supportive and inclusive", type: "facilitator" },
+                            { text: "Results-driven and efficient", type: "executor" },
+                            { text: "Decisive and strong", type: "commander" },
+                            { text: "Caring and developmental", type: "coach" }
+                        ]
+                    },
+                    {
+                        text: "What's your superpower as a leader?",
+                        options: [
+                            { text: "Seeing possibilities others miss", type: "visionary" },
+                            { text: "Creating order from chaos", type: "architect" },
+                            { text: "Building bridges between people", type: "facilitator" },
+                            { text: "Getting things done", type: "executor" },
+                            { text: "Making tough calls", type: "commander" },
+                            { text: "Unlocking potential in others", type: "coach" }
+                        ]
+                    }
+                ]
+            },
+            section3: {
+                title: "Team Dynamics Assessment",
+                icon: "👥",
+                questions: [
+                    {
+                        text: "Team members openly admit mistakes and weaknesses",
+                        scale: true,
+                        dimension: "trust"
+                    },
+                    {
+                        text: "People are comfortable being vulnerable in front of the team",
+                        scale: true,
+                        dimension: "trust"
+                    },
+                    {
+                        text: "Team members ask for help without hesitation",
+                        scale: true,
+                        dimension: "trust"
+                    },
+                    {
+                        text: "We share personal challenges that affect work",
+                        scale: true,
+                        dimension: "trust"
+                    },
+                    {
+                        text: "Team members engage in passionate debates about ideas",
+                        scale: true,
+                        dimension: "conflict"
+                    },
+                    {
+                        text: "We surface and resolve disagreements quickly",
+                        scale: true,
+                        dimension: "conflict"
+                    },
+                    {
+                        text: "People challenge each other's viewpoints constructively",
+                        scale: true,
+                        dimension: "conflict"
+                    },
+                    {
+                        text: "Conflict is seen as productive, not problematic",
+                        scale: true,
+                        dimension: "conflict"
+                    },
+                    {
+                        text: "Everyone is clear about team priorities and goals",
+                        scale: true,
+                        dimension: "commitment"
+                    },
+                    {
+                        text: "Team members commit fully to decisions, even if they initially disagreed",
+                        scale: true,
+                        dimension: "commitment"
+                    },
+                    {
+                        text: "We have clear deadlines and stick to them",
+                        scale: true,
+                        dimension: "commitment"
+                    },
+                    {
+                        text: "After meetings, everyone knows what they need to do",
+                        scale: true,
+                        dimension: "commitment"
+                    },
+                    {
+                        text: "Team members call out peers who don't meet standards",
+                        scale: true,
+                        dimension: "accountability"
+                    },
+                    {
+                        text: "We address performance issues directly",
+                        scale: true,
+                        dimension: "accountability"
+                    },
+                    {
+                        text: "People take ownership of their responsibilities",
+                        scale: true,
+                        dimension: "accountability"
+                    },
+                    {
+                        text: "No one makes excuses for missing deadlines or quality standards",
+                        scale: true,
+                        dimension: "accountability"
+                    },
+                    {
+                        text: "Team success is prioritized over individual goals",
+                        scale: true,
+                        dimension: "results"
+                    },
+                    {
+                        text: "We measure and track collective outcomes",
+                        scale: true,
+                        dimension: "results"
+                    },
+                    {
+                        text: "Individual awards don't overshadow team achievements",
+                        scale: true,
+                        dimension: "results"
+                    },
+                    {
+                        text: "Everyone is willing to make personal sacrifices for team success",
+                        scale: true,
+                        dimension: "results"
+                    }
+                ]
+            }
+        };
+
+        // State Management
+        let currentQuestion = 0;
+        let currentSection = 1;
+        let answers = {
+            section1: [],
+            section2: [],
+            section3: []
+        };
+
+        // Calculate total questions
+        const totalQuestions = Object.values(assessmentData).reduce((sum, section) => sum + section.questions.length, 0);
+        document.getElementById('totalQuestions').textContent = totalQuestions;
+
+        // Initialize
+        function init() {
+            renderCurrentQuestion();
+            updateProgress();
+        }
+
+        // Render Question
+        function renderCurrentQuestion() {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = '';
+
+            const sectionKey = `section${currentSection}`;
+            const section = assessmentData[sectionKey];
+            const sectionQuestionIndex = answers[sectionKey].length;
+            
+            if (sectionQuestionIndex >= section.questions.length) {
+                // Move to next section or show results
+                if (currentSection < 3) {
+                    currentSection++;
+                    renderCurrentQuestion();
+                    return;
+                } else {
+                    showResults();
+                    return;
+                }
+            }
+
+            const question = section.questions[sectionQuestionIndex];
+            const globalQuestionNum = currentQuestion + 1;
+
+            const card = document.createElement('div');
+            card.className = 'question-card active';
+            
+            let optionsHTML = '';
+            if (question.scale) {
+                optionsHTML = `
+                    <div class="scale-options">
+                        ${[1, 2, 3, 4, 5].map(val => `
+                            <div class="scale-option" data-value="${val}">
+                                <div class="scale-value">${val}</div>
+                                <div class="scale-label">${val === 1 ? 'Never' : val === 5 ? 'Always' : ''}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } else {
+                optionsHTML = `
+                    <div class="answer-options">
+                        ${question.options.map((opt, idx) => `
+                            <div class="answer-option" data-index="${idx}">
+                                ${opt.text}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+
+            card.innerHTML = `
+                <div class="section-header">${section.icon} ${section.title}</div>
+                <div class="question-number">Question ${globalQuestionNum} of ${totalQuestions}</div>
+                <div class="question-text">${question.text}</div>
+                ${optionsHTML}
+                <div class="nav-buttons">
+                    ${currentQuestion > 0 ? '<button class="nav-btn prev" onclick="previousQuestion()">← Previous</button>' : ''}
+                    <button class="nav-btn next" id="nextBtn" disabled>${currentQuestion === totalQuestions - 1 ? 'See Results' : 'Next'} →</button>
+                </div>
+            `;
+
+            container.appendChild(card);
+
+            // Add click handlers
+            if (question.scale) {
+                card.querySelectorAll('.scale-option').forEach(opt => {
+                    opt.addEventListener('click', () => selectScaleOption(opt, question));
+                });
+            } else {
+                card.querySelectorAll('.answer-option').forEach(opt => {
+                    opt.addEventListener('click', () => selectAnswer(opt, question));
+                });
+            }
+        }
+
+        function selectAnswer(element, question) {
+            // Remove previous selection
+            document.querySelectorAll('.answer-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+
+            const index = parseInt(element.getAttribute('data-index'));
+            const answer = question.options[index];
+
+            // Save answer
+            const sectionKey = `section${currentSection}`;
+            answers[sectionKey][answers[sectionKey].length] = answer;
+
+            // Enable next button
+            document.getElementById('nextBtn').disabled = false;
+
+            // Auto-advance after short delay
+            setTimeout(() => nextQuestion(), 500);
+        }
+
+        function selectScaleOption(element, question) {
+            // Remove previous selection
+            document.querySelectorAll('.scale-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+
+            const value = parseInt(element.getAttribute('data-value'));
+            
+            // Save answer
+            const sectionKey = `section${currentSection}`;
+            answers[sectionKey][answers[sectionKey].length] = {
+                value: value,
+                dimension: question.dimension
+            };
+
+            // Enable next button
+            document.getElementById('nextBtn').disabled = false;
+
+            // Auto-advance after short delay
+            setTimeout(() => nextQuestion(), 500);
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            renderCurrentQuestion();
+            updateProgress();
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                
+                // Remove last answer from current section
+                const sectionKey = `section${currentSection}`;
+                answers[sectionKey].pop();
+                
+                // Check if we need to go back a section
+                if (answers[sectionKey].length === 0 && currentSection > 1) {
+                    currentSection--;
+                }
+                
+                renderCurrentQuestion();
+                updateProgress();
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentQuestion / totalQuestions) * 100;
+            document.getElementById('overallProgressFill').style.width = progress + '%';
+            document.getElementById('currentQuestionNum').textContent = currentQuestion;
+
+            // Update section badges
+            const section1Count = answers.section1.length;
+            const section2Count = answers.section2.length;
+            const section3Count = answers.section3.length;
+
+            // Section 1
+            const section1Badge = document.getElementById('section1Badge');
+            if (section1Count === assessmentData.section1.questions.length) {
+                section1Badge.classList.remove('active');
+                section1Badge.classList.add('completed');
+                section1Badge.querySelector('.status').textContent = 'Completed ✓';
+            } else if (section1Count > 0) {
+                section1Badge.classList.add('active');
+                section1Badge.querySelector('.status').textContent = `${section1Count}/12`;
+            }
+
+            // Section 2
+            const section2Badge = document.getElementById('section2Badge');
+            if (section2Count === assessmentData.section2.questions.length) {
+                section2Badge.classList.remove('active');
+                section2Badge.classList.add('completed');
+                section2Badge.querySelector('.status').textContent = 'Completed ✓';
+            } else if (section2Count > 0) {
+                section2Badge.classList.add('active');
+                section2Badge.classList.remove('completed');
+                section2Badge.querySelector('.status').textContent = `${section2Count}/14`;
+            }
+
+            // Section 3
+            const section3Badge = document.getElementById('section3Badge');
+            if (section3Count === assessmentData.section3.questions.length) {
+                section3Badge.classList.remove('active');
+                section3Badge.classList.add('completed');
+                section3Badge.querySelector('.status').textContent = 'Completed ✓';
+            } else if (section3Count > 0) {
+                section3Badge.classList.add('active');
+                section3Badge.classList.remove('completed');
+                section3Badge.querySelector('.status').textContent = `${section3Count}/20`;
+            }
+        }
+
+        function showResults() {
+            // Hide questions
+            document.getElementById('questionsContainer').style.display = 'none';
+            document.querySelector('.overall-progress').style.display = 'none';
+
+            // Calculate results
+            const results = calculateResults();
+
+            // Show results
+            const resultsDiv = document.getElementById('results');
+            const resultsContent = document.getElementById('resultsContent');
+
+            resultsContent.innerHTML = `
+                <div class="result-section">
+                    <h3>👤 Your Worker Type</h3>
+                    <div class="result-badge">${results.workerType.icon}</div>
+                    <h4 style="font-size: 1.5em; margin: 15px 0;">${results.workerType.type}</h4>
+                    <p style="color: #666; line-height: 1.7;">${results.workerType.description}</p>
+                </div>
+
+                <div class="result-section">
+                    <h3>🎯 Your Leadership Style</h3>
+                    <div class="result-badge">${results.leadershipStyle.icon}</div>
+                    <h4 style="font-size: 1.5em; margin: 15px 0;">${results.leadershipStyle.type}</h4>
+                    <p style="color: #666; line-height: 1.7;">${results.leadershipStyle.description}</p>
+                </div>
+
+                <div class="result-section">
+                    <h3>👥 Team Dynamics Overview</h3>
+                    ${Object.entries(results.teamDynamics.dimensions).map(([dim, score]) => `
+                        <div style="margin: 20px 0;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <strong style="text-transform: capitalize;">${dim}</strong>
+                                <span>${score.toFixed(1)}/5.0</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${(score/5)*100}%"></div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            resultsDiv.classList.add('active');
+
+            // Save to localStorage
+            localStorage.setItem('completeProfileResults', JSON.stringify({
+                timestamp: new Date().toISOString(),
+                workerType: results.workerType.type,
+                leadershipStyle: results.leadershipStyle.type,
+                teamDynamics: results.teamDynamics,
+                answers: answers
+            }));
+        }
+
+        function calculateResults() {
+            // Calculate Worker Type
+            const workerTypeCounts = {};
+            answers.section1.forEach(answer => {
+                workerTypeCounts[answer.type] = (workerTypeCounts[answer.type] || 0) + 1;
+            });
+            const dominantWorkerType = Object.keys(workerTypeCounts).reduce((a, b) => 
+                workerTypeCounts[a] > workerTypeCounts[b] ? a : b
+            );
+
+            const workerTypeData = {
+                sprinter: {
+                    icon: "⚡",
+                    type: "Sprinter",
+                    description: "You thrive in short, intense bursts of productivity. You excel at quick wins, tight deadlines, and rapid execution. Best suited for dynamic environments with clear milestones."
+                },
+                jogger: {
+                    icon: "🏃",
+                    type: "Jogger",
+                    description: "You maintain steady, consistent pace. You excel at sustainable productivity, predictable routines, and balanced work-life integration. Perfect for stable, long-term projects."
+                },
+                ultrarunner: {
+                    icon: "🔥",
+                    type: "Ultrarunner",
+                    description: "You can sustain deep focus for extended periods. You excel at complex problems, marathon work sessions, and total immersion. Ideal for deep work and challenging projects."
+                }
+            };
+
+            // Calculate Leadership Style
+            const leadershipCounts = {};
+            answers.section2.forEach(answer => {
+                leadershipCounts[answer.type] = (leadershipCounts[answer.type] || 0) + 1;
+            });
+            const dominantLeadership = Object.keys(leadershipCounts).reduce((a, b) => 
+                leadershipCounts[a] > leadershipCounts[b] ? a : b
+            );
+
+            const leadershipData = {
+                visionary: {
+                    icon: "🔮",
+                    type: "Visionary",
+                    description: "You inspire with big-picture thinking and future possibilities. You excel at strategy, innovation, and painting compelling visions that motivate others."
+                },
+                architect: {
+                    icon: "🏗️",
+                    type: "Architect",
+                    description: "You build robust systems and frameworks. You excel at organization, process design, and creating structures that scale effectively."
+                },
+                facilitator: {
+                    icon: "🤝",
+                    type: "Facilitator",
+                    description: "You bring people together and create harmony. You excel at collaboration, consensus-building, and ensuring everyone's voice is heard."
+                },
+                executor: {
+                    icon: "✅",
+                    type: "Executor",
+                    description: "You drive results through focused action. You excel at execution, accountability, and turning plans into reality efficiently."
+                },
+                commander: {
+                    icon: "⚔️",
+                    type: "Commander",
+                    description: "You lead decisively and drive hard toward goals. You excel at making tough calls, pushing for excellence, and winning."
+                },
+                coach: {
+                    icon: "🎓",
+                    type: "Coach",
+                    description: "You develop others' potential. You excel at mentoring, personalized support, and helping team members grow and succeed."
+                }
+            };
+
+            // Calculate Team Dynamics
+            const dimensions = {
+                trust: [],
+                conflict: [],
+                commitment: [],
+                accountability: [],
+                results: []
+            };
+
+            answers.section3.forEach(answer => {
+                if (answer.dimension) {
+                    dimensions[answer.dimension].push(answer.value);
+                }
+            });
+
+            const dimensionScores = {};
+            Object.keys(dimensions).forEach(dim => {
+                const scores = dimensions[dim];
+                dimensionScores[dim] = scores.reduce((a, b) => a + b, 0) / scores.length;
+            });
+
+            return {
+                workerType: workerTypeData[dominantWorkerType],
+                leadershipStyle: leadershipData[dominantLeadership],
+                teamDynamics: {
+                    dimensions: dimensionScores
+                }
+            };
+        }
+
+        // Hamburger Menu Control
+        const menuToggle = document.getElementById('menuToggle');
+        const slideMenu = document.getElementById('slideMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            menuToggle.classList.toggle('active');
+            slideMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = slideMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
+
+        slideMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                setTimeout(toggleMenu, 150);
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && slideMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>
