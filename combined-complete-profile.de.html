@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vollständiges Führungsprofil - TAP-IN</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        
+        /* Hamburger Menu */
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2001;
+            background: white;
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .menu-toggle:hover { background: #f8f9fa; transform: scale(1.05); }
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #1a365d;
+            margin: 5px 0;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+        
+        .slide-menu {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 320px;
+            height: 100vh;
+            background: white;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+            z-index: 2000;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            padding: 80px 0 30px;
+        }
+        .slide-menu.active { left: 0; }
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .menu-overlay.active { opacity: 1; pointer-events: auto; }
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #1a365d;
+            padding: 0 25px 20px;
+            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 10px;
+        }
+        .menu-section {
+            padding: 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .menu-section:last-child { border-bottom: none; }
+        .menu-section-title {
+            font-size: 0.75em;
+            font-weight: bold;
+            color: #999;
+            text-transform: uppercase;
+            padding: 0 25px 10px;
+            letter-spacing: 0.5px;
+        }
+        .menu-section a {
+            display: flex;
+            align-items: center;
+            padding: 12px 25px;
+            color: #333;
+            text-decoration: none;
+            font-size: 1em;
+            transition: all 0.2s;
+            gap: 12px;
+        }
+        .menu-section a:hover {
+            background: rgba(26,54,93,0.05);
+            color: #1a365d;
+            padding-left: 30px;
+        }
+        .menu-section a.primary {
+            background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%);
+            color: white;
+            margin: 10px 15px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+        .menu-section a.primary:hover {
+            padding-left: 25px;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26,54,93,0.3);
+        }
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+            background: white;
+            border-radius: 25px;
+            padding: 8px 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .lang-switch a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 5px 10px;
+            transition: all 0.2s;
+        }
+        .lang-switch a.active { color: #1a365d; }
+        .lang-switch a:hover { color: #1a365d; }
+        
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .header h1 {
+            color: #1a365d;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .header p {
+            color: #64748b;
+            font-size: 1.1em;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        .section-progress {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .section-indicator-item {
+            flex: 1;
+            min-width: 150px;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        .section-indicator-item.active {
+            background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(26,54,93,0.3);
+        }
+        .section-indicator-item.completed {
+            background: #334155;
+            color: white;
+        }
+        .section-icon {
+            font-size: 1.5em;
+            margin-bottom: 8px;
+        }
+        .section-name {
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+        
+        .progress-bar-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .progress-text {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.95em;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #1a365d 0%, #334155 100%);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .question-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section-header {
+            color: #1a365d;
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .question-number {
+            color: #94a3b8;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .question-text {
+            color: #1e293b;
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+        .scale-options {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .scale-option {
+            position: relative;
+            padding: 20px;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .scale-option:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+            transform: translateY(-2px);
+        }
+        .scale-option.selected {
+            background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%);
+            color: white;
+            border-color: #1a365d;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(26,54,93,0.3);
+        }
+        .scale-number {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .scale-label {
+            font-size: 0.8em;
+            font-weight: 500;
+            color: #64748b;
+        }
+        .scale-option.selected .scale-label {
+            color: white;
+        }
+        .scale-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            color: #64748b;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+        .nav-btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .nav-btn.prev {
+            background: #f1f5f9;
+            color: #475569;
+        }
+        .nav-btn.prev:hover {
+            background: #e2e8f0;
+            transform: translateX(-3px);
+        }
+        .nav-btn.next {
+            background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%);
+            color: white;
+            margin-left: auto;
+        }
+        .nav-btn.next:hover {
+            transform: translateX(3px);
+            box-shadow: 0 6px 20px rgba(26,54,93,0.3);
+        }
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .celebration-card {
+            background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            animation: celebratePulse 2s infinite;
+        }
+        @keyframes celebratePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        .celebration-card h2 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+        }
+        .celebration-card p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+        .view-results-btn {
+            padding: 18px 40px;
+            background: white;
+            color: #1a365d;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .view-results-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+        }
+        
+        .results-section {
+            display: none;
+        }
+        .results-header {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .results-header h2 {
+            color: #1a365d;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        .result-section {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .result-section h3 {
+            color: #1a365d;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .result-badge {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%);
+            color: white;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2em; }
+            .question-text { font-size: 1.2em; }
+            .scale-options { grid-template-columns: repeat(3, 1fr); }
+            .nav-buttons { flex-direction: column; gap: 10px; }
+            .nav-btn.next { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <button class="menu-toggle" aria-label="Menü umschalten">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="menu-overlay"></div>
+
+    <nav class="slide-menu">
+        <div class="logo">TAP-IN</div>
+        
+        <div class="menu-section">
+            <div class="menu-section-title">Bewertungen</div>
+            <a href="worker-type-assessment.de.html">⚡ Arbeitstyp-Test</a>
+            <a href="leadership-style-carousel.de.html">👔 Führungsstil-Test</a>
+            <a href="team-assessment-enhanced-v2.html">🎯 Team-Dynamik-Test</a>
+            <a href="combined-complete-profile.de.html" class="primary">📋 Vollständiges Profil</a>
+        </div>
+
+        <div class="menu-section">
+            <div class="menu-section-title">Über uns</div>
+            <a href="index.html#about">ℹ️ Über TAP-IN</a>
+            <a href="index.html#contact">📧 Kontakt</a>
+        </div>
+    </nav>
+
+    <div class="lang-switch">
+        <a href="combined-complete-profile.html">EN</a> | 
+        <a href="combined-complete-profile.de.html" class="active">DE</a>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Vollständiges Führungsprofil</h1>
+            <p>Vervollständigen Sie alle drei Bewertungen für Ihr umfassendes Führungsprofil</p>
+        </div>
+
+        <div class="section-progress">
+            <div class="section-indicator-item active" data-section="1">
+                <div class="section-icon">⚡</div>
+                <div class="section-name">Arbeitstyp</div>
+            </div>
+            <div class="section-indicator-item" data-section="2">
+                <div class="section-icon">👔</div>
+                <div class="section-name">Führungsstil</div>
+            </div>
+            <div class="section-indicator-item" data-section="3">
+                <div class="section-icon">🎯</div>
+                <div class="section-name">Team-Dynamik</div>
+            </div>
+        </div>
+
+        <div class="progress-bar-container">
+            <div class="progress-text">Fortschritt: <span id="progressText">0 von 46</span></div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <div id="questionsContainer"></div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="results-header">
+                <h2>🎉 Ihr Vollständiges Profil</h2>
+            </div>
+            <div class="result-section">
+                <h3>⚡ Arbeitstyp</h3>
+                <div class="result-badge" id="workerResult"></div>
+                <p id="workerDescription"></p>
+            </div>
+            <div class="result-section">
+                <h3>👔 Führungsstil</h3>
+                <div class="result-badge" id="leadershipResult"></div>
+                <p id="leadershipDescription"></p>
+            </div>
+            <div class="result-section">
+                <h3>🎯 Team-Dynamik</h3>
+                <div class="result-badge" id="teamResult"></div>
+                <p id="teamDescription"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const assessmentData = {
+            section1: {
+                title: "⚡ ARBEITSTYP",
+                icon: "⚡",
+                name: "Arbeitstyp",
+                questions: [
+                    {
+                        text: "Wann sind Sie am produktivsten?",
+                        options: [
+                            { value: 1, label: "Kurze Sprints" },
+                            { value: 2, label: "Schnelle Bursts" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Längere Sessions" },
+                            { value: 5, label: "Marathon-Tage" }
+                        ],
+                        leftLabel: "Kurze Sprints",
+                        rightLabel: "Lange Marathon-Sessions"
+                    },
+                    {
+                        text: "Was ist Ihr idealer Arbeitsplan?",
+                        options: [
+                            { value: 1, label: "Sehr flexibel" },
+                            { value: 2, label: "Meist flexibel" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Meist strukturiert" },
+                            { value: 5, label: "Fest strukturiert" }
+                        ],
+                        leftLabel: "Sehr flexibel",
+                        rightLabel: "Fest strukturiert"
+                    },
+                    {
+                        text: "Wie gehen Sie mit mehreren Projekten um?",
+                        options: [
+                            { value: 1, label: "Eins nach dem anderen" },
+                            { value: 2, label: "Meist fokussiert" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Einige gleichzeitig" },
+                            { value: 5, label: "Viele gleichzeitig" }
+                        ],
+                        leftLabel: "Eins nach dem anderen",
+                        rightLabel: "Viele gleichzeitig"
+                    },
+                    {
+                        text: "Wann fühlen Sie sich am meisten in Ihrer Zone?",
+                        options: [
+                            { value: 1, label: "Früher Morgen" },
+                            { value: 2, label: "Vormittag" },
+                            { value: 3, label: "Mittag" },
+                            { value: 4, label: "Nachmittag" },
+                            { value: 5, label: "Abend/Nacht" }
+                        ],
+                        leftLabel: "Früher Morgen",
+                        rightLabel: "Abend/Nacht"
+                    },
+                    {
+                        text: "Wie nehmen Sie sich Auszeiten?",
+                        options: [
+                            { value: 1, label: "Sehr häufig" },
+                            { value: 2, label: "Regelmäßig" },
+                            { value: 3, label: "Gelegentlich" },
+                            { value: 4, label: "Selten" },
+                            { value: 5, label: "Fast nie" }
+                        ],
+                        leftLabel: "Sehr häufige Pausen",
+                        rightLabel: "Sehr seltene Pausen"
+                    },
+                    {
+                        text: "Welche Art von Aufgaben bevorzugen Sie?",
+                        options: [
+                            { value: 1, label: "Sehr kurz" },
+                            { value: 2, label: "Kurz" },
+                            { value: 3, label: "Mittel" },
+                            { value: 4, label: "Lang" },
+                            { value: 5, label: "Sehr lang" }
+                        ],
+                        leftLabel: "Schnelle Aufgaben",
+                        rightLabel: "Langfristige Projekte"
+                    },
+                    {
+                        text: "Wie planen Sie Ihre Woche?",
+                        options: [
+                            { value: 1, label: "Spontan" },
+                            { value: 2, label: "Lose" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Strukturiert" },
+                            { value: 5, label: "Sehr detailliert" }
+                        ],
+                        leftLabel: "Spontan",
+                        rightLabel: "Sehr detailliert geplant"
+                    },
+                    {
+                        text: "Wie wichtig sind Ihnen Deadlines?",
+                        options: [
+                            { value: 1, label: "Flexibel" },
+                            { value: 2, label: "Etwas wichtig" },
+                            { value: 3, label: "Wichtig" },
+                            { value: 4, label: "Sehr wichtig" },
+                            { value: 5, label: "Absolut kritisch" }
+                        ],
+                        leftLabel: "Flexibel",
+                        rightLabel: "Absolut kritisch"
+                    },
+                    {
+                        text: "Wie reagieren Sie auf Unterbrechungen?",
+                        options: [
+                            { value: 1, label: "Sehr gestört" },
+                            { value: 2, label: "Gestört" },
+                            { value: 3, label: "Neutral" },
+                            { value: 4, label: "Anpassbar" },
+                            { value: 5, label: "Sehr anpassbar" }
+                        ],
+                        leftLabel: "Sehr gestört",
+                        rightLabel: "Sehr anpassbar"
+                    },
+                    {
+                        text: "Wie arbeiten Sie am liebsten?",
+                        options: [
+                            { value: 1, label: "Solo" },
+                            { value: 2, label: "Meist solo" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Meist Team" },
+                            { value: 5, label: "Immer Team" }
+                        ],
+                        leftLabel: "Alleine",
+                        rightLabel: "Im Team"
+                    },
+                    {
+                        text: "Wann brauchen Sie Ergebnisse?",
+                        options: [
+                            { value: 1, label: "Sofort" },
+                            { value: 2, label: "Sehr schnell" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Kann warten" },
+                            { value: 5, label: "Langfristig" }
+                        ],
+                        leftLabel: "Sofortige Ergebnisse",
+                        rightLabel: "Langfristige Ergebnisse"
+                    },
+                    {
+                        text: "Wie ist Ihr Energielevel?",
+                        options: [
+                            { value: 1, label: "Konstant niedrig" },
+                            { value: 2, label: "Meist konstant" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Schwankend" },
+                            { value: 5, label: "Sehr schwankend" }
+                        ],
+                        leftLabel: "Konstant",
+                        rightLabel: "In Wellen"
+                    }
+                ]
+            },
+            section2: {
+                title: "👔 FÜHRUNGSSTIL",
+                icon: "👔",
+                name: "Führungsstil",
+                questions: [
+                    {
+                        text: "Wie treffen Sie Entscheidungen als Führungskraft?",
+                        options: [
+                            { value: 1, label: "Sehr schnell" },
+                            { value: 2, label: "Schnell" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Durchdacht" },
+                            { value: 5, label: "Sehr durchdacht" }
+                        ],
+                        leftLabel: "Schnell & entschlossen",
+                        rightLabel: "Durchdacht & beratend"
+                    },
+                    {
+                        text: "Wie gehen Sie mit Teamkonflikten um?",
+                        options: [
+                            { value: 1, label: "Direkt" },
+                            { value: 2, label: "Meist direkt" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Diplomatisch" },
+                            { value: 5, label: "Sehr diplomatisch" }
+                        ],
+                        leftLabel: "Direkt ansprechen",
+                        rightLabel: "Diplomatisch vermitteln"
+                    },
+                    {
+                        text: "Wie kommunizieren Sie Erwartungen?",
+                        options: [
+                            { value: 1, label: "Sehr klar" },
+                            { value: 2, label: "Klar" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Flexibel" },
+                            { value: 5, label: "Sehr flexibel" }
+                        ],
+                        leftLabel: "Sehr klar & direkt",
+                        rightLabel: "Flexibel & offen"
+                    },
+                    {
+                        text: "Wie geben Sie Feedback?",
+                        options: [
+                            { value: 1, label: "Sehr direkt" },
+                            { value: 2, label: "Direkt" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Unterstützend" },
+                            { value: 5, label: "Sehr unterstützend" }
+                        ],
+                        leftLabel: "Direkt & ehrlich",
+                        rightLabel: "Sanft & unterstützend"
+                    },
+                    {
+                        text: "Wie delegieren Sie Aufgaben?",
+                        options: [
+                            { value: 1, label: "Eng kontrolliert" },
+                            { value: 2, label: "Strukturiert" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Vertrauensvoll" },
+                            { value: 5, label: "Voll autonom" }
+                        ],
+                        leftLabel: "Eng kontrolliert",
+                        rightLabel: "Voll autonom"
+                    },
+                    {
+                        text: "Wie motivieren Sie Ihr Team?",
+                        options: [
+                            { value: 1, label: "Herausforderungen" },
+                            { value: 2, label: "Ziele" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Unterstützung" },
+                            { value: 5, label: "Lob" }
+                        ],
+                        leftLabel: "Durch Herausforderungen",
+                        rightLabel: "Durch Unterstützung"
+                    },
+                    {
+                        text: "Wie gehen Sie mit Fehlern um?",
+                        options: [
+                            { value: 1, label: "Rechenschaft" },
+                            { value: 2, label: "Korrektur" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Lernen" },
+                            { value: 5, label: "Wachstum" }
+                        ],
+                        leftLabel: "Rechenschaft fordern",
+                        rightLabel: "Als Lernchance nutzen"
+                    },
+                    {
+                        text: "Wie setzen Sie Prioritäten für Ihr Team?",
+                        options: [
+                            { value: 1, label: "Top-down" },
+                            { value: 2, label: "Meist top-down" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Kollaborativ" },
+                            { value: 5, label: "Voll kollaborativ" }
+                        ],
+                        leftLabel: "Top-down",
+                        rightLabel: "Kollaborativ"
+                    },
+                    {
+                        text: "Wie bauen Sie Vertrauen auf?",
+                        options: [
+                            { value: 1, label: "Ergebnisse" },
+                            { value: 2, label: "Leistung" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Beziehungen" },
+                            { value: 5, label: "Verbindung" }
+                        ],
+                        leftLabel: "Durch Ergebnisse",
+                        rightLabel: "Durch Beziehungen"
+                    },
+                    {
+                        text: "Wie gehen Sie mit Veränderungen um?",
+                        options: [
+                            { value: 1, label: "Schnell umsetzen" },
+                            { value: 2, label: "Zügig" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Schrittweise" },
+                            { value: 5, label: "Sehr behutsam" }
+                        ],
+                        leftLabel: "Schnell umsetzen",
+                        rightLabel: "Schrittweise einführen"
+                    },
+                    {
+                        text: "Wie fördern Sie Innovation?",
+                        options: [
+                            { value: 1, label: "Risiken fordern" },
+                            { value: 2, label: "Ermutigen" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Unterstützen" },
+                            { value: 5, label: "Sicherheit bieten" }
+                        ],
+                        leftLabel: "Risiken fordern",
+                        rightLabel: "Sicheren Raum bieten"
+                    },
+                    {
+                        text: "Wie messen Sie Erfolg?",
+                        options: [
+                            { value: 1, label: "Ergebnisse" },
+                            { value: 2, label: "KPIs" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Entwicklung" },
+                            { value: 5, label: "Wachstum" }
+                        ],
+                        leftLabel: "Durch Ergebnisse",
+                        rightLabel: "Durch Team-Wachstum"
+                    },
+                    {
+                        text: "Wie führen Sie in Krisen?",
+                        options: [
+                            { value: 1, label: "Sehr direkt" },
+                            { value: 2, label: "Entschlossen" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Unterstützend" },
+                            { value: 5, label: "Sehr einfühlsam" }
+                        ],
+                        leftLabel: "Direkt & entschlossen",
+                        rightLabel: "Ruhig & unterstützend"
+                    },
+                    {
+                        text: "Wie entwickeln Sie Ihr Team?",
+                        options: [
+                            { value: 1, label: "Durch Taten" },
+                            { value: 2, label: "Durch Ziele" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Mentoring" },
+                            { value: 5, label: "Coaching" }
+                        ],
+                        leftLabel: "Durch Herausforderungen",
+                        rightLabel: "Durch Mentoring"
+                    }
+                ]
+            },
+            section3: {
+                title: "🎯 TEAM-DYNAMIK",
+                icon: "🎯",
+                name: "Team-Dynamik",
+                questions: [
+                    {
+                        text: "Wie tragen Sie zu Team-Meetings bei?",
+                        options: [
+                            { value: 1, label: "Führe" },
+                            { value: 2, label: "Lenke" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Unterstütze" },
+                            { value: 5, label: "Beobachte" }
+                        ],
+                        leftLabel: "Führe Diskussionen",
+                        rightLabel: "Höre & unterstütze"
+                    },
+                    {
+                        text: "Wie gehen Sie mit Meinungsverschiedenheiten im Team um?",
+                        options: [
+                            { value: 1, label: "Sehr direkt" },
+                            { value: 2, label: "Direkt" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Diplomatisch" },
+                            { value: 5, label: "Sehr diplomatisch" }
+                        ],
+                        leftLabel: "Direkt ansprechen",
+                        rightLabel: "Vermitteln"
+                    },
+                    {
+                        text: "Wie teilen Sie Ideen?",
+                        options: [
+                            { value: 1, label: "Sehr enthusiastisch" },
+                            { value: 2, label: "Enthusiastisch" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Durchdacht" },
+                            { value: 5, label: "Sehr zurückhaltend" }
+                        ],
+                        leftLabel: "Enthusiastisch & oft",
+                        rightLabel: "Durchdacht & selten"
+                    },
+                    {
+                        text: "Wie bauen Sie Beziehungen zu Kollegen auf?",
+                        options: [
+                            { value: 1, label: "Sehr aktiv" },
+                            { value: 2, label: "Aktiv" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Allmählich" },
+                            { value: 5, label: "Sehr allmählich" }
+                        ],
+                        leftLabel: "Schnell & offen",
+                        rightLabel: "Langsam & selektiv"
+                    },
+                    {
+                        text: "Wie reagieren Sie auf Feedback von Kollegen?",
+                        options: [
+                            { value: 1, label: "Sehr offen" },
+                            { value: 2, label: "Offen" },
+                            { value: 3, label: "Neutral" },
+                            { value: 4, label: "Vorsichtig" },
+                            { value: 5, label: "Defensiv" }
+                        ],
+                        leftLabel: "Sehr offen",
+                        rightLabel: "Defensiv"
+                    },
+                    {
+                        text: "Wie gehen Sie mit Teamstress um?",
+                        options: [
+                            { value: 1, label: "Übernehme Führung" },
+                            { value: 2, label: "Handle" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Unterstütze" },
+                            { value: 5, label: "Schritt zurück" }
+                        ],
+                        leftLabel: "Übernehme Kontrolle",
+                        rightLabel: "Gebe Raum"
+                    },
+                    {
+                        text: "Wie bevorzugen Sie Zusammenarbeit?",
+                        options: [
+                            { value: 1, label: "Führend" },
+                            { value: 2, label: "Lenkend" },
+                            { value: 3, label: "Partnerschaftlich" },
+                            { value: 4, label: "Unterstützend" },
+                            { value: 5, label: "Folgend" }
+                        ],
+                        leftLabel: "Führe Projekte",
+                        rightLabel: "Unterstütze andere"
+                    },
+                    {
+                        text: "Wie kommunizieren Sie im Team?",
+                        options: [
+                            { value: 1, label: "Sehr häufig" },
+                            { value: 2, label: "Häufig" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Wenn nötig" },
+                            { value: 5, label: "Minimal" }
+                        ],
+                        leftLabel: "Häufig & detailliert",
+                        rightLabel: "Nur wenn nötig"
+                    },
+                    {
+                        text: "Wie gehen Sie mit Teamerfolg um?",
+                        options: [
+                            { value: 1, label: "Sehr sichtbar" },
+                            { value: 2, label: "Sichtbar" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Teilen" },
+                            { value: 5, label: "Anderen zuschreiben" }
+                        ],
+                        leftLabel: "Feiern Sie laut",
+                        rightLabel: "Anderen zuschreiben"
+                    },
+                    {
+                        text: "Wie unterstützen Sie kämpfende Teammitglieder?",
+                        options: [
+                            { value: 1, label: "Übernehmen" },
+                            { value: 2, label: "Anleiten" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Coachen" },
+                            { value: 5, label: "Zuhören" }
+                        ],
+                        leftLabel: "Direkt helfen",
+                        rightLabel: "Raum geben"
+                    },
+                    {
+                        text: "Wie gehen Sie mit Team-Veränderungen um?",
+                        options: [
+                            { value: 1, label: "Vorantreiben" },
+                            { value: 2, label: "Unterstützen" },
+                            { value: 3, label: "Neutral" },
+                            { value: 4, label: "Vorsichtig" },
+                            { value: 5, label: "Widerstehen" }
+                        ],
+                        leftLabel: "Veränderung vorantreiben",
+                        rightLabel: "Stabilität bewahren"
+                    },
+                    {
+                        text: "Wie teilen Sie Ihre Expertise?",
+                        options: [
+                            { value: 1, label: "Sehr proaktiv" },
+                            { value: 2, label: "Proaktiv" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Auf Anfrage" },
+                            { value: 5, label: "Zurückhaltend" }
+                        ],
+                        leftLabel: "Proaktiv teilen",
+                        rightLabel: "Auf Anfrage"
+                    },
+                    {
+                        text: "Wie gehen Sie mit stillen Teammitgliedern um?",
+                        options: [
+                            { value: 1, label: "Direkt einbeziehen" },
+                            { value: 2, label: "Ermutigen" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Geduldig warten" },
+                            { value: 5, label: "Raum geben" }
+                        ],
+                        leftLabel: "Aktiv einbeziehen",
+                        rightLabel: "Raum geben"
+                    },
+                    {
+                        text: "Wie lösen Sie Team-Probleme?",
+                        options: [
+                            { value: 1, label: "Schnell & direkt" },
+                            { value: 2, label: "Analytisch" },
+                            { value: 3, label: "Kollaborativ" },
+                            { value: 4, label: "Konsensbasiert" },
+                            { value: 5, label: "Geduldig" }
+                        ],
+                        leftLabel: "Schnell & direkt",
+                        rightLabel: "Langsam & inklusiv"
+                    },
+                    {
+                        text: "Wie beeinflusst Ihre Präsenz das Team?",
+                        options: [
+                            { value: 1, label: "Sehr energisierend" },
+                            { value: 2, label: "Energisierend" },
+                            { value: 3, label: "Neutral" },
+                            { value: 4, label: "Beruhigend" },
+                            { value: 5, label: "Sehr beruhigend" }
+                        ],
+                        leftLabel: "Energisierend",
+                        rightLabel: "Beruhigend"
+                    },
+                    {
+                        text: "Wie gehen Sie mit Team-Deadlines um?",
+                        options: [
+                            { value: 1, label: "Sehr dringend" },
+                            { value: 2, label: "Proaktiv" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Flexibel" },
+                            { value: 5, label: "Entspannt" }
+                        ],
+                        leftLabel: "Dränge auf Einhaltung",
+                        rightLabel: "Bleibe flexibel"
+                    },
+                    {
+                        text: "Wie balancieren Sie Team vs. individuelle Bedürfnisse?",
+                        options: [
+                            { value: 1, label: "Team zuerst" },
+                            { value: 2, label: "Meist Team" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Meist individuell" },
+                            { value: 5, label: "Individuell zuerst" }
+                        ],
+                        leftLabel: "Team zuerst",
+                        rightLabel: "Individuelle Bedürfnisse"
+                    },
+                    {
+                        text: "Wie gehen Sie mit dominanten Persönlichkeiten um?",
+                        options: [
+                            { value: 1, label: "Direkt herausfordern" },
+                            { value: 2, label: "Ansprechen" },
+                            { value: 3, label: "Ausgeglichen" },
+                            { value: 4, label: "Diplomatisch" },
+                            { value: 5, label: "Anpassen" }
+                        ],
+                        leftLabel: "Direkt herausfordern",
+                        rightLabel: "Sich anpassen"
+                    },
+                    {
+                        text: "Wie fördern Sie Team-Kreativität?",
+                        options: [
+                            { value: 1, label: "Fordern" },
+                            { value: 2, label: "Anregen" },
+                            { value: 3, label: "Unterstützen" },
+                            { value: 4, label: "Raum geben" },
+                            { value: 5, label: "Beobachten" }
+                        ],
+                        leftLabel: "Fordern & anstoßen",
+                        rightLabel: "Raum & Freiheit geben"
+                    },
+                    {
+                        text: "Wie verhalten Sie sich bei Team-Entscheidungen?",
+                        options: [
+                            { value: 1, label: "Führe" },
+                            { value: 2, label: "Beeinflussen" },
+                            { value: 3, label: "Beteiligen" },
+                            { value: 4, label: "Unterstützen" },
+                            { value: 5, label: "Folgen" }
+                        ],
+                        leftLabel: "Führe Entscheidungen",
+                        rightLabel: "Folge dem Konsens"
+                    }
+                ]
+            }
+        };
+
+        let currentSection = 1;
+        let currentQuestion = 0;
+        let answers = {};
+
+        function init() {
+            loadProgress();
+            renderCurrentQuestion();
+            updateProgress();
+            setupKeyboardNavigation();
+        }
+
+        function loadProgress() {
+            const saved = localStorage.getItem('combinedProfileProgress');
+            if (saved) {
+                const data = JSON.parse(saved);
+                currentSection = data.section || 1;
+                currentQuestion = data.question || 0;
+                answers = data.answers || {};
+            }
+        }
+
+        function renderCurrentQuestion() {
+            const container = document.getElementById('questionsContainer');
+            const section = assessmentData[`section${currentSection}`];
+            const question = section.questions[currentQuestion];
+            const globalQuestionNumber = getGlobalQuestionNumber();
+            
+            container.innerHTML = '';
+            
+            const card = document.createElement('div');
+            card.className = 'question-card';
+            
+            card.innerHTML = `
+                <div class="section-header">${section.icon} ${section.title}</div>
+                <div class="question-number">Frage ${globalQuestionNumber} von 46</div>
+                <div class="question-text">${question.text}</div>
+                <div class="scale-options" id="options">
+                    ${question.options.map(opt => `
+                        <div class="scale-option" data-value="${opt.value}">
+                            <div class="scale-number">${opt.value}</div>
+                            <div class="scale-label">${opt.label}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="scale-labels">
+                    <span>${question.leftLabel}</span>
+                    <span>${question.rightLabel}</span>
+                </div>
+                <div class="nav-buttons">
+                    <button class="nav-btn prev" onclick="previousQuestion()" ${currentSection === 1 && currentQuestion === 0 ? 'style="visibility:hidden"' : ''}>
+                        ← Zurück
+                    </button>
+                    <button class="nav-btn next" id="nextBtn" disabled>
+                        ${isLastQuestion() ? 'Ergebnisse ansehen' : 'Weiter'} →
+                    </button>
+                </div>
+            `;
+            
+            container.appendChild(card);
+            
+            const options = card.querySelectorAll('.scale-option');
+            options.forEach(opt => {
+                opt.addEventListener('click', () => selectOption(opt.dataset.value));
+            });
+            
+            const savedAnswer = answers[`s${currentSection}q${currentQuestion}`];
+            if (savedAnswer) {
+                selectOption(savedAnswer);
+            }
+            
+            updateSectionIndicators();
+        }
+
+        function selectOption(value) {
+            answers[`s${currentSection}q${currentQuestion}`] = parseInt(value);
+            
+            document.querySelectorAll('.scale-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            document.querySelector(`[data-value="${value}"]`).classList.add('selected');
+            
+            document.getElementById('nextBtn').disabled = false;
+            
+            saveProgress();
+        }
+
+        function nextQuestion() {
+            if (!answers[`s${currentSection}q${currentQuestion}`]) return;
+            
+            if (isLastQuestion()) {
+                showResults();
+                return;
+            }
+            
+            const section = assessmentData[`section${currentSection}`];
+            if (currentQuestion < section.questions.length - 1) {
+                currentQuestion++;
+            } else {
+                currentSection++;
+                currentQuestion = 0;
+            }
+            
+            renderCurrentQuestion();
+            updateProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function previousQuestion() {
+            if (currentSection === 1 && currentQuestion === 0) return;
+            
+            if (currentQuestion > 0) {
+                currentQuestion--;
+            } else {
+                currentSection--;
+                const prevSection = assessmentData[`section${currentSection}`];
+                currentQuestion = prevSection.questions.length - 1;
+            }
+            
+            renderCurrentQuestion();
+            updateProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function isLastQuestion() {
+            return currentSection === 3 && currentQuestion === assessmentData.section3.questions.length - 1;
+        }
+
+        function getGlobalQuestionNumber() {
+            let count = 0;
+            for (let i = 1; i < currentSection; i++) {
+                count += assessmentData[`section${i}`].questions.length;
+            }
+            return count + currentQuestion + 1;
+        }
+
+        function updateProgress() {
+            const total = 46;
+            const answered = Object.keys(answers).length;
+            const percentage = (answered / total) * 100;
+            
+            document.getElementById('progressText').textContent = `${answered} von ${total}`;
+            document.getElementById('progressFill').style.width = `${percentage}%`;
+        }
+
+        function updateSectionIndicators() {
+            document.querySelectorAll('.section-indicator-item').forEach((item, index) => {
+                const sectionNum = index + 1;
+                item.classList.remove('active', 'completed');
+                
+                if (sectionNum < currentSection) {
+                    item.classList.add('completed');
+                } else if (sectionNum === currentSection) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        function saveProgress() {
+            localStorage.setItem('combinedProfileProgress', JSON.stringify({
+                section: currentSection,
+                question: currentQuestion,
+                answers: answers
+            }));
+        }
+
+        function setupKeyboardNavigation() {
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' && !document.getElementById('nextBtn').disabled) {
+                    nextQuestion();
+                } else if (e.key === 'ArrowLeft') {
+                    previousQuestion();
+                } else if (e.key >= '1' && e.key <= '5') {
+                    selectOption(e.key);
+                }
+            });
+        }
+
+        function showResults() {
+            const workerScore = calculateSectionScore(1);
+            const leadershipScore = calculateSectionScore(2);
+            const teamScore = calculateSectionScore(3);
+            
+            document.getElementById('questionsContainer').innerHTML = `
+                <div class="celebration-card">
+                    <h2>🎉 Herzlichen Glückwunsch!</h2>
+                    <p>Sie haben Ihr vollständiges Führungsprofil abgeschlossen</p>
+                    <button class="view-results-btn" onclick="displayDetailedResults()">
+                        Ergebnisse ansehen
+                    </button>
+                </div>
+            `;
+            
+            document.querySelector('.progress-bar-container').style.display = 'none';
+            document.querySelector('.section-progress').style.display = 'none';
+        }
+
+        function calculateSectionScore(sectionNum) {
+            const section = assessmentData[`section${sectionNum}`];
+            let total = 0;
+            let count = 0;
+            
+            section.questions.forEach((q, i) => {
+                const answer = answers[`s${sectionNum}q${i}`];
+                if (answer) {
+                    total += answer;
+                    count++;
+                }
+            });
+            
+            return count > 0 ? total / count : 0;
+        }
+
+        function displayDetailedResults() {
+            const workerScore = calculateSectionScore(1);
+            const leadershipScore = calculateSectionScore(2);
+            const teamScore = calculateSectionScore(3);
+            
+            document.getElementById('workerResult').textContent = getWorkerType(workerScore);
+            document.getElementById('workerDescription').textContent = getWorkerDescription(workerScore);
+            
+            document.getElementById('leadershipResult').textContent = getLeadershipType(leadershipScore);
+            document.getElementById('leadershipDescription').textContent = getLeadershipDescription(leadershipScore);
+            
+            document.getElementById('teamResult').textContent = getTeamType(teamScore);
+            document.getElementById('teamDescription').textContent = getTeamDescription(teamScore);
+            
+            document.getElementById('questionsContainer').style.display = 'none';
+            document.getElementById('resultsSection').style.display = 'block';
+            
+            localStorage.removeItem('combinedProfileProgress');
+        }
+
+        function getWorkerType(score) {
+            if (score <= 2) return 'Sprinter 🏃‍♂️';
+            if (score <= 3.5) return 'Pacer 🚶‍♂️';
+            return 'Marathon Läufer 🎯';
+        }
+
+        function getWorkerDescription(score) {
+            if (score <= 2) return 'Sie gedeihen bei schnellen, intensiven Arbeitsperioden mit häufigen Pausen. Ihre Energie kommt in Schüben, und Sie arbeiten am besten mit klaren, kurzfristigen Zielen.';
+            if (score <= 3.5) return 'Sie balancieren zwischen Sprint- und Marathon-Arbeitsstilen. Sie können sich sowohl an schnelle als auch an langfristige Projekte anpassen.';
+            return 'Sie zeichnen sich durch konstante, langfristige Anstrengung aus. Sie bevorzugen tiefe Fokussierung über längere Zeiträume und bauen Momentum im Laufe der Zeit auf.';
+        }
+
+        function getLeadershipType(score) {
+            if (score <= 2) return 'Direktiver Führer 🎯';
+            if (score <= 3.5) return 'Ausgewogener Führer ⚖️';
+            return 'Unterstützender Führer 🤝';
+        }
+
+        function getLeadershipDescription(score) {
+            if (score <= 2) return 'Sie führen mit klarer Richtung und entschlossener Entscheidungsfindung. Sie setzen hohe Standards und erwarten Ergebnisse.';
+            if (score <= 3.5) return 'Sie balancieren zwischen direktiver und unterstützender Führung und passen Ihren Stil an die Situation an.';
+            return 'Sie führen mit Empathie und kollaborativem Geist. Sie bauen Ihr Team durch Unterstützung und Mentoring auf.';
+        }
+
+        function getTeamType(score) {
+            if (score <= 2) return 'Team-Treiber 🚀';
+            if (score <= 3.5) return 'Team-Kollaborateur 🤝';
+            return 'Team-Supporter 🌟';
+        }
+
+        function getTeamDescription(score) {
+            if (score <= 2) return 'Sie bringen Energie und Führung ins Team. Sie sind komfortabel damit, Diskussionen zu leiten und Entscheidungen voranzutreiben.';
+            if (score <= 3.5) return 'Sie balancieren zwischen Führung und Unterstützung und passen Ihre Rolle an die Bedürfnisse des Teams an.';
+            return 'Sie zeichnen sich dadurch aus, andere zu unterstützen und einen sicheren Raum für Teamarbeit zu schaffen. Sie sind ein großartiger Zuhörer und Vermittler.';
+        }
+
+        // Menu toggle functionality
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.slide-menu').classList.toggle('active');
+            document.querySelector('.menu-overlay').classList.toggle('active');
+        });
+
+        document.querySelector('.menu-overlay').addEventListener('click', function() {
+            document.querySelector('.menu-toggle').classList.remove('active');
+            document.querySelector('.slide-menu').classList.remove('active');
+            this.classList.remove('active');
+        });
+
+        init();
+    </script>
+</body>
+</html>
