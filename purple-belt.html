@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🟣 Purple Belt: Choose Your Path - Clarity & Commitment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+            color: white;
+        }
+
+        .belt-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .theme {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            font-weight: 500;
+            opacity: 0.95;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .prerequisite-banner {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 6px solid #f59e0b;
+            border-radius: 12px;
+            padding: 20px 30px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .prerequisite-banner .icon {
+            font-size: 2em;
+        }
+
+        .prerequisite-text {
+            flex: 1;
+        }
+
+        .prerequisite-title {
+            font-weight: 600;
+            font-size: 1.2em;
+            color: #92400e;
+            margin-bottom: 5px;
+        }
+
+        .prerequisite-desc {
+            color: #78350f;
+            font-size: 1em;
+        }
+
+        .philosophy {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border-left: 6px solid #a855f7;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .philosophy h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .philosophy p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #475569;
+            margin-bottom: 15px;
+        }
+
+        .philosophy .quote {
+            background: #faf5ff;
+            border-left: 4px solid #a855f7;
+            padding: 20px;
+            margin: 25px 0;
+            font-style: italic;
+            font-size: 1.15em;
+            color: #7e22ce;
+        }
+
+        .progress-section {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .progress-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .progress-count {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #a855f7;
+        }
+
+        .progress-bar-container {
+            background: #f1f5f9;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar-fill {
+            background: linear-gradient(90deg, #a855f7 0%, #9333ea 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 6px;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.95em;
+            margin-top: 10px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #1e293b;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .assessment-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .assessment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: #a855f7;
+        }
+
+        .assessment-card.locked {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .assessment-card.locked:hover {
+            transform: none;
+            border-color: transparent;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            font-size: 2.5em;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .status-available {
+            background: #a855f7;
+            color: white;
+        }
+
+        .status-locked {
+            background: #94a3b8;
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1e293b;
+        }
+
+        .card-duration {
+            font-size: 0.95em;
+            color: #64748b;
+            margin-bottom: 15px;
+        }
+
+        .card-description {
+            font-size: 1em;
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .card-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+        }
+
+        .card-button.locked {
+            background: #cbd5e1;
+            color: #64748b;
+            cursor: not-allowed;
+        }
+
+        .card-button.locked:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .criteria-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .criteria-section h2 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            color: #1e293b;
+            text-align: center;
+        }
+
+        .criteria-list {
+            list-style: none;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .criteria-item {
+            display: flex;
+            align-items: center;
+            padding: 18px;
+            margin-bottom: 12px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-left: 4px solid #a855f7;
+        }
+
+        .criteria-checkbox {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .criteria-text {
+            font-size: 1.1em;
+            color: #334155;
+        }
+
+        .nav-section {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .nav-link {
+            flex: 1;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #1e293b;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link.back {
+            border: 2px solid #3b82f6;
+        }
+
+        .nav-link.next {
+            border: 2px solid #a855f7;
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="belt-icon">🟣</div>
+            <h1>Purple Belt</h1>
+            <div class="theme">Choose Your Path</div>
+            <div class="subtitle">
+                Clarity & Commitment • Direction • Saying No to Say Yes
+            </div>
+        </div>
+
+        <div class="prerequisite-banner">
+            <div class="icon">⚠️</div>
+            <div class="prerequisite-text">
+                <div class="prerequisite-title">Blue Belt Required</div>
+                <div class="prerequisite-desc">Complete all Blue Belt requirements before starting Purple Belt work</div>
+            </div>
+        </div>
+
+        <div class="philosophy">
+            <h2>The Power of Commitment</h2>
+            <p>
+                You know yourself (White Belt). You can express yourself (Blue Belt). Now it's time to choose your path.
+            </p>
+            <p>
+                Purple Belt is about creating clarity in chaos and making commitments you actually keep. It's about saying no to good things so you can say yes to great things. It's about ending the tyranny of "maybe."
+            </p>
+            <div class="quote">
+                "The essence of strategy is choosing what NOT to do." — Michael Porter
+            </div>
+            <p>
+                You'll audit your life, understand how you make decisions, and create a personal mission statement that guides everything else. No more drifting. Time to choose.
+            </p>
+        </div>
+
+        <div class="progress-section">
+            <div class="progress-header">
+                <div class="progress-title">Your Progress</div>
+                <div class="progress-count" id="progressCount">0/3</div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+            <div class="progress-text">Complete all requirements to earn your Purple Belt</div>
+        </div>
+
+        <div class="section-title">🎯 Purple Belt Assessments & Work</div>
+        
+        <div class="assessment-grid">
+            <div class="assessment-card locked" id="card-life">
+                <div class="card-header">
+                    <div class="card-icon">📋</div>
+                    <div class="status-badge status-locked">Coming Soon</div>
+                </div>
+                <div class="card-title">Life Audit Assessment</div>
+                <div class="card-duration">⏱️ 20-25 minutes</div>
+                <div class="card-description">
+                    Assess all life domains: career, relationships, health, finances, growth. Find gaps between satisfaction and importance.
+                </div>
+                <button class="card-button locked" disabled>Coming Soon</button>
+            </div>
+
+            <div class="assessment-card locked" id="card-decision">
+                <div class="card-header">
+                    <div class="card-icon">🎲</div>
+                    <div class="status-badge status-locked">Coming Soon</div>
+                </div>
+                <div class="card-title">Decision-Making Style</div>
+                <div class="card-duration">⏱️ 12-15 minutes</div>
+                <div class="card-description">
+                    How do you make choices? Where does analysis paralysis show up? What's your decision-making pattern?
+                </div>
+                <button class="card-button locked" disabled>Coming Soon</button>
+            </div>
+
+            <div class="assessment-card locked" id="card-mission">
+                <div class="card-header">
+                    <div class="card-icon">🧭</div>
+                    <div class="status-badge status-locked">Coming Soon</div>
+                </div>
+                <div class="card-title">Personal Mission Statement</div>
+                <div class="card-duration">⏱️ 30-40 minutes</div>
+                <div class="card-description">
+                    Create your personal mission statement. What are you here to do? What guides your biggest decisions?
+                </div>
+                <button class="card-button locked" disabled>Coming Soon</button>
+            </div>
+        </div>
+
+        <div class="criteria-section">
+            <h2>🏆 Purple Belt Completion Criteria</h2>
+            <ul class="criteria-list">
+                <li class="criteria-item">
+                    <input type="checkbox" class="criteria-checkbox" id="criteria1">
+                    <span class="criteria-text">Complete Life Audit assessment</span>
+                </li>
+                <li class="criteria-item">
+                    <input type="checkbox" class="criteria-checkbox" id="criteria2">
+                    <span class="criteria-text">Complete Decision-Making Style assessment</span>
+                </li>
+                <li class="criteria-item">
+                    <input type="checkbox" class="criteria-checkbox" id="criteria3">
+                    <span class="criteria-text">Draft Personal Mission Statement</span>
+                </li>
+                <li class="criteria-item">
+                    <input type="checkbox" class="criteria-checkbox" id="criteria4">
+                    <span class="criteria-text">30 days of priority tracking</span>
+                </li>
+                <li class="criteria-item">
+                    <input type="checkbox" class="criteria-checkbox" id="criteria5">
+                    <span class="criteria-text">Make one major decision and commit fully</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="nav-section">
+            <a href="blue-belt.html" class="nav-link back">← Back: Blue Belt</a>
+            <a href="index.html" class="nav-link">🏠 The Gym</a>
+            <a href="brown-belt.html" class="nav-link next">Next: Brown Belt →</a>
+        </div>
+    </div>
+
+    <script>
+        function updateProgress() {
+            const completed = JSON.parse(localStorage.getItem('purpleBeltProgress') || '[]');
+            const total = 3;
+            const progressBar = document.getElementById('progressBar');
+            const progressCount = document.getElementById('progressCount');
+            
+            const percentage = (completed.length / total) * 100;
+            progressBar.style.width = percentage + '%';
+            progressCount.textContent = completed.length + '/' + total;
+        }
+
+        updateProgress();
+    </script>
+</body>
+</html>
