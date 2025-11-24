@@ -219,6 +219,46 @@
             margin-bottom: 20px;
         }
 
+        .scenario-context {
+            background: linear-gradient(135deg, rgba(17, 24, 39, 0.6) 0%, rgba(31, 41, 55, 0.4) 100%);
+            border-left: 4px solid #6b7280;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .scenario-context .context-icon {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .scenario-context p {
+            color: #e5e7eb;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .scenario-context p:last-child {
+            margin-bottom: 0;
+        }
+
+        .scenario-question {
+            background: rgba(107, 114, 128, 0.15);
+            border: 2px solid rgba(107, 114, 128, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .scenario-question strong {
+            color: #ffffff;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
         .options {
             margin-top: 20px;
         }
@@ -523,9 +563,12 @@
                     <span class="scenario-badge">Absence of Trust</span>
                 </div>
                 <h3>The Silent Standoff</h3>
-                <div class="scenario-text">
-                    Your leadership team has been working together for 18 months. Meetings are polite and professional. People share updates but rarely ask each other for help. When you ask team members privately what they think of each other, you get carefully diplomatic answers. Last week, two leaders had a project conflict—instead of talking to each other, they both came to you separately to "get your perspective."
-                    <br><br>
+                <div class="scenario-context">
+                    <span class="context-icon">💼</span>
+                    <p>Your leadership team has been working together for 18 months. Meetings are polite and professional. People share updates but rarely ask each other for help. When you ask team members privately what they think of each other, you get carefully diplomatic answers.</p>
+                    <p>Last week, two leaders had a project conflict—instead of talking to each other, they both came to you separately to "get your perspective."</p>
+                </div>
+                <div class="scenario-question">
                     <strong>What is the ROOT dysfunction here?</strong>
                 </div>
                 <div class="options">
@@ -555,9 +598,12 @@
                     <span class="scenario-badge">Fear of Conflict</span>
                 </div>
                 <h3>The Quick Agreement</h3>
-                <div class="scenario-text">
-                    Your team has strong trust—people are vulnerable, admit mistakes, and ask for help freely. But in strategy meetings, when you present a major decision, everyone nods along. You explicitly ask "What concerns do you have?" and get surface-level questions. The meeting ends with apparent agreement. Then, over the next week, you hear through the grapevine that several leaders have serious reservations they never voiced.
-                    <br><br>
+                <div class="scenario-context">
+                    <span class="context-icon">🤝</span>
+                    <p>Your team has strong trust—people are vulnerable, admit mistakes, and ask for help freely. But in strategy meetings, when you present a major decision, everyone nods along. You explicitly ask "What concerns do you have?" and get surface-level questions.</p>
+                    <p>The meeting ends with apparent agreement. Then, over the next week, you hear through the grapevine that several leaders have serious reservations they never voiced.</p>
+                </div>
+                <div class="scenario-question">
                     <strong>What's the core issue?</strong>
                 </div>
                 <div class="options">
@@ -587,9 +633,12 @@
                     <span class="scenario-badge">Lack of Commitment</span>
                 </div>
                 <h3>The Endless Debate</h3>
-                <div class="scenario-text">
-                    Your team has excellent trust and healthy conflict. Meetings are passionate—people challenge ideas freely and debate vigorously. The problem: debates go in circles. You discuss the same strategic questions meeting after meeting. Even when you think you've reached a decision, someone reopens the discussion two weeks later. Leaders leave meetings energized by the debate but unclear about what was actually decided.
-                    <br><br>
+                <div class="scenario-context">
+                    <span class="context-icon">🔄</span>
+                    <p>Your team has excellent trust and healthy conflict. Meetings are passionate—people challenge ideas freely and debate vigorously. The problem: debates go in circles. You discuss the same strategic questions meeting after meeting.</p>
+                    <p>Even when you think you've reached a decision, someone reopens the discussion two weeks later. Leaders leave meetings energized by the debate but unclear about what was actually decided.</p>
+                </div>
+                <div class="scenario-question">
                     <strong>What dysfunction is present?</strong>
                 </div>
                 <div class="options">
@@ -619,9 +668,12 @@
                     <span class="scenario-badge">Avoidance of Accountability</span>
                 </div>
                 <h3>The Passive Observer</h3>
-                <div class="scenario-text">
-                    Your team commits clearly to decisions. Everyone leaves meetings knowing exactly what they own and when it's due. But when someone misses a deadline or delivers subpar work, their peers say nothing. Instead, they come to you privately: "I don't want to throw them under the bus, but..." You end up being the only one who addresses performance issues, while team members watch from the sidelines.
-                    <br><br>
+                <div class="scenario-context">
+                    <span class="context-icon">👀</span>
+                    <p>Your team commits clearly to decisions. Everyone leaves meetings knowing exactly what they own and when it's due. But when someone misses a deadline or delivers subpar work, their peers say nothing.</p>
+                    <p>Instead, they come to you privately: "I don't want to throw them under the bus, but..." You end up being the only one who addresses performance issues, while team members watch from the sidelines.</p>
+                </div>
+                <div class="scenario-question">
                     <strong>What's the primary dysfunction?</strong>
                 </div>
                 <div class="options">
@@ -651,9 +703,12 @@
                     <span class="scenario-badge">Inattention to Results</span>
                 </div>
                 <h3>The Status Reports</h3>
-                <div class="scenario-text">
-                    Your leadership team has trust, healthy conflict, clear commitments, and holds each other accountable. But in your weekly meetings, most of the time is spent on status updates about departmental activities. Each leader shares what their team accomplished, plans for next week, and current projects. The team's collective goal—growing annual recurring revenue by 25%—is mentioned briefly at the end. When you check mid-quarter, you're only at 8% growth, but everyone has been "busy."
-                    <br><br>
+                <div class="scenario-context">
+                    <span class="context-icon">📊</span>
+                    <p>Your leadership team has trust, healthy conflict, clear commitments, and holds each other accountable. But in your weekly meetings, most of the time is spent on status updates about departmental activities. Each leader shares what their team accomplished, plans for next week, and current projects.</p>
+                    <p>The team's collective goal—growing annual recurring revenue by 25%—is mentioned briefly at the end. When you check mid-quarter, you're only at 8% growth, but everyone has been "busy."</p>
+                </div>
+                <div class="scenario-question">
                     <strong>What dysfunction has emerged?</strong>
                 </div>
                 <div class="options">
