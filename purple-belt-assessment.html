@@ -988,13 +988,38 @@
         // Storage keys
         const STORAGE_KEY = 'purpleBeltAssessmentCompleted';
         const XP_KEY = 'purpleBeltAssessmentXP';
+        
+        // Scoring constants
+        const TOTAL_SCENARIOS = 15;
+        const PASSING_SCORE = 0.80; // 80% = 12/15 correct
+        const ASSESSMENT_XP = 1000;
 
-        // Assessment data will be populated in subsequent commits
-        let answers = {};
-        let reflections = {};
+        // Assessment state
+        let scenarioAnswers = {};
+        let reflectionAnswers = {};
+        let commitmentAnswers = {};
+
+        // Correct answers for scenarios (Purple Belt commitment principles)
+        const correctAnswers = {
+            1: 'B',  // Vague commitments - clarity is key
+            2: 'B',  // Sacred commitments - protect boundaries
+            3: 'B',  // Commitment clarity - specific "What by When"
+            4: 'C',  // Driving commitment - direct conversation about capacity
+            5: 'D',  // Renegotiating early - transparency + options
+            6: 'B',  // Commitment culture - psychological safety issue
+            7: 'B',  // Public commitments - tracking system
+            8: 'B',  // Capacity honesty - state capacity + ask for trade-offs
+            9: 'C',  // Self-commitment - eroding self-trust
+            10: 'B', // Commitment systems - weekly review ritual
+            11: 'B', // When to say no - call client + fix process
+            12: 'C', // Building commitment muscle - coach early on small misses
+            13: 'B', // Integrity under pressure - reject unsustainable work
+            14: 'C', // Culture signals - leader models owning misses
+            15: 'B'  // Commitment paradox - safety to say no builds commitment
+        };
 
         function selectOption(questionNum, option) {
-            answers[questionNum] = option;
+            scenarioAnswers[questionNum] = option;
             
             // Update UI
             const options = document.querySelectorAll(`[data-question="${questionNum}"]`);
@@ -1004,27 +1029,168 @@
                     opt.classList.add('selected');
                 }
             });
+
+            checkSubmitReady();
+        }
+
+        // Update word count for text areas
+        function updateWordCount(textareaId, countId) {
+            const textarea = document.getElementById(textareaId);
+            const text = textarea.value.trim();
+            const words = text.length > 0 ? text.split(/\s+/).length : 0;
+            document.getElementById(countId).textContent = `${words} words`;
+            
+            // Store answers
+            if (textareaId === 'reflection1') reflectionAnswers[1] = text;
+            if (textareaId === 'reflection2') reflectionAnswers[2] = text;
+            if (textareaId === 'reflection3') reflectionAnswers[3] = text;
+            if (textareaId === 'commitment1') commitmentAnswers[1] = text;
+            if (textareaId === 'commitment2') commitmentAnswers[2] = text;
+            if (textareaId === 'commitment3') commitmentAnswers[3] = text;
+            
+            checkSubmitReady();
+        }
+
+        // Check if submit button should be enabled
+        function checkSubmitReady() {
+            const scenariosComplete = Object.keys(scenarioAnswers).length === TOTAL_SCENARIOS;
+            const reflectionsComplete = reflectionAnswers[1]?.trim().length > 0 && 
+                                       reflectionAnswers[2]?.trim().length > 0 && 
+                                       reflectionAnswers[3]?.trim().length > 0;
+            const commitmentsComplete = commitmentAnswers[1]?.trim().length > 0 &&
+                                       commitmentAnswers[2]?.trim().length > 0 &&
+                                       commitmentAnswers[3]?.trim().length > 0;
+            
+            const submitBtn = document.querySelector('.submit-btn');
+            if (scenariosComplete && reflectionsComplete && commitmentsComplete) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
         }
 
         function submitAssessment() {
-            // Will be implemented with scoring logic
-            console.log('Assessment submitted', answers);
+            // Check if already completed
+            const alreadyCompleted = localStorage.getItem(STORAGE_KEY) === 'true';
+            if (alreadyCompleted) {
+                showResult('already-passed');
+                return;
+            }
+
+            // Calculate scenario score
+            let correct = 0;
+            for (let i = 1; i <= TOTAL_SCENARIOS; i++) {
+                if (scenarioAnswers[i] === correctAnswers[i]) {
+                    correct++;
+                }
+            }
+            
+            const scenarioScore = correct / TOTAL_SCENARIOS;
+            const passed = scenarioScore >= PASSING_SCORE;
+
+            // Store completion
+            localStorage.setItem(STORAGE_KEY, 'true');
+            
+            if (passed) {
+                // Award XP
+                let totalXP = parseInt(localStorage.getItem('totalXP') || '0');
+                totalXP += ASSESSMENT_XP;
+                localStorage.setItem('totalXP', totalXP.toString());
+                localStorage.setItem(XP_KEY, ASSESSMENT_XP.toString());
+                
+                // Mark Purple Belt as earned
+                const beltsEarned = JSON.parse(localStorage.getItem('beltsEarned') || '[]');
+                if (!beltsEarned.includes('purple')) {
+                    beltsEarned.push('purple');
+                    localStorage.setItem('beltsEarned', JSON.stringify(beltsEarned));
+                }
+                
+                // Unlock Brown Belt
+                localStorage.setItem('brownBeltUnlocked', 'true');
+                
+                // Store reflections and commitments for user reference
+                localStorage.setItem('purpleBeltReflections', JSON.stringify(reflectionAnswers));
+                localStorage.setItem('purpleBeltCommitments', JSON.stringify(commitmentAnswers));
+                
+                showResult('passed', scenarioScore, correct);
+            } else {
+                showResult('failed', scenarioScore, correct);
+            }
+        }
+
+        function showResult(type, score = 0, correct = 0) {
+            const popup = document.getElementById('resultPopup');
+            const overlay = document.getElementById('overlay');
+            const icon = document.getElementById('resultIcon');
+            const title = document.getElementById('resultTitle');
+            const message = document.getElementById('resultMessage');
+            const xp = document.getElementById('resultXP');
+            
+            if (type === 'passed') {
+                icon.textContent = '🟣';
+                title.textContent = 'Purple Belt Earned!';
+                message.innerHTML = `Outstanding! You scored ${correct}/15 (${Math.round(score * 100)}%) and have mastered Commitment as a leadership practice.<br><br>
+                    Brown Belt (Avoidance of Accountability) is now unlocked. Your commitment action plan has been saved.`;
+                xp.textContent = `+${ASSESSMENT_XP} XP`;
+                xp.style.display = 'inline-block';
+            } else if (type === 'failed') {
+                icon.textContent = '📚';
+                title.textContent = 'Keep Building';
+                message.innerHTML = `You scored ${correct}/15 (${Math.round(score * 100)}%). You need 12/15 (80%) to pass.<br><br>
+                    Review the Purple Belt stripes focusing on commitment clarity, capacity management, and cultural systems. You can retake this assessment anytime.`;
+                xp.style.display = 'none';
+            } else if (type === 'already-passed') {
+                icon.textContent = '✅';
+                title.textContent = 'Already Completed';
+                message.textContent = 'You\'ve already earned your Purple Belt! Continue to Brown Belt.';
+                xp.textContent = 'Previously Earned';
+                xp.style.display = 'inline-block';
+            }
+            
+            popup.classList.add('show');
+            overlay.classList.add('show');
         }
 
         function closeResult() {
+            const passed = localStorage.getItem(STORAGE_KEY) === 'true';
+            
             document.getElementById('resultPopup').classList.remove('show');
             document.getElementById('overlay').classList.remove('show');
-            window.location.href = 'belt-check.html';
+            
+            if (passed) {
+                window.location.href = 'belt-check.html';
+            }
         }
 
-        // Initialize
+        // Initialize word count listeners
         function init() {
             // Check if already completed
             const completed = localStorage.getItem(STORAGE_KEY);
             if (completed === 'true') {
-                // Could show a "retake" option or redirect
-                console.log('Assessment already completed');
+                console.log('Purple Belt Assessment already completed');
             }
+
+            // Add word count listeners
+            ['reflection1', 'reflection2', 'reflection3', 'commitment1', 'commitment2', 'commitment3'].forEach(id => {
+                const textarea = document.getElementById(id);
+                const countId = id.includes('reflection') ? 
+                    `count${id.charAt(id.length-1)}` : 
+                    `count${id.charAt(id.length-1)}`;
+                
+                if (textarea) {
+                    textarea.addEventListener('input', () => {
+                        // For commitment fields, we don't have separate count divs
+                        if (countId.startsWith('count') && document.getElementById(countId)) {
+                            updateWordCount(id, countId);
+                        } else {
+                            updateWordCount(id, null);
+                        }
+                    });
+                }
+            });
+
+            // Disable submit initially
+            document.querySelector('.submit-btn').disabled = true;
         }
 
         init();
