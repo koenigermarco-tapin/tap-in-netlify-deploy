@@ -1,21 +1,57 @@
 {
-  "name": "TAP-IN Leadership Assessments",
+  "name": "TAP-IN Leadership Development",
   "short_name": "TAP-IN",
-  "description": "Discover your complete leadership profile: work style, leadership approach, and team dynamics",
+  "description": "Discover your leadership profile and develop skills with gamified learning modules",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#2d2d2d",
-  "theme_color": "#1a365d",
+  "background_color": "#ffffff",
+  "theme_color": "#6366f1",
   "orientation": "any",
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-512.png",
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -23,6 +59,26 @@
   ],
   "categories": ["productivity", "education", "business"],
   "shortcuts": [
+    {
+      "name": "Learning Hub",
+      "url": "/learning-hub.html",
+      "description": "Access all learning modules"
+    },
+    {
+      "name": "Active Listening",
+      "url": "/active-listening-module-gamified.html",
+      "description": "Master the LARA method"
+    },
+    {
+      "name": "Empathy",
+      "url": "/empathy-module-gamified.html",
+      "description": "Connect deeply with others"
+    },
+    {
+      "name": "Coaching",
+      "url": "/coaching-module-gamified.html",
+      "description": "Empower through questions"
+    },
     {
       "name": "Worker Type",
       "url": "/worker-type-assessment.html",
@@ -32,11 +88,6 @@
       "name": "Leadership Style",
       "url": "/leadership-style-carousel.html",
       "description": "Find your leadership archetype"
-    },
-    {
-      "name": "Complete Profile",
-      "url": "/combined-complete-profile.html",
-      "description": "Take all 3 assessments"
     }
   ],
   "share_target": {

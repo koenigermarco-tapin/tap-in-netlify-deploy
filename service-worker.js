@@ -1,8 +1,23 @@
 // TAP-IN Service Worker - Offline Support & Caching
-const CACHE_NAME = 'tap-in-v8';
+const CACHE_NAME = 'tap-in-v9-2024-11-24';
 const urlsToCache = [
   '/',
   '/index.html',
+  
+  // Learning Hub & Modules
+  '/learning-hub.html',
+  '/energy-management-module-gamified.html',
+  '/boundaries-module-gamified.html',
+  '/deep-work-module-gamified.html',
+  '/feedback-module-gamified.html',
+  '/expectation-management-module-gamified.html',
+  '/stoic-tools-module-gamified.html',
+  '/limiting-beliefs-module-gamified.html',
+  '/active-listening-module-gamified.html',
+  '/empathy-module-gamified.html',
+  '/coaching-module-gamified.html',
+  
+  // Assessments
   '/worker-type-assessment.html',
   '/worker-type-assessment.de.html',
   '/leadership-style-carousel.html',
