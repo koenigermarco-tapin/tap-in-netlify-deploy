@@ -318,7 +318,181 @@
         <div class="question-section">
             <h2 class="section-title">Part 1: Accountability Scenarios (15 Questions)</h2>
             
-            <!-- Questions will be added here -->
+            <!-- Question 1 -->
+            <div class="question" data-question="1">
+                <div class="question-header">Question 1: The Missed Commitment</div>
+                <div class="question-text">
+                    Your team member Sarah committed to delivering a feature by Friday. It's Monday morning and she hasn't delivered it or communicated anything. What's your best first response?
+                </div>
+                <div class="options">
+                    <div class="option" data-option="A" onclick="selectOption(1, 'A')">
+                        A) Wait for her to bring it up in the next 1-on-1 (scheduled for Wednesday)
+                    </div>
+                    <div class="option" data-option="B" onclick="selectOption(1, 'B')">
+                        B) Message her today: "You committed to the feature by Friday. It's Monday and I haven't seen it. What happened?"
+                    </div>
+                    <div class="option" data-option="C" onclick="selectOption(1, 'C')">
+                        C) Bring it up in the team standup so everyone knows missed commitments have consequences
+                    </div>
+                    <div class="option" data-option="D" onclick="selectOption(1, 'D')">
+                        D) Assume she had a good reason and reassign the work to someone else
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question" data-question="2">
+                <div class="question-header">Question 2: Peer Accountability Failure</div>
+                <div class="question-text">
+                    You've built a culture where team members are supposed to hold each other accountable. But you notice they still wait for you to address gaps instead of talking to each other directly. What's the root cause you should address?
+                </div>
+                <div class="options">
+                    <div class="option" data-option="A" onclick="selectOption(2, 'A')">
+                        A) They don't have clear enough standards to know what to call out
+                    </div>
+                    <div class="option" data-option="B" onclick="selectOption(2, 'B')">
+                        B) They don't feel psychologically safe calling out peers
+                    </div>
+                    <div class="option" data-option="C" onclick="selectOption(2, 'C')">
+                        C) You haven't explicitly given them permission and modeled it
+                    </div>
+                    <div class="option" data-option="D" onclick="selectOption(2, 'D')">
+                        D) They're lazy and don't care about the team
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question" data-question="3">
+                <div class="question-header">Question 3: The Chronic Low Performer</div>
+                <div class="question-text">
+                    You've been coaching Marcus for 4 months on his performance gaps. He tries hard but isn't improving. The team is frustrated carrying his workload. What should you do?
+                </div>
+                <div class="options">
+                    <div class="option" data-option="A" onclick="selectOption(3, 'A')">
+                        A) Keep coaching—firing people is mean
+                    </div>
+                    <div class="option" data-option="B" onclick="selectOption(3, 'B')">
+                        B) Move to performance management with clear timeline and consequences
+                    </div>
+                    <div class="option" data-option="C" onclick="selectOption(3, 'C')">
+                        C) Reduce his responsibilities so he can succeed at a lower level
+                    </div>
+                    <div class="option" data-option="D" onclick="selectOption(3, 'D')">
+                        D) Wait until annual review to address it formally
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question" data-question="4">
+                <div class="question-header">Question 4: Cross-Team Blocker</div>
+                <div class="question-text">
+                    Your project depends on the API team delivering an endpoint. They've missed 3 deadlines in a row. You don't manage that team. What's your best approach?
+                </div>
+                <div class="options">
+                    <div class="option" data-option="A" onclick="selectOption(4, 'A')">
+                        A) Complain to your boss and hope they fix it
+                    </div>
+                    <div class="option" data-option="B" onclick="selectOption(4, 'B')">
+                        B) Talk directly to the API team lead about impact and timeline, escalate to shared manager if unresolved
+                    </div>
+                    <div class="option" data-option="C" onclick="selectOption(4, 'C')">
+                        C) Build a workaround so you're not dependent on them
+                    </div>
+                    <div class="option" data-option="D" onclick="selectOption(4, 'D')">
+                        D) Keep following up weekly via email
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question" data-question="5">
+                <div class="question-header">Question 5: Your Boss Undermines Standards</div>
+                <div class="question-text">
+                    You've asked your team to update the project board daily. Your boss tells someone on your team "don't worry about the board, just focus on shipping." This undermines your accountability system. What do you do?
+                </div>
+                <div class="options">
+                    <div class="option" data-option="A" onclick="selectOption(5, 'A')">
+                        A) Let it go—boss outranks you
+                    </div>
+                    <div class="option" data-option="B" onclick="selectOption(5, 'B')">
+                        B) Talk to your boss privately: "When you override my requests, it makes it hard for me to build accountability. Can we align on standards?"
+                    </div>
+                    <div class="option" data-option="C" onclick="selectOption(5, 'C')">
+                        C) Tell your team to ignore your boss and keep updating the board
+                    </div>
+                    <div class="option" data-option="D" onclick="selectOption(5, 'D')">
+                        D) Abandon the board since your boss doesn't value it
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question" data-question="6">
+                <div class="question-header">Question 6: Accountability Under Pressure</div>
+                <div class="question-text">
+                    Your CEO declares a feature "urgent" and wants it shipped Friday, skipping code review. Your standard is all code gets reviewed. What's the high-accountability response?
+                </div>
+                <div class="options">
+                    <div class="option" data-option="A" onclick="selectOption(6, 'A')">
+                        A) Skip the review—CEO's request overrides standards
+                    </div>
+                    <div class="option" data-option="B" onclick="selectOption(6, 'B')">
+                        B) Push back hard: "We never skip reviews, period"
+                    </div>
+                    <div class="option" data-option="C" onclick="selectOption(6, 'C')">
+                        C) Name the trade-off: "To ship Friday without review risks bugs. We can do rapid review with one senior engineer or ship Monday with full review. Which do you prefer?"
+                    </div>
+                    <div class="option" data-option="D" onclick="selectOption(6, 'D')">
+                        D) Have the team work all weekend to finish early so you can do a full review and still hit Friday
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question" data-question="7">
+                <div class="question-header">Question 7: Culture Erosion Warning Sign</div>
+                <div class="question-text">
+                    You notice your team's public commitment board hasn't been updated in 2 weeks. People are making vague commitments like "I'll work on the redesign." What does this signal?
+                </div>
+                <div class="options">
+                    <div class="option" data-option="A" onclick="selectOption(7, 'A')">
+                        A) The board tool is bad, switch to a different tool
+                    </div>
+                    <div class="option" data-option="B" onclick="selectOption(7, 'B')">
+                        B) Early culture erosion—systems are decaying and specificity is disappearing
+                    </div>
+                    <div class="option" data-option="C" onclick="selectOption(7, 'C')">
+                        C) People are too busy for the board right now
+                    </div>
+                    <div class="option" data-option="D" onclick="selectOption(7, 'D')">
+                        D) You're micromanaging, let them work how they want
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question" data-question="8">
+                <div class="question-header">Question 8: Ambiguous Ownership</div>
+                <div class="question-text">
+                    A project involving Engineering, Product, and Design fails to launch on time. Each team says they did their part but the other teams dropped the ball. What's the root accountability issue?
+                </div>
+                <div class="options">
+                    <div class="option" data-option="A" onclick="selectOption(8, 'A')">
+                        A) No single person was accountable for the whole outcome
+                    </div>
+                    <div class="option" data-option="B" onclick="selectOption(8, 'B')">
+                        B) The teams don't like each other
+                    </div>
+                    <div class="option" data-option="C" onclick="selectOption(8, 'C')">
+                        C) The deadline was unrealistic
+                    </div>
+                    <div class="option" data-option="D" onclick="selectOption(8, 'D')">
+                        D) Someone is lying about doing their part
+                    </div>
+                </div>
+            </div>
             
         </div>
 
