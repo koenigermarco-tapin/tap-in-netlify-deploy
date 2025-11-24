@@ -538,7 +538,7 @@
                     <span class="stat-label">Total XP</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-value" id="lessonsDisplay">0/2</span>
+                    <span class="stat-value" id="lessonsDisplay">0/4</span>
                     <span class="stat-label">Lessons</span>
                 </div>
                 <div class="stat-card">
@@ -550,7 +550,7 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="progressBar"></div>
             </div>
-            <p class="progress-text" id="progressText">0 of 2 lessons completed</p>
+            <p class="progress-text" id="progressText">0 of 4 lessons completed</p>
         </div>
 
         <div class="lessons-grid">
@@ -831,36 +831,368 @@
                 </button>
             </div>
 
-            <!-- Lesson 3: Coming Soon -->
-            <div class="lesson-card locked" id="lesson3">
+            <!-- Lesson 3: Cross-Cultural Conflict -->
+            <div class="lesson-card" id="lesson3">
                 <div class="lesson-header">
                     <div class="lesson-number">LESSON 3</div>
-                    <div class="lesson-status">🔒</div>
+                    <div class="lesson-status" id="status3">⚪</div>
                 </div>
                 <h2>Cross-Cultural Conflict Considerations</h2>
                 <p class="lesson-description">
                     Understand how cultural differences shape conflict styles and expectations. Learn to navigate disagreements 
                     across cultures without imposing your own conflict norms.
                 </p>
-                <div style="text-align: center; padding: 40px; color: #94a3b8; font-size: 14px;">
-                    🔒 Complete Lessons 1-2 to unlock
+
+                <div class="lesson-content">
+                    <div class="content-section">
+                        <h3>🎯 Why Culture Matters in Conflict</h3>
+                        <ul class="concept-list">
+                            <li>
+                                <strong>Conflict Styles Vary Widely:</strong>
+                                What counts as "productive conflict" in one culture may be seen as rude, aggressive, or 
+                                unprofessional in another. Direct confrontation is valued in some cultures, avoided in others.
+                            </li>
+                            <li>
+                                <strong>Hierarchy Shapes Expression:</strong>
+                                In high power-distance cultures, openly disagreeing with someone senior is taboo. 
+                                In low power-distance cultures, it's expected. Assuming everyone operates like your culture 
+                                creates dysfunction.
+                            </li>
+                            <li>
+                                <strong>Communication Norms Differ:</strong>
+                                High-context cultures rely on implicit signals and reading between the lines. Low-context 
+                                cultures value explicit, direct communication. Both can misread each other in conflict.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>💡 Cultural Dimensions in Conflict</h3>
+                        <table>
+                            <tr>
+                                <th>Dimension</th>
+                                <th>Direct Culture</th>
+                                <th>Indirect Culture</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Disagreement</strong></td>
+                                <td>Say "I disagree" openly</td>
+                                <td>Express through questions, silence, or body language</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Feedback</strong></td>
+                                <td>Negative feedback given bluntly</td>
+                                <td>Criticism wrapped in positive framing</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Escalation</strong></td>
+                                <td>Raise voice, interrupt, debate passionately</td>
+                                <td>Withdraw, go silent, address privately later</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Resolution</strong></td>
+                                <td>Talk it out until resolved</td>
+                                <td>Give space, let time heal, use intermediaries</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>🛠️ Cross-Cultural Conflict Navigation</h3>
+                        <div class="example-box">
+                            <strong>1. Ask About Norms:</strong>
+                            Don't assume. Ask: "In your culture, how do people typically handle disagreements?" 
+                            "What's the best way for me to give you feedback?" Make implicit norms explicit.
+                        </div>
+                        <div class="example-box">
+                            <strong>2. Create Hybrid Processes:</strong>
+                            Blend conflict styles. Example: "Let's debate openly in this meeting (Western), but I'll 
+                            follow up 1-on-1 to make sure everyone felt heard (Eastern)." Meet in the middle.
+                        </div>
+                        <div class="example-box">
+                            <strong>3. Watch for Silence:</strong>
+                            In many cultures, silence = disagreement. Don't mistake quiet for agreement. 
+                            "I notice some folks haven't spoken. Let's hear from everyone before we decide."
+                        </div>
+                        <div class="example-box">
+                            <strong>4. Adapt Your Style:</strong>
+                            If you're from a direct culture working with indirect communicators, soften your approach. 
+                            If you're from an indirect culture working with direct communicators, practice being more explicit.
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>🥋 BJJ Analogy: Different Grappling Styles</h3>
+                        <div class="highlight-box">
+                            <strong>Cross-cultural conflict is like rolling with different BJJ styles:</strong>
+                            <p>
+                                A wrestler will pressure you relentlessly. A judoka will use your movement against you. 
+                                A pure BJJ player will pull guard and attack from bottom. None is "right"—they're different 
+                                approaches to the same problem. You don't force a wrestler to play guard. You adapt your game 
+                                to theirs, find the blend that works, and learn from the difference.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>📋 Example: U.S.-Japan Team Conflict</h3>
+                        <div class="example-box">
+                            <strong>Scenario:</strong>
+                            U.S. manager runs a heated product debate. Japanese engineer stays silent, looks uncomfortable. 
+                            After the meeting, the engineer tells their manager privately they disagree with the direction.
+                        </div>
+                        <div class="example-box">
+                            <strong>❌ Cultural Insensitivity:</strong>
+                            "Why didn't you speak up in the meeting? We need everyone to share their opinions." 
+                            → Shames the engineer for following their cultural norms.
+                        </div>
+                        <div class="example-box">
+                            <strong>✅ Cultural Adaptation:</strong>
+                            U.S. manager learns Japanese culture values harmony in group settings, and disagreement is 
+                            often expressed privately. Adjusts process: "Let's debate options in the meeting, then I'll 
+                            check in with each of you 1-on-1 afterward to hear your real thoughts." 
+                            <br><br>
+                            Also coaches Japanese engineer: "In our U.S. team culture, silence is often read as agreement. 
+                            If you disagree, it helps to say 'I have concerns' even if you don't want to debate publicly. 
+                            That signals to me to follow up with you privately."
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>⚠️ Common Cross-Cultural Conflict Mistakes</h3>
+                        <table>
+                            <tr>
+                                <th>Mistake</th>
+                                <th>Impact</th>
+                                <th>Fix</th>
+                            </tr>
+                            <tr>
+                                <td>Assuming everyone wants to "hash it out"</td>
+                                <td>Alienates indirect communicators</td>
+                                <td>Offer multiple ways to disagree (in-meeting, Slack, 1-on-1)</td>
+                            </tr>
+                            <tr>
+                                <td>Calling out individuals in group settings</td>
+                                <td>Causes shame in collectivist cultures</td>
+                                <td>Give feedback privately, praise publicly</td>
+                            </tr>
+                            <tr>
+                                <td>Interpreting politeness as agreement</td>
+                                <td>Miss critical dissent</td>
+                                <td>Probe for disagreement: "What concerns do you have?"</td>
+                            </tr>
+                            <tr>
+                                <td>Pushing for fast resolution</td>
+                                <td>Doesn't allow relationship repair time</td>
+                                <td>Give space between conflict and decision</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>🎯 Practice Exercise:</h4>
+                        <p>
+                            Identify someone on your team from a different cultural background. Ask them: "How do people 
+                            typically handle disagreements in your culture?" and "What's one thing I could do differently 
+                            to make it easier for you to share concerns?" Listen without judgment. Adapt your conflict 
+                            approach based on what you learn.
+                        </p>
+                    </div>
                 </div>
+
+                <button class="complete-btn" onclick="completeLesson(3)" id="btn3">
+                    Complete Lesson 3
+                </button>
             </div>
 
-            <!-- Lesson 4: Coming Soon -->
-            <div class="lesson-card locked" id="lesson4">
+            <!-- Lesson 4: Assessment Prep -->
+            <div class="lesson-card" id="lesson4">
                 <div class="lesson-header">
                     <div class="lesson-number">LESSON 4</div>
-                    <div class="lesson-status">🔒</div>
+                    <div class="lesson-status" id="status4">⚪</div>
                 </div>
                 <h2>Blue Belt Assessment Prep</h2>
                 <p class="lesson-description">
                     Review all Blue Belt concepts and prepare for the comprehensive assessment. Test your conflict mastery 
                     through scenarios, reflections, and practical demonstrations.
                 </p>
-                <div style="text-align: center; padding: 40px; color: #94a3b8; font-size: 14px;">
-                    🔒 Complete Lessons 1-2 to unlock
+
+                <div class="lesson-content">
+                    <div class="content-section">
+                        <h3>🎯 What to Expect in the Blue Belt Assessment</h3>
+                        <ul class="concept-list">
+                            <li>
+                                <strong>15 Scenario Questions:</strong>
+                                Multiple-choice scenarios testing your understanding of conflict concepts from all 4 stripes. 
+                                You'll need to choose the best response in realistic team conflict situations.
+                            </li>
+                            <li>
+                                <strong>3 Reflective Prompts:</strong>
+                                Written reflections (200-300 words each) on your conflict journey, challenging experiences, 
+                                and how you've applied the concepts. Be honest and specific.
+                            </li>
+                            <li>
+                                <strong>1 Practical Demonstration:</strong>
+                                Design a conflict intervention for a real scenario (300-400 words). Show your ability 
+                                to apply multiple techniques in a coherent facilitation plan.
+                            </li>
+                            <li>
+                                <strong>Passing Score: 80%</strong>
+                                You need to demonstrate mastery, not just familiarity. If you don't pass, you can retry 
+                                after 7 days. Use the time to review the concepts you missed.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>💡 Blue Belt Core Concepts Review</h3>
+                        <table>
+                            <tr>
+                                <th>Stripe</th>
+                                <th>Key Concepts</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Stripe 1: Foundations</strong></td>
+                                <td>Productive vs destructive conflict, artificial harmony trap, conflict continuum, avoidance cascades</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Stripe 2: Engagement</strong></td>
+                                <td>Disagree & commit, Spar-&-Solve, managing physiology, expressing disagreement skillfully</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Stripe 3: Facilitation</strong></td>
+                                <td>Mining for conflict, real-time interventions, 7-step resolution process, conflict norms canvas</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Stripe 4: Mastery</strong></td>
+                                <td>Coaching others, high-stakes navigation, cross-cultural considerations, assessment prep</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>🛠️ How to Prepare</h3>
+                        <div class="example-box">
+                            <strong>1. Review All Lessons:</strong>
+                            Go back through Stripes 1-4. Skim the key concepts, techniques, and examples. 
+                            Pay attention to the practice exercises—those often mirror assessment questions.
+                        </div>
+                        <div class="example-box">
+                            <strong>2. Reflect on Real Applications:</strong>
+                            Think about conflicts you've experienced or facilitated since starting Blue Belt. 
+                            What worked? What didn't? The reflective prompts will ask for specifics.
+                        </div>
+                        <div class="example-box">
+                            <strong>3. Practice Scenario Thinking:</strong>
+                            For each technique (mining, Spar-&-Solve, disagree & commit, etc.), imagine a scenario 
+                            where you'd use it. This prepares you for the multiple-choice scenarios.
+                        </div>
+                        <div class="example-box">
+                            <strong>4. Plan Your Intervention:</strong>
+                            The practical demonstration asks you to design a conflict facilitation. Think through: 
+                            What's the pre-work? How do I frame the conversation? What techniques do I use? 
+                            How do I get commitment?
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>🥋 BJJ Analogy: Belt Testing</h3>
+                        <div class="highlight-box">
+                            <strong>The Blue Belt assessment is like a BJJ belt test:</strong>
+                            <p>
+                                You're not being asked to invent new techniques. You're being asked to demonstrate 
+                                that you've internalized the fundamentals. Can you recognize when to use an armbar vs 
+                                a triangle? Can you flow between techniques? Can you explain why you chose a specific 
+                                approach? The assessment tests whether conflict competence has become instinct, not just theory.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>📋 Sample Scenario Question</h3>
+                        <div class="example-box">
+                            <strong>Scenario:</strong>
+                            Your team just wrapped a meeting where everyone quickly agreed to a major technical decision. 
+                            As you're leaving, you notice several engineers looking uncomfortable and whispering to each other. 
+                            What should you do?
+                        </div>
+                        <div class="example-box">
+                            <strong>Options:</strong>
+                            <br>A) Nothing—they agreed in the meeting, so move forward with the decision.
+                            <br>B) Send a follow-up email asking if anyone has concerns (indirect mining).
+                            <br>C) Pull the team back into the room and say "I noticed some discomfort. Let's make sure 
+                            we surface all concerns before we commit to this."
+                            <br>D) Talk to the uncomfortable engineers 1-on-1 to understand their concerns, then bring 
+                            the team back together if needed.
+                        </div>
+                        <div class="example-box">
+                            <strong>Best Answer: C or D</strong>
+                            <br>This is a classic "artificial harmony" trap from Stripe 1. Quick consensus is a warning sign. 
+                            Mining techniques from Stripe 3 say you should surface hidden conflict immediately. 
+                            <br><br>
+                            C (pull team back) works if you have time and psychological safety is high. 
+                            D (1-on-1 then regroup) works if you need to understand the issue first or if cultural norms 
+                            make public disagreement difficult (Stripe 4). Both are valid depending on context.
+                            <br><br>
+                            A is wrong—ignores warning signs. B is weak—doesn't address the urgency of the hallway conversations.
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>✅ Assessment Day Tips</h3>
+                        <table>
+                            <tr>
+                                <th>Tip</th>
+                                <th>Why It Matters</th>
+                            </tr>
+                            <tr>
+                                <td>Read scenarios carefully</td>
+                                <td>Details matter. Is it a peer conflict or hierarchy conflict? High-stakes or low-stakes?</td>
+                            </tr>
+                            <tr>
+                                <td>Eliminate obviously wrong answers first</td>
+                                <td>Usually 1-2 options are clearly bad. Choose the best of what's left.</td>
+                            </tr>
+                            <tr>
+                                <td>Be specific in reflections</td>
+                                <td>"I facilitated a conflict" is vague. "I used the 7-step process to resolve a product/eng dispute about tech debt prioritization" is specific.</td>
+                            </tr>
+                            <tr>
+                                <td>Show your work in the practical</td>
+                                <td>Explain why you chose each technique. "I'll use mining here because..." demonstrates understanding.</td>
+                            </tr>
+                            <tr>
+                                <td>Budget your time</td>
+                                <td>Don't spend 30 minutes on one reflection. Aim for ~5 min per scenario, ~15 min per reflection, ~20 min for practical.</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>🎯 Practice Exercise:</h4>
+                        <p>
+                            Before taking the assessment, write down 3 real conflict situations from your work: 
+                            (1) One you navigated well, (2) One you struggled with, (3) One you facilitated for others. 
+                            For each, note which Blue Belt techniques you used (or wish you'd used). This prepares you 
+                            for the reflective prompts and helps you see how the concepts apply to your context.
+                        </p>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border: 2px solid #3b82f6; border-radius: 12px; padding: 20px; margin-top: 25px; text-align: center;">
+                        <h4 style="color: #1e40af; margin-bottom: 10px; font-size: 18px;">🎓 Ready for the Blue Belt Assessment?</h4>
+                        <p style="color: #1e293b; margin-bottom: 15px; line-height: 1.6;">
+                            Complete all 4 stripes, then take the comprehensive assessment to earn your Blue Belt 
+                            and unlock Purple Belt (Dysfunction 3: Lack of Commitment).
+                        </p>
+                        <a href="blue-belt-assessment.html" style="display: inline-block; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; padding: 12px 32px; border-radius: 25px; text-decoration: none; font-weight: 600; border: 2px solid #1e40af; transition: transform 0.2s;">
+                            Take Blue Belt Assessment →
+                        </a>
+                    </div>
                 </div>
+
+                <button class="complete-btn" onclick="completeLesson(4)" id="btn4">
+                    Complete Lesson 4
+                </button>
             </div>
         </div>
 
@@ -871,7 +1203,7 @@
             
             <div class="summary-stats">
                 <div class="stat-card">
-                    <span class="stat-value" id="summaryComplete">0/2</span>
+                    <span class="stat-value" id="summaryComplete">0/4</span>
                     <span class="stat-label">Lessons Completed</span>
                 </div>
                 <div class="stat-card">
@@ -899,8 +1231,9 @@
     <script>
         const STORAGE_KEY = 'bluebeltStripe4Completed';
         const XP_KEY = 'bluebeltStripe4ModuleXP';
-        const TOTAL_LESSONS = 2; // 2 lessons available now
+        const TOTAL_LESSONS = 4; // All 4 lessons available
         const XP_PER_LESSON = 25;
+        const MODULE_BONUS_XP = 100;
 
         // Load progress
         function loadProgress() {
@@ -934,7 +1267,7 @@
             let moduleXP = parseInt(localStorage.getItem(XP_KEY) || '0');
             
             if (completed.includes(lessonNum)) {
-                showAchievement('Already Complete', 'You\'ve already completed this lesson', 'No XP');
+                showAchievement('Already Complete', 'You\'ve already completed this lesson');
                 return;
             }
             
@@ -944,18 +1277,42 @@
             
             // Add XP
             moduleXP += XP_PER_LESSON;
-            localStorage.setItem(XP_KEY, moduleXP.toString());
             
-            // Add to global XP
-            let totalXP = parseInt(localStorage.getItem('totalXP') || '0');
-            totalXP += XP_PER_LESSON;
-            localStorage.setItem('totalXP', totalXP.toString());
-            
-            // Mark complete
-            markLessonComplete(lessonNum);
-            updateAllStats();
-            
-            showAchievement(`Lesson ${lessonNum} Complete!`, `Great work on mastering this concept`, `+${XP_PER_LESSON} XP`);
+            // Check if this is the final lesson - award bonus and stripe
+            if (completed.length === TOTAL_LESSONS) {
+                moduleXP += MODULE_BONUS_XP;
+                
+                // Award Stripe 4
+                const stripesEarned = JSON.parse(localStorage.getItem('blueStripesEarned') || '[]');
+                if (!stripesEarned.includes(4)) {
+                    stripesEarned.push(4);
+                    localStorage.setItem('blueStripesEarned', JSON.stringify(stripesEarned));
+                }
+                
+                localStorage.setItem(XP_KEY, moduleXP.toString());
+                
+                // Add to global XP (lesson + bonus)
+                let totalXP = parseInt(localStorage.getItem('totalXP') || '0');
+                totalXP += XP_PER_LESSON + MODULE_BONUS_XP;
+                localStorage.setItem('totalXP', totalXP.toString());
+                
+                markLessonComplete(lessonNum);
+                updateAllStats();
+                
+                showAchievement('Stripe 4 Complete! 🔵', `All Blue Belt stripes earned! Ready for assessment.`);
+            } else {
+                localStorage.setItem(XP_KEY, moduleXP.toString());
+                
+                // Add to global XP
+                let totalXP = parseInt(localStorage.getItem('totalXP') || '0');
+                totalXP += XP_PER_LESSON;
+                localStorage.setItem('totalXP', totalXP.toString());
+                
+                markLessonComplete(lessonNum);
+                updateAllStats();
+                
+                showAchievement(`Lesson ${lessonNum} Complete!`, `Great work on mastering this concept`);
+            }
         }
 
         // Update all statistics
@@ -963,10 +1320,13 @@
             const completed = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
             const moduleXP = parseInt(localStorage.getItem(XP_KEY) || '0');
             
+            // Calculate if stripe is earned
+            const stripeEarned = completed.length >= TOTAL_LESSONS ? 1 : 0;
+            
             // Update header stats
             document.getElementById('xpDisplay').textContent = moduleXP;
             document.getElementById('lessonsDisplay').textContent = `${completed.length}/${TOTAL_LESSONS}`;
-            document.getElementById('badgesDisplay').textContent = '0/1';
+            document.getElementById('badgesDisplay').textContent = stripeEarned + '/1';
             
             // Update progress bar
             const progress = (completed.length / TOTAL_LESSONS) * 100;
@@ -977,14 +1337,23 @@
             // Update summary stats
             document.getElementById('summaryComplete').textContent = `${completed.length}/${TOTAL_LESSONS}`;
             document.getElementById('summaryXP').textContent = moduleXP;
-            document.getElementById('summaryBadges').textContent = 'In Progress';
+            document.getElementById('summaryBadges').textContent = stripeEarned ? '✓ Earned' : 'In Progress';
         }
 
         // Show achievement popup
-        function showAchievement(title, desc, xp) {
+        function showAchievement(title, desc) {
             document.getElementById('achievementTitle').textContent = title;
             document.getElementById('achievementDesc').textContent = desc;
-            document.getElementById('achievementXP').textContent = xp;
+            
+            // Set XP display based on achievement type
+            if (title.includes('Stripe')) {
+                document.getElementById('achievementXP').textContent = `+${XP_PER_LESSON + MODULE_BONUS_XP} XP!`;
+            } else if (title.includes('Already')) {
+                document.getElementById('achievementXP').textContent = 'No XP';
+            } else {
+                document.getElementById('achievementXP').textContent = `+${XP_PER_LESSON} XP`;
+            }
+            
             document.getElementById('achievementPopup').classList.add('show');
             document.getElementById('overlay').classList.add('show');
         }
