@@ -549,8 +549,390 @@
             </div>
         </div>
 
-        <!-- Lesson 2 will be added here -->
-        <!-- Lesson 3 will be added here -->
+        <!-- Lesson 2: Navigating Competing Priorities -->
+        <div class="module-card lesson" id="lesson2">
+            <div class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Lesson 2: Navigating Competing Priorities</h2>
+                </div>
+                
+                <div class="highlight-box">
+                    <strong>The Everything-Is-Important Trap:</strong> When teams treat all goals as equally critical, nothing gets the focus it needs to succeed. Trade-offs are unavoidable—the question is whether you make them consciously or let them happen by default.
+                </div>
+
+                <div class="content-section">
+                    <h3>Why Teams Avoid Prioritization</h3>
+                    <p><strong>Political Safety:</strong> Declaring one thing more important than another creates winners and losers. It's easier to say "it's all important."</p>
+                    
+                    <p><strong>FOMO (Fear of Missing Out):</strong> What if the thing we deprioritize was the breakthrough opportunity? Keeping everything in play feels safer.</p>
+
+                    <p><strong>Stakeholder Appeasement:</strong> Every executive, customer, and team member has "the most important thing." Prioritizing means disappointing someone.</p>
+
+                    <p><strong>Optimism Bias:</strong> "We can do it all if we just work harder!" This rarely works, but the belief persists.</p>
+
+                    <div class="example-box">
+                        <strong>The Cost of No Prioritization:</strong><br><br>
+                        A product team tries to pursue 5 "top priorities" simultaneously:
+                        <ul>
+                            <li>Increase user acquisition</li>
+                            <li>Improve retention</li>
+                            <li>Build enterprise features</li>
+                            <li>Fix technical debt</li>
+                            <li>Launch new market segment</li>
+                        </ul>
+                        <strong>Result:</strong> 20% progress on each, nothing reaches completion, team exhausted, stakeholders frustrated. Trying to do everything = achieving nothing.
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>The Prioritization Framework: Results-Based Ranking</h3>
+                    
+                    <p><strong>Step 1: Define Success Criteria</strong></p>
+                    <p>What outcome matters most in the next 90 days? Revenue? User growth? Product-market fit? Customer retention? Pick ONE.</p>
+
+                    <p><strong>Step 2: Score Each Priority Against the Criteria</strong></p>
+                    <p>For each competing priority, ask: "On a scale of 1-10, how directly does this drive our primary success criterion?"</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Priority</th>
+                                <th>Impact on Primary Goal (1-10)</th>
+                                <th>Effort Required (L/M/H)</th>
+                                <th>Priority Rank</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Improve onboarding (increase activation)</td>
+                                <td>9 (directly drives retention)</td>
+                                <td>M</td>
+                                <td><strong>1 - DO NOW</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Build enterprise SSO feature</td>
+                                <td>7 (unlocks enterprise deals)</td>
+                                <td>H</td>
+                                <td>2 - Next quarter</td>
+                            </tr>
+                            <tr>
+                                <td>Refactor auth system</td>
+                                <td>3 (tech debt, no user impact)</td>
+                                <td>H</td>
+                                <td>3 - Defer</td>
+                            </tr>
+                            <tr>
+                                <td>Launch mobile app</td>
+                                <td>5 (new channel, uncertain impact)</td>
+                                <td>H</td>
+                                <td>4 - Explore later</td>
+                            </tr>
+                            <tr>
+                                <td>Increase marketing spend</td>
+                                <td>4 (growth, but retention is bottleneck)</td>
+                                <td>L</td>
+                                <td>5 - Not now</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p><strong>Step 3: Ruthlessly Cut</strong></p>
+                    <p>Anything below a 7 gets deprioritized. You're not saying "never," you're saying "not now, because it doesn't serve the primary result."</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>The "One Thing" Rule</h3>
+                    <p>At any given time, the team should be able to answer: <strong>"What's the ONE result we're optimizing for right now?"</strong></p>
+
+                    <p>Everything else is either:</p>
+                    <ul>
+                        <li><strong>Supporting work:</strong> Directly enables the one thing (do it)</li>
+                        <li><strong>Maintenance work:</strong> Keeps the lights on (minimum viable effort)</li>
+                        <li><strong>Nice-to-have work:</strong> Would be cool, but not critical (defer or kill)</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <strong>Test:</strong> If your team can't recite the "one thing" in 5 seconds, you don't have clarity. Go back and decide.
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Handling the "But Everything Is Urgent" Objection</h3>
+                    
+                    <p><strong>Urgent ≠ Important:</strong> The Eisenhower Matrix still applies.</p>
+                    <ul>
+                        <li><strong>Urgent + Important:</strong> Do now (true priority)</li>
+                        <li><strong>Important, Not Urgent:</strong> Schedule (strategic work)</li>
+                        <li><strong>Urgent, Not Important:</strong> Delegate or defer (false urgency)</li>
+                        <li><strong>Neither:</strong> Kill it</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <strong>Application:</strong><br><br>
+                        <strong>Claim:</strong> "We need to ship this enterprise feature NOW or we'll lose the deal!"<br>
+                        <strong>Questions:</strong>
+                        <ul>
+                            <li>Does this deal align with our primary result (e.g., retention)? If no → not a priority</li>
+                            <li>Is this feature reusable for other customers? If no → one-off distraction</li>
+                            <li>What's the opportunity cost? What do we NOT do if we do this? Worth it?</li>
+                        </ul>
+                        <strong>Decision:</strong> Often, the "urgent" opportunity is a distraction disguised as progress.
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>The Prioritization Meeting Format</h3>
+                    <p>Run this monthly (or when priorities feel chaotic):</p>
+
+                    <p><strong>1. Restate the Primary Result (5 min)</strong></p>
+                    <p>"Our only goal this quarter is to hit $150K MRR by Dec 31. Everything filters through that lens."</p>
+
+                    <p><strong>2. List All Competing Demands (10 min)</strong></p>
+                    <p>Brain dump everything people say is "critical." No judgment yet, just capture.</p>
+
+                    <p><strong>3. Score Against Primary Result (20 min)</strong></p>
+                    <p>Use the framework above. Be honest. A 5/10 is a 5/10, not a 9/10.</p>
+
+                    <p><strong>4. Rank and Cut (15 min)</strong></p>
+                    <p>Top 3 items are priorities. Everything else goes to a "Later" or "Never" list.</p>
+
+                    <p><strong>5. Communicate the Decisions (10 min)</strong></p>
+                    <p>Write down: What we're doing, what we're NOT doing, and why. Share with stakeholders immediately.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Managing Stakeholder Disappointment</h3>
+                    <p>Prioritization creates losers. Here's how to manage it:</p>
+
+                    <p><strong>1. Explain the Trade-Off Explicitly</strong></p>
+                    <p>"If we do X, we can't do Y. Which result matters more right now?"</p>
+
+                    <p><strong>2. Show the Data</strong></p>
+                    <p>"Based on our analysis, Y scores 4/10 on impact while X scores 9/10. We're choosing higher leverage."</p>
+
+                    <p><strong>3. Offer a Timeline</strong></p>
+                    <p>"This isn't 'never,' it's 'not now.' We'll revisit in Q2 after we hit our primary goal."</p>
+
+                    <p><strong>4. Let Them Challenge (Once)</strong></p>
+                    <p>"If you have new data that changes the scoring, share it. Otherwise, we're moving forward with this prioritization."</p>
+
+                    <div class="highlight-box">
+                        <strong>Leader's job:</strong> Absorb the disappointment and protect the team from priority whiplash. Say no so they can say yes to the right work.
+                    </div>
+                </div>
+
+                <div class="research-box">
+                    <h4>📚 Research: Focus and Performance</h4>
+                    <p><strong>McKinsey study:</strong> Companies that concentrate resources on 2-3 strategic priorities outperform those pursuing 5+ priorities by 200% in execution success. Diffusion of focus = diffusion of results.</p>
+                    <p><strong>Stanford research:</strong> Teams that explicitly deprioritized low-impact work (vs. trying to do everything) increased productivity 30% without working more hours.</p>
+                    <p><strong>Key insight:</strong> Saying no is as important as saying yes. Focus is a competitive advantage.</p>
+                </div>
+
+                <div class="bjj-connection">
+                    <h4>🥋 The BJJ Parallel: Position Before Submission</h4>
+                    <p>Beginners try to hunt for submissions from bad positions. They see an opening for an armbar while stuck in someone's side control and go for it—ignoring that they should escape first.</p>
+                    <p>Advanced grapplers prioritize: "First, escape to a neutral position. Then, improve position. THEN, when I'm in control, attack for the submission." Sequential focus.</p>
+                    <p>Trying to do everything at once (escape + sweep + submit simultaneously) fails. Prioritizing the RIGHT thing in the RIGHT order wins.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>💪 Practice: Priority Stack Rank</h3>
+                    <p><strong>Step 1:</strong> List everything your team is currently working on (all projects, initiatives, tasks).</p>
+                    <p><strong>Step 2:</strong> Define your primary result for the next 90 days in one sentence.</p>
+                    <p><strong>Step 3:</strong> Score each item 1-10 on "how directly does this drive the primary result?"</p>
+                    <p><strong>Step 4:</strong> Draw a line under the top 3. Everything below the line gets paused or killed.</p>
+                    <p><strong>Step 5:</strong> Communicate the cuts. Explain the reasoning. Prepare for pushback, but hold the line.</p>
+                    <p><strong>Commit:</strong> Run this exercise with your team this week. Ship the prioritized list by Friday.</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="toggleLesson(2)">Close Lesson</button>
+                    <button class="btn btn-primary" onclick="completeLesson(2)">Complete Lesson (+25 XP)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lesson 3: Saying No to Protect Results -->
+        <div class="module-card lesson" id="lesson3">
+            <div class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Lesson 3: Saying No to Protect Results</h2>
+                </div>
+                
+                <div class="highlight-box">
+                    <strong>The Discipline of No:</strong> Every yes to something unimportant is an implicit no to something that matters. Protecting results requires the courage to disappoint people in the short term to deliver outcomes in the long term.
+                </div>
+
+                <div class="content-section">
+                    <h3>Why Leaders Struggle to Say No</h3>
+                    <p><strong>People-Pleasing Instinct:</strong> Leaders want to be helpful, supportive, accessible. Saying no feels like letting people down.</p>
+                    
+                    <p><strong>FOMO (Fear of Missing Opportunity):</strong> What if this request is the thing that unlocks growth? Better to say yes and figure it out later.</p>
+
+                    <p><strong>Lack of Conviction:</strong> If you're not crystal clear on your priorities, it's hard to defend saying no. Ambiguity enables yes creep.</p>
+
+                    <p><strong>Short-Term Pressure Over Long-Term Results:</strong> Saying yes feels easier in the moment. Saying no creates immediate friction (but long-term focus).</p>
+
+                    <div class="example-box">
+                        <strong>The Cost of Chronic Yes:</strong><br><br>
+                        A product leader says yes to:
+                        <ul>
+                            <li>Sales team's custom feature request</li>
+                            <li>Executive's pet project idea</li>
+                            <li>Customer's "urgent" integration need</li>
+                            <li>Engineer's desire to rewrite the codebase</li>
+                            <li>Marketing's request for dashboard enhancements</li>
+                        </ul>
+                        <strong>Result:</strong> Team spread across 12 initiatives, none complete. Primary goal (hit retention target) missed. Everyone busy, nothing shipped.<br><br>
+                        <strong>One strategic "no" to each would have preserved focus and delivered the result.</strong>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>The Framework for Saying No</h3>
+                    
+                    <p><strong>1. Acknowledge the Request</strong></p>
+                    <p>Don't dismiss or minimize. "I hear that this is important to you. I understand why you're asking."</p>
+
+                    <p><strong>2. Reference the Primary Result</strong></p>
+                    <p>"Right now, our team is 100% focused on [PRIMARY RESULT]. That's our commitment for the next [TIMEFRAME]."</p>
+
+                    <p><strong>3. Explain the Trade-Off</strong></p>
+                    <p>"If we take this on, we'd need to pause [CURRENT PRIORITY]. That would push our goal out by [TIME]. Are you comfortable with that trade-off?"</p>
+
+                    <p><strong>4. Offer an Alternative (If Possible)</strong></p>
+                    <ul>
+                        <li>"We can revisit this in [NEXT QUARTER]"</li>
+                        <li>"Here's a workaround that doesn't require engineering time"</li>
+                        <li>"Can [OTHER TEAM] help with this instead?"</li>
+                    </ul>
+
+                    <p><strong>5. Hold the Line</strong></p>
+                    <p>Don't negotiate unless new information changes the priority calculus. If it's a no, it's a no.</p>
+
+                    <div class="example-box">
+                        <strong>Script Example:</strong><br><br>
+                        <strong>Request:</strong> "Can we build this enterprise SSO feature? Big customer needs it ASAP."<br><br>
+                        <strong>Response:</strong> "I hear that this customer is important and SSO is a blocker for them. Right now, our team is 100% focused on increasing trial-to-paid conversion to 25% by year-end—that's our top company priority. Building SSO would take 3 weeks and push us off that goal. Are you comfortable delaying the conversion goal to prioritize this one customer? If not, we'll need to defer SSO until Q1 or find another solution."<br><br>
+                        <strong>Outcome:</strong> Forces the requester to own the trade-off decision, not you.
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Types of Requests to Say No To</h3>
+                    
+                    <p><strong>1. Scope Creep Requests</strong></p>
+                    <p>"While you're building X, can you also add Y?" → No. Ship X first, then evaluate Y.</p>
+
+                    <p><strong>2. "Just This One Time" Exceptions</strong></p>
+                    <p>"Can we just do this custom thing for this one customer?" → No. One-offs become patterns.</p>
+
+                    <p><strong>3. Shiny Object Syndrome</strong></p>
+                    <p>"I just read about [NEW TREND], we should do that!" → No. Finish current priorities before chasing trends.</p>
+
+                    <p><strong>4. Meeting Invitations (Non-Essential)</strong></p>
+                    <p>"Can you join this 2-hour brainstorm?" → No. Send async input instead if it doesn't drive the primary result.</p>
+
+                    <p><strong>5. Low-Leverage "Helpful" Asks</strong></p>
+                    <p>"Can you review this deck / join this call / give feedback on this?" → No, unless it directly supports the priority.</p>
+
+                    <div class="highlight-box">
+                        <strong>Rule of thumb:</strong> If saying yes doesn't move the primary result needle, default to no. Protect your team's capacity like it's the most valuable resource—because it is.
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>The "Not Now" List</h3>
+                    <p>Create a visible, shared "Not Now" list where deprioritized requests live. This serves multiple purposes:</p>
+                    
+                    <ul>
+                        <li><strong>Shows you heard the request:</strong> It's not ignored, it's deferred</li>
+                        <li><strong>Creates accountability:</strong> You'll revisit it when priorities shift</li>
+                        <li><strong>Prevents re-asking:</strong> "We already discussed this, it's on the Not Now list"</li>
+                        <li><strong>Builds trust:</strong> People see you're systematic, not arbitrary</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <strong>Not Now List Example (Public Notion Doc):</strong><br><br>
+                        <strong>Deferred Until Q1 2025:</strong>
+                        <ul>
+                            <li>Enterprise SSO feature (reason: focus on retention first)</li>
+                            <li>Mobile app exploration (reason: web product-market fit not proven yet)</li>
+                            <li>Marketing automation replatform (reason: current system works well enough)</li>
+                        </ul>
+                        <strong>Revisit Date:</strong> Jan 5, 2025 (first week of new quarter)
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>When to Say Yes (Despite Competing Priorities)</h3>
+                    <p>Saying no isn't absolute. Say yes when:</p>
+
+                    <p><strong>1. It's a True Emergency</strong></p>
+                    <p>System down, security breach, legal compliance issue. Drop everything, handle it.</p>
+
+                    <p><strong>2. It Directly Accelerates the Primary Result</strong></p>
+                    <p>"This integration will unlock 20 high-intent leads immediately" → if lead gen is the priority, yes.</p>
+
+                    <p><strong>3. The Trade-Off Analysis Changes</strong></p>
+                    <p>New data shows this request is higher leverage than you thought. Recalculate and adjust.</p>
+
+                    <p><strong>4. It's a Strategic Relationship Investment</strong></p>
+                    <p>CEO asks for something reasonable, it's 2 hours of work, and political capital matters. Sometimes yes for relationship health.</p>
+
+                    <div class="highlight-box">
+                        <strong>Key distinction:</strong> Strategic yes (thought through, aligned with priorities) vs. reactive yes (people-pleasing, avoiding conflict).
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Building a "Culture of No"</h3>
+                    <p>Leaders set the tone. If you say no to protect focus, the team learns to do the same.</p>
+
+                    <p><strong>Model it publicly:</strong> "I'm saying no to [X] because it doesn't serve [PRIMARY RESULT]. That's the standard I'm holding us to."</p>
+
+                    <p><strong>Celebrate strategic nos:</strong> Recognize team members who push back on scope creep or low-leverage requests.</p>
+
+                    <p><strong>Make it safe:</strong> If someone says no to a stakeholder, back them up. Don't override unless you have new information.</p>
+
+                    <p><strong>Teach the framework:</strong> Share the "acknowledge → reference priority → explain trade-off → offer alternative" script with your team.</p>
+                </div>
+
+                <div class="research-box">
+                    <h4>📚 Research: Saying No and Performance</h4>
+                    <p><strong>Harvard study:</strong> Executives who said no to 50%+ of incoming requests achieved strategic goals 3x more often than those who said yes to 80%+ of requests. Selectivity predicts success.</p>
+                    <p><strong>Research from "Essentialism":</strong> Top performers spend 90% of time on the vital few priorities. Average performers spread time across the trivial many. Discipline of no is the differentiator.</p>
+                    <p><strong>Key insight:</strong> Your ability to say no determines your ability to deliver yes on what matters.</p>
+                </div>
+
+                <div class="bjj-connection">
+                    <h4>🥋 The BJJ Parallel: Refusing Bad Positions</h4>
+                    <p>In BJJ, beginners accept bad positions because they don't know how to refuse them. Someone tries to take their back? They let it happen. Someone moves to mount? They allow it.</p>
+                    <p>Advanced grapplers refuse to give up position. They fight every inch, block every transition, say "no" with their body language and technique. They protect good position because they know once lost, it's hard to recover.</p>
+                    <p>Leadership is the same: Protect your focus like you protect good position. Once you lose it to distractions, recovering it is exponentially harder.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>💪 Practice: Saying No This Week</h3>
+                    <p><strong>Step 1:</strong> Identify 3 requests you've said yes to recently that didn't serve your primary result.</p>
+                    <p><strong>Step 2:</strong> For each, write out what you should have said using the framework:</p>
+                    <ul>
+                        <li>Acknowledge: "I understand this matters to you."</li>
+                        <li>Priority: "We're focused on [PRIMARY RESULT]."</li>
+                        <li>Trade-off: "Taking this on means [CONSEQUENCE]."</li>
+                        <li>Alternative: "Here's what we can do instead / when we can revisit."</li>
+                    </ul>
+                    <p><strong>Step 3:</strong> This week, when a new request comes in, practice saying no using this script.</p>
+                    <p><strong>Step 4:</strong> Create your team's "Not Now" list. Add 5 deferred items to start building the habit.</p>
+                    <p><strong>Commit:</strong> Say no to at least one non-essential request this week. Notice how it feels, and how it protects your team's capacity.</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="toggleLesson(3)">Close Lesson</button>
+                    <button class="btn btn-primary" onclick="completeLesson(3)">Complete Lesson (+25 XP)</button>
+                </div>
+            </div>
+        </div>
 
     </div>
 
