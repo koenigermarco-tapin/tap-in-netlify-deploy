@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⬛ Black Belt: Master Results - Relentless Focus on Outcomes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e5e5e5 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            color: white;
+        }
+
+        .belt-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .theme {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            font-weight: 500;
+            opacity: 0.95;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .prerequisite-banner {
+            background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+            border-left: 6px solid #dc2626;
+            border-radius: 12px;
+            padding: 20px 30px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .prerequisite-banner .icon {
+            font-size: 2em;
+        }
+
+        .prerequisite-text {
+            flex: 1;
+        }
+
+        .prerequisite-title {
+            font-weight: 600;
+            font-size: 1.2em;
+            color: #7f1d1d;
+            margin-bottom: 5px;
+        }
+
+        .prerequisite-desc {
+            color: #991b1b;
+            font-size: 1em;
+        }
+
+        .philosophy {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border-left: 6px solid #1f2937;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .philosophy h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .philosophy p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #475569;
+            margin-bottom: 15px;
+        }
+
+        .philosophy .quote {
+            background: #f8fafc;
+            border-left: 4px solid #1f2937;
+            padding: 20px;
+            margin: 25px 0;
+            font-style: italic;
+            font-size: 1.15em;
+            color: #334155;
+        }
+
+        .progress-section {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .progress-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .progress-count {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .progress-bar-container {
+            background: #f1f5f9;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar-fill {
+            background: linear-gradient(90deg, #1f2937 0%, #374151 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 6px;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.95em;
+            margin-top: 10px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #1e293b;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .stripe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stripe-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .stripe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: #1f2937;
+        }
+
+        .stripe-card.locked {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .stripe-card.locked:hover {
+            transform: none;
+            border-color: transparent;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            font-size: 2.5em;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .status-available {
+            background: #1f2937;
+            color: white;
+        }
+
+        .status-locked {
+            background: #94a3b8;
+            color: white;
+        }
+
+        .status-completed {
+            background: #10b981;
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1e293b;
+        }
+
+        .card-duration {
+            font-size: 0.95em;
+            color: #64748b;
+            margin-bottom: 15px;
+        }
+
+        .card-description {
+            font-size: 1em;
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .card-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(31, 41, 55, 0.4);
+        }
+
+        .card-button.locked {
+            background: #cbd5e1;
+            color: #64748b;
+            cursor: not-allowed;
+        }
+
+        .card-button.locked:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .final-assessment {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            color: white;
+            text-align: center;
+        }
+
+        .final-assessment h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .final-assessment p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .final-assessment .assessment-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: white;
+            color: #1f2937;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .final-assessment .assessment-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .final-assessment .assessment-button.locked {
+            background: #6b7280;
+            color: #d1d5db;
+            cursor: not-allowed;
+        }
+
+        .final-assessment .assessment-button.locked:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .criteria-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .criteria-section h2 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            color: #1e293b;
+            text-align: center;
+        }
+
+        .criteria-list {
+            list-style: none;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .criteria-item {
+            display: flex;
+            align-items: center;
+            padding: 18px;
+            margin-bottom: 12px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-left: 4px solid #1f2937;
+        }
+
+        .criteria-checkbox {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .criteria-text {
+            font-size: 1.1em;
+            color: #334155;
+        }
+
+        .nav-section {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .nav-link {
+            flex: 1;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #1e293b;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link.back {
+            border: 2px solid #d97706;
+        }
+
+        .nav-link.home {
+            border: 2px solid #64748b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="belt-icon">⬛</div>
+            <h1>Black Belt</h1>
+            <div class="theme">Master Results</div>
+            <div class="subtitle">
+                Relentless Focus on Outcomes • Results Over Activity • Scoreboard Obsession
+            </div>
+        </div>
+
+        <div class="prerequisite-banner">
+            <div class="icon">⚠️</div>
+            <div class="prerequisite-text">
+                <div class="prerequisite-title">Brown Belt Required</div>
+                <div class="prerequisite-desc">Complete all Brown Belt requirements before starting Black Belt work</div>
+            </div>
+        </div>
+
+        <div class="philosophy">
+            <h2>Results Orientation: The Ultimate Dysfunction to Overcome</h2>
+            <p>
+                You've built trust (White Belt), embraced conflict (Blue Belt), committed to decisions (Purple Belt), and owned your life (Brown Belt). Now comes the final test: Are you actually producing results?
+            </p>
+            <p>
+                Black Belt is about overcoming <strong>inattention to results</strong>—the fifth and most insidious dysfunction. Teams can be trusting, conflict-healthy, committed, and accountable... yet still fail because they focus on activity instead of outcomes.
+            </p>
+            <div class="quote">
+                "The scoreboard doesn't lie. Everything else is just opinion." — Patrick Lencioni
+            </div>
+            <p>
+                You'll master results definition, metric selection, prioritization frameworks, and the discipline to say no to everything that doesn't move the needle. This is leadership mastery: the ability to drive outcomes consistently, systematically, and relentlessly.
+            </p>
+        </div>
+
+        <div class="progress-section">
+            <div class="progress-header">
+                <div class="progress-title">Your Progress</div>
+                <div class="progress-count" id="progressCount">0/4</div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+            <div class="progress-text">Complete all 4 stripes to unlock the Black Belt Assessment</div>
+        </div>
+
+        <div class="section-title">🥋 Black Belt Stripes</div>
+
+        <div class="stripe-grid">
+            <div class="stripe-card" id="card-stripe1">
+                <div class="card-header">
+                    <div class="card-icon">🎯</div>
+                    <div class="status-badge status-available" id="status-stripe1">Available</div>
+                </div>
+                <div class="card-title">Stripe 1: Results Foundations</div>
+                <div class="card-duration">⏱️ 3 lessons • 75 XP</div>
+                <div class="card-description">
+                    Defining results vs activity. The OMTM (One Metric That Matters). Leading vs lagging indicators.
+                </div>
+                <a href="black-belt-stripe1-gamified.html" class="card-button" id="btn-stripe1">Start Stripe 1 →</a>
+            </div>
+
+            <div class="stripe-card locked" id="card-stripe2">
+                <div class="card-header">
+                    <div class="card-icon">📊</div>
+                    <div class="status-badge status-locked" id="status-stripe2">Locked</div>
+                </div>
+                <div class="card-title">Stripe 2: Scoreboard Thinking</div>
+                <div class="card-duration">⏱️ 3 lessons • 75 XP</div>
+                <div class="card-description">
+                    Building dashboards that matter. Making progress visible. Creating accountability through transparency.
+                </div>
+                <button class="card-button locked" id="btn-stripe2" disabled>Complete Stripe 1 First</button>
+            </div>
+
+            <div class="stripe-card locked" id="card-stripe3">
+                <div class="card-header">
+                    <div class="card-icon">🔥</div>
+                    <div class="status-badge status-locked" id="status-stripe3">Locked</div>
+                </div>
+                <div class="card-title">Stripe 3: Ruthless Prioritization</div>
+                <div class="card-duration">⏱️ 3 lessons • 75 XP</div>
+                <div class="card-description">
+                    Saying no to good ideas. Protecting focus. The discipline of elimination and brutal trade-offs.
+                </div>
+                <button class="card-button locked" id="btn-stripe3" disabled>Complete Stripe 2 First</button>
+            </div>
+
+            <div class="stripe-card locked" id="card-stripe4">
+                <div class="card-header">
+                    <div class="card-icon">🏆</div>
+                    <div class="status-badge status-locked" id="status-stripe4">Locked</div>
+                </div>
+                <div class="card-title">Stripe 4: Results-Oriented Leadership</div>
+                <div class="card-duration">⏱️ 3 lessons • 75 XP</div>
+                <div class="card-description">
+                    Building results culture. Your legacy. Teaching others to be results-focused leaders.
+                </div>
+                <button class="card-button locked" id="btn-stripe4" disabled>Complete Stripe 3 First</button>
+            </div>
+        </div>
+
+        <div class="final-assessment">
+            <h2>⬛ Black Belt Final Assessment</h2>
+            <p>
+                The ultimate test of results mastery. 15 real-world leadership scenarios requiring you to demonstrate results-oriented thinking, prioritization discipline, and outcome focus.
+            </p>
+            <p>
+                <strong>Passing Score:</strong> 85% or higher • <strong>Reward:</strong> ⬛ Black Belt + 2,500 XP Bonus
+            </p>
+            <a href="black-belt-assessment.html" class="assessment-button locked" id="assessmentButton">
+                🔒 Complete All Stripes to Unlock
+            </a>
+        </div>
+
+        <div class="criteria-section">
+            <h2>🏆 Black Belt Completion Criteria</h2>
+            <ul class="criteria-list">
+                <li class="criteria-item">
+                    <input type="checkbox" class="criteria-checkbox" id="criteria1">
+                    <span class="criteria-text">Complete Stripe 1: Results Foundations (75 XP)</span>
+                </li>
+                <li class="criteria-item">
+                    <input type="checkbox" class="criteria-checkbox" id="criteria2">
+                    <span class="criteria-text">Complete Stripe 2: Scoreboard Thinking (75 XP)</span>
+                </li>
+                <li class="criteria-item">
+                    <input type="checkbox" class="criteria-checkbox" id="criteria3">
+                    <span class="criteria-text">Complete Stripe 3: Ruthless Prioritization (75 XP)</span>
+                </li>
+                <li class="criteria-item">
+                    <input type="checkbox" class="criteria-checkbox" id="criteria4">
+                    <span class="criteria-text">Complete Stripe 4: Results-Oriented Leadership (75 XP)</span>
+                </li>
+                <li class="criteria-item">
+                    <input type="checkbox" class="criteria-checkbox" id="criteria5">
+                    <span class="criteria-text">Pass Black Belt Assessment with 85%+ (2,500 XP Bonus)</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="nav-section">
+            <a href="brown-belt.html" class="nav-link back">← Back: Brown Belt</a>
+            <a href="index.html" class="nav-link home">🏠 The Gym</a>
+        </div>
+    </div>
+
+    <script>
+        function updateProgress() {
+            // Check stripe completion
+            const stripe1Complete = JSON.parse(localStorage.getItem('blackbeltStripe1Completed') || '[]').length >= 3;
+            const stripe2Complete = JSON.parse(localStorage.getItem('blackbeltStripe2Completed') || '[]').length >= 3;
+            const stripe3Complete = JSON.parse(localStorage.getItem('blackbeltStripe3Completed') || '[]').length >= 3;
+            const stripe4Complete = JSON.parse(localStorage.getItem('blackbeltStripe4Completed') || '[]').length >= 3;
+
+            let completedCount = 0;
+
+            // Update Stripe 1
+            if (stripe1Complete) {
+                completedCount++;
+                document.getElementById('status-stripe1').textContent = 'Completed';
+                document.getElementById('status-stripe1').className = 'status-badge status-completed';
+
+                // Unlock Stripe 2
+                const card2 = document.getElementById('card-stripe2');
+                const btn2 = document.getElementById('btn-stripe2');
+                const status2 = document.getElementById('status-stripe2');
+                card2.classList.remove('locked');
+                btn2.disabled = false;
+                btn2.className = 'card-button';
+                btn2.textContent = 'Start Stripe 2 →';
+                btn2.onclick = () => location.href = 'black-belt-stripe2-gamified.html';
+                status2.textContent = 'Available';
+                status2.className = 'status-badge status-available';
+            }
+
+            // Update Stripe 2
+            if (stripe2Complete) {
+                completedCount++;
+                document.getElementById('status-stripe2').textContent = 'Completed';
+                document.getElementById('status-stripe2').className = 'status-badge status-completed';
+
+                // Unlock Stripe 3
+                const card3 = document.getElementById('card-stripe3');
+                const btn3 = document.getElementById('btn-stripe3');
+                const status3 = document.getElementById('status-stripe3');
+                card3.classList.remove('locked');
+                btn3.disabled = false;
+                btn3.className = 'card-button';
+                btn3.textContent = 'Start Stripe 3 →';
+                btn3.onclick = () => location.href = 'black-belt-stripe3-gamified.html';
+                status3.textContent = 'Available';
+                status3.className = 'status-badge status-available';
+            }
+
+            // Update Stripe 3
+            if (stripe3Complete) {
+                completedCount++;
+                document.getElementById('status-stripe3').textContent = 'Completed';
+                document.getElementById('status-stripe3').className = 'status-badge status-completed';
+
+                // Unlock Stripe 4
+                const card4 = document.getElementById('card-stripe4');
+                const btn4 = document.getElementById('btn-stripe4');
+                const status4 = document.getElementById('status-stripe4');
+                card4.classList.remove('locked');
+                btn4.disabled = false;
+                btn4.className = 'card-button';
+                btn4.textContent = 'Start Stripe 4 →';
+                btn4.onclick = () => location.href = 'black-belt-stripe4-gamified.html';
+                status4.textContent = 'Available';
+                status4.className = 'status-badge status-available';
+            }
+
+            // Update Stripe 4
+            if (stripe4Complete) {
+                completedCount++;
+                document.getElementById('status-stripe4').textContent = 'Completed';
+                document.getElementById('status-stripe4').className = 'status-badge status-completed';
+
+                // Unlock Final Assessment
+                const assessmentBtn = document.getElementById('assessmentButton');
+                assessmentBtn.classList.remove('locked');
+                assessmentBtn.textContent = 'Take Black Belt Assessment →';
+            }
+
+            // Update progress bar
+            const progressBar = document.getElementById('progressBar');
+            const progressCount = document.getElementById('progressCount');
+            const percentage = (completedCount / 4) * 100;
+            progressBar.style.width = percentage + '%';
+            progressCount.textContent = completedCount + '/4';
+
+            // Update criteria checkboxes
+            if (stripe1Complete) document.getElementById('criteria1').checked = true;
+            if (stripe2Complete) document.getElementById('criteria2').checked = true;
+            if (stripe3Complete) document.getElementById('criteria3').checked = true;
+            if (stripe4Complete) document.getElementById('criteria4').checked = true;
+
+            // Check if assessment passed
+            const assessmentPassed = localStorage.getItem('blackbeltAssessmentPassed');
+            if (assessmentPassed) {
+                document.getElementById('criteria5').checked = true;
+            }
+
+            // Store progress
+            localStorage.setItem('blackBeltProgress', JSON.stringify({
+                stripe1: stripe1Complete,
+                stripe2: stripe2Complete,
+                stripe3: stripe3Complete,
+                stripe4: stripe4Complete,
+                assessmentPassed: !!assessmentPassed
+            }));
+        }
+
+        // Initialize on load
+        updateProgress();
+    </script>
+</body>
+</html>
