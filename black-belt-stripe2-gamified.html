@@ -578,8 +578,387 @@
             </div>
         </div>
 
-        <!-- Lesson 2 will be added here -->
-        <!-- Lesson 3 will be added here -->
+        <!-- Lesson 2: Building Results Dashboards -->
+        <div class="module-card lesson" id="lesson2">
+            <div class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Lesson 2: Building Results Dashboards</h2>
+                </div>
+                
+                <div class="highlight-box">
+                    <strong>Visibility Creates Accountability:</strong> When results are visible to everyone, constantly, the team naturally orients toward them. Dashboards aren't just reporting tools—they're focusing mechanisms.
+                </div>
+
+                <div class="content-section">
+                    <h3>Why Most Dashboards Fail</h3>
+                    <p><strong>The common approach:</strong> Throw every metric into a dashboard, make it look impressive, then never look at it again except during monthly reviews.</p>
+                    
+                    <div class="example-box">
+                        <strong>Dashboard Failure Patterns:</strong>
+                        <ul>
+                            <li><strong>Too much data:</strong> 30 metrics on one screen = paralysis, not clarity</li>
+                            <li><strong>No hierarchy:</strong> Every metric looks equally important, so nothing is</li>
+                            <li><strong>Stale data:</strong> "Last updated 2 weeks ago" kills trust and urgency</li>
+                            <li><strong>Hidden away:</strong> Only accessible via login, buried in tools, not ambient</li>
+                            <li><strong>No context:</strong> Numbers without trends, benchmarks, or targets mean nothing</li>
+                        </ul>
+                    </div>
+
+                    <p><strong>The result:</strong> Dashboards become wallpaper—technically visible but ignored in practice.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>The Principles of Effective Results Dashboards</h3>
+                    
+                    <p><strong>1. One Primary Metric, Prominently Displayed</strong></p>
+                    <p>Your OMTM (One Metric That Matters) should be impossible to miss. Large font, top of dashboard, color-coded status. Everything else is supporting context.</p>
+
+                    <p><strong>2. Real-Time or Near Real-Time</strong></p>
+                    <p>Data that's hours old feels current. Data that's days old feels historical. Data that's weeks old is archaeology. Automate updates.</p>
+
+                    <p><strong>3. Trend, Don't Just Report</strong></p>
+                    <p>Show: Current value, % change from last period, trend line (up/down/flat), comparison to target. A number alone is meaningless.</p>
+
+                    <div class="example-box">
+                        <strong>Before:</strong> "Daily Active Users: 3,247"<br>
+                        <strong>After:</strong> "DAU: 3,247 (↑8.2% vs last week, Target: 3,500, 93% to goal)"
+                    </div>
+
+                    <p><strong>4. Physically Visible</strong></p>
+                    <p>Best dashboards are <em>ambient</em>—displayed on office screens, pinned in Slack channels, on team homepages. You shouldn't have to remember to check them.</p>
+
+                    <p><strong>5. Actionable Insights, Not Just Data</strong></p>
+                    <p>Include: What changed? Why? What action should we take? Don't make people interpret raw data.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Dashboard Hierarchy: What to Include</h3>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Priority</th>
+                                <th>What to Show</th>
+                                <th>Why</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Tier 1</strong></td>
+                                <td>The OMTM (primary result metric)</td>
+                                <td>North Star - everyone should know this number daily</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tier 2</strong></td>
+                                <td>2-3 supporting metrics that drive the OMTM</td>
+                                <td>Leading indicators that predict the primary result</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tier 3</strong></td>
+                                <td>Key constraints or guardrails</td>
+                                <td>Metrics you can't let decline (quality, cost, etc.)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Not Included</strong></td>
+                                <td>Vanity metrics, nice-to-know stats, departmental metrics</td>
+                                <td>Dilutes focus, creates noise</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="example-box">
+                        <strong>SaaS Product Team Dashboard Example:</strong>
+                        <ul>
+                            <li><strong>Tier 1:</strong> Monthly Recurring Revenue (MRR) - $127K (↑12% MoM, Target: $150K)</li>
+                            <li><strong>Tier 2:</strong> 
+                                <ul>
+                                    <li>New signups this week: 47 (↓5% vs last week)</li>
+                                    <li>Activation rate: 68% (↑3%, Target: 70%)</li>
+                                    <li>Churn rate: 3.2% (Flat, Guardrail: <5%)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Tier 3:</strong> NPS: 52 (Guardrail: >45)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Dashboard Formats and Tools</h3>
+                    
+                    <p><strong>Physical Displays:</strong> TV screens in office showing live dashboards (Geckoboard, Databox, custom builds)</p>
+                    <p><strong>Pros:</strong> Ambient visibility, builds culture, impossible to ignore<br>
+                    <strong>Cons:</strong> Requires office presence, initial setup</p>
+
+                    <p><strong>Team Channels (Slack/Teams):</strong> Automated daily/weekly metric posts</p>
+                    <p><strong>Pros:</strong> Reaches remote teams, creates discussion thread, low barrier<br>
+                    <strong>Cons:</strong> Can get buried in chat noise</p>
+
+                    <p><strong>Shared Dashboards (Tableau, Looker, Metabase):</strong> Bookmarked, live-updating BI tools</p>
+                    <p><strong>Pros:</strong> Powerful analytics, drill-down capability, real-time<br>
+                    <strong>Cons:</strong> Requires active checking, can become overwhelming</p>
+
+                    <p><strong>Simple Spreadsheets (Google Sheets):</strong> Manually updated, highly visible</p>
+                    <p><strong>Pros:</strong> No technical setup, everyone can access, forces manual review<br>
+                    <strong>Cons:</strong> Labor-intensive, prone to staleness</p>
+
+                    <div class="highlight-box">
+                        <strong>Best practice:</strong> Start simple (Slack + spreadsheet), automate as you grow (BI tools), make ambient when possible (physical displays).
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Making Dashboards Drive Action</h3>
+                    
+                    <p><strong>Daily Check-In Ritual:</strong> Start standup by reviewing the dashboard. "What's changed? Are we on track? What needs attention today?"</p>
+
+                    <p><strong>Red/Yellow/Green Alerts:</strong> Automate alerts when metrics cross thresholds (red: urgent action needed, yellow: watch closely, green: on track).</p>
+
+                    <p><strong>Commentary Layer:</strong> Add brief explanations when metrics change significantly. "DAU dropped 15% yesterday due to server outage, recovered to normal today."</p>
+
+                    <p><strong>Ownership Tags:</strong> Assign each metric an owner who explains anomalies and proposes responses.</p>
+
+                    <div class="example-box">
+                        <strong>Action-Oriented Dashboard Post (Slack):</strong><br><br>
+                        📊 <strong>Weekly Results Update</strong><br>
+                        <strong>🎯 MRR: $127K</strong> (↑$13K, 12% growth - ON TRACK)<br>
+                        Supporting metrics:<br>
+                        • Signups: 47 (↓5% - WATCH) - @Sarah investigating drop<br>
+                        • Activation: 68% (↑3% - GREEN) - Onboarding improvements working<br>
+                        • Churn: 3.2% (Flat - GREEN)<br><br>
+                        <strong>Action:</strong> Focus on signup recovery this week. Marketing testing new landing page Thursday.
+                    </div>
+                </div>
+
+                <div class="research-box">
+                    <h4>📚 Research: Dashboard Impact</h4>
+                    <p><strong>Bain & Company study:</strong> Teams with visible, real-time performance dashboards improved goal achievement rates by 30% vs. teams with monthly reporting only. Daily visibility created daily course correction.</p>
+                    <p><strong>Stanford research:</strong> Public visibility of metrics (vs. private/manager-only) increased individual performance 15% on average. Social accountability matters.</p>
+                    <p><strong>Key insight:</strong> Dashboards work when they're unavoidable, updated constantly, and tied to action.</p>
+                </div>
+
+                <div class="bjj-connection">
+                    <h4>🥋 The BJJ Parallel: Competition Scoreboards</h4>
+                    <p>In a BJJ tournament, the scoreboard is always visible. Both competitors, coaches, and spectators can see points, advantages, and time remaining. This creates constant awareness and urgency.</p>
+                    <p>Imagine if scores were hidden and only revealed at the end—you'd have no idea if your strategy was working or if you needed to change approach. The visibility drives action: "I'm down 4 points with 2 minutes left—I need a submission or sweep NOW."</p>
+                    <p>Your team's results dashboard should function the same way: always visible, always current, always driving urgency.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>💪 Practice: Design Your Dashboard</h3>
+                    <p><strong>Step 1:</strong> Identify your Tier 1 metric (OMTM). What's the primary result everyone should track?</p>
+                    <p><strong>Step 2:</strong> Choose 2-3 Tier 2 metrics that predict/drive the OMTM.</p>
+                    <p><strong>Step 3:</strong> Add 1-2 guardrail metrics (things you can't let slip).</p>
+                    <p><strong>Step 4:</strong> Decide on format: Where will this live? (Slack, physical display, spreadsheet, BI tool?)</p>
+                    <p><strong>Step 5:</strong> Set update frequency: Real-time, daily, weekly?</p>
+                    <p><strong>Step 6:</strong> Assign owners: Who updates commentary? Who responds to red alerts?</p>
+                    <p><strong>Step 7:</strong> Build a prototype this week. Ship version 1, iterate based on what actually gets used.</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="toggleLesson(2)">Close Lesson</button>
+                    <button class="btn btn-primary" onclick="completeLesson(2)">Complete Lesson (+25 XP)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lesson 3: Results Review Rhythms -->
+        <div class="module-card lesson" id="lesson3">
+            <div class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Lesson 3: Results Review Rhythms</h2>
+                </div>
+                
+                <div class="highlight-box">
+                    <strong>Cadence Creates Culture:</strong> Teams that review results regularly develop results orientation. Teams that review sporadically develop results amnesia. Frequency matters more than depth.
+                </div>
+
+                <div class="content-section">
+                    <h3>The Review Rhythm Hierarchy</h3>
+                    <p>Different cadences serve different purposes. High-performing teams operate at multiple frequencies simultaneously.</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Frequency</th>
+                                <th>Purpose</th>
+                                <th>Duration</th>
+                                <th>Focus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Daily</strong></td>
+                                <td>Spot issues, maintain awareness</td>
+                                <td>5-10 min</td>
+                                <td>What's off track today? Quick fixes.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Weekly</strong></td>
+                                <td>Course correct, identify trends</td>
+                                <td>30-45 min</td>
+                                <td>Are we on pace? What's working/not working?</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Monthly</strong></td>
+                                <td>Deep analysis, strategic adjustments</td>
+                                <td>90-120 min</td>
+                                <td>Why did we hit/miss? What needs to change?</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quarterly</strong></td>
+                                <td>Reset goals, major pivots</td>
+                                <td>Half day</td>
+                                <td>Did we achieve the result? What's next quarter's OMTM?</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-section">
+                    <h3>Daily Results Check-In (5-10 Minutes)</h3>
+                    <p><strong>Format:</strong> Start of standup or async Slack post</p>
+                    <p><strong>Agenda:</strong></p>
+                    <ol>
+                        <li>Review the OMTM: Where are we today vs. yesterday?</li>
+                        <li>Flag any alerts: Red/yellow metrics that need attention</li>
+                        <li>One-sentence explanation: Why did it change?</li>
+                        <li>Quick action: Does anything need immediate response?</li>
+                    </ol>
+
+                    <div class="example-box">
+                        <strong>Daily Check-In Example:</strong><br><br>
+                        <strong>OMTM Update:</strong> MRR at $127.5K (↑$500 yesterday, on pace for $150K goal)<br>
+                        <strong>Alert:</strong> Signups dropped to 4 yesterday (usual: 8-10) - holiday weekend<br>
+                        <strong>Action:</strong> Monitor today; if pattern continues, flag for weekly review<br><br>
+                        <em>Total time: 2 minutes</em>
+                    </div>
+
+                    <p><strong>Key principle:</strong> Daily reviews are about awareness, not analysis. Spot the signal, defer deep dives.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Weekly Results Review (30-45 Minutes)</h3>
+                    <p><strong>Format:</strong> Standing weekly meeting, same day/time</p>
+                    <p><strong>Agenda:</strong></p>
+                    <ol>
+                        <li><strong>Results snapshot (5 min):</strong> Did we hit weekly targets? Where are we vs. monthly goal?</li>
+                        <li><strong>Trend analysis (10 min):</strong> What's improving? What's declining? What's driving changes?</li>
+                        <li><strong>Wins & losses (10 min):</strong> What worked this week? What failed? What did we learn?</li>
+                        <li><strong>Next week priorities (10 min):</strong> What are the 1-3 actions to improve results next week?</li>
+                        <li><strong>Commitments (5 min):</strong> Who's doing what by when?</li>
+                    </ol>
+
+                    <div class="highlight-box">
+                        <strong>Critical rule:</strong> Never skip the weekly review. Consistency builds discipline. Skipping once signals results don't matter.
+                    </div>
+
+                    <div class="example-box">
+                        <strong>Weekly Review Template:</strong><br><br>
+                        <strong>Week of Nov 18-24 Results:</strong><br>
+                        • OMTM: MRR grew $3.5K (target: $4K) - 88% of goal<br>
+                        • Signups: 47 (target: 50) - MISS<br>
+                        • Activation: 68% (target: 70%) - MISS<br>
+                        • Churn: 3.2% (guardrail: <5%) - PASS<br><br>
+                        <strong>What worked:</strong> Email campaign drove 15 signups (vs. usual 10)<br>
+                        <strong>What didn't:</strong> Onboarding still not converting enough users to paid<br>
+                        <strong>Next week focus:</strong> A/B test new onboarding flow, target 70%+ activation<br>
+                        <strong>Owner:</strong> @Emily ships test by Tuesday
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Monthly Deep Dive (90-120 Minutes)</h3>
+                    <p><strong>Format:</strong> Scheduled meeting, full team attendance required</p>
+                    <p><strong>Agenda:</strong></p>
+                    <ol>
+                        <li><strong>Month in review (15 min):</strong> Did we hit the goal? By how much? Show the data.</li>
+                        <li><strong>Root cause analysis (30 min):</strong> Why did we succeed/fail? Dig into the drivers.</li>
+                        <li><strong>What we learned (20 min):</strong> What surprised us? What assumptions were wrong?</li>
+                        <li><strong>Strategic adjustments (20 min):</strong> Do we need to change approach, metrics, or goals?</li>
+                        <li><strong>Next month plan (15 min):</strong> What's the target? What's the strategy?</li>
+                    </ol>
+
+                    <p><strong>Key difference from weekly:</strong> Monthly reviews go deeper. Weekly asks "are we on track?" Monthly asks "is our strategy working?"</p>
+
+                    <div class="example-box">
+                        <strong>Monthly Review Question Prompts:</strong>
+                        <ul>
+                            <li>What was our biggest win this month? Can we replicate it?</li>
+                            <li>What was our biggest failure? What would we do differently?</li>
+                            <li>Which assumptions proved wrong? What does that tell us?</li>
+                            <li>Are we measuring the right things? Should we change our OMTM?</li>
+                            <li>Who excelled this month? How do we recognize them?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Quarterly Business Review (Half Day)</h3>
+                    <p><strong>Format:</strong> Off-site or dedicated block, no interruptions</p>
+                    <p><strong>Agenda:</strong></p>
+                    <ol>
+                        <li><strong>Quarter results (30 min):</strong> Comprehensive review of all goals, context, and outcomes</li>
+                        <li><strong>Strategic retrospective (60 min):</strong> What worked at a strategic level? What needs to change?</li>
+                        <li><strong>Next quarter planning (90 min):</strong> New OMTM, supporting goals, resource allocation</li>
+                        <li><strong>Team health check (30 min):</strong> How's morale? Burnout? Engagement?</li>
+                    </ol>
+
+                    <p><strong>Output:</strong> Clear quarterly goals, defined metrics, explicit strategy, aligned team.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Common Review Rhythm Mistakes</h3>
+                    
+                    <p><strong>1. Inconsistent Cadence:</strong> Weekly reviews that happen "when we have time" aren't weekly. Consistency signals importance.</p>
+                    
+                    <p><strong>2. Too Much Reporting, Not Enough Discussion:</strong> If reviews are just presenting data, they fail. The point is interpretation and action.</p>
+                    
+                    <p><strong>3. No Pre-Work:</strong> If people see the data for the first time in the meeting, you waste time on comprehension instead of discussion. Share data 24 hours ahead.</p>
+                    
+                    <p><strong>4. No Follow-Up:</strong> Reviews that end without clear commitments and owners = meetings, not accountability sessions.</p>
+                    
+                    <p><strong>5. Punitive Tone:</strong> If reviews become blame sessions, people stop being honest about problems. Focus on learning, not finger-pointing.</p>
+
+                    <div class="highlight-box">
+                        <strong>Best practice:</strong> Start every review by celebrating wins (even small ones). This creates psychological safety to discuss misses honestly.
+                    </div>
+                </div>
+
+                <div class="research-box">
+                    <h4>📚 Research: Review Frequency and Performance</h4>
+                    <p><strong>Gallup study:</strong> Teams with weekly goal reviews were 2.5x more likely to hit targets than teams with monthly-only reviews. Frequent feedback loops enable faster course correction.</p>
+                    <p><strong>McKinsey research:</strong> High-performing organizations review KPIs 3-5x more frequently than average performers. Speed of learning correlates with frequency of review.</p>
+                    <p><strong>Key insight:</strong> More frequent reviews (daily/weekly) beat less frequent deep dives (monthly/quarterly) for sustained performance.</p>
+                </div>
+
+                <div class="bjj-connection">
+                    <h4>🥋 The BJJ Parallel: Post-Roll Reflection</h4>
+                    <p>After every roll (sparring session), high-level practitioners do a quick mental review: "What worked? What didn't? What will I focus on next round?"</p>
+                    <p>After every training session, they might journal briefly. After every week, they assess with their coach. After every month, they evaluate overall progress and adjust training focus.</p>
+                    <p>This multi-level review rhythm (daily reflection, weekly check-ins, monthly planning) compounds learning. You can't improve what you don't review.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>💪 Practice: Build Your Review Rhythm</h3>
+                    <p><strong>Step 1:</strong> Schedule recurring meetings for each cadence:</p>
+                    <ul>
+                        <li>Daily: First 5 minutes of standup OR async Slack post at 9 AM</li>
+                        <li>Weekly: Every [DAY] at [TIME], 30 minutes, required attendance</li>
+                        <li>Monthly: First [DAY] of month, 90 minutes, full team</li>
+                        <li>Quarterly: Last week of quarter, half-day off-site</li>
+                    </ul>
+                    <p><strong>Step 2:</strong> Create templates for each review type (use examples above as starting point)</p>
+                    <p><strong>Step 3:</strong> Assign a facilitator for each rhythm (rotates quarterly to build ownership)</p>
+                    <p><strong>Step 4:</strong> Set a team norm: "We never skip weekly reviews, period."</p>
+                    <p><strong>Step 5:</strong> Run your first weekly review this week. Iterate the format based on what works.</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="toggleLesson(3)">Close Lesson</button>
+                    <button class="btn btn-primary" onclick="completeLesson(3)">Complete Lesson (+25 XP)</button>
+                </div>
+            </div>
+        </div>
 
     </div>
 
