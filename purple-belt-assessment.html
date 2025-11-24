@@ -444,8 +444,247 @@
             </p>
         </div>
 
-        <!-- Placeholder for scenarios -->
-        <div id="scenarios-container"></div>
+        <!-- Section 1: Scenario Questions -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <div class="section-title">
+                    <h2>Commitment Scenarios</h2>
+                    <p>15 questions • Choose the response that best reflects commitment mastery</p>
+                </div>
+            </div>
+
+            <!-- Question 1: Vague Commitments (Stripe 1) -->
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">1</div>
+                    <div class="question-text">
+                        At the end of a planning meeting, your product manager says "I'll try to get the designs done soon." 
+                        Two weeks later, nothing has happened. What's the core problem?
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option" data-question="1" data-option="A" onclick="selectOption(1, 'A')">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">The PM is overwhelmed and needs capacity support.</div>
+                    </div>
+                    <div class="option" data-question="1" data-option="B" onclick="selectOption(1, 'B')">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">The commitment was too vague—"try," "soon," and no specific deliverable creates no accountability.</div>
+                    </div>
+                    <div class="option" data-question="1" data-option="C" onclick="selectOption(1, 'C')">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">The PM doesn't care about the project enough to prioritize it.</div>
+                    </div>
+                    <div class="option" data-question="1" data-option="D" onclick="selectOption(1, 'D')">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">Two weeks isn't long enough to follow up—give them more time.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2: Sacred Commitments (Stripe 1) -->
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">2</div>
+                    <div class="question-text">
+                        Your team is behind on a major deliverable. Your best engineer says "I can work this weekend to catch up." 
+                        What's the best response as their leader?
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option" data-question="2" data-option="A" onclick="selectOption(2, 'A')">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">Thank them for the offer and let them work the weekend—shows commitment to the team.</div>
+                    </div>
+                    <div class="option" data-question="2" data-option="B" onclick="selectOption(2, 'B')">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">Say "I appreciate the offer, but weekends are sacred. Let's look at what we can descope or push back instead."</div>
+                    </div>
+                    <div class="option" data-question="2" data-option="C" onclick="selectOption(2, 'C')">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">Accept the offer only if everyone else on the team also works the weekend to be fair.</div>
+                    </div>
+                    <div class="option" data-question="2" data-option="D" onclick="selectOption(2, 'D')">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">Tell them to work the weekend but promise them comp time next month.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3: Commitment Clarity (Stripe 1) -->
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">3</div>
+                    <div class="question-text">
+                        Which of these is the BEST example of a clear, actionable commitment?
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option" data-question="3" data-option="A" onclick="selectOption(3, 'A')">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">"I'll work on the API integration this week."</div>
+                    </div>
+                    <div class="option" data-question="3" data-option="B" onclick="selectOption(3, 'B')">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">"I'll ship the user authentication endpoints by Friday 5pm, with Swagger docs and unit tests at 80% coverage."</div>
+                    </div>
+                    <div class="option" data-question="3" data-option="C" onclick="selectOption(3, 'C')">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">"I'll do my best to get the authentication stuff done soon."</div>
+                    </div>
+                    <div class="option" data-question="3" data-option="D" onclick="selectOption(3, 'D')">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">"I'll make progress on authentication by end of week."</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4: Driving Commitment (Stripe 2) -->
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">4</div>
+                    <div class="question-text">
+                        You've asked a team member three times to update the documentation. Each time they say "sure" but nothing happens. 
+                        What's the best next step?
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option" data-question="4" data-option="A" onclick="selectOption(4, 'A')">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">Escalate to their manager—this is a performance issue.</div>
+                    </div>
+                    <div class="option" data-question="4" data-option="B" onclick="selectOption(4, 'B')">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">Do it yourself—it's faster than continuing to ask.</div>
+                    </div>
+                    <div class="option" data-question="4" data-option="C" onclick="selectOption(4, 'C')">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">Have a direct conversation: "I've asked three times with no follow-through. What's blocking you? Do you have capacity? Is this unclear?"</div>
+                    </div>
+                    <div class="option" data-question="4" data-option="D" onclick="selectOption(4, 'D')">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">Stop asking—clearly documentation isn't a priority for them.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5: Renegotiating Early (Stripe 2) -->
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">5</div>
+                    <div class="question-text">
+                        You committed to delivering a feature by Monday. On Thursday, you realize a critical dependency is blocked 
+                        and you won't make the deadline. What should you do?
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option" data-question="5" data-option="A" onclick="selectOption(5, 'A')">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">Work over the weekend to hit the Monday deadline—never break commitments.</div>
+                    </div>
+                    <div class="option" data-question="5" data-option="B" onclick="selectOption(5, 'B')">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">Wait until Monday to tell stakeholders you missed the deadline.</div>
+                    </div>
+                    <div class="option" data-question="5" data-option="C" onclick="selectOption(5, 'C')">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">Ship an incomplete version on Monday to technically meet the commitment.</div>
+                    </div>
+                    <div class="option" data-question="5" data-option="D" onclick="selectOption(5, 'D')">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">Renegotiate immediately on Thursday: "The dependency is blocked. Here are three options with new timelines."</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6: Commitment Culture (Stripe 3) -->
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">6</div>
+                    <div class="question-text">
+                        In your team's planning meeting, everyone commits to aggressive goals. Privately, several people tell you 
+                        "there's no way we'll hit those numbers." What's the systemic problem?
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option" data-question="6" data-option="A" onclick="selectOption(6, 'A')">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">People are lazy and don't want to work hard.</div>
+                    </div>
+                    <div class="option" data-question="6" data-option="B" onclick="selectOption(6, 'B')">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">Lack of psychological safety—people can't speak truth about capacity in public settings.</div>
+                    </div>
+                    <div class="option" data-question="6" data-option="C" onclick="selectOption(6, 'C')">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">The goals aren't aggressive enough—teams always sandbag estimates.</div>
+                    </div>
+                    <div class="option" data-question="6" data-option="D" onclick="selectOption(6, 'D')">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">People need better project management training to estimate accurately.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 7: Public Commitments (Stripe 3) -->
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">7</div>
+                    <div class="question-text">
+                        You want to build a culture where commitments are taken seriously. What's the most effective practice 
+                        to implement?
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option" data-question="7" data-option="A" onclick="selectOption(7, 'A')">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">Punish anyone who misses a deadline to create accountability.</div>
+                    </div>
+                    <div class="option" data-question="7" data-option="B" onclick="selectOption(7, 'B')">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">Make all commitments public in a shared tracker with specific "What by When by Whom" details.</div>
+                    </div>
+                    <div class="option" data-question="7" data-option="C" onclick="selectOption(7, 'C')">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">Stop making commitments altogether—work is too unpredictable.</div>
+                    </div>
+                    <div class="option" data-question="7" data-option="D" onclick="selectOption(7, 'D')">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">Only allow leaders to make commitments—individual contributors can't be trusted.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 8: Capacity Honesty (Stripe 4) -->
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">8</div>
+                    <div class="question-text">
+                        You're running at 110% capacity. Your manager asks if you can take on "one more small thing." 
+                        You know it's not actually small. What's the best response?
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option" data-question="8" data-option="A" onclick="selectOption(8, 'A')">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">Say yes—saying no makes you look uncommitted or lazy.</div>
+                    </div>
+                    <div class="option" data-question="8" data-option="B" onclick="selectOption(8, 'B')">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">Say "I'm at capacity. Here's my current load. If this is priority, what should I drop or delay?"</div>
+                    </div>
+                    <div class="option" data-question="8" data-option="C" onclick="selectOption(8, 'C')">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">Say yes, then work nights and weekends to fit it in.</div>
+                    </div>
+                    <div class="option" data-question="8" data-option="D" onclick="selectOption(8, 'D')">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">Say yes, but do a mediocre job since you don't have time to do it well.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Placeholder for reflections -->
         <div id="reflections-container"></div>
