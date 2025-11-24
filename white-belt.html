@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚪ White Belt: Know Thyself - Foundation of Trust</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .belt-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            color: #1e293b;
+            font-weight: 700;
+        }
+
+        .theme {
+            font-size: 1.8em;
+            color: #64748b;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #475569;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border-left: 6px solid #94a3b8;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .philosophy h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .philosophy p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #475569;
+            margin-bottom: 15px;
+        }
+
+        .philosophy .quote {
+            background: #f8fafc;
+            border-left: 4px solid #cbd5e1;
+            padding: 20px;
+            margin: 25px 0;
+            font-style: italic;
+            font-size: 1.15em;
+            color: #334155;
+        }
+
+        /* Progress Section */
+        .progress-section {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .progress-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .progress-count {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #64748b;
+        }
+
+        .progress-bar-container {
+            background: #f1f5f9;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar-fill {
+            background: linear-gradient(90deg, #94a3b8 0%, #64748b 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 6px;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.95em;
+            margin-top: 10px;
+        }
+
+        /* Assessment Grid */
+        .assessments-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #1e293b;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .assessment-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .assessment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: #cbd5e1;
+        }
+
+        .assessment-card.completed {
+            border-color: #10b981;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        }
+
+        .assessment-card.coming-soon {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .assessment-card.coming-soon:hover {
+            transform: none;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            font-size: 2.5em;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .status-completed {
+            background: #10b981;
+            color: white;
+        }
+
+        .status-available {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .status-coming {
+            background: #94a3b8;
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1e293b;
+        }
+
+        .card-duration {
+            font-size: 0.95em;
+            color: #64748b;
+            margin-bottom: 15px;
+        }
+
+        .card-description {
+            font-size: 1em;
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .card-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(100, 116, 139, 0.4);
+        }
+
+        .card-button.completed {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .card-button.coming-soon {
+            background: #cbd5e1;
+            color: #64748b;
+            cursor: not-allowed;
+        }
+
+        .card-button.coming-soon:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Completion Criteria */
+        .criteria-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .criteria-section h2 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            color: #1e293b;
+            text-align: center;
+        }
+
+        .criteria-list {
+            list-style: none;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .criteria-item {
+            display: flex;
+            align-items: center;
+            padding: 18px;
+            margin-bottom: 12px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-left: 4px solid #cbd5e1;
+        }
+
+        .criteria-checkbox {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .criteria-text {
+            font-size: 1.1em;
+            color: #334155;
+        }
+
+        /* Back to Home */
+        .back-link {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .back-link a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: #1e293b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="belt-icon">⚪</div>
+            <h1>White Belt</h1>
+            <div class="theme">Know Thyself</div>
+            <div class="subtitle">
+                Foundation of Trust • Complete Self-Assessment • Build Self-Awareness
+            </div>
+        </div>
+
+        <!-- Philosophy -->
+        <div class="philosophy">
+            <h2>The Foundation of Everything</h2>
+            <p>
+                You can't lead others until you lead yourself. And you can't lead yourself until you truly know yourself.
+            </p>
+            <p>
+                White Belt is where every journey begins—not just in leadership, but in life. This is your complete self-assessment foundation: understanding your work style, your values, your communication patterns, your energy, and your current state.
+            </p>
+            <div class="quote">
+                "The unexamined life is not worth living." — Socrates
+            </div>
+            <p>
+                Complete all 6 foundational assessments to unlock Blue Belt. No rushing. Take your time. These insights will guide your entire journey through The Gym.
+            </p>
+        </div>
+
+        <!-- Progress Tracker -->
+        <div class="progress-section">
+            <div class="progress-header">
+                <div class="progress-title">Your Progress</div>
+                <div class="progress-count" id="progressCount">0/6</div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+            <div class="progress-text">Complete all 6 assessments to earn your White Belt</div>
+        </div>
+
+        <!-- Assessments -->
+        <div class="assessments-section">
+            <div class="section-title">🎯 Foundation Assessments</div>
+            
+            <div class="assessment-grid">
+                <!-- Worker Type -->
+                <div class="assessment-card" id="card-worker">
+                    <div class="card-header">
+                        <div class="card-icon">🏃</div>
+                        <div class="status-badge status-available">Available</div>
+                    </div>
+                    <div class="card-title">Worker Type Assessment</div>
+                    <div class="card-duration">⏱️ 5-7 minutes</div>
+                    <div class="card-description">
+                        Discover if you're a Sprinter, Jogger, or Ultrarunner. Understand your natural work rhythm and energy patterns.
+                    </div>
+                    <a href="worker-type-assessment.html" class="card-button">Start Assessment →</a>
+                </div>
+
+                <!-- Work-Life Balance -->
+                <div class="assessment-card" id="card-balance">
+                    <div class="card-header">
+                        <div class="card-icon">⚖️</div>
+                        <div class="status-badge status-available">Available</div>
+                    </div>
+                    <div class="card-title">Work-Life Balance</div>
+                    <div class="card-duration">⏱️ 8-10 minutes</div>
+                    <div class="card-description">
+                        Assess your current balance across work, relationships, health, and personal growth. Find your sustainability score.
+                    </div>
+                    <a href="work-life-balance-assessment.html" class="card-button">Start Assessment →</a>
+                </div>
+
+                <!-- Impact Style -->
+                <div class="assessment-card" id="card-impact">
+                    <div class="card-header">
+                        <div class="card-icon">💫</div>
+                        <div class="status-badge status-available">Available</div>
+                    </div>
+                    <div class="card-title">Team Impact Style</div>
+                    <div class="card-duration">⏱️ 10-12 minutes</div>
+                    <div class="card-description">
+                        Understand how you naturally impact teams. Your collaboration style, influence patterns, and team role.
+                    </div>
+                    <a href="team-assessment-enhanced-v2.html" class="card-button">Start Assessment →</a>
+                </div>
+
+                <!-- Mental Health Baseline -->
+                <div class="assessment-card coming-soon" id="card-mental">
+                    <div class="card-header">
+                        <div class="card-icon">🧠</div>
+                        <div class="status-badge status-coming">Coming Soon</div>
+                    </div>
+                    <div class="card-title">Mental Health Baseline</div>
+                    <div class="card-duration">⏱️ 7-9 minutes</div>
+                    <div class="card-description">
+                        Assess current stress levels, energy patterns, warning signs, and establish your mental health baseline.
+                    </div>
+                    <button class="card-button coming-soon" disabled>Coming Soon</button>
+                </div>
+
+                <!-- Values Discovery -->
+                <div class="assessment-card coming-soon" id="card-values">
+                    <div class="card-header">
+                        <div class="card-icon">🎯</div>
+                        <div class="status-badge status-coming">Coming Soon</div>
+                    </div>
+                    <div class="card-title">Values Discovery</div>
+                    <div class="card-duration">⏱️ 10-12 minutes</div>
+                    <div class="card-description">
+                        Identify your core values. Discover what truly matters to you vs. what you think should matter. Find misalignments.
+                    </div>
+                    <button class="card-button coming-soon" disabled>Coming Soon</button>
+                </div>
+
+                <!-- Communication Style -->
+                <div class="assessment-card coming-soon" id="card-communication">
+                    <div class="card-header">
+                        <div class="card-icon">💬</div>
+                        <div class="status-badge status-coming">Coming Soon</div>
+                    </div>
+                    <div class="card-title">Communication Style</div>
+                    <div class="card-duration">⏱️ 8-10 minutes</div>
+                    <div class="card-description">
+                        Understand your communication patterns. Direct vs. indirect? How do others perceive you? Your baseline style.
+                    </div>
+                    <button class="card-button coming-soon" disabled>Coming Soon</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Completion Criteria -->
+        <div class="criteria-section">
+            <h2>🏆 White Belt Completion Criteria</h2>
+            <ul class="criteria-list">
+                <li class="criteria-item">
+                    <input type="checkbox" class="criteria-checkbox" id="criteria1">
+                    <span class="criteria-text">Complete all 6 foundation assessments</span>
+                </li>
+                <li class="criteria-item">
+                    <input type="checkbox" class="criteria-checkbox" id="criteria2">
+                    <span class="criteria-text">Review and reflect on all assessment results</span>
+                </li>
+                <li class="criteria-item">
+                    <input type="checkbox" class="criteria-checkbox" id="criteria3">
+                    <span class="criteria-text">Identify 3 key insights about yourself</span>
+                </li>
+                <li class="criteria-item">
+                    <input type="checkbox" class="criteria-checkbox" id="criteria4">
+                    <span class="criteria-text">Ready to move from awareness to action</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Back Link -->
+        <div class="back-link">
+            <a href="index.html">← Back to The Gym</a>
+        </div>
+    </div>
+
+    <script>
+        // Load progress from localStorage
+        function updateProgress() {
+            const completed = JSON.parse(localStorage.getItem('whiteBeltProgress') || '[]');
+            const total = 6;
+            const progressBar = document.getElementById('progressBar');
+            const progressCount = document.getElementById('progressCount');
+            
+            const percentage = (completed.length / total) * 100;
+            progressBar.style.width = percentage + '%';
+            progressCount.textContent = completed.length + '/' + total;
+
+            // Mark completed cards
+            completed.forEach(assessment => {
+                const card = document.getElementById('card-' + assessment);
+                if (card && !card.classList.contains('coming-soon')) {
+                    card.classList.add('completed');
+                    const badge = card.querySelector('.status-badge');
+                    badge.textContent = 'Completed';
+                    badge.classList.remove('status-available');
+                    badge.classList.add('status-completed');
+                    const button = card.querySelector('.card-button');
+                    button.textContent = 'View Results →';
+                    button.classList.add('completed');
+                }
+            });
+        }
+
+        // Initialize
+        updateProgress();
+    </script>
+</body>
+</html>
