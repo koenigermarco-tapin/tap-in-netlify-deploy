@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Belt Stripe 3 - Maintaining Results Focus | Tap In Leadership</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #e5e7eb;
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 2px solid #374151;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #f3f4f6 0%, #9ca3af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stripe-indicator {
+            font-size: 1.2em;
+            color: #9ca3af;
+            margin-bottom: 20px;
+        }
+
+        .progress-summary {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #374151;
+        }
+
+        .progress-bar {
+            background: #1f2937;
+            border-radius: 10px;
+            height: 30px;
+            margin: 15px 0;
+            overflow: hidden;
+            border: 2px solid #374151;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #6b7280 0%, #9ca3af 100%);
+            height: 100%;
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #111827;
+            font-weight: bold;
+        }
+
+        .module-grid {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .module-card {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #374151;
+            transition: all 0.3s ease;
+        }
+
+        .module-card:hover {
+            transform: translateY(-2px);
+            border-color: #6b7280;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .module-card.locked {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .module-card.completed {
+            border-color: #9ca3af;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .module-title {
+            font-size: 1.3em;
+            color: #f3f4f6;
+        }
+
+        .module-status {
+            font-size: 1.5em;
+        }
+
+        .module-description {
+            color: #d1d5db;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            border: 2px solid #6b7280;
+        }
+
+        .btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%);
+            border-color: #9ca3af;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+            border-color: #4b5563;
+        }
+
+        .lesson {
+            display: none;
+        }
+
+        .lesson.active {
+            display: block;
+        }
+
+        .lesson-content {
+            background: #0f172a;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #374151;
+        }
+
+        .lesson-header h2 {
+            color: #f3f4f6;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .content-section {
+            margin: 25px 0;
+        }
+
+        .content-section h3 {
+            color: #f3f4f6;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .content-section h4 {
+            color: #d1d5db;
+            margin: 15px 0 10px 0;
+        }
+
+        .content-section p {
+            margin-bottom: 12px;
+            color: #e5e7eb;
+        }
+
+        .content-section ul, .content-section ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: #e5e7eb;
+        }
+
+        .content-section li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: rgba(107, 114, 128, 0.2);
+            border-left: 4px solid #9ca3af;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .example-box {
+            background: rgba(75, 85, 99, 0.3);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border: 1px solid #4b5563;
+        }
+
+        .research-box {
+            background: rgba(31, 41, 55, 0.5);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 2px solid #374151;
+        }
+
+        .research-box h4 {
+            color: #9ca3af;
+            margin-bottom: 10px;
+        }
+
+        .bjj-connection {
+            background: rgba(15, 23, 42, 0.8);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 2px solid #6b7280;
+        }
+
+        .bjj-connection h4 {
+            color: #9ca3af;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #1e293b;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #374151;
+        }
+
+        th {
+            background: #0f172a;
+            color: #9ca3af;
+            font-weight: bold;
+        }
+
+        td {
+            color: #e5e7eb;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        .completion-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 40px;
+            border-radius: 20px;
+            border: 3px solid #9ca3af;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .completion-popup.show {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .completion-popup h3 {
+            color: #f3f4f6;
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+
+        .completion-popup p {
+            color: #d1d5db;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            z-index: 999;
+        }
+
+        .overlay.show {
+            display: block;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #9ca3af;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #f3f4f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="learning-hub-enhanced.html" class="back-link">← Back to Learning Hub</a>
+        
+        <div class="header">
+            <div class="stripe-indicator">⬛ BLACK BELT</div>
+            <h1>Stripe 3: Maintaining Results Focus</h1>
+            <p style="color: #9ca3af; margin-top: 10px;">Stay oriented on outcomes despite pressure, distractions, and competing priorities</p>
+        </div>
+
+        <div class="progress-summary">
+            <h3 style="color: #f3f4f6; margin-bottom: 10px;">Your Progress</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar">0%</div>
+            </div>
+            <p style="color: #d1d5db; text-align: center; margin-top: 10px;">
+                <span id="completedCount">0</span>/3 Lessons Complete • 
+                <span id="xpEarned">0</span>/75 XP Earned
+            </p>
+        </div>
+
+        <div class="module-grid">
+            <!-- Module Cards -->
+            <div class="module-card" id="card1">
+                <div class="module-header">
+                    <div class="module-title">Lesson 1: Results vs. Activity Under Pressure</div>
+                    <div class="module-status" id="status1">○</div>
+                </div>
+                <div class="module-description">
+                    Why teams default to busyness when stressed, and how to maintain outcome focus when it's hardest.
+                </div>
+                <button class="btn btn-primary" onclick="toggleLesson(1)">Start Lesson</button>
+            </div>
+
+            <div class="module-card locked" id="card2">
+                <div class="module-header">
+                    <div class="module-title">Lesson 2: Navigating Competing Priorities</div>
+                    <div class="module-status" id="status2">🔒</div>
+                </div>
+                <div class="module-description">
+                    Making trade-offs when everything seems urgent and nothing can fail.
+                </div>
+                <button class="btn" onclick="toggleLesson(2)" disabled id="btn2">Complete Lesson 1 to Unlock</button>
+            </div>
+
+            <div class="module-card locked" id="card3">
+                <div class="module-header">
+                    <div class="module-title">Lesson 3: Saying No to Protect Results</div>
+                    <div class="module-status" id="status3">🔒</div>
+                </div>
+                <div class="module-description">
+                    The discipline of protecting capacity and focus for what truly matters.
+                </div>
+                <button class="btn" onclick="toggleLesson(3)" disabled id="btn3">Complete Lesson 2 to Unlock</button>
+            </div>
+        </div>
+
+        <!-- Lesson 1: Results vs. Activity Under Pressure -->
+        <div class="module-card lesson" id="lesson1">
+            <div class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Lesson 1: Results vs. Activity Under Pressure</h2>
+                </div>
+                
+                <div class="highlight-box">
+                    <strong>The Pressure Paradox:</strong> When stress increases, teams often abandon results focus and retreat to activity metrics. Feeling busy becomes a substitute for being effective.
+                </div>
+
+                <div class="content-section">
+                    <h3>Why Pressure Kills Results Focus</h3>
+                    <p><strong>Psychological Safety of Activity:</strong> When outcomes are uncertain, activity feels controllable. "I can't guarantee we'll hit revenue, but I can guarantee I'll make 50 sales calls."</p>
+                    
+                    <p><strong>Immediate Feedback Loop:</strong> Activity gives instant gratification (task completed!). Results take time to materialize. Under pressure, teams crave the dopamine of crossing things off lists.</p>
+
+                    <p><strong>Visibility Bias:</strong> Looking busy is easier to demonstrate than driving outcomes. When leadership is watching, teams optimize for visible effort.</p>
+
+                    <p><strong>Analysis Paralysis Avoidance:</strong> Focusing on results requires thinking, prioritization, and trade-offs. Activity requires just execution. When overwhelmed, execution feels easier.</p>
+
+                    <div class="example-box">
+                        <strong>Pressure-Driven Activity Trap:</strong><br><br>
+                        <strong>Scenario:</strong> Product team is behind on quarterly revenue goal with 3 weeks left.<br><br>
+                        <strong>Activity Response:</strong> "Let's ship 10 features this sprint!" (feels productive, easy to count)<br>
+                        <strong>Results Response:</strong> "Which 2 features will most directly drive conversions? Let's perfect those." (harder to decide, but outcome-focused)<br><br>
+                        Activity response ships more features. Results response ships more revenue.
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>The Activity Addiction Cycle</h3>
+                    <p><strong>Stage 1 - Pressure Increases:</strong> Deadline looms, goal at risk, stakeholders anxious</p>
+                    <p><strong>Stage 2 - Team Panics:</strong> "We need to do MORE" becomes the rallying cry</p>
+                    <p><strong>Stage 3 - Activity Explosion:</strong> Everyone works longer hours, attends more meetings, ships more tasks</p>
+                    <p><strong>Stage 4 - False Progress:</strong> Metrics show activity up (tickets closed, hours logged, meetings held)</p>
+                    <p><strong>Stage 5 - Results Unchanged:</strong> All that effort, but the outcome metric barely moves</p>
+                    <p><strong>Stage 6 - Burnout & Blame:</strong> Team exhausted, frustrated, looking for external explanations</p>
+
+                    <div class="highlight-box">
+                        <strong>The trap:</strong> Activity feels like progress. It's measurable, visible, and controllable. But activity without strategic focus is just expensive motion.
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Maintaining Results Focus Under Pressure: The Framework</h3>
+                    
+                    <p><strong>1. Restate the Result (Loudly and Often)</strong></p>
+                    <p>When pressure hits, teams forget the goal. Constant repetition: "Our ONLY objective is to increase trial-to-paid conversion to 25% by Dec 15th. Everything else is secondary."</p>
+
+                    <p><strong>2. Kill the Distraction List</strong></p>
+                    <p>Make a "Not Doing" list explicitly. What tasks, meetings, initiatives are we pausing until the result is achieved?</p>
+
+                    <div class="example-box">
+                        <strong>Not Doing List Example:</strong>
+                        <ul>
+                            <li>No new feature requests until conversion goal hit</li>
+                            <li>No exploratory projects or R&D</li>
+                            <li>Pause weekly all-hands (async update instead)</li>
+                            <li>Defer hiring activities to next month</li>
+                        </ul>
+                        This creates capacity and focus for the result that matters.
+                    </div>
+
+                    <p><strong>3. Daily Results Check-In (30 Seconds)</strong></p>
+                    <p>Every morning: "Conversion rate yesterday: 22%. Gap to goal: 3%. What's the ONE action today that closes that gap?"</p>
+
+                    <p><strong>4. Pre-Commit Decision Criteria</strong></p>
+                    <p>Before accepting ANY new work: "Does this directly contribute to our primary result? If no, default answer is 'not now.'"</p>
+
+                    <p><strong>5. Celebrate Progress on the Result, Not Activity</strong></p>
+                    <p>Don't praise "we shipped 5 features!" Praise "conversion moved from 22% to 23% this week!" Reward what you want repeated.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>The "Why Are We Doing This?" Test</h3>
+                    <p>When pressure is high, implement a forcing function: Before any task/meeting/initiative, someone must answer:</p>
+                    <ol>
+                        <li><strong>"What result does this drive?"</strong> (specific outcome, not "it's good to do")</li>
+                        <li><strong>"How do we measure if it worked?"</strong> (observable change in metrics)</li>
+                        <li><strong>"Is this the highest leverage use of time right now?"</strong> (compared to alternatives)</li>
+                    </ol>
+
+                    <div class="example-box">
+                        <strong>Application Example:</strong><br><br>
+                        <strong>Request:</strong> "Let's do a team offsite next week to boost morale."<br>
+                        <strong>Test Response:</strong><br>
+                        1. What result? → "Better team cohesion" (vague, not tied to primary goal)<br>
+                        2. How measure? → "Can't really measure it..." (red flag)<br>
+                        3. Highest leverage? → "No, we need to focus on conversion experiments"<br>
+                        <strong>Decision:</strong> Defer offsite until after goal achieved.
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>When Activity IS the Right Response</h3>
+                    <p>Activity isn't always wrong. Sometimes high volume is the strategy:</p>
+                    <ul>
+                        <li><strong>Exploration phase:</strong> Don't know what works yet → run many experiments quickly</li>
+                        <li><strong>Sales ramp:</strong> Need pipeline volume → more calls IS the result driver</li>
+                        <li><strong>Crisis response:</strong> System down → high-activity recovery mode appropriate</li>
+                    </ul>
+                    <p><strong>The difference:</strong> Strategic activity (chosen because it drives the result) vs. panic activity (done because it feels productive).</p>
+                </div>
+
+                <div class="research-box">
+                    <h4>📚 Research: Pressure and Performance</h4>
+                    <p><strong>Stanford study on "stress and goal orientation":</strong> Under high pressure, 73% of teams shifted focus from outcomes to tasks. Teams that maintained outcome focus through explicit reminders and daily check-ins sustained performance 40% better.</p>
+                    <p><strong>Harvard research:</strong> "Busyness" correlates negatively with results achievement. Most productive teams worked fewer hours but with tighter focus on high-leverage activities.</p>
+                    <p><strong>Key insight:</strong> Pressure doesn't require more work; it requires clearer focus.</p>
+                </div>
+
+                <div class="bjj-connection">
+                    <h4>🥋 The BJJ Parallel: Spazzing vs. Strategic Pressure</h4>
+                    <p>New BJJ students, when in danger, "spazz out"—they thrash, use all their energy, try everything at once. It feels productive but accomplishes nothing (and burns them out).</p>
+                    <p>Experienced grapplers under pressure stay focused on the escape path that will work. They don't waste energy on random movement. Calm, strategic, focused on the outcome (escape mount), not the activity (moving a lot).</p>
+                    <p>Leadership under pressure is the same: Strategic focus beats frantic activity every time.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>💪 Practice: Pressure Audit</h3>
+                    <p><strong>Think about a recent high-pressure period on your team. Honestly assess:</strong></p>
+                    <ol>
+                        <li>Did you measure success by hours worked or outcomes achieved?</li>
+                        <li>Did the team add more tasks to the backlog or ruthlessly cut scope?</li>
+                        <li>Could you articulate the primary result you were chasing in one sentence?</li>
+                        <li>What % of effort went to activities that didn't directly drive that result?</li>
+                        <li>Did you celebrate being busy or making progress on the goal?</li>
+                    </ol>
+                    <p><strong>Action:</strong> Next time pressure hits, implement the "Restate the Result Daily" practice. Every morning standup: What's the result? Where are we? What's the gap?</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="toggleLesson(1)">Close Lesson</button>
+                    <button class="btn btn-primary" onclick="completeLesson(1)">Complete Lesson (+25 XP)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lesson 2 will be added here -->
+        <!-- Lesson 3 will be added here -->
+
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="completion-popup" id="completionPopup">
+        <h3>🎉 Lesson Complete!</h3>
+        <p>+25 XP Earned</p>
+        <button class="btn btn-primary" onclick="closePopup()">Continue</button>
+    </div>
+
+    <script>
+        // Load progress from localStorage
+        let completedLessons = JSON.parse(localStorage.getItem('blackbeltStripe3Completed') || '[]');
+        let moduleXP = parseInt(localStorage.getItem('blackbeltStripe3ModuleXP') || '0');
+
+        function updateProgress() {
+            const completed = completedLessons.length;
+            const progress = (completed / 3) * 100;
+            
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressBar').textContent = Math.round(progress) + '%';
+            document.getElementById('completedCount').textContent = completed;
+            document.getElementById('xpEarned').textContent = moduleXP;
+
+            // Update cards
+            completedLessons.forEach(lessonNum => {
+                const card = document.getElementById('card' + lessonNum);
+                const status = document.getElementById('status' + lessonNum);
+                if (card && status) {
+                    card.classList.remove('locked');
+                    card.classList.add('completed');
+                    status.textContent = '✓';
+                }
+            });
+
+            // Unlock next lesson
+            if (completed > 0 && completed < 3) {
+                const nextLesson = completed + 1;
+                const nextCard = document.getElementById('card' + nextLesson);
+                const nextBtn = document.getElementById('btn' + nextLesson);
+                const nextStatus = document.getElementById('status' + nextLesson);
+                
+                if (nextCard && nextBtn && nextStatus) {
+                    nextCard.classList.remove('locked');
+                    nextBtn.disabled = false;
+                    nextBtn.textContent = 'Start Lesson';
+                    nextBtn.classList.add('btn-primary');
+                    nextStatus.textContent = '○';
+                }
+            }
+
+            // Award stripe bonus if all complete
+            if (completed === 3 && !localStorage.getItem('blackbeltStripe3Bonus')) {
+                awardStripeBonus();
+            }
+        }
+
+        function toggleLesson(lessonNum) {
+            const lesson = document.getElementById('lesson' + lessonNum);
+            const allLessons = document.querySelectorAll('.lesson');
+            
+            allLessons.forEach(l => l.classList.remove('active'));
+            
+            if (lesson) {
+                lesson.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function completeLesson(lessonNum) {
+            if (!completedLessons.includes(lessonNum)) {
+                completedLessons.push(lessonNum);
+                moduleXP += 25;
+                
+                localStorage.setItem('blackbeltStripe3Completed', JSON.stringify(completedLessons));
+                localStorage.setItem('blackbeltStripe3ModuleXP', moduleXP.toString());
+                
+                // Update total XP
+                let totalXP = parseInt(localStorage.getItem('totalXP') || '0');
+                totalXP += 25;
+                localStorage.setItem('totalXP', totalXP.toString());
+                
+                showCompletionPopup();
+                updateProgress();
+                
+                // Close lesson after short delay
+                setTimeout(() => {
+                    toggleLesson(lessonNum);
+                }, 1500);
+            }
+        }
+
+        function awardStripeBonus() {
+            const bonusXP = 100;
+            moduleXP += bonusXP;
+            localStorage.setItem('blackbeltStripe3ModuleXP', moduleXP.toString());
+            localStorage.setItem('blackbeltStripe3Bonus', 'true');
+            
+            // Update total XP
+            let totalXP = parseInt(localStorage.getItem('totalXP') || '0');
+            totalXP += bonusXP;
+            localStorage.setItem('totalXP', totalXP.toString());
+
+            // Add to stripes earned
+            let blackStripes = JSON.parse(localStorage.getItem('blackStripesEarned') || '[]');
+            if (!blackStripes.includes(3)) {
+                blackStripes.push(3);
+                localStorage.setItem('blackStripesEarned', JSON.stringify(blackStripes));
+            }
+            
+            alert('🎉 Black Belt Stripe 3 Complete!\n\n+100 Bonus XP Awarded!\nTotal Stripe XP: 175');
+        }
+
+        function showCompletionPopup() {
+            document.getElementById('overlay').classList.add('show');
+            document.getElementById('completionPopup').classList.add('show');
+        }
+
+        function closePopup() {
+            document.getElementById('overlay').classList.remove('show');
+            document.getElementById('completionPopup').classList.remove('show');
+        }
+
+        // Initialize on load
+        updateProgress();
+    </script>
+</body>
+</html>
