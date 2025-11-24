@@ -448,62 +448,67 @@
         /* Scale Options (for Worker Type & Mental Health questions) */
         .scale-options {
             display: flex;
-            gap: 12px;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: nowrap;
+            height: 70px;
+            position: relative;
+            border-radius: 8px;
+            padding: 5px;
+            cursor: pointer;
+            user-select: none;
+            background: #f8f9fa;
             margin-bottom: 20px;
         }
 
         .scale-option {
             flex: 1;
-            text-align: center;
-            padding: 20px 10px;
-            background: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            background: white;
+            transition: all 0.15s ease;
             position: relative;
+            z-index: 1;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1a365d;
+            box-shadow: 0 2px 8px rgba(26,54,93,0.04);
         }
 
         /* Progressive darkening from left (light) to right (dark) */
         .scale-option:nth-child(1) { background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%); }
-        .scale-option:nth-child(2) { background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%); }
-        .scale-option:nth-child(3) { background: linear-gradient(135deg, #ced4da 0%, #adb5bd 100%); }
-        .scale-option:nth-child(4) { background: linear-gradient(135deg, #d67059 0%, #c9513f 100%); }
-        .scale-option:nth-child(5) { background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); }
-
-        .scale-option:nth-child(4) span,
-        .scale-option:nth-child(5) span,
-        .scale-option:nth-child(4) small,
-        .scale-option:nth-child(5) small {
-            color: white;
-        }
+        /* Remove progressive darkening and color overrides */
 
         .scale-option span {
-            display: block;
-            font-size: 1.8em;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 8px;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 0;
+            color: inherit;
         }
 
         .scale-option small {
-            display: block;
-            font-size: 0.85em;
-            color: #666;
-            font-weight: 500;
+            display: none;
         }
 
         .scale-option:hover {
-            border-color: #a93226;
-            background: #fff5f4;
-            transform: translateY(-2px);
+            border-color: #274472;
+            background: #e3eaf6;
+            color: #1a365d;
         }
 
         .scale-option.selected {
-            background: #fff5f4;
-            border-color: #a93226;
-            border-width: 3px;
-            font-weight: 700;
+            background: #1a365d;
+            color: #fff;
+            border-color: #1a365d;
+            box-shadow: 0 4px 16px rgba(26,54,93,0.18);
+            transform: scale(1.08);
         }
 
         /* Slider Styles (for Team Dynamics questions) */
@@ -948,7 +953,7 @@
                 text: 'Your productivity is highest when:',
                 type: 'radio',
                 options: [
-                    {value: 'sprinter', text: 'There's a clear deadline creating urgency'},
+                    {value: 'sprinter', text: "There's a clear deadline creating urgency"},
                     {value: 'jogger', text: 'You have a structured routine to follow'},
                     {value: 'ultrarunner', text: 'You have ample time to do thorough work'}
                 ],

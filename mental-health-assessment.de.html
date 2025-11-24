@@ -35,13 +35,68 @@
         .section-header h3 { font-size: 1.3em; }
         .question-number { color: #1a365d; font-weight: bold; font-size: 0.9em; margin-bottom: 10px; }
         .question-text { font-size: 1.1em; color: #333; margin-bottom: 15px; font-weight: 500; line-height: 1.5; }
-        .rating-scale { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-        .rating-option { flex: 1; min-width: 100px; }
-        .rating-option input[type="radio"] { display: none; }
-        .rating-option label { display: block; text-align: center; padding: 15px 10px; background: white; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer; transition: all 0.2s; font-size: 0.95em; color: #333; font-weight: 500; }
-        .rating-option input[type="radio"]:checked + label { background: #1a365d; color: white; border-color: #1a365d; transform: scale(1.05); }
-        .rating-option label:hover { border-color: #1a365d; background: #f0f4f8; }
-        .scale-labels { display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.85em; color: #999; }
+        .scale-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: nowrap;
+            height: 70px;
+            position: relative;
+            border-radius: 8px;
+            padding: 5px;
+            cursor: pointer;
+            user-select: none;
+            background: #f8f9fa;
+        }
+        .scale-option {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #e0e0e0;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            background: white;
+            transition: all 0.15s ease;
+            position: relative;
+            z-index: 1;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1a365d;
+            box-shadow: 0 2px 8px rgba(26,54,93,0.04);
+        }
+        .scale-option.selected, .scale-option.active {
+            background: #1a365d;
+            color: #fff;
+            border-color: #1a365d;
+            box-shadow: 0 4px 16px rgba(26,54,93,0.18);
+            transform: scale(1.08);
+        }
+        .scale-option:hover {
+            border-color: #274472;
+            background: #e3eaf6;
+            color: #1a365d;
+        }
+        .scale-option.selected:hover, .scale-option.active:hover {
+            background: #274472;
+            border-color: #274472;
+        }
+        .scale-option span {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 0;
+            color: inherit;
+        }
+        .scale-option small {
+            display: none;
+        }
+        @media (max-width: 600px) {
+            .scale-options { gap: 6px; height: 56px; }
+            .scale-option { width: 38px; height: 38px; font-size: 1em; }
+        }
         .submit-section { text-align: center; margin-top: 40px; padding-top: 30px; border-top: 2px solid #f0f0f0; }
         .submit-btn { background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; border: none; padding: 18px 50px; font-size: 1.2em; font-weight: bold; border-radius: 10px; cursor: pointer; transition: all 0.2s; }
         .submit-btn:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(169, 50, 38, 0.4); }

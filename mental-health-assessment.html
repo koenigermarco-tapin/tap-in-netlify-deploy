@@ -29,21 +29,68 @@
         .question-number { color: #1a365d; font-weight: bold; font-size: 0.9em; margin-bottom: 10px; }
         .question-text { font-size: 1.2em; color: #333; margin-bottom: 25px; font-weight: 500; line-height: 1.5; }
         
-        .scale-options { display: flex; justify-content: space-between; align-items: flex-end; gap: 2px; flex-wrap: nowrap; height: 140px; position: relative; border-radius: 8px; padding: 5px; cursor: pointer; user-select: none; }
-        .scale-option { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; border: 2px solid transparent; border-radius: 6px; transition: all 0.15s ease; position: relative; z-index: 1; }
-        .scale-option:nth-child(1) { height: 50px; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); }
-        .scale-option:nth-child(2) { height: 70px; background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%); }
-        .scale-option:nth-child(3) { height: 90px; background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%); }
-        .scale-option:nth-child(4) { height: 110px; background: linear-gradient(135deg, #334155 0%, #1e293b 100%); }
-        .scale-option:nth-child(5) { height: 130px; background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); }
-        .scale-option span { font-size: 1.3em; font-weight: bold; margin-bottom: 5px; }
-        .scale-option:nth-child(1) span, .scale-option:nth-child(2) span, .scale-option:nth-child(3) span { color: #333; }
-        .scale-option:nth-child(4) span, .scale-option:nth-child(5) span { color: white; }
-        .scale-option small { font-size: 0.75em; text-align: center; }
-        .scale-option:nth-child(1) small, .scale-option:nth-child(2) small, .scale-option:nth-child(3) small { color: #666; }
-        .scale-option:nth-child(4) small, .scale-option:nth-child(5) small { color: rgba(255,255,255,0.9); }
-        .scale-option:hover { transform: scale(1.05); border-color: #1a365d; }
-        .scale-option.active, .scale-option.selected { border-color: #0f1f3d; box-shadow: 0 2px 8px rgba(26, 54, 93, 0.4); }
+        .scale-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: nowrap;
+            height: 70px;
+            position: relative;
+            border-radius: 8px;
+            padding: 5px;
+            cursor: pointer;
+            user-select: none;
+            background: #f8f9fa;
+        }
+        .scale-option {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #e0e0e0;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            background: white;
+            transition: all 0.15s ease;
+            position: relative;
+            z-index: 1;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1a365d;
+            box-shadow: 0 2px 8px rgba(26,54,93,0.04);
+        }
+        .scale-option.selected, .scale-option.active {
+            background: #1a365d;
+            color: #fff;
+            border-color: #1a365d;
+            box-shadow: 0 4px 16px rgba(26,54,93,0.18);
+            transform: scale(1.08);
+        }
+        .scale-option:hover {
+            border-color: #274472;
+            background: #e3eaf6;
+            color: #1a365d;
+        }
+        .scale-option.selected:hover, .scale-option.active:hover {
+            background: #274472;
+            border-color: #274472;
+        }
+        .scale-option span {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 0;
+            color: inherit;
+        }
+        .scale-option small {
+            display: none;
+        }
+        @media (max-width: 600px) {
+            .scale-options { gap: 6px; height: 56px; }
+            .scale-option { width: 38px; height: 38px; font-size: 1em; }
+        }
         
         .insight-card { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 4px solid #1a365d; padding: 20px; margin: 20px 0; border-radius: 10px; animation: slideIn 0.4s ease; }
         .insight-icon { font-size: 2rem; margin-bottom: 10px; }
