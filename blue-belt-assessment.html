@@ -464,7 +464,7 @@
             </div>
         </div>
 
-        <!-- Section 1: Scenario Questions (Placeholders) -->
+        <!-- Section 1: Scenario Questions -->
         <div class="section">
             <div class="section-header">
                 <div class="section-number">1</div>
@@ -474,8 +474,241 @@
                 </div>
             </div>
 
-            <div style="text-align: center; padding: 60px 20px; color: #94a3b8; font-size: 16px;">
-                📝 Scenario questions will be added in the next batch
+            <!-- Question 1: Artificial Harmony (Stripe 1) -->
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">1</div>
+                    <div class="question-text">
+                        Your team just wrapped a sprint planning meeting where everyone quickly agreed on an aggressive timeline. 
+                        As you're leaving, you notice several engineers looking uncomfortable and whispering to each other. 
+                        What should you do?
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(1, 'A')">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">Nothing—they agreed in the meeting, so move forward with the timeline.</div>
+                    </div>
+                    <div class="option" onclick="selectOption(1, 'B')">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">Send a follow-up Slack asking if anyone has concerns about the timeline.</div>
+                    </div>
+                    <div class="option" onclick="selectOption(1, 'C')">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">Pull the team back and say "I noticed some discomfort. Let's surface all concerns before we commit."</div>
+                    </div>
+                    <div class="option" onclick="selectOption(1, 'D')">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">Talk to the uncomfortable engineers 1-on-1 to understand concerns, then bring the team back together if needed.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2: Disagree & Commit (Stripe 2) -->
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">2</div>
+                    <div class="question-text">
+                        Your team debated two product approaches for an hour. The majority wants Option A, but you strongly 
+                        believe Option B is better. The CEO is making the final call and chooses Option A. What's the best response?
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(2, 'A')">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">Tell the CEO you disagree and will need to be convinced before you can support it.</div>
+                    </div>
+                    <div class="option" onclick="selectOption(2, 'B')">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">Say "I disagree but I'll commit. Here's how I'll support Option A moving forward."</div>
+                    </div>
+                    <div class="option" onclick="selectOption(2, 'C')">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">Stay quiet publicly but tell your team privately that you think it's the wrong call.</div>
+                    </div>
+                    <div class="option" onclick="selectOption(2, 'D')">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">Ask to revisit the decision in two weeks after you gather more data to support Option B.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3: Conflict Physiology (Stripe 2) -->
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">3</div>
+                    <div class="question-text">
+                        During a heated design review, you notice your heart racing, your face getting hot, and a strong urge 
+                        to interrupt and prove someone wrong. What's the best first step?
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(3, 'A')">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">Take three deep breaths, acknowledge internally that you're activated, then choose your response consciously.</div>
+                    </div>
+                    <div class="option" onclick="selectOption(3, 'B')">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">Interrupt immediately to make your point before you forget it.</div>
+                    </div>
+                    <div class="option" onclick="selectOption(3, 'C')">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">Excuse yourself from the meeting to cool down completely.</div>
+                    </div>
+                    <div class="option" onclick="selectOption(3, 'D')">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">Push through the discomfort and stay in the debate—conflict requires staying engaged.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4: Mining for Conflict (Stripe 3) -->
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">4</div>
+                    <div class="question-text">
+                        You're facilitating a product roadmap discussion. Three people have spoken strongly in favor of Feature X. 
+                        Four people haven't said anything yet. What's the best mining technique?
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(4, 'A')">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">Move forward—silence usually means agreement.</div>
+                    </div>
+                    <div class="option" onclick="selectOption(4, 'B')">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">Say "Let's hear from people who haven't spoken yet. Jordan, what do you think?"</div>
+                    </div>
+                    <div class="option" onclick="selectOption(4, 'C')">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">Assign someone to play devil's advocate and argue against Feature X.</div>
+                    </div>
+                    <div class="option" onclick="selectOption(4, 'D')">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">Pause and say "This consensus came quickly. What concerns might we be missing about Feature X?"</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5: Real-Time Facilitation (Stripe 3) -->
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">5</div>
+                    <div class="question-text">
+                        Two team members are in a heated debate about technical architecture. One person keeps interrupting 
+                        the other, and the conversation is becoming personal ("You never listen to engineers!"). How do you intervene?
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(5, 'A')">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">Let them work it out—they're both adults and can manage conflict themselves.</div>
+                    </div>
+                    <div class="option" onclick="selectOption(5, 'B')">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">Say "Let's pause. We're debating ideas, not people. What's the core technical tradeoff we're trying to solve?"</div>
+                    </div>
+                    <div class="option" onclick="selectOption(5, 'C')">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">End the meeting immediately and send them both an email about professional conduct.</div>
+                    </div>
+                    <div class="option" onclick="selectOption(5, 'D')">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">Take sides with whoever has the better technical argument to resolve the conflict quickly.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6: 7-Step Resolution Process (Stripe 3) -->
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">6</div>
+                    <div class="question-text">
+                        Product and Engineering are locked in disagreement about whether to prioritize new features or pay down 
+                        tech debt. As the facilitator, what should you do first in the 7-step resolution process?
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(6, 'A')">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">Ask both sides to surface their positions and debate until consensus emerges.</div>
+                    </div>
+                    <div class="option" onclick="selectOption(6, 'B')">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">Generate multiple options that blend both features and tech debt work.</div>
+                    </div>
+                    <div class="option" onclick="selectOption(6, 'C')">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">Define the decision method (who decides) and set time boundaries for the discussion.</div>
+                    </div>
+                    <div class="option" onclick="selectOption(6, 'D')">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">Explore the underlying interests driving each position (speed to market vs. system stability).</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 7: Coaching Conflict (Stripe 4) -->
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">7</div>
+                    <div class="question-text">
+                        A team member comes to you: "I can't work with Sarah anymore. She's blocking all my PRs with nitpicky 
+                        comments." What's the best coaching response?
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(7, 'A')">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">Say "Let me talk to Sarah and tell her to ease up on the reviews."</div>
+                    </div>
+                    <div class="option" onclick="selectOption(7, 'B')">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">Ask "What do you think Sarah cares about in those reviews? What do you care about? How could you talk to her about finding a balance?"</div>
+                    </div>
+                    <div class="option" onclick="selectOption(7, 'C')">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">Tell them to write cleaner code so Sarah won't have as many comments.</div>
+                    </div>
+                    <div class="option" onclick="selectOption(7, 'D')">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">Reassign them to different projects so they don't have to work together.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 8: High-Stakes Conflict (Stripe 4) -->
+            <div class="question">
+                <div class="question-header">
+                    <div class="question-number">8</div>
+                    <div class="question-text">
+                        The exec team must decide on layoffs (20% of staff). The CFO says it's necessary for survival. 
+                        The CTO says it will kill critical projects. As CEO facilitating this, what principle matters most?
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(8, 'A')">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">Move fast—in high-stakes conflicts, speed is essential to reduce uncertainty.</div>
+                    </div>
+                    <div class="option" onclick="selectOption(8, 'B')">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">Slow down to speed up—align on process (how we'll decide) before diving into content (what to decide).</div>
+                    </div>
+                    <div class="option" onclick="selectOption(8, 'C')">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">Take a vote so everyone feels their voice was heard equally.</div>
+                    </div>
+                    <div class="option" onclick="selectOption(8, 'D')">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">Bring in a neutral third-party consultant to make the decision for you.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px;">
+                📝 Questions 9-15 will be added in the next batch
             </div>
         </div>
 
