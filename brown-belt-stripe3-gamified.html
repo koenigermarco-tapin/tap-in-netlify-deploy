@@ -575,8 +575,429 @@
             </div>
         </div>
 
-        <!-- Lesson 2 will be added here -->
-        <!-- Lesson 3 will be added here -->
+        <!-- Lesson 2: Accountability Across Teams -->
+        <div class="lesson-card" id="lesson2">
+            <div class="lesson-header" onclick="toggleLesson(2)">
+                <div class="lesson-number" id="lesson2-badge">2</div>
+                <div class="lesson-title">
+                    <h2>Accountability Across Teams</h2>
+                    <p class="lesson-meta">Breaking down silos • 25 XP</p>
+                </div>
+            </div>
+            <div class="lesson-content" id="lesson2-content">
+                <div class="content-section">
+                    <h3>🌐 The Cross-Team Accountability Problem</h3>
+                    <p>Your team is accountable. But when your project depends on Engineering, and Engineering is waiting on Product, and Product is blocked by Sales... the whole thing falls apart.</p>
+                    
+                    <div class="highlight-box">
+                        <strong>The pattern:</strong> Within teams, accountability is easier. Across teams, it's messy. Different priorities, different managers, different timelines. Everyone's "working on it" but nobody's actually accountable.
+                        <br><br>
+                        <strong>The cost:</strong> Most organizational dysfunction happens in the gaps between teams, not within them.
+                    </div>
+
+                    <p>This lesson: how to create accountability when you don't have direct authority.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>🚧 Why Cross-Team Accountability Fails</h3>
+                    
+                    <p><strong>Problem 1: No Single Owner</strong></p>
+                    <p>Initiative involves 4 teams. Each does their part, but nobody owns the whole outcome.</p>
+                    <p><em>Result:</em> Everything is "in progress" but nothing ships.</p>
+
+                    <p><strong>Problem 2: Competing Priorities</strong></p>
+                    <p>What's urgent for your team is low priority for the other team.</p>
+                    <p><em>Result:</em> Passive-aggressive emails, escalations to executives, delays.</p>
+
+                    <p><strong>Problem 3: Unclear Handoffs</strong></p>
+                    <p>"We're waiting on them" vs "We gave them what they asked for" - both teams think the other is the blocker.</p>
+                    <p><em>Result:</em> Finger-pointing, trust erosion, rework.</p>
+
+                    <p><strong>Problem 4: No Consequences</strong></p>
+                    <p>When a cross-team commitment slips, there's no real accountability mechanism.</p>
+                    <p><em>Result:</em> Patterns of missing commitments become normalized.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>✅ The Cross-Team Accountability Framework</h3>
+                    
+                    <p><strong>Step 1: Assign a Single Accountable Owner (Not a Committee)</strong></p>
+                    <ul>
+                        <li>One person is accountable for the <em>whole</em> outcome, not just their team's piece</li>
+                        <li>They don't do all the work, but they own coordination and delivery</li>
+                        <li>They have permission to escalate blockers and call out gaps</li>
+                        <li>Use RACI: Responsible (does work), Accountable (owns outcome), Consulted, Informed</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <h4>📖 Example: Product Launch</h4>
+                        <p><strong>Bad:</strong> Engineering, Product, Marketing, Sales all "collaborating" - no single owner</p>
+                        <p><strong>Good:</strong> Product Manager Sarah is accountable. Engineering builds it, Marketing creates materials, Sales trains reps - but Sarah owns the launch date and coordinates all pieces.</p>
+                    </div>
+
+                    <p><strong>Step 2: Create Shared Visibility (Not Hidden Work Streams)</strong></p>
+                    <ul>
+                        <li>One shared dashboard/board showing all dependencies and status</li>
+                        <li>Weekly sync meeting with all teams (15-30 min max)</li>
+                        <li>Status updates visible to everyone, not siloed in team channels</li>
+                        <li>Red/yellow/green status (with specifics on what's blocking)</li>
+                    </ul>
+
+                    <p><strong>Step 3: Define Crisp Handoffs (Not Vague "We're Done")</strong></p>
+                    <p>For each dependency, clarify:</p>
+                    <ul>
+                        <li><strong>What:</strong> Exactly what's being delivered (acceptance criteria)</li>
+                        <li><strong>By when:</strong> Specific date, not "end of sprint" or "soon"</li>
+                        <li><strong>How it's delivered:</strong> Format, location, notification method</li>
+                        <li><strong>What happens next:</strong> Who picks it up, what they do with it</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <h4>📖 Crisp vs. Vague Handoff</h4>
+                        <p><strong>❌ Vague:</strong> "Engineering will provide the API by end of month."</p>
+                        <p><strong>✅ Crisp:</strong> "Engineering will deploy v1 REST API to staging by Oct 15, 5pm. API spec documented in Confluence. Product will receive Slack notification. Product tests Oct 16-17. Any issues logged in Jira by Oct 18. Production deploy Oct 20."</p>
+                    </div>
+
+                    <p><strong>Step 4: Establish Escalation Paths (Not Suffering in Silence)</strong></p>
+                    <ul>
+                        <li>If Team A is blocked by Team B for >48 hours → direct manager-to-manager conversation</li>
+                        <li>If unresolved in 1 week → escalate to shared executive</li>
+                        <li>Document escalations (not to blame, but to see patterns)</li>
+                        <li>Retro recurring escalations: Why is this happening? What systemic fix prevents it?</li>
+                    </ul>
+
+                    <p><strong>Step 5: Build Cross-Team Relationships (Not Just Process)</strong></p>
+                    <ul>
+                        <li>Regular informal syncs between team leads</li>
+                        <li>Cross-team shadowing/pairing</li>
+                        <li>Celebrate cross-team wins publicly</li>
+                        <li>Address cross-team conflict quickly (don't let resentment build)</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h3>💬 Scripts for Cross-Team Accountability</h3>
+                    
+                    <p><strong>Scenario 1: Another team is blocking you</strong></p>
+                    <p><em>"Hey Alex, my team committed to shipping [X] by Friday. We're blocked waiting on [Y] from your team. I know you have competing priorities. Can we align on timeline? If Friday isn't feasible, I need to reset expectations with my stakeholders today."</em></p>
+
+                    <p><strong>Scenario 2: Setting up a cross-team project</strong></p>
+                    <p><em>"Before we kick off, let's clarify ownership. I'll own the overall outcome and timeline. [Names] own their team's deliverables. We'll sync weekly. If anyone's blocked for >2 days, bring it to the sync. Sound good?"</em></p>
+
+                    <p><strong>Scenario 3: Calling out a pattern of missed commitments</strong></p>
+                    <p><em>"I want to raise a pattern. Over the last 3 months, we've had 5 deadlines slip because of handoff gaps between our teams. I'm not blaming anyone - I think we have a process problem. Can we do a retro to fix the root cause?"</em></p>
+
+                    <p><strong>Scenario 4: Escalating when direct conversation fails</strong></p>
+                    <p><em>"[Manager], I've talked to [Team Lead] twice about [blocker]. We're not aligned on priority. This is now risking [customer/deadline]. I need your help to either unblock this or help me reset expectations. Can we talk today?"</em></p>
+                </div>
+
+                <div class="example-box">
+                    <h4>📖 Real Case: Marketing + Engineering Coordination</h4>
+                    <p><strong>Problem:</strong> Marketing launches campaigns before features are ready. Engineering ships features without telling Marketing. Customers confused, launches flop.</p>
+
+                    <p><strong>Root cause:</strong> No shared visibility, different sprint cycles, no single owner for "launch."</p>
+
+                    <p><strong>Solution implemented:</strong></p>
+                    <ul>
+                        <li><strong>Owner:</strong> Product Manager owns each launch (coordinates both teams)</li>
+                        <li><strong>Visibility:</strong> Shared "Launch Calendar" in Notion, updated weekly</li>
+                        <li><strong>Handoff:</strong> Engineering marks "Ready for Marketing" 1 week before ship date</li>
+                        <li><strong>Sync:</strong> Weekly 15-min "Launch Sync" - Eng + Marketing + Product</li>
+                        <li><strong>Escalation:</strong> If feature slips, Product resets marketing timeline same day</li>
+                    </ul>
+
+                    <p><strong>Result:</strong> 6 months later, on-time launches: 40% → 85%. Zero customer-facing launch failures.</p>
+                </div>
+
+                <div class="bjj-connection">
+                    <h4>🥋 The BJJ Parallel: Competing in Teams</h4>
+                    <p>In team BJJ competitions, your team score depends on multiple people across different weight classes. You can't control your teammates' matches, but you can:</p>
+                    <ul>
+                        <li>Coordinate warm-up timing so everyone's ready</li>
+                        <li>Coach each other between rounds</li>
+                        <li>Adjust strategy based on team score (go aggressive if you need points, play safe if you're ahead)</li>
+                        <li>Celebrate wins together, analyze losses together</li>
+                    </ul>
+                    <p><strong>Leadership parallel:</strong> Cross-team success requires coordination, mutual support, and shared visibility - even when you're not in direct control.</p>
+                </div>
+
+                <div class="research-box">
+                    <h4>📚 Research: Cross-Functional Teams and Performance</h4>
+                    <p><strong>McKinsey study:</strong> Organizations with high cross-functional collaboration are 1.5x more likely to exceed financial targets. But only 25% of cross-functional teams report "highly effective" collaboration.</p>
+                    <p><strong>Harvard Business Review:</strong> 75% of cross-functional teams are dysfunctional (miss deadlines, overspend, lack clear accountability).</p>
+                    <p><strong>Key insight:</strong> The default state is dysfunction. Cross-team accountability requires explicit structure, not just goodwill.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>💪 Practice: Audit Your Cross-Team Dependencies</h3>
+                    <ol>
+                        <li>List 3 initiatives your team depends on other teams for</li>
+                        <li>For each: Who's the single accountable owner? (If "nobody" or "committee," that's a red flag)</li>
+                        <li>Is there shared visibility on status? Or are you guessing?</li>
+                        <li>Are handoffs crisp or vague?</li>
+                        <li>When things slip, do you have an escalation path?</li>
+                    </ol>
+                    
+                    <div class="highlight-box">
+                        <strong>Action item:</strong> Pick ONE cross-team dependency. This week, clarify the single owner and create shared visibility (even just a simple shared doc). Start there.
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="toggleLesson(2)">Close Lesson</button>
+                    <button class="btn btn-primary" onclick="completeLesson(2)">Complete Lesson (+25 XP)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lesson 3: When Accountability Culture Breaks -->
+        <div class="lesson-card" id="lesson3">
+            <div class="lesson-header" onclick="toggleLesson(3)">
+                <div class="lesson-number" id="lesson3-badge">3</div>
+                <div class="lesson-title">
+                    <h2>When Accountability Culture Breaks</h2>
+                    <p class="lesson-meta">Recognizing and repairing • 25 XP</p>
+                </div>
+            </div>
+            <div class="lesson-content" id="lesson3-content">
+                <div class="content-section">
+                    <h3>🚨 Culture Doesn't Break Overnight</h3>
+                    <p>You've built strong accountability. Your team commits, delivers, holds each other accountable. Then... something shifts. Deadlines start slipping. People stop calling out gaps. The energy changes.</p>
+                    
+                    <div class="highlight-box">
+                        <strong>The warning:</strong> Accountability culture is fragile. One bad hire, one leadership change, one crisis where you compromise standards—and it can unravel fast.
+                        <br><br>
+                        <strong>The skill:</strong> Recognizing the early warning signs before it's too late. And knowing how to repair the culture when it breaks.
+                    </div>
+
+                    <p>This lesson: how to diagnose culture erosion and restore accountability.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>🔍 Seven Warning Signs Accountability Culture Is Eroding</h3>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Warning Sign</th>
+                                <th>What It Looks Like</th>
+                                <th>What It Means</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1. Vague Commitments Return</strong></td>
+                                <td>"I'll get to it this week" instead of "I'll ship by Thursday 3pm"</td>
+                                <td>People are avoiding accountability by staying non-specific</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2. Peer Accountability Stops</strong></td>
+                                <td>Team members stop calling out gaps with each other, wait for manager</td>
+                                <td>Fear or apathy has replaced peer trust</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3. Excuses Accepted Without Question</strong></td>
+                                <td>"I was busy" becomes acceptable, no follow-up on patterns</td>
+                                <td>Consequences have disappeared, standards are optional</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4. Visibility Rituals Decay</strong></td>
+                                <td>Public commitment board stops being updated, standups get skipped</td>
+                                <td>Systems are eroding, nobody's maintaining them</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5. Blame Culture Emerges</strong></td>
+                                <td>Missed deadlines lead to finger-pointing, not problem-solving</td>
+                                <td>Psychological safety is gone, people protect themselves</td>
+                            </tr>
+                            <tr>
+                                <td><strong>6. High Performers Start Leaving</strong></td>
+                                <td>Your best people quit (often citing "frustration" without details)</td>
+                                <td>They're tired of carrying low performers with no consequences</td>
+                            </tr>
+                            <tr>
+                                <td><strong>7. Manager Becomes the Bottleneck Again</strong></td>
+                                <td>You're back to tracking everything, following up on every commitment</td>
+                                <td>Team has regressed to manager-dependency</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box">
+                        <strong>Diagnostic rule:</strong> If you see 2-3 of these, you have early erosion. If you see 5+, the culture is in crisis.
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>🛠️ Root Causes (What Actually Broke)</h3>
+                    
+                    <p><strong>Cause 1: Leadership Change or Absence</strong></p>
+                    <p>New manager doesn't understand or value accountability culture. Or you (the accountability champion) were gone for 3 months and nobody maintained it.</p>
+                    <p><em>Fix:</em> Explicitly transfer accountability ownership. Document the systems. Train new leaders on the culture before they start changing things.</p>
+
+                    <p><strong>Cause 2: One Bad Hire That Wasn't Addressed</strong></p>
+                    <p>You hired someone who chronically misses commitments. Instead of addressing it quickly, you let it slide. Team sees: "Standards don't apply to everyone."</p>
+                    <p><em>Fix:</em> Fast performance management. Don't let one person poison the culture. Exit them or fix it in 30 days, not 6 months.</p>
+
+                    <p><strong>Cause 3: Crisis Mode Normalized</strong></p>
+                    <p>One emergency where you had to cut corners. Then another. Then another. Now "urgent" is the default, and thoughtful accountability feels impossible.</p>
+                    <p><em>Fix:</em> Hit pause. Call it out: "We've been in crisis mode for 3 months. That's not sustainable. We're returning to our standards starting Monday."</p>
+
+                    <p><strong>Cause 4: Growth Outpaced Systems</strong></p>
+                    <p>Team doubled in size. Systems that worked for 5 people don't scale to 15. Visibility breaks down, rituals feel bloated.</p>
+                    <p><em>Fix:</em> Redesign for scale. Split into smaller accountable units. Update rituals (maybe split standup into two teams). Don't abandon accountability, evolve the systems.</p>
+
+                    <p><strong>Cause 5: You Stopped Modeling It</strong></p>
+                    <p>You got busy. You started missing your own commitments, not updating the board, skipping retros. Team follows your lead.</p>
+                    <p><em>Fix:</em> Own it publicly. "I've let our accountability standards slip, starting with myself. That stops now. Here's what I'm recommitting to."</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>📖 Real Case: Culture Erosion + Repair</h4>
+                    <p><strong>Context:</strong> Engineering team, 8 people, strong accountability culture for 18 months. Then hired 4 people in 2 months.</p>
+
+                    <p><strong>What broke:</strong></p>
+                    <ul>
+                        <li>New hires weren't onboarded to accountability systems</li>
+                        <li>One new hire chronically missed commitments, manager didn't address it (worried about retention)</li>
+                        <li>Original team members stopped calling out gaps (felt futile with new people not bought in)</li>
+                        <li>Within 3 months: commitment board abandoned, peer accountability gone, manager back to micromanaging</li>
+                    </ul>
+
+                    <p><strong>How it was repaired:</strong></p>
+                    <p><strong>Week 1: Acknowledge + Reset</strong></p>
+                    <ul>
+                        <li>Manager called team meeting: "Our accountability culture has eroded. That's on me. Here's what we're getting back to."</li>
+                        <li>Explained the 4 pillars to new team members (they had no idea)</li>
+                        <li>Restarted public commitment board with everyone's buy-in</li>
+                    </ul>
+
+                    <p><strong>Week 2-4: Reinforce + Address</strong></p>
+                    <ul>
+                        <li>Manager modeled: made public commitments, updated board religiously, called out own gaps</li>
+                        <li>Paired new hires with accountability champions from original team (mentorship)</li>
+                        <li>Had direct conversation with chronic low performer: 30-day improvement plan</li>
+                    </ul>
+
+                    <p><strong>Month 2: Consequences + Celebration</strong></p>
+                    <ul>
+                        <li>Low performer didn't improve → exited (team respected the decision)</li>
+                        <li>Celebrated first peer accountability moment from a new hire</li>
+                        <li>Retro on onboarding: "How do we transfer culture to new people faster?"</li>
+                    </ul>
+
+                    <p><strong>Result:</strong> 90 days later, accountability culture restored. On-time delivery back to 80%+. Team morale recovered.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>💬 How to Call Out Culture Erosion</h3>
+                    <p><strong>The team conversation:</strong></p>
+
+                    <p><em>"Team, I want to talk about something I'm noticing. A few months ago, we had strong accountability. We made clear commitments, we held each other accountable, we delivered consistently.</em></p>
+
+                    <p><em>Lately, I'm seeing [specific examples: vague commitments, missed deadlines, board not updated, nobody calling out gaps]. I don't think anyone's trying to fail - but our culture has drifted.</em></p>
+
+                    <p><em>I take responsibility for letting this slide. I should have addressed it sooner. But we're resetting now. Here's what I need from all of us:</em></p>
+                    <ul>
+                        <li><em>Return to crisp commitments (what, by when)</em></li>
+                        <li><em>Update the board every day</em></li>
+                        <li><em>Call out gaps respectfully when you see them</em></li>
+                        <li><em>If someone chronically misses commitments, I'll address it directly</em></li>
+                    </ul>
+
+                    <p><em>I know this might feel like a step backward. But accountability is what made us successful. We're not abandoning it. Questions?"</em></p>
+                </div>
+
+                <div class="content-section">
+                    <h3>🔄 The Repair Playbook</h3>
+                    
+                    <p><strong>Step 1: Name It (Week 1)</strong></p>
+                    <ul>
+                        <li>Don't let it be the elephant in the room</li>
+                        <li>Call out the erosion publicly and specifically</li>
+                        <li>Take responsibility (even if it's not all your fault)</li>
+                    </ul>
+
+                    <p><strong>Step 2: Reset Standards (Week 1-2)</strong></p>
+                    <ul>
+                        <li>Restate the 4 pillars (visibility, permission, rituals, consequences)</li>
+                        <li>Restart ONE ritual (e.g., public commitments every Monday)</li>
+                        <li>Don't try to fix everything at once</li>
+                    </ul>
+
+                    <p><strong>Step 3: Model Relentlessly (Weeks 2-4)</strong></p>
+                    <ul>
+                        <li>You go first: make public commitments, update systems, call out your own gaps</li>
+                        <li>Celebrate early wins (first peer accountability moment, first week of 100% board updates)</li>
+                        <li>Be visible with your own accountability</li>
+                    </ul>
+
+                    <p><strong>Step 4: Address Gaps Fast (Weeks 3-6)</strong></p>
+                    <ul>
+                        <li>If someone's still not bought in, have the direct conversation</li>
+                        <li>If performance doesn't improve in 30 days, exit them</li>
+                        <li>Don't let one person drag the culture down again</li>
+                    </ul>
+
+                    <p><strong>Step 5: Rebuild Peer Accountability (Weeks 6-12)</strong></p>
+                    <ul>
+                        <li>Look for opportunities to praise peer-to-peer accountability</li>
+                        <li>Gradually reduce your own enforcement as team takes over</li>
+                        <li>Retro at 90 days: "What's working? What still needs work?"</li>
+                    </ul>
+                </div>
+
+                <div class="bjj-connection">
+                    <h4>🥋 The BJJ Parallel: Gym Culture Maintenance</h4>
+                    <p>A BJJ gym's culture can erode too:</p>
+                    <ul>
+                        <li>New students don't learn the etiquette (bow in, keep nails trimmed, no ego rolling)</li>
+                        <li>A few egos start dominating, hurting people, not tapping</li>
+                        <li>Coach stops enforcing rules ("they'll figure it out")</li>
+                        <li>Good students leave because the culture feels toxic</li>
+                    </ul>
+                    <p><strong>Good coaches:</strong> Address it immediately. Pull aside the problem person. Restate the rules publicly. If they don't adjust, ask them to leave. Culture is more important than one individual.</p>
+                    <p><strong>Leadership parallel:</strong> You're the "gym coach" for your team. Your job is to protect the culture, not avoid hard conversations.</p>
+                </div>
+
+                <div class="research-box">
+                    <h4>📚 Research: Culture Erosion Speed</h4>
+                    <p><strong>MIT Sloan study:</strong> High-accountability cultures can erode in as little as 6-8 weeks without active maintenance. But they take 6-12 months to build from scratch.</p>
+                    <p><strong>Key finding:</strong> Teams that conduct monthly "culture check" retros are 3x more likely to catch erosion early.</p>
+                    <p><strong>Actionable insight:</strong> Don't assume culture self-sustains. Build in regular diagnostic rituals.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>💪 Practice: Culture Health Diagnostic</h3>
+                    <p>Rate your team on each warning sign (1-5 scale):</p>
+                    <ol>
+                        <li>Vague commitments (1 = never, 5 = constant)</li>
+                        <li>Peer accountability stopped (1 = strong, 5 = gone)</li>
+                        <li>Excuses accepted without question (1 = never, 5 = always)</li>
+                        <li>Visibility rituals decaying (1 = strong, 5 = abandoned)</li>
+                        <li>Blame culture emerging (1 = none, 5 = toxic)</li>
+                        <li>High performers leaving (1 = none, 5 = multiple)</li>
+                        <li>Manager bottleneck again (1 = team self-manages, 5 = manager does everything)</li>
+                    </ol>
+                    
+                    <p><strong>Score interpretation:</strong></p>
+                    <ul>
+                        <li>7-14: Healthy culture, keep maintaining</li>
+                        <li>15-24: Early erosion, address now before it accelerates</li>
+                        <li>25-35: Culture in crisis, use the repair playbook immediately</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <strong>Action item:</strong> If your score is 15+, have the "culture erosion" conversation this week. Don't wait. The longer you wait, the harder the repair.
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="toggleLesson(3)">Close Lesson</button>
+                    <button class="btn btn-primary" onclick="completeLesson(3)">Complete Lesson (+25 XP)</button>
+                </div>
+            </div>
+        </div>
 
     </div>
 
