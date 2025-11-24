@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Belt Assessment - The 5 Dysfunctions Mastery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #e5e7eb;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(31, 41, 55, 0.6);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .belt-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ffffff 0%, #9ca3af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #9ca3af;
+            margin-bottom: 20px;
+        }
+
+        .assessment-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.95em;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .intro-section {
+            background: rgba(17, 24, 39, 0.4);
+            border-left: 4px solid #6b7280;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .intro-section h2 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .intro-section p {
+            color: #d1d5db;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .requirements-box {
+            background: rgba(17, 24, 39, 0.6);
+            border: 2px solid rgba(107, 114, 128, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .requirements-box h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .requirements-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .requirements-box li {
+            color: #d1d5db;
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .requirements-box li:before {
+            content: "⬛";
+            position: absolute;
+            left: 0;
+            color: #6b7280;
+        }
+
+        .xp-highlight {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 30px 0;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .xp-highlight .xp-amount {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .xp-highlight .xp-label {
+            font-size: 1.1em;
+            color: #d1d5db;
+            margin-top: 8px;
+        }
+
+        .start-button {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 18px 36px;
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .start-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Scenario styles - will be added in next batch */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="introScreen">
+            <div class="header">
+                <div class="belt-icon">🥋⬛</div>
+                <h1>Black Belt Assessment</h1>
+                <div class="subtitle">The 5 Dysfunctions Mastery Test</div>
+                <div class="assessment-badge">🏆 Final Certification Assessment</div>
+            </div>
+
+            <div class="intro-section">
+                <h2>The Ultimate Leadership Challenge</h2>
+                <p>This assessment represents the culmination of your journey through The Five Dysfunctions of a Functional Team. You've studied each dysfunction individually—now it's time to demonstrate your mastery of how they integrate.</p>
+                <p><strong>Black Belt</strong> isn't just about knowledge. It's about wisdom—the ability to diagnose complex team situations, recognize the interplay between dysfunctions, and choose the right intervention at the right time.</p>
+                <p>This assessment will test your ability to apply everything you've learned across all five dysfunctions in realistic, challenging scenarios.</p>
+            </div>
+
+            <div class="xp-highlight">
+                <div class="xp-amount">2,500 XP</div>
+                <div class="xp-label">Highest Single Reward in the System</div>
+            </div>
+
+            <div class="requirements-box">
+                <h3>Assessment Requirements</h3>
+                <ul>
+                    <li><strong>15 Complex Scenarios</strong> - Each tests your understanding across multiple dysfunctions</li>
+                    <li><strong>80% Passing Score</strong> - You must answer at least 12 out of 15 correctly</li>
+                    <li><strong>Integration Focus</strong> - Scenarios require you to identify root causes and understand how dysfunctions cascade</li>
+                    <li><strong>3 Reflections</strong> - Deep written reflections on your learning journey (100+ words each)</li>
+                    <li><strong>3 Commitments</strong> - Specific actions you'll take to apply this knowledge</li>
+                </ul>
+            </div>
+
+            <div class="intro-section">
+                <h2>What You'll Be Tested On</h2>
+                <p><strong>1. Absence of Trust</strong> - Vulnerability-based trust, authenticity, psychological safety</p>
+                <p><strong>2. Fear of Conflict</strong> - Productive ideological conflict, mining for disagreement, real-time permission</p>
+                <p><strong>3. Lack of Commitment</strong> - Clarity, buy-in, cascading communication, disagree and commit</p>
+                <p><strong>4. Avoidance of Accountability</strong> - Peer-to-peer accountability, difficult conversations, standards enforcement</p>
+                <p><strong>5. Inattention to Results</strong> - Collective outcomes over individual goals, scoreboard clarity, sacrifice for results</p>
+            </div>
+
+            <button class="start-button" onclick="startAssessment()">Begin Assessment ⬛</button>
+        </div>
+
+        <!-- Assessment screen will be added in next batch -->
+        <div id="assessmentScreen" class="hidden">
+            <!-- Scenarios will be added here -->
+        </div>
+
+        <!-- Results screen will be added in final batch -->
+        <div id="resultsScreen" class="hidden">
+            <!-- Results will be shown here -->
+        </div>
+    </div>
+
+    <script>
+        // Check if already completed
+        window.addEventListener('DOMContentLoaded', function() {
+            const completed = localStorage.getItem('blackBeltAssessmentCompleted');
+            if (completed === 'true') {
+                showAlreadyCompleted();
+            }
+        });
+
+        function showAlreadyCompleted() {
+            // Will be implemented in final batch
+        }
+
+        function startAssessment() {
+            document.getElementById('introScreen').classList.add('hidden');
+            document.getElementById('assessmentScreen').classList.remove('hidden');
+        }
+
+        // Scenario logic will be added in next batches
+    </script>
+</body>
+</html>
