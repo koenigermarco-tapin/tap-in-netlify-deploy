@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>🔵 Blue Belt Assessment | Tap-In Leadership</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .assessment-header {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            border: 3px solid #1e40af;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .belt-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 20px;
+            border: 2px solid #60a5fa;
+        }
+
+        h1 {
+            color: white;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .assessment-intro {
+            color: #dbeafe;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .requirements-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-left: 4px solid #fbbf24;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .requirements-box h3 {
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+
+        .requirements-box ul {
+            color: #1e293b;
+            margin-left: 20px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e7ff;
+        }
+
+        .section-number {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            border: 2px solid #1e40af;
+        }
+
+        .section-title {
+            flex: 1;
+        }
+
+        .section-title h2 {
+            color: #1e293b;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .section-title p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .question-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .question-number {
+            background: #3b82f6;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .question-text {
+            flex: 1;
+            color: #1e293b;
+            font-size: 16px;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .options {
+            margin-left: 50px;
+        }
+
+        .option {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .option:hover {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .option.selected {
+            border-color: #3b82f6;
+            background: #dbeafe;
+        }
+
+        .option-letter {
+            background: #e2e8f0;
+            color: #475569;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .option.selected .option-letter {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .option-text {
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        .reflection-prompt {
+            margin-bottom: 20px;
+        }
+
+        .prompt-text {
+            color: #1e293b;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .reflection-textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 15px;
+            line-height: 1.6;
+            resize: vertical;
+            transition: border-color 0.2s;
+        }
+
+        .reflection-textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+
+        .word-count {
+            text-align: right;
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .submit-section {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .submit-section h3 {
+            color: #1e40af;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .submit-section p {
+            color: #1e293b;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            border: none;
+            padding: 16px 48px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #1e40af;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .result-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            max-width: 500px;
+            border: 3px solid #3b82f6;
+        }
+
+        .result-popup.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: all;
+        }
+
+        .result-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .result-title {
+            font-size: 32px;
+            color: #1e293b;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .result-message {
+            color: #64748b;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .result-xp {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 24px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 25px;
+            border: 2px solid #1e40af;
+        }
+
+        .result-btn {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid #1e40af;
+        }
+
+        .result-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 999;
+        }
+
+        .overlay.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 20px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-4px);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .assessment-header {
+                padding: 25px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .options {
+                margin-left: 0;
+            }
+
+            .question-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="learning-hub.html" class="back-link">
+            ← Back to Learning Hub
+        </a>
+
+        <div class="assessment-header">
+            <div class="belt-badge">
+                🔵 BLUE BELT ASSESSMENT
+            </div>
+            <h1>Fear of Conflict Mastery Test</h1>
+            <p class="assessment-intro">
+                Demonstrate your mastery of productive conflict through scenarios, reflections, and practical application. 
+                This comprehensive assessment covers all 4 Blue Belt stripes: Conflict Foundations, Engagement, Facilitation, 
+                and Mastery.
+            </p>
+            
+            <div class="requirements-box">
+                <h3>⚡ Assessment Requirements:</h3>
+                <ul>
+                    <li><strong>15 Scenario Questions:</strong> Multiple-choice scenarios testing conflict concepts (40%)</li>
+                    <li><strong>3 Reflective Prompts:</strong> Written reflections on your conflict journey (30%)</li>
+                    <li><strong>1 Practical Demonstration:</strong> Design a conflict facilitation intervention (30%)</li>
+                    <li><strong>Passing Score:</strong> 80% to earn Blue Belt and unlock Purple Belt</li>
+                    <li><strong>Reward:</strong> 750 XP upon successful completion</li>
+                    <li><strong>Retry:</strong> 7-day cooldown if you don't pass on first attempt</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 1: Scenario Questions (Placeholders) -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <div class="section-title">
+                    <h2>Scenario Questions</h2>
+                    <p>15 questions • 40% of score • Choose the best response</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding: 60px 20px; color: #94a3b8; font-size: 16px;">
+                📝 Scenario questions will be added in the next batch
+            </div>
+        </div>
+
+        <!-- Section 2: Reflective Prompts (Placeholders) -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <div class="section-title">
+                    <h2>Reflective Prompts</h2>
+                    <p>3 prompts • 30% of score • 200-300 words each</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding: 60px 20px; color: #94a3b8; font-size: 16px;">
+                💭 Reflective prompts will be added in the next batch
+            </div>
+        </div>
+
+        <!-- Section 3: Practical Demonstration (Placeholder) -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <div class="section-title">
+                    <h2>Practical Demonstration</h2>
+                    <p>1 scenario • 30% of score • 300-400 words</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding: 60px 20px; color: #94a3b8; font-size: 16px;">
+                🛠️ Practical demonstration will be added in the next batch
+            </div>
+        </div>
+
+        <!-- Submit Section -->
+        <div class="submit-section">
+            <h3>Ready to Submit?</h3>
+            <p>
+                Review all your answers carefully before submitting. You need 80% to pass and earn your Blue Belt.
+            </p>
+            <button class="submit-btn" onclick="submitAssessment()" disabled>
+                Submit Assessment
+            </button>
+        </div>
+    </div>
+
+    <!-- Result Popup -->
+    <div class="overlay" id="overlay"></div>
+    <div class="result-popup" id="resultPopup">
+        <div class="result-icon" id="resultIcon">🎉</div>
+        <div class="result-title" id="resultTitle">Assessment Complete!</div>
+        <div class="result-message" id="resultMessage">Calculating your score...</div>
+        <div class="result-xp" id="resultXP">+0 XP</div>
+        <button class="result-btn" onclick="closeResult()">Continue</button>
+    </div>
+
+    <script>
+        // Assessment state
+        const TOTAL_SCENARIOS = 15;
+        const TOTAL_REFLECTIONS = 3;
+        const PASSING_SCORE = 0.80;
+        const ASSESSMENT_XP = 750;
+        
+        let scenarioAnswers = {};
+        let reflectionAnswers = {};
+        let practicalAnswer = '';
+
+        // Placeholder functions - will be implemented when content is added
+        function selectOption(questionNum, optionLetter) {
+            console.log(`Selected Q${questionNum}: ${optionLetter}`);
+        }
+
+        function submitAssessment() {
+            console.log('Assessment submitted');
+        }
+
+        function closeResult() {
+            document.getElementById('resultPopup').classList.remove('show');
+            document.getElementById('overlay').classList.remove('show');
+        }
+
+        // Initialize
+        console.log('Blue Belt Assessment initialized - awaiting content');
+    </script>
+</body>
+</html>
