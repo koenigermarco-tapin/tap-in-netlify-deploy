@@ -1,0 +1,2 @@
+curl -s -X POST -H "Authorization: Bearer nfp_vhoNk2do7uxHsZErJX2EX8yq3anJUXJkcc49" -H "Content-Type: application/json" -d '{}' "https://api.netlify.com/api/v1/sites/1eef3fed-0a0c-466d-b48f-51f5ccf3ad02/builds" | jq .
+curl -s -X POST -H "Authorization: Bearer nfp_vhoNk2do7uxHsZErJX2EX8yq3anJUXJkcc49" -H "Content-Type: application/json" -d '{}' "https://api.netlify.com/api/v1/sites/1eef3fed-0a0c-466d-b48f-51f5ccf3ad02/builds" | jq .

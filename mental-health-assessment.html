@@ -11,59 +11,59 @@
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%); min-height: 100vh; padding: 20px; color: #333; }
         .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
         .header { text-align: center; margin-bottom: 30px; padding-bottom: 25px; border-bottom: 3px solid #f0f0f0; }
-        .header h1 { color: #a93226; font-size: 2.3em; margin-bottom: 15px; }
+        .header h1 { color: #1a365d; font-size: 2.3em; margin-bottom: 15px; }
         .header .subtitle { color: #666; font-size: 1.1em; margin-bottom: 10px; }
         .header .duration { color: #999; font-size: 0.9em; font-style: italic; }
         
         .progress-bar { position: sticky; top: 10px; background: white; padding: 15px; border-radius: 10px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 100; }
         .progress-text { text-align: center; color: #666; font-size: 0.9em; margin-bottom: 8px; }
         .progress-fill { height: 8px; background: #e0e0e0; border-radius: 10px; overflow: hidden; }
-        .progress-fill-bar { background: linear-gradient(90deg, #a93226 0%, #c9513f 100%); height: 100%; width: 0%; transition: width 0.3s ease; }
+        .progress-fill-bar { background: linear-gradient(90deg, #1a365d 0%, #334155 100%); height: 100%; width: 0%; transition: width 0.3s ease; }
         
-        .section-header { background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; padding: 15px 20px; border-radius: 10px; margin-bottom: 20px; }
+        .section-header { background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; padding: 15px 20px; border-radius: 10px; margin-bottom: 20px; }
         .section-header h3 { font-size: 1.2em; margin-bottom: 5px; }
         .section-header .section-desc { font-size: 0.9em; opacity: 0.95; font-style: italic; }
         
         .carousel-container { position: relative; }
         .question-card { background: #f8f9fa; padding: 30px; border-radius: 12px; margin-bottom: 20px; }
-        .question-number { color: #a93226; font-weight: bold; font-size: 0.9em; margin-bottom: 10px; }
+        .question-number { color: #1a365d; font-weight: bold; font-size: 0.9em; margin-bottom: 10px; }
         .question-text { font-size: 1.2em; color: #333; margin-bottom: 25px; font-weight: 500; line-height: 1.5; }
         
         .scale-options { display: flex; justify-content: space-between; align-items: flex-end; gap: 2px; flex-wrap: nowrap; height: 140px; position: relative; border-radius: 8px; padding: 5px; cursor: pointer; user-select: none; }
         .scale-option { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; border: 2px solid transparent; border-radius: 6px; transition: all 0.15s ease; position: relative; z-index: 1; }
-        .scale-option:nth-child(1) { height: 50px; background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%); }
-        .scale-option:nth-child(2) { height: 70px; background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%); }
-        .scale-option:nth-child(3) { height: 90px; background: linear-gradient(135deg, #ced4da 0%, #adb5bd 100%); }
-        .scale-option:nth-child(4) { height: 110px; background: linear-gradient(135deg, #d67059 0%, #c9513f 100%); }
-        .scale-option:nth-child(5) { height: 130px; background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); }
+        .scale-option:nth-child(1) { height: 50px; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); }
+        .scale-option:nth-child(2) { height: 70px; background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%); }
+        .scale-option:nth-child(3) { height: 90px; background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%); }
+        .scale-option:nth-child(4) { height: 110px; background: linear-gradient(135deg, #334155 0%, #1e293b 100%); }
+        .scale-option:nth-child(5) { height: 130px; background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); }
         .scale-option span { font-size: 1.3em; font-weight: bold; margin-bottom: 5px; }
         .scale-option:nth-child(1) span, .scale-option:nth-child(2) span, .scale-option:nth-child(3) span { color: #333; }
         .scale-option:nth-child(4) span, .scale-option:nth-child(5) span { color: white; }
         .scale-option small { font-size: 0.75em; text-align: center; }
         .scale-option:nth-child(1) small, .scale-option:nth-child(2) small, .scale-option:nth-child(3) small { color: #666; }
         .scale-option:nth-child(4) small, .scale-option:nth-child(5) small { color: rgba(255,255,255,0.9); }
-        .scale-option:hover { transform: scale(1.05); border-color: #a93226; }
-        .scale-option.active, .scale-option.selected { border-color: #7a241b; box-shadow: 0 2px 8px rgba(169, 50, 38, 0.4); }
+        .scale-option:hover { transform: scale(1.05); border-color: #1a365d; }
+        .scale-option.active, .scale-option.selected { border-color: #0f1f3d; box-shadow: 0 2px 8px rgba(26, 54, 93, 0.4); }
         
-        .insight-card { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 4px solid #a93226; padding: 20px; margin: 20px 0; border-radius: 10px; animation: slideIn 0.4s ease; }
+        .insight-card { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 4px solid #1a365d; padding: 20px; margin: 20px 0; border-radius: 10px; animation: slideIn 0.4s ease; }
         .insight-icon { font-size: 2rem; margin-bottom: 10px; }
-        .insight-title { color: #a93226; font-size: 1.1em; font-weight: bold; margin-bottom: 12px; }
+        .insight-title { color: #1a365d; font-size: 1.1em; font-weight: bold; margin-bottom: 12px; }
         .insight-content { color: #555; line-height: 1.7; margin-bottom: 12px; }
-        .insight-quote { font-style: italic; color: #666; font-size: 0.95em; padding: 12px; background: rgba(255,255,255,0.7); border-radius: 6px; border-left: 3px solid #a93226; }
+        .insight-quote { font-style: italic; color: #666; font-size: 0.95em; padding: 12px; background: rgba(255,255,255,0.7); border-radius: 6px; border-left: 3px solid #1a365d; }
         @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         
         .nav-buttons { display: flex; gap: 15px; justify-content: space-between; margin-top: 25px; }
         .btn { padding: 12px 30px; border: none; border-radius: 8px; font-size: 1em; cursor: pointer; transition: all 0.2s; font-weight: 600; }
         .btn-secondary { background: #e0e0e0; color: #333; }
         .btn-secondary:hover { background: #d0d0d0; }
-        .btn-primary { background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; }
-        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(169, 50, 38, 0.4); }
+        .btn-primary { background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(26, 54, 93, 0.4); }
         .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
         
         .results-container { display: none; }
         .results-container.active { display: block; animation: fadeIn 0.5s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .overall-score { background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; border-radius: 20px; padding: 40px; text-align: center; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(169, 50, 38, 0.3); }
+        .overall-score { background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; border-radius: 20px; padding: 40px; text-align: center; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(26, 54, 93, 0.3); }
         .score-number { font-size: 4em; font-weight: bold; margin-bottom: 10px; }
         .score-label { font-size: 1.3em; opacity: 0.95; }
         
@@ -75,24 +75,24 @@
         .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 12px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .flip-card-front { background: white; border: 2px solid #e0e0e0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
         .flip-card-back { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); transform: rotateY(180deg); overflow-y: auto; }
-        .flip-card-front h4 { color: #a93226; margin-bottom: 20px; font-size: 1.3em; }
-        .flip-card-front .score { font-size: 3em; color: #a93226; font-weight: bold; margin: 15px 0; }
+        .flip-card-front h4 { color: #1a365d; margin-bottom: 20px; font-size: 1.3em; }
+        .flip-card-front .score { font-size: 3em; color: #1a365d; font-weight: bold; margin: 15px 0; }
         .flip-card-front .score-bar { width: 100%; height: 8px; background: #e0e0e0; border-radius: 10px; overflow: hidden; margin: 20px 0; }
-        .flip-card-front .score-bar-fill { height: 100%; background: linear-gradient(90deg, #a93226, #d64436); transition: width 1s ease; }
+        .flip-card-front .score-bar-fill { height: 100%; background: linear-gradient(90deg, #1a365d, #334155); transition: width 1s ease; }
         .flip-card-front .interpretation { color: #666; font-size: 0.9em; font-weight: 600; margin-top: 10px; }
         .flip-card-front .flip-hint { color: #999; font-size: 0.75em; margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 5px; }
-        .flip-card-back h4 { color: #a93226; margin-bottom: 15px; font-size: 1.2em; border-bottom: 2px solid #a93226; padding-bottom: 10px; }
+        .flip-card-back h4 { color: #1a365d; margin-bottom: 15px; font-size: 1.2em; border-bottom: 2px solid #1a365d; padding-bottom: 10px; }
         .flip-card-back .detail-section { margin-bottom: 20px; }
         .flip-card-back .detail-section h5 { color: #333; font-size: 0.95em; margin-bottom: 10px; font-weight: 600; }
         .flip-card-back .detail-section p { color: #666; font-size: 0.9em; line-height: 1.6; margin-bottom: 8px; }
         .flip-card-back .action-items { list-style: none; padding-left: 0; }
         .flip-card-back .action-items li { color: #666; font-size: 0.85em; line-height: 1.5; margin-bottom: 8px; padding-left: 20px; position: relative; }
-        .flip-card-back .action-items li:before { content: "→"; position: absolute; left: 0; color: #a93226; font-weight: bold; }
+        .flip-card-back .action-items li:before { content: "→"; position: absolute; left: 0; color: #1a365d; font-weight: bold; }
         
-        .cta-box { background: linear-gradient(135deg, #a93226 0%, #7a241b 100%); color: white; border-radius: 15px; padding: 30px; text-align: center; margin-top: 30px; }
+        .cta-box { background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; border-radius: 15px; padding: 30px; text-align: center; margin-top: 30px; }
         .cta-box h3 { font-size: 1.6em; margin-bottom: 15px; }
         .cta-box p { font-size: 1em; margin-bottom: 20px; opacity: 0.95; }
-        .cta-btn { background: white; color: #a93226; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; display: inline-block; transition: all 0.2s; }
+        .cta-btn { background: white; color: #1a365d; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; display: inline-block; transition: all 0.2s; }
         .cta-btn:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(255,255,255,0.3); }
         
         @media (max-width: 768px) {
@@ -123,7 +123,7 @@
     <!-- Language Switcher -->
     <div style="position:fixed;top:16px;right:16px;z-index:1200;">
         <div style="background:white;border-radius:999px;padding:8px 12px;box-shadow:0 6px 20px rgba(0,0,0,0.15);font-size:0.95em;">
-            <a href="mental-health-assessment.html" style="color:#a93226;text-decoration:none;font-weight:700;margin-right:10px;">EN</a>
+            <a href="mental-health-assessment.html" style="color:#1a365d;text-decoration:none;font-weight:700;margin-right:10px;">EN</a>
             <a href="mental-health-assessment.de.html" style="color:#333;text-decoration:none;font-weight:700;border-left:1px solid #eee;padding-left:10px;margin-left:10px;">DE</a>
         </div>
     </div>
@@ -136,13 +136,13 @@
             </div>
 
             <!-- Intro Section (shows before Q1) -->
-            <div id="introSection" style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #a93226;">
+            <div id="introSection" style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #1a365d;">
                 <h3 style="color: #333; margin-bottom: 15px;">🏛️ Stoic Resilience Meets Modern Psychology</h3>
                 <p style="color: #666; line-height: 1.7; margin-bottom: 15px;">
                     <strong>2,000 years ago</strong>, Marcus Aurelius used journaling to manage the stress of ruling an empire. <strong>Today</strong>, neuroscience confirms what the Stoics knew: <em>our thoughts shape our reality</em>.
                 </p>
                 
-                <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #a93226;">
+                <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #1a365d;">
                     <p style="font-style: italic; color: #555; margin-bottom: 10px;">
                         "The happiness of your life depends upon the quality of your thoughts."
                     </p>
