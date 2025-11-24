@@ -176,7 +176,133 @@
             display: none;
         }
 
-        /* Scenario styles - will be added in next batch */
+        /* Scenario styles */
+        .scenario {
+            background: rgba(17, 24, 39, 0.4);
+            border-left: 4px solid #6b7280;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .scenario-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .scenario-number {
+            font-weight: 600;
+            color: #9ca3af;
+            font-size: 0.9em;
+        }
+
+        .scenario-badge {
+            background: rgba(107, 114, 128, 0.2);
+            color: #d1d5db;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            border: 1px solid rgba(107, 114, 128, 0.3);
+        }
+
+        .scenario h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .scenario-text {
+            color: #d1d5db;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            margin-top: 20px;
+        }
+
+        .option {
+            background: rgba(31, 41, 55, 0.6);
+            border: 2px solid rgba(107, 114, 128, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 12px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            border-color: rgba(156, 163, 175, 0.5);
+            background: rgba(31, 41, 55, 0.8);
+        }
+
+        .option.selected {
+            border-color: #6b7280;
+            background: rgba(107, 114, 128, 0.2);
+        }
+
+        .option-label {
+            font-weight: 600;
+            color: #9ca3af;
+            margin-right: 10px;
+        }
+
+        .option-text {
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .nav-button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .progress-bar {
+            background: rgba(17, 24, 39, 0.6);
+            height: 8px;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #6b7280 0%, #374151 100%);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
     </style>
 </head>
 <body>
@@ -226,7 +352,116 @@
 
         <!-- Assessment screen will be added in next batch -->
         <div id="assessmentScreen" class="hidden">
-            <!-- Scenarios will be added here -->
+            <div class="header">
+                <div class="belt-icon">🥋⬛</div>
+                <h1>Black Belt Assessment</h1>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">Question 1 of 15</div>
+
+            <!-- Scenario 1 -->
+            <div class="scenario" id="scenario1">
+                <div class="scenario-header">
+                    <span class="scenario-number">SCENARIO 1 OF 15</span>
+                    <span class="scenario-badge">Absence of Trust</span>
+                </div>
+                <h3>The Silent Standoff</h3>
+                <div class="scenario-text">
+                    Your leadership team has been working together for 18 months. Meetings are polite and professional. People share updates but rarely ask each other for help. When you ask team members privately what they think of each other, you get carefully diplomatic answers. Last week, two leaders had a project conflict—instead of talking to each other, they both came to you separately to "get your perspective."
+                    <br><br>
+                    <strong>What is the ROOT dysfunction here?</strong>
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(1, 'A')">
+                        <span class="option-label">A.</span>
+                        <span class="option-text">Fear of Conflict - They need conflict training to address issues directly</span>
+                    </div>
+                    <div class="option" onclick="selectOption(1, 'B')">
+                        <span class="option-label">B.</span>
+                        <span class="option-text">Absence of Trust - Without vulnerability-based trust, they can't have productive conflict</span>
+                    </div>
+                    <div class="option" onclick="selectOption(1, 'C')">
+                        <span class="option-label">C.</span>
+                        <span class="option-text">Avoidance of Accountability - They should be holding each other accountable for direct communication</span>
+                    </div>
+                    <div class="option" onclick="selectOption(1, 'D')">
+                        <span class="option-label">D.</span>
+                        <span class="option-text">Lack of Commitment - They need clearer decision-making processes</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scenario 2 -->
+            <div class="scenario hidden" id="scenario2">
+                <div class="scenario-header">
+                    <span class="scenario-number">SCENARIO 2 OF 15</span>
+                    <span class="scenario-badge">Fear of Conflict</span>
+                </div>
+                <h3>The Quick Agreement</h3>
+                <div class="scenario-text">
+                    Your team has strong trust—people are vulnerable, admit mistakes, and ask for help freely. But in strategy meetings, when you present a major decision, everyone nods along. You explicitly ask "What concerns do you have?" and get surface-level questions. The meeting ends with apparent agreement. Then, over the next week, you hear through the grapevine that several leaders have serious reservations they never voiced.
+                    <br><br>
+                    <strong>What's the core issue?</strong>
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(2, 'A')">
+                        <span class="option-label">A.</span>
+                        <span class="option-text">Lack of Commitment - They're not truly bought in, so they're not speaking up</span>
+                    </div>
+                    <div class="option" onclick="selectOption(2, 'B')">
+                        <span class="option-label">B.</span>
+                        <span class="option-text">Absence of Trust - Despite appearances, they still don't feel safe being honest</span>
+                    </div>
+                    <div class="option" onclick="selectOption(2, 'C')">
+                        <span class="option-label">C.</span>
+                        <span class="option-text">Fear of Conflict - They trust you but haven't learned to engage in productive ideological debate</span>
+                    </div>
+                    <div class="option" onclick="selectOption(2, 'D')">
+                        <span class="option-label">D.</span>
+                        <span class="option-text">Avoidance of Accountability - They should hold each other accountable for voicing concerns in the moment</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scenario 3 -->
+            <div class="scenario hidden" id="scenario3">
+                <div class="scenario-header">
+                    <span class="scenario-number">SCENARIO 3 OF 15</span>
+                    <span class="scenario-badge">Lack of Commitment</span>
+                </div>
+                <h3>The Endless Debate</h3>
+                <div class="scenario-text">
+                    Your team has excellent trust and healthy conflict. Meetings are passionate—people challenge ideas freely and debate vigorously. The problem: debates go in circles. You discuss the same strategic questions meeting after meeting. Even when you think you've reached a decision, someone reopens the discussion two weeks later. Leaders leave meetings energized by the debate but unclear about what was actually decided.
+                    <br><br>
+                    <strong>What dysfunction is present?</strong>
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(3, 'A')">
+                        <span class="option-label">A.</span>
+                        <span class="option-text">Fear of Conflict - They're actually avoiding making hard choices by staying in debate mode</span>
+                    </div>
+                    <div class="option" onclick="selectOption(3, 'B')">
+                        <span class="option-label">B.</span>
+                        <span class="option-text">Avoidance of Accountability - No one is holding the team accountable to decisions</span>
+                    </div>
+                    <div class="option" onclick="selectOption(3, 'C')">
+                        <span class="option-label">C.</span>
+                        <span class="option-text">Lack of Commitment - Without clarity and closure, they can't commit even after healthy debate</span>
+                    </div>
+                    <div class="option" onclick="selectOption(3, 'D')">
+                        <span class="option-label">D.</span>
+                        <span class="option-text">Inattention to Results - They enjoy the debate more than they care about actual outcomes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-button" id="prevButton" onclick="previousScenario()" disabled>← Previous</button>
+                <button class="nav-button" id="nextButton" onclick="nextScenario()">Next →</button>
+            </div>
         </div>
 
         <!-- Results screen will be added in final batch -->
@@ -236,6 +471,11 @@
     </div>
 
     <script>
+        // State
+        let currentScenario = 1;
+        let answers = {};
+        const totalScenarios = 15;
+
         // Check if already completed
         window.addEventListener('DOMContentLoaded', function() {
             const completed = localStorage.getItem('blackBeltAssessmentCompleted');
@@ -251,6 +491,71 @@
         function startAssessment() {
             document.getElementById('introScreen').classList.add('hidden');
             document.getElementById('assessmentScreen').classList.remove('hidden');
+            updateProgress();
+        }
+
+        function selectOption(scenario, option) {
+            // Deselect all options for this scenario
+            const options = document.querySelectorAll(`#scenario${scenario} .option`);
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Select clicked option
+            event.currentTarget.classList.add('selected');
+            
+            // Save answer
+            answers[scenario] = option;
+            
+            // Enable next button
+            document.getElementById('nextButton').disabled = false;
+        }
+
+        function nextScenario() {
+            if (!answers[currentScenario]) {
+                alert('Please select an answer before continuing.');
+                return;
+            }
+
+            // Hide current scenario
+            document.getElementById(`scenario${currentScenario}`).classList.add('hidden');
+            
+            currentScenario++;
+            
+            if (currentScenario <= totalScenarios) {
+                // Show next scenario
+                const nextScenarioEl = document.getElementById(`scenario${currentScenario}`);
+                if (nextScenarioEl) {
+                    nextScenarioEl.classList.remove('hidden');
+                }
+                updateProgress();
+                updateNavButtons();
+            } else {
+                // Show results - will be implemented in later batch
+                showResults();
+            }
+        }
+
+        function previousScenario() {
+            document.getElementById(`scenario${currentScenario}`).classList.add('hidden');
+            currentScenario--;
+            document.getElementById(`scenario${currentScenario}`).classList.remove('hidden');
+            updateProgress();
+            updateNavButtons();
+        }
+
+        function updateProgress() {
+            const progress = (currentScenario / totalScenarios) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = `Question ${currentScenario} of ${totalScenarios}`;
+        }
+
+        function updateNavButtons() {
+            document.getElementById('prevButton').disabled = currentScenario === 1;
+            document.getElementById('nextButton').disabled = !answers[currentScenario];
+        }
+
+        function showResults() {
+            // Will be implemented in final batch
+            alert('Assessment complete! Results screen coming in next batch.');
         }
 
         // Scenario logic will be added in next batches
