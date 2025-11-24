@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#1a365d">
+    <title>Leadership Belt Assessment - TAP-IN</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%); 
+            min-height: 100vh; 
+            padding: 20px; 
+            color: #333; 
+        }
+        
+        .container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            background: white; 
+            border-radius: 20px; 
+            padding: 40px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3); 
+        }
+        
+        /* Header */
+        .header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding-bottom: 30px; 
+            border-bottom: 3px solid #f0f0f0; 
+        }
+        
+        .header h1 { 
+            color: #1a365d; 
+            font-size: clamp(2em, 5vw, 2.8em); 
+            margin-bottom: 15px; 
+            font-weight: 600; 
+            letter-spacing: -0.5px; 
+        }
+        
+        .header .subtitle { 
+            color: #64748b; 
+            font-size: 1.15em; 
+            margin-bottom: 15px; 
+            line-height: 1.7; 
+        }
+        
+        .header .belt-icons { 
+            display: flex; 
+            justify-content: center; 
+            gap: 8px; 
+            margin-top: 20px; 
+            font-size: 1.5em; 
+        }
+        
+        /* Progress Bar */
+        .progress-container { 
+            background: #f8fafc; 
+            border-radius: 15px; 
+            padding: 20px; 
+            margin-bottom: 30px; 
+            position: sticky; 
+            top: 20px; 
+            z-index: 100; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+        }
+        
+        .progress-bar { 
+            background: #e2e8f0; 
+            border-radius: 10px; 
+            height: 12px; 
+            overflow: hidden; 
+            margin-bottom: 10px; 
+        }
+        
+        .progress-fill { 
+            background: linear-gradient(90deg, #1a365d 0%, #334155 100%); 
+            height: 100%; 
+            width: 0%; 
+            transition: width 0.3s ease; 
+        }
+        
+        .progress-text { 
+            text-align: center; 
+            color: #64748b; 
+            font-size: 0.95em; 
+            font-variant-numeric: tabular-nums; 
+        }
+        
+        .section-progress { 
+            display: flex; 
+            justify-content: space-around; 
+            margin-top: 15px; 
+            font-size: 0.85em; 
+        }
+        
+        .section-progress .section-item { 
+            text-align: center; 
+            padding: 5px 10px; 
+            border-radius: 5px; 
+            transition: all 0.3s; 
+        }
+        
+        .section-progress .section-item.completed { 
+            background: #dcfce7; 
+            color: #166534; 
+            font-weight: 600; 
+        }
+        
+        .section-progress .section-item.active { 
+            background: #dbeafe; 
+            color: #1e40af; 
+            font-weight: 600; 
+        }
+        
+        /* Intro Screen */
+        .screen { 
+            display: none; 
+        }
+        
+        .screen.active { 
+            display: block; 
+            animation: fadeIn 0.4s ease; 
+        }
+        
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(20px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        
+        .intro-box { 
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); 
+            border-left: 4px solid #1a365d; 
+            padding: 25px; 
+            border-radius: 12px; 
+            margin-bottom: 25px; 
+        }
+        
+        .intro-box h3 { 
+            color: #1a365d; 
+            margin-bottom: 15px; 
+            font-weight: 600; 
+        }
+        
+        .intro-box p { 
+            color: #475569; 
+            line-height: 1.7; 
+            margin-bottom: 10px; 
+        }
+        
+        .intro-box ul { 
+            color: #64748b; 
+            line-height: 1.8; 
+            margin-left: 20px; 
+        }
+        
+        .intro-box.philosophy { 
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); 
+            border-left-color: #d97706; 
+        }
+        
+        .intro-box.philosophy h3 { 
+            color: #92400e; 
+        }
+        
+        .intro-box.philosophy p { 
+            color: #78350f; 
+        }
+        
+        /* Questions */
+        .question-card { 
+            background: #f8fafc; 
+            border-radius: 12px; 
+            padding: 30px; 
+            margin-bottom: 30px; 
+            border-left: 4px solid #1a365d; 
+        }
+        
+        .section-header { 
+            background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); 
+            color: white; 
+            padding: 15px 20px; 
+            border-radius: 10px; 
+            margin-bottom: 20px; 
+            font-weight: 600; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+        }
+        
+        .question-number { 
+            color: #1a365d; 
+            font-weight: 600; 
+            margin-bottom: 15px; 
+            font-size: 0.9em; 
+        }
+        
+        .question-text { 
+            color: #1e293b; 
+            font-size: clamp(1.1em, 2.5vw, 1.3em); 
+            margin-bottom: 25px; 
+            line-height: 1.6; 
+            font-weight: 500; 
+        }
+        
+        .scenario { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            margin-bottom: 25px; 
+            font-style: italic; 
+            color: #475569; 
+            border-left: 3px solid #94a3b8; 
+            line-height: 1.7; 
+        }
+        
+        /* Scale Options (5-point visual scale) */
+        .scale-options { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-end; 
+            gap: 3px; 
+            height: 150px; 
+            position: relative; 
+            padding: 5px; 
+            user-select: none; 
+        }
+        
+        .scale-option { 
+            flex: 1; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-end; 
+            align-items: center; 
+            border: 2px solid transparent; 
+            border-radius: 8px; 
+            transition: all 0.2s ease; 
+            cursor: pointer; 
+            position: relative; 
+        }
+        
+        .scale-option:nth-child(1) { 
+            height: 60px; 
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); 
+        }
+        
+        .scale-option:nth-child(2) { 
+            height: 80px; 
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%); 
+        }
+        
+        .scale-option:nth-child(3) { 
+            height: 100px; 
+            background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%); 
+        }
+        
+        .scale-option:nth-child(4) { 
+            height: 120px; 
+            background: linear-gradient(135deg, #334155 0%, #1e293b 100%); 
+        }
+        
+        .scale-option:nth-child(5) { 
+            height: 140px; 
+            background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); 
+        }
+        
+        .scale-option input[type="radio"] { 
+            display: none; 
+        }
+        
+        .scale-option:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 4px 12px rgba(26, 54, 93, 0.3); 
+        }
+        
+        .scale-option.selected { 
+            border-color: #1a365d; 
+            box-shadow: 0 4px 12px rgba(26, 54, 93, 0.5); 
+            transform: scale(1.05); 
+        }
+        
+        .scale-value { 
+            font-size: 1.5em; 
+            font-weight: bold; 
+            margin-bottom: 5px; 
+            pointer-events: none; 
+        }
+        
+        .scale-option:nth-child(1) .scale-value, 
+        .scale-option:nth-child(2) .scale-value, 
+        .scale-option:nth-child(3) .scale-value { 
+            color: #1e293b; 
+        }
+        
+        .scale-option:nth-child(4) .scale-value, 
+        .scale-option:nth-child(5) .scale-value { 
+            color: white; 
+        }
+        
+        .scale-label { 
+            font-size: 0.75em; 
+            opacity: 0.8; 
+            text-align: center; 
+            padding: 0 5px; 
+            margin-bottom: 8px; 
+            pointer-events: none; 
+            line-height: 1.3; 
+        }
+        
+        .scale-option:nth-child(1) .scale-label, 
+        .scale-option:nth-child(2) .scale-label, 
+        .scale-option:nth-child(3) .scale-label { 
+            color: #475569; 
+        }
+        
+        .scale-option:nth-child(4) .scale-label, 
+        .scale-option:nth-child(5) .scale-label { 
+            color: rgba(255,255,255,0.95); 
+        }
+        
+        .scale-option.selected .scale-label { 
+            opacity: 1; 
+            font-weight: 600; 
+        }
+        
+        .scale-option.selected .scale-value { 
+            transform: scale(1.15); 
+        }
+        
+        /* Buttons */
+        .nav-buttons { 
+            display: flex; 
+            justify-content: space-between; 
+            gap: 15px; 
+            margin-top: 30px; 
+            flex-wrap: wrap; 
+        }
+        
+        .btn { 
+            padding: 15px 35px; 
+            border: none; 
+            border-radius: 12px; 
+            font-size: 1.1em; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.2s; 
+            text-decoration: none; 
+            display: inline-block; 
+            text-align: center; 
+        }
+        
+        .btn-primary { 
+            background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); 
+            color: white; 
+        }
+        
+        .btn-primary:hover:not(:disabled) { 
+            box-shadow: 0 4px 12px rgba(26, 54, 93, 0.4); 
+            transform: translateY(-2px); 
+        }
+        
+        .btn-primary:disabled { 
+            opacity: 0.5; 
+            cursor: not-allowed; 
+        }
+        
+        .btn-secondary { 
+            background: #e2e8f0; 
+            color: #1e293b; 
+        }
+        
+        .btn-secondary:hover { 
+            background: #cbd5e1; 
+        }
+        
+        /* Results Screen */
+        .results-content { 
+            text-align: center; 
+        }
+        
+        .belt-result { 
+            background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); 
+            color: white; 
+            padding: 50px 30px; 
+            border-radius: 20px; 
+            margin-bottom: 30px; 
+            box-shadow: 0 10px 30px rgba(26, 54, 93, 0.4); 
+        }
+        
+        .belt-result .belt-icon { 
+            font-size: 5em; 
+            margin-bottom: 20px; 
+        }
+        
+        .belt-result h2 { 
+            font-size: 2.5em; 
+            margin-bottom: 15px; 
+        }
+        
+        .belt-result .subtitle { 
+            font-size: 1.3em; 
+            opacity: 0.95; 
+            margin-bottom: 20px; 
+        }
+        
+        .belt-result .description { 
+            font-size: 1.1em; 
+            line-height: 1.8; 
+            opacity: 0.9; 
+            max-width: 700px; 
+            margin: 0 auto; 
+        }
+        
+        .dysfunction-scores { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 20px; 
+            margin: 30px 0; 
+        }
+        
+        .dysfunction-card { 
+            background: #f8fafc; 
+            padding: 25px; 
+            border-radius: 12px; 
+            border-left: 4px solid #1a365d; 
+        }
+        
+        .dysfunction-card h4 { 
+            color: #1a365d; 
+            margin-bottom: 15px; 
+            font-size: 1.2em; 
+        }
+        
+        .dysfunction-card .score-display { 
+            font-size: 2em; 
+            font-weight: bold; 
+            color: #1e293b; 
+            margin-bottom: 10px; 
+        }
+        
+        .dysfunction-card .score-bar { 
+            background: #e2e8f0; 
+            height: 10px; 
+            border-radius: 5px; 
+            overflow: hidden; 
+            margin-bottom: 10px; 
+        }
+        
+        .dysfunction-card .score-bar-fill { 
+            background: linear-gradient(90deg, #1a365d 0%, #334155 100%); 
+            height: 100%; 
+            transition: width 1s ease; 
+        }
+        
+        .dysfunction-card .level { 
+            color: #64748b; 
+            font-weight: 600; 
+            font-size: 0.9em; 
+        }
+        
+        .next-steps { 
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); 
+            padding: 30px; 
+            border-radius: 15px; 
+            margin: 30px 0; 
+            text-align: left; 
+        }
+        
+        .next-steps h3 { 
+            color: #1a365d; 
+            margin-bottom: 20px; 
+            font-size: 1.6em; 
+        }
+        
+        .next-steps ul { 
+            color: #475569; 
+            line-height: 2; 
+            margin-left: 20px; 
+        }
+        
+        .xp-earned { 
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%); 
+            color: white; 
+            padding: 25px; 
+            border-radius: 12px; 
+            text-align: center; 
+            margin: 20px 0; 
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); 
+        }
+        
+        .xp-earned .xp-amount { 
+            font-size: 3em; 
+            font-weight: bold; 
+            margin: 10px 0; 
+        }
+        
+        @media (max-width: 768px) { 
+            .container { 
+                padding: 25px 20px; 
+            } 
+            .scale-options { 
+                gap: 2px; 
+            } 
+            .nav-buttons { 
+                flex-direction: column; 
+            } 
+            .btn { 
+                width: 100%; 
+            } 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🥋 Leadership Belt Assessment</h1>
+            <p class="subtitle">Discover your starting point on the journey from dysfunction to high-performance</p>
+            <div class="belt-icons">⚪ 🔵 🟣 🟤 ⚫</div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">Question 0 of 40</div>
+            <div class="section-progress" id="sectionProgress">
+                <div class="section-item">⚪ Trust</div>
+                <div class="section-item">🔵 Conflict</div>
+                <div class="section-item">🟣 Commitment</div>
+                <div class="section-item">🟤 Accountability</div>
+                <div class="section-item">⚫ Results</div>
+            </div>
+        </div>
+
+        <!-- Intro Screen -->
+        <div class="screen active" id="screen-intro">
+            <div class="intro-box">
+                <h3>📍 Why This Assessment?</h3>
+                <p>Before you start training, you need to know where you are. This assessment maps your current relationship with the 5 dysfunctions that kill team performance:</p>
+                <ul>
+                    <li><strong>White Belt (Trust):</strong> Do you build vulnerability-based trust?</li>
+                    <li><strong>Blue Belt (Conflict):</strong> Can you engage in productive conflict?</li>
+                    <li><strong>Purple Belt (Commitment):</strong> Do you achieve real buy-in?</li>
+                    <li><strong>Brown Belt (Accountability):</strong> Can you hold yourself and others accountable?</li>
+                    <li><strong>Black Belt (Results):</strong> Do you prioritize team results over personal ego?</li>
+                </ul>
+            </div>
+
+            <div class="intro-box philosophy">
+                <h3>🥋 The Belt Philosophy</h3>
+                <p><strong>"A black belt is just a white belt who never gave up."</strong></p>
+                <p>In Brazilian Jiu-Jitsu, earning a belt takes years of consistent practice. You don't rush through techniques—you master fundamentals before advancing. The same applies here.</p>
+                <p>This isn't about speed. It's about mastery. Your starting belt doesn't define you—it shows you where to begin training.</p>
+            </div>
+
+            <div class="intro-box">
+                <h3>⏱️ What to Expect</h3>
+                <p><strong>40 questions across 5 sections</strong> (8 questions per dysfunction)</p>
+                <p>This will take 12-15 minutes. Be honest—not aspirational. Choose what you <em>actually do</em>, not what you think you should do.</p>
+                <p><strong>Progressive XP unlock:</strong> Complete each section to earn XP and unlock belt levels as you go.</p>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn-primary" onclick="startAssessment()">Begin Assessment →</button>
+            </div>
+        </div>
+
+        <!-- Question Screen -->
+        <div class="screen" id="screen-questions">
+            <div class="section-header" id="sectionHeader">
+                <span id="sectionIcon"></span>
+                <span id="sectionTitle"></span>
+            </div>
+            
+            <div class="question-card">
+                <div class="question-number" id="questionNumber"></div>
+                <div class="question-text" id="questionText"></div>
+                <div class="scale-options" id="scaleOptions">
+                    <!-- Scale will be generated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn-secondary" onclick="previousQuestion()" id="prevBtn">← Previous</button>
+                <button class="btn-primary" onclick="nextQuestion()" id="nextBtn" disabled>Next →</button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div class="screen" id="screen-results">
+            <div class="results-content">
+                <div class="belt-result">
+                    <div class="belt-icon" id="resultBeltIcon">⚪</div>
+                    <h2 id="resultBeltName">White Belt</h2>
+                    <div class="subtitle" id="resultSubtitle">Start Here</div>
+                    <div class="description" id="resultDescription"></div>
+                </div>
+
+                <div class="xp-earned">
+                    <div>🎯 Assessment Complete!</div>
+                    <div class="xp-amount">+500 XP</div>
+                    <div>First belts unlocked</div>
+                </div>
+
+                <h3 style="color: #1a365d; margin: 40px 0 20px; font-size: 1.8em;">Your Dysfunction Scores</h3>
+                <div class="dysfunction-scores" id="dysfunctionScores"></div>
+
+                <div class="next-steps">
+                    <h3>🎯 Your Training Path</h3>
+                    <div id="trainingPath"></div>
+                </div>
+
+                <div class="nav-buttons">
+                    <a href="index.html" class="btn-primary">Start Training →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 40 Questions - 8 per dysfunction
+        const questions = [
+            // WHITE BELT - TRUST (8 questions)
+            { id: 1, section: 'trust', text: 'When you make a mistake at work, how do you typically respond?', scale: ['Hide it and hope no one notices', 'Mention it only if asked', 'Share it with close colleagues', 'Openly admit it to your team', 'Proactively own it and discuss what you learned'] },
+            { id: 2, section: 'trust', text: 'How comfortable are you sharing personal challenges (outside of work) with your team?', scale: ['Never share personal stuff', 'Very rarely, only major events', 'Occasionally with close colleagues', 'Regularly with most of the team', 'Openly share when relevant'] },
+            { id: 3, section: 'trust', text: 'When a teammate asks for help, what goes through your mind first?', scale: ['Worry they\'ll think I\'m incompetent', 'Check if I have time to help', 'Consider if helping helps me', 'Happy to support if I can', 'Immediately willing to help'] },
+            { id: 4, section: 'trust', text: 'How often do you ask your team for help when you\'re stuck?', scale: ['Almost never - figure it out alone', 'Rarely, only when desperate', 'Sometimes, with hesitation', 'Often, when I genuinely need it', 'Regularly and without shame'] },
+            { id: 5, section: 'trust', text: 'When someone on your team admits a mistake, how do you react?', scale: ['Judge them internally', 'Acknowledge but move on quickly', 'Appreciate their honesty privately', 'Thank them for transparency', 'Celebrate their vulnerability openly'] },
+            { id: 6, section: 'trust', text: 'How much do you know about your teammates\' lives outside of work?', scale: ['Almost nothing', 'Basic facts (kids, hobbies)', 'Some personal details', 'Good understanding of their lives', 'Deep knowledge of what matters to them'] },
+            { id: 7, section: 'trust', text: 'When you disagree with someone, do you assume positive intent?', scale: ['Usually assume they\'re wrong/political', 'Skeptical of their motives', 'Neutral - depends on the person', 'Generally assume good intent', 'Always default to positive intent'] },
+            { id: 8, section: 'trust', text: 'How vulnerable are you in team meetings about what you don\'t know?', scale: ['Never admit gaps', 'Rarely acknowledge limits', 'Sometimes admit uncertainties', 'Often share what I don\'t know', 'Freely admit when I\'m learning'] },
+
+            // BLUE BELT - CONFLICT (8 questions)
+            { id: 9, section: 'conflict', text: 'When you disagree with someone in a meeting, what do you do?', scale: ['Stay silent to keep the peace', 'Hint at disagreement indirectly', 'Share concerns privately after', 'Respectfully voice disagreement', 'Directly debate the idea in the moment'] },
+            { id: 10, section: 'conflict', text: 'How do you feel during heated debates about ideas?', scale: ['Extremely uncomfortable, want to leave', 'Anxious and stressed', 'Tolerate it but don\'t enjoy it', 'Engaged, sometimes energized', 'Fully energized and productive'] },
+            { id: 11, section: 'conflict', text: 'When someone challenges your idea, what\'s your first reaction?', scale: ['Feel personally attacked', 'Get defensive internally', 'Feel uncomfortable but listen', 'Welcome the challenge', 'Actively invite criticism'] },
+            { id: 12, section: 'conflict', text: 'How often do you bring up contentious topics your team is avoiding?', scale: ['Never - too risky', 'Rarely, only if critical', 'Sometimes, with hesitation', 'Often when necessary', 'Regularly and directly'] },
+            { id: 13, section: 'conflict', text: 'After a difficult conversation, how do you typically feel?', scale: ['Drained and regretful', 'Relieved it\'s over', 'Neutral, depends on outcome', 'Satisfied we talked it through', 'Energized by the clarity'] },
+            { id: 14, section: 'conflict', text: 'When your team is "agreeing" too quickly, what do you do?', scale: ['Accept it and move on', 'Internally wonder if it\'s real', 'Occasionally question it', 'Often probe for real agreement', 'Always challenge artificial harmony'] },
+            { id: 15, section: 'conflict', text: 'How comfortable are you with passionate disagreement in meetings?', scale: ['Very uncomfortable, it feels toxic', 'Prefer calm, polite discussions', 'Can tolerate it if needed', 'Comfortable with healthy debate', 'Thrive in passionate disagreement'] },
+            { id: 16, section: 'conflict', text: 'When team members avoid conflict, what do you do?', scale: ['Go along with it', 'Notice but don\'t address it', 'Sometimes encourage debate', 'Often push for real dialogue', 'Always call out artificial harmony'] },
+
+            // PURPLE BELT - COMMITMENT (8 questions)
+            { id: 17, section: 'commitment', text: 'After a decision you disagreed with is made, how do you respond?', scale: ['Passively resist or ignore it', 'Comply minimally', 'Follow it but remain skeptical', 'Commit even if not ideal', 'Fully commit and support publicly'] },
+            { id: 18, section: 'commitment', text: 'How often does your team leave meetings without clear decisions?', scale: ['Almost always unclear', 'Often vague or tentative', 'Sometimes clear', 'Usually clear', 'Always crystal clear'] },
+            { id: 19, section: 'commitment', text: 'When you\'re not 100% sure about a decision, do you still commit?', scale: ['No, I wait for certainty', 'Hesitate and delay', 'Reluctantly move forward', 'Commit despite uncertainty', 'Embrace "disagree and commit"'] },
+            { id: 20, section: 'commitment', text: 'How clear are you about your team\'s top priorities?', scale: ['Have no idea', 'Vaguely aware', 'Somewhat clear', 'Very clear', 'Absolute clarity on top 3'] },
+            { id: 21, section: 'commitment', text: 'When a decision is made, how quickly does your team act?', scale: ['Days/weeks of delay', 'Slow to start', 'Moderate pace', 'Quick action', 'Immediate execution'] },
+            { id: 22, section: 'commitment', text: 'How often do you revisit/second-guess team decisions after they\'re made?', scale: ['Constantly rehash decisions', 'Often question them', 'Sometimes reconsider', 'Rarely revisit', 'Never unless new data emerges'] },
+            { id: 23, section: 'commitment', text: 'When explaining a team decision to others, how do you frame it?', scale: ['"They" decided this', 'Ambiguous about ownership', 'Neutral explanation', 'Support it as "ours"', 'Fully own it as "we" decided'] },
+            { id: 24, section: 'commitment', text: 'How comfortable are you making decisions without perfect information?', scale: ['Need 100% certainty', 'Very uncomfortable with ambiguity', 'Prefer more data', 'Comfortable with 70% certainty', 'Thrive in ambiguity'] },
+
+            // BROWN BELT - ACCOUNTABILITY (8 questions)
+            { id: 25, section: 'accountability', text: 'When a peer misses a commitment, what do you do?', scale: ['Say nothing, not my place', 'Complain to others privately', 'Hint at it indirectly', 'Address it respectfully 1-on-1', 'Call it out directly and immediately'] },
+            { id: 26, section: 'accountability', text: 'How do you hold yourself accountable for commitments?', scale: ['Often miss deadlines', 'Sometimes follow through', 'Usually deliver', 'Consistently hit commitments', 'Religiously track and deliver'] },
+            { id: 27, section: 'accountability', text: 'When you miss a deadline, how do you respond?', scale: ['Hope no one notices', 'Make excuses', 'Apologize vaguely', 'Acknowledge it and reschedule', 'Proactively own it with new plan'] },
+            { id: 28, section: 'accountability', text: 'How comfortable are you calling out a high-performer\'s bad behavior?', scale: ['Never risk it', 'Very uncomfortable', 'Hesitant but might', 'Uncomfortable but will do it', 'Comfortable addressing anyone'] },
+            { id: 29, section: 'accountability', text: 'When giving tough feedback, how direct are you?', scale: ['Hint or use "sandwich" method', 'Very indirect and soft', 'Somewhat direct', 'Direct with empathy', 'Radically direct and kind'] },
+            { id: 30, section: 'accountability', text: 'How often do you let small issues slide to "keep the peace"?', scale: ['Constantly avoid small stuff', 'Often let things go', 'Sometimes address them', 'Usually address issues', 'Always address what matters'] },
+            { id: 31, section: 'accountability', text: 'When someone receives critical feedback, how do you react?', scale: ['Uncomfortable witnessing it', 'Sympathize with person', 'Stay neutral', 'Support the feedback', 'Reinforce the feedback'] },
+            { id: 32, section: 'accountability', text: 'How quickly do you address performance issues?', scale: ['Avoid until crisis', 'Wait weeks/months', 'Eventually address them', 'Address within days', 'Address immediately'] },
+
+            // BLACK BELT - RESULTS (8 questions)
+            { id: 33, section: 'results', text: 'When your personal goals conflict with team goals, what do you prioritize?', scale: ['Always my goals first', 'Usually personal goals', 'Depends on the situation', 'Usually team goals', 'Always team goals'] },
+            { id: 34, section: 'results', text: 'How do you measure success?', scale: ['My individual metrics', 'Mostly personal achievement', 'Mix of personal and team', 'Mostly team outcomes', 'Purely team results'] },
+            { id: 35, section: 'results', text: 'When the team succeeds but you didn\'t contribute much, how do you feel?', scale: ['Disappointed I wasn\'t central', 'Slightly left out', 'Neutral about it', 'Happy for the team', 'Genuinely celebrate team win'] },
+            { id: 36, section: 'results', text: 'How willing are you to sacrifice your project for a higher team priority?', scale: ['Very resistant', 'Reluctant but compliant', 'Will do it if necessary', 'Willing to shift', 'Immediately reallocate'] },
+            { id: 37, section: 'results', text: 'When discussing success, do you use "I" or "we"?', scale: ['Almost always "I"', 'Mostly "I"', 'Mix of both', 'Mostly "we"', 'Always "we"'] },
+            { id: 38, section: 'results', text: 'How do you react when a teammate gets recognition you feel you deserved?', scale: ['Resentful and bitter', 'Disappointed internally', 'Neutral acceptance', 'Happy for them', 'Genuinely celebrate their win'] },
+            { id: 39, section: 'results', text: 'What\'s your team\'s most important metric or goal?', scale: ['No idea', 'Vaguely aware', 'Know it but not focused on it', 'Clear and track it', 'Obsessed with it daily'] },
+            { id: 40, section: 'results', text: 'When you have to choose between looking good and the team winning, which do you pick?', scale: ['Looking good', 'Usually personal image', 'Depends on stakes', 'Usually team winning', 'Always team winning'] }
+        ];
+
+        let currentQuestion = 0;
+        let answers = {};
+        let sectionScores = { trust: 0, conflict: 0, commitment: 0, accountability: 0, results: 0 };
+
+        function startAssessment() {
+            currentQuestion = 0;
+            answers = {};
+            showQuestion();
+            document.getElementById('screen-intro').classList.remove('active');
+            document.getElementById('screen-questions').classList.add('active');
+        }
+
+        function showQuestion() {
+            const q = questions[currentQuestion];
+            
+            // Update section header
+            const sectionIcons = { trust: '⚪', conflict: '🔵', commitment: '🟣', accountability: '🟤', results: '⚫' };
+            const sectionNames = { trust: 'Trust', conflict: 'Conflict', commitment: 'Commitment', accountability: 'Accountability', results: 'Results' };
+            
+            document.getElementById('sectionIcon').textContent = sectionIcons[q.section];
+            document.getElementById('sectionTitle').textContent = `${sectionNames[q.section]} - ${q.section.charAt(0).toUpperCase() + q.section.slice(1)}`;
+            
+            // Update section progress indicators
+            updateSectionProgress();
+            
+            // Update question
+            document.getElementById('questionNumber').textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+            document.getElementById('questionText').textContent = q.text;
+            
+            // Create scale
+            const scaleContainer = document.getElementById('scaleOptions');
+            scaleContainer.innerHTML = '';
+            
+            q.scale.forEach((label, index) => {
+                const value = index + 1;
+                const option = document.createElement('div');
+                option.className = 'scale-option';
+                if (answers[q.id] === value) {
+                    option.classList.add('selected');
+                }
+                
+                option.innerHTML = `
+                    <input type="radio" name="q${q.id}" value="${value}" id="q${q.id}_${value}">
+                    <div class="scale-value">${value}</div>
+                    <div class="scale-label">${label}</div>
+                `;
+                
+                option.onclick = () => selectOption(q.id, value);
+                scaleContainer.appendChild(option);
+            });
+            
+            // Update buttons
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            document.getElementById('nextBtn').disabled = !answers[q.id];
+            document.getElementById('nextBtn').textContent = currentQuestion === questions.length - 1 ? 'Finish →' : 'Next →';
+            
+            updateProgress();
+        }
+
+        function selectOption(questionId, value) {
+            answers[questionId] = value;
+            
+            // Update UI
+            document.querySelectorAll('.scale-option').forEach(opt => opt.classList.remove('selected'));
+            event.target.closest('.scale-option').classList.add('selected');
+            
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+        }
+
+        function updateSectionProgress() {
+            const sections = ['trust', 'conflict', 'commitment', 'accountability', 'results'];
+            const currentSection = questions[currentQuestion].section;
+            const sectionItems = document.querySelectorAll('.section-item');
+            
+            sectionItems.forEach((item, index) => {
+                item.classList.remove('active', 'completed');
+                
+                const section = sections[index];
+                const sectionQuestions = questions.filter(q => q.section === section);
+                const sectionAnswered = sectionQuestions.filter(q => answers[q.id]).length;
+                
+                if (section === currentSection) {
+                    item.classList.add('active');
+                } else if (sectionAnswered === sectionQuestions.length) {
+                    item.classList.add('completed');
+                }
+            });
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                calculateResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        function calculateResults() {
+            // Calculate section scores (average of answers in each section)
+            const sections = ['trust', 'conflict', 'commitment', 'accountability', 'results'];
+            
+            sections.forEach(section => {
+                const sectionQuestions = questions.filter(q => q.section === section);
+                const sectionAnswers = sectionQuestions.map(q => answers[q.id]);
+                const average = sectionAnswers.reduce((a, b) => a + b, 0) / sectionAnswers.length;
+                sectionScores[section] = average;
+            });
+            
+            // Determine starting belt (lowest dysfunction score)
+            const lowestScore = Math.min(...Object.values(sectionScores));
+            let startingBelt = 'white';
+            
+            if (lowestScore >= 4.5) {
+                startingBelt = 'black';
+            } else if (lowestScore >= 4.0) {
+                startingBelt = 'brown';
+            } else if (lowestScore >= 3.5) {
+                startingBelt = 'purple';
+            } else if (lowestScore >= 3.0) {
+                startingBelt = 'blue';
+            } else {
+                startingBelt = 'white';
+            }
+            
+            // Display results
+            displayResults(startingBelt);
+        }
+
+        function displayResults(belt) {
+            const beltData = {
+                white: {
+                    icon: '⚪',
+                    name: 'White Belt - Trust',
+                    subtitle: 'Foundation: Building Vulnerability-Based Trust',
+                    description: 'Your journey begins with trust. Without it, nothing else works. You\'ll learn to be vulnerable, admit mistakes, and build genuine connection with your team. This is where mastery starts.'
+                },
+                blue: {
+                    icon: '🔵',
+                    name: 'Blue Belt - Conflict',
+                    subtitle: 'Engaging in Productive Conflict',
+                    description: 'You have decent trust but struggle with healthy conflict. You\'ll learn to debate ideas passionately, challenge assumptions, and embrace disagreement as a path to better decisions.'
+                },
+                purple: {
+                    icon: '🟣',
+                    name: 'Purple Belt - Commitment',
+                    subtitle: 'Achieving Real Buy-In and Clarity',
+                    description: 'You can handle conflict but lack clear commitment. You\'ll learn to make crisp decisions, achieve genuine buy-in, and move forward with speed and alignment.'
+                },
+                brown: {
+                    icon: '🟤',
+                    name: 'Brown Belt - Accountability',
+                    subtitle: 'Holding Each Other to High Standards',
+                    description: 'You commit well but avoid accountability. You\'ll learn to call out gaps, give direct feedback, and hold yourself and others to the team\'s standards without apology.'
+                },
+                black: {
+                    icon: '⚫',
+                    name: 'Black Belt - Results',
+                    subtitle: 'Collective Results Over Individual Ego',
+                    description: 'You\'re strong across the board but need to refine your focus on collective results. You\'ll master putting team outcomes above personal recognition and driving true team performance.'
+                }
+            };
+            
+            const result = beltData[belt];
+            
+            document.getElementById('resultBeltIcon').textContent = result.icon;
+            document.getElementById('resultBeltName').textContent = result.name;
+            document.getElementById('resultSubtitle').textContent = result.subtitle;
+            document.getElementById('resultDescription').textContent = result.description;
+            
+            // Display dysfunction scores
+            const scoresContainer = document.getElementById('dysfunctionScores');
+            scoresContainer.innerHTML = '';
+            
+            const dysfunctionNames = {
+                trust: '⚪ Trust',
+                conflict: '🔵 Conflict',
+                commitment: '🟣 Commitment',
+                accountability: '🟤 Accountability',
+                results: '⚫ Results'
+            };
+            
+            Object.entries(sectionScores).forEach(([section, score]) => {
+                const percentage = (score / 5) * 100;
+                const level = score >= 4.5 ? 'Mastery' : score >= 4.0 ? 'Strong' : score >= 3.5 ? 'Developing' : score >= 3.0 ? 'Growing' : 'Learning';
+                
+                scoresContainer.innerHTML += `
+                    <div class="dysfunction-card">
+                        <h4>${dysfunctionNames[section]}</h4>
+                        <div class="score-display">${score.toFixed(1)}/5.0</div>
+                        <div class="score-bar">
+                            <div class="score-bar-fill" style="width: ${percentage}%"></div>
+                        </div>
+                        <div class="level">${level}</div>
+                    </div>
+                `;
+            });
+            
+            // Training path
+            const trainingPath = document.getElementById('trainingPath');
+            trainingPath.innerHTML = `
+                <p style="color: #475569; line-height: 1.8; margin-bottom: 15px;">Based on your assessment, here's your recommended training sequence:</p>
+                <ul style="color: #64748b; line-height: 2;">
+                    <li><strong>Start with ${result.name}</strong> - Your foundation needs the most work here</li>
+                    <li>Complete all assessments and modules in this belt</li>
+                    <li>Earn your stripe progressions (4 stripes per belt)</li>
+                    <li>Only after mastery, advance to the next belt</li>
+                    <li>Remember: The goal is mastery, not speed</li>
+                </ul>
+            `;
+            
+            // Save results
+            const resultsData = {
+                timestamp: new Date().toISOString(),
+                startingBelt: belt,
+                sectionScores: sectionScores,
+                answers: answers
+            };
+            localStorage.setItem('beltAssessment', JSON.stringify(resultsData));
+            
+            // Save to global gamification
+            const gamification = JSON.parse(localStorage.getItem('gamification') || '{"xp": 0, "level": 1, "achievements": []}');
+            gamification.xp = (gamification.xp || 0) + 500;
+            gamification.completedBeltAssessment = true;
+            gamification.unlockedBelts = gamification.unlockedBelts || [];
+            if (!gamification.unlockedBelts.includes(belt)) {
+                gamification.unlockedBelts.push(belt);
+            }
+            localStorage.setItem('gamification', JSON.stringify(gamification));
+            
+            // Show results screen
+            document.getElementById('screen-questions').classList.remove('active');
+            document.getElementById('screen-results').classList.add('active');
+        }
+    </script>
+</body>
+</html>
