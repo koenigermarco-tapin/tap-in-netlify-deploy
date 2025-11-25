@@ -7,223 +7,1377 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>Purple Belt Stripe 2: Healthy Conflict | TAP-IN</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --primary-navy: #1a365d; --secondary-navy: #334155; --accent-red: #b91c1c; --accent-purple: #a78bfa; --success-green: #38a169; --warning-orange: #dd6b20; --card-bg: #ffffff; --border-light: #e2e8f0; --text-dark: #1e293b; --text-muted: #64748b; --light-bg: #f8fafc; }
-        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%); min-height: 100vh; padding: 2rem 1rem; line-height: 1.6; }
-        .container { max-width: 800px; margin: 0 auto; }
-        .header { text-align: center; margin-bottom: 2rem; color: white; }
-        .stripe-badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; margin-bottom: 1rem; }
-        .header h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
-        .header p { font-size: 1.1rem; opacity: 0.9; }
-        .progress-container { background: rgba(255,255,255,0.2); border-radius: 10px; padding: 1rem 1.5rem; margin-bottom: 2rem; }
-        .progress-header { display: flex; justify-content: space-between; color: white; font-size: 0.9rem; margin-bottom: 0.5rem; }
-        .progress-bar { background: rgba(255,255,255,0.3); height: 8px; border-radius: 4px; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-red) 0%, #dc2626 100%); border-radius: 4px; transition: width 0.5s ease; }
-        .main-card { background: white; border-radius: 20px; padding: 2.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
-        .section { display: none; }
-        .section.active { display: block; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .section-title { font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 1rem; }
-        .section-subtitle { color: var(--text-muted); margin-bottom: 1.5rem; }
-        .intro-box { background: var(--light-bg); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
-        .intro-box h3 { color: var(--primary-navy); font-size: 1.1rem; margin-bottom: 0.75rem; }
-        .intro-box p { color: var(--text-dark); font-size: 0.95rem; margin-bottom: 0.75rem; line-height: 1.7; }
-        .intro-box p:last-child { margin-bottom: 0; }
-        .intro-box strong { color: var(--primary-navy); }
-        .intro-box.philosophy { background: linear-gradient(135deg, var(--light-bg) 0%, #e2e8f0 100%); border-left: 6px solid var(--primary-navy); }
-        .intro-box.philosophy em { color: var(--accent-purple); }
-        .intro-box.research { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%); border: none; }
-        .intro-box.research h3 { color: #fff; }
-        .intro-box.research p { color: #e2e8f0; }
-        .intro-box.research strong { color: var(--accent-purple); }
-        .intro-box.warning { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border-left: 6px solid var(--warning-orange); }
-        .intro-box.warning h3 { color: #92400e; }
-        .intro-box.warning p { color: #78350f; }
-        .contrast-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-        .contrast-card { border-radius: 12px; padding: 1.25rem; }
-        .contrast-card.bad { background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border: 2px solid #fca5a5; }
-        .contrast-card.good { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid #86efac; }
-        .contrast-card h4 { font-size: 1rem; margin-bottom: 0.5rem; }
-        .contrast-card.bad h4 { color: #991b1b; }
-        .contrast-card.good h4 { color: #166534; }
-        .contrast-card p { font-size: 0.9rem; }
-        .contrast-card.bad p { color: #7f1d1d; }
-        .contrast-card.good p { color: #14532d; }
-        .practice-card { background: #f0fdf4; border: 2px solid #86efac; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
-        .practice-card h4 { color: #166534; font-size: 1rem; margin-bottom: 0.5rem; }
-        .practice-card p { color: #14532d; font-size: 0.9rem; }
-        .reflection-box { background: #fffbeb; border: 2px solid #fcd34d; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
-        .reflection-box h3 { color: #92400e; font-size: 1rem; margin-bottom: 0.75rem; }
-        .reflection-box p { color: #78350f; font-size: 0.95rem; margin-bottom: 1rem; }
-        .reflection-textarea { width: 100%; min-height: 100px; padding: 1rem; border: 1px solid #fcd34d; border-radius: 8px; font-family: inherit; font-size: 0.95rem; resize: vertical; }
-        .reflection-textarea:focus { outline: none; border-color: #f59e0b; }
-        .nav-buttons { display: flex; justify-content: space-between; margin-top: 2rem; gap: 1rem; }
-        .btn { padding: 1rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; border: none; text-decoration: none; }
-        .btn-secondary { background: #edf2f7; color: var(--text-dark); }
-        .btn-primary { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%); color: white; }
-        .btn-primary:hover { transform: translateY(-2px); }
-        .btn-success { background: linear-gradient(135deg, var(--success-green) 0%, #2f855a 100%); color: white; }
-        .stripe-earned { background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%); border-radius: 16px; padding: 2rem; color: white; text-align: center; margin-bottom: 1.5rem; }
-        .stripe-earned h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .stripe-visual { font-size: 3rem; margin: 1rem 0; }
-        .quote-block { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-radius: 12px; padding: 1.5rem; text-align: center; margin: 1.5rem 0; }
-        .quote-block .quote { font-size: 1.1rem; color: white; font-style: italic; margin-bottom: 0.75rem; }
-        .quote-block .author { color: var(--accent-purple); font-weight: 600; font-size: 0.9rem; }
-        @media (max-width: 768px) { body { padding: 1rem; } .main-card { padding: 1.5rem; } .nav-buttons { flex-direction: column; } .btn { width: 100%; text-align: center; } .contrast-grid { grid-template-columns: 1fr; } }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        /* Header Section */
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .header h1 {
+            color: #581c87;
+            font-size: clamp(2em, 5vw, 2.8em);
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .header .subtitle {
+            color: #64748b;
+            font-size: clamp(1.1em, 2.5vw, 1.3em);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        /* Introduction Section */
+        .intro-section {
+            background: #f8fafc;
+            padding: 35px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #581c87;
+        }
+        
+        .intro-section h3 {
+            color: #1e293b;
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 1.5em;
+        }
+        
+        .intro-section p {
+            color: #64748b;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            font-size: 1.05em;
+        }
+        
+        .intro-section strong {
+            color: #1e293b;
+        }
+        
+        /* Info Cards Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border-top: 4px solid #581c87;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .info-card .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .info-card h4 {
+            color: #581c87;
+            margin-bottom: 10px;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+        
+        .info-card p {
+            color: #64748b;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        /* Quote Box */
+        .quote-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .quote-box .quote {
+            color: white;
+            font-size: 1.2em;
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .quote-box .author {
+            color: #a78bfa;
+            font-weight: 600;
+            font-size: 1em;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        .progress-container.active {
+            display: block;
+        }
+        
+        .progress-text {
+            text-align: center;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+        
+        .progress-bar {
+            background: #e2e8f0;
+            height: 12px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #581c87 0%, #7c3aed 100%);
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+        
+        /* Question Card */
+        .question-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .question-number {
+            color: #a78bfa;
+            font-size: 0.85em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 12px;
+        }
+        
+        .question-text {
+            color: #1e293b;
+            font-size: 1.5em;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+        
+        .question-context {
+            background: #f0f9ff;
+            border-left: 4px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            color: #1e40af;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .option {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: start;
+            gap: 12px;
+        }
+        
+        .option:hover {
+            background: #f1f5f9;
+            border-color: #a78bfa;
+            transform: translateX(4px);
+        }
+        
+        .option.selected {
+            background: #ede9fe;
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+        }
+        
+        .option input[type="radio"] {
+            margin-top: 3px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #7c3aed;
+        }
+        
+        .option-label {
+            color: #334155;
+            font-size: 1.05em;
+            line-height: 1.5;
+            cursor: pointer;
+            flex: 1;
+        }
+        
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 14px 30px;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            flex: 1;
+        }
+        
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #475569;
+        }
+        
+        .btn-secondary:hover:not(:disabled) {
+            background: #cbd5e1;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(88, 28, 135, 0.3);
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* Results Section */
+        .results-container {
+            display: none;
+        }
+        
+        .results-container.active {
+            display: block;
+        }
+        
+        .score-display {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+        
+        .score-circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4);
+        }
+        
+        .score-number {
+            color: white;
+            font-size: 4em;
+            font-weight: 800;
+        }
+        
+        .score-label {
+            color: #64748b;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        
+        .score-description {
+            color: #1e293b;
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+        
+        .category-scores {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .category-card h3 {
+            color: #581c87;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .category-score {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: #7c3aed;
+            margin-bottom: 10px;
+        }
+        
+        .category-bar {
+            background: #e2e8f0;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .category-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #581c87 0%, #7c3aed 100%);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+        
+        .category-insight {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+        
+        .insights-section {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .insight-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .insight-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        
+        .insight-title {
+            color: #581c87;
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .insight-content {
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .insight-quote {
+            background: #f8fafc;
+            border-left: 4px solid #7c3aed;
+            padding: 15px;
+            border-radius: 8px;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 15px;
+        }
+        
+        .action-plan {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .action-plan h2 {
+            color: #581c87;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        
+        .action-item {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .action-item h4 {
+            color: #065f46;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .action-item p {
+            color: #047857;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .question-card {
+                padding: 30px 20px;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="stripe-badge">🟣 Purple Belt • Stripe 2 of 4</div>
+        <!-- Header -->
+        <div class="header" id="headerSection">
+            <div class="badge">🟣 PURPLE BELT • STRIPE 2 OF 4</div>
             <h1>Healthy Conflict</h1>
-            <p>Fighting About Ideas, Not People</p>
+            <p class="subtitle">The best teams don't avoid conflict—they channel it productively.</p>
         </div>
-        <div class="progress-container">
-            <div class="progress-header"><span>Progress</span><span id="progress-text">0%</span></div>
-            <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+
+        <!-- Introduction Section -->
+        <div class="intro-section" id="introSection">
+            <h3>⚔️ Why Conflict Matters</h3>
+            
+            <p><strong>Conflict is not dysfunction—avoidance is.</strong> The highest-performing teams fight about ideas constantly. They just do it without damaging relationships.</p>
+            
+            <p>Patrick Lencioni's research on team dysfunction identifies "Fear of Conflict" as the second layer of failure. When teams can't debate openly, they settle for artificial harmony—polite meetings followed by hallway complaints.</p>
+            
+            <div class="quote-box">
+                <div class="quote">"If two people in business always agree, one of them is unnecessary."</div>
+                <div class="author">— William Wrigley Jr.</div>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="icon">🎭</div>
+                    <h4>Artificial Harmony</h4>
+                    <p>Smiles in meetings, complaints in Slack. Everyone pretends to agree.</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">⚡</div>
+                    <h4>Productive Tension</h4>
+                    <p>Vigorous debate about ideas, with full respect for people.</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">💎</div>
+                    <h4>Better Decisions</h4>
+                    <p>Conflict surfaces blind spots and strengthens solutions.</p>
+                </div>
+            </div>
+            
+            <p><strong>This assessment measures your team's ability to engage in healthy, productive conflict.</strong> You'll explore psychological safety, debate culture, how disagreements are handled, and whether conflict strengthens or fractures your team.</p>
+            
+            <button class="btn btn-primary" onclick="startAssessment()" style="width: 100%; margin-top: 25px; font-size: 1.1em; padding: 18px;">
+                Begin Assessment →
+            </button>
         </div>
-        <div class="main-card">
-            <!-- Section 1 -->
-            <div class="section active" id="section-1">
-                <h2 class="section-title">⚔️ Conflict Is Not the Problem</h2>
-                <p class="section-subtitle">Avoiding conflict is the problem.</p>
-                <div class="intro-box warning">
-                    <h3>⚠️ The "Harmony" Trap</h3>
-                    <p>Teams that avoid conflict don't actually have harmony—they have <strong>artificial harmony</strong>. People smile in meetings and complain in hallways. Decisions get made that nobody believes in.</p>
-                    <p>Real harmony comes AFTER healthy conflict, not instead of it.</p>
-                </div>
-                <div class="intro-box">
-                    <h3>Why Teams Avoid Conflict</h3>
-                    <p><strong>Fear of damaging relationships.</strong> But here's the paradox: avoiding conflict damages relationships MORE. Unspoken issues fester. Resentment builds. Trust erodes.</p>
-                    <p>The teams that fight well—about ideas—have the strongest bonds.</p>
-                </div>
-                <div class="intro-box philosophy">
-                    <h3>🥋 The BJJ Principle: Sparring Makes You Better</h3>
-                    <p>You don't get better at Jiu-Jitsu by avoiding rolls. You get better by testing yourself against resistance. <strong>Conflict is intellectual sparring.</strong></p>
-                    <p>Just like physical sparring, it requires rules: no cheap shots, respect your partner, and leave it on the mat.</p>
-                    <p><em>"Iron sharpens iron."</em></p>
-                </div>
-                <div class="intro-box research">
-                    <h3>📊 The Research</h3>
-                    <p><strong>Patrick Lencioni</strong> found that fear of conflict is the second dysfunction of teams. It follows directly from absence of trust—and leads directly to lack of commitment.</p>
-                    <p><strong>Teams that engage in productive conflict make decisions 40% faster</strong> because they don't revisit the same issues endlessly.</p>
-                </div>
-                <div class="nav-buttons">
-                    <a href="purple-belt.html" class="btn btn-secondary">← Back to Hub</a>
-                    <button class="btn btn-primary" onclick="nextSection()">Good vs Bad Conflict →</button>
-                </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-text" id="progressText">Question 1 of 37</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
             </div>
-            <!-- Section 2 -->
-            <div class="section" id="section-2">
-                <h2 class="section-title">🔍 Good Conflict vs. Bad Conflict</h2>
-                <p class="section-subtitle">The difference is everything.</p>
-                <div class="contrast-grid">
-                    <div class="contrast-card bad">
-                        <h4>❌ Destructive Conflict</h4>
-                        <p>Personal attacks<br>Hidden agendas<br>Winners and losers<br>Silent treatment after<br>Unresolved issues</p>
-                    </div>
-                    <div class="contrast-card good">
-                        <h4>✅ Productive Conflict</h4>
-                        <p>Attacking ideas, not people<br>Transparent motives<br>Best idea wins<br>Resolution and move on<br>Decisions that stick</p>
-                    </div>
-                </div>
-                <div class="intro-box">
-                    <h3>The "Disagree and Commit" Rule</h3>
-                    <p>Intel and Amazon use this principle: <strong>You're required to voice disagreement during the debate.</strong> But once a decision is made, everyone commits 100%—even those who disagreed.</p>
-                    <p>This works because people were heard. They fought for their position. They lost fairly. Now they can commit.</p>
-                </div>
-                <div class="practice-card">
-                    <h4>The Mining for Conflict Technique</h4>
-                    <p>Great facilitators don't let conflict stay hidden. They actively pull it out: <strong>"I sense some people disagree. What are we not saying?"</strong> or <strong>"Let's hear the strongest argument against this."</strong></p>
-                </div>
-                <div class="intro-box philosophy">
-                    <h3>🥋 Real Talk After Rolling</h3>
-                    <p>After a hard roll, training partners give each other honest feedback: "Your guard retention is weak on the left side." This isn't mean—it's helpful.</p>
-                    <p><strong>Teams need the same culture.</strong> "Your proposal has a gap in the budget assumptions" isn't an attack—it's an improvement.</p>
-                </div>
-                <div class="nav-buttons">
-                    <button class="btn btn-secondary" onclick="prevSection()">← Back</button>
-                    <button class="btn btn-primary" onclick="nextSection()">Practice →</button>
-                </div>
+        </div>
+
+        <!-- Assessment Form -->
+        <div class="question-card hidden" id="assessmentForm">
+            <div id="questionCard"></div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()">← Previous</button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
             </div>
-            <!-- Section 3 -->
-            <div class="section" id="section-3">
-                <h2 class="section-title">✍️ Your Conflict Practice</h2>
-                <p class="section-subtitle">Identify where you're avoiding necessary conflict.</p>
-                <div class="reflection-box">
-                    <h3>📝 The Debate You're Avoiding</h3>
-                    <p>What issue does your team need to fight about—but isn't? What decision keeps getting revisited because it was never truly resolved?</p>
-                    <textarea class="reflection-textarea" id="avoided-debate" placeholder="The issue we keep dancing around is..."></textarea>
+        </div>
+
+        <!-- Results Container -->
+        <div class="results-container" id="resultsContainer">
+            <div class="score-display">
+                <div class="score-circle">
+                    <div class="score-number" id="totalScore">0%</div>
                 </div>
-                <div class="reflection-box">
-                    <h3>📝 What Would You Say?</h3>
-                    <p>If you could voice your real opinion safely, what would you say? Write it here—unfiltered.</p>
-                    <textarea class="reflection-textarea" id="real-opinion" placeholder="What I really think is..."></textarea>
-                </div>
-                <div class="practice-card">
-                    <h4>💡 The Commitment Question</h4>
-                    <p>Before ending any team decision, ask: <strong>"Can everyone commit to this decision even if they disagreed?"</strong> Silence is not commitment. Require explicit verbal buy-in.</p>
-                </div>
-                <div class="nav-buttons">
-                    <button class="btn btn-secondary" onclick="prevSection()">← Back</button>
-                    <button class="btn btn-primary" onclick="nextSection()">Final Reflection →</button>
-                </div>
+                <div class="score-label">Your Healthy Conflict Score</div>
+                <div class="score-description" id="overallLabel"></div>
             </div>
-            <!-- Section 4 -->
-            <div class="section" id="section-4">
-                <h2 class="section-title">🪞 Commit to Productive Conflict</h2>
-                <p class="section-subtitle">What will you do differently?</p>
-                <div class="reflection-box">
-                    <h3>📝 Your Conflict Action</h3>
-                    <p>What's one thing you'll do this week to surface necessary conflict on your team?</p>
-                    <textarea class="reflection-textarea" id="action" placeholder="This week I will..."></textarea>
-                </div>
-                <div class="quote-block">
-                    <p class="quote">"The only thing worse than having a debate is not having one."</p>
-                    <p class="author">— Patrick Lencioni</p>
-                </div>
-                <div class="nav-buttons">
-                    <button class="btn btn-secondary" onclick="prevSection()">← Back</button>
-                    <button class="btn btn-primary" onclick="showResults()">Complete Stripe 2 →</button>
-                </div>
+
+            <div class="category-scores" id="categoryScores"></div>
+            
+            <div class="action-plan">
+                <h2>🎯 Your Action Plan</h2>
+                <div id="actionItems"></div>
             </div>
-            <!-- Section 5 -->
-            <div class="section" id="section-5">
-                <div class="stripe-earned">
-                    <h2>🎉 Stripe 2 Earned!</h2>
-                    <div class="stripe-visual">🟣 ▬▬</div>
-                    <p>You've completed Healthy Conflict and earned your second Purple Belt stripe.</p>
-                </div>
-                <div class="intro-box">
-                    <h3>📋 What You Learned</h3>
-                    <ul style="margin: 1rem 0 0 1.5rem; color: var(--text-dark);">
-                        <li style="margin-bottom: 0.5rem;"><strong>Artificial Harmony</strong> — Conflict avoidance is worse than conflict</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>Good vs Bad Conflict</strong> — Attack ideas, not people</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>Disagree and Commit</strong> — Fight in the room, commit outside it</li>
-                        <li><strong>Mining for Conflict</strong> — Actively surface hidden disagreements</li>
-                    </ul>
-                </div>
-                <div class="intro-box philosophy">
-                    <h3>🥋 Your Challenge</h3>
-                    <p>In your next team meeting, <strong>mine for conflict</strong>. Ask: "What are we not saying?" Watch what happens when you create space for honest disagreement.</p>
-                </div>
-                <div class="nav-buttons">
-                    <a href="purple-belt.html" class="btn btn-secondary">← Back to Purple Belt</a>
-                    <a href="purple-belt-stripe3-gamified.html" class="btn btn-success">Start Stripe 3: Accountability →</a>
-                </div>
+
+            <div class="insights-section" id="insightsSection"></div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="purple-belt.html" class="btn btn-primary" style="display: inline-block; text-decoration: none; padding: 18px 40px; font-size: 1.1em;">
+                    ← Back to Purple Belt Hub
+                </a>
             </div>
         </div>
     </div>
+
     <script>
-        let currentSection = 1; const totalSections = 5;
-        function nextSection() { if (currentSection < totalSections) { document.getElementById(`section-${currentSection}`).classList.remove('active'); currentSection++; document.getElementById(`section-${currentSection}`).classList.add('active'); updateProgress(); window.scrollTo({ top: 0, behavior: 'smooth' }); } }
-        function prevSection() { if (currentSection > 1) { document.getElementById(`section-${currentSection}`).classList.remove('active'); currentSection--; document.getElementById(`section-${currentSection}`).classList.add('active'); updateProgress(); window.scrollTo({ top: 0, behavior: 'smooth' }); } }
-        function updateProgress() { const progress = ((currentSection - 1) / (totalSections - 1)) * 100; document.getElementById('progress-fill').style.width = `${progress}%`; document.getElementById('progress-text').textContent = `${Math.round(progress)}%`; }
-        function showResults() { localStorage.setItem('purpleBeltStripe2Complete', 'true'); ['avoided-debate', 'real-opinion', 'action'].forEach(f => { const el = document.getElementById(f); if (el && el.value) localStorage.setItem(`healthy_conflict_${f}`, el.value); }); nextSection(); }
-        updateProgress();
+        const questions = [
+            // PSYCHOLOGICAL SAFETY (6 questions - Batch 1)
+            {
+                section: 'Psychological Safety',
+                sectionDesc: 'Can people speak up without fear of punishment or embarrassment?',
+                question: 'When someone proposes an idea that challenges the status quo, the team\'s reaction is typically...',
+                context: 'Psychological safety isn\'t about being nice—it\'s about being able to take interpersonal risks.',
+                category: 'safety',
+                options: [
+                    { text: 'Dismissive or defensive—new ideas feel like criticism', value: 1 },
+                    { text: 'Politely acknowledged but rarely acted upon', value: 2 },
+                    { text: 'Heard, but people are cautious about pushing back', value: 3 },
+                    { text: 'Genuinely considered with constructive debate', value: 4 },
+                    { text: 'Welcomed and explored—even if ultimately rejected', value: 5 }
+                ]
+            },
+            {
+                question: 'Team members would describe the cost of being wrong in our meetings as...',
+                context: 'High-performing teams make it safe to be wrong. Low-performing teams punish mistakes.',
+                category: 'safety',
+                options: [
+                    { text: 'High—making mistakes is career-limiting', value: 1 },
+                    { text: 'Moderate—you might get subtle criticism or judgment', value: 2 },
+                    { text: 'Low in theory, but people still play it safe', value: 3 },
+                    { text: 'Low—honest mistakes are treated as learning', value: 4 },
+                    { text: 'Zero—we explicitly celebrate productive failure', value: 5 }
+                ]
+            },
+            {
+                question: 'When someone admits "I don\'t know" or "I was wrong," the team...',
+                context: 'Vulnerability is the foundation of trust. Watch how your team responds to it.',
+                category: 'safety',
+                type: 'scenario',
+                options: [
+                    { text: 'Loses confidence in that person—admissions are punished', value: 1 },
+                    { text: 'Feels awkward—we don\'t handle vulnerability well', value: 2 },
+                    { text: 'Accepts it but moves on quickly', value: 3 },
+                    { text: 'Respects the honesty and helps problem-solve', value: 4 },
+                    { text: 'Appreciates it explicitly—it models the culture we want', value: 5 }
+                ]
+            },
+            {
+                question: 'Our team\'s meetings feel...',
+                context: 'Energy in meetings reveals psychological safety. Silence often signals fear, not agreement.',
+                category: 'safety',
+                options: [
+                    { text: 'Guarded—people say what\'s safe, not what\'s true', value: 1 },
+                    { text: 'Cautious—some speak up, most stay quiet', value: 2 },
+                    { text: 'Decent—people contribute but rarely challenge', value: 3 },
+                    { text: 'Engaged—people speak candidly and debate openly', value: 4 },
+                    { text: 'Energized—vigorous discussion with mutual respect', value: 5 }
+                ]
+            },
+            {
+                question: 'True or False: Junior team members challenge senior leaders as freely as peers challenge each other.',
+                context: 'Hierarchy kills psychological safety unless explicitly managed.',
+                category: 'safety',
+                type: 'binary',
+                options: [
+                    { text: 'False—hierarchy strongly discourages challenges', value: 1 },
+                    { text: 'Mostly False—juniors rarely push back on seniors', value: 2 },
+                    { text: 'Sometimes—depends on the leader and situation', value: 3 },
+                    { text: 'Mostly True—we encourage upward challenges', value: 4 },
+                    { text: 'Absolutely True—rank doesn\'t limit candor', value: 5 }
+                ]
+            },
+            {
+                question: 'When discussions get heated, our team...',
+                context: 'Conflict escalation reveals whether safety is real or performative.',
+                category: 'safety',
+                type: 'scenario',
+                options: [
+                    { text: 'Shuts down—people disengage to avoid confrontation', value: 1 },
+                    { text: 'Gets uncomfortable—someone changes the subject', value: 2 },
+                    { text: 'Manages it awkwardly—tension lingers afterward', value: 3 },
+                    { text: 'Leans in—we separate ideas from egos', value: 4 },
+                    { text: 'Thrives—passion about ideas signals we care', value: 5 }
+                ]
+            },
+            // Enhancement Box - Psychological Safety Research
+            {
+                type: 'enhancement',
+                category: 'safety',
+                title: '🛡️ The Foundation of Everything',
+                content: `<p><strong>Google's Project Aristotle analyzed 180+ teams and found psychological safety was THE #1 predictor of team effectiveness.</strong> Not talent, experience, or resources. Safety.</p>
+                
+                <p>Harvard professor Amy Edmondson defines psychological safety as "a belief that one will not be punished or humiliated for speaking up with ideas, questions, concerns, or mistakes." In her research tracking hospital teams, she found that the highest-performing units reported MORE errors—not because they made more mistakes, but because they felt safe reporting them.</p>
+                
+                <blockquote>"In psychologically safe teams, people aren't fearless. They're brave." - Amy Edmondson</blockquote>
+                
+                <p><strong>Case Study:</strong> When Pixar's Ed Catmull noticed directors were hiding problems during production, he created the "Braintrust"—a meeting where brutal honesty was not just allowed but expected. The rule? You can say anything about the work, but it must be about making the movie better, not tearing people down. Result? Pixar's 20+ year streak of critically and commercially successful films. Safety doesn't mean comfort—it means candor without fear.</p>`
+            },
+
+            // DEBATE CULTURE (7 questions)
+            {
+                section: 'Debate Culture',
+                sectionDesc: 'Do you fight productively about ideas, or avoid conflict entirely?',
+                question: 'When team members disagree on strategy, they typically...',
+                context: 'Vigorous debate improves decisions. Avoidance or politeness undermines them.',
+                category: 'debate',
+                options: [
+                    { text: 'Stay silent—disagreement feels risky', value: 1 },
+                    { text: 'Express concerns privately after meetings', value: 2 },
+                    { text: 'Voice disagreement cautiously and defer quickly', value: 3 },
+                    { text: 'Debate openly with data and reasoning', value: 4 },
+                    { text: 'Argue vigorously until the best idea wins', value: 5 }
+                ]
+            },
+            {
+                question: 'Our team meetings include genuine debate (not just updates) about...',
+                context: 'If every meeting is just status reports, you\'re not doing the hard work of thinking together.',
+                category: 'debate',
+                type: 'multiple_choice',
+                options: [
+                    { text: 'Never—we stick to safe topics and updates', value: 1 },
+                    { text: 'Rarely—debate happens only in crisis situations', value: 2 },
+                    { text: 'Occasionally—some meetings have real discussion', value: 3 },
+                    { text: 'Regularly—we debate strategy and priorities often', value: 4 },
+                    { text: 'Constantly—debate is expected in every decision', value: 5 }
+                ]
+            },
+            {
+                question: 'When someone presents a proposal, the team\'s default mode is...',
+                context: 'Unchallenged ideas are often weak ideas. Strong teams stress-test everything.',
+                category: 'debate',
+                options: [
+                    { text: 'Acceptance—challenging feels confrontational', value: 1 },
+                    { text: 'Polite questions without real pushback', value: 2 },
+                    { text: 'Some probing, but we move on quickly', value: 3 },
+                    { text: 'Constructive challenge—we test assumptions', value: 4 },
+                    { text: 'Rigorous scrutiny—ideas must earn consensus', value: 5 }
+                ]
+            },
+            {
+                question: 'True or False: Our best decisions come from meetings where everyone agreed quickly.',
+                context: 'Fast consensus often means groupthink, not alignment. Slow consensus often means rigor.',
+                category: 'debate',
+                type: 'binary',
+                options: [
+                    { text: 'True—quick agreement is a sign of alignment', value: 1 },
+                    { text: 'Mostly True—fast decisions usually work out', value: 2 },
+                    { text: 'Unsure—we don\'t track this', value: 3 },
+                    { text: 'Mostly False—our best work comes from debate', value: 4 },
+                    { text: 'Absolutely False—quick consensus often fails us', value: 5 }
+                ]
+            },
+            {
+                question: 'The phrase that best describes our team\'s approach to disagreement is...',
+                context: 'Your words reveal your culture. Listen to the language your team uses.',
+                category: 'debate',
+                type: 'multiple_choice',
+                options: [
+                    { text: '"Let\'s not make this a big deal" (avoidance)', value: 1 },
+                    { text: '"Let\'s agree to disagree" (detente)', value: 2 },
+                    { text: '"Let\'s find middle ground" (compromise)', value: 3 },
+                    { text: '"Let\'s debate until we align" (resolution)', value: 4 },
+                    { text: '"Let\'s fight for the best idea" (productive conflict)', value: 5 }
+                ]
+            },
+            {
+                question: 'When debate becomes intense, leadership...',
+                context: 'How leaders respond to heat determines whether conflict is productive or destructive.',
+                category: 'debate',
+                type: 'scenario',
+                options: [
+                    { text: 'Shuts it down—intensity is seen as unprofessional', value: 1 },
+                    { text: 'Gets uncomfortable and redirects', value: 2 },
+                    { text: 'Lets it happen but doesn\'t actively facilitate', value: 3 },
+                    { text: 'Encourages it while keeping it respectful', value: 4 },
+                    { text: 'Models it—shows passion about ideas is valued', value: 5 }
+                ]
+            },
+            {
+                question: 'After vigorous debate, our team...',
+                context: 'The test of healthy conflict is what happens after. Does it strengthen or fracture relationships?',
+                category: 'debate',
+                options: [
+                    { text: 'Harbors resentment—relationships are damaged', value: 1 },
+                    { text: 'Feels awkward—people avoid each other briefly', value: 2 },
+                    { text: 'Returns to normal but tension lingers slightly', value: 3 },
+                    { text: 'Moves forward united once a decision is made', value: 4 },
+                    { text: 'Feels closer—fighting about ideas builds trust', value: 5 }
+                ]
+            },
+            // Enhancement Box - Debate Culture Research
+            {
+                type: 'enhancement',
+                category: 'debate',
+                title: '⚔️ Task Conflict vs. Relationship Conflict',
+                content: `<p><strong>Research by Karen Jehn (Wharton) distinguishes between task conflict (debating ideas) and relationship conflict (personal attacks).</strong> Her 20-year study found that task conflict improves decision quality by up to 25%, while relationship conflict reduces team performance by 30%.</p>
+                
+                <p>The key insight? High-performing teams maximize task conflict while minimizing relationship conflict. They fight hard about the work while maintaining respect for the person. Low-performing teams do the opposite—they're polite about ideas but harbor personal resentments.</p>
+                
+                <blockquote>"We don't have to agree, but we have to respect each other." - Ray Dalio, Bridgewater Associates</blockquote>
+                
+                <p><strong>Bridgewater Example:</strong> Ray Dalio built the world's largest hedge fund on a principle called "radical transparency." Employees are expected to challenge anyone, including Dalio himself, on any idea. Meetings are recorded. Disagreements are public. The culture is brutal on bad ideas but protective of people. Result? Bridgewater manages $150B+ and consistently outperforms competitors. Conflict isn't dysfunction—it's due diligence.</p>`
+            },
+
+            // CONFLICT RESOLUTION (7 questions)
+            {
+                section: 'Conflict Resolution',
+                sectionDesc: 'When disagreements arise, how does your team resolve them?',
+                question: 'When conflict emerges, our team\'s typical response is to...',
+                context: 'How you enter conflict determines whether you exit stronger or weaker.',
+                category: 'resolution',
+                options: [
+                    { text: 'Avoid it—hope it goes away on its own', value: 1 },
+                    { text: 'Smooth it over with compromise that satisfies no one', value: 2 },
+                    { text: 'Address it eventually, but with discomfort', value: 3 },
+                    { text: 'Engage it directly and work toward resolution', value: 4 },
+                    { text: 'Welcome it as data revealing misalignment', value: 5 }
+                ]
+            },
+            {
+                question: 'Our team resolves disagreements by...',
+                context: 'Resolution methods reveal your underlying values and power dynamics.',
+                category: 'resolution',
+                type: 'multiple_choice',
+                options: [
+                    { text: 'Whoever is loudest or most senior wins', value: 1 },
+                    { text: 'Voting (majority rules, minority loses)', value: 2 },
+                    { text: 'Compromising until everyone is equally unhappy', value: 3 },
+                    { text: 'Debating until we reach genuine consensus', value: 4 },
+                    { text: 'Using frameworks to make the best decision, then committing fully', value: 5 }
+                ]
+            },
+            {
+                question: 'When we can\'t reach agreement, we...',
+                context: 'Deadlock is inevitable. How you break it reveals your decision architecture.',
+                category: 'resolution',
+                type: 'scenario',
+                options: [
+                    { text: 'Table it indefinitely—indecision is safer than conflict', value: 1 },
+                    { text: 'Escalate to leadership to decide for us', value: 2 },
+                    { text: 'Split the difference even if it weakens the solution', value: 3 },
+                    { text: 'Use a clear decision-making process (RAPID, DACI, etc.)', value: 4 },
+                    { text: 'Disagree and commit—debate fiercely, then align fully', value: 5 }
+                ]
+            },
+            {
+                question: 'True or False: After a heated debate, team members can disagree and commit to the decision.',
+                context: 'Amazon\'s "Disagree and Commit" is a superpower. Most teams can\'t do it.',
+                category: 'resolution',
+                type: 'binary',
+                options: [
+                    { text: 'False—people stay divided and undermine decisions', value: 1 },
+                    { text: 'Mostly False—commitment is weak after disagreement', value: 2 },
+                    { text: 'Sometimes—depends on the person and issue', value: 3 },
+                    { text: 'Mostly True—we commit even when we disagree', value: 4 },
+                    { text: 'Absolutely True—we debate hard, then execute as one', value: 5 }
+                ]
+            },
+            {
+                question: 'Our team views conflict as...',
+                context: 'Your mindset about conflict shapes whether it\'s productive or destructive.',
+                category: 'resolution',
+                options: [
+                    { text: 'A threat to harmony—something to eliminate', value: 1 },
+                    { text: 'An unfortunate necessity we tolerate', value: 2 },
+                    { text: 'A neutral fact of working together', value: 3 },
+                    { text: 'A tool for better decision-making', value: 4 },
+                    { text: 'A gift—it surfaces misalignment before it\'s costly', value: 5 }
+                ]
+            },
+            {
+                question: 'When someone says "I disagree" in a meeting, others typically...',
+                context: 'Watch the micro-reactions. Do people welcome dissent or punish it?',
+                category: 'resolution',
+                type: 'scenario',
+                options: [
+                    { text: 'Tense up—disagreement feels like an attack', value: 1 },
+                    { text: 'Become defensive—the tone shifts negatively', value: 2 },
+                    { text: 'Listen politely but move on quickly', value: 3 },
+                    { text: 'Lean in with curiosity—"Tell us more"', value: 4 },
+                    { text: 'Welcome it explicitly—"Great, let\'s explore that"', value: 5 }
+                ]
+            },
+            {
+                question: 'Our team has explicit norms or frameworks for how to disagree productively.',
+                context: 'Without shared rules of engagement, conflict defaults to politics and power.',
+                category: 'resolution',
+                options: [
+                    { text: 'No norms—every conflict is ad hoc and messy', value: 1 },
+                    { text: 'Vague expectations that vary by person', value: 2 },
+                    { text: 'Implicit norms people mostly follow', value: 3 },
+                    { text: 'Clear documented norms we reference', value: 4 },
+                    { text: 'Rigorous frameworks we actively practice and refine', value: 5 }
+                ]
+            },
+            // Enhancement Box - Conflict Resolution Research
+            {
+                type: 'enhancement',
+                category: 'resolution',
+                title: '🤝 Disagree and Commit',
+                content: `<p><strong>Amazon's "Disagree and Commit" principle is one of their core leadership tenets.</strong> Jeff Bezos writes: "If you have conviction on a particular direction even though there's no consensus, it's helpful to say, 'Look, I know we disagree on this but will you gamble with me on it?' Disagree and commit."</p>
+                
+                <p>The key insight? You can debate fiercely during the decision phase, but once a decision is made, everyone commits 100%—even those who disagreed. This prevents endless rehashing and allows teams to move fast. But it only works when people trust the process was fair and their voice was genuinely heard.</p>
+                
+                <blockquote>"Have backbone; disagree and commit." - Amazon Leadership Principle #13</blockquote>
+                
+                <p><strong>Intel's "Disagree and Commit" Origins:</strong> Andy Grove pioneered this at Intel in the 1980s. During a critical meeting about shifting from memory chips to microprocessors, Grove's team debated for hours. Some vehemently opposed. Grove listened, then decided. Those who disagreed committed fully. Intel became the microprocessor giant. The dissenters didn't sabotage—they executed. That's the power of healthy conflict resolution.</p>`
+            },
+
+            // FEEDBACK & CHALLENGE (8 questions)
+            {
+                section: 'Feedback & Challenge',
+                sectionDesc: 'Can team members give and receive tough feedback without fear?',
+                question: 'When someone receives critical feedback, they typically...',
+                context: 'Your response to feedback reveals whether you have a learning culture or a defensive one.',
+                category: 'feedback',
+                options: [
+                    { text: 'Get defensive or shut down—feedback feels like an attack', value: 1 },
+                    { text: 'Accept it reluctantly but resist internalizing it', value: 2 },
+                    { text: 'Listen politely but don\'t always act on it', value: 3 },
+                    { text: 'Welcome it and reflect on how to improve', value: 4 },
+                    { text: 'Thank the giver explicitly—feedback is a gift', value: 5 }
+                ]
+            },
+            {
+                question: 'Our team gives feedback that is...',
+                context: 'Vague feedback is useless. Specific feedback drives change.',
+                category: 'feedback',
+                type: 'multiple_choice',
+                options: [
+                    { text: 'Almost never given—we avoid uncomfortable conversations', value: 1 },
+                    { text: 'Vague and sugar-coated to avoid offense', value: 2 },
+                    { text: 'Given occasionally, with mixed specificity', value: 3 },
+                    { text: 'Regular, specific, and actionable', value: 4 },
+                    { text: 'Continuous, radically candid, and growth-focused', value: 5 }
+                ]
+            },
+            {
+                question: 'When a team member\'s performance is slipping, we...',
+                context: 'How quickly you address performance issues reveals your standards and courage.',
+                category: 'feedback',
+                type: 'scenario',
+                options: [
+                    { text: 'Ignore it and hope it self-corrects', value: 1 },
+                    { text: 'Complain privately but don\'t address it directly', value: 2 },
+                    { text: 'Eventually bring it up, but awkwardly', value: 3 },
+                    { text: 'Address it promptly in a 1:1 conversation', value: 4 },
+                    { text: 'Address it immediately with care and clarity', value: 5 }
+                ]
+            },
+            {
+                question: 'True or False: People on our team regularly challenge each other\'s work, not just leadership.',
+                context: 'Peer-to-peer challenge is the mark of a high-standards culture.',
+                category: 'feedback',
+                type: 'binary',
+                options: [
+                    { text: 'False—peers almost never challenge each other', value: 1 },
+                    { text: 'Mostly False—it happens rarely', value: 2 },
+                    { text: 'Sometimes—depends on relationship and situation', value: 3 },
+                    { text: 'Mostly True—peer challenge is common', value: 4 },
+                    { text: 'Absolutely True—we hold each other accountable', value: 5 }
+                ]
+            },
+            {
+                question: 'Our feedback culture is best described as...',
+                context: 'Kim Scott\'s "Radical Candor" framework maps four quadrants. Where are you?',
+                category: 'feedback',
+                type: 'multiple_choice',
+                options: [
+                    { text: 'Manipulative Insincerity—vague, political, insincere', value: 1 },
+                    { text: 'Ruinous Empathy—nice but not helpful, avoiding truth', value: 2 },
+                    { text: 'Obnoxious Aggression—direct but without care', value: 3 },
+                    { text: 'Inconsistent—sometimes candid, sometimes not', value: 4 },
+                    { text: 'Radical Candor—care personally, challenge directly', value: 5 }
+                ]
+            },
+            {
+                question: 'When giving tough feedback, team members...',
+                context: 'How you deliver hard truths determines whether they land or backfire.',
+                category: 'feedback',
+                options: [
+                    { text: 'Avoid it entirely—too risky or uncomfortable', value: 1 },
+                    { text: 'Soften it so much the message is lost', value: 2 },
+                    { text: 'Deliver it but with visible discomfort', value: 3 },
+                    { text: 'Deliver it clearly with empathy and specifics', value: 4 },
+                    { text: 'Deliver it as an act of care—helping someone grow', value: 5 }
+                ]
+            },
+            {
+                question: 'Our team separates feedback on ideas from feedback on people...',
+                context: 'Blurring this line turns task conflict into relationship conflict.',
+                category: 'feedback',
+                options: [
+                    { text: 'Never—criticism of work feels personal', value: 1 },
+                    { text: 'Rarely—the line is often blurred', value: 2 },
+                    { text: 'Sometimes—we try but don\'t always succeed', value: 3 },
+                    { text: 'Usually—we\'re intentional about separating them', value: 4 },
+                    { text: 'Always—attack the idea, respect the person', value: 5 }
+                ]
+            },
+            {
+                question: 'After receiving tough feedback, team members...',
+                context: 'The proof of psychological safety is in how people respond after criticism.',
+                category: 'feedback',
+                type: 'scenario',
+                options: [
+                    { text: 'Disengage or become resentful', value: 1 },
+                    { text: 'Comply minimally but don\'t internalize it', value: 2 },
+                    { text: 'Accept it but need time to process', value: 3 },
+                    { text: 'Reflect, adjust, and improve their work', value: 4 },
+                    { text: 'Thank the giver and proactively seek more feedback', value: 5 }
+                ]
+            },
+            // Enhancement Box - Feedback Research
+            {
+                type: 'enhancement',
+                category: 'feedback',
+                title: '💬 Radical Candor',
+                content: `<p><strong>Kim Scott's "Radical Candor" framework transformed how Silicon Valley thinks about feedback.</strong> Based on her experience at Google and Apple, she identified four quadrants: Radical Candor (care personally + challenge directly), Ruinous Empathy (care but don't challenge), Obnoxious Aggression (challenge without care), and Manipulative Insincerity (neither care nor challenge).</p>
+                
+                <p>Most teams default to Ruinous Empathy—being "nice" but avoiding hard truths. The result? People don't grow, standards slip, and resentment builds. Radical Candor requires both caring about the person AND being willing to challenge them directly.</p>
+                
+                <blockquote>"Clarity is kindness. Vagueness is cruelty." - Brené Brown</blockquote>
+                
+                <p><strong>Netflix Example:</strong> Netflix's culture deck explicitly states: "Adequate performance gets a generous severance package." Why? Because keeping mediocre performers is unfair to high performers who carry the load. Radical Candor means giving someone honest feedback early when they can still improve—not waiting until it's too late. That's actually more compassionate than false kindness.</p>`
+            },
+
+            // ACCOUNTABILITY & STANDARDS (9 questions)
+            {
+                section: 'Accountability & Standards',
+                sectionDesc: 'Does your team hold high standards and hold each other accountable?',
+                question: 'When someone commits to a deliverable but doesn\'t follow through, the team...',
+                context: 'How you respond to missed commitments defines your culture of accountability.',
+                category: 'accountability',
+                options: [
+                    { text: 'Ignores it—calling it out feels uncomfortable', value: 1 },
+                    { text: 'Compensates by doing their work for them', value: 2 },
+                    { text: 'Mentions it casually but doesn\'t push', value: 3 },
+                    { text: 'Addresses it directly and asks what happened', value: 4 },
+                    { text: 'Holds them accountable with clear expectations for next time', value: 5 }
+                ]
+            },
+            {
+                question: 'Our team\'s standards for quality work are...',
+                context: 'Standards aren\'t what you preach—they\'re what you tolerate.',
+                category: 'accountability',
+                options: [
+                    { text: 'Unclear or inconsistent—everyone has different bars', value: 1 },
+                    { text: 'Stated but not enforced—mediocrity is tolerated', value: 2 },
+                    { text: 'Moderate—we have standards but they vary', value: 3 },
+                    { text: 'High and consistent—everyone knows the bar', value: 4 },
+                    { text: 'Exceptionally high—we\'re known for excellence', value: 5 }
+                ]
+            },
+            {
+                question: 'When work doesn\'t meet our standards, we...',
+                context: 'The speed of addressing quality issues reveals your commitment to excellence.',
+                category: 'accountability',
+                type: 'scenario',
+                options: [
+                    { text: 'Ship it anyway—deadlines trump quality', value: 1 },
+                    { text: 'Mention concerns but ultimately accept it', value: 2 },
+                    { text: 'Reluctantly push back and ask for revisions', value: 3 },
+                    { text: 'Clearly request improvements before accepting', value: 4 },
+                    { text: 'Refuse to compromise—quality is non-negotiable', value: 5 }
+                ]
+            },
+            {
+                question: 'True or False: High performers on our team get frustrated because low performers aren\'t held accountable.',
+                context: 'Failing to address low performance is how you lose your best people.',
+                category: 'accountability',
+                type: 'binary',
+                options: [
+                    { text: 'True—it\'s a major source of frustration', value: 1 },
+                    { text: 'Mostly True—high performers notice the gap', value: 2 },
+                    { text: 'Sometimes—depends on the situation', value: 3 },
+                    { text: 'Mostly False—we address performance issues', value: 4 },
+                    { text: 'Absolutely False—everyone is held to high standards', value: 5 }
+                ]
+            },
+            {
+                question: 'Our team holds each other accountable through...',
+                context: 'Accountability systems reveal whether you depend on hierarchy or peer pressure.',
+                category: 'accountability',
+                type: 'multiple_choice',
+                options: [
+                    { text: 'No system—accountability is random or absent', value: 1 },
+                    { text: 'Top-down only—managers enforce, peers don\'t', value: 2 },
+                    { text: 'Informal peer pressure that\'s inconsistent', value: 3 },
+                    { text: 'Clear structures (reviews, check-ins, metrics)', value: 4 },
+                    { text: 'Peer-to-peer accountability is expected and normalized', value: 5 }
+                ]
+            },
+            {
+                question: 'When someone makes the same mistake repeatedly, the team...',
+                context: 'Patterns reveal whether you have accountability or just conversations.',
+                category: 'accountability',
+                type: 'scenario',
+                options: [
+                    { text: 'Accepts it—"That\'s just how they are"', value: 1 },
+                    { text: 'Complains about it privately but doesn\'t intervene', value: 2 },
+                    { text: 'Mentions it but doesn\'t follow up', value: 3 },
+                    { text: 'Addresses the pattern and sets clear expectations', value: 4 },
+                    { text: 'Escalates if behavior doesn\'t change—accountability has teeth', value: 5 }
+                ]
+            },
+            {
+                question: 'Our definition of accountability is...',
+                context: 'How you define accountability shapes whether it feels punitive or empowering.',
+                category: 'accountability',
+                options: [
+                    { text: 'Blame—finding who\'s at fault when things go wrong', value: 1 },
+                    { text: 'Punishment—consequences for failure', value: 2 },
+                    { text: 'Responsibility—owning your commitments', value: 3 },
+                    { text: 'Ownership—proactively driving outcomes', value: 4 },
+                    { text: 'Mutual support—we help each other deliver excellence', value: 5 }
+                ]
+            },
+            {
+                question: 'When priorities shift and commitments become impossible, team members...',
+                context: 'Accountability includes renegotiating commitments when context changes.',
+                category: 'accountability',
+                options: [
+                    { text: 'Say nothing and just miss deadlines', value: 1 },
+                    { text: 'Make excuses after the fact', value: 2 },
+                    { text: 'Mention it but don\'t actively renegotiate', value: 3 },
+                    { text: 'Proactively communicate and adjust commitments', value: 4 },
+                    { text: 'Renegotiate early with solutions, not just problems', value: 5 }
+                ]
+            },
+            {
+                question: 'Our team celebrates...',
+                context: 'What you celebrate signals what you value. Choose wisely.',
+                category: 'accountability',
+                type: 'multiple_choice',
+                options: [
+                    { text: 'Activity and effort—regardless of outcomes', value: 1 },
+                    { text: 'Participation—showing up gets applause', value: 2 },
+                    { text: 'Results—but only the big wins', value: 3 },
+                    { text: 'Excellence—high-quality outcomes', value: 4 },
+                    { text: 'Both excellence AND learning from intelligent failures', value: 5 }
+                ]
+            }
+        ];
+
+        const insights = [
+            { icon: '🛡️', title: 'Google\'s Project Aristotle', content: '<strong>Google analyzed 180+ teams and found psychological safety was THE defining factor of high-performing teams.</strong> Not talent. Not resources. Safety. Teams where members felt safe taking risks, admitting mistakes, and challenging each other outperformed everyone else. Why? Because psychological safety unlocks honest communication—and honest communication is the foundation of everything else.', quote: '"There is no innovation and creativity without failure. Period." - Brené Brown' },
+            { icon: '⚔️', title: 'Productive Conflict vs. Destructive Conflict', content: '<strong>Research from Jehn & Mannix distinguishes task conflict (productive) from relationship conflict (destructive).</strong> Task conflict—debating ideas, strategies, and approaches—improves decision quality by 25%. Relationship conflict—personal attacks and ego battles—reduces performance by 30%. High-performing teams maximize task conflict while minimizing relationship conflict. The key? Argue about the work, not the person.', quote: '"We don\'t have to agree, but we have to respect each other." - Ray Dalio, Bridgewater' },
+            { icon: '🔥', title: 'The Cost of Artificial Harmony', content: '<strong>Patrick Lencioni\'s "Five Dysfunctions of a Team" identifies fear of conflict as dysfunction #2.</strong> When teams avoid conflict, they create artificial harmony—everyone nods in meetings, then complains afterward. Decisions are weaker because dissent never surfaces. Resentment builds because issues fester unaddressed. The irony? Avoiding conflict to preserve relationships actually damages them more than constructive debate ever would.', quote: '"Harmony for its own sake is a worthless goal." - Patrick Lencioni' }
+        ];
+
+        let currentQuestion = 0;
+        let answers = {};
+        let questionStartTime = Date.now();
+
+        function startAssessment() {
+            document.getElementById('introSection').classList.add('hidden');
+            document.getElementById('progressContainer').classList.add('active');
+            document.getElementById('assessmentForm').classList.remove('hidden');
+            showQuestion(0);
+        }
+
+        function showQuestion(index) {
+            currentQuestion = index;
+            questionStartTime = Date.now();
+            
+            const q = questions[index];
+            const card = document.getElementById('questionCard');
+            
+            // Check if this is an enhancement box
+            if (q.type === 'enhancement') {
+                card.innerHTML = `
+                    <div style="background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%); color: white; padding: 30px; border-radius: 16px; margin-bottom: 25px;">
+                        <h3 style="font-size: 1.8em; margin-bottom: 15px; font-weight: 700; text-align: center;">${q.title}</h3>
+                        <div style="background: rgba(255,255,255,0.95); color: #1f2937; padding: 25px; border-radius: 12px; line-height: 1.7;">
+                            ${q.content}
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 20px; color: #6b7280; font-style: italic;">
+                        💡 Insight ${Math.floor(index / 10) + 1} - Continue to next question
+                    </div>
+                `;
+                
+                // Mark as "answered" immediately so they can proceed
+                answers[index] = { value: 5, category: q.category, timeSpent: 0 };
+                
+                updateProgress();
+                updateNavigationButtons();
+                return;
+            }
+            
+            let sectionHeader = '';
+            if (q.section) {
+                sectionHeader = `
+                    <div style="background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%); color: white; padding: 20px; border-radius: 12px; margin-bottom: 25px; text-align: center;">
+                        <h3 style="font-size: 1.6em; margin-bottom: 8px; font-weight: 700;">${q.section}</h3>
+                        <p style="opacity: 0.9; font-size: 1.05em;">${q.sectionDesc}</p>
+                    </div>
+                `;
+            }
+            
+            const contextBox = q.context ? `
+                <div class="question-context">
+                    💡 ${q.context}
+                </div>
+            ` : '';
+            
+            card.innerHTML = `
+                ${sectionHeader}
+                <div class="question">
+                    <span class="question-number">QUESTION ${index + 1} OF ${questions.length}</span>
+                    <div class="question-text">${q.question}</div>
+                    ${contextBox}
+                    <div class="options">
+                        ${q.options.map((opt, i) => `
+                            <div class="option" onclick="selectOption(${index}, ${opt.value}, this)">
+                                <input type="radio" name="q${index}" id="q${index}_${i}" value="${opt.value}">
+                                <label class="option-label" for="q${index}_${i}">${opt.text}</label>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            updateProgress();
+            updateNavigationButtons();
+        }
+
+        function selectOption(questionIndex, value, element) {
+            // Remove previous selection
+            const options = element.parentElement.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add new selection
+            element.classList.add('selected');
+            element.querySelector('input').checked = true;
+            
+            // Store answer
+            answers[questionIndex] = {
+                value: value,
+                category: questions[questionIndex].category,
+                timeSpent: Date.now() - questionStartTime
+            };
+            
+            updateNavigationButtons();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                showQuestion(currentQuestion + 1);
+                window.scrollTo(0, 0);
+            } else {
+                showResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                showQuestion(currentQuestion - 1);
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+        }
+
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.disabled = !answers[currentQuestion];
+            
+            if (currentQuestion === questions.length - 1 && answers[currentQuestion]) {
+                nextBtn.textContent = 'See Results →';
+            } else {
+                nextBtn.textContent = 'Next →';
+            }
+        }
+
+        function showResults() {
+            document.getElementById('assessmentForm').classList.add('hidden');
+            document.getElementById('progressContainer').style.display = 'none';
+            document.getElementById('resultsContainer').classList.add('active');
+            
+            calculateResults();
+            window.scrollTo(0, 0);
+        }
+
+        function calculateResults() {
+            // Calculate category scores
+            const categories = {
+                safety: { name: 'Psychological Safety', scores: [], icon: '🛡️' },
+                debate: { name: 'Debate Culture', scores: [], icon: '⚔️' },
+                resolution: { name: 'Conflict Resolution', scores: [], icon: '🤝' },
+                feedback: { name: 'Feedback & Challenge', scores: [], icon: '💬' },
+                accountability: { name: 'Accountability & Standards', scores: [], icon: '⚡' }
+            };
+            
+            Object.values(answers).forEach(answer => {
+                if (categories[answer.category]) {
+                    categories[answer.category].scores.push(answer.value);
+                }
+            });
+            
+            // Calculate averages
+            let totalScore = 0;
+            let categoryCount = 0;
+            
+            Object.keys(categories).forEach(key => {
+                const cat = categories[key];
+                if (cat.scores.length > 0) {
+                    const avg = cat.scores.reduce((a, b) => a + b, 0) / cat.scores.length;
+                    cat.average = avg;
+                    cat.percentage = (avg / 5) * 100;
+                    totalScore += avg;
+                    categoryCount++;
+                }
+            });
+            
+            const overallScore = (totalScore / categoryCount / 5) * 100;
+            
+            // Display overall score
+            document.getElementById('totalScore').textContent = Math.round(overallScore) + '%';
+            
+            let overallLabel = '';
+            if (overallScore >= 80) {
+                overallLabel = '🏆 Exceptional Conflict Culture - Top 10%';
+            } else if (overallScore >= 65) {
+                overallLabel = '✨ Strong Foundation - Room to Optimize';
+            } else if (overallScore >= 50) {
+                overallLabel = '⚠️ Moderate Safety - Significant Gaps';
+            } else {
+                overallLabel = '🚨 Critical Dysfunction - Urgent Action Needed';
+            }
+            
+            document.getElementById('overallLabel').textContent = overallLabel;
+            
+            // Display category scores
+            const categoryScoresHTML = Object.keys(categories).map(key => {
+                const cat = categories[key];
+                if (!cat.scores.length) return '';
+                
+                let categoryInsight = '';
+                
+                if (cat.percentage >= 80) {
+                    categoryInsight = `<strong>Strength:</strong> Your team excels here. Maintain this and use it as a model.`;
+                } else if (cat.percentage >= 60) {
+                    categoryInsight = `<strong>Opportunity:</strong> Good foundation with room to strengthen consistency.`;
+                } else {
+                    categoryInsight = `<strong>Gap:</strong> This is limiting your team's potential. Prioritize improvement.`;
+                }
+                
+                return `
+                    <div class="category-card">
+                        <h3>${cat.icon} ${cat.name}</h3>
+                        <div class="category-score">${Math.round(cat.percentage)}%</div>
+                        <div class="category-bar">
+                            <div class="category-bar-fill" style="width: ${cat.percentage}%"></div>
+                        </div>
+                        <div class="category-insight">${categoryInsight}</div>
+                    </div>
+                `;
+            }).join('');
+            
+            document.getElementById('categoryScores').innerHTML = categoryScoresHTML;
+            
+            // Display insights
+            const randomInsights = insights.sort(() => 0.5 - Math.random()).slice(0, 3);
+            const insightsHTML = randomInsights.map(insight => `
+                <div class="insight-card">
+                    <div class="insight-icon">${insight.icon}</div>
+                    <div class="insight-title">${insight.title}</div>
+                    <div class="insight-content">${insight.content}</div>
+                    <div class="insight-quote">${insight.quote}</div>
+                </div>
+            `).join('');
+            
+            document.getElementById('insightsSection').innerHTML = insightsHTML;
+            
+            // Action items placeholder
+            document.getElementById('actionItems').innerHTML = `
+                <div class="action-item">
+                    <h4>🛡️ Establish Psychological Safety</h4>
+                    <p>This week: Explicitly acknowledge that challenging ideas (including leadership's) is encouraged. Model vulnerability by admitting a mistake publicly.</p>
+                </div>
+            `;
+            
+            // Save completion to localStorage
+            localStorage.setItem('purpleBeltStripe2Complete', 'true');
+            localStorage.setItem('purpleBeltStripe2Score', Math.round(overallScore));
+        }
     </script>
 </body>
 </html>
