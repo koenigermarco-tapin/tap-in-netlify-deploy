@@ -1162,15 +1162,137 @@
                 ]
             },
 
-            // BROWN BELT - ACCOUNTABILITY (8 questions)
-            { id: 25, section: 'accountability', text: 'When a peer misses a commitment, what do you do?', scale: ['Say nothing, not my place', 'Complain to others privately', 'Hint at it indirectly', 'Address it respectfully 1-on-1', 'Call it out directly and immediately'] },
-            { id: 26, section: 'accountability', text: 'How do you hold yourself accountable for commitments?', scale: ['Often miss deadlines', 'Sometimes follow through', 'Usually deliver', 'Consistently hit commitments', 'Religiously track and deliver'] },
-            { id: 27, section: 'accountability', text: 'When you miss a deadline, how do you respond?', scale: ['Hope no one notices', 'Make excuses', 'Apologize vaguely', 'Acknowledge it and reschedule', 'Proactively own it with new plan'] },
-            { id: 28, section: 'accountability', text: 'How comfortable are you calling out a high-performer\'s bad behavior?', scale: ['Never risk it', 'Very uncomfortable', 'Hesitant but might', 'Uncomfortable but will do it', 'Comfortable addressing anyone'] },
-            { id: 29, section: 'accountability', text: 'When giving tough feedback, how direct are you?', scale: ['Hint or use "sandwich" method', 'Very indirect and soft', 'Somewhat direct', 'Direct with empathy', 'Radically direct and kind'] },
-            { id: 30, section: 'accountability', text: 'How often do you let small issues slide to "keep the peace"?', scale: ['Constantly avoid small stuff', 'Often let things go', 'Sometimes address them', 'Usually address issues', 'Always address what matters'] },
-            { id: 31, section: 'accountability', text: 'When someone receives critical feedback, how do you react?', scale: ['Uncomfortable witnessing it', 'Sympathize with person', 'Stay neutral', 'Support the feedback', 'Reinforce the feedback'] },
-            { id: 32, section: 'accountability', text: 'How quickly do you address performance issues?', scale: ['Avoid until crisis', 'Wait weeks/months', 'Eventually address them', 'Address within days', 'Address immediately'] },
+            // BROWN BELT - ACCOUNTABILITY/STANDARDS (10 questions)
+            {
+                id: 31,
+                section: 'brown',
+                type: 'scenario',
+                text: 'A colleague misses a commitment that affects your work. What do you do?',
+                scale: [
+                    'Say nothing—not my place to say anything',
+                    'Complain to others but not to them',
+                    'Hint at it indirectly: "Hey, any update on that?"',
+                    'Address it directly 1-on-1 with empathy',
+                    'Call it out immediately: "We had a commitment—what happened?"'
+                ]
+            },
+            {
+                id: 32,
+                section: 'brown',
+                type: 'scale',
+                text: 'How do you hold yourself accountable for your own commitments?',
+                scale: [
+                    'Often miss deadlines, make excuses',
+                    'Sometimes follow through',
+                    'Usually deliver on commitments',
+                    'Consistently hit what I commit to',
+                    'Religiously track and deliver—my word is sacred'
+                ]
+            },
+            {
+                id: 33,
+                section: 'brown',
+                type: 'scenario',
+                text: 'You realize you\'re going to miss a deadline. What do you do?',
+                scale: [
+                    'Hope no one notices or asks',
+                    'Make excuses when asked',
+                    'Apologize vaguely when it comes up',
+                    'Proactively acknowledge and propose new timeline',
+                    'Flag it early with plan: "I\'m behind—here\'s what I\'ll do"'
+                ]
+            },
+            {
+                id: 34,
+                section: 'brown',
+                type: 'binary',
+                text: 'Someone who delivers great results consistently exhibits problematic behavior. How comfortable are you addressing it?',
+                scale: [
+                    'Never risk it—they\'re too valuable',
+                    'Very uncomfortable, likely avoid it',
+                    'Hesitant but might if it escalates',
+                    'Uncomfortable but will address it',
+                    'Comfortable—high performance doesn\'t excuse bad behavior'
+                ]
+            },
+            {
+                id: 35,
+                section: 'brown',
+                type: 'scale',
+                text: 'When giving tough feedback, how direct are you?',
+                scale: [
+                    'Use "compliment sandwich" to soften it',
+                    'Very indirect and cautious',
+                    'Somewhat direct with lots of hedging',
+                    'Direct and empathetic',
+                    'Radically candid: direct AND kind'
+                ]
+            },
+            {
+                id: 36,
+                section: 'brown',
+                type: 'binary',
+                text: 'How often do you let small issues slide to "keep the peace"?',
+                scale: [
+                    'Constantly—small stuff isn\'t worth conflict',
+                    'Often let things go',
+                    'Sometimes address, sometimes don\'t',
+                    'Usually address what matters',
+                    'Always address issues early when they\'re small'
+                ]
+            },
+            {
+                id: 37,
+                section: 'brown',
+                type: 'scenario',
+                text: 'You\'re in a meeting where someone receives critical feedback. What\'s your reaction?',
+                scale: [
+                    'Uncomfortable—feel bad for them',
+                    'Sympathize, maybe soften the feedback',
+                    'Stay neutral and quiet',
+                    'Support the feedback if it\'s fair',
+                    'Reinforce it: "I\'ve seen this too—here\'s an example"'
+                ]
+            },
+            {
+                id: 38,
+                section: 'brown',
+                type: 'scale',
+                text: 'When you notice a performance issue, how quickly do you address it?',
+                scale: [
+                    'Avoid until it becomes a crisis',
+                    'Wait weeks or months hoping it improves',
+                    'Eventually bring it up',
+                    'Address within a few days',
+                    'Address immediately—early is easier'
+                ]
+            },
+            {
+                id: 39,
+                section: 'brown',
+                type: 'binary',
+                text: 'Someone asks you to lower your standards "just this once." What do you do?',
+                scale: [
+                    'Give in—not worth the fight',
+                    'Reluctantly compromise',
+                    'Negotiate—depends on context',
+                    'Hold firm on core standards',
+                    'Refuse: "Standards aren\'t negotiable—here\'s why"'
+                ]
+            },
+            {
+                id: 40,
+                section: 'brown',
+                type: 'scale',
+                text: 'How comfortable are you being the "bad guy" who holds the line on quality?',
+                scale: [
+                    'Very uncomfortable—I avoid it',
+                    'Don\'t like it, often cave',
+                    'Tolerate it when necessary',
+                    'Comfortable with it',
+                    'Embrace it—someone has to care about standards'
+                ]
+            },
 
             // BLACK BELT - RESULTS (8 questions)
             { id: 33, section: 'results', text: 'When your personal goals conflict with team goals, what do you prioritize?', scale: ['Always my goals first', 'Usually personal goals', 'Depends on the situation', 'Usually team goals', 'Always team goals'] },
