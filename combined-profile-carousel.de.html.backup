@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#2d2d2d">
-    <title>Vollständiges Leadership-Profil - TAP-IN Assessment</title>
+    <title>Complete Leadership Profile - TAP-IN Assessment</title>
     <style>
         * {
             margin: 0;
@@ -768,55 +768,55 @@
         <div class="logo">🎯 TAP-IN</div>
         
         <div class="menu-section">
-            <div class="menu-section-title">Hauptmenü</div>
-            <a href="gym-dashboard.de.html" class="primary">🥋 THE GYM Dashboard</a>
-            <a href="team-dashboard.de.html">🏢 Team Dashboard</a>
-            <a href="recruiter-portal.de.html">🎯 Recruiter Portal</a>
+            <div class="menu-section-title">Main</div>
+            <a href="gym-dashboard.html" class="primary">🥋 The GYM Dashboard</a>
+            <a href="team-dashboard.html">🏢 Team Dashboard</a>
+            <a href="recruiter-portal.html">🎯 Recruiter Portal</a>
         </div>
 
         <div class="menu-section">
             <div class="menu-section-title">Assessments</div>
-            <a href="worker-type-assessment.de.html">👤 Worker Type</a>
-            <a href="leadership-style-carousel.de.html">🎯 Leadership Style</a>
-            <a href="team-assessment-enhanced-v2.de.html">👥 Team Dynamics</a>
-            <a href="combined-complete-profile.de.html">⭐ Komplettes Profil</a>
+            <a href="worker-type-assessment.html">👤 Worker Type</a>
+            <a href="leadership-style-assessment.html">🎯 Leadership Style</a>
+            <a href="team-assessment-enhanced-v2.html">👥 Team Dynamics</a>
+            <a href="combined-leadership-profile.html">⭐ Complete Profile</a>
         </div>
 
         <div class="menu-section">
             <div class="menu-section-title">Analytics & Insights</div>
-            <a href="advanced-analytics.de.html">📈 Advanced Analytics</a>
-            <a href="achievement-badges.de.html">🏆 Achievements</a>
-            <a href="goals.de.html">🎯 Goals & Progress</a>
+            <a href="advanced-analytics.html">📈 Advanced Analytics</a>
+            <a href="achievement-badges.html">🏆 Achievements</a>
+            <a href="goals.html">🎯 Goals & Progress</a>
         </div>
 
         <div class="menu-section">
             <div class="menu-section-title">Management Tools</div>
-            <a href="data-manager.de.html">💾 Data Manager</a>
-            <a href="notifications.de.html">🔔 Notifications</a>
-            <a href="calendar-integration.de.html">📅 Calendar</a>
+            <a href="data-manager.html">💾 Data Manager</a>
+            <a href="notifications.html">🔔 Notifications</a>
+            <a href="calendar-integration.html">📅 Calendar</a>
         </div>
 
         <div class="menu-section">
-            <div class="menu-section-title">Einstellungen</div>
-            <a href="white-label-customization.de.html">🎨 White Label</a>
-            <a href="QUICK-ADD-DEMO-DATA.de.html">🎬 Demo Data</a>
+            <div class="menu-section-title">Settings</div>
+            <a href="white-label-customization.html">🎨 White Label</a>
+            <a href="QUICK-ADD-DEMO-DATA.html">🎬 Demo Data</a>
         </div>
     </nav>
 
     <!-- Language Switcher -->
     <div class="lang-switch">
-        <a href="combined-profile-carousel.html">EN</a>
+        <a href="combined-profile-carousel.html" class="active">EN</a>
         <span style="color: #ddd;">|</span>
-        <a href="combined-profile-carousel.de.html" class="active">DE</a>
+        <a href="combined-profile-carousel.de.html">DE</a>
     </div>
 
     <div class="container">
         <div class="header">
-            <h1>Vollständiges Leadership-Profil</h1>
+            <h1>Complete Leadership Profile</h1>
         </div>
 
         <div class="progress-container">
-            <div class="progress-text" id="progressText">Frage 1 von 46</div>
+            <div class="progress-text" id="progressText">Question 1 of 46</div>
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
@@ -830,8 +830,8 @@
         <div class="question-container" id="questionContainer"></div>
 
         <div class="navigation-buttons">
-            <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>← Zurück</button>
-            <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Weiter →</button>
+            <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>← Previous</button>
+            <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next →</button>
         </div>
     </div>
 
@@ -842,101 +842,101 @@
             {
                 section: 'worker',
                 number: 1,
-                text: 'Wie gehst du bevorzugt an deine Arbeit heran?',
+                text: 'How do you prefer to tackle your work?',
                 type: 'radio',
                 options: [
-                    {value: 'sprinter', text: 'In intensiven Phasen mit Pausen dazwischen'},
-                    {value: 'jogger', text: 'In einem stetigen, gleichmäßigen Tempo über den Tag'},
-                    {value: 'ultrarunner', text: 'Langsam und methodisch, nachhaltig über lange Zeiträume'}
+                    {value: 'sprinter', text: 'In intense bursts with breaks in between'},
+                    {value: 'jogger', text: 'At a steady, consistent pace throughout the day'},
+                    {value: 'ultrarunner', text: 'Slow and methodical, sustainable over long periods'}
                 ],
                 insight: {
                     icon: '⚡',
-                    title: 'Dein Work Rhythm ist deine Superkraft',
-                    content: 'David Goggins strukturiert seinen Tag in intensiven Focus-Blöcken (Sprinter-Mentalität), während Warren Buffett 80% seiner Zeit mit Lesen und Denken verbringt (Ultrarunner-Ansatz). Beide sind extrem erfolgreich – es geht darum, deinen natürlichen Rhythmus zu finden.',
-                    quote: '📊 Stanford-Studie: Mitarbeiter, die ihren natürlichen Arbeitsstil verstehen, sind 40% produktiver und haben ein 60% geringeres Burnout-Risiko.'
+                    title: 'Your Work Rhythm is Your Superpower',
+                    content: 'David Goggins structures his day in intense focus blocks (Sprinter mentality), while Warren Buffett spends 80% of his time reading and thinking (Ultrarunner approach). Both are wildly successful – it\'s about finding your natural rhythm.',
+                    quote: '📊 Stanford study: Employees who understand their natural work style are 40% more productive and 60% less likely to burn out.'
                 }
             },
             {
                 section: 'worker',
                 number: 2,
-                text: 'Wenn eine Deadline ansteht:',
+                text: 'When facing a deadline, you:',
                 type: 'radio',
                 options: [
-                    {value: 'sprinter', text: 'Blühst du unter Druck auf und arbeitest am besten in letzter Minute'},
-                    {value: 'jogger', text: 'Machst du stetige Fortschritte, um rechtzeitig fertig zu werden'},
-                    {value: 'ultrarunner', text: 'Fängst du früh an und verteilst die Arbeit, um Stress zu vermeiden'}
+                    {value: 'sprinter', text: 'Thrive under pressure and work best at the last minute'},
+                    {value: 'jogger', text: 'Maintain steady progress to finish on time'},
+                    {value: 'ultrarunner', text: 'Start early and pace yourself to avoid stress'}
                 ],
                 insight: {
                     icon: '⏱️',
-                    title: 'Deadline-Response zeigt deine Fuel Source',
-                    content: 'Manche Menschen nutzen Deadline-Druck wie Raketentreibstoff (urgency-motivated), während andere mit Pufferzeit am besten performen (security-motivated). Beides ist richtig—dein Pattern zu verstehen hilft dir, Workload und Stress effektiv zu managen.',
-                    quote: '"Pressure is a privilege." - Billie Jean King (für urgency-motivated Types)'
+                    title: 'Deadline Response Reveals Your Fuel Source',
+                    content: 'Some people use deadline pressure as rocket fuel (urgency-motivated), while others perform best with buffer time (security-motivated). Neither is wrong—understanding your pattern helps you manage workload and stress effectively.',
+                    quote: '"Pressure is a privilege." - Billie Jean King (for urgency-motivated types)'
                 }
             },
             {
                 section: 'worker',
                 number: 3,
-                text: 'Deine Energy Levels über den Tag sind:',
+                text: 'Your energy levels throughout the day are:',
                 type: 'radio',
                 options: [
-                    {value: 'sprinter', text: 'Peaks und Valleys - hohe Energie, dann Erholung nötig'},
-                    {value: 'jogger', text: 'Relativ stabil und vorhersehbar'},
-                    {value: 'ultrarunner', text: 'Stetig und ausdauernd, kaum Schwankungen'}
+                    {value: 'sprinter', text: 'Peaks and valleys - high energy then need recovery'},
+                    {value: 'jogger', text: 'Relatively stable and predictable'},
+                    {value: 'ultrarunner', text: 'Steady and enduring, rarely fluctuate'}
                 ],
                 insight: {
                     icon: '🔋',
-                    title: 'Energy Signature formt Performance',
-                    content: 'Tony Schwartz (Energy Project) fand heraus: Sprinter brauchen komplette Shutdowns (90min on, 20min off). Jogger profitieren von Micro-Breaks alle 2 Stunden. Ultrarunner haben das langsamste Tempo, aber höchste Konsistenz über Monate.',
-                    quote: '⚡ Die meisten Menschen kennen ihren Type nicht – und kämpfen gegen ihren natürlichen Rhythmus.'
+                    title: 'Energy Signature Shapes Performance',
+                    content: 'Tony Schwartz (Energy Project) found: Sprinters need complete shutdowns (90min on, 20min off). Joggers benefit from micro-breaks every 2 hours. Ultrarunners have the slowest pace but highest consistency over months.',
+                    quote: '⚡ Most people don\'t know their type – and fight their natural rhythm.'
                 }
             },
             {
                 section: 'worker',
                 number: 4,
-                text: 'Wie gehst du mit mehreren Projekten um?',
+                text: 'How do you handle multiple projects?',
                 type: 'radio',
                 options: [
-                    {value: 'sprinter', text: 'Fokussiere intensiv auf eines, schließe es ab, dann das nächste'},
-                    {value: 'jogger', text: 'Verteile Zeit gleichmäßig auf Projekte über die Woche'},
-                    {value: 'ultrarunner', text: 'Mache langsame, konsistente Fortschritte bei allen gleichzeitig'}
+                    {value: 'sprinter', text: 'Focus intensely on one, complete it, then move to the next'},
+                    {value: 'jogger', text: 'Balance time across projects throughout the week'},
+                    {value: 'ultrarunner', text: 'Make slow, consistent progress on all simultaneously'}
                 ],
                 insight: {
-                    icon: '🎯',
+                    icon: '�',
                     title: 'Focus Pattern = Productivity Pattern',
-                    content: 'Cal Newport (Deep Work) schwört auf Single-Tasking. David Allen (GTD) strukturiert Multi-Project-Balance. Beide funktionieren—aber nur, wenn sie zu deiner Verdrahtung passen. Dich in das falsche Pattern zu zwingen, erzeugt Burnout.',
-                    quote: 'Elite Performer matchen ihre Project Load zu ihrem Focus Style.'
+                    content: 'Cal Newport (Deep Work) champions single-tasking. David Allen (GTD) structures multi-project balance. Both work—but only if they match your wiring. Forcing yourself into the wrong pattern creates burnout.',
+                    quote: 'Elite performers match their project load to their focus style.'
                 }
             },
             {
                 section: 'worker',
                 number: 5,
-                text: 'Deine ideale Arbeitsumgebung ermöglicht dir:',
+                text: 'Your ideal work environment allows you to:',
                 type: 'radio',
                 options: [
-                    {value: 'sprinter', text: 'In kurzen, fokussierten Sessions mit Flexibilität für Pausen zu arbeiten'},
-                    {value: 'jogger', text: 'Eine regelmäßige Routine und konsistenten Schedule zu haben'},
-                    {value: 'ultrarunner', text: 'In deinem eigenen Tempo ohne Zeitdruck zu arbeiten'}
+                    {value: 'sprinter', text: 'Work in short, focused sessions with flexibility for breaks'},
+                    {value: 'jogger', text: 'Maintain a regular routine and consistent schedule'},
+                    {value: 'ultrarunner', text: 'Work at your own pace without time pressure'}
                 ],
                 insight: {
                     icon: '🏢',
-                    title: 'Environment beeinflusst Performance um 30%',
-                    content: 'Studien zeigen: Workspace-Präferenzen sind zutiefst persönlich. Introvertierte performen oft besser in ruhigen Focus-Zonen, während Extrovertierte in kollaborativen Spaces aufblühen. Falsche Environments killen Produktivität und Engagement.',
-                    quote: 'Designe dein Environment so, dass es deine Natur unterstützt, nicht bekämpft.'
+                    title: 'Environment Impacts Performance by 30%',
+                    content: 'Studies show workspace preferences are deeply personal. Introverts often excel in quiet focus zones while extroverts thrive in collaborative spaces. Forcing mismatched environments kills productivity and engagement.',
+                    quote: 'Design your environment to support your nature, not fight it.'
                 }
             },
             {
                 section: 'worker',
                 number: 6,
-                text: 'Nach Abschluss eines großen Projekts:',
+                text: 'After completing a major project, you:',
                 type: 'radio',
                 options: [
-                    {value: 'sprinter', text: 'Brauchst du signifikante Downtime vor der nächsten Challenge'},
-                    {value: 'jogger', text: 'Gehst du smooth über zum nächsten Projekt'},
-                    {value: 'ultrarunner', text: 'Bist du schon mitten in der nächsten Langzeit-Initiative'}
+                    {value: 'sprinter', text: 'Need significant downtime before the next challenge'},
+                    {value: 'jogger', text: 'Transition smoothly to the next project'},
+                    {value: 'ultrarunner', text: 'Already well into the next long-term initiative'}
                 ],
                 insight: {
                     icon: '�',
-                    title: 'Recovery Pattern = Nachhaltigkeit',
+                    title: 'Recovery Pattern = Sustainability',
                     content: 'Ray Dalio focuses on quality over quantity: "I make as few decisions as possible." He prioritizes deep thinking (Ultrarunner). Meanwhile, Sara Blakely thrives on high-energy rapid execution (Sprinter). Know your recovery needs.',
                     quote: '💡 The trick: Recognize your pattern instead of fighting against it.'
                 }
@@ -944,16 +944,16 @@
             {
                 section: 'worker',
                 number: 7,
-                text: 'Wenn du etwas Neues lernst, bevorzugst du:',
+                text: 'When learning something new, you prefer to:',
                 type: 'radio',
                 options: [
-                    {value: 'sprinter', text: 'Intensiv einzutauchen und es schnell zu meistern'},
-                    {value: 'jogger', text: 'Konsistent durch regelmäßige Praxis zu lernen'},
-                    {value: 'ultrarunner', text: 'Dir Zeit zu nehmen für tiefes Verständnis, bevor du weitergehst'}
+                    {value: 'sprinter', text: 'Dive in intensely and master it quickly'},
+                    {value: 'jogger', text: 'Learn consistently through regular practice'},
+                    {value: 'ultrarunner', text: 'Take time to deeply understand before moving forward'}
                 ],
                 insight: {
                     icon: '📚',
-                    title: 'Learning Style beeinflusst Mastery-Geschwindigkeit',
+                    title: 'Learning Style Impacts Mastery Speed',
                     content: 'Research on expertise shows that matching learning approach to personal style accelerates skill acquisition by 60%. Theory-first learners need frameworks before practice. Action-first learners need experimentation before concepts.',
                     quote: '"Tell me and I forget. Teach me and I remember. Involve me and I learn." - Benjamin Franklin'
                 }
@@ -961,12 +961,12 @@
             {
                 section: 'worker',
                 number: 8,
-                text: 'Deine Produktivität ist am höchsten, wenn:',
+                text: 'Your productivity is highest when:',
                 type: 'radio',
                 options: [
-                    {value: 'sprinter', text: 'Eine klare Deadline Urgency erzeugt'},
-                    {value: 'jogger', text: 'Du eine strukturierte Routine hast'},
-                    {value: 'ultrarunner', text: 'Du ausreichend Zeit für gründliche Arbeit hast'}
+                    {value: 'sprinter', text: 'There's a clear deadline creating urgency'},
+                    {value: 'jogger', text: 'You have a structured routine to follow'},
+                    {value: 'ultrarunner', text: 'You have ample time to do thorough work'}
                 ],
                 insight: {
                     icon: '🚀',
@@ -978,12 +978,12 @@
             {
                 section: 'worker',
                 number: 9,
-                text: 'Wie lädst du auf?',
+                text: 'How do you recharge?',
                 type: 'radio',
                 options: [
-                    {value: 'sprinter', text: 'Komplette Pausen von der Arbeit - klare Grenzen'},
-                    {value: 'jogger', text: 'Regelmäßige kurze Pausen über den Tag'},
-                    {value: 'ultrarunner', text: 'Fühlst dich selten ausgelaugt - Arbeit ist nachhaltig'}
+                    {value: 'sprinter', text: 'Complete breaks from work - clear boundaries'},
+                    {value: 'jogger', text: 'Regular short breaks throughout the day'},
+                    {value: 'ultrarunner', text: 'Rarely feel drained - work is sustainable'}
                 ],
                 insight: {
                     icon: '⚡',
@@ -995,16 +995,16 @@
             {
                 section: 'worker',
                 number: 10,
-                text: 'In einer typischen Arbeitswoche bevorzugst du:',
+                text: 'In a typical work week, you prefer:',
                 type: 'radio',
                 options: [
-                    {value: 'sprinter', text: 'Variety und Intensität - täglich unterschiedliche Challenges'},
-                    {value: 'jogger', text: 'Vorhersehbare Struktur mit etwas Variety'},
-                    {value: 'ultrarunner', text: 'Konsistenz - ähnliche Tasks und Rhythmen'}
+                    {value: 'sprinter', text: 'Variety and intensity - different challenges daily'},
+                    {value: 'jogger', text: 'Predictable structure with some variety'},
+                    {value: 'ultrarunner', text: 'Consistency - similar tasks and rhythms'}
                 ],
                 insight: {
                     icon: '�',
-                    title: 'Weekly Pattern formt Nachhaltigkeit',
+                    title: 'Weekly Pattern Shapes Sustainability',
                     content: 'Your ideal week rhythm is as personal as your fingerprint. Variety-seekers get bored with routine. Consistency-cravers get stressed by chaos. Neither is better—both need the right structure.',
                     quote: 'Design your week around your nature, not "best practices."'
                 }
@@ -1012,16 +1012,16 @@
             {
                 section: 'worker',
                 number: 11,
-                text: 'Dein Ansatz zu Meetings ist:',
+                text: 'Your approach to meetings is:',
                 type: 'radio',
                 options: [
-                    {value: 'sprinter', text: 'Kurz und intensiv - rein, entscheiden, raus'},
-                    {value: 'jogger', text: 'Regelmäßig geplant mit klaren Agendas'},
-                    {value: 'ultrarunner', text: 'Gründliche Diskussionen - nimm dir die Zeit, die nötig ist'}
+                    {value: 'sprinter', text: 'Short and intense - get in, decide, get out'},
+                    {value: 'jogger', text: 'Scheduled regularly with clear agendas'},
+                    {value: 'ultrarunner', text: 'Thorough discussions - take time needed'}
                 ],
                 insight: {
                     icon: '🤝',
-                    title: 'Meeting Style zeigt Communication Pattern',
+                    title: 'Meeting Style Reveals Communication Pattern',
                     content: 'Amazon (Bezos): No PowerPoint, 6-page memos, deep reading. Apple (Jobs): Fast, decisive, action-oriented. Both built trillion-dollar companies with opposite meeting styles. Match meetings to your processing style.',
                     quote: 'Great leaders design meetings for output, not optics.'
                 }
@@ -1029,16 +1029,16 @@
             {
                 section: 'worker',
                 number: 12,
-                text: 'Wenn du gestresst bist, performst du am besten, indem du:',
+                text: 'When stressed, you perform best by:',
                 type: 'radio',
                 options: [
-                    {value: 'sprinter', text: 'Es in schnelle, fokussierte Action kanalisierst'},
-                    {value: 'jogger', text: 'Deine normale Routine und Pace beibehältst'},
-                    {value: 'ultrarunner', text: 'Ruhig und methodisch bleibst'}
+                    {value: 'sprinter', text: 'Channeling it into rapid, focused action'},
+                    {value: 'jogger', text: 'Maintaining your normal routine and pace'},
+                    {value: 'ultrarunner', text: 'Staying calm and methodical'}
                 ],
                 insight: {
                     icon: '�',
-                    title: 'Stress Response = dein Default Mode',
+                    title: 'Stress Response = Your Default Mode',
                     content: 'Crisis doesn\'t build character—it reveals it. Some people use stress as fuel. Others need calm to think. Elite performers know their stress response and structure accordingly. Your pattern isn\'t a flaw—it\'s your wiring.',
                     quote: 'Awareness transforms your reflex into a choice.'
                 }
@@ -1048,7 +1048,7 @@
             {
                 section: 'leadership',
                 number: 13,
-                text: 'Beim Start eines neuen Projekts oder einer Initiative ist dein erster Instinkt:',
+                text: 'When starting a new project or initiative, your first instinct is to:',
                 type: 'radio',
                 insight: {
                     icon: '🎯',
@@ -1056,18 +1056,18 @@
                     content: 'How you start reveals how you lead. Visionaries inspire with possibility. Architects design the structure. Facilitators build the team. Executors launch into action. Commanders establish authority. Coaches develop capability. Your first move isn\'t random—it\'s your leadership operating system.'
                 },
                 options: [
-                    {value: 'visionary', text: 'Eine inspirierende Vision zu malen, wie Erfolg aussehen könnte'},
-                    {value: 'architect', text: 'Strategie, Struktur und Dependencies zu mappen'},
-                    {value: 'facilitator', text: 'Alle zusammenzubringen, um Alignment und Clarity zu schaffen'},
-                    {value: 'executor', text: 'Quick Wins zu identifizieren und sofort mit Execution zu starten'},
-                    {value: 'commander', text: 'Klare Objectives, Rollen und Chain of Command zu definieren'},
-                    {value: 'coach', text: 'Kraftvolle Fragen zu stellen, damit das Team den Weg selbst entdeckt'},
+                    {value: 'visionary', text: 'Paint an inspiring vision of what success could look like'},
+                    {value: 'architect', text: 'Map out the strategy, structure, and dependencies'},
+                    {value: 'facilitator', text: 'Bring everyone together to build alignment and clarity'},
+                    {value: 'executor', text: 'Identify quick wins and start executing immediately'},
+                    {value: 'commander', text: 'Define clear objectives, roles, and chain of command'},
+                    {value: 'coach', text: 'Ask powerful questions to help the team discover the path forward'},
                 ]
             },
             {
                 section: 'leadership',
                 number: 14,
-                text: 'Bei Team-Konflikten tendierst du natürlich dazu:',
+                text: 'During team conflicts, you naturally:',
                 type: 'radio',
                 insight: {
                     icon: '⚖️',
@@ -1075,18 +1075,18 @@
                     content: 'How you handle conflict reveals your core operating system. Visionaries reframe toward purpose. Architects solve root causes. Facilitators build bridges. Executors push for resolution. Commanders make the call. Coaches develop capability. Your conflict style is not a weakness—it is your strength under pressure.'
                 },
                 options: [
-                    {value: 'visionary', text: 'Den Konflikt um Shared Purpose und größere Goals zu reframen'},
-                    {value: 'architect', text: 'Root Causes zu analysieren und bessere Processes zu designen'},
-                    {value: 'facilitator', text: 'Space zu schaffen, damit alle gehört werden und Common Ground zu finden'},
-                    {value: 'executor', text: 'Auf schnelle Resolution zu drängen, damit das Team vorankommen kann'},
-                    {value: 'commander', text: 'Den Final Call zu machen und Alignment zu erwarten'},
-                    {value: 'coach', text: 'Menschen zu helfen, es selbst mit guided Questions durchzuarbeiten'},
+                    {value: 'visionary', text: 'Reframe the conflict around shared purpose and bigger goals'},
+                    {value: 'architect', text: 'Analyze root causes and design better processes'},
+                    {value: 'facilitator', text: 'Create space for everyone to be heard and find common ground'},
+                    {value: 'executor', text: 'Push for quick resolution so the team can move forward'},
+                    {value: 'commander', text: 'Make the final call and expect alignment'},
+                    {value: 'coach', text: 'Help people work through it themselves with guided questions'},
                 ]
             },
             {
                 section: 'leadership',
                 number: 15,
-                text: 'Was energetisiert dich am meisten bei der Arbeit?',
+                text: 'What energizes you most at work?',
                 type: 'radio',
                 insight: {
                     icon: '⚡',
@@ -1094,18 +1094,18 @@
                     content: 'Sustainable leadership comes from doing work that energizes you. If you\'re constantly drained, you\'re likely leading against your archetype. Elite leaders structure their roles around their energy source—delegating tasks that deplete them.'
                 },
                 options: [
-                    {value: 'visionary', text: 'Big Ideas zu brainstormen und neue Possibilities zu erkunden'},
-                    {value: 'architect', text: 'Komplexe Probleme zu lösen und elegante Solutions zu designen'},
-                    {value: 'facilitator', text: 'Menschen zu helfen, sich zu connecten, zu wachsen und gut zusammenzuarbeiten'},
-                    {value: 'executor', text: 'Abgeschlossene Tasks abzuhaken und Milestones zu erreichen'},
-                    {value: 'commander', text: 'Tough Decisions zu treffen und gegen Competition zu gewinnen'},
-                    {value: 'coach', text: 'Zuzusehen, wie Menschen Breakthroughs haben und leveln'},
+                    {value: 'visionary', text: 'Brainstorming big ideas and exploring new possibilities'},
+                    {value: 'architect', text: 'Solving complex problems and designing elegant solutions'},
+                    {value: 'facilitator', text: 'Helping people connect, grow, and work well together'},
+                    {value: 'executor', text: 'Checking off completed tasks and hitting milestones'},
+                    {value: 'commander', text: 'Making tough decisions and winning against competition'},
+                    {value: 'coach', text: 'Watching people have breakthroughs and level up'},
                 ]
             },
             {
                 section: 'leadership',
                 number: 16,
-                text: 'Wie kommunizierst du bevorzugt wichtige Informationen?',
+                text: 'How do you prefer to communicate important information?',
                 type: 'radio',
                 insight: {
                     icon: '💬',
@@ -1113,18 +1113,18 @@
                     content: 'Elite leaders know their communication default and adapt to their audience. Visionaries inspire through stories. Architects persuade with data. Facilitators connect through dialogue. Executors drive with clarity. Commanders command with directness. Coaches develop through questions. Know your language. Learn others.'
                 },
                 options: [
-                    {value: 'visionary', text: 'Durch Storytelling und das Malen überzeugender Bilder'},
-                    {value: 'architect', text: 'Mit Data, Frameworks und logischem Reasoning'},
-                    {value: 'facilitator', text: 'Im Dialog, damit alle verstehen und sich gehört fühlen'},
-                    {value: 'executor', text: 'Klar und präzise mit spezifischen Action Items'},
-                    {value: 'commander', text: 'Direkt und entschieden mit klaren Expectations'},
-                    {value: 'coach', text: 'Durch Questions, die anderen helfen, Insights selbst zu entdecken'},
+                    {value: 'visionary', text: 'Through storytelling and painting compelling pictures'},
+                    {value: 'architect', text: 'With data, frameworks, and logical reasoning'},
+                    {value: 'facilitator', text: 'In dialogue, ensuring everyone understands and feels heard'},
+                    {value: 'executor', text: 'Clearly and concisely with specific action items'},
+                    {value: 'commander', text: 'Directly and decisively with clear expectations'},
+                    {value: 'coach', text: 'Through questions that help others discover insights'},
                 ]
             },
             {
                 section: 'leadership',
                 number: 17,
-                text: 'Wenn du mit einem großen Obstacle konfrontiert bist, ist dein Ansatz:',
+                text: 'When facing a major obstacle, your approach is to:',
                 type: 'radio',
                 insight: {
                     icon: '🏔️',
@@ -1132,18 +1132,18 @@
                     content: 'Pressure does not create character—it reveals it. How you respond to obstacles shows your true leadership DNA. Visionaries see opportunity. Architects engineer solutions. Facilitators mobilize people. Executors find the path. Commanders take charge. Coaches build capability. Your obstacle response is your leadership reflex.'
                 },
                 options: [
-                    {value: 'visionary', text: 'Es als Opportunity zu reframen und kreative Solutions zu inspirieren'},
-                    {value: 'architect', text: 'Es systematisch zu breaken und eine Solution zu engineeren'},
-                    {value: 'facilitator', text: 'Das Team zu rallyen, es gemeinsam anzugehen'},
-                    {value: 'executor', text: 'Den schnellsten Path drumherum oder hindurch zu finden'},
-                    {value: 'commander', text: 'Charge zu übernehmen, tough Calls zu machen und durchzupushen'},
-                    {value: 'coach', text: 'Dein Team zu challengen, die Solution selbst zu finden'},
+                    {value: 'visionary', text: 'Reframe it as an opportunity and inspire creative solutions'},
+                    {value: 'architect', text: 'Break it down systematically and engineer a solution'},
+                    {value: 'facilitator', text: 'Rally the team to tackle it together'},
+                    {value: 'executor', text: 'Find the fastest path around or through it'},
+                    {value: 'commander', text: 'Take charge, make the tough calls, and push through'},
+                    {value: 'coach', text: 'Challenge your team to find the solution themselves'},
                 ]
             },
             {
                 section: 'leadership',
                 number: 18,
-                text: 'In Meetings neigst du am ehesten dazu:',
+                text: 'In meetings, you are most likely to:',
                 type: 'radio',
                 insight: {
                     icon: '🤝',
@@ -1162,7 +1162,7 @@
             {
                 section: 'leadership',
                 number: 19,
-                text: 'Dein Team würde dich beschreiben als jemanden, der:',
+                text: 'Your team would describe you as someone who:',
                 type: 'radio',
                 insight: {
                     icon: '🎭',
@@ -1170,18 +1170,18 @@
                     content: 'How others see you matters. Your perceived strengths become your opportunities—or your limitations. Self-aware leaders know their brand and actively shape it. You can\'t be all things to all people. Own your archetype.'
                 },
                 options: [
-                    {value: 'visionary', text: 'Possibilities sieht, die andere missen, und sie achievable macht'},
-                    {value: 'architect', text: 'Tief denkt und smarte Solutions für komplexe Probleme designt'},
-                    {value: 'facilitator', text: 'Connection, Trust kreiert und das Beste aus allen rausholt'},
-                    {value: 'executor', text: 'Things done bekommt, egal welche Obstacles erscheinen'},
-                    {value: 'commander', text: 'Clear Direction bietet und High Standards hält'},
-                    {value: 'coach', text: 'Menschen durch Powerful Questions und Feedback entwickelt'},
+                    {value: 'visionary', text: 'Sees possibilities others miss and makes them feel achievable'},
+                    {value: 'architect', text: 'Thinks deeply and designs smart solutions to complex problems'},
+                    {value: 'facilitator', text: 'Creates connection, trust, and brings out everyone\'s best'},
+                    {value: 'executor', text: 'Gets things done no matter what obstacles appear'},
+                    {value: 'commander', text: 'Provides clear direction and holds high standards'},
+                    {value: 'coach', text: 'Develops people through powerful questions and feedback'},
                 ]
             },
             {
                 section: 'leadership',
                 number: 20,
-                text: 'Was frustriert dich am meisten in einem Team-Setting?',
+                text: 'What frustrates you most in a team setting?',
                 type: 'radio',
                 insight: {
                     icon: '😤',
@@ -1189,18 +1189,18 @@
                     content: 'What frustrates you most reveals what you value most. Visionaries cannot stand small thinking. Architects hate sloppy execution. Facilitators resist silos. Executors despise inaction. Commanders reject indiscipline. Coaches resent passivity. Your frustration is not a flaw—it is your value system speaking.'
                 },
                 options: [
-                    {value: 'visionary', text: 'Zu small zu spielen und sich mit Incremental Improvements zufriedenzugeben'},
-                    {value: 'architect', text: 'Sloppy Thinking und poorly designed Processes'},
-                    {value: 'facilitator', text: 'Menschen hören einander nicht zu oder arbeiten in Silos'},
-                    {value: 'executor', text: 'Endless Discussion ohne Decisions oder Action'},
-                    {value: 'commander', text: 'Lack of Discipline, Accountability und Follow-Through'},
-                    {value: 'coach', text: 'Menschen übernehmen keine Ownership für ihr eigenes Development'},
+                    {value: 'visionary', text: 'Playing too small and settling for incremental improvements'},
+                    {value: 'architect', text: 'Sloppy thinking and poorly designed processes'},
+                    {value: 'facilitator', text: 'People not listening to each other or working in silos'},
+                    {value: 'executor', text: 'Endless discussion without decisions or action'},
+                    {value: 'commander', text: 'Lack of discipline, accountability, and follow-through'},
+                    {value: 'coach', text: 'People not taking ownership of their own development'},
                 ]
             },
             {
                 section: 'leadership',
                 number: 21,
-                text: 'Beim Delegieren fokussierst du dich auf:',
+                text: 'When delegating work, you focus on:',
                 type: 'radio',
                 insight: {
                     icon: '📋',
@@ -1208,18 +1208,18 @@
                     content: 'How you delegate reveals how you scale. Visionaries delegate execution, not vision. Architects delegate tasks within systems. Facilitators delegate through strengths. Executors delegate with checkpoints. Commanders delegate with authority. Coaches delegate through questions. Elite leaders delegate the work—not the accountability.'
                 },
                 options: [
-                    {value: 'visionary', text: 'Das \'Why\' und den gewünschten Impact, vertrauend dem Team beim \'How\''},
-                    {value: 'architect', text: 'Klare Frameworks und Decision Rights, damit Menschen unabhängig operieren können'},
-                    {value: 'facilitator', text: 'Tasks mit People\'s Strengths und Development Goals matchen'},
-                    {value: 'executor', text: 'Spezifische Deliverables, Deadlines und Accountability Checkpoints'},
-                    {value: 'commander', text: 'Klare Orders mit erwarteten Outcomes und Reporting Structure'},
-                    {value: 'coach', text: 'Challenging Questions, die ihnen helfen, ihren eigenen Path zu finden'},
+                    {value: 'visionary', text: 'The \'why\' and desired impact, trusting the team on the \'how\''},
+                    {value: 'architect', text: 'Clear frameworks and decision rights so people can operate independently'},
+                    {value: 'facilitator', text: 'Matching tasks to people\'s strengths and development goals'},
+                    {value: 'executor', text: 'Specific deliverables, deadlines, and accountability checkpoints'},
+                    {value: 'commander', text: 'Clear orders with expected outcomes and reporting structure'},
+                    {value: 'coach', text: 'Challenging questions that help them figure out their own path'},
                 ]
             },
             {
                 section: 'leadership',
                 number: 22,
-                text: 'Unter Pressure tendierst du dazu:',
+                text: 'Under pressure, you tend to:',
                 type: 'radio',
                 insight: {
                     icon: '🔥',
@@ -1227,18 +1227,18 @@
                     content: 'Crisis does not build leaders—it exposes them. Under pressure, you default to your archetype. Visionaries inspire through chaos. Architects impose order. Facilitators steady the ship. Executors accelerate action. Commanders seize control. Coaches develop resilience. Awareness transforms your reflex into a choice.'
                 },
                 options: [
-                    {value: 'visionary', text: 'Die Vision zu verdoppeln und Urgency zu inspirieren'},
-                    {value: 'architect', text: 'Zurückzutreten, um den Approach zu analysieren und zu redesignen'},
-                    {value: 'facilitator', text: 'Das Team zu rallyen und sicherzustellen, dass alle aligned und supported sind'},
-                    {value: 'executor', text: 'In High Gear zu gehen und Execution relentless zu driven'},
-                    {value: 'commander', text: 'Control zu übernehmen, decisive Calls zu machen und Distractions zu eliminieren'},
-                    {value: 'coach', text: 'Ruhig zu bleiben und dem Team zu helfen, gemeinsam durchzunavigieren'},
+                    {value: 'visionary', text: 'Double down on the vision and inspire urgency'},
+                    {value: 'architect', text: 'Step back to analyze and redesign the approach'},
+                    {value: 'facilitator', text: 'Rally the team and ensure everyone\'s aligned and supported'},
+                    {value: 'executor', text: 'Go into high gear and drive execution relentlessly'},
+                    {value: 'commander', text: 'Take control, make decisive calls, and eliminate distractions'},
+                    {value: 'coach', text: 'Stay calm and help the team navigate through it together'},
                 ]
             },
             {
                 section: 'leadership',
                 number: 23,
-                text: 'Dein ideales Arbeitsumfeld ist eines, in dem:',
+                text: 'Your ideal work environment is one where:',
                 type: 'radio',
                 insight: {
                     icon: '🏢',
@@ -1246,18 +1246,18 @@
                     content: 'Peter Drucker\'s famous line holds true. Your ideal environment reveals the culture you create. Visionaries build innovation labs. Architects optimize operations. Facilitators foster safety. Executors demand results. Commanders enforce standards. Coaches develop people. You don\'t join a culture—you radiate one.'
                 },
                 options: [
-                    {value: 'visionary', text: 'Innovation und bold Ideas ermutigt und gefeiert werden'},
-                    {value: 'architect', text: 'Systeme clean, Processes optimiert sind und Logic vorherrscht'},
-                    {value: 'facilitator', text: 'Menschen sich safe und valued fühlen und seamless zusammenarbeiten'},
-                    {value: 'executor', text: 'Goals klar, Momentum hoch ist und Results schnell kommen'},
-                    {value: 'commander', text: 'Standards hoch, Rollen klar sind und alle executen'},
-                    {value: 'coach', text: 'Menschen challenged werden zu wachsen und Ownership zu übernehmen'},
+                    {value: 'visionary', text: 'Innovation and bold ideas are encouraged and celebrated'},
+                    {value: 'architect', text: 'Systems are clean, processes are optimized, and logic prevails'},
+                    {value: 'facilitator', text: 'People feel safe, valued, and work together seamlessly'},
+                    {value: 'executor', text: 'Goals are clear, momentum is high, and results come fast'},
+                    {value: 'commander', text: 'Standards are high, roles are clear, and everyone executes'},
+                    {value: 'coach', text: 'People are challenged to grow and take ownership'},
                 ]
             },
             {
                 section: 'leadership',
                 number: 24,
-                text: 'Beim Feedback-Geben betonst du:',
+                text: 'When giving feedback, you emphasize:',
                 type: 'radio',
                 insight: {
                     icon: '💭',
@@ -1265,18 +1265,18 @@
                     content: 'Kim Scott (Radical Candor): The best feedback is caring personally while challenging directly. Visionaries connect to mission. Architects explain logic. Facilitators build confidence. Executors specify actions. Commanders set standards. Coaches ask questions. All can be radically candid—just in different languages.'
                 },
                 options: [
-                    {value: 'visionary', text: 'Die Connection ihrer Arbeit zur größeren Mission und Potential'},
-                    {value: 'architect', text: 'Die Logic und das Framework dahinter, was funktioniert und was nicht'},
-                    {value: 'facilitator', text: 'Ihre Growth Journey und das Building ihrer Confidence'},
-                    {value: 'executor', text: 'Spezifische Behaviors zum Ändern und Results zum Erreichen'},
-                    {value: 'commander', text: 'Klare Standards und wo sie steppen müssen'},
-                    {value: 'coach', text: 'Questions, die ihnen helfen, ihre eigenen Insights zu discovern'},
+                    {value: 'visionary', text: 'Connecting their work to the bigger mission and potential'},
+                    {value: 'architect', text: 'The logic and framework behind what works and what doesn\'t'},
+                    {value: 'facilitator', text: 'Their growth journey and building their confidence'},
+                    {value: 'executor', text: 'Specific behaviors to change and results to achieve'},
+                    {value: 'commander', text: 'Clear standards and where they need to step up'},
+                    {value: 'coach', text: 'Questions that help them discover their own insights'},
                 ]
             },
             {
                 section: 'leadership',
                 number: 25,
-                text: 'Erfolg misst du am besten durch:',
+                text: 'Success for you is best measured by:',
                 type: 'radio',
                 insight: {
                     icon: '📊',
@@ -1284,18 +1284,18 @@
                     content: 'What you measure reveals what you value. Visionaries track transformation. Architects measure scalability. Facilitators count developed leaders. Executors monitor results. Commanders track wins. Coaches measure growth. Your scorecard isn\'t neutral—it shapes behavior. Choose metrics that align with your archetype.'
                 },
                 options: [
-                    {value: 'visionary', text: 'Lasting Impact und Transformation zu kreieren'},
-                    {value: 'architect', text: 'Systeme zu builden, die skalieren und endure'},
-                    {value: 'facilitator', text: 'Menschen zu entwickeln und Team Capability zu stärken'},
-                    {value: 'executor', text: 'Targets zu hitten und tangible Results zu delivern'},
-                    {value: 'commander', text: 'Decisively zu gewinnen und Competition zu outperformen'},
-                    {value: 'coach', text: 'Wie viele Menschen du geholfen hast, ihr Potential zu erreichen'},
+                    {value: 'visionary', text: 'Creating lasting impact and transformation'},
+                    {value: 'architect', text: 'Building systems that scale and endure'},
+                    {value: 'facilitator', text: 'Developing people and strengthening team capability'},
+                    {value: 'executor', text: 'Hitting targets and delivering tangible results'},
+                    {value: 'commander', text: 'Winning decisively and outperforming competition'},
+                    {value: 'coach', text: 'How many people you\'ve helped reach their potential'},
                 ]
             },
             {
                 section: 'leadership',
                 number: 26,
-                text: 'Deine Leadership Superpower ist:',
+                text: 'Your leadership superpower is:',
                 type: 'radio',
                 insight: {
                     icon: '⭐',
@@ -1303,12 +1303,12 @@
                     content: 'Your superpower isn\'t what you can do occasionally—it\'s what you deliver consistently under pressure. Mandela inspired through decades in prison. Jobs designed through failure and success. Rogers connected for 33 years. Know your power. Use it wisely.'
                 },
                 options: [
-                    {value: 'visionary', text: 'Eine compelling Future zu malen, der Menschen folgen wollen'},
-                    {value: 'architect', text: 'Smart Solutions für komplexe Challenges zu designen'},
-                    {value: 'facilitator', text: 'Das Beste in Menschen herauszuholen und großartige Teams zu builden'},
-                    {value: 'executor', text: 'Strategie durch flawless Execution in Reality zu turnen'},
-                    {value: 'commander', text: 'Tough Calls zu machen und decisively in Chaos zu führen'},
-                    {value: 'coach', text: 'Menschen zu entwickeln, die weitergehen und großartige Dinge tun'},
+                    {value: 'visionary', text: 'Painting a compelling future people want to follow'},
+                    {value: 'architect', text: 'Designing smart solutions to complex challenges'},
+                    {value: 'facilitator', text: 'Bringing out the best in people and building great teams'},
+                    {value: 'executor', text: 'Turning strategy into reality through flawless execution'},
+                    {value: 'commander', text: 'Making tough calls and leading decisively in chaos'},
+                    {value: 'coach', text: 'Developing people who go on to do great things'},
                 ]
             },
 
@@ -1317,7 +1317,7 @@
             {
                 section: 'team',
                 number: 27,
-                text: 'Team-Mitglieder geben offen ihre Fehler und Schwächen zu',
+                text: 'Team members openly admit their mistakes and weaknesses',
                 type: 'scale',
                 insight: {
                     icon: '🔒',
@@ -1329,7 +1329,7 @@
             {
                 section: 'team',
                 number: 28,
-                text: 'Menschen fragen ohne Zögern um Hilfe',
+                text: 'People ask for help without hesitation',
                 type: 'scale',
                 insight: {
                     icon: '🤝',
@@ -1341,7 +1341,7 @@
             {
                 section: 'team',
                 number: 29,
-                text: 'Team-Mitglieder geben sich gegenseitig den Benefit of the Doubt',
+                text: 'Team members give each other benefit of the doubt',
                 type: 'scale',
                 insight: {
                     icon: '💡',
@@ -1353,7 +1353,7 @@
             {
                 section: 'team',
                 number: 30,
-                text: 'Menschen entschuldigen sich schnell und aufrichtig, wenn sie Fehler machen',
+                text: 'People apologize quickly and genuinely when they mess up',
                 type: 'scale',
                 insight: {
                     icon: '🙏',
@@ -1365,7 +1365,7 @@
             {
                 section: 'team',
                 number: 31,
-                text: 'Team Meetings beinhalten passionate, ungefiltertes Debate',
+                text: 'Team meetings include passionate, unfiltered debate',
                 type: 'scale',
                 insight: {
                     icon: '⚡',
@@ -1377,7 +1377,7 @@
             {
                 section: 'team',
                 number: 32,
-                text: 'Menschen äußern Disagreements während Meetings (nicht danach)',
+                text: 'People voice disagreements during meetings (not after)',
                 type: 'scale',
                 insight: {
                     icon: '🎤',
@@ -1401,7 +1401,7 @@
             {
                 section: 'team',
                 number: 34,
-                text: 'Team-Mitglieder challengen respectfully die Ideas der anderen',
+                text: 'Team members challenge each other\'s ideas respectfully',
                 type: 'scale',
                 insight: {
                     icon: '🥊',
@@ -1413,7 +1413,7 @@
             {
                 section: 'team',
                 number: 35,
-                text: 'Decisions werden mit Clarity und Buy-in von allen getroffen',
+                text: 'Decisions are made with clarity and buy-in from everyone',
                 type: 'scale',
                 insight: {
                     icon: '✅',
@@ -1425,7 +1425,7 @@
             {
                 section: 'team',
                 number: 36,
-                text: 'Sobald eine Decision getroffen ist, committen alle—auch wenn sie initial disagreed haben',
+                text: 'Once a decision is made, everyone commits—even if they initially disagreed',
                 type: 'scale',
                 insight: {
                     icon: '🤝',
@@ -1437,7 +1437,7 @@
             {
                 section: 'team',
                 number: 37,
-                text: 'Team Goals sind wichtiger als individuelle Agendas',
+                text: 'Team goals are more important than individual agendas',
                 type: 'scale',
                 insight: {
                     icon: '🎯',
@@ -1449,7 +1449,7 @@
             {
                 section: 'team',
                 number: 38,
-                text: 'Menschen followen durch auf Commitments ohne Erinnerung',
+                text: 'People follow through on commitments without being reminded',
                 type: 'scale',
                 insight: {
                     icon: '📋',
@@ -1461,7 +1461,7 @@
             {
                 section: 'team',
                 number: 39,
-                text: 'Team-Mitglieder halten sich gegenseitig accountable (nicht nur der Leader)',
+                text: 'Team members hold each other accountable (not just the leader)',
                 type: 'scale',
                 insight: {
                     icon: '👥',
@@ -1473,7 +1473,7 @@
             {
                 section: 'team',
                 number: 40,
-                text: 'Poor Performers werden direkt und schnell konfrontiert',
+                text: 'Poor performers are confronted directly and quickly',
                 type: 'scale',
                 insight: {
                     icon: '🚨',
@@ -1485,7 +1485,7 @@
             {
                 section: 'team',
                 number: 41,
-                text: 'Menschen sind bereit, persönliche Sacrifices für Team Success zu machen',
+                text: 'People are willing to make personal sacrifices for team success',
                 type: 'scale',
                 insight: {
                     icon: '🏆',
@@ -1497,7 +1497,7 @@
             {
                 section: 'team',
                 number: 42,
-                text: 'Team-Mitglieder celebraten die Successes der anderen',
+                text: 'Team members celebrate each other\'s successes',
                 type: 'scale',
                 insight: {
                     icon: '🎉',
@@ -1509,7 +1509,7 @@
             {
                 section: 'team',
                 number: 43,
-                text: 'Results und Outcomes werden über Politics und Process priorisiert',
+                text: 'Results and outcomes are prioritized over politics and process',
                 type: 'scale',
                 insight: {
                     icon: '📈',
@@ -1521,7 +1521,7 @@
             {
                 section: 'team',
                 number: 44,
-                text: 'Das Team reviewed regelmäßig Performance und adjustet Strategy',
+                text: 'The team regularly reviews performance and adjusts strategy',
                 type: 'scale',
                 insight: {
                     icon: '🔄',
@@ -1533,7 +1533,7 @@
             {
                 section: 'team',
                 number: 45,
-                text: 'Success wird definiert durch das Erreichen kollektiver Goals, nicht individueller Metrics',
+                text: 'Success is defined by achieving collective goals, not individual metrics',
                 type: 'scale',
                 insight: {
                     icon: '🎖️',
@@ -1545,7 +1545,7 @@
             {
                 section: 'team',
                 number: 46,
-                text: 'Das Team hat einen shared Sense of Purpose, der daily Work antreibt',
+                text: 'The team has a shared sense of purpose that drives daily work',
                 type: 'scale',
                 insight: {
                     icon: '🌟',
@@ -1673,17 +1673,17 @@
                 12: {
                     icon: '🎉',
                     title: 'Worker Type Complete!',
-                    message: 'Großartiger Start! Du hast 12 Fragen abgeschlossen und deinen Work Style enthüllt.',
+                    message: 'Great start! You\'ve completed 12 questions and revealed your work style preferences.',
                     nextSection: 'Leadership Style',
-                    nextDescription: 'Als Nächstes: Entdecke, wie du natürlich führst, inspirierst und Results treibst. Diese Section nutzt ein anderes Format mit Research Insights vor jeder Frage.',
+                    nextDescription: 'Next, discover how you naturally lead, inspire, and drive results. This section uses a different format with research insights before each question.',
                     progress: '26%'
                 },
                 26: {
                     icon: '🚀',
                     title: 'Leadership Assessment Complete!',
-                    message: 'Exzellenter Progress! Du hast 26 von 46 Fragen completed. Dein Leadership Archetype nimmt Form an.',
+                    message: 'Excellent progress! You\'ve completed 26 of 46 questions. Your leadership archetype is taking shape.',
                     nextSection: 'Team Dynamics',
-                    nextDescription: 'Finale Section! Erkunde, wie du kollaborierst, Trust aufbaust und high-performing Teams kreierst.',
+                    nextDescription: 'Final section! Explore how you collaborate, build trust, and create high-performing teams.',
                     progress: '57%'
                 }
             };
@@ -1798,7 +1798,7 @@
         function updateProgress() {
             const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
             document.getElementById('progressFill').style.width = progress + '%';
-            document.getElementById('progressText').textContent = `Frage ${currentQuestionIndex + 1} von ${questions.length}`;
+            document.getElementById('progressText').textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
         }
 
         function updateSectionIndicator() {
@@ -1877,86 +1877,86 @@
             // Worker Type Data
             const workerData = {
                 sprinter: {
-                    name: 'Der Sprinter',
+                    name: 'The Sprinter',
                     icon: '⚡',
-                    tagline: 'High-Intensity Bursts mit Recovery',
-                    description: 'Du thrivest bei intensiven Focus-Perioden gefolgt von kompletten Breaks. Wie Elite Athletes performst du am besten in Sprints—nicht Marathons. Deine Productivity kommt in Waves von Deep Work gefolgt von Recovery.',
-                    strengths: ['Intense Focus wenn engaged', 'Thrivet unter Pressure', 'High Output in Short Bursts', 'Excellst bei deadline-driven Work'],
-                    tips: ['Schedule 90-min Deep Work Blocks', 'Baue Recovery Time ein', 'Schütze deine Peak Hours', 'Kämpfe nicht gegen deinen Rhythm']
+                    tagline: 'High-Intensity Bursts with Recovery',
+                    description: 'You thrive on intense focus periods followed by complete breaks. Like elite athletes, you perform best in sprints—not marathons. Your productivity comes in waves of deep work followed by recovery.',
+                    strengths: ['Intense focus when engaged', 'Thrive under pressure', 'High output in short bursts', 'Excel at deadline-driven work'],
+                    tips: ['Schedule 90-min deep work blocks', 'Build in recovery time', 'Protect your peak hours', 'Don\'t fight your rhythm']
                 },
                 jogger: {
-                    name: 'Der Jogger',
+                    name: 'The Jogger',
                     icon: '🏃',
                     tagline: 'Steady, Consistent, Reliable',
-                    description: 'Du maintainst ein sustainables Tempo über den Tag. Wie ein Marathon-Läufer excellst du bei consistent Output über Zeit. Deine Reliability und Predictability machen dich invaluable für Teams.',
-                    strengths: ['Consistent Daily Output', 'Reliable und Predictable', 'Sustainable über Zeit', 'Great bei Routine Excellence'],
-                    tips: ['Baue starke Daily Routines', 'Vermeide Over-Committing zu Sprints', 'Leverage deine Consistency', 'Kreiere Systems for Success']
+                    description: 'You maintain a sustainable pace throughout the day. Like a marathon runner, you excel at consistent output over time. Your reliability and predictability make you invaluable to teams.',
+                    strengths: ['Consistent daily output', 'Reliable and predictable', 'Sustainable over time', 'Great at routine excellence'],
+                    tips: ['Build strong daily routines', 'Avoid over-committing to sprints', 'Leverage your consistency', 'Create systems for success']
                 },
                 ultrarunner: {
-                    name: 'Der Ultrarunner',
+                    name: 'The Ultrarunner',
                     icon: '🎯',
                     tagline: 'Deep Work, Long Game, Endurance',
-                    description: 'Du excellst bei deep, methodischer Arbeit über extended Periods. Wie Ultramarathon-Läufer hast du extraordinary Endurance und burnst rarely out. Deine Superpower ist Sustainability.',
-                    strengths: ['Exceptional Endurance', 'Deep Focus für Stunden', 'Burnst rarely out', 'Excellst bei komplexen, Long-Term Projects'],
-                    tips: ['Embrace deinen Slow-and-Steady Approach', 'Vermeide artificial Urgency', 'Übernimm ambitionierte Long-Term Projects', 'Vertraue deiner Endurance']
+                    description: 'You excel at deep, methodical work over extended periods. Like ultramarathon runners, you have extraordinary endurance and rarely burn out. Your superpower is sustainability.',
+                    strengths: ['Exceptional endurance', 'Deep focus for hours', 'Rarely burn out', 'Excel at complex, long-term projects'],
+                    tips: ['Embrace your slow-and-steady approach', 'Avoid artificial urgency', 'Take on ambitious long-term projects', 'Trust your endurance']
                 }
             };
 
             // Leadership Type Data
             const leadershipData = {
                 visionary: {
-                    name: 'Der Visionary Leader',
+                    name: 'The Visionary Leader',
                     icon: '🔮',
-                    tagline: 'Du setzt Direction & inspirierst andere',
+                    tagline: 'You Set Direction & Inspire Others',
                     color: '#8b5cf6',
-                    description: 'Du führst mit Vision und Purpose. Your superpower is seeing possibilities others miss and making them feel achievable. You inspire teams by connecting their work to a bigger mission.',
-                    strengths: ['Strategic Thinking', 'Inspiring Communication', 'Creating Alignment', 'Navigating Ambiguity'],
-                    challenges: ['Könnte Details overlooken', 'Kann zu fast moven', 'Muss Vision mit Execution balancen']
+                    description: 'You lead with vision and purpose. Your superpower is seeing possibilities others miss and making them feel achievable. You inspire teams by connecting their work to a bigger mission.',
+                    strengths: ['Strategic thinking', 'Inspiring communication', 'Creating alignment', 'Navigating ambiguity'],
+                    challenges: ['May overlook details', 'Can move too fast', 'Need to balance vision with execution']
                 },
                 architect: {
-                    name: 'Der Architect Leader',
+                    name: 'The Architect Leader',
                     icon: '🏗️',
-                    tagline: 'Du designst Systems & optimierst Performance',
+                    tagline: 'You Design Systems & Optimize Performance',
                     color: '#3b82f6',
-                    description: 'Du führst durch intelligent Design. Your superpower is building systems that scale. You turn chaos into order and complexity into clarity.',
-                    strengths: ['Systems Thinking', 'Analytical Problem-Solving', 'Process Optimization', 'Strategic Planning'],
-                    challenges: ['Kann over-engineeren', 'Könnte emotionale Dynamics missen', 'Muss Logic mit People balancen']
+                    description: 'You lead through intelligent design. Your superpower is building systems that scale. You turn chaos into order and complexity into clarity.',
+                    strengths: ['Systems thinking', 'Analytical problem-solving', 'Process optimization', 'Strategic planning'],
+                    challenges: ['Can over-engineer', 'May miss emotional dynamics', 'Need to balance logic with people']
                 },
                 facilitator: {
-                    name: 'Der Facilitator Leader',
+                    name: 'The Facilitator Leader',
                     icon: '🤝',
-                    tagline: 'Du buildest Teams & kreierst Connection',
+                    tagline: 'You Build Teams & Create Connection',
                     color: '#10b981',
-                    description: 'Du führst durch Menschen. Your superpower is creating trust, alignment, and bringing out everyone\'s best. You build high-performing teams.',
-                    strengths: ['Building Trust', 'Creating Alignment', 'Conflict Resolution', 'Team Development'],
-                    challenges: ['Kann tough Decisions vermeiden', 'Könnte Harmony über Results priorisieren', 'Muss Care mit Candor balancen']
+                    description: 'You lead through people. Your superpower is creating trust, alignment, and bringing out everyone\'s best. You build high-performing teams.',
+                    strengths: ['Building trust', 'Creating alignment', 'Conflict resolution', 'Team development'],
+                    challenges: ['Can avoid tough decisions', 'May prioritize harmony over results', 'Need to balance care with candor']
                 },
                 executor: {
-                    name: 'Der Executor Leader',
+                    name: 'The Executor Leader',
                     icon: '⚡',
-                    tagline: 'Du treibst Results & machst Things happen',
+                    tagline: 'You Drive Results & Make Things Happen',
                     color: '#f59e0b',
-                    description: 'Du führst durch Action. Your superpower is turning strategy into reality. You get things done no matter what obstacles appear.',
-                    strengths: ['Bias for Action', 'Overcoming Obstacles', 'Driving Results', 'Creating Momentum'],
-                    challenges: ['Kann Strategy rushen', 'Könnte People Development overlooken', 'Muss Speed mit Sustainability balancen']
+                    description: 'You lead through action. Your superpower is turning strategy into reality. You get things done no matter what obstacles appear.',
+                    strengths: ['Bias for action', 'Overcoming obstacles', 'Driving results', 'Creating momentum'],
+                    challenges: ['Can rush strategy', 'May overlook people development', 'Need to balance speed with sustainability']
                 },
                 commander: {
-                    name: 'Der Commander Leader',
+                    name: 'The Commander Leader',
                     icon: '⚔️',
-                    tagline: 'Du machst Tough Calls & gewinnst',
+                    tagline: 'You Make Tough Calls & Win',
                     color: '#ef4444',
-                    description: 'Du führst durch decisive Action. Your superpower is clarity under pressure. You make the tough calls others avoid and drive your team to victory.',
-                    strengths: ['Decisive Leadership', 'Clear Direction', 'High Standards', 'Crisis Management'],
-                    challenges: ['Kann zu directive sein', 'Könnte nicht genug delegaten', 'Muss Autonomy anderer entwickeln']
+                    description: 'You lead through decisive action. Your superpower is clarity under pressure. You make the tough calls others avoid and drive your team to victory.',
+                    strengths: ['Decisive leadership', 'Clear direction', 'High standards', 'Crisis management'],
+                    challenges: ['Can be too directive', 'May not delegate enough', 'Need to develop others\' autonomy']
                 },
                 coach: {
-                    name: 'Der Coach Leader',
+                    name: 'The Coach Leader',
                     icon: '🎓',
-                    tagline: 'Du entwickelst People & buildest Capability',
+                    tagline: 'You Develop People & Build Capability',
                     color: '#8b5cf6',
-                    description: 'Du führst durch Questions. Your superpower is developing others. You help people discover their own answers and reach their potential.',
-                    strengths: ['Developing Talent', 'Asking Powerful Questions', 'Building Capability', 'Long-Term Thinking'],
-                    challenges: ['Kann zu patient sein', 'Könnte under-directen wenn nötig', 'Muss Development mit Delivery balancen']
+                    description: 'You lead through questions. Your superpower is developing others. You help people discover their own answers and reach their potential.',
+                    strengths: ['Developing talent', 'Asking powerful questions', 'Building capability', 'Long-term thinking'],
+                    challenges: ['Can be too patient', 'May under-direct when needed', 'Need to balance development with delivery']
                 }
             };
 
@@ -1968,13 +1968,13 @@
                 <div class="results-container">
                     <div class="results-header">
                         <div class="icon">🎯</div>
-                        <h2>Dein vollständiges Leadership-Profil</h2>
-                        <p>Basierend auf ${totalAssessments.toLocaleString()} assessen Professionals</p>
+                        <h2>Your Complete Leadership Profile</h2>
+                        <p>Based on ${totalAssessments.toLocaleString()} professionals assessed</p>
                     </div>
 
                     <!-- Worker Type Results -->
                     <div class="results-section">
-                        <h3>💼 Dein Work Style: ${worker.name}</h3>
+                        <h3>💼 Your Work Style: ${worker.name}</h3>
                         <div class="archetype-result">
                             <div class="archetype-header">
                                 <div class="archetype-icon">${worker.icon}</div>
@@ -1985,13 +1985,13 @@
                             </div>
                             <div class="archetype-description">${worker.description}</div>
                             <div class="strengths-list">
-                                <h5>✓ Deine Stärken:</h5>
+                                <h5>✓ Your Strengths:</h5>
                                 <ul>
                                     ${worker.strengths.map(s => `<li>${s}</li>`).join('')}
                                 </ul>
                             </div>
                             <div class="challenges-list">
-                                <h5>💡 Optimiere deinen Work Style:</h5>
+                                <h5>💡 Optimize Your Work Style:</h5>
                                 <ul>
                                     ${worker.tips.map(t => `<li>${t}</li>`).join('')}
                                 </ul>
@@ -2001,7 +2001,7 @@
 
                     <!-- Leadership Style Results -->
                     <div class="results-section">
-                        <h3>🎯 Dein Leadership Style: ${leadership.name}</h3>
+                        <h3>🎯 Your Leadership Style: ${leadership.name}</h3>
                         <div class="archetype-result">
                             <div class="archetype-header">
                                 <div class="archetype-icon">${leadership.icon}</div>
@@ -2013,13 +2013,13 @@
                             </div>
                             <div class="archetype-description">${leadership.description}</div>
                             <div class="strengths-list">
-                                <h5>✓ Deine Leadership Strengths:</h5>
+                                <h5>✓ Your Leadership Strengths:</h5>
                                 <ul>
                                     ${leadership.strengths.map(s => `<li>${s}</li>`).join('')}
                                 </ul>
                             </div>
                             <div class="challenges-list">
-                                <h5>⚠ Achte auf:</h5>
+                                <h5>⚠ Watch Out For:</h5>
                                 <ul>
                                     ${leadership.challenges.map(c => `<li>${c}</li>`).join('')}
                                 </ul>
@@ -2029,14 +2029,14 @@
                         <!-- Secondary Leadership Styles -->
                         ${sortedLeadership[1].percentage > 15 ? `
                         <div style="margin-top: 20px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
-                            <h5 style="color: #1a365d; margin-bottom: 10px;">🔄 Deine Secondary Styles:</h5>
+                            <h5 style="color: #1a365d; margin-bottom: 10px;">🔄 Your Secondary Styles:</h5>
                             ${sortedLeadership.slice(1, 3).map(s => `
                                 <div style="margin: 10px 0;">
                                     <strong>${leadershipData[s.type].name}</strong>: ${s.percentage}%
                                 </div>
                             `).join('')}
                             <p style="margin-top: 15px; font-size: 0.9em; color: #666;">
-                                💡 Elite Leaders entwickeln Secondary Styles. Deine Versatility ist eine Stärke.
+                                💡 Elite leaders develop secondary styles. Your versatility is a strength.
                             </p>
                         </div>
                         ` : ''}
@@ -2044,10 +2044,10 @@
 
                     <!-- Team Dynamics Results -->
                     <div class="results-section">
-                        <h3>🤝 Deine Team Dynamics Health</h3>
+                        <h3>🤝 Your Team Dynamics Health</h3>
                         <div class="archetype-result">
                             <div class="archetype-description" style="margin-bottom: 20px;">
-                                Basierend auf Patrick Lencionis 5 Dysfunctions of a Team. Scores zeigen Team Health über fünf kritische Bereiche.
+                                Based on Patrick Lencioni's 5 Dysfunctions of a Team. Scores show team health across five critical areas.
                             </div>
                             
                             <div style="display: grid; gap: 15px;">
@@ -2079,10 +2079,10 @@
                                 <h5 style="color: #333; margin-bottom: 10px;">📊 Overall Team Health: ${teamOverall.toFixed(1)}/5.0</h5>
                                 <p style="color: #555; line-height: 1.6; margin: 0;">
                                     ${teamOverall >= 4 
-                                        ? '🏆 Starkes Team! Fokussiere dich auf Maintaining High Standards und Continuous Improvement.'
+                                        ? '🏆 Strong team! Focus on maintaining high standards and continuous improvement.'
                                         : teamOverall >= 3 
-                                        ? '⚠️ Solides Fundament mit Room to Grow. Fokussiere dich zuerst auf die schwächsten Bereiche.'
-                                        : '🚨 Critical Gaps existieren. Starte mit Trust-Building und Creating Psychological Safety.'}
+                                        ? '⚠️ Solid foundation with room to grow. Focus on the lowest-scoring areas first.'
+                                        : '🚨 Critical gaps exist. Start with trust-building and creating psychological safety.'}
                                 </p>
                             </div>
                         </div>
@@ -2090,24 +2090,24 @@
 
                     <!-- Integration & Next Steps -->
                     <div class="results-section">
-                        <h3>🚀 Dein Integrated Profile</h3>
+                        <h3>🚀 Your Integrated Profile</h3>
                         <div class="archetype-result">
                             <div class="archetype-description">
-                                <strong>Du bist ein ${worker.name.split(' ')[1]} ${leadership.name.split(' ')[1]}</strong> 
-                                — kombinierst ${workerType === 'sprinter' ? 'High-Intensity Bursts' : workerType === 'jogger' ? 'Steady Consistency' : 'Deep Endurance'} 
-                                mit ${primaryLeadership.type === 'visionary' ? 'Inspiring Vision' : primaryLeadership.type === 'architect' ? 'Systematic Design' : primaryLeadership.type === 'facilitator' ? 'Team Development' : primaryLeadership.type === 'executor' ? 'Relentless Execution' : primaryLeadership.type === 'commander' ? 'Decisive Leadership' : 'People Development'}.
+                                <strong>You are a ${worker.name.split(' ')[1]} ${leadership.name.split(' ')[1]}</strong> 
+                                — combining ${workerType === 'sprinter' ? 'high-intensity bursts' : workerType === 'jogger' ? 'steady consistency' : 'deep endurance'} 
+                                with ${primaryLeadership.type === 'visionary' ? 'inspiring vision' : primaryLeadership.type === 'architect' ? 'systematic design' : primaryLeadership.type === 'facilitator' ? 'team development' : primaryLeadership.type === 'executor' ? 'relentless execution' : primaryLeadership.type === 'commander' ? 'decisive leadership' : 'people development'}.
                             </div>
                             
                             <div style="margin-top: 25px; padding: 25px; background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; border-radius: 12px;">
-                                <h4 style="margin-bottom: 15px; font-size: 1.3em;">💡 Dein Unique Advantage</h4>
+                                <h4 style="margin-bottom: 15px; font-size: 1.3em;">💡 Your Unique Advantage</h4>
                                 <p style="line-height: 1.7; margin: 0; opacity: 0.95;">
-                                    ${workerType === 'sprinter' && primaryLeadership.type === 'visionary' ? 'Du kreierst explosives Momentum hinter Big Ideas. Deine Fähigkeit zu inspirieren UND in Bursts zu executen macht dich unstoppable in Startup-Environments und Turnarounds.' :
-                                      workerType === 'sprinter' && primaryLeadership.type === 'executor' ? 'Du bist eine Force of Nature. Deine Kombination aus Intensity und Action-Orientation macht dich exceptional bei Crisis Leadership und Rapid Execution.' :
-                                      workerType === 'jogger' && primaryLeadership.type === 'architect' ? 'Du buildest Systems, die last. Dein Steady Approach kombiniert mit Design Thinking kreiert Sustainable Excellence.' :
-                                      workerType === 'jogger' && primaryLeadership.type === 'facilitator' ? 'Du kreierst stabile, High-Trust Teams. Deine Consistency und People-Focus builden Cultures, die endure.' :
-                                      workerType === 'ultrarunner' && primaryLeadership.type === 'architect' ? 'Du bist ein Master Builder. Deine Endurance und Systems-Thinking kreieren transformationalen, Lasting Change.' :
-                                      workerType === 'ultrarunner' && primaryLeadership.type === 'coach' ? 'Du entwickelst Leaders, die Leaders entwickeln. Deine Patience und Coaching kreieren Compounding Impact über Zeit.' :
-                                      'Deine unique Kombination aus Work Style und Leadership Approach kreiert distinctive Value. Lean into it.'}
+                                    ${workerType === 'sprinter' && primaryLeadership.type === 'visionary' ? 'You create explosive momentum behind big ideas. Your ability to inspire AND execute in bursts makes you unstoppable in startup environments and turnarounds.' :
+                                      workerType === 'sprinter' && primaryLeadership.type === 'executor' ? 'You are a force of nature. Your combination of intensity and action-orientation makes you exceptional at crisis leadership and rapid execution.' :
+                                      workerType === 'jogger' && primaryLeadership.type === 'architect' ? 'You build systems that last. Your steady approach combined with design thinking creates sustainable excellence.' :
+                                      workerType === 'jogger' && primaryLeadership.type === 'facilitator' ? 'You create stable, high-trust teams. Your consistency and people-focus build cultures that endure.' :
+                                      workerType === 'ultrarunner' && primaryLeadership.type === 'architect' ? 'You are a master builder. Your endurance and systems-thinking create transformational, lasting change.' :
+                                      workerType === 'ultrarunner' && primaryLeadership.type === 'coach' ? 'You develop leaders who develop leaders. Your patience and coaching create compounding impact over time.' :
+                                      'Your unique combination of work style and leadership approach creates distinctive value. Lean into it.'}
                                 </p>
                             </div>
                         </div>
@@ -2147,9 +2147,9 @@
                         </div>
                         
                         <div class="teaser-cta">
-                            <h4>🎯 Baue Leadership Skills, die Last haben</h4>
-                            <p>Join unser strukturiertes Development Program mit XP Tracking, Achievement Badges und Progressive Challenges</p>
-                            <a href="gym-dashboard.de.html">Erkunde Belt System →</a>
+                            <h4>🎯 Build Leadership Skills That Last</h4>
+                            <p>Join our structured development program with XP tracking, achievement badges, and progressive challenges</p>
+                            <a href="gym-dashboard.html">Explore Belt System →</a>
                         </div>
                     </div>
                 </div>

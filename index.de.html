@@ -325,6 +325,155 @@
             opacity: 0.7;
         }
 
+        /* Belt System Section */
+        .belt-assessment {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin: 60px 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .section-label {
+            text-align: center;
+            color: #a93226;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 0.85em;
+            margin-bottom: 15px;
+        }
+
+        .belt-assessment h2 {
+            color: #a93226;
+            font-size: clamp(1.8em, 4vw, 2.5em);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section-intro {
+            text-align: center;
+            color: #666;
+            font-size: 1.15em;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.7;
+        }
+
+        .belt-system-overview {
+            display: grid;
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .belt-level {
+            background: #f8f9fa;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .belt-level:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .belt-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 25px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .belt-header.white-belt {
+            background: linear-gradient(135deg, #e5e7eb 0%, #9ca3af 100%);
+        }
+
+        .belt-header.blue-belt {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+        }
+
+        .belt-header.purple-belt {
+            background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+        }
+
+        .belt-header.brown-belt {
+            background: linear-gradient(135deg, #92400e 0%, #78350f 100%);
+        }
+
+        .belt-header.black-belt {
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+        }
+
+        .belt-icon {
+            font-size: 2.5em;
+        }
+
+        .belt-header h3 {
+            margin: 0;
+            font-size: 1.4em;
+        }
+
+        .belt-header p {
+            margin: 5px 0 0 0;
+            opacity: 0.95;
+            font-size: 0.95em;
+            font-weight: 400;
+        }
+
+        .belt-content {
+            padding: 25px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .belt-time {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: rgba(169, 50, 38, 0.1);
+            color: #a93226;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .assessment-cta-box {
+            background: linear-gradient(135deg, rgba(169, 50, 38, 0.05) 0%, rgba(169, 50, 38, 0.1) 100%);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            margin-top: 40px;
+            border: 2px solid rgba(169, 50, 38, 0.2);
+        }
+
+        .assessment-cta-box h3 {
+            color: #a93226;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .assessment-cta-box p {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-large {
+            font-size: 1.3em;
+            padding: 20px 50px;
+        }
+
+        .cta-note {
+            margin-top: 15px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
         @media (max-width: 768px) {
             .hero {
                 padding: 40px 20px 30px;
@@ -336,6 +485,10 @@
 
             .assessments {
                 grid-template-columns: 1fr;
+            }
+
+            .belt-assessment {
+                padding: 40px 20px;
             }
 
             .about {
@@ -486,7 +639,98 @@
                 <a href="combined-complete-profile.de.html" class="btn" data-i18n="start_complete">Komplettes Profil starten →</a>
             </div>
         </section>
-        <!-- About Section, CTA, Footer: copy from index.html and localize as needed -->
+
+        <!-- Belt System Section -->
+        <section class="belt-assessment">
+            <div class="section-label">FORTGESCHRITTENE ENTWICKLUNG</div>
+            <h2>Bereit für strukturiertes Leadership-Wachstum?</h2>
+            <p class="section-intro">
+                Das Belt System ist ein selbstgesteuertes Leadership-Entwicklungsprogramm. 
+                Fünf progressive Level – von grundlegender Verletzlichkeit bis zur visionären Führung.
+            </p>
+
+            <div class="belt-system-overview">
+                <div class="belt-level">
+                    <div class="belt-header white-belt">
+                        <span class="belt-icon">⚪</span>
+                        <div>
+                            <h3>White Belt</h3>
+                            <p>Fundament der Verletzlichkeit</p>
+                        </div>
+                    </div>
+                    <div class="belt-content">
+                        <p>Selbstbewusstsein, emotionale Intelligenz, Feedback-Empfänglichkeit, Schwächen anerkennen</p>
+                        <span class="belt-time">⏱️ ~35-45 min gesamt</span>
+                    </div>
+                </div>
+
+                <div class="belt-level">
+                    <div class="belt-header blue-belt">
+                        <span class="belt-icon">🔵</span>
+                        <div>
+                            <h3>Blue Belt</h3>
+                            <p>Bedeutsame Verbindungen aufbauen</p>
+                        </div>
+                    </div>
+                    <div class="belt-content">
+                        <p>Relationale Intelligenz, aktives Zuhören, Empathie, Vertrauensaufbau, psychologische Sicherheit</p>
+                        <span class="belt-time">⏱️ ~40-50 min gesamt</span>
+                    </div>
+                </div>
+
+                <div class="belt-level">
+                    <div class="belt-header purple-belt">
+                        <span class="belt-icon">🟣</span>
+                        <div>
+                            <h3>Purple Belt</h3>
+                            <p>Konflikt & Commitment</p>
+                        </div>
+                    </div>
+                    <div class="belt-content">
+                        <p>Gesunde Debatten, Entscheidungsfindung, Alignment, unbequeme Gespräche, Klarheit</p>
+                        <span class="belt-time">⏱️ ~40-50 min gesamt</span>
+                    </div>
+                </div>
+
+                <div class="belt-level">
+                    <div class="belt-header brown-belt">
+                        <span class="belt-icon">🟤</span>
+                        <div>
+                            <h3>Brown Belt</h3>
+                            <p>Accountability & Ergebnisse</p>
+                        </div>
+                    </div>
+                    <div class="belt-content">
+                        <p>Peer Accountability, kollektive Ergebnisse, Standards, Performance-Gaps ansprechen</p>
+                        <span class="belt-time">⏱️ ~40-50 min gesamt</span>
+                    </div>
+                </div>
+
+                <div class="belt-level">
+                    <div class="belt-header black-belt">
+                        <span class="belt-icon">⚫</span>
+                        <div>
+                            <h3>Black Belt</h3>
+                            <p>Visionäre Führung</p>
+                        </div>
+                    </div>
+                    <div class="belt-content">
+                        <p>Strategisches Denken, organisationale Wirkung, Vision kreieren, Kultur-Transformation</p>
+                        <span class="belt-time">⏱️ ~45-59 min gesamt</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="assessment-cta-box">
+                <h3>Finde deinen Start-Belt</h3>
+                <p>Mache das umfassende Belt Assessment, um herauszufinden, wo du stehst und erstelle deine Entwicklungs-Roadmap</p>
+                <a href="gym-dashboard.de.html" class="btn btn-primary btn-large">
+                    🥋 Belt System starten
+                </a>
+                <p class="cta-note">Selbstgesteuert • Sofortige Ergebnisse & personalisierter Plan</p>
+            </div>
+        </section>
+
         <!-- About Section -->
         <section class="about">
             <h2>Warum TAP-IN Assessments?</h2>
