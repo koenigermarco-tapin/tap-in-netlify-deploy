@@ -88,12 +88,30 @@
         .cta-btn { background: white; color: #a93226; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; transition: all 0.2s; display: inline-block; }
         .cta-btn:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(255,255,255,0.3); }
         .cta-btn.secondary { background: transparent; color: white; border: 2px solid white; }
+        
+        /* Belt Journey Teaser */
+        .belt-teaser { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); border-radius: 20px; padding: 2.5rem; margin: 2rem 0; border-left: 5px solid #f59e0b; }
+        .belt-teaser h3 { color: #1a365d; font-size: 1.6rem; margin-bottom: 1rem; }
+        .belt-teaser .subtitle { color: #64748b; font-size: 1.05rem; margin-bottom: 1.5rem; line-height: 1.7; }
+        .belt-preview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .belt-mini { text-align: center; padding: 1rem; background: white; border-radius: 12px; transition: transform 0.2s; }
+        .belt-mini:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .belt-mini .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .belt-mini .name { font-size: 0.85rem; font-weight: 600; color: #1e293b; }
+        .belt-mini .focus { font-size: 0.75rem; color: #64748b; }
+        .teaser-cta { background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; padding: 1.5rem; border-radius: 12px; text-align: center; margin-top: 1.5rem; }
+        .teaser-cta h4 { margin-bottom: 0.75rem; }
+        .teaser-cta p { opacity: 0.95; margin-bottom: 1rem; font-size: 0.95rem; }
+        .teaser-cta a { display: inline-block; background: white; color: #1a365d; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s; }
+        .teaser-cta a:hover { background: #f8fafc; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255,255,255,0.3); }
+        
         @media (max-width: 768px) { 
             .container { padding: 25px; } 
             .header h1 { font-size: 2em; } 
             .rating-scale { flex-direction: column; }
             .rating-option { min-width: 100%; }
             .section-scores { grid-template-columns: 1fr; }
+            .belt-preview-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -437,6 +455,46 @@
             <div class="recommendation-box" id="recommendations">
                 <!-- Populated by JavaScript -->
             </div>
+            
+            <div class="belt-teaser">
+                <h3>🥋 Ready for Deeper Development?</h3>
+                <p class="subtitle">Work-life balance is one piece of the puzzle. Our Leadership Development Belt System offers comprehensive training across all dimensions of professional growth.</p>
+                
+                <div class="belt-preview-grid">
+                    <div class="belt-mini">
+                        <div class="icon">🤍</div>
+                        <div class="name">White Belt</div>
+                        <div class="focus">Self-Awareness</div>
+                    </div>
+                    <div class="belt-mini">
+                        <div class="icon">💙</div>
+                        <div class="name">Blue Belt</div>
+                        <div class="focus">Communication</div>
+                    </div>
+                    <div class="belt-mini">
+                        <div class="icon">💜</div>
+                        <div class="name">Purple Belt</div>
+                        <div class="focus">Influence</div>
+                    </div>
+                    <div class="belt-mini">
+                        <div class="icon">🤎</div>
+                        <div class="name">Brown Belt</div>
+                        <div class="focus">Accountability</div>
+                    </div>
+                    <div class="belt-mini">
+                        <div class="icon">🖤</div>
+                        <div class="name">Black Belt</div>
+                        <div class="focus">Strategy</div>
+                    </div>
+                </div>
+                
+                <div class="teaser-cta">
+                    <h4>🎯 Build Leadership Skills That Last</h4>
+                    <p>Join our structured development program with XP tracking, achievement badges, and progressive challenges</p>
+                    <a href="gym-dashboard.html">Explore Belt System →</a>
+                </div>
+            </div>
+            
             <div class="cta-section">
                 <h3>Transform Your Work-Life Balance</h3>
                 <p>Book a 30-minute strategy session to turn these insights into sustainable practices that fit your actual life.</p>
