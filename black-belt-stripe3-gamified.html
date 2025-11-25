@@ -3,1060 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Belt Stripe 3 - Maintaining Results Focus | Tap In Leadership</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Black Belt Stripe 3: Leadership Philosophy | TAP-IN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #e5e7eb;
-            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            border-radius: 20px;
-            margin-bottom: 30px;
-            border: 2px solid #374151;
-        }
-
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #f3f4f6 0%, #9ca3af 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stripe-indicator {
-            font-size: 1.2em;
-            color: #9ca3af;
-            margin-bottom: 20px;
-        }
-
-        .progress-summary {
-            background: rgba(15, 23, 42, 0.6);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #374151;
-        }
-
-        .progress-bar {
-            background: #1f2937;
-            border-radius: 10px;
-            height: 30px;
-            margin: 15px 0;
-            overflow: hidden;
-            border: 2px solid #374151;
-        }
-
-        .progress-fill {
-            background: linear-gradient(90deg, #6b7280 0%, #9ca3af 100%);
-            height: 100%;
-            transition: width 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #111827;
-            font-weight: bold;
-        }
-
-        .module-grid {
-            display: grid;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .module-card {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            padding: 25px;
-            border-radius: 15px;
-            border: 2px solid #374151;
-            transition: all 0.3s ease;
-        }
-
-        .module-card:hover {
-            transform: translateY(-2px);
-            border-color: #6b7280;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .module-card.locked {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .module-card.completed {
-            border-color: #9ca3af;
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-        }
-
-        .module-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .module-title {
-            font-size: 1.3em;
-            color: #f3f4f6;
-        }
-
-        .module-status {
-            font-size: 1.5em;
-        }
-
-        .module-description {
-            color: #d1d5db;
-            margin-bottom: 15px;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: all 0.3s ease;
-            border: 2px solid #6b7280;
-        }
-
-        .btn:hover:not(:disabled) {
-            background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%);
-            border-color: #9ca3af;
-        }
-
-        .btn-primary:hover:not(:disabled) {
-            background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
-        }
-
-        .btn-secondary {
-            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
-            border-color: #4b5563;
-        }
-
-        .lesson {
-            display: none;
-        }
-
-        .lesson.active {
-            display: block;
-        }
-
-        .lesson-content {
-            background: #0f172a;
-            padding: 30px;
-            border-radius: 15px;
-            border: 2px solid #374151;
-        }
-
-        .lesson-header h2 {
-            color: #f3f4f6;
-            margin-bottom: 20px;
-            font-size: 2em;
-        }
-
-        .content-section {
-            margin: 25px 0;
-        }
-
-        .content-section h3 {
-            color: #f3f4f6;
-            margin-bottom: 15px;
-            font-size: 1.4em;
-        }
-
-        .content-section h4 {
-            color: #d1d5db;
-            margin: 15px 0 10px 0;
-        }
-
-        .content-section p {
-            margin-bottom: 12px;
-            color: #e5e7eb;
-        }
-
-        .content-section ul, .content-section ol {
-            margin-left: 25px;
-            margin-bottom: 15px;
-            color: #e5e7eb;
-        }
-
-        .content-section li {
-            margin-bottom: 8px;
-        }
-
-        .highlight-box {
-            background: rgba(107, 114, 128, 0.2);
-            border-left: 4px solid #9ca3af;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 5px;
-        }
-
-        .example-box {
-            background: rgba(75, 85, 99, 0.3);
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 8px;
-            border: 1px solid #4b5563;
-        }
-
-        .research-box {
-            background: rgba(31, 41, 55, 0.5);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            border: 2px solid #374151;
-        }
-
-        .research-box h4 {
-            color: #9ca3af;
-            margin-bottom: 10px;
-        }
-
-        .bjj-connection {
-            background: rgba(15, 23, 42, 0.8);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            border: 2px solid #6b7280;
-        }
-
-        .bjj-connection h4 {
-            color: #9ca3af;
-            margin-bottom: 10px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: #1e293b;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #374151;
-        }
-
-        th {
-            background: #0f172a;
-            color: #9ca3af;
-            font-weight: bold;
-        }
-
-        td {
-            color: #e5e7eb;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-            justify-content: center;
-        }
-
-        .completion-popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            padding: 40px;
-            border-radius: 20px;
-            border: 3px solid #9ca3af;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            transition: transform 0.3s ease;
-            text-align: center;
-        }
-
-        .completion-popup.show {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .completion-popup h3 {
-            color: #f3f4f6;
-            margin-bottom: 15px;
-            font-size: 2em;
-        }
-
-        .completion-popup p {
-            color: #d1d5db;
-            margin-bottom: 20px;
-            font-size: 1.2em;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            display: none;
-            z-index: 999;
-        }
-
-        .overlay.show {
-            display: block;
-        }
-
-        .back-link {
-            display: inline-block;
-            color: #9ca3af;
-            text-decoration: none;
-            margin-bottom: 20px;
-            transition: color 0.3s ease;
-        }
-
-        .back-link:hover {
-            color: #f3f4f6;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary-navy: #1a365d; --secondary-navy: #334155; --accent-red: #b91c1c; --accent-purple: #a78bfa; --success-green: #38a169; --warning-orange: #dd6b20; --card-bg: #ffffff; --border-light: #e2e8f0; --text-dark: #1e293b; --text-muted: #64748b; --light-bg: #f8fafc; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); min-height: 100vh; padding: 2rem 1rem; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 2rem; color: white; }
+        .stripe-badge { display: inline-block; background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.2); }
+        .header h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.1rem; opacity: 0.8; }
+        .progress-container { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 1rem 1.5rem; margin-bottom: 2rem; }
+        .progress-header { display: flex; justify-content: space-between; color: white; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .progress-bar { background: rgba(255,255,255,0.2); height: 8px; border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-red) 0%, #dc2626 100%); border-radius: 4px; transition: width 0.5s ease; }
+        .main-card { background: white; border-radius: 20px; padding: 2.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .section { display: none; }
+        .section.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .section-title { font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 1rem; }
+        .section-subtitle { color: var(--text-muted); margin-bottom: 1.5rem; }
+        .intro-box { background: var(--light-bg); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .intro-box h3 { color: var(--primary-navy); font-size: 1.1rem; margin-bottom: 0.75rem; }
+        .intro-box p { color: var(--text-dark); font-size: 0.95rem; margin-bottom: 0.75rem; line-height: 1.7; }
+        .intro-box p:last-child { margin-bottom: 0; }
+        .intro-box strong { color: var(--primary-navy); }
+        .intro-box.philosophy { background: linear-gradient(135deg, var(--light-bg) 0%, #e2e8f0 100%); border-left: 6px solid var(--primary-navy); }
+        .intro-box.philosophy em { color: var(--accent-purple); }
+        .intro-box.research { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%); border: none; }
+        .intro-box.research h3 { color: #fff; }
+        .intro-box.research p { color: #e2e8f0; }
+        .intro-box.research strong { color: var(--accent-purple); }
+        .intro-box.black-belt-wisdom { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); border-left: 6px solid var(--accent-red); }
+        .intro-box.black-belt-wisdom h3 { color: #ffffff; }
+        .intro-box.black-belt-wisdom p { color: #e2e8f0; }
+        .intro-box.black-belt-wisdom strong { color: #ffffff; }
+        .intro-box.black-belt-wisdom em { color: var(--accent-purple); }
+        .philosophy-framework { background: #f0fdf4; border: 2px solid #86efac; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+        .philosophy-framework h3 { color: #166534; font-size: 1.1rem; margin-bottom: 1rem; }
+        .philosophy-item { padding: 0.75rem 0; border-bottom: 1px solid #bbf7d0; }
+        .philosophy-item:last-child { border-bottom: none; }
+        .philosophy-item h4 { color: #166534; font-size: 0.95rem; margin-bottom: 0.25rem; }
+        .philosophy-item p { color: var(--text-dark); font-size: 0.9rem; }
+        .example-box { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 2px solid #93c5fd; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+        .example-box h3 { color: #1e40af; font-size: 1.1rem; margin-bottom: 1rem; }
+        .example-box p { color: #1e3a8a; font-size: 0.9rem; margin-bottom: 0.75rem; }
+        .example-box p:last-child { margin-bottom: 0; }
+        .reflection-box { background: #fffbeb; border: 2px solid #fcd34d; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+        .reflection-box h3 { color: #92400e; font-size: 1rem; margin-bottom: 0.75rem; }
+        .reflection-box p { color: #78350f; font-size: 0.95rem; margin-bottom: 1rem; }
+        .reflection-textarea { width: 100%; min-height: 100px; padding: 1rem; border: 1px solid #fcd34d; border-radius: 8px; font-family: inherit; font-size: 0.95rem; resize: vertical; }
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 2rem; gap: 1rem; }
+        .btn { padding: 1rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; border: none; text-decoration: none; }
+        .btn-secondary { background: #edf2f7; color: var(--text-dark); }
+        .btn-primary { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%); color: white; }
+        .btn-success { background: linear-gradient(135deg, var(--success-green) 0%, #2f855a 100%); color: white; }
+        .stripe-earned { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); border-radius: 16px; padding: 2rem; color: white; text-align: center; margin-bottom: 1.5rem; }
+        .stripe-earned h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .stripe-visual { font-size: 3rem; margin: 1rem 0; }
+        .quote-block { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); border-radius: 12px; padding: 1.5rem; text-align: center; margin: 1.5rem 0; }
+        .quote-block .quote { font-size: 1.1rem; color: white; font-style: italic; margin-bottom: 0.75rem; }
+        .quote-block .author { color: var(--accent-purple); font-weight: 600; font-size: 0.9rem; }
+        @media (max-width: 768px) { body { padding: 1rem; } .main-card { padding: 1.5rem; } .nav-buttons { flex-direction: column; } .btn { width: 100%; text-align: center; } }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="learning-hub-enhanced.html" class="back-link">← Back to Learning Hub</a>
-        
         <div class="header">
-            <div class="stripe-indicator">⬛ BLACK BELT</div>
-            <h1>Stripe 3: Maintaining Results Focus</h1>
-            <p style="color: #9ca3af; margin-top: 10px;">Stay oriented on outcomes despite pressure, distractions, and competing priorities</p>
+            <div class="stripe-badge">⬛ Black Belt • Stripe 3 of 4</div>
+            <h1>Leadership Philosophy</h1>
+            <p>Your Operating System</p>
         </div>
-
-        <div class="progress-summary">
-            <h3 style="color: #f3f4f6; margin-bottom: 10px;">Your Progress</h3>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressBar">0%</div>
-            </div>
-            <p style="color: #d1d5db; text-align: center; margin-top: 10px;">
-                <span id="completedCount">0</span>/3 Lessons Complete • 
-                <span id="xpEarned">0</span>/75 XP Earned
-            </p>
+        <div class="progress-container">
+            <div class="progress-header"><span>Progress</span><span id="progress-text">0%</span></div>
+            <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
         </div>
-
-        <div class="module-grid">
-            <!-- Module Cards -->
-            <div class="module-card" id="card1">
-                <div class="module-header">
-                    <div class="module-title">Lesson 1: Results vs. Activity Under Pressure</div>
-                    <div class="module-status" id="status1">○</div>
+        <div class="main-card">
+            <div class="section active" id="section-1">
+                <h2 class="section-title">🧭 Why Philosophy Matters</h2>
+                <p class="section-subtitle">Tactics change. Principles endure.</p>
+                <div class="intro-box">
+                    <h3>The Problem with Best Practices</h3>
+                    <p>"Best practices" change constantly. What worked last year is obsolete this year. <strong>But principles don't change.</strong></p>
+                    <p>A leadership philosophy isn't a list of tactics—it's a set of principles that guide you when there's no playbook.</p>
                 </div>
-                <div class="module-description">
-                    Why teams default to busyness when stressed, and how to maintain outcome focus when it's hardest.
+                <div class="intro-box black-belt-wisdom">
+                    <h3>⬛ Black Belt Wisdom</h3>
+                    <p><em>"The leader without a philosophy is like a ship without a rudder—tossed by every wave, following every trend, standing for nothing."</em></p>
+                    <p><strong>Your philosophy is your anchor.</strong> It tells you who you are when pressure mounts and easy answers fail.</p>
                 </div>
-                <button class="btn btn-primary" onclick="toggleLesson(1)">Start Lesson</button>
+                <div class="intro-box philosophy">
+                    <h3>🥋 The BJJ Principle: Your Game</h3>
+                    <p>Every Black Belt has a "game"—a personal style that reflects their body, temperament, and preferences. Some play guard. Some wrestle. Some attack submissions.</p>
+                    <p><strong>Your leadership philosophy is your game.</strong> It's the approach that fits who you are—not a copy of someone else's style.</p>
+                </div>
+                <div class="intro-box research">
+                    <h3>📊 The Research</h3>
+                    <p><strong>Jim Collins' research on Level 5 leaders</strong> found that great leaders have a paradoxical combination: fierce professional will AND personal humility. But the specific expression varied widely.</p>
+                    <p>There's no one "right" leadership style—only <strong>authentic</strong> styles. Your philosophy must be yours.</p>
+                </div>
+                <div class="nav-buttons">
+                    <a href="black-belt.html" class="btn btn-secondary">← Back to Hub</a>
+                    <button class="btn btn-primary" onclick="nextSection()">Building Philosophy →</button>
+                </div>
             </div>
-
-            <div class="module-card locked" id="card2">
-                <div class="module-header">
-                    <div class="module-title">Lesson 2: Navigating Competing Priorities</div>
-                    <div class="module-status" id="status2">🔒</div>
+            <div class="section" id="section-2">
+                <h2 class="section-title">🏗️ Building Your Philosophy</h2>
+                <p class="section-subtitle">The five elements of a leadership philosophy.</p>
+                <div class="philosophy-framework">
+                    <h3>The Philosophy Framework</h3>
+                    <div class="philosophy-item">
+                        <h4>1. Core Beliefs</h4>
+                        <p>What do you believe about people, work, and organizations? These shape every decision.</p>
+                    </div>
+                    <div class="philosophy-item">
+                        <h4>2. Non-Negotiables</h4>
+                        <p>What will you never compromise on, regardless of pressure? These are your red lines.</p>
+                    </div>
+                    <div class="philosophy-item">
+                        <h4>3. Success Definition</h4>
+                        <p>How do you measure success as a leader? Not what you achieve—how you achieve it.</p>
+                    </div>
+                    <div class="philosophy-item">
+                        <h4>4. Decision Principles</h4>
+                        <p>When faced with hard choices, what guides you? These are your tie-breakers.</p>
+                    </div>
+                    <div class="philosophy-item">
+                        <h4>5. Leadership Practices</h4>
+                        <p>What rituals and habits express your philosophy in action? Philosophy must become behavior.</p>
+                    </div>
                 </div>
-                <div class="module-description">
-                    Making trade-offs when everything seems urgent and nothing can fail.
+                <div class="example-box">
+                    <h3>💡 Example Philosophy Statement</h3>
+                    <p><strong>Core Belief:</strong> "People are capable of more than they know. My job is to create conditions where they discover this."</p>
+                    <p><strong>Non-Negotiable:</strong> "I never compromise psychological safety for short-term results."</p>
+                    <p><strong>Success:</strong> "I've succeeded when my team can function brilliantly without me."</p>
+                    <p><strong>Decision Principle:</strong> "When in doubt, choose the option that builds capability."</p>
+                    <p><strong>Practice:</strong> "I start every 1-on-1 by asking 'What do you need from me?' and end by asking 'What should I do differently?'"</p>
                 </div>
-                <button class="btn" onclick="toggleLesson(2)" disabled id="btn2">Complete Lesson 1 to Unlock</button>
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary" onclick="prevSection()">← Back</button>
+                    <button class="btn btn-primary" onclick="nextSection()">Write Yours →</button>
+                </div>
             </div>
-
-            <div class="module-card locked" id="card3">
-                <div class="module-header">
-                    <div class="module-title">Lesson 3: Saying No to Protect Results</div>
-                    <div class="module-status" id="status3">🔒</div>
+            <div class="section" id="section-3">
+                <h2 class="section-title">✍️ Your Leadership Philosophy</h2>
+                <p class="section-subtitle">Draft your personal operating system.</p>
+                <div class="reflection-box">
+                    <h3>📝 Your Core Belief</h3>
+                    <p>What do you fundamentally believe about people and leadership? Complete: "I believe..."</p>
+                    <textarea class="reflection-textarea" id="belief" placeholder="I believe..."></textarea>
                 </div>
-                <div class="module-description">
-                    The discipline of protecting capacity and focus for what truly matters.
+                <div class="reflection-box">
+                    <h3>📝 Your Non-Negotiable</h3>
+                    <p>What will you never compromise on, no matter the pressure? Complete: "I will never..."</p>
+                    <textarea class="reflection-textarea" id="nonneg" placeholder="I will never..."></textarea>
                 </div>
-                <button class="btn" onclick="toggleLesson(3)" disabled id="btn3">Complete Lesson 2 to Unlock</button>
+                <div class="reflection-box">
+                    <h3>📝 Your Success Definition</h3>
+                    <p>How do you know you've succeeded as a leader? Complete: "I've succeeded when..."</p>
+                    <textarea class="reflection-textarea" id="success" placeholder="I've succeeded when..."></textarea>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary" onclick="prevSection()">← Back</button>
+                    <button class="btn btn-primary" onclick="showResults()">Complete Stripe 3 →</button>
+                </div>
             </div>
-        </div>
-
-        <!-- Lesson 1: Results vs. Activity Under Pressure -->
-        <div class="module-card lesson" id="lesson1">
-            <div class="lesson-content">
-                <div class="lesson-header">
-                    <h2>Lesson 1: Results vs. Activity Under Pressure</h2>
+            <div class="section" id="section-4">
+                <div class="stripe-earned">
+                    <h2>🎉 Stripe 3 Earned!</h2>
+                    <div class="stripe-visual">⬛ ▬▬▬</div>
+                    <p>You've completed Leadership Philosophy and earned your third Black Belt stripe.</p>
                 </div>
-                
-                <div class="highlight-box">
-                    <strong>The Pressure Paradox:</strong> When stress increases, teams often abandon results focus and retreat to activity metrics. Feeling busy becomes a substitute for being effective.
-                </div>
-
-                <div class="content-section">
-                    <h3>Why Pressure Kills Results Focus</h3>
-                    <p><strong>Psychological Safety of Activity:</strong> When outcomes are uncertain, activity feels controllable. "I can't guarantee we'll hit revenue, but I can guarantee I'll make 50 sales calls."</p>
-                    
-                    <p><strong>Immediate Feedback Loop:</strong> Activity gives instant gratification (task completed!). Results take time to materialize. Under pressure, teams crave the dopamine of crossing things off lists.</p>
-
-                    <p><strong>Visibility Bias:</strong> Looking busy is easier to demonstrate than driving outcomes. When leadership is watching, teams optimize for visible effort.</p>
-
-                    <p><strong>Analysis Paralysis Avoidance:</strong> Focusing on results requires thinking, prioritization, and trade-offs. Activity requires just execution. When overwhelmed, execution feels easier.</p>
-
-                    <div class="example-box">
-                        <strong>Pressure-Driven Activity Trap:</strong><br><br>
-                        <strong>Scenario:</strong> Product team is behind on quarterly revenue goal with 3 weeks left.<br><br>
-                        <strong>Activity Response:</strong> "Let's ship 10 features this sprint!" (feels productive, easy to count)<br>
-                        <strong>Results Response:</strong> "Which 2 features will most directly drive conversions? Let's perfect those." (harder to decide, but outcome-focused)<br><br>
-                        Activity response ships more features. Results response ships more revenue.
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h3>The Activity Addiction Cycle</h3>
-                    <p><strong>Stage 1 - Pressure Increases:</strong> Deadline looms, goal at risk, stakeholders anxious</p>
-                    <p><strong>Stage 2 - Team Panics:</strong> "We need to do MORE" becomes the rallying cry</p>
-                    <p><strong>Stage 3 - Activity Explosion:</strong> Everyone works longer hours, attends more meetings, ships more tasks</p>
-                    <p><strong>Stage 4 - False Progress:</strong> Metrics show activity up (tickets closed, hours logged, meetings held)</p>
-                    <p><strong>Stage 5 - Results Unchanged:</strong> All that effort, but the outcome metric barely moves</p>
-                    <p><strong>Stage 6 - Burnout & Blame:</strong> Team exhausted, frustrated, looking for external explanations</p>
-
-                    <div class="highlight-box">
-                        <strong>The trap:</strong> Activity feels like progress. It's measurable, visible, and controllable. But activity without strategic focus is just expensive motion.
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h3>Maintaining Results Focus Under Pressure: The Framework</h3>
-                    
-                    <p><strong>1. Restate the Result (Loudly and Often)</strong></p>
-                    <p>When pressure hits, teams forget the goal. Constant repetition: "Our ONLY objective is to increase trial-to-paid conversion to 25% by Dec 15th. Everything else is secondary."</p>
-
-                    <p><strong>2. Kill the Distraction List</strong></p>
-                    <p>Make a "Not Doing" list explicitly. What tasks, meetings, initiatives are we pausing until the result is achieved?</p>
-
-                    <div class="example-box">
-                        <strong>Not Doing List Example:</strong>
-                        <ul>
-                            <li>No new feature requests until conversion goal hit</li>
-                            <li>No exploratory projects or R&D</li>
-                            <li>Pause weekly all-hands (async update instead)</li>
-                            <li>Defer hiring activities to next month</li>
-                        </ul>
-                        This creates capacity and focus for the result that matters.
-                    </div>
-
-                    <p><strong>3. Daily Results Check-In (30 Seconds)</strong></p>
-                    <p>Every morning: "Conversion rate yesterday: 22%. Gap to goal: 3%. What's the ONE action today that closes that gap?"</p>
-
-                    <p><strong>4. Pre-Commit Decision Criteria</strong></p>
-                    <p>Before accepting ANY new work: "Does this directly contribute to our primary result? If no, default answer is 'not now.'"</p>
-
-                    <p><strong>5. Celebrate Progress on the Result, Not Activity</strong></p>
-                    <p>Don't praise "we shipped 5 features!" Praise "conversion moved from 22% to 23% this week!" Reward what you want repeated.</p>
-                </div>
-
-                <div class="content-section">
-                    <h3>The "Why Are We Doing This?" Test</h3>
-                    <p>When pressure is high, implement a forcing function: Before any task/meeting/initiative, someone must answer:</p>
-                    <ol>
-                        <li><strong>"What result does this drive?"</strong> (specific outcome, not "it's good to do")</li>
-                        <li><strong>"How do we measure if it worked?"</strong> (observable change in metrics)</li>
-                        <li><strong>"Is this the highest leverage use of time right now?"</strong> (compared to alternatives)</li>
-                    </ol>
-
-                    <div class="example-box">
-                        <strong>Application Example:</strong><br><br>
-                        <strong>Request:</strong> "Let's do a team offsite next week to boost morale."<br>
-                        <strong>Test Response:</strong><br>
-                        1. What result? → "Better team cohesion" (vague, not tied to primary goal)<br>
-                        2. How measure? → "Can't really measure it..." (red flag)<br>
-                        3. Highest leverage? → "No, we need to focus on conversion experiments"<br>
-                        <strong>Decision:</strong> Defer offsite until after goal achieved.
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h3>When Activity IS the Right Response</h3>
-                    <p>Activity isn't always wrong. Sometimes high volume is the strategy:</p>
-                    <ul>
-                        <li><strong>Exploration phase:</strong> Don't know what works yet → run many experiments quickly</li>
-                        <li><strong>Sales ramp:</strong> Need pipeline volume → more calls IS the result driver</li>
-                        <li><strong>Crisis response:</strong> System down → high-activity recovery mode appropriate</li>
+                <div class="intro-box">
+                    <h3>📋 What You Learned</h3>
+                    <ul style="margin: 1rem 0 0 1.5rem; color: var(--text-dark);">
+                        <li style="margin-bottom: 0.5rem;"><strong>Philosophy vs. Tactics</strong> — Principles endure, tactics change</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>5 Elements</strong> — Beliefs, Non-negotiables, Success, Decisions, Practices</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Authenticity</strong> — Your philosophy must be yours</li>
+                        <li><strong>Your Game</strong> — A coherent personal style</li>
                     </ul>
-                    <p><strong>The difference:</strong> Strategic activity (chosen because it drives the result) vs. panic activity (done because it feels productive).</p>
                 </div>
-
-                <div class="research-box">
-                    <h4>📚 Research: Pressure and Performance</h4>
-                    <p><strong>Stanford study on "stress and goal orientation":</strong> Under high pressure, 73% of teams shifted focus from outcomes to tasks. Teams that maintained outcome focus through explicit reminders and daily check-ins sustained performance 40% better.</p>
-                    <p><strong>Harvard research:</strong> "Busyness" correlates negatively with results achievement. Most productive teams worked fewer hours but with tighter focus on high-leverage activities.</p>
-                    <p><strong>Key insight:</strong> Pressure doesn't require more work; it requires clearer focus.</p>
+                <div class="quote-block">
+                    <p class="quote">"He who has a why to live can bear almost any how."</p>
+                    <p class="author">— Friedrich Nietzsche</p>
                 </div>
-
-                <div class="bjj-connection">
-                    <h4>🥋 The BJJ Parallel: Spazzing vs. Strategic Pressure</h4>
-                    <p>New BJJ students, when in danger, "spazz out"—they thrash, use all their energy, try everything at once. It feels productive but accomplishes nothing (and burns them out).</p>
-                    <p>Experienced grapplers under pressure stay focused on the escape path that will work. They don't waste energy on random movement. Calm, strategic, focused on the outcome (escape mount), not the activity (moving a lot).</p>
-                    <p>Leadership under pressure is the same: Strategic focus beats frantic activity every time.</p>
-                </div>
-
-                <div class="content-section">
-                    <h3>💪 Practice: Pressure Audit</h3>
-                    <p><strong>Think about a recent high-pressure period on your team. Honestly assess:</strong></p>
-                    <ol>
-                        <li>Did you measure success by hours worked or outcomes achieved?</li>
-                        <li>Did the team add more tasks to the backlog or ruthlessly cut scope?</li>
-                        <li>Could you articulate the primary result you were chasing in one sentence?</li>
-                        <li>What % of effort went to activities that didn't directly drive that result?</li>
-                        <li>Did you celebrate being busy or making progress on the goal?</li>
-                    </ol>
-                    <p><strong>Action:</strong> Next time pressure hits, implement the "Restate the Result Daily" practice. Every morning standup: What's the result? Where are we? What's the gap?</p>
-                </div>
-
-                <div class="action-buttons">
-                    <button class="btn btn-secondary" onclick="toggleLesson(1)">Close Lesson</button>
-                    <button class="btn btn-primary" onclick="completeLesson(1)">Complete Lesson (+25 XP)</button>
+                <div class="nav-buttons">
+                    <a href="black-belt.html" class="btn btn-secondary">← Back to Black Belt</a>
+                    <a href="black-belt-stripe4-gamified.html" class="btn btn-success">Start Stripe 4: Legacy →</a>
                 </div>
             </div>
         </div>
-
-        <!-- Lesson 2: Navigating Competing Priorities -->
-        <div class="module-card lesson" id="lesson2">
-            <div class="lesson-content">
-                <div class="lesson-header">
-                    <h2>Lesson 2: Navigating Competing Priorities</h2>
-                </div>
-                
-                <div class="highlight-box">
-                    <strong>The Everything-Is-Important Trap:</strong> When teams treat all goals as equally critical, nothing gets the focus it needs to succeed. Trade-offs are unavoidable—the question is whether you make them consciously or let them happen by default.
-                </div>
-
-                <div class="content-section">
-                    <h3>Why Teams Avoid Prioritization</h3>
-                    <p><strong>Political Safety:</strong> Declaring one thing more important than another creates winners and losers. It's easier to say "it's all important."</p>
-                    
-                    <p><strong>FOMO (Fear of Missing Out):</strong> What if the thing we deprioritize was the breakthrough opportunity? Keeping everything in play feels safer.</p>
-
-                    <p><strong>Stakeholder Appeasement:</strong> Every executive, customer, and team member has "the most important thing." Prioritizing means disappointing someone.</p>
-
-                    <p><strong>Optimism Bias:</strong> "We can do it all if we just work harder!" This rarely works, but the belief persists.</p>
-
-                    <div class="example-box">
-                        <strong>The Cost of No Prioritization:</strong><br><br>
-                        A product team tries to pursue 5 "top priorities" simultaneously:
-                        <ul>
-                            <li>Increase user acquisition</li>
-                            <li>Improve retention</li>
-                            <li>Build enterprise features</li>
-                            <li>Fix technical debt</li>
-                            <li>Launch new market segment</li>
-                        </ul>
-                        <strong>Result:</strong> 20% progress on each, nothing reaches completion, team exhausted, stakeholders frustrated. Trying to do everything = achieving nothing.
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h3>The Prioritization Framework: Results-Based Ranking</h3>
-                    
-                    <p><strong>Step 1: Define Success Criteria</strong></p>
-                    <p>What outcome matters most in the next 90 days? Revenue? User growth? Product-market fit? Customer retention? Pick ONE.</p>
-
-                    <p><strong>Step 2: Score Each Priority Against the Criteria</strong></p>
-                    <p>For each competing priority, ask: "On a scale of 1-10, how directly does this drive our primary success criterion?"</p>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Priority</th>
-                                <th>Impact on Primary Goal (1-10)</th>
-                                <th>Effort Required (L/M/H)</th>
-                                <th>Priority Rank</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Improve onboarding (increase activation)</td>
-                                <td>9 (directly drives retention)</td>
-                                <td>M</td>
-                                <td><strong>1 - DO NOW</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Build enterprise SSO feature</td>
-                                <td>7 (unlocks enterprise deals)</td>
-                                <td>H</td>
-                                <td>2 - Next quarter</td>
-                            </tr>
-                            <tr>
-                                <td>Refactor auth system</td>
-                                <td>3 (tech debt, no user impact)</td>
-                                <td>H</td>
-                                <td>3 - Defer</td>
-                            </tr>
-                            <tr>
-                                <td>Launch mobile app</td>
-                                <td>5 (new channel, uncertain impact)</td>
-                                <td>H</td>
-                                <td>4 - Explore later</td>
-                            </tr>
-                            <tr>
-                                <td>Increase marketing spend</td>
-                                <td>4 (growth, but retention is bottleneck)</td>
-                                <td>L</td>
-                                <td>5 - Not now</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <p><strong>Step 3: Ruthlessly Cut</strong></p>
-                    <p>Anything below a 7 gets deprioritized. You're not saying "never," you're saying "not now, because it doesn't serve the primary result."</p>
-                </div>
-
-                <div class="content-section">
-                    <h3>The "One Thing" Rule</h3>
-                    <p>At any given time, the team should be able to answer: <strong>"What's the ONE result we're optimizing for right now?"</strong></p>
-
-                    <p>Everything else is either:</p>
-                    <ul>
-                        <li><strong>Supporting work:</strong> Directly enables the one thing (do it)</li>
-                        <li><strong>Maintenance work:</strong> Keeps the lights on (minimum viable effort)</li>
-                        <li><strong>Nice-to-have work:</strong> Would be cool, but not critical (defer or kill)</li>
-                    </ul>
-
-                    <div class="highlight-box">
-                        <strong>Test:</strong> If your team can't recite the "one thing" in 5 seconds, you don't have clarity. Go back and decide.
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h3>Handling the "But Everything Is Urgent" Objection</h3>
-                    
-                    <p><strong>Urgent ≠ Important:</strong> The Eisenhower Matrix still applies.</p>
-                    <ul>
-                        <li><strong>Urgent + Important:</strong> Do now (true priority)</li>
-                        <li><strong>Important, Not Urgent:</strong> Schedule (strategic work)</li>
-                        <li><strong>Urgent, Not Important:</strong> Delegate or defer (false urgency)</li>
-                        <li><strong>Neither:</strong> Kill it</li>
-                    </ul>
-
-                    <div class="example-box">
-                        <strong>Application:</strong><br><br>
-                        <strong>Claim:</strong> "We need to ship this enterprise feature NOW or we'll lose the deal!"<br>
-                        <strong>Questions:</strong>
-                        <ul>
-                            <li>Does this deal align with our primary result (e.g., retention)? If no → not a priority</li>
-                            <li>Is this feature reusable for other customers? If no → one-off distraction</li>
-                            <li>What's the opportunity cost? What do we NOT do if we do this? Worth it?</li>
-                        </ul>
-                        <strong>Decision:</strong> Often, the "urgent" opportunity is a distraction disguised as progress.
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h3>The Prioritization Meeting Format</h3>
-                    <p>Run this monthly (or when priorities feel chaotic):</p>
-
-                    <p><strong>1. Restate the Primary Result (5 min)</strong></p>
-                    <p>"Our only goal this quarter is to hit $150K MRR by Dec 31. Everything filters through that lens."</p>
-
-                    <p><strong>2. List All Competing Demands (10 min)</strong></p>
-                    <p>Brain dump everything people say is "critical." No judgment yet, just capture.</p>
-
-                    <p><strong>3. Score Against Primary Result (20 min)</strong></p>
-                    <p>Use the framework above. Be honest. A 5/10 is a 5/10, not a 9/10.</p>
-
-                    <p><strong>4. Rank and Cut (15 min)</strong></p>
-                    <p>Top 3 items are priorities. Everything else goes to a "Later" or "Never" list.</p>
-
-                    <p><strong>5. Communicate the Decisions (10 min)</strong></p>
-                    <p>Write down: What we're doing, what we're NOT doing, and why. Share with stakeholders immediately.</p>
-                </div>
-
-                <div class="content-section">
-                    <h3>Managing Stakeholder Disappointment</h3>
-                    <p>Prioritization creates losers. Here's how to manage it:</p>
-
-                    <p><strong>1. Explain the Trade-Off Explicitly</strong></p>
-                    <p>"If we do X, we can't do Y. Which result matters more right now?"</p>
-
-                    <p><strong>2. Show the Data</strong></p>
-                    <p>"Based on our analysis, Y scores 4/10 on impact while X scores 9/10. We're choosing higher leverage."</p>
-
-                    <p><strong>3. Offer a Timeline</strong></p>
-                    <p>"This isn't 'never,' it's 'not now.' We'll revisit in Q2 after we hit our primary goal."</p>
-
-                    <p><strong>4. Let Them Challenge (Once)</strong></p>
-                    <p>"If you have new data that changes the scoring, share it. Otherwise, we're moving forward with this prioritization."</p>
-
-                    <div class="highlight-box">
-                        <strong>Leader's job:</strong> Absorb the disappointment and protect the team from priority whiplash. Say no so they can say yes to the right work.
-                    </div>
-                </div>
-
-                <div class="research-box">
-                    <h4>📚 Research: Focus and Performance</h4>
-                    <p><strong>McKinsey study:</strong> Companies that concentrate resources on 2-3 strategic priorities outperform those pursuing 5+ priorities by 200% in execution success. Diffusion of focus = diffusion of results.</p>
-                    <p><strong>Stanford research:</strong> Teams that explicitly deprioritized low-impact work (vs. trying to do everything) increased productivity 30% without working more hours.</p>
-                    <p><strong>Key insight:</strong> Saying no is as important as saying yes. Focus is a competitive advantage.</p>
-                </div>
-
-                <div class="bjj-connection">
-                    <h4>🥋 The BJJ Parallel: Position Before Submission</h4>
-                    <p>Beginners try to hunt for submissions from bad positions. They see an opening for an armbar while stuck in someone's side control and go for it—ignoring that they should escape first.</p>
-                    <p>Advanced grapplers prioritize: "First, escape to a neutral position. Then, improve position. THEN, when I'm in control, attack for the submission." Sequential focus.</p>
-                    <p>Trying to do everything at once (escape + sweep + submit simultaneously) fails. Prioritizing the RIGHT thing in the RIGHT order wins.</p>
-                </div>
-
-                <div class="content-section">
-                    <h3>💪 Practice: Priority Stack Rank</h3>
-                    <p><strong>Step 1:</strong> List everything your team is currently working on (all projects, initiatives, tasks).</p>
-                    <p><strong>Step 2:</strong> Define your primary result for the next 90 days in one sentence.</p>
-                    <p><strong>Step 3:</strong> Score each item 1-10 on "how directly does this drive the primary result?"</p>
-                    <p><strong>Step 4:</strong> Draw a line under the top 3. Everything below the line gets paused or killed.</p>
-                    <p><strong>Step 5:</strong> Communicate the cuts. Explain the reasoning. Prepare for pushback, but hold the line.</p>
-                    <p><strong>Commit:</strong> Run this exercise with your team this week. Ship the prioritized list by Friday.</p>
-                </div>
-
-                <div class="action-buttons">
-                    <button class="btn btn-secondary" onclick="toggleLesson(2)">Close Lesson</button>
-                    <button class="btn btn-primary" onclick="completeLesson(2)">Complete Lesson (+25 XP)</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Lesson 3: Saying No to Protect Results -->
-        <div class="module-card lesson" id="lesson3">
-            <div class="lesson-content">
-                <div class="lesson-header">
-                    <h2>Lesson 3: Saying No to Protect Results</h2>
-                </div>
-                
-                <div class="highlight-box">
-                    <strong>The Discipline of No:</strong> Every yes to something unimportant is an implicit no to something that matters. Protecting results requires the courage to disappoint people in the short term to deliver outcomes in the long term.
-                </div>
-
-                <div class="content-section">
-                    <h3>Why Leaders Struggle to Say No</h3>
-                    <p><strong>People-Pleasing Instinct:</strong> Leaders want to be helpful, supportive, accessible. Saying no feels like letting people down.</p>
-                    
-                    <p><strong>FOMO (Fear of Missing Opportunity):</strong> What if this request is the thing that unlocks growth? Better to say yes and figure it out later.</p>
-
-                    <p><strong>Lack of Conviction:</strong> If you're not crystal clear on your priorities, it's hard to defend saying no. Ambiguity enables yes creep.</p>
-
-                    <p><strong>Short-Term Pressure Over Long-Term Results:</strong> Saying yes feels easier in the moment. Saying no creates immediate friction (but long-term focus).</p>
-
-                    <div class="example-box">
-                        <strong>The Cost of Chronic Yes:</strong><br><br>
-                        A product leader says yes to:
-                        <ul>
-                            <li>Sales team's custom feature request</li>
-                            <li>Executive's pet project idea</li>
-                            <li>Customer's "urgent" integration need</li>
-                            <li>Engineer's desire to rewrite the codebase</li>
-                            <li>Marketing's request for dashboard enhancements</li>
-                        </ul>
-                        <strong>Result:</strong> Team spread across 12 initiatives, none complete. Primary goal (hit retention target) missed. Everyone busy, nothing shipped.<br><br>
-                        <strong>One strategic "no" to each would have preserved focus and delivered the result.</strong>
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h3>The Framework for Saying No</h3>
-                    
-                    <p><strong>1. Acknowledge the Request</strong></p>
-                    <p>Don't dismiss or minimize. "I hear that this is important to you. I understand why you're asking."</p>
-
-                    <p><strong>2. Reference the Primary Result</strong></p>
-                    <p>"Right now, our team is 100% focused on [PRIMARY RESULT]. That's our commitment for the next [TIMEFRAME]."</p>
-
-                    <p><strong>3. Explain the Trade-Off</strong></p>
-                    <p>"If we take this on, we'd need to pause [CURRENT PRIORITY]. That would push our goal out by [TIME]. Are you comfortable with that trade-off?"</p>
-
-                    <p><strong>4. Offer an Alternative (If Possible)</strong></p>
-                    <ul>
-                        <li>"We can revisit this in [NEXT QUARTER]"</li>
-                        <li>"Here's a workaround that doesn't require engineering time"</li>
-                        <li>"Can [OTHER TEAM] help with this instead?"</li>
-                    </ul>
-
-                    <p><strong>5. Hold the Line</strong></p>
-                    <p>Don't negotiate unless new information changes the priority calculus. If it's a no, it's a no.</p>
-
-                    <div class="example-box">
-                        <strong>Script Example:</strong><br><br>
-                        <strong>Request:</strong> "Can we build this enterprise SSO feature? Big customer needs it ASAP."<br><br>
-                        <strong>Response:</strong> "I hear that this customer is important and SSO is a blocker for them. Right now, our team is 100% focused on increasing trial-to-paid conversion to 25% by year-end—that's our top company priority. Building SSO would take 3 weeks and push us off that goal. Are you comfortable delaying the conversion goal to prioritize this one customer? If not, we'll need to defer SSO until Q1 or find another solution."<br><br>
-                        <strong>Outcome:</strong> Forces the requester to own the trade-off decision, not you.
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h3>Types of Requests to Say No To</h3>
-                    
-                    <p><strong>1. Scope Creep Requests</strong></p>
-                    <p>"While you're building X, can you also add Y?" → No. Ship X first, then evaluate Y.</p>
-
-                    <p><strong>2. "Just This One Time" Exceptions</strong></p>
-                    <p>"Can we just do this custom thing for this one customer?" → No. One-offs become patterns.</p>
-
-                    <p><strong>3. Shiny Object Syndrome</strong></p>
-                    <p>"I just read about [NEW TREND], we should do that!" → No. Finish current priorities before chasing trends.</p>
-
-                    <p><strong>4. Meeting Invitations (Non-Essential)</strong></p>
-                    <p>"Can you join this 2-hour brainstorm?" → No. Send async input instead if it doesn't drive the primary result.</p>
-
-                    <p><strong>5. Low-Leverage "Helpful" Asks</strong></p>
-                    <p>"Can you review this deck / join this call / give feedback on this?" → No, unless it directly supports the priority.</p>
-
-                    <div class="highlight-box">
-                        <strong>Rule of thumb:</strong> If saying yes doesn't move the primary result needle, default to no. Protect your team's capacity like it's the most valuable resource—because it is.
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h3>The "Not Now" List</h3>
-                    <p>Create a visible, shared "Not Now" list where deprioritized requests live. This serves multiple purposes:</p>
-                    
-                    <ul>
-                        <li><strong>Shows you heard the request:</strong> It's not ignored, it's deferred</li>
-                        <li><strong>Creates accountability:</strong> You'll revisit it when priorities shift</li>
-                        <li><strong>Prevents re-asking:</strong> "We already discussed this, it's on the Not Now list"</li>
-                        <li><strong>Builds trust:</strong> People see you're systematic, not arbitrary</li>
-                    </ul>
-
-                    <div class="example-box">
-                        <strong>Not Now List Example (Public Notion Doc):</strong><br><br>
-                        <strong>Deferred Until Q1 2025:</strong>
-                        <ul>
-                            <li>Enterprise SSO feature (reason: focus on retention first)</li>
-                            <li>Mobile app exploration (reason: web product-market fit not proven yet)</li>
-                            <li>Marketing automation replatform (reason: current system works well enough)</li>
-                        </ul>
-                        <strong>Revisit Date:</strong> Jan 5, 2025 (first week of new quarter)
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h3>When to Say Yes (Despite Competing Priorities)</h3>
-                    <p>Saying no isn't absolute. Say yes when:</p>
-
-                    <p><strong>1. It's a True Emergency</strong></p>
-                    <p>System down, security breach, legal compliance issue. Drop everything, handle it.</p>
-
-                    <p><strong>2. It Directly Accelerates the Primary Result</strong></p>
-                    <p>"This integration will unlock 20 high-intent leads immediately" → if lead gen is the priority, yes.</p>
-
-                    <p><strong>3. The Trade-Off Analysis Changes</strong></p>
-                    <p>New data shows this request is higher leverage than you thought. Recalculate and adjust.</p>
-
-                    <p><strong>4. It's a Strategic Relationship Investment</strong></p>
-                    <p>CEO asks for something reasonable, it's 2 hours of work, and political capital matters. Sometimes yes for relationship health.</p>
-
-                    <div class="highlight-box">
-                        <strong>Key distinction:</strong> Strategic yes (thought through, aligned with priorities) vs. reactive yes (people-pleasing, avoiding conflict).
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h3>Building a "Culture of No"</h3>
-                    <p>Leaders set the tone. If you say no to protect focus, the team learns to do the same.</p>
-
-                    <p><strong>Model it publicly:</strong> "I'm saying no to [X] because it doesn't serve [PRIMARY RESULT]. That's the standard I'm holding us to."</p>
-
-                    <p><strong>Celebrate strategic nos:</strong> Recognize team members who push back on scope creep or low-leverage requests.</p>
-
-                    <p><strong>Make it safe:</strong> If someone says no to a stakeholder, back them up. Don't override unless you have new information.</p>
-
-                    <p><strong>Teach the framework:</strong> Share the "acknowledge → reference priority → explain trade-off → offer alternative" script with your team.</p>
-                </div>
-
-                <div class="research-box">
-                    <h4>📚 Research: Saying No and Performance</h4>
-                    <p><strong>Harvard study:</strong> Executives who said no to 50%+ of incoming requests achieved strategic goals 3x more often than those who said yes to 80%+ of requests. Selectivity predicts success.</p>
-                    <p><strong>Research from "Essentialism":</strong> Top performers spend 90% of time on the vital few priorities. Average performers spread time across the trivial many. Discipline of no is the differentiator.</p>
-                    <p><strong>Key insight:</strong> Your ability to say no determines your ability to deliver yes on what matters.</p>
-                </div>
-
-                <div class="bjj-connection">
-                    <h4>🥋 The BJJ Parallel: Refusing Bad Positions</h4>
-                    <p>In BJJ, beginners accept bad positions because they don't know how to refuse them. Someone tries to take their back? They let it happen. Someone moves to mount? They allow it.</p>
-                    <p>Advanced grapplers refuse to give up position. They fight every inch, block every transition, say "no" with their body language and technique. They protect good position because they know once lost, it's hard to recover.</p>
-                    <p>Leadership is the same: Protect your focus like you protect good position. Once you lose it to distractions, recovering it is exponentially harder.</p>
-                </div>
-
-                <div class="content-section">
-                    <h3>💪 Practice: Saying No This Week</h3>
-                    <p><strong>Step 1:</strong> Identify 3 requests you've said yes to recently that didn't serve your primary result.</p>
-                    <p><strong>Step 2:</strong> For each, write out what you should have said using the framework:</p>
-                    <ul>
-                        <li>Acknowledge: "I understand this matters to you."</li>
-                        <li>Priority: "We're focused on [PRIMARY RESULT]."</li>
-                        <li>Trade-off: "Taking this on means [CONSEQUENCE]."</li>
-                        <li>Alternative: "Here's what we can do instead / when we can revisit."</li>
-                    </ul>
-                    <p><strong>Step 3:</strong> This week, when a new request comes in, practice saying no using this script.</p>
-                    <p><strong>Step 4:</strong> Create your team's "Not Now" list. Add 5 deferred items to start building the habit.</p>
-                    <p><strong>Commit:</strong> Say no to at least one non-essential request this week. Notice how it feels, and how it protects your team's capacity.</p>
-                </div>
-
-                <div class="action-buttons">
-                    <button class="btn btn-secondary" onclick="toggleLesson(3)">Close Lesson</button>
-                    <button class="btn btn-primary" onclick="completeLesson(3)">Complete Lesson (+25 XP)</button>
-                </div>
-            </div>
-        </div>
-
     </div>
-
-    <div class="overlay" id="overlay"></div>
-    <div class="completion-popup" id="completionPopup">
-        <h3>🎉 Lesson Complete!</h3>
-        <p>+25 XP Earned</p>
-        <button class="btn btn-primary" onclick="closePopup()">Continue</button>
-    </div>
-
     <script>
-        // Load progress from localStorage
-        let completedLessons = JSON.parse(localStorage.getItem('blackbeltStripe3Completed') || '[]');
-        let moduleXP = parseInt(localStorage.getItem('blackbeltStripe3ModuleXP') || '0');
-
-        function updateProgress() {
-            const completed = completedLessons.length;
-            const progress = (completed / 3) * 100;
-            
-            document.getElementById('progressBar').style.width = progress + '%';
-            document.getElementById('progressBar').textContent = Math.round(progress) + '%';
-            document.getElementById('completedCount').textContent = completed;
-            document.getElementById('xpEarned').textContent = moduleXP;
-
-            // Update cards
-            completedLessons.forEach(lessonNum => {
-                const card = document.getElementById('card' + lessonNum);
-                const status = document.getElementById('status' + lessonNum);
-                if (card && status) {
-                    card.classList.remove('locked');
-                    card.classList.add('completed');
-                    status.textContent = '✓';
-                }
-            });
-
-            // Unlock next lesson
-            if (completed > 0 && completed < 3) {
-                const nextLesson = completed + 1;
-                const nextCard = document.getElementById('card' + nextLesson);
-                const nextBtn = document.getElementById('btn' + nextLesson);
-                const nextStatus = document.getElementById('status' + nextLesson);
-                
-                if (nextCard && nextBtn && nextStatus) {
-                    nextCard.classList.remove('locked');
-                    nextBtn.disabled = false;
-                    nextBtn.textContent = 'Start Lesson';
-                    nextBtn.classList.add('btn-primary');
-                    nextStatus.textContent = '○';
-                }
-            }
-
-            // Award stripe bonus if all complete
-            if (completed === 3 && !localStorage.getItem('blackbeltStripe3Bonus')) {
-                awardStripeBonus();
-            }
-        }
-
-        function toggleLesson(lessonNum) {
-            const lesson = document.getElementById('lesson' + lessonNum);
-            const allLessons = document.querySelectorAll('.lesson');
-            
-            allLessons.forEach(l => l.classList.remove('active'));
-            
-            if (lesson) {
-                lesson.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-
-        function completeLesson(lessonNum) {
-            if (!completedLessons.includes(lessonNum)) {
-                completedLessons.push(lessonNum);
-                moduleXP += 25;
-                
-                localStorage.setItem('blackbeltStripe3Completed', JSON.stringify(completedLessons));
-                localStorage.setItem('blackbeltStripe3ModuleXP', moduleXP.toString());
-                
-                // Update total XP
-                let totalXP = parseInt(localStorage.getItem('totalXP') || '0');
-                totalXP += 25;
-                localStorage.setItem('totalXP', totalXP.toString());
-                
-                showCompletionPopup();
-                updateProgress();
-                
-                // Close lesson after short delay
-                setTimeout(() => {
-                    toggleLesson(lessonNum);
-                }, 1500);
-            }
-        }
-
-        function awardStripeBonus() {
-            const bonusXP = 100;
-            moduleXP += bonusXP;
-            localStorage.setItem('blackbeltStripe3ModuleXP', moduleXP.toString());
-            localStorage.setItem('blackbeltStripe3Bonus', 'true');
-            
-            // Update total XP
-            let totalXP = parseInt(localStorage.getItem('totalXP') || '0');
-            totalXP += bonusXP;
-            localStorage.setItem('totalXP', totalXP.toString());
-
-            // Add to stripes earned
-            let blackStripes = JSON.parse(localStorage.getItem('blackStripesEarned') || '[]');
-            if (!blackStripes.includes(3)) {
-                blackStripes.push(3);
-                localStorage.setItem('blackStripesEarned', JSON.stringify(blackStripes));
-            }
-            
-            alert('🎉 Black Belt Stripe 3 Complete!\n\n+100 Bonus XP Awarded!\nTotal Stripe XP: 175');
-        }
-
-        function showCompletionPopup() {
-            document.getElementById('overlay').classList.add('show');
-            document.getElementById('completionPopup').classList.add('show');
-        }
-
-        function closePopup() {
-            document.getElementById('overlay').classList.remove('show');
-            document.getElementById('completionPopup').classList.remove('show');
-        }
-
-        // Initialize on load
+        let currentSection = 1; const totalSections = 4;
+        function nextSection() { if (currentSection < totalSections) { document.getElementById(`section-${currentSection}`).classList.remove('active'); currentSection++; document.getElementById(`section-${currentSection}`).classList.add('active'); updateProgress(); window.scrollTo({ top: 0, behavior: 'smooth' }); } }
+        function prevSection() { if (currentSection > 1) { document.getElementById(`section-${currentSection}`).classList.remove('active'); currentSection--; document.getElementById(`section-${currentSection}`).classList.add('active'); updateProgress(); window.scrollTo({ top: 0, behavior: 'smooth' }); } }
+        function updateProgress() { const progress = ((currentSection - 1) / (totalSections - 1)) * 100; document.getElementById('progress-fill').style.width = `${progress}%`; document.getElementById('progress-text').textContent = `${Math.round(progress)}%`; }
+        function showResults() { localStorage.setItem('blackBeltStripe3Complete', 'true'); ['belief', 'nonneg', 'success'].forEach(f => { const el = document.getElementById(f); if (el && el.value) localStorage.setItem(`philosophy_${f}`, el.value); }); nextSection(); }
         updateProgress();
     </script>
 </body>
