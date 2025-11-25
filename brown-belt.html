@@ -6,12 +6,12 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>Brown Belt: Systems & Strategy | TAP-IN</title>
+    <title>Brown Belt: Accountability & Standards | TAP-IN</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --primary-navy: #1a365d; --secondary-navy: #334155; --accent-red: #b91c1c; --accent-purple: #a78bfa; --success-green: #38a169; --warning-orange: #dd6b20; --card-bg: #ffffff; --border-light: #e2e8f0; --text-dark: #1e293b; --text-muted: #64748b; --light-bg: #f8fafc; }
-        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #78350f 0%, #92400e 100%); min-height: 100vh; padding: 2rem 1rem; line-height: 1.6; }
+        :root { --primary-brown: #3e2723; --brown-dark: #2c1810; --brown-mid: #5d4037; --accent-bronze: #a67c52; --accent-gold: #d4af37; --success-green: #38a169; --warning-orange: #dd6b20; --card-bg: #ffffff; --border-light: #e2e8f0; --text-dark: #1e293b; --text-muted: #64748b; --light-bg: #f8fafc; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #2c1810 0%, #3e2723 50%, #4a2c1f 100%); min-height: 100vh; padding: 2rem 1rem; line-height: 1.6; }
         .container { max-width: 900px; margin: 0 auto; }
         .header { text-align: center; margin-bottom: 2rem; color: white; }
         .belt-badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.5rem 1.5rem; border-radius: 25px; font-size: 0.9rem; margin-bottom: 1rem; }
@@ -38,16 +38,16 @@
         .intro-box.warning p { color: #78350f; }
         .stripe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
         .stripe-card { background: white; border: 2px solid var(--border-light); border-radius: 16px; padding: 1.5rem; transition: all 0.3s; }
-        .stripe-card:hover { border-color: #92400e; transform: translateY(-4px); box-shadow: 0 10px 30px rgba(120, 53, 15, 0.15); }
+        .stripe-card:hover { border-color: var(--accent-bronze); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(62, 39, 35, 0.15); }
         .stripe-card.complete { border-color: var(--success-green); background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); }
         .stripe-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
-        .stripe-number { width: 40px; height: 40px; background: linear-gradient(135deg, #78350f 0%, #92400e 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .stripe-number { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary-brown) 0%, var(--brown-dark) 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
         .stripe-card.complete .stripe-number { background: linear-gradient(135deg, var(--success-green) 0%, #2f855a 100%); }
         .stripe-title { font-weight: 700; color: var(--text-dark); }
         .stripe-subtitle { font-size: 0.85rem; color: var(--text-muted); }
         .stripe-description { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
         .stripe-topics { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
-        .topic-tag { background: #fef3c7; color: #92400e; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; }
+        .topic-tag { background: #f5e6d3; color: var(--brown-dark); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; }
         .btn { display: inline-block; padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer; }
         .btn-primary { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%); color: white; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(26, 54, 93, 0.3); }
@@ -69,8 +69,8 @@
     <div class="container">
         <div class="header">
             <div class="belt-badge">🟤 Brown Belt</div>
-            <h1>Systems & Strategy</h1>
-            <p>From team alignment to organizational impact. Brown Belt teaches you to design systems that scale.</p>
+            <h1>Accountability & Standards</h1>
+            <p>The hard conversations. The high standards. The courage to hold the line when it matters most.</p>
             <div class="stripe-progress">
                 <div class="stripe" id="stripe-1"></div>
                 <div class="stripe" id="stripe-2"></div>
@@ -80,55 +80,55 @@
         </div>
 
         <div class="main-card">
-            <h2 class="section-title">🟤 The Systems Challenge</h2>
+            <h2 class="section-title">🟤 The Accountability Challenge</h2>
             
             <div class="intro-box warning">
-                <h3>⚠️ You Can't Scale Heroics</h3>
-                <p>Great individual leadership doesn't scale. <strong>Systems scale.</strong> Brown Belt is where you learn to build organizations that work without you in the room.</p>
-                <p>This is the transition from leading teams to leading organizations.</p>
+                <h3>⚠️ The Hardest Dysfunction to Master</h3>
+                <p>Trust is foundational. Conflict is energizing. Commitment is clarifying. But <strong>accountability is where most teams break</strong>. Why? Because it requires courage.</p>
+                <p>Brown Belt teaches you to have the conversations everyone else avoids.</p>
             </div>
 
             <div class="intro-box">
                 <h3>What Changes at Brown Belt</h3>
-                <p>Purple Belt aligned your team. Brown Belt asks: <strong>How do we align the entire organization?</strong> How do we build culture that persists? How do we create change that sticks?</p>
-                <p>You're no longer just a leader—you're an architect.</p>
+                <p>You've built trust, mastered conflict, and secured commitment. Now comes the test: <strong>Can you hold the line when standards slip?</strong> Can you call out behavior that hurts the team? Can you be direct when it's uncomfortable?</p>
+                <p>Accountability isn't about being the bad guy—it's about caring enough to speak up.</p>
             </div>
 
             <div class="intro-box philosophy">
-                <h3>🥋 The BJJ Principle: Game Development</h3>
-                <p>Brown belts in BJJ don't just execute techniques—they develop their own "game." They understand <strong>how all the pieces connect</strong> into a cohesive system.</p>
-                <p>Organizational leadership is the same. You're not just running plays—you're designing the playbook.</p>
-                <p><em>"Systems run the game. Game runs the player."</em></p>
+                <h3>🥋 The BJJ Principle: Pressure & Position</h3>
+                <p>Brown belts in BJJ master constant, relentless pressure. They don't let you escape bad positions. They hold you accountable to the consequences of your mistakes.</p>
+                <p>Organizational leadership is the same—it's about maintaining standards consistently, even when it's hard.</p>
+                <p><em>"Position before submission. Standards before results."</em></p>
             </div>
 
             <div class="intro-box research">
                 <h3>📊 The Research</h3>
-                <p><strong>Edwards Deming</strong> proved that 94% of problems are system problems, not people problems. Yet most leaders blame individuals.</p>
-                <p>Build better systems, and "people problems" disappear. <strong>The system is the solution.</strong></p>
+                <p><strong>Kim Scott (Radical Candor)</strong> found that teams with direct, caring feedback have 50% lower turnover and 3x innovation rates.</p>
+                <p>Withholding feedback isn't kindness—it's cowardice. <strong>Clear is kind. Unclear is unkind.</strong></p>
             </div>
 
             <h2 class="section-title" style="margin-top: 2rem;">🥋 Brown Belt Principles</h2>
 
             <div class="principles-grid">
                 <div class="principle-card">
-                    <div class="icon">⚙️</div>
-                    <h4>Systems Thinking</h4>
-                    <p>See the whole, not just the parts. Understand how everything connects.</p>
-                </div>
-                <div class="principle-card">
-                    <div class="icon">🏗️</div>
-                    <h4>Culture Design</h4>
-                    <p>Culture isn't accidental. It's designed through rituals, rewards, and repetition.</p>
-                </div>
-                <div class="principle-card">
                     <div class="icon">🎯</div>
-                    <h4>Strategic Leverage</h4>
-                    <p>Find the small changes that create massive impact.</p>
+                    <h4>Direct Feedback</h4>
+                    <p>Say what needs to be said. Kind and clear beat nice and vague.</p>
                 </div>
                 <div class="principle-card">
-                    <div class="icon">🔄</div>
-                    <h4>Change Leadership</h4>
-                    <p>Transform organizations without breaking them.</p>
+                    <div class="icon">⚖️</div>
+                    <h4>Peer Accountability</h4>
+                    <p>Everyone holds everyone accountable—not just managers.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="icon">📊</div>
+                    <h4>High Standards</h4>
+                    <p>Never compromise on what matters. Standards aren't negotiable.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="icon">⚡</div>
+                    <h4>Early Intervention</h4>
+                    <p>Address small issues immediately before they become big problems.</p>
                 </div>
             </div>
 
@@ -139,15 +139,15 @@
                     <div class="stripe-header">
                         <div class="stripe-number">1</div>
                         <div>
-                            <div class="stripe-title">Systems Thinking</div>
-                            <div class="stripe-subtitle">Seeing the Whole Picture</div>
+                            <div class="stripe-title">Accountability Foundation</div>
+                            <div class="stripe-subtitle">Building the Basics</div>
                         </div>
                     </div>
-                    <p class="stripe-description">Learn to see organizations as interconnected systems, not isolated parts. Find leverage points.</p>
+                    <p class="stripe-description">Master direct feedback, peer accountability, maintaining standards, and early intervention.</p>
                     <div class="stripe-topics">
-                        <span class="topic-tag">Feedback Loops</span>
-                        <span class="topic-tag">Leverage</span>
-                        <span class="topic-tag">Root Cause</span>
+                        <span class="topic-tag">Direct Feedback</span>
+                        <span class="topic-tag">Peer Accountability</span>
+                        <span class="topic-tag">Standards</span>
                     </div>
                     <a href="brown-belt-stripe1-gamified.html" class="btn btn-primary">Start Stripe 1 →</a>
                 </div>
@@ -156,15 +156,15 @@
                     <div class="stripe-header">
                         <div class="stripe-number">2</div>
                         <div>
-                            <div class="stripe-title">Culture Design</div>
-                            <div class="stripe-subtitle">Building Intentional Culture</div>
+                            <div class="stripe-title">Accountability Depth</div>
+                            <div class="stripe-subtitle">Handling Complexity</div>
                         </div>
                     </div>
-                    <p class="stripe-description">Culture isn't what you say—it's what you tolerate. Learn to design culture that scales.</p>
+                    <p class="stripe-description">Navigate resistance, politics, ambiguous authority, and cultural norms that prevent accountability.</p>
                     <div class="stripe-topics">
-                        <span class="topic-tag">Values</span>
-                        <span class="topic-tag">Rituals</span>
-                        <span class="topic-tag">Norms</span>
+                        <span class="topic-tag">Resistance</span>
+                        <span class="topic-tag">Politics</span>
+                        <span class="topic-tag">Consistency</span>
                     </div>
                     <a href="brown-belt-stripe2-gamified.html" class="btn btn-primary">Start Stripe 2 →</a>
                 </div>
@@ -173,15 +173,15 @@
                     <div class="stripe-header">
                         <div class="stripe-number">3</div>
                         <div>
-                            <div class="stripe-title">Strategic Leadership</div>
-                            <div class="stripe-subtitle">Long-Term Thinking</div>
+                            <div class="stripe-title">Accountability Systems</div>
+                            <div class="stripe-subtitle">Building Culture</div>
                         </div>
                     </div>
-                    <p class="stripe-description">Move from reactive to proactive. Build strategy that survives contact with reality.</p>
+                    <p class="stripe-description">Create systems, rituals, and norms that make accountability automatic, not heroic.</p>
                     <div class="stripe-topics">
-                        <span class="topic-tag">Vision</span>
-                        <span class="topic-tag">Priorities</span>
-                        <span class="topic-tag">Trade-offs</span>
+                        <span class="topic-tag">Systems</span>
+                        <span class="topic-tag">Rituals</span>
+                        <span class="topic-tag">Culture</span>
                     </div>
                     <a href="brown-belt-stripe3-gamified.html" class="btn btn-primary">Start Stripe 3 →</a>
                 </div>
@@ -190,23 +190,23 @@
                     <div class="stripe-header">
                         <div class="stripe-number">4</div>
                         <div>
-                            <div class="stripe-title">Leading Change</div>
-                            <div class="stripe-subtitle">Transformation at Scale</div>
+                            <div class="stripe-title">Accountability Mastery</div>
+                            <div class="stripe-subtitle">Advanced Applications</div>
                         </div>
                     </div>
-                    <p class="stripe-description">Most change efforts fail. Learn the psychology of change and how to make it stick.</p>
+                    <p class="stripe-description">20 varied exercises testing your accountability across scenarios, reflections, and real-world challenges.</p>
                     <div class="stripe-topics">
-                        <span class="topic-tag">Resistance</span>
-                        <span class="topic-tag">Adoption</span>
-                        <span class="topic-tag">Momentum</span>
+                        <span class="topic-tag">Integration</span>
+                        <span class="topic-tag">Application</span>
+                        <span class="topic-tag">Mastery</span>
                     </div>
                     <a href="brown-belt-stripe4-gamified.html" class="btn btn-primary">Start Stripe 4 →</a>
                 </div>
             </div>
 
             <div class="quote-block">
-                <p class="quote">"Every system is perfectly designed to get the results it gets."</p>
-                <p class="author">— W. Edwards Deming</p>
+                <p class="quote">"Clear is kind. Unclear is unkind."</p>
+                <p class="author">— Brené Brown</p>
             </div>
 
             <div class="nav-buttons" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
