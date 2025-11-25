@@ -177,7 +177,49 @@
         
         .intro-box.philosophy p { 
             color: #e2e8f0;
-        }        /* Questions */
+        }
+        
+        /* Enhancement Boxes */
+        .enhancement-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 6px solid #0284c7;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.1);
+        }
+        
+        .enhancement-box h3 {
+            color: #0c4a6e;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .enhancement-box p {
+            color: #0f172a;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .enhancement-box blockquote {
+            background: white;
+            border-left: 4px solid #0ea5e9;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #1e293b;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .enhancement-box strong {
+            color: #0c4a6e;
+        }
+        
+        /* Questions */
         .question-card { 
             background: #f8fafc; 
             border-radius: 12px; 
@@ -602,15 +644,15 @@
 
             <div class="intro-box">
                 <h3>📊 What This Assessment Does</h3>
-                <p>In 15 minutes, you'll get a comprehensive analysis of your impact potential across the 5 dysfunctions that kill team performance:</p>
+                <p>In 15 minutes, you'll get a comprehensive analysis of your impact potential across 5 critical dimensions:</p>
                 <ul>
-                    <li><strong>⚪ Trust:</strong> Can you be vulnerable with your team?</li>
+                    <li><strong>⚪ Trust:</strong> Can you be vulnerable and build real connections?</li>
                     <li><strong>🔵 Conflict:</strong> Do you avoid or engage in healthy debate?</li>
-                    <li><strong>🟣 Commitment:</strong> Does your team actually buy in?</li>
-                    <li><strong>🟤 Accountability:</strong> Do you hold people to standards?</li>
-                    <li><strong>⚫ Results:</strong> Does team success matter more than your ego?</li>
+                    <li><strong>🟣 Commitment:</strong> Do you follow through and inspire buy-in?</li>
+                    <li><strong>🟤 Accountability:</strong> Do you hold yourself (and others) to standards?</li>
+                    <li><strong>⚫ Results:</strong> Does real impact matter more than looking good?</li>
                 </ul>
-                <p style="margin-top: 15px;"><strong>You won't just get a label.</strong> You'll get a personalized roadmap showing exactly what you need to work on to earn each belt.</p>
+                <p style="margin-top: 15px;"><strong>You won't just get a label.</strong> You'll get a personalized roadmap showing exactly what you need to work on to increase your impact.</p>
             </div>
 
             <div class="intro-box philosophy">
@@ -707,7 +749,7 @@
                 id: 1, 
                 section: 'white', 
                 type: 'scenario',
-                text: 'You\'re in a leadership meeting. The CEO asks, "Who here is struggling with their Q4 goals?" What do you do?', 
+                text: 'You\'re in a meeting. Someone asks, "Who\'s struggling with [current challenge]?" What do you do?', 
                 scale: [
                     'Stay silent—admitting struggle shows weakness',
                     'Wait to see if others speak first',
@@ -720,7 +762,7 @@
                 id: 2,
                 section: 'white',
                 type: 'scale',
-                text: 'When you make a significant mistake at work, how quickly do you admit it to your team?',
+                text: 'When you make a significant mistake at work, how quickly do you admit it?',
                 scale: [
                     'Hide it and hope no one notices',
                     'Only if directly asked',
@@ -733,12 +775,12 @@
                 id: 3,
                 section: 'white',
                 type: 'binary',
-                text: 'True or False: Your team knows about at least one personal challenge you\'re currently facing outside of work.',
+                text: 'True or False: Your colleagues know about at least one personal challenge you\'re currently facing outside of work.',
                 scale: [
                     'Absolutely false—I never share personal stuff',
                     'Mostly false—they might know vague details',
                     'Partially true—close colleagues know some things',
-                    'Mostly true—most of my team knows',
+                    'Mostly true—most people I work with know',
                     'Completely true—I\'m open about my life'
                 ]
             },
@@ -746,7 +788,7 @@
                 id: 4,
                 section: 'white',
                 type: 'scenario',
-                text: 'A team member asks for help on something you also find confusing. What\'s your honest first thought?',
+                text: 'A colleague asks for help on something you also find confusing. What\'s your honest first thought?',
                 scale: [
                     '"If I admit I don\'t know either, I\'ll look incompetent"',
                     '"Let me figure it out myself first, then help"',
@@ -759,7 +801,7 @@
                 id: 5,
                 section: 'white',
                 type: 'scale',
-                text: 'How often do you ask your team for help when you\'re stuck?',
+                text: 'How often do you ask others for help when you\'re stuck?',
                 scale: [
                     'Almost never—I figure things out alone',
                     'Rarely—only when desperate',
@@ -772,7 +814,7 @@
                 id: 6,
                 section: 'white',
                 type: 'scenario',
-                text: 'Someone on your team publicly admits they\'re overwhelmed and behind on commitments. How do you respond?',
+                text: 'Someone publicly admits they\'re overwhelmed and behind on commitments. How do you respond?',
                 scale: [
                     'Internally judge them for poor planning',
                     'Feel awkward, stay quiet',
@@ -785,7 +827,7 @@
                 id: 7,
                 section: 'white',
                 type: 'scale',
-                text: 'How much do you know about what matters most to your teammates outside of work?',
+                text: 'How much do you know about what matters most to your colleagues outside of work?',
                 scale: [
                     'Almost nothing—we keep it professional',
                     'Basic facts (kids, hobbies)',
@@ -811,7 +853,7 @@
                 id: 9,
                 section: 'white',
                 type: 'scenario',
-                text: 'In a team meeting, someone asks a question you don\'t know the answer to. What do you say?',
+                text: 'In a meeting, someone asks a question you don\'t know the answer to. What do you say?',
                 scale: [
                     'Deflect: "Let me get back to you on that"',
                     'Fake it: Give a vague, confident-sounding answer',
@@ -824,7 +866,7 @@
                 id: 10,
                 section: 'white',
                 type: 'scale',
-                text: 'How vulnerable are you about your weaknesses in front of your team?',
+                text: 'How vulnerable are you about your weaknesses in front of others?',
                 scale: [
                     'Never admit weaknesses',
                     'Rarely acknowledge limits',
@@ -832,6 +874,17 @@
                     'Often share what I\'m working on',
                     'Freely admit gaps and ask for coaching'
                 ]
+            },
+            {
+                type: 'enhancement',
+                section: 'white',
+                title: '🔬 The Science of Vulnerability',
+                content: `
+                    <p><strong>Why vulnerability unlocks trust:</strong> Research by Dr. Brené Brown shows that leaders who openly admit mistakes create psychologically safe teams that outperform by 27% (Google's Project Aristotle).</p>
+                    <p><strong>💡 Did you know?</strong> Teams where leaders share uncertainties first see 3x higher rates of peer vulnerability—creating a cascade of trust.</p>
+                    <blockquote>"Vulnerability is not weakness; it's our greatest measure of courage." — Brené Brown</blockquote>
+                    <p><strong>⚡ Quick Win:</strong> This week, start one meeting by saying "Here's something I'm struggling with..." and ask for input. Watch what happens.</p>
+                `
             },
 
             // BLUE BELT - CONFLICT (8 questions)
@@ -888,14 +941,50 @@
         }
 
         function showQuestion() {
-            const q = questions[currentQuestion];
+            const item = questions[currentQuestion];
+            
+            // Check if this is an enhancement box
+            if (item.type === 'enhancement') {
+                // Show enhancement box
+                document.getElementById('questionContainer').style.display = 'none';
+                
+                let enhancementBox = document.getElementById('enhancementBox');
+                if (!enhancementBox) {
+                    enhancementBox = document.createElement('div');
+                    enhancementBox.id = 'enhancementBox';
+                    enhancementBox.className = 'enhancement-box';
+                    document.querySelector('.question-card').appendChild(enhancementBox);
+                }
+                
+                enhancementBox.style.display = 'block';
+                enhancementBox.innerHTML = `
+                    <h3>${item.title}</h3>
+                    ${item.content}
+                `;
+                
+                // Auto-enable next button for enhancement boxes
+                document.getElementById('nextBtn').disabled = false;
+                document.getElementById('nextBtn').textContent = 'Continue →';
+                document.getElementById('prevBtn').disabled = currentQuestion === 0;
+                
+                return;
+            }
+            
+            // Hide enhancement box if it exists
+            const enhancementBox = document.getElementById('enhancementBox');
+            if (enhancementBox) {
+                enhancementBox.style.display = 'none';
+            }
+            document.getElementById('questionContainer').style.display = 'block';
+            
+            const q = item;
             
             // Update section header
-            const sectionIcons = { trust: '⚪', conflict: '🔵', commitment: '🟣', accountability: '🟤', results: '⚫' };
-            const sectionNames = { trust: 'Trust', conflict: 'Conflict', commitment: 'Commitment', accountability: 'Accountability', results: 'Results' };
+            const sectionIcons = { white: '⚪', blue: '🔵', purple: '🟣', brown: '🟤', black: '⚫', trust: '⚪', conflict: '🔵', commitment: '🟣', accountability: '🟤', results: '⚫' };
+            const sectionNames = { white: 'White Belt', blue: 'Blue Belt', purple: 'Purple Belt', brown: 'Brown Belt', black: 'Black Belt', trust: 'Trust', conflict: 'Conflict', commitment: 'Commitment', accountability: 'Accountability', results: 'Results' };
             
             document.getElementById('sectionIcon').textContent = sectionIcons[q.section];
-            document.getElementById('sectionTitle').textContent = `${sectionNames[q.section]} - ${q.section.charAt(0).toUpperCase() + q.section.slice(1)}`;
+            document.getElementById('sectionTitle').textContent = sectionNames[q.section];
             
             // Update section progress indicators
             updateSectionProgress();
@@ -945,9 +1034,11 @@
         }
 
         function updateProgress() {
-            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            const totalQuestions = questions.filter(q => q.type !== 'enhancement').length;
+            const questionsCompleted = questions.slice(0, currentQuestion + 1).filter(q => q.type !== 'enhancement').length;
+            const progress = (questionsCompleted / totalQuestions) * 100;
             document.getElementById('progressFill').style.width = progress + '%';
-            document.getElementById('progressText').textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+            document.getElementById('progressText').textContent = `Question ${questionsCompleted} of ${totalQuestions}`;
         }
 
         function updateSectionProgress() {
