@@ -1289,7 +1289,7 @@
                         </div>
                     </div>
                     <div class="open-mat-grid">
-                        <div class="open-mat-card featured">
+                        <div class="open-mat-card featured" id="purple-belt-card">
                             <span class="open-mat-badge new">New</span>
                             <div class="open-mat-icon">🟣</div>
                             <div class="open-mat-title">Purple Belt: Team Alignment</div>
@@ -1299,9 +1299,13 @@
                                 <span>⏱️ 6-8 weeks</span>
                                 <span>⭐ Advanced</span>
                             </div>
-                            <button class="practice-action" onclick="window.location.href='purple-belt.html'" style="margin-top: 1rem; width: 100%;">Start Purple Belt →</button>
+                            <div class="belt-progress-bar" style="width: 100%; background: #e2e8f0; border-radius: 8px; height: 8px; margin: 1rem 0; overflow: hidden;">
+                                <div id="purple-progress-fill" style="height: 100%; background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%); width: 0%; transition: width 0.5s;"></div>
+                            </div>
+                            <div id="purple-progress-text" style="font-size: 0.9rem; color: #64748b; margin-bottom: 0.5rem;">0% Complete</div>
+                            <button class="practice-action" onclick="window.location.href='purple-belt.html'" style="margin-top: 0.5rem; width: 100%;">Start Purple Belt →</button>
                         </div>
-                        <div class="open-mat-card featured">
+                        <div class="open-mat-card featured" id="brown-belt-card">
                             <span class="open-mat-badge new">New</span>
                             <div class="open-mat-icon">🟤</div>
                             <div class="open-mat-title">Brown Belt: Systems & Strategy</div>
@@ -1311,9 +1315,13 @@
                                 <span>⏱️ 8-10 weeks</span>
                                 <span>⭐ Expert</span>
                             </div>
-                            <button class="practice-action" onclick="window.location.href='brown-belt.html'" style="margin-top: 1rem; width: 100%;">Start Brown Belt →</button>
+                            <div class="belt-progress-bar" style="width: 100%; background: #e2e8f0; border-radius: 8px; height: 8px; margin: 1rem 0; overflow: hidden;">
+                                <div id="brown-progress-fill" style="height: 100%; background: linear-gradient(135deg, #78350f 0%, #92400e 100%); width: 0%; transition: width 0.5s;"></div>
+                            </div>
+                            <div id="brown-progress-text" style="font-size: 0.9rem; color: #64748b; margin-bottom: 0.5rem;">0% Complete</div>
+                            <button class="practice-action" onclick="window.location.href='brown-belt.html'" style="margin-top: 0.5rem; width: 100%;">Start Brown Belt →</button>
                         </div>
-                        <div class="open-mat-card featured">
+                        <div class="open-mat-card featured" id="black-belt-card">
                             <span class="open-mat-badge new">New</span>
                             <div class="open-mat-icon">⬛</div>
                             <div class="open-mat-title">Black Belt: Mastery & Integration</div>
@@ -1323,7 +1331,11 @@
                                 <span>⏱️ 10+ weeks</span>
                                 <span>⭐ Mastery</span>
                             </div>
-                            <button class="practice-action" onclick="window.location.href='black-belt.html'" style="margin-top: 1rem; width: 100%;">Start Black Belt →</button>
+                            <div class="belt-progress-bar" style="width: 100%; background: #e2e8f0; border-radius: 8px; height: 8px; margin: 1rem 0; overflow: hidden;">
+                                <div id="black-progress-fill" style="height: 100%; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); width: 0%; transition: width 0.5s;"></div>
+                            </div>
+                            <div id="black-progress-text" style="font-size: 0.9rem; color: #64748b; margin-bottom: 0.5rem;">0% Complete</div>
+                            <button class="practice-action" onclick="window.location.href='black-belt.html'" style="margin-top: 0.5rem; width: 100%;">Start Black Belt →</button>
                         </div>
                     </div>
                 </div>
@@ -1722,6 +1734,68 @@
             document.querySelector('.welcome-date').textContent = `${dateStr} • White Belt Training`;
         }
         updateDate();
+
+        // Dynamic Belt Progress Tracking
+        function updateBeltProgress() {
+            const belts = [
+                { name: 'purple', color: 'Purple', stripes: 4 },
+                { name: 'brown', color: 'Brown', stripes: 4 },
+                { name: 'black', color: 'Black', stripes: 4 }
+            ];
+
+            belts.forEach(belt => {
+                let completedStripes = 0;
+                
+                // Count completed stripes
+                for (let i = 1; i <= belt.stripes; i++) {
+                    const key = `${belt.name}BeltStripe${i}Complete`;
+                    if (localStorage.getItem(key) === 'true') {
+                        completedStripes++;
+                    }
+                }
+
+                // Calculate percentage
+                const percentage = (completedStripes / belt.stripes) * 100;
+                
+                // Update progress bar
+                const fillElement = document.getElementById(`${belt.name}-progress-fill`);
+                const textElement = document.getElementById(`${belt.name}-progress-text`);
+                const cardElement = document.getElementById(`${belt.name}-belt-card`);
+                const badgeElement = cardElement?.querySelector('.open-mat-badge');
+                
+                if (fillElement) {
+                    fillElement.style.width = `${percentage}%`;
+                }
+                
+                if (textElement) {
+                    if (percentage === 100) {
+                        textElement.textContent = `✅ ${belt.color} Belt Complete!`;
+                        textElement.style.color = '#38a169';
+                        textElement.style.fontWeight = '600';
+                        if (badgeElement) {
+                            badgeElement.textContent = 'Complete';
+                            badgeElement.style.background = 'linear-gradient(135deg, #38a169 0%, #2f855a 100%)';
+                        }
+                    } else if (percentage > 0) {
+                        textElement.textContent = `${Math.round(percentage)}% Complete (${completedStripes}/${belt.stripes} stripes)`;
+                        if (badgeElement) {
+                            badgeElement.textContent = 'In Progress';
+                            badgeElement.style.background = 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)';
+                        }
+                    } else {
+                        textElement.textContent = '0% Complete';
+                    }
+                }
+            });
+
+            // Check for entire program completion
+            if (localStorage.getItem('entireProgramComplete') === 'true') {
+                console.log('🎉 Entire TAP-IN program completed!');
+            }
+        }
+
+        // Run on page load
+        updateBeltProgress();
     </script>
 </body>
 </html>
