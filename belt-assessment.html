@@ -701,15 +701,138 @@
     <script>
         // 40 Questions - 8 per dysfunction
         const questions = [
-            // WHITE BELT - TRUST (8 questions)
-            { id: 1, section: 'trust', text: 'When you make a mistake at work, how do you typically respond?', scale: ['Hide it and hope no one notices', 'Mention it only if asked', 'Share it with close colleagues', 'Openly admit it to your team', 'Proactively own it and discuss what you learned'] },
-            { id: 2, section: 'trust', text: 'How comfortable are you sharing personal challenges (outside of work) with your team?', scale: ['Never share personal stuff', 'Very rarely, only major events', 'Occasionally with close colleagues', 'Regularly with most of the team', 'Openly share when relevant'] },
-            { id: 3, section: 'trust', text: 'When a teammate asks for help, what goes through your mind first?', scale: ['Worry they\'ll think I\'m incompetent', 'Check if I have time to help', 'Consider if helping helps me', 'Happy to support if I can', 'Immediately willing to help'] },
-            { id: 4, section: 'trust', text: 'How often do you ask your team for help when you\'re stuck?', scale: ['Almost never - figure it out alone', 'Rarely, only when desperate', 'Sometimes, with hesitation', 'Often, when I genuinely need it', 'Regularly and without shame'] },
-            { id: 5, section: 'trust', text: 'When someone on your team admits a mistake, how do you react?', scale: ['Judge them internally', 'Acknowledge but move on quickly', 'Appreciate their honesty privately', 'Thank them for transparency', 'Celebrate their vulnerability openly'] },
-            { id: 6, section: 'trust', text: 'How much do you know about your teammates\' lives outside of work?', scale: ['Almost nothing', 'Basic facts (kids, hobbies)', 'Some personal details', 'Good understanding of their lives', 'Deep knowledge of what matters to them'] },
-            { id: 7, section: 'trust', text: 'When you disagree with someone, do you assume positive intent?', scale: ['Usually assume they\'re wrong/political', 'Skeptical of their motives', 'Neutral - depends on the person', 'Generally assume good intent', 'Always default to positive intent'] },
-            { id: 8, section: 'trust', text: 'How vulnerable are you in team meetings about what you don\'t know?', scale: ['Never admit gaps', 'Rarely acknowledge limits', 'Sometimes admit uncertainties', 'Often share what I don\'t know', 'Freely admit when I\'m learning'] },
+            // ⚪ WHITE BELT - TRUST (10 questions)
+            // Preview of White Belt: Vulnerability-based trust
+            { 
+                id: 1, 
+                section: 'white', 
+                type: 'scenario',
+                text: 'You\'re in a leadership meeting. The CEO asks, "Who here is struggling with their Q4 goals?" What do you do?', 
+                scale: [
+                    'Stay silent—admitting struggle shows weakness',
+                    'Wait to see if others speak first',
+                    'Acknowledge vaguely: "It\'s challenging for everyone"',
+                    'Raise your hand and briefly share',
+                    'Immediately share specific struggles and ask for help'
+                ]
+            },
+            {
+                id: 2,
+                section: 'white',
+                type: 'scale',
+                text: 'When you make a significant mistake at work, how quickly do you admit it to your team?',
+                scale: [
+                    'Hide it and hope no one notices',
+                    'Only if directly asked',
+                    'Eventually, after trying to fix it myself',
+                    'Quickly—within hours or a day',
+                    'Immediately—transparency is non-negotiable'
+                ]
+            },
+            {
+                id: 3,
+                section: 'white',
+                type: 'binary',
+                text: 'True or False: Your team knows about at least one personal challenge you\'re currently facing outside of work.',
+                scale: [
+                    'Absolutely false—I never share personal stuff',
+                    'Mostly false—they might know vague details',
+                    'Partially true—close colleagues know some things',
+                    'Mostly true—most of my team knows',
+                    'Completely true—I\'m open about my life'
+                ]
+            },
+            {
+                id: 4,
+                section: 'white',
+                type: 'scenario',
+                text: 'A team member asks for help on something you also find confusing. What\'s your honest first thought?',
+                scale: [
+                    '"If I admit I don\'t know either, I\'ll look incompetent"',
+                    '"Let me figure it out myself first, then help"',
+                    '"Maybe we can muddle through it together"',
+                    '"Good—we can learn this together"',
+                    '"Perfect—vulnerability builds trust. Let\'s figure it out."'
+                ]
+            },
+            {
+                id: 5,
+                section: 'white',
+                type: 'scale',
+                text: 'How often do you ask your team for help when you\'re stuck?',
+                scale: [
+                    'Almost never—I figure things out alone',
+                    'Rarely—only when desperate',
+                    'Sometimes—but I hesitate',
+                    'Often—when I genuinely need it',
+                    'Regularly—asking for help is a strength'
+                ]
+            },
+            {
+                id: 6,
+                section: 'white',
+                type: 'scenario',
+                text: 'Someone on your team publicly admits they\'re overwhelmed and behind on commitments. How do you respond?',
+                scale: [
+                    'Internally judge them for poor planning',
+                    'Feel awkward, stay quiet',
+                    'Acknowledge it briefly and move on',
+                    'Thank them for transparency',
+                    'Celebrate their courage and offer support immediately'
+                ]
+            },
+            {
+                id: 7,
+                section: 'white',
+                type: 'scale',
+                text: 'How much do you know about what matters most to your teammates outside of work?',
+                scale: [
+                    'Almost nothing—we keep it professional',
+                    'Basic facts (kids, hobbies)',
+                    'Some personal details',
+                    'Good understanding of their lives',
+                    'Deep knowledge—I know their dreams and struggles'
+                ]
+            },
+            {
+                id: 8,
+                section: 'white',
+                type: 'binary',
+                text: 'When someone disagrees with you, do you default to assuming positive intent?',
+                scale: [
+                    'No—I usually assume they\'re political or wrong',
+                    'Rarely—I\'m skeptical of their motives',
+                    'Depends on the person',
+                    'Usually—I try to assume good intent',
+                    'Always—positive intent is my default'
+                ]
+            },
+            {
+                id: 9,
+                section: 'white',
+                type: 'scenario',
+                text: 'In a team meeting, someone asks a question you don\'t know the answer to. What do you say?',
+                scale: [
+                    'Deflect: "Let me get back to you on that"',
+                    'Fake it: Give a vague, confident-sounding answer',
+                    'Pivot: "That\'s a great question for [someone else]"',
+                    'Admit it: "I don\'t know the answer to that"',
+                    'Lean in: "I don\'t know—let\'s figure it out together right now"'
+                ]
+            },
+            {
+                id: 10,
+                section: 'white',
+                type: 'scale',
+                text: 'How vulnerable are you about your weaknesses in front of your team?',
+                scale: [
+                    'Never admit weaknesses',
+                    'Rarely acknowledge limits',
+                    'Sometimes admit uncertainties',
+                    'Often share what I\'m working on',
+                    'Freely admit gaps and ask for coaching'
+                ]
+            },
 
             // BLUE BELT - CONFLICT (8 questions)
             { id: 9, section: 'conflict', text: 'When you disagree with someone in a meeting, what do you do?', scale: ['Stay silent to keep the peace', 'Hint at disagreement indirectly', 'Share concerns privately after', 'Respectfully voice disagreement', 'Directly debate the idea in the moment'] },
