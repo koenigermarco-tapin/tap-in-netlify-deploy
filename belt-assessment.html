@@ -1030,15 +1030,137 @@
                 `
             },
 
-            // PURPLE BELT - COMMITMENT (8 questions)
-            { id: 17, section: 'commitment', text: 'After a decision you disagreed with is made, how do you respond?', scale: ['Passively resist or ignore it', 'Comply minimally', 'Follow it but remain skeptical', 'Commit even if not ideal', 'Fully commit and support publicly'] },
-            { id: 18, section: 'commitment', text: 'How often does your team leave meetings without clear decisions?', scale: ['Almost always unclear', 'Often vague or tentative', 'Sometimes clear', 'Usually clear', 'Always crystal clear'] },
-            { id: 19, section: 'commitment', text: 'When you\'re not 100% sure about a decision, do you still commit?', scale: ['No, I wait for certainty', 'Hesitate and delay', 'Reluctantly move forward', 'Commit despite uncertainty', 'Embrace "disagree and commit"'] },
-            { id: 20, section: 'commitment', text: 'How clear are you about your team\'s top priorities?', scale: ['Have no idea', 'Vaguely aware', 'Somewhat clear', 'Very clear', 'Absolute clarity on top 3'] },
-            { id: 21, section: 'commitment', text: 'When a decision is made, how quickly does your team act?', scale: ['Days/weeks of delay', 'Slow to start', 'Moderate pace', 'Quick action', 'Immediate execution'] },
-            { id: 22, section: 'commitment', text: 'How often do you revisit/second-guess team decisions after they\'re made?', scale: ['Constantly rehash decisions', 'Often question them', 'Sometimes reconsider', 'Rarely revisit', 'Never unless new data emerges'] },
-            { id: 23, section: 'commitment', text: 'When explaining a team decision to others, how do you frame it?', scale: ['"They" decided this', 'Ambiguous about ownership', 'Neutral explanation', 'Support it as "ours"', 'Fully own it as "we" decided'] },
-            { id: 24, section: 'commitment', text: 'How comfortable are you making decisions without perfect information?', scale: ['Need 100% certainty', 'Very uncomfortable with ambiguity', 'Prefer more data', 'Comfortable with 70% certainty', 'Thrive in ambiguity'] },
+            // PURPLE BELT - COMMITMENT/BUY-IN (10 questions)
+            {
+                id: 21,
+                section: 'purple',
+                type: 'scenario',
+                text: 'A decision is made that you disagree with. What do you do after the meeting?',
+                scale: [
+                    'Passively resist—do the minimum or ignore it',
+                    'Comply externally but complain privately',
+                    'Follow it skeptically, hedging my bets',
+                    'Commit despite reservations',
+                    'Fully commit publicly: "We decided this, let\'s execute"'
+                ]
+            },
+            {
+                id: 22,
+                section: 'purple',
+                type: 'scale',
+                text: 'How often do you leave meetings without clarity on what was actually decided?',
+                scale: [
+                    'Almost always—nothing gets decided',
+                    'Often vague or ambiguous',
+                    'Sometimes clear, sometimes not',
+                    'Usually clear on decisions',
+                    'Always crystal clear—we don\'t leave until we decide'
+                ]
+            },
+            {
+                id: 23,
+                section: 'purple',
+                type: 'binary',
+                text: 'When you\'re not 100% certain a decision is right, do you still commit to it?',
+                scale: [
+                    'No—I wait for certainty or better options',
+                    'Hesitate and delay taking action',
+                    'Move forward reluctantly',
+                    'Commit despite uncertainty',
+                    'Embrace it: "Disagree and commit" is my default'
+                ]
+            },
+            {
+                id: 24,
+                section: 'purple',
+                type: 'scenario',
+                text: 'You\'re in a meeting where everyone is nodding but no one is committing to action. What do you do?',
+                scale: [
+                    'Go along with the vagueness',
+                    'Notice it but stay quiet',
+                    'Ask gently: "So what\'s the plan?"',
+                    'Push for clarity: "Who\'s doing what by when?"',
+                    'Force commitment: "Before we leave—let\'s get specific on next steps"'
+                ]
+            },
+            {
+                id: 25,
+                section: 'purple',
+                type: 'scale',
+                text: 'How clear are you on the top 3 priorities for your work right now?',
+                scale: [
+                    'No idea—everything feels urgent',
+                    'Vaguely aware of priorities',
+                    'Somewhat clear but shifting',
+                    'Very clear on what matters',
+                    'Absolute clarity—I can recite them'
+                ]
+            },
+            {
+                id: 26,
+                section: 'purple',
+                type: 'binary',
+                text: 'After a decision is made, how quickly do you act on it?',
+                scale: [
+                    'Days/weeks of delay—waiting to see if it sticks',
+                    'Slow to start, cautious',
+                    'Moderate pace',
+                    'Move quickly within a day',
+                    'Immediate execution—we decided, I go'
+                ]
+            },
+            {
+                id: 27,
+                section: 'purple',
+                type: 'scale',
+                text: 'How often do you revisit or second-guess decisions after they\'re made?',
+                scale: [
+                    'Constantly rehash decisions',
+                    'Often question and reconsider',
+                    'Sometimes revisit them',
+                    'Rarely unless new data emerges',
+                    'Never—we decided, we commit'
+                ]
+            },
+            {
+                id: 28,
+                section: 'purple',
+                type: 'scenario',
+                text: 'When explaining a decision to someone who wasn\'t in the meeting, how do you frame it?',
+                scale: [
+                    '"They decided..." (distancing)',
+                    'Ambiguous about who owns it',
+                    'Neutral: "The decision was..."',
+                    'Own it: "We decided..."',
+                    'Fully advocate: "Here\'s why we\'re doing this..."'
+                ]
+            },
+            {
+                id: 29,
+                section: 'purple',
+                type: 'scale',
+                text: 'How comfortable are you making decisions without perfect information?',
+                scale: [
+                    'Need 100% certainty to decide',
+                    'Very uncomfortable with ambiguity',
+                    'Prefer more data but can move',
+                    'Comfortable at 70% certainty',
+                    'Thrive in ambiguity—bias to action'
+                ]
+            },
+            {
+                id: 30,
+                section: 'purple',
+                type: 'binary',
+                text: 'When priorities shift unexpectedly, what\'s your reaction?',
+                scale: [
+                    'Frustrated and resistant to change',
+                    'Annoyed but eventually comply',
+                    'Neutral—just another shift',
+                    'Adaptable—I adjust quickly',
+                    'Energized—new data, new direction, let\'s go'
+                ]
+            },
 
             // BROWN BELT - ACCOUNTABILITY (8 questions)
             { id: 25, section: 'accountability', text: 'When a peer misses a commitment, what do you do?', scale: ['Say nothing, not my place', 'Complain to others privately', 'Hint at it indirectly', 'Address it respectfully 1-on-1', 'Call it out directly and immediately'] },
