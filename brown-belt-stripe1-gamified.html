@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Brown Belt Stripe 1: Systems Thinking | TAP-IN</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Brown Belt Stripe 1: Accountability Foundation | TAP-IN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --primary-navy: #1a365d; --secondary-navy: #334155; --accent-red: #b91c1c; --accent-purple: #a78bfa; --success-green: #38a169; --warning-orange: #dd6b20; --card-bg: #ffffff; --border-light: #e2e8f0; --text-dark: #1e293b; --text-muted: #64748b; --light-bg: #f8fafc; }
-        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #78350f 0%, #92400e 100%); min-height: 100vh; padding: 2rem 1rem; line-height: 1.6; }
+        :root { --primary-brown: #3e2723; --brown-dark: #2c1810; --brown-mid: #5d4037; --accent-bronze: #a67c52; --accent-gold: #d4af37; --success-green: #38a169; --warning-orange: #dd6b20; --card-bg: #ffffff; --border-light: #e2e8f0; --text-dark: #1e293b; --text-muted: #64748b; --light-bg: #f8fafc; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #2c1810 0%, #3e2723 50%, #4a2c1f 100%); min-height: 100vh; padding: 2rem 1rem; line-height: 1.6; }
         .container { max-width: 800px; margin: 0 auto; }
         .header { text-align: center; margin-bottom: 2rem; color: white; }
         .stripe-badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; margin-bottom: 1rem; }
@@ -20,176 +17,657 @@
         .progress-container { background: rgba(255,255,255,0.2); border-radius: 10px; padding: 1rem 1.5rem; margin-bottom: 2rem; }
         .progress-header { display: flex; justify-content: space-between; color: white; font-size: 0.9rem; margin-bottom: 0.5rem; }
         .progress-bar { background: rgba(255,255,255,0.3); height: 8px; border-radius: 4px; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-red) 0%, #dc2626 100%); border-radius: 4px; transition: width 0.5s ease; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-bronze) 0%, var(--accent-gold) 100%); border-radius: 4px; transition: width 0.5s ease; }
         .main-card { background: white; border-radius: 20px; padding: 2.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
-        .section { display: none; }
-        .section.active { display: block; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .section-title { font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 1rem; }
-        .section-subtitle { color: var(--text-muted); margin-bottom: 1.5rem; }
+        .intro-section { margin-bottom: 2rem; }
         .intro-box { background: var(--light-bg); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
-        .intro-box h3 { color: var(--primary-navy); font-size: 1.1rem; margin-bottom: 0.75rem; }
+        .intro-box h3 { color: var(--primary-brown); font-size: 1.1rem; margin-bottom: 0.75rem; }
         .intro-box p { color: var(--text-dark); font-size: 0.95rem; margin-bottom: 0.75rem; line-height: 1.7; }
-        .intro-box p:last-child { margin-bottom: 0; }
-        .intro-box strong { color: var(--primary-navy); }
-        .intro-box.philosophy { background: linear-gradient(135deg, var(--light-bg) 0%, #e2e8f0 100%); border-left: 6px solid var(--primary-navy); }
-        .intro-box.philosophy em { color: var(--accent-purple); }
-        .intro-box.research { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%); border: none; }
-        .intro-box.research h3 { color: #fff; }
-        .intro-box.research p { color: #e2e8f0; }
-        .intro-box.research strong { color: var(--accent-purple); }
-        .practice-card { background: #f0fdf4; border: 2px solid #86efac; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
-        .practice-card h4 { color: #166534; font-size: 1rem; margin-bottom: 0.5rem; }
-        .practice-card p { color: #14532d; font-size: 0.9rem; }
-        .reflection-box { background: #fffbeb; border: 2px solid #fcd34d; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
-        .reflection-box h3 { color: #92400e; font-size: 1rem; margin-bottom: 0.75rem; }
-        .reflection-box p { color: #78350f; font-size: 0.95rem; margin-bottom: 1rem; }
-        .reflection-textarea { width: 100%; min-height: 100px; padding: 1rem; border: 1px solid #fcd34d; border-radius: 8px; font-family: inherit; font-size: 0.95rem; resize: vertical; }
-        .concept-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; }
-        .concept-card { background: linear-gradient(135deg, var(--light-bg) 0%, #e2e8f0 100%); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--border-light); }
-        .concept-card h4 { color: var(--primary-navy); font-size: 0.95rem; margin-bottom: 0.5rem; }
-        .concept-card p { color: var(--text-dark); font-size: 0.85rem; }
-        .nav-buttons { display: flex; justify-content: space-between; margin-top: 2rem; gap: 1rem; }
-        .btn { padding: 1rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; border: none; text-decoration: none; }
-        .btn-secondary { background: #edf2f7; color: var(--text-dark); }
-        .btn-primary { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%); color: white; }
-        .btn-success { background: linear-gradient(135deg, var(--success-green) 0%, #2f855a 100%); color: white; }
-        .stripe-earned { background: linear-gradient(135deg, #78350f 0%, #92400e 100%); border-radius: 16px; padding: 2rem; color: white; text-align: center; margin-bottom: 1.5rem; }
-        .stripe-earned h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .stripe-visual { font-size: 3rem; margin: 1rem 0; }
-        .quote-block { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-radius: 12px; padding: 1.5rem; text-align: center; margin: 1.5rem 0; }
-        .quote-block .quote { font-size: 1.1rem; color: white; font-style: italic; margin-bottom: 0.75rem; }
-        .quote-block .author { color: var(--accent-purple); font-weight: 600; font-size: 0.9rem; }
-        @media (max-width: 768px) { body { padding: 1rem; } .main-card { padding: 1.5rem; } .nav-buttons { flex-direction: column; } .btn { width: 100%; text-align: center; } .concept-grid { grid-template-columns: 1fr; } }
+        .intro-box strong { color: var(--primary-brown); }
+        .question-card { background: var(--light-bg); border: 2px solid var(--border-light); border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
+        .question-number { color: var(--accent-bronze); font-size: 0.8rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .question-text { font-size: 1.2rem; font-weight: 700; color: var(--text-dark); margin-bottom: 1.5rem; }
+        .options { display: flex; flex-direction: column; gap: 0.75rem; }
+        .option { background: white; border: 2px solid var(--border-light); border-radius: 8px; padding: 1rem; cursor: pointer; transition: all 0.2s; }
+        .option:hover { border-color: var(--accent-bronze); }
+        .option.selected { background: #f5e6d3; border-color: var(--primary-brown); }
+        .option input[type="radio"] { margin-right: 0.75rem; }
+        .nav-buttons { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2rem; }
+        .btn { padding: 1rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; border: none; }
+        .btn-secondary { background: #e2e8f0; color: var(--text-dark); }
+        .btn-primary { background: linear-gradient(135deg, var(--primary-brown) 0%, var(--brown-dark) 100%); color: white; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .results-container { display: none; }
+        .results-container.active { display: block; }
+        .score-display { text-align: center; padding: 2rem; background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%); border-radius: 12px; margin-bottom: 2rem; }
+        .score-number { font-size: 4rem; font-weight: 800; color: var(--primary-brown); }
+        .score-label { font-size: 1.2rem; color: var(--brown-dark); font-weight: 600; }
+        .recommendation { background: white; border: 2px solid var(--primary-brown); border-radius: 12px; padding: 1.5rem; margin-top: 2rem; }
+        .recommendation h3 { color: var(--primary-brown); margin-bottom: 1rem; }
+        @media (max-width: 768px) { body { padding: 1rem; } .main-card { padding: 1.5rem; } .nav-buttons { flex-direction: column; } }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="stripe-badge">🟤 Brown Belt • Stripe 1 of 4</div>
-            <h1>Systems Thinking</h1>
-            <p>Seeing the Whole Picture</p>
+            <div class="stripe-badge">🟤 Brown Belt • Stripe 1</div>
+            <h1>Accountability Foundation</h1>
+            <p>Building the bedrock: Speaking up, calling out, holding the line</p>
         </div>
+        
         <div class="progress-container">
-            <div class="progress-header"><span>Progress</span><span id="progress-text">0%</span></div>
-            <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+            <div class="progress-header">
+                <span>Question <span id="currentQ">1</span> of 37</span>
+                <span><span id="progress-percent">0</span>% Complete</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
         </div>
+        
         <div class="main-card">
-            <div class="section active" id="section-1">
-                <h2 class="section-title">⚙️ Why Systems Thinking Matters</h2>
-                <p class="section-subtitle">Most problems aren't people problems—they're system problems.</p>
+            <div class="intro-section" id="introSection">
                 <div class="intro-box">
-                    <h3>The Blame Trap</h3>
-                    <p>When something goes wrong, we instinctively blame the person closest to the failure. But <strong>Deming proved that 94% of problems are system problems</strong>, not people problems.</p>
-                    <p>Fire the "bad" employee, and the next person in that role will fail the same way. The system creates the behavior.</p>
+                    <h3>🎯 Welcome to Brown Belt</h3>
+                    <p>You've built trust, mastered conflict, secured commitment, and focused on results. Now comes the hardest skill of all: <strong>holding people accountable</strong>.</p>
+                    <p>Accountability isn't about being the bad guy. It's about caring enough to speak up when standards slip, calling out behavior that hurts the team, and having the courage to say what needs to be said.</p>
                 </div>
-                <div class="intro-box philosophy">
-                    <h3>🥋 The BJJ Principle: Your Game Is a System</h3>
-                    <p>A brown belt's "game" isn't random techniques—it's a <strong>connected system</strong>. Guard leads to sweep, sweep leads to pass, pass leads to submission. Every piece connects.</p>
-                    <p>Organizations work the same way. Change one part, and ripples spread everywhere.</p>
-                    <p><em>"You can't understand a system by looking at its parts."</em></p>
-                </div>
-                <div class="intro-box research">
-                    <h3>📊 The Research</h3>
-                    <p><strong>Peter Senge's</strong> "The Fifth Discipline" established systems thinking as the cornerstone of learning organizations. His research showed that linear thinking—A causes B—misses most of reality.</p>
-                    <p>Real systems have <strong>feedback loops, delays, and non-linear effects</strong>. Miss these, and your solutions create new problems.</p>
-                </div>
-                <div class="nav-buttons">
-                    <a href="brown-belt.html" class="btn btn-secondary">← Back to Hub</a>
-                    <button class="btn btn-primary" onclick="nextSection()">Key Concepts →</button>
-                </div>
-            </div>
-            <div class="section" id="section-2">
-                <h2 class="section-title">🔄 Core Systems Concepts</h2>
-                <p class="section-subtitle">The mental models that change how you see organizations.</p>
-                <div class="concept-grid">
-                    <div class="concept-card">
-                        <h4>🔄 Feedback Loops</h4>
-                        <p>Actions create reactions that amplify or dampen the original action. Positive loops accelerate; negative loops stabilize.</p>
-                    </div>
-                    <div class="concept-card">
-                        <h4>⏱️ Delays</h4>
-                        <p>Effects often appear long after causes. Hire today, see results in 6 months. Ignore this, and you'll overcorrect.</p>
-                    </div>
-                    <div class="concept-card">
-                        <h4>🎯 Leverage Points</h4>
-                        <p>Small changes in the right place create massive impact. Find the leverage, and transform the system with minimal effort.</p>
-                    </div>
-                    <div class="concept-card">
-                        <h4>🌊 Emergence</h4>
-                        <p>System behavior emerges from interactions, not components. Culture emerges from thousands of small decisions.</p>
-                    </div>
-                </div>
-                <div class="practice-card">
-                    <h4>💡 The "5 Whys" Technique</h4>
-                    <p>When a problem occurs, ask "why" five times. Each answer reveals a deeper layer until you find the root cause—which is almost always a system issue, not a person issue.</p>
-                </div>
-                <div class="intro-box philosophy">
-                    <h3>🥋 Finding Your Leverage</h3>
-                    <p>In BJJ, a slight hip adjustment can make the difference between a failed sweep and a perfect one. <strong>Systems have the same leverage points.</strong></p>
-                    <p>The art is finding where small force creates maximum effect.</p>
-                </div>
-                <div class="nav-buttons">
-                    <button class="btn btn-secondary" onclick="prevSection()">← Back</button>
-                    <button class="btn btn-primary" onclick="nextSection()">Practice →</button>
-                </div>
-            </div>
-            <div class="section" id="section-3">
-                <h2 class="section-title">✍️ Your Systems Practice</h2>
-                <p class="section-subtitle">Apply systems thinking to a real problem.</p>
-                <div class="reflection-box">
-                    <h3>📝 A Recurring Problem</h3>
-                    <p>What's a problem in your organization that keeps happening despite efforts to fix it?</p>
-                    <textarea class="reflection-textarea" id="problem" placeholder="The recurring problem is..."></textarea>
-                </div>
-                <div class="reflection-box">
-                    <h3>📝 The System Behind It</h3>
-                    <p>Apply the 5 Whys. What system, incentive, or structure is creating this problem? Don't blame people—find the system.</p>
-                    <textarea class="reflection-textarea" id="system" placeholder="The system causing this is..."></textarea>
-                </div>
-                <div class="reflection-box">
-                    <h3>📝 The Leverage Point</h3>
-                    <p>Where's the smallest change that could have the biggest impact on this system?</p>
-                    <textarea class="reflection-textarea" id="leverage" placeholder="The leverage point is..."></textarea>
-                </div>
-                <div class="nav-buttons">
-                    <button class="btn btn-secondary" onclick="prevSection()">← Back</button>
-                    <button class="btn btn-primary" onclick="showResults()">Complete Stripe 1 →</button>
-                </div>
-            </div>
-            <div class="section" id="section-4">
-                <div class="stripe-earned">
-                    <h2>🎉 Stripe 1 Earned!</h2>
-                    <div class="stripe-visual">🟤 ▬</div>
-                    <p>You've completed Systems Thinking and earned your first Brown Belt stripe.</p>
-                </div>
+                
                 <div class="intro-box">
-                    <h3>📋 What You Learned</h3>
-                    <ul style="margin: 1rem 0 0 1.5rem; color: var(--text-dark);">
-                        <li style="margin-bottom: 0.5rem;"><strong>94% Rule</strong> — Most problems are system problems, not people problems</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>Feedback Loops</strong> — Actions create reactions that compound</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>Leverage Points</strong> — Small changes in the right place = massive impact</li>
-                        <li><strong>5 Whys</strong> — Find root causes, not symptoms</li>
-                    </ul>
+                    <h3>⏱️ Assessment Details</h3>
+                    <p><strong>Questions:</strong> 37 questions</p>
+                    <p><strong>Time:</strong> 8-10 minutes</p>
+                    <p><strong>Format:</strong> Honest self-assessment</p>
                 </div>
-                <div class="quote-block">
-                    <p class="quote">"Today's problems come from yesterday's solutions."</p>
-                    <p class="author">— Peter Senge</p>
+                
+                <button class="btn btn-primary" onclick="startAssessment()">Begin Assessment →</button>
+            </div>
+            
+            <div id="questionSection" style="display: none;">
+                <div id="questionCard" class="question-card">
+                    <!-- Questions will be inserted here -->
                 </div>
+                
                 <div class="nav-buttons">
+                    <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()">← Previous</button>
+                    <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next →</button>
+                </div>
+            </div>
+            
+            <div id="resultsSection" class="results-container">
+                <div class="score-display">
+                    <div class="score-number" id="finalScore">--</div>
+                    <div class="score-label" id="scoreLabel">--</div>
+                </div>
+                
+                <div class="recommendation" id="recommendation">
+                    <!-- Recommendation will be inserted here -->
+                </div>
+                
+                <div class="nav-buttons" style="margin-top: 2rem;">
                     <a href="brown-belt.html" class="btn btn-secondary">← Back to Brown Belt</a>
-                    <a href="brown-belt-stripe2-gamified.html" class="btn btn-success">Start Stripe 2: Culture Design →</a>
+                    <a href="brown-belt-stripe2-gamified.html" class="btn btn-primary">Continue to Stripe 2 →</a>
                 </div>
             </div>
         </div>
     </div>
+
+<!-- ============================================================================ -->
+<!-- END OF PART 1 -->
+<!-- NEXT: Insert PART 2 (JavaScript with 37 questions array) -->
+<!-- ============================================================================ -->
+<!-- ============================================================================ -->
+<!-- PART 2: QUESTIONS ARRAY (37 Standard Questions) -->
+<!-- Copy this AFTER Part 1, BEFORE Part 3 -->
+<!-- ============================================================================ -->
+
     <script>
-        let currentSection = 1; const totalSections = 4;
-        function nextSection() { if (currentSection < totalSections) { document.getElementById(`section-${currentSection}`).classList.remove('active'); currentSection++; document.getElementById(`section-${currentSection}`).classList.add('active'); updateProgress(); window.scrollTo({ top: 0, behavior: 'smooth' }); } }
-        function prevSection() { if (currentSection > 1) { document.getElementById(`section-${currentSection}`).classList.remove('active'); currentSection--; document.getElementById(`section-${currentSection}`).classList.add('active'); updateProgress(); window.scrollTo({ top: 0, behavior: 'smooth' }); } }
-        function updateProgress() { const progress = ((currentSection - 1) / (totalSections - 1)) * 100; document.getElementById('progress-fill').style.width = `${progress}%`; document.getElementById('progress-text').textContent = `${Math.round(progress)}%`; }
-        function showResults() { localStorage.setItem('brownBeltStripe1Complete', 'true'); ['problem', 'system', 'leverage'].forEach(f => { const el = document.getElementById(f); if (el && el.value) localStorage.setItem(`systems_${f}`, el.value); }); nextSection(); }
-        updateProgress();
+        const questions = [
+            // SECTION 1: DIRECT FEEDBACK (Questions 1-8)
+            {
+                question: "When someone asks 'How am I doing?' and you have concerns, you typically...",
+                options: [
+                    { text: "Give vague positive feedback to avoid discomfort", value: 1 },
+                    { text: "Hint at issues indirectly but don't say it clearly", value: 2 },
+                    { text: "Mix positive with vague concerns", value: 3 },
+                    { text: "Give clear feedback but soften it significantly", value: 4 },
+                    { text: "Give direct, kind, specific feedback immediately", value: 5 }
+                ]
+            },
+            {
+                question: "Your comfort level with giving critical feedback to a peer is...",
+                options: [
+                    { text: "Extremely uncomfortable - I avoid it entirely", value: 1 },
+                    { text: "Quite uncomfortable - I delay as long as possible", value: 2 },
+                    { text: "Somewhat comfortable - I do it but reluctantly", value: 3 },
+                    { text: "Mostly comfortable - I do it when needed", value: 4 },
+                    { text: "Very comfortable - It's a gift, not a burden", value: 5 }
+                ]
+            },
+            {
+                question: "When you need to address someone's behavior, your approach is...",
+                options: [
+                    { text: "Avoid the conversation completely", value: 1 },
+                    { text: "Talk around the issue without being direct", value: 2 },
+                    { text: "Address it but very gently and indirectly", value: 3 },
+                    { text: "Address it clearly but with lots of softening", value: 4 },
+                    { text: "Address it directly, kindly, and immediately", value: 5 }
+                ]
+            },
+            {
+                question: "How often do you give feedback in the moment vs. waiting for a formal setting?",
+                options: [
+                    { text: "Never in the moment - always wait for formal settings", value: 1 },
+                    { text: "Rarely in the moment - usually wait", value: 2 },
+                    { text: "Sometimes in the moment - depends on situation", value: 3 },
+                    { text: "Usually in the moment - prefer timely feedback", value: 4 },
+                    { text: "Always in the moment - immediacy is key", value: 5 }
+                ]
+            },
+            {
+                question: "When giving tough feedback, your default style is...",
+                options: [
+                    { text: "Extremely indirect - lots of padding and softening", value: 1 },
+                    { text: "Mostly indirect - hints and suggestions", value: 2 },
+                    { text: "Balanced - mix of direct and gentle", value: 3 },
+                    { text: "Mostly direct - clear but kind", value: 4 },
+                    { text: "Very direct - no ambiguity, just clarity and care", value: 5 }
+                ]
+            },
+            {
+                question: "If you've been avoiding giving someone feedback, it's usually because...",
+                options: [
+                    { text: "I'm afraid of conflict or damaging the relationship", value: 1 },
+                    { text: "I'm not sure how they'll react", value: 2 },
+                    { text: "I'm waiting for the perfect moment", value: 3 },
+                    { text: "I want to be extra thoughtful about delivery", value: 4 },
+                    { text: "I don't avoid feedback - I give it when needed", value: 5 }
+                ]
+            },
+            {
+                question: "Your belief about feedback is...",
+                options: [
+                    { text: "It usually makes things worse", value: 1 },
+                    { text: "It's necessary but painful", value: 2 },
+                    { text: "It can help but must be done carefully", value: 3 },
+                    { text: "It's essential for growth", value: 4 },
+                    { text: "It's a gift that builds trust and performance", value: 5 }
+                ]
+            },
+            {
+                question: "When receiving feedback yourself, you typically...",
+                options: [
+                    { text: "Get defensive and push back", value: 1 },
+                    { text: "Feel hurt and withdraw", value: 2 },
+                    { text: "Listen but discount it internally", value: 3 },
+                    { text: "Listen and consider it seriously", value: 4 },
+                    { text: "Welcome it and ask for more specifics", value: 5 }
+                ]
+            },
+
+            // SECTION 2: PEER ACCOUNTABILITY (Questions 9-16)
+            {
+                question: "When a peer misses a deadline that affects you, you...",
+                options: [
+                    { text: "Say nothing and work around it", value: 1 },
+                    { text: "Complain to others but not to them", value: 2 },
+                    { text: "Mention it casually without addressing impact", value: 3 },
+                    { text: "Address it directly but gently", value: 4 },
+                    { text: "Address it immediately and clearly with impact", value: 5 }
+                ]
+            },
+            {
+                question: "Calling out a colleague without managerial authority feels...",
+                options: [
+                    { text: "Impossible - not my place", value: 1 },
+                    { text: "Very uncomfortable - I avoid it", value: 2 },
+                    { text: "Uncomfortable but sometimes necessary", value: 3 },
+                    { text: "Natural if done respectfully", value: 4 },
+                    { text: "Essential - we're all responsible for standards", value: 5 }
+                ]
+            },
+            {
+                question: "When you see a team member slacking but management hasn't noticed...",
+                options: [
+                    { text: "Do nothing - not my job", value: 1 },
+                    { text: "Hope management notices eventually", value: 2 },
+                    { text: "Mention it vaguely to the person", value: 3 },
+                    { text: "Talk to management about it", value: 4 },
+                    { text: "Address it directly with the person first", value: 5 }
+                ]
+            },
+            {
+                question: "Your approach to peer accountability is...",
+                options: [
+                    { text: "Not my responsibility - managers should do it", value: 1 },
+                    { text: "Only if it directly affects me", value: 2 },
+                    { text: "Sometimes, depending on relationship", value: 3 },
+                    { text: "Regularly, when standards slip", value: 4 },
+                    { text: "Always - we all own team performance", value: 5 }
+                ]
+            },
+            {
+                question: "When you need to hold a peer accountable, you worry most about...",
+                options: [
+                    { text: "Ruining the relationship completely", value: 1 },
+                    { text: "Being seen as difficult or confrontational", value: 2 },
+                    { text: "How they'll react emotionally", value: 3 },
+                    { text: "Finding the right words", value: 4 },
+                    { text: "Nothing - it's part of being a teammate", value: 5 }
+                ]
+            },
+            {
+                question: "If a colleague consistently misses commitments...",
+                options: [
+                    { text: "I work around them and say nothing", value: 1 },
+                    { text: "I complain privately but don't address it", value: 2 },
+                    { text: "I hint at the pattern indirectly", value: 3 },
+                    { text: "I address it after multiple occurrences", value: 4 },
+                    { text: "I address it after the second occurrence", value: 5 }
+                ]
+            },
+            {
+                question: "Your belief about peer accountability is...",
+                options: [
+                    { text: "It's the manager's job, not mine", value: 1 },
+                    { text: "It's risky and often backfires", value: 2 },
+                    { text: "It's necessary but uncomfortable", value: 3 },
+                    { text: "It's important for team health", value: 4 },
+                    { text: "It's how high-performing teams operate", value: 5 }
+                ]
+            },
+            {
+                question: "When others hold you accountable, you feel...",
+                options: [
+                    { text: "Attacked or criticized unfairly", value: 1 },
+                    { text: "Defensive and resistant", value: 2 },
+                    { text: "Uncomfortable but willing to listen", value: 3 },
+                    { text: "Appreciative of their courage", value: 4 },
+                    { text: "Grateful they cared enough to speak up", value: 5 }
+                ]
+            },
+
+            // SECTION 3: STANDARDS MAINTENANCE (Questions 17-24)
+            {
+                question: "When someone asks you to lower standards 'just this once,' you...",
+                options: [
+                    { text: "Usually agree to avoid conflict", value: 1 },
+                    { text: "Reluctantly agree while feeling uncomfortable", value: 2 },
+                    { text: "Negotiate a middle ground", value: 3 },
+                    { text: "Hold firm most of the time", value: 4 },
+                    { text: "Never compromise - standards exist for a reason", value: 5 }
+                ]
+            },
+            {
+                question: "Your comfort with being the 'bad guy' who holds the line is...",
+                options: [
+                    { text: "Extremely uncomfortable - I avoid this role", value: 1 },
+                    { text: "Quite uncomfortable - I prefer flexibility", value: 2 },
+                    { text: "Neutral - I do it when absolutely necessary", value: 3 },
+                    { text: "Comfortable - someone has to do it", value: 4 },
+                    { text: "Very comfortable - clarity serves everyone", value: 5 }
+                ]
+            },
+            {
+                question: "When quality standards conflict with speed, you prioritize...",
+                options: [
+                    { text: "Speed almost always - ship fast", value: 1 },
+                    { text: "Speed usually - quality can wait", value: 2 },
+                    { text: "Depends on the situation", value: 3 },
+                    { text: "Quality usually - rarely compromise", value: 4 },
+                    { text: "Quality always - never ship garbage", value: 5 }
+                ]
+            },
+            {
+                question: "Your non-negotiable standards are...",
+                options: [
+                    { text: "Unclear - I'm flexible on most things", value: 1 },
+                    { text: "Loosely defined - situation dependent", value: 2 },
+                    { text: "Somewhat defined - a few hard lines", value: 3 },
+                    { text: "Clearly defined - several hard lines", value: 4 },
+                    { text: "Crystal clear - everyone knows my lines", value: 5 }
+                ]
+            },
+            {
+                question: "When you see quality slipping, you...",
+                options: [
+                    { text: "Hope someone else addresses it", value: 1 },
+                    { text: "Mention it vaguely if asked", value: 2 },
+                    { text: "Bring it up eventually", value: 3 },
+                    { text: "Address it quickly", value: 4 },
+                    { text: "Address it immediately before it spreads", value: 5 }
+                ]
+            },
+            {
+                question: "Your reputation regarding standards is...",
+                options: [
+                    { text: "Flexible and easy-going", value: 1 },
+                    { text: "Generally accommodating", value: 2 },
+                    { text: "Moderate - firm on some things", value: 3 },
+                    { text: "Known for being clear about standards", value: 4 },
+                    { text: "Known as uncompromising on quality", value: 5 }
+                ]
+            },
+            {
+                question: "When pressure mounts, your standards...",
+                options: [
+                    { text: "Drop significantly", value: 1 },
+                    { text: "Lower noticeably", value: 2 },
+                    { text: "Flex somewhat", value: 3 },
+                    { text: "Remain mostly stable", value: 4 },
+                    { text: "Never change - that's when they matter most", value: 5 }
+                ]
+            },
+            {
+                question: "Your belief about standards is...",
+                options: [
+                    { text: "They're guidelines, not rules", value: 1 },
+                    { text: "They should be flexible based on context", value: 2 },
+                    { text: "They're important but negotiable", value: 3 },
+                    { text: "They define team excellence", value: 4 },
+                    { text: "They're non-negotiable - our reputation depends on them", value: 5 }
+                ]
+            },
+
+            // SECTION 4: EARLY INTERVENTION (Questions 25-32)
+            {
+                question: "When you notice a small issue, you address it...",
+                options: [
+                    { text: "Rarely - wait to see if it becomes a pattern", value: 1 },
+                    { text: "Occasionally - only if it persists", value: 2 },
+                    { text: "Sometimes - depends on the issue", value: 3 },
+                    { text: "Usually - prefer early intervention", value: 4 },
+                    { text: "Always - small issues become big problems", value: 5 }
+                ]
+            },
+            {
+                question: "Your philosophy on timing for addressing issues is...",
+                options: [
+                    { text: "Wait and see - most things resolve themselves", value: 1 },
+                    { text: "Give it time - don't overreact", value: 2 },
+                    { text: "Address after a few occurrences", value: 3 },
+                    { text: "Address quickly - within days", value: 4 },
+                    { text: "Address immediately - same day when possible", value: 5 }
+                ]
+            },
+            {
+                question: "When someone is consistently 5 minutes late to meetings...",
+                options: [
+                    { text: "Never mention it - no big deal", value: 1 },
+                    { text: "Joke about it but don't address seriously", value: 2 },
+                    { text: "Mention it if it becomes excessive", value: 3 },
+                    { text: "Address it after 2-3 occurrences", value: 4 },
+                    { text: "Address it after the first or second time", value: 5 }
+                ]
+            },
+            {
+                question: "Your comfort with addressing small issues is...",
+                options: [
+                    { text: "Very uncomfortable - feels petty", value: 1 },
+                    { text: "Uncomfortable - worried about overreacting", value: 2 },
+                    { text: "Neutral - I do it when necessary", value: 3 },
+                    { text: "Comfortable - prevention beats cure", value: 4 },
+                    { text: "Very comfortable - early intervention is easier", value: 5 }
+                ]
+            },
+            {
+                question: "When you see a pattern emerging, you...",
+                options: [
+                    { text: "Hope it goes away on its own", value: 1 },
+                    { text: "Monitor it but don't act yet", value: 2 },
+                    { text: "Mention it casually", value: 3 },
+                    { text: "Name the pattern clearly", value: 4 },
+                    { text: "Name the pattern and address it immediately", value: 5 }
+                ]
+            },
+            {
+                question: "Your belief about early intervention is...",
+                options: [
+                    { text: "Often makes things worse", value: 1 },
+                    { text: "Risks overreacting to small things", value: 2 },
+                    { text: "Sometimes necessary", value: 3 },
+                    { text: "Usually the right approach", value: 4 },
+                    { text: "Always better - prevents escalation", value: 5 }
+                ]
+            },
+            {
+                question: "When colleagues don't address issues early, you think...",
+                options: [
+                    { text: "They're being respectful and patient", value: 1 },
+                    { text: "They're wisely avoiding conflict", value: 2 },
+                    { text: "It depends on the situation", value: 3 },
+                    { text: "They're probably letting it fester", value: 4 },
+                    { text: "They're failing their responsibility", value: 5 }
+                ]
+            },
+            {
+                question: "The speed at which you address behavioral issues is...",
+                options: [
+                    { text: "Very slow - weeks or months", value: 1 },
+                    { text: "Slow - usually a week or more", value: 2 },
+                    { text: "Moderate - a few days", value: 3 },
+                    { text: "Fast - within 24-48 hours", value: 4 },
+                    { text: "Immediate - same day whenever possible", value: 5 }
+                ]
+            },
+
+            // SECTION 5: UNCOMFORTABLE TRUTH (Questions 33-37)
+            {
+                question: "When you know something important that needs to be said but feels risky...",
+                options: [
+                    { text: "I keep it to myself", value: 1 },
+                    { text: "I tell someone else privately", value: 2 },
+                    { text: "I hint at it indirectly", value: 3 },
+                    { text: "I say it but softly", value: 4 },
+                    { text: "I say it clearly despite the risk", value: 5 }
+                ]
+            },
+            {
+                question: "Speaking uncomfortable truths to authority feels...",
+                options: [
+                    { text: "Impossible - too career-risky", value: 1 },
+                    { text: "Extremely uncomfortable - I avoid it", value: 2 },
+                    { text: "Uncomfortable but sometimes necessary", value: 3 },
+                    { text: "Necessary if done respectfully", value: 4 },
+                    { text: "Essential - silence serves no one", value: 5 }
+                ]
+            },
+            {
+                question: "Your track record of speaking difficult truths is...",
+                options: [
+                    { text: "Almost never - too risky", value: 1 },
+                    { text: "Rarely - only when forced", value: 2 },
+                    { text: "Occasionally - when critical", value: 3 },
+                    { text: "Regularly - when it matters", value: 4 },
+                    { text: "Consistently - it's my responsibility", value: 5 }
+                ]
+            },
+            {
+                question: "When weighing the cost of speaking truth vs. staying silent...",
+                options: [
+                    { text: "Silence almost always wins", value: 1 },
+                    { text: "Silence usually wins - safer", value: 2 },
+                    { text: "It depends on stakes and timing", value: 3 },
+                    { text: "Truth usually wins - risks are worth it", value: 4 },
+                    { text: "Truth always wins - silence is costly", value: 5 }
+                ]
+            },
+            {
+                question: "Your belief about uncomfortable truths is...",
+                options: [
+                    { text: "Better left unsaid - they cause damage", value: 1 },
+                    { text: "Should be said very carefully, if at all", value: 2 },
+                    { text: "Sometimes necessary but risky", value: 3 },
+                    { text: "Necessary for team health", value: 4 },
+                    { text: "Essential - withholding truth is dishonest and damaging", value: 5 }
+                ]
+            }
+        ];
+
+        // State management
+        let currentQuestion = 0;
+        let answers = [];
+
+<!-- ============================================================================ -->
+<!-- END OF PART 2 -->
+<!-- NEXT: Insert PART 3 (Main functions and results) -->
+<!-- ============================================================================ -->
+<!-- ============================================================================ -->
+<!-- PART 3: MAIN FUNCTIONS & RESULTS (Final Part) -->
+<!-- Copy this AFTER Part 2 to complete the file -->
+<!-- ============================================================================ -->
+
+        function startAssessment() {
+            document.getElementById('introSection').style.display = 'none';
+            document.getElementById('questionSection').style.display = 'block';
+            showQuestion(0);
+        }
+
+        function showQuestion(index) {
+            currentQuestion = index;
+            const q = questions[index];
+            const card = document.getElementById('questionCard');
+            
+            const selectedValue = answers[index] || null;
+            
+            card.innerHTML = `
+                <div class="question-number">QUESTION ${index + 1} OF ${questions.length}</div>
+                <div class="question-text">${q.question}</div>
+                <div class="options">
+                    ${q.options.map((opt, i) => `
+                        <label class="option ${selectedValue === opt.value ? 'selected' : ''}" onclick="selectOption(${opt.value}, this)">
+                            <input type="radio" name="q${index}" value="${opt.value}" ${selectedValue === opt.value ? 'checked' : ''}>
+                            ${opt.text}
+                        </label>
+                    `).join('')}
+                </div>
+            `;
+            
+            updateProgress();
+            updateButtons();
+        }
+
+        function selectOption(value, element) {
+            answers[currentQuestion] = value;
+            
+            // Update UI
+            const options = element.parentElement.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            
+            updateButtons();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                showQuestion(currentQuestion + 1);
+            } else {
+                showResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                showQuestion(currentQuestion - 1);
+            }
+        }
+
+        function updateProgress() {
+            const percent = Math.round(((currentQuestion + 1) / questions.length) * 100);
+            document.getElementById('currentQ').textContent = currentQuestion + 1;
+            document.getElementById('progress-percent').textContent = percent;
+            document.getElementById('progressFill').style.width = percent + '%';
+        }
+
+        function updateButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = currentQuestion === 0;
+            prevBtn.style.opacity = currentQuestion === 0 ? '0.5' : '1';
+            
+            const hasAnswer = answers[currentQuestion] !== undefined;
+            nextBtn.disabled = !hasAnswer;
+            nextBtn.style.opacity = hasAnswer ? '1' : '0.5';
+            
+            if (currentQuestion === questions.length - 1) {
+                nextBtn.textContent = 'View Results →';
+            } else {
+                nextBtn.textContent = 'Next →';
+            }
+        }
+
+        function showResults() {
+            document.getElementById('questionSection').style.display = 'none';
+            document.getElementById('resultsSection').classList.add('active');
+            
+            calculateResults();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function calculateResults() {
+            const total = answers.reduce((sum, val) => sum + val, 0);
+            const maxScore = questions.length * 5;
+            const percentage = Math.round((total / maxScore) * 100);
+            
+            document.getElementById('finalScore').textContent = percentage + '%';
+            
+            let label = '';
+            let recommendation = '';
+            
+            if (percentage >= 80) {
+                label = '🏆 Accountability Champion';
+                recommendation = `
+                    <h3>Exceptional Accountability Foundation</h3>
+                    <p>You have mastered the fundamentals of accountability. You give direct feedback, hold peers accountable, maintain standards under pressure, intervene early, and speak uncomfortable truths.</p>
+                    <p><strong>Next Step:</strong> Continue to Stripe 2 where you'll deepen your accountability skills and learn more advanced techniques for holding the line.</p>
+                    <p><strong>Your Strength:</strong> You understand that accountability is a gift, not a burden. Keep modeling this for your team.</p>
+                `;
+            } else if (percentage >= 65) {
+                label = '✨ Strong Foundation';
+                recommendation = `
+                    <h3>Solid Accountability Skills</h3>
+                    <p>You have good accountability fundamentals but there's room to strengthen. You're comfortable in some areas but may hold back in others.</p>
+                    <p><strong>Focus Areas:</strong> Review your lowest-scoring questions. Where do you still avoid difficult conversations? What prevents you from speaking up sooner?</p>
+                    <p><strong>Next Step:</strong> Commit to one accountability action this week - give that feedback you've been avoiding, or address that small issue before it grows.</p>
+                `;
+            } else if (percentage >= 50) {
+                label = '⚠️ Developing';
+                recommendation = `
+                    <h3>Accountability Skills Need Strengthening</h3>
+                    <p>You have gaps in your accountability foundation. You likely avoid difficult conversations, wait too long to address issues, or struggle with peer accountability.</p>
+                    <p><strong>Priority Action:</strong> Start small. This week, address ONE small issue within 24 hours. Practice giving direct feedback in a low-stakes situation.</p>
+                    <p><strong>Remember:</strong> Accountability isn't about being harsh - it's about caring enough to speak up. Withholding feedback is unkind.</p>
+                `;
+            } else {
+                label = '🚨 Foundational Work Needed';
+                recommendation = `
+                    <h3>Time to Build Accountability Muscle</h3>
+                    <p>You currently avoid accountability conversations. This limits your leadership impact and allows problems to fester.</p>
+                    <p><strong>Start Here:</strong></p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                        <li>Identify one person who needs feedback</li>
+                        <li>Write down exactly what you need to say</li>
+                        <li>Schedule the conversation within 48 hours</li>
+                        <li>Keep it brief, kind, and specific</li>
+                    </ul>
+                    <p><strong>Truth:</strong> The conversation you're avoiding is probably easier than you think - and the cost of not having it is higher than you realize.</p>
+                `;
+            }
+            
+            document.getElementById('scoreLabel').textContent = label;
+            document.getElementById('recommendation').innerHTML = recommendation;
+            
+            // Save to localStorage
+            localStorage.setItem('brownBeltStripe1Complete', 'true');
+            localStorage.setItem('brownBeltStripe1Score', percentage);
+        }
     </script>
 </body>
 </html>
+
+<!-- ============================================================================ -->
+<!-- END OF BROWN BELT STRIPE 1 -->
+<!-- Total: ~1,050 lines when combined -->
+<!-- Assembly: Part 1 + Part 2 + Part 3 = Complete file -->
+<!-- ============================================================================ -->

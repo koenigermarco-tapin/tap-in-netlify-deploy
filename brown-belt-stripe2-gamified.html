@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Brown Belt Stripe 2: Culture Design | TAP-IN</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Brown Belt Stripe 2: Accountability Depth | TAP-IN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --primary-navy: #1a365d; --secondary-navy: #334155; --accent-red: #b91c1c; --accent-purple: #a78bfa; --success-green: #38a169; --warning-orange: #dd6b20; --card-bg: #ffffff; --border-light: #e2e8f0; --text-dark: #1e293b; --text-muted: #64748b; --light-bg: #f8fafc; }
-        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #78350f 0%, #92400e 100%); min-height: 100vh; padding: 2rem 1rem; line-height: 1.6; }
+        :root { --primary-brown: #3e2723; --brown-dark: #2c1810; --brown-mid: #5d4037; --accent-bronze: #a67c52; --accent-gold: #d4af37; --success-green: #38a169; --warning-orange: #dd6b20; --card-bg: #ffffff; --border-light: #e2e8f0; --text-dark: #1e293b; --text-muted: #64748b; --light-bg: #f8fafc; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #2c1810 0%, #3e2723 50%, #4a2c1f 100%); min-height: 100vh; padding: 2rem 1rem; line-height: 1.6; }
         .container { max-width: 800px; margin: 0 auto; }
         .header { text-align: center; margin-bottom: 2rem; color: white; }
         .stripe-badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; margin-bottom: 1rem; }
@@ -20,208 +17,746 @@
         .progress-container { background: rgba(255,255,255,0.2); border-radius: 10px; padding: 1rem 1.5rem; margin-bottom: 2rem; }
         .progress-header { display: flex; justify-content: space-between; color: white; font-size: 0.9rem; margin-bottom: 0.5rem; }
         .progress-bar { background: rgba(255,255,255,0.3); height: 8px; border-radius: 4px; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-red) 0%, #dc2626 100%); border-radius: 4px; transition: width 0.5s ease; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-bronze) 0%, var(--accent-gold) 100%); border-radius: 4px; transition: width 0.5s ease; }
         .main-card { background: white; border-radius: 20px; padding: 2.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
-        .section { display: none; }
-        .section.active { display: block; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .section-title { font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 1rem; }
-        .section-subtitle { color: var(--text-muted); margin-bottom: 1.5rem; }
+        .intro-section { margin-bottom: 2rem; }
         .intro-box { background: var(--light-bg); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
-        .intro-box h3 { color: var(--primary-navy); font-size: 1.1rem; margin-bottom: 0.75rem; }
+        .intro-box h3 { color: var(--primary-brown); font-size: 1.1rem; margin-bottom: 0.75rem; }
         .intro-box p { color: var(--text-dark); font-size: 0.95rem; margin-bottom: 0.75rem; line-height: 1.7; }
-        .intro-box p:last-child { margin-bottom: 0; }
-        .intro-box strong { color: var(--primary-navy); }
-        .intro-box.philosophy { background: linear-gradient(135deg, var(--light-bg) 0%, #e2e8f0 100%); border-left: 6px solid var(--primary-navy); }
-        .intro-box.philosophy em { color: var(--accent-purple); }
-        .intro-box.research { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%); border: none; }
-        .intro-box.research h3 { color: #fff; }
-        .intro-box.research p { color: #e2e8f0; }
-        .intro-box.research strong { color: var(--accent-purple); }
-        .intro-box.black-belt-wisdom { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-left: 6px solid var(--accent-red); }
-        .intro-box.black-belt-wisdom h3 { color: #ffffff; }
-        .intro-box.black-belt-wisdom p { color: #e2e8f0; }
-        .intro-box.black-belt-wisdom strong { color: #ffffff; }
-        .intro-box.black-belt-wisdom em { color: var(--accent-purple); }
-        .practice-card { background: #f0fdf4; border: 2px solid #86efac; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
-        .practice-card h4 { color: #166534; font-size: 1rem; margin-bottom: 0.5rem; }
-        .practice-card p { color: #14532d; font-size: 0.9rem; }
-        .reflection-box { background: #fffbeb; border: 2px solid #fcd34d; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
-        .reflection-box h3 { color: #92400e; font-size: 1rem; margin-bottom: 0.75rem; }
-        .reflection-box p { color: #78350f; font-size: 0.95rem; margin-bottom: 1rem; }
-        .reflection-textarea { width: 100%; min-height: 100px; padding: 1rem; border: 1px solid #fcd34d; border-radius: 8px; font-family: inherit; font-size: 0.95rem; resize: vertical; }
-        .framework-box { background: #f0fdf4; border: 2px solid #86efac; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
-        .framework-box h3 { color: #166534; font-size: 1.1rem; margin-bottom: 1rem; }
-        .framework-step { display: flex; align-items: flex-start; padding: 0.75rem 0; border-bottom: 1px solid #bbf7d0; }
-        .framework-step:last-child { border-bottom: none; }
-        .framework-number { width: 32px; height: 32px; background: #166534; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 1rem; flex-shrink: 0; font-size: 0.85rem; }
-        .framework-content h4 { color: #166534; font-size: 0.95rem; margin-bottom: 0.25rem; }
-        .framework-content p { color: var(--text-dark); font-size: 0.9rem; }
-        .nav-buttons { display: flex; justify-content: space-between; margin-top: 2rem; gap: 1rem; }
-        .btn { padding: 1rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; border: none; text-decoration: none; }
-        .btn-secondary { background: #edf2f7; color: var(--text-dark); }
-        .btn-primary { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%); color: white; }
-        .btn-success { background: linear-gradient(135deg, var(--success-green) 0%, #2f855a 100%); color: white; }
-        .stripe-earned { background: linear-gradient(135deg, #78350f 0%, #92400e 100%); border-radius: 16px; padding: 2rem; color: white; text-align: center; margin-bottom: 1.5rem; }
-        .stripe-earned h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .stripe-visual { font-size: 3rem; margin: 1rem 0; }
-        .quote-block { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-radius: 12px; padding: 1.5rem; text-align: center; margin: 1.5rem 0; }
-        .quote-block .quote { font-size: 1.1rem; color: white; font-style: italic; margin-bottom: 0.75rem; }
-        .quote-block .author { color: var(--accent-purple); font-weight: 600; font-size: 0.9rem; }
-        @media (max-width: 768px) { body { padding: 1rem; } .main-card { padding: 1.5rem; } .nav-buttons { flex-direction: column; } .btn { width: 100%; text-align: center; } }
+        .intro-box strong { color: var(--primary-brown); }
+        .question-card { background: var(--light-bg); border: 2px solid var(--border-light); border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
+        .question-number { color: var(--accent-bronze); font-size: 0.8rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .question-text { font-size: 1.2rem; font-weight: 700; color: var(--text-dark); margin-bottom: 1.5rem; }
+        .context-box { background: #f5e6d3; border-left: 4px solid var(--brown-mid); padding: 1rem; margin-bottom: 1.5rem; border-radius: 8px; }
+        .context-box p { color: var(--brown-dark); font-size: 0.9rem; margin: 0; }
+        .options { display: flex; flex-direction: column; gap: 0.75rem; }
+        .option { background: white; border: 2px solid var(--border-light); border-radius: 8px; padding: 1rem; cursor: pointer; transition: all 0.2s; }
+        .option:hover { border-color: var(--accent-bronze); }
+        .option.selected { background: #f5e6d3; border-color: var(--primary-brown); }
+        .option input[type="radio"] { margin-right: 0.75rem; }
+        .nav-buttons { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2rem; }
+        .btn { padding: 1rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; border: none; }
+        .btn-secondary { background: #e2e8f0; color: var(--text-dark); }
+        .btn-primary { background: linear-gradient(135deg, var(--primary-brown) 0%, var(--brown-dark) 100%); color: white; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .results-container { display: none; }
+        .results-container.active { display: block; }
+        .score-display { text-align: center; padding: 2rem; background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%); border-radius: 12px; margin-bottom: 2rem; }
+        .score-number { font-size: 4rem; font-weight: 800; color: var(--primary-brown); }
+        .score-label { font-size: 1.2rem; color: var(--brown-dark); font-weight: 600; }
+        .recommendation { background: white; border: 2px solid var(--primary-brown); border-radius: 12px; padding: 1.5rem; margin-top: 2rem; }
+        .recommendation h3 { color: var(--primary-brown); margin-bottom: 1rem; }
+        @media (max-width: 768px) { body { padding: 1rem; } .main-card { padding: 1.5rem; } .nav-buttons { flex-direction: column; } }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="stripe-badge">🟤 Brown Belt • Stripe 2 of 4</div>
-            <h1>Culture Design</h1>
-            <p>Building Intentional Culture</p>
+            <div class="stripe-badge">🟤 Brown Belt • Stripe 2</div>
+            <h1>Accountability Depth</h1>
+            <p>Going deeper: Handling resistance, navigating politics, building accountability culture</p>
         </div>
+        
         <div class="progress-container">
-            <div class="progress-header"><span>Progress</span><span id="progress-text">0%</span></div>
-            <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+            <div class="progress-header">
+                <span>Question <span id="currentQ">1</span> of 41</span>
+                <span><span id="progress-percent">0</span>% Complete</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
         </div>
+        
         <div class="main-card">
-            <div class="section active" id="section-1">
-                <h2 class="section-title">🏗️ Culture Is Not an Accident</h2>
-                <p class="section-subtitle">Every organization has a culture. Few design it intentionally.</p>
+            <div class="intro-section" id="introSection">
                 <div class="intro-box">
-                    <h3>The Culture Equation</h3>
-                    <p><strong>Culture = What you tolerate + What you celebrate + What you repeat.</strong></p>
-                    <p>It's not your mission statement. It's not your values poster. It's what actually happens when nobody's watching.</p>
+                    <h3>🎯 Welcome to Stripe 2</h3>
+                    <p>You've established accountability fundamentals. Now you'll face the harder scenarios: <strong>resistance, politics, power dynamics, and cultural norms that prevent accountability.</strong></p>
+                    <p>This stripe tests your ability to hold the line when it's truly difficult - when people push back, when authority is unclear, when cultural pressure says "be nice."</p>
                 </div>
-                <div class="intro-box black-belt-wisdom">
-                    <h3>⬛ Black Belt Wisdom</h3>
-                    <p><em>"Culture is not what you say. It's what you tolerate."</em></p>
-                    <p><strong>The behavior you ignore is the behavior you endorse.</strong> Every time you let something slide, you're teaching the organization what's acceptable.</p>
-                </div>
-                <div class="intro-box philosophy">
-                    <h3>🥋 The BJJ Principle: Gym Culture</h3>
-                    <p>Walk into any BJJ gym and you'll feel the culture instantly. Is it competitive or collaborative? Ego-driven or ego-free? Do higher belts help lower belts, or crush them?</p>
-                    <p>That culture wasn't an accident. <strong>The head coach designed it</strong>—through who they promoted, what they celebrated, and what they refused to tolerate.</p>
-                </div>
-                <div class="intro-box research">
-                    <h3>📊 The Research</h3>
-                    <p><strong>Edgar Schein</strong>, the father of organizational culture, identified three levels: Artifacts (what you see), Espoused Values (what you say), and Basic Assumptions (what you actually believe).</p>
-                    <p>Most culture change fails because it targets artifacts and values but ignores the <strong>underlying assumptions</strong> that drive real behavior.</p>
-                </div>
-                <div class="nav-buttons">
-                    <a href="brown-belt.html" class="btn btn-secondary">← Back to Hub</a>
-                    <button class="btn btn-primary" onclick="nextSection()">Culture Levers →</button>
-                </div>
-            </div>
-            <div class="section" id="section-2">
-                <h2 class="section-title">🎚️ The Culture Levers</h2>
-                <p class="section-subtitle">The tools leaders use to shape culture.</p>
-                <div class="framework-box">
-                    <h3>5 Levers of Culture Design</h3>
-                    <div class="framework-step">
-                        <div class="framework-number">1</div>
-                        <div class="framework-content">
-                            <h4>Rituals</h4>
-                            <p>What you do repeatedly becomes who you are. Daily standups, weekly wins, monthly retrospectives—rituals encode culture.</p>
-                        </div>
-                    </div>
-                    <div class="framework-step">
-                        <div class="framework-number">2</div>
-                        <div class="framework-content">
-                            <h4>Rewards</h4>
-                            <p>What gets rewarded gets repeated. Promotions, bonuses, recognition—these signal what really matters.</p>
-                        </div>
-                    </div>
-                    <div class="framework-step">
-                        <div class="framework-number">3</div>
-                        <div class="framework-content">
-                            <h4>Stories</h4>
-                            <p>The stories told about founders, heroes, and villains teach what's valued. What stories does your org tell?</p>
-                        </div>
-                    </div>
-                    <div class="framework-step">
-                        <div class="framework-number">4</div>
-                        <div class="framework-content">
-                            <h4>Symbols</h4>
-                            <p>Office layout, dress code, titles—symbols communicate hierarchy and values without words.</p>
-                        </div>
-                    </div>
-                    <div class="framework-step">
-                        <div class="framework-number">5</div>
-                        <div class="framework-content">
-                            <h4>Selection</h4>
-                            <p>Who you hire and fire is the ultimate culture statement. "Culture fit" is real—if you define it intentionally.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="practice-card">
-                    <h4>💡 The "What Would Get Me Fired?" Test</h4>
-                    <p>Ask employees: "What behavior would definitely get someone fired here?" The answers reveal your actual values—not the ones on the wall.</p>
-                </div>
-                <div class="intro-box philosophy">
-                    <h3>🥋 Consistency Is Everything</h3>
-                    <p>Culture erodes through inconsistency. When the star performer violates values and nothing happens, everyone learns that values are optional.</p>
-                    <p><strong>The standard you walk past is the standard you accept.</strong></p>
-                </div>
-                <div class="nav-buttons">
-                    <button class="btn btn-secondary" onclick="prevSection()">← Back</button>
-                    <button class="btn btn-primary" onclick="nextSection()">Practice →</button>
-                </div>
-            </div>
-            <div class="section" id="section-3">
-                <h2 class="section-title">✍️ Your Culture Practice</h2>
-                <p class="section-subtitle">Diagnose and design your culture intentionally.</p>
-                <div class="reflection-box">
-                    <h3>📝 Your Actual Culture</h3>
-                    <p>Forget the values on the wall. What behaviors are actually tolerated, celebrated, and repeated in your organization?</p>
-                    <textarea class="reflection-textarea" id="actual" placeholder="The real culture here is..."></textarea>
-                </div>
-                <div class="reflection-box">
-                    <h3>📝 The Gap</h3>
-                    <p>What's the biggest gap between your stated values and your actual culture? Where does behavior contradict what you say you value?</p>
-                    <textarea class="reflection-textarea" id="gap" placeholder="The biggest gap is..."></textarea>
-                </div>
-                <div class="reflection-box">
-                    <h3>📝 One Lever to Pull</h3>
-                    <p>Pick one of the 5 levers (Rituals, Rewards, Stories, Symbols, Selection). What's one change you could make to close the gap?</p>
-                    <textarea class="reflection-textarea" id="lever" placeholder="The lever I'll pull is..."></textarea>
-                </div>
-                <div class="nav-buttons">
-                    <button class="btn btn-secondary" onclick="prevSection()">← Back</button>
-                    <button class="btn btn-primary" onclick="showResults()">Complete Stripe 2 →</button>
-                </div>
-            </div>
-            <div class="section" id="section-4">
-                <div class="stripe-earned">
-                    <h2>🎉 Stripe 2 Earned!</h2>
-                    <div class="stripe-visual">🟤 ▬▬</div>
-                    <p>You've completed Culture Design and earned your second Brown Belt stripe.</p>
-                </div>
+                
                 <div class="intro-box">
-                    <h3>📋 What You Learned</h3>
-                    <ul style="margin: 1rem 0 0 1.5rem; color: var(--text-dark);">
-                        <li style="margin-bottom: 0.5rem;"><strong>Culture Equation</strong> — Tolerate + Celebrate + Repeat</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>5 Levers</strong> — Rituals, Rewards, Stories, Symbols, Selection</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>Schein's 3 Levels</strong> — Artifacts, Values, Assumptions</li>
-                        <li><strong>Consistency</strong> — The standard you walk past is the standard you accept</li>
-                    </ul>
+                    <h3>⏱️ Assessment Details</h3>
+                    <p><strong>Questions:</strong> 41 questions</p>
+                    <p><strong>Time:</strong> 9-11 minutes</p>
+                    <p><strong>Focus:</strong> Deeper accountability scenarios with context</p>
                 </div>
-                <div class="quote-block">
-                    <p class="quote">"The culture of any organization is shaped by the worst behavior the leader is willing to tolerate."</p>
-                    <p class="author">— Gruenter & Whitaker</p>
+                
+                <button class="btn btn-primary" onclick="startAssessment()">Begin Assessment →</button>
+            </div>
+            
+            <div id="questionSection" style="display: none;">
+                <div id="questionCard" class="question-card">
+                    <!-- Questions will be inserted here -->
                 </div>
+                
                 <div class="nav-buttons">
+                    <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()">← Previous</button>
+                    <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next →</button>
+                </div>
+            </div>
+            
+            <div id="resultsSection" class="results-container">
+                <div class="score-display">
+                    <div class="score-number" id="finalScore">--</div>
+                    <div class="score-label" id="scoreLabel">--</div>
+                </div>
+                
+                <div class="recommendation" id="recommendation">
+                    <!-- Recommendation will be inserted here -->
+                </div>
+                
+                <div class="nav-buttons" style="margin-top: 2rem;">
                     <a href="brown-belt.html" class="btn btn-secondary">← Back to Brown Belt</a>
-                    <a href="brown-belt-stripe3-gamified.html" class="btn btn-success">Start Stripe 3: Strategic Leadership →</a>
+                    <a href="brown-belt-stripe3-gamified.html" class="btn btn-primary">Continue to Stripe 3 →</a>
                 </div>
             </div>
         </div>
     </div>
+
+<!-- ============================================================================ -->
+<!-- END OF PART 1 -->
+<!-- NEXT: Insert PART 2 (JavaScript with 41 questions array) -->
+<!-- ============================================================================ -->
+<!-- ============================================================================ -->
+<!-- PART 2: QUESTIONS ARRAY (41 Questions with Context) -->
+<!-- Copy this AFTER Part 1, BEFORE Part 3 -->
+<!-- ============================================================================ -->
+
     <script>
-        let currentSection = 1; const totalSections = 4;
-        function nextSection() { if (currentSection < totalSections) { document.getElementById(`section-${currentSection}`).classList.remove('active'); currentSection++; document.getElementById(`section-${currentSection}`).classList.add('active'); updateProgress(); window.scrollTo({ top: 0, behavior: 'smooth' }); } }
-        function prevSection() { if (currentSection > 1) { document.getElementById(`section-${currentSection}`).classList.remove('active'); currentSection--; document.getElementById(`section-${currentSection}`).classList.add('active'); updateProgress(); window.scrollTo({ top: 0, behavior: 'smooth' }); } }
-        function updateProgress() { const progress = ((currentSection - 1) / (totalSections - 1)) * 100; document.getElementById('progress-fill').style.width = `${progress}%`; document.getElementById('progress-text').textContent = `${Math.round(progress)}%`; }
-        function showResults() { localStorage.setItem('brownBeltStripe2Complete', 'true'); ['actual', 'gap', 'lever'].forEach(f => { const el = document.getElementById(f); if (el && el.value) localStorage.setItem(`culture_${f}`, el.value); }); nextSection(); }
-        updateProgress();
+        const questions = [
+            // SECTION 1: FEEDBACK UNDER RESISTANCE (Questions 1-9)
+            {
+                question: "Someone dismisses your feedback with 'That's just your opinion.' You...",
+                context: "They're deflecting rather than engaging with the substance.",
+                options: [
+                    { text: "Back down - maybe it is just my opinion", value: 1 },
+                    { text: "Drop it to avoid escalation", value: 2 },
+                    { text: "Restate it more gently", value: 3 },
+                    { text: "Clarify with specific examples and impact", value: 4 },
+                    { text: "Hold firm: 'Here's the pattern I'm seeing and its impact'", value: 5 }
+                ]
+            },
+            {
+                question: "You give feedback and they respond with 'Everyone else is fine with it.' Your move...",
+                context: "They're using group validation to dismiss your concern.",
+                options: [
+                    { text: "Accept that maybe I'm wrong", value: 1 },
+                    { text: "Drop it - don't want to be the only one complaining", value: 2 },
+                    { text: "Say 'Maybe, but here's my concern' weakly", value: 3 },
+                    { text: "Clarify: 'I can only speak to my experience'", value: 4 },
+                    { text: "Address it directly: 'Others' comfort doesn't change the impact'", value: 5 }
+                ]
+            },
+            {
+                question: "After you give feedback, they cry or become emotional. You typically...",
+                context: "Emotion can be genuine or a deflection tactic.",
+                options: [
+                    { text: "Immediately apologize and backtrack", value: 1 },
+                    { text: "End the conversation to avoid more upset", value: 2 },
+                    { text: "Soften everything significantly", value: 3 },
+                    { text: "Acknowledge feelings but restate core message", value: 4 },
+                    { text: "Give space, then follow up with same message", value: 5 }
+                ]
+            },
+            {
+                question: "Someone responds to feedback with 'You're not my manager.' You...",
+                context: "They're using hierarchy to dismiss peer accountability.",
+                options: [
+                    { text: "Retreat completely - they're right", value: 1 },
+                    { text: "Apologize for overstepping", value: 2 },
+                    { text: "Back down but feel resentful", value: 3 },
+                    { text: "Clarify: 'True, but this affects our work together'", value: 4 },
+                    { text: "Stand firm: 'We're teammates. This impacts team performance'", value: 5 }
+                ]
+            },
+            {
+                question: "You give feedback and they immediately turn it around on you. Your response...",
+                context: "Classic deflection: 'Well YOU do X...'",
+                options: [
+                    { text: "Get defensive about their accusation", value: 1 },
+                    { text: "Drop your feedback to address theirs", value: 2 },
+                    { text: "Try to address both at once", value: 3 },
+                    { text: "Acknowledge theirs, schedule separate time, return to yours", value: 4 },
+                    { text: "'We can discuss that separately. Right now we're talking about [original issue]'", value: 5 }
+                ]
+            },
+            {
+                question: "Someone says 'I'll think about it' but you sense they're blowing you off. You...",
+                context: "Passive dismissal is common accountability avoidance.",
+                options: [
+                    { text: "Accept it and hope they actually do", value: 1 },
+                    { text: "Let it go - at least they didn't argue", value: 2 },
+                    { text: "Say 'okay' but feel dismissed", value: 3 },
+                    { text: "Request specific follow-up time", value: 4 },
+                    { text: "Clarify next steps: 'Great. Let's check in Friday on this'", value: 5 }
+                ]
+            },
+            {
+                question: "Your feedback triggers a long explanation of why they did what they did. You...",
+                context: "Justification can prevent them from hearing the feedback.",
+                options: [
+                    { text: "Let them talk until they run out of explanations", value: 1 },
+                    { text: "Accept their reasoning and drop it", value: 2 },
+                    { text: "Try to interject but give up", value: 3 },
+                    { text: "Listen, then refocus on impact", value: 4 },
+                    { text: "'I understand the context. The impact remains the same'", value: 5 }
+                ]
+            },
+            {
+                question: "Someone responds to feedback with 'That's not what happened.' You...",
+                context: "Disputing the facts is a common defensive response.",
+                options: [
+                    { text: "Doubt my own perception", value: 1 },
+                    { text: "Back down to avoid arguing", value: 2 },
+                    { text: "Try to convince them of my version", value: 3 },
+                    { text: "Focus on impact rather than exact details", value: 4 },
+                    { text: "'Our perceptions differ. Here's the impact I observed'", value: 5 }
+                ]
+            },
+            {
+                question: "After tough feedback, they ask 'Are you mad at me?' You respond...",
+                context: "This can shift focus from behavior to relationship.",
+                options: [
+                    { text: "Reassure them extensively to repair feelings", value: 1 },
+                    { text: "Soften the feedback significantly", value: 2 },
+                    { text: "Spend time addressing their concern about relationship", value: 3 },
+                    { text: "'No. I care enough to be direct about this'", value: 4 },
+                    { text: "'This is because I value our work together'", value: 5 }
+                ]
+            },
+
+            // SECTION 2: POLITICAL ACCOUNTABILITY (Questions 10-18)
+            {
+                question: "The person you need to hold accountable is well-liked and popular. You...",
+                context: "Social capital can protect people from accountability.",
+                options: [
+                    { text: "Don't address it - too risky politically", value: 1 },
+                    { text: "Hope someone else will do it", value: 2 },
+                    { text: "Address it very indirectly", value: 3 },
+                    { text: "Address it despite their popularity", value: 4 },
+                    { text: "Address it the same as anyone else - popularity is irrelevant", value: 5 }
+                ]
+            },
+            {
+                question: "The person has more organizational tenure than you. Your approach...",
+                context: "Tenure often creates informal hierarchy.",
+                options: [
+                    { text: "Avoid accountability - they've 'earned' latitude", value: 1 },
+                    { text: "Be extremely deferential", value: 2 },
+                    { text: "Hint at issues without being direct", value: 3 },
+                    { text: "Address it but acknowledge their experience", value: 4 },
+                    { text: "Address it directly - tenure doesn't exempt anyone", value: 5 }
+                ]
+            },
+            {
+                question: "You know addressing this person will make powerful people uncomfortable. You...",
+                context: "Political consequences can silence accountability.",
+                options: [
+                    { text: "Stay silent to protect my position", value: 1 },
+                    { text: "Mention it vaguely to test waters", value: 2 },
+                    { text: "Address it only if someone else goes first", value: 3 },
+                    { text: "Address it despite discomfort", value: 4 },
+                    { text: "Address it - comfort is not the priority", value: 5 }
+                ]
+            },
+            {
+                question: "This person is friends with your manager. You...",
+                context: "Personal relationships can complicate accountability.",
+                options: [
+                    { text: "Definitely stay silent", value: 1 },
+                    { text: "Hope the manager addresses it", value: 2 },
+                    { text: "Mention it very carefully to manager", value: 3 },
+                    { text: "Address the person directly first", value: 4 },
+                    { text: "Address directly, inform manager if needed", value: 5 }
+                ]
+            },
+            {
+                question: "The person is a 'high performer' in visible ways. You...",
+                context: "Performance can create accountability exemptions.",
+                options: [
+                    { text: "Let it slide - their results matter more", value: 1 },
+                    { text: "Tolerate behavior because of their output", value: 2 },
+                    { text: "Mention it very gently", value: 3 },
+                    { text: "Address it - high performance doesn't excuse behavior", value: 4 },
+                    { text: "Address it the same as anyone - results don't exempt standards", value: 5 }
+                ]
+            },
+            {
+                question: "The cultural norm in your org is 'don't make waves.' You...",
+                context: "Culture can silence necessary accountability.",
+                options: [
+                    { text: "Follow the norm - fit in", value: 1 },
+                    { text: "Stay quiet to avoid being labeled difficult", value: 2 },
+                    { text: "Mention issues only in safe spaces", value: 3 },
+                    { text: "Address issues despite cultural pressure", value: 4 },
+                    { text: "Model different norms - culture needs to change", value: 5 }
+                ]
+            },
+            {
+                question: "You're junior to this person in title but not competence. You...",
+                context: "Title hierarchy can suppress valid accountability.",
+                options: [
+                    { text: "Never address them - respect hierarchy", value: 1 },
+                    { text: "Only speak up if it's catastrophic", value: 2 },
+                    { text: "Suggest things very deferentially", value: 3 },
+                    { text: "Engage as peer on substance", value: 4 },
+                    { text: "Address directly - title doesn't determine who's right", value: 5 }
+                ]
+            },
+            {
+                question: "Holding them accountable might hurt your career advancement. You...",
+                context: "Personal cost can silence necessary feedback.",
+                options: [
+                    { text: "Prioritize career - stay silent", value: 1 },
+                    { text: "Address it only anonymously", value: 2 },
+                    { text: "Address it very carefully", value: 3 },
+                    { text: "Address it despite risk", value: 4 },
+                    { text: "Address it - integrity matters more than advancement", value: 5 }
+                ]
+            },
+            {
+                question: "Others have tried to hold this person accountable and faced backlash. You...",
+                context: "Fear of retaliation silences accountability.",
+                options: [
+                    { text: "Definitely don't try - learned from their experience", value: 1 },
+                    { text: "Stay quiet to avoid same fate", value: 2 },
+                    { text: "Mention concerns very indirectly", value: 3 },
+                    { text: "Address it but more strategically", value: 4 },
+                    { text: "Address it anyway - someone has to", value: 5 }
+                ]
+            },
+
+            // SECTION 3: AUTHORITY AMBIGUITY (Questions 19-27)
+            {
+                question: "It's unclear if you have the 'right' to give this feedback. You...",
+                context: "Ambiguous authority often prevents necessary feedback.",
+                options: [
+                    { text: "Don't give it - not my place", value: 1 },
+                    { text: "Wait for someone with clear authority", value: 2 },
+                    { text: "Hint at it without claiming authority", value: 3 },
+                    { text: "Give it as peer observation", value: 4 },
+                    { text: "Give it - impact creates right to speak", value: 5 }
+                ]
+            },
+            {
+                question: "This is technically their manager's job, not yours. You...",
+                context: "Deference to hierarchy can delay necessary feedback.",
+                options: [
+                    { text: "Don't interfere - manager's responsibility", value: 1 },
+                    { text: "Tell the manager privately", value: 2 },
+                    { text: "Hint to the person indirectly", value: 3 },
+                    { text: "Address it peer-to-peer first", value: 4 },
+                    { text: "Address it directly, inform manager after", value: 5 }
+                ]
+            },
+            {
+                question: "You're on equal level but different departments. You...",
+                context: "Cross-functional accountability is often avoided.",
+                options: [
+                    { text: "Stay in my lane - not my department", value: 1 },
+                    { text: "Mention to my manager only", value: 2 },
+                    { text: "Suggest diplomatically", value: 3 },
+                    { text: "Address directly as colleague", value: 4 },
+                    { text: "Address directly - departments don't matter", value: 5 }
+                ]
+            },
+            {
+                question: "You're new to the team/company. You...",
+                context: "Being new can silence valuable observations.",
+                options: [
+                    { text: "Never speak up - too new", value: 1 },
+                    { text: "Wait months before raising concerns", value: 2 },
+                    { text: "Mention things very tentatively", value: 3 },
+                    { text: "Share observations respectfully", value: 4 },
+                    { text: "Fresh eyes see clearly - speak up", value: 5 }
+                ]
+            },
+            {
+                question: "You're an individual contributor giving feedback to another IC. You...",
+                context: "Peer-to-peer accountability without authority.",
+                options: [
+                    { text: "Don't - no authority over peers", value: 1 },
+                    { text: "Only if manager suggests it", value: 2 },
+                    { text: "Mention it casually", value: 3 },
+                    { text: "Give it as peer feedback", value: 4 },
+                    { text: "Give it directly - peers owe each other feedback", value: 5 }
+                ]
+            },
+            {
+                question: "This isn't technically your responsibility. You...",
+                context: "Narrow job definitions prevent ownership.",
+                options: [
+                    { text: "Stay in my defined role", value: 1 },
+                    { text: "Let responsible party handle it", value: 2 },
+                    { text: "Mention it to responsible person", value: 3 },
+                    { text: "Address it if it impacts work", value: 4 },
+                    { text: "Address it - team success is everyone's responsibility", value: 5 }
+                ]
+            },
+            {
+                question: "You're in a matrix organization with unclear reporting. You...",
+                context: "Complexity can excuse inaction.",
+                options: [
+                    { text: "Use confusion as reason not to act", value: 1 },
+                    { text: "Wait for someone to clarify authority", value: 2 },
+                    { text: "Address ambiguity, not the issue", value: 3 },
+                    { text: "Address issue despite ambiguity", value: 4 },
+                    { text: "Address issue - complexity doesn't excuse silence", value: 5 }
+                ]
+            },
+            {
+                question: "Multiple people should address this, but no one has. You...",
+                context: "Diffusion of responsibility prevents action.",
+                options: [
+                    { text: "Don't be the first - risky", value: 1 },
+                    { text: "Wait for someone else to start", value: 2 },
+                    { text: "Try to organize group approach", value: 3 },
+                    { text: "Go first, others may follow", value: 4 },
+                    { text: "Go first - someone has to", value: 5 }
+                ]
+            },
+            {
+                question: "You could escalate to authority or address directly. You choose...",
+                context: "Direct address builds culture; escalation can undermine it.",
+                options: [
+                    { text: "Escalate immediately - safer", value: 1 },
+                    { text: "Escalate to avoid direct confrontation", value: 2 },
+                    { text: "Try direct, escalate if needed", value: 3 },
+                    { text: "Direct first, escalate only if ignored", value: 4 },
+                    { text: "Always direct first - respect and ownership", value: 5 }
+                ]
+            },
+
+            // SECTION 4: CULTURAL ACCOUNTABILITY (Questions 28-36)
+            {
+                question: "Your team culture is 'nice' and indirect. You...",
+                context: "Niceness can prevent necessary directness.",
+                options: [
+                    { text: "Adapt - match the culture", value: 1 },
+                    { text: "Stay indirect to fit in", value: 2 },
+                    { text: "Be slightly more direct", value: 3 },
+                    { text: "Model direct feedback kindly", value: 4 },
+                    { text: "Model new standard - kindness is different from niceness", value: 5 }
+                ]
+            },
+            {
+                question: "People here say 'That's just how [person] is.' Your stance...",
+                context: "Acceptance of behavior prevents accountability.",
+                options: [
+                    { text: "Accept it - pick battles", value: 1 },
+                    { text: "Tolerate it like everyone else", value: 2 },
+                    { text: "Question it privately", value: 3 },
+                    { text: "Challenge the acceptance", value: 4 },
+                    { text: "Reject the premise: 'That's an excuse, not a reason'", value: 5 }
+                ]
+            },
+            {
+                question: "The cultural norm is to escalate everything to managers. You...",
+                context: "Dependency on hierarchy prevents peer accountability.",
+                options: [
+                    { text: "Follow the norm - escalate", value: 1 },
+                    { text: "Escalate most things", value: 2 },
+                    { text: "Try peer resolution occasionally", value: 3 },
+                    { text: "Default to peer resolution first", value: 4 },
+                    { text: "Model peer accountability - it's healthier", value: 5 }
+                ]
+            },
+            {
+                question: "Feedback here is only given in formal reviews. You...",
+                context: "Formal-only feedback delays necessary conversations.",
+                options: [
+                    { text: "Wait for reviews - that's the process", value: 1 },
+                    { text: "Mostly wait for formal times", value: 2 },
+                    { text: "Give informal feedback occasionally", value: 3 },
+                    { text: "Give real-time feedback regularly", value: 4 },
+                    { text: "Model continuous feedback - it's more effective", value: 5 }
+                ]
+            },
+            {
+                question: "The culture celebrates 'not caring what others think.' You...",
+                context: "Individualism can prevent accountability.",
+                options: [
+                    { text: "Don't give feedback - they won't care", value: 1 },
+                    { text: "Rarely give feedback - it won't land", value: 2 },
+                    { text: "Give feedback tentatively", value: 3 },
+                    { text: "Give feedback despite culture", value: 4 },
+                    { text: "Challenge the norm - interdependence matters", value: 5 }
+                ]
+            },
+            {
+                question: "People here protect 'their people' from criticism. You...",
+                context: "Tribalism prevents accountability.",
+                options: [
+                    { text: "Protect my people too", value: 1 },
+                    { text: "Avoid giving feedback to other groups", value: 2 },
+                    { text: "Give feedback very carefully cross-group", value: 3 },
+                    { text: "Give feedback regardless of group", value: 4 },
+                    { text: "Call out the protectionism - it's toxic", value: 5 }
+                ]
+            },
+            {
+                question: "The norm is 'everyone's too busy for this.' You...",
+                context: "Busyness excuses prevent accountability.",
+                options: [
+                    { text: "Accept the excuse - everyone is busy", value: 1 },
+                    { text: "Wait for slower times", value: 2 },
+                    { text: "Address it when time permits", value: 3 },
+                    { text: "Make time - it's important", value: 4 },
+                    { text: "Challenge the norm - busyness isn't an excuse", value: 5 }
+                ]
+            },
+            {
+                question: "The culture here is 'we're all adults.' You interpret this as...",
+                context: "Autonomy can excuse lack of accountability.",
+                options: [
+                    { text: "Don't give feedback - manage themselves", value: 1 },
+                    { text: "Give feedback rarely", value: 2 },
+                    { text: "Give feedback when critical", value: 3 },
+                    { text: "Adults give each other feedback", value: 4 },
+                    { text: "Adults hold each other accountable - it's mature", value: 5 }
+                ]
+            },
+            {
+                question: "Your company values 'assuming positive intent.' You apply this by...",
+                context: "Positive intent can prevent addressing negative impact.",
+                options: [
+                    { text: "Never addressing behavior - assume good intent", value: 1 },
+                    { text: "Rarely addressing patterns", value: 2 },
+                    { text: "Addressing selectively", value: 3 },
+                    { text: "Assuming intent while addressing impact", value: 4 },
+                    { text: "Separating intent from impact - both matter", value: 5 }
+                ]
+            },
+
+            // SECTION 5: ACCOUNTABILITY CONSISTENCY (Questions 37-41)
+            {
+                question: "You hold some people accountable but not others. Honesty check...",
+                context: "Selective accountability undermines credibility.",
+                options: [
+                    { text: "Very inconsistent - depends on person", value: 1 },
+                    { text: "Somewhat inconsistent - depends on relationship", value: 2 },
+                    { text: "Mostly consistent - some exceptions", value: 3 },
+                    { text: "Quite consistent - rare exceptions", value: 4 },
+                    { text: "Completely consistent - same standards for all", value: 5 }
+                ]
+            },
+            {
+                question: "Your accountability follow-through after initial conversation is...",
+                context: "Following up is where accountability often dies.",
+                options: [
+                    { text: "Rarely follow up - one conversation and done", value: 1 },
+                    { text: "Occasionally check in", value: 2 },
+                    { text: "Follow up sometimes", value: 3 },
+                    { text: "Usually follow up", value: 4 },
+                    { text: "Always follow up - accountability requires it", value: 5 }
+                ]
+            },
+            {
+                question: "Your accountability when you're stressed/busy vs. calm is...",
+                context: "Standards shouldn't drop under pressure.",
+                options: [
+                    { text: "Much lower when stressed - slide a lot", value: 1 },
+                    { text: "Noticeably lower under pressure", value: 2 },
+                    { text: "Somewhat lower but try to maintain", value: 3 },
+                    { text: "Mostly consistent regardless", value: 4 },
+                    { text: "Identical - stress doesn't excuse dropping standards", value: 5 }
+                ]
+            },
+            {
+                question: "When you're not sure you're right, you...",
+                context: "Uncertainty can prevent necessary accountability.",
+                options: [
+                    { text: "Don't address it - might be wrong", value: 1 },
+                    { text: "Wait until certainty", value: 2 },
+                    { text: "Mention it very tentatively", value: 3 },
+                    { text: "Share observation and ask for their view", value: 4 },
+                    { text: "Name what I see, stay open - don't need certainty", value: 5 }
+                ]
+            },
+            {
+                question: "Your reputation for accountability across the organization is...",
+                context: "Reputation reveals actual consistency.",
+                options: [
+                    { text: "Unknown - I don't hold people accountable much", value: 1 },
+                    { text: "Inconsistent - depends on who you ask", value: 2 },
+                    { text: "Developing - getting known for it", value: 3 },
+                    { text: "Strong - known for clear standards", value: 4 },
+                    { text: "Uncompromising - everyone knows I'll speak up", value: 5 }
+                ]
+            }
+        ];
+
+        // State management
+        let currentQuestion = 0;
+        let answers = [];
+
+<!-- ============================================================================ -->
+<!-- END OF PART 2 -->
+<!-- NEXT: Insert PART 3 (Main functions and results) -->
+<!-- ============================================================================ -->
+<!-- ============================================================================ -->
+<!-- PART 3: MAIN FUNCTIONS & RESULTS (Final Part) -->
+<!-- Copy this AFTER Part 2 to complete the file -->
+<!-- ============================================================================ -->
+
+        function startAssessment() {
+            document.getElementById('introSection').style.display = 'none';
+            document.getElementById('questionSection').style.display = 'block';
+            showQuestion(0);
+        }
+
+        function showQuestion(index) {
+            currentQuestion = index;
+            const q = questions[index];
+            const card = document.getElementById('questionCard');
+            
+            const selectedValue = answers[index] || null;
+            
+            let contextHTML = '';
+            if (q.context) {
+                contextHTML = `<div class="context-box"><p><strong>Context:</strong> ${q.context}</p></div>`;
+            }
+            
+            card.innerHTML = `
+                <div class="question-number">QUESTION ${index + 1} OF ${questions.length}</div>
+                <div class="question-text">${q.question}</div>
+                ${contextHTML}
+                <div class="options">
+                    ${q.options.map((opt, i) => `
+                        <label class="option ${selectedValue === opt.value ? 'selected' : ''}" onclick="selectOption(${opt.value}, this)">
+                            <input type="radio" name="q${index}" value="${opt.value}" ${selectedValue === opt.value ? 'checked' : ''}>
+                            ${opt.text}
+                        </label>
+                    `).join('')}
+                </div>
+            `;
+            
+            updateProgress();
+            updateButtons();
+        }
+
+        function selectOption(value, element) {
+            answers[currentQuestion] = value;
+            
+            // Update UI
+            const options = element.parentElement.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            
+            updateButtons();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                showQuestion(currentQuestion + 1);
+            } else {
+                showResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                showQuestion(currentQuestion - 1);
+            }
+        }
+
+        function updateProgress() {
+            const percent = Math.round(((currentQuestion + 1) / questions.length) * 100);
+            document.getElementById('currentQ').textContent = currentQuestion + 1;
+            document.getElementById('progress-percent').textContent = percent;
+            document.getElementById('progressFill').style.width = percent + '%';
+        }
+
+        function updateButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = currentQuestion === 0;
+            prevBtn.style.opacity = currentQuestion === 0 ? '0.5' : '1';
+            
+            const hasAnswer = answers[currentQuestion] !== undefined;
+            nextBtn.disabled = !hasAnswer;
+            nextBtn.style.opacity = hasAnswer ? '1' : '0.5';
+            
+            if (currentQuestion === questions.length - 1) {
+                nextBtn.textContent = 'View Results →';
+            } else {
+                nextBtn.textContent = 'Next →';
+            }
+        }
+
+        function showResults() {
+            document.getElementById('questionSection').style.display = 'none';
+            document.getElementById('resultsSection').classList.add('active');
+            
+            calculateResults();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function calculateResults() {
+            const total = answers.reduce((sum, val) => sum + val, 0);
+            const maxScore = questions.length * 5;
+            const percentage = Math.round((total / maxScore) * 100);
+            
+            document.getElementById('finalScore').textContent = percentage + '%';
+            
+            let label = '';
+            let recommendation = '';
+            
+            if (percentage >= 80) {
+                label = '🏆 Accountability Under Pressure';
+                recommendation = `
+                    <h3>Exceptional Depth in Accountability</h3>
+                    <p>You hold the line even when it's politically difficult, when authority is ambiguous, when people resist, and when culture pushes back. This is rare.</p>
+                    <p><strong>Your Edge:</strong> You understand that accountability is hardest when it matters most - and that's exactly when you don't compromise.</p>
+                    <p><strong>Next Step:</strong> Continue to Stripe 3 where you'll learn to build accountability into systems and culture, not just individual conversations.</p>
+                `;
+            } else if (percentage >= 65) {
+                label = '✨ Strong Under Most Conditions';
+                recommendation = `
+                    <h3>Good Depth, Some Situational Gaps</h3>
+                    <p>You hold accountability in many situations but may struggle when resistance is high, politics are complex, or authority is unclear.</p>
+                    <p><strong>Focus Area:</strong> Review your lowest-scoring questions. Where do you back down? Political pressure? Fear of consequences? Ambiguous authority? Name your pattern.</p>
+                    <p><strong>Challenge:</strong> This week, address one situation you've been avoiding because of complexity or risk.</p>
+                `;
+            } else if (percentage >= 50) {
+                label = '⚠️ Context-Dependent';
+                recommendation = `
+                    <h3>Accountability Varies by Situation</h3>
+                    <p>You're selective about when you hold accountability. Easy situations? Yes. Complex, politically risky, or ambiguous situations? You often back down.</p>
+                    <p><strong>Truth:</strong> Accountability that only works in easy situations isn't real accountability. The test is whether you hold the line when it's hard.</p>
+                    <p><strong>Action:</strong> Pick one politically complex situation this week. Address it anyway. Document what happens - it's usually less catastrophic than you fear.</p>
+                `;
+            } else {
+                label = '🚨 Avoidance Under Pressure';
+                recommendation = `
+                    <h3>Accountability Collapses Under Pressure</h3>
+                    <p>When things get difficult - resistance, politics, ambiguity - you retreat. This limits your impact and allows problems to grow.</p>
+                    <p><strong>Reality Check:</strong></p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                        <li>The conversation you're avoiding isn't getting easier with time</li>
+                        <li>Your silence is a choice - and it has consequences</li>
+                        <li>People interpret your silence as acceptance</li>
+                        <li>The risk of speaking up is usually less than you imagine</li>
+                    </ul>
+                    <p><strong>Start Here:</strong> Address ONE situation this week that you've been avoiding due to politics, authority ambiguity, or fear of consequences. Keep it simple, direct, and kind.</p>
+                `;
+            }
+            
+            document.getElementById('scoreLabel').textContent = label;
+            document.getElementById('recommendation').innerHTML = recommendation;
+            
+            // Save to localStorage
+            localStorage.setItem('brownBeltStripe2Complete', 'true');
+            localStorage.setItem('brownBeltStripe2Score', percentage);
+        }
     </script>
 </body>
 </html>
+
+<!-- ============================================================================ -->
+<!-- END OF BROWN BELT STRIPE 2 -->
+<!-- Total: ~1,155 lines when combined (10% increase from Stripe 1) -->
+<!-- Assembly: Part 1 + Part 2 + Part 3 = Complete file -->
+<!-- ============================================================================ -->
