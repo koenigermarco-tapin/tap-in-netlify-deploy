@@ -1,0 +1,13 @@
+# Netlify redirects file for Black Belt Leadership Assessments
+
+# Redirect default Netlify subdomain to custom domain (update if you have one)
+# https://YOUR-SITE.netlify.app/* https://blackbelt.tap-in-academy.com/:splat 301!
+
+# Clean URL redirects (optional - makes URLs prettier)
+/stripe1 /black-belt-stripe1.html 200
+/stripe2 /black-belt-stripe2.html 200
+/stripe3 /black-belt-stripe3.html 200
+/stripe4 /black-belt-stripe4.html 200
+
+# Fallback for 404s - redirect to home
+/* /index.html 404
