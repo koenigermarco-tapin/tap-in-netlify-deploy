@@ -3,252 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚪ White Belt: Know Thyself - Foundation of Trust</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>White Belt: Trust & Self-Awareness | TAP-IN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { 
+            --primary-navy: #1a365d; 
+            --secondary-navy: #334155; 
+            --accent-red: #b91c1c; 
+            --accent-purple: #a78bfa; 
+            --success-green: #38a169; 
+            --warning-orange: #dd6b20; 
+            --card-bg: #ffffff; 
+            --border-light: #e2e8f0; 
+            --text-dark: #1e293b; 
+            --text-muted: #64748b; 
+            --light-bg: #f8fafc; 
         }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #1a365d 0%, #7c3aed 100%); min-height: 100vh; padding: 2rem 1rem; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 2rem; color: white; }
+        .belt-badge { display: inline-block; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.3); padding: 0.75rem 1.5rem; border-radius: 30px; font-size: 1rem; margin-bottom: 1rem; font-weight: 600; }
+        .header h1 { font-size: clamp(2rem, 5vw, 2.75rem); font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .header p { font-size: 1.2rem; opacity: 0.8; max-width: 600px; margin: 0 auto; }
+        .progress-section { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem; }
+        .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .progress-title { color: white; font-weight: 600; }
+        .progress-count { color: #e2e8f0; font-weight: 700; }
+        .stripe-visual { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+        .stripe { height: 8px; flex: 1; border-radius: 4px; background: rgba(255,255,255,0.2); transition: all 0.3s; }
+        .stripe.earned { background: linear-gradient(90deg, var(--accent-red) 0%, #dc2626 100%); box-shadow: 0 0 10px rgba(185, 28, 28, 0.5); }
+        .progress-bar-container { background: rgba(255,255,255,0.1); height: 6px; border-radius: 3px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent-red) 0%, #dc2626 100%); border-radius: 3px; transition: width 0.5s ease; }
+        .main-card { background: white; border-radius: 20px; padding: 2.5rem; box-shadow: 0 25px 80px rgba(0,0,0,0.4); }
+        .intro-box { background: var(--light-bg); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .intro-box h3 { color: var(--primary-navy); font-size: 1.1rem; margin-bottom: 0.75rem; }
+        .intro-box p { color: var(--text-dark); font-size: 0.95rem; margin-bottom: 0.75rem; line-height: 1.7; }
+        .intro-box p:last-child { margin-bottom: 0; }
+        .intro-box strong { color: var(--primary-navy); }
+        .intro-box.philosophy { background: linear-gradient(135deg, var(--light-bg) 0%, #e2e8f0 100%); border-left: 6px solid var(--primary-navy); }
+        .intro-box.philosophy em { color: var(--accent-purple); }
+        .intro-box.research { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%); border: none; }
+        .intro-box.research h3 { color: #fff; }
+        .intro-box.research p { color: #e2e8f0; }
+        .intro-box.research strong { color: var(--accent-purple); }
+        .intro-box.warning { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border-left: 6px solid var(--warning-orange); }
+        .intro-box.warning h3 { color: #92400e; }
+        .intro-box.warning p { color: #78350f; }
+        .stripe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .stripe-card { background: white; border: 2px solid var(--border-light); border-radius: 16px; padding: 1.5rem; transition: all 0.3s; text-decoration: none; display: block; }
+        .stripe-card:hover { border-color: #cbd5e1; transform: translateY(-4px); box-shadow: 0 10px 30px rgba(30, 41, 59, 0.15); }
+        .stripe-card.complete { border-color: var(--success-green); background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); }
+        .stripe-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .stripe-number { width: 50px; height: 50px; background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; flex-shrink: 0; }
+        .stripe-card.complete .stripe-number { background: linear-gradient(135deg, var(--success-green) 0%, #2f855a 100%); }
+        .stripe-title { font-weight: 700; color: var(--text-dark); font-size: 1.1rem; }
+        .stripe-subtitle { font-size: 0.85rem; color: var(--text-muted); }
+        .stripe-description { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+        .stripe-topics { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+        .topic-tag { background: #f1f5f9; color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; }
+        .principles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .principle-card { background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%); border-radius: 12px; padding: 1.25rem; text-align: center; }
+        .principle-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .principle-card h4 { color: white; font-size: 0.95rem; margin-bottom: 0.5rem; }
+        .principle-card p { color: #f8fafc; font-size: 0.85rem; }
+        .quote-block { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); border-radius: 12px; padding: 1.5rem; text-align: center; margin: 1.5rem 0; border: 1px solid rgba(255,255,255,0.1); }
+        .quote-block .quote { font-size: 1.1rem; color: white; font-style: italic; margin-bottom: 0.75rem; }
+        .quote-block .author { color: var(--accent-purple); font-weight: 600; font-size: 0.9rem; }
+        .btn { display: inline-block; padding: 1rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 600; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer; text-align: center; }
+        .btn-primary { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(26, 54, 93, 0.3); }
+        .btn-secondary { background: #edf2f7; color: var(--text-dark); }
+        .nav-buttons { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2rem; }
+        @media (max-width: 768px) { body { padding: 1rem; } .main-card { padding: 1.5rem; } .header h1 { font-size: 2rem; } .nav-buttons { flex-direction: column; } .btn { width: 100%; text-align: center; } .stripe-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="belt-badge">⚪ WHITE BELT</div>
+            <h1>Trust & Self-Awareness</h1>
+            <p>The foundation of everything. You can't build a great team without trust—and trust starts with knowing yourself.</p>
+        </div>
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            min-height: 100vh;
-            padding: 20px;
-            color: #1e293b;
-        }
+        <div class="progress-section">
+            <div class="progress-header">
+                <span class="progress-title">White Belt Progress</span>
+                <span class="progress-count" id="stripe-count">0/4 Stripes</span>
+            </div>
+            <div class="stripe-visual">
+                <div class="stripe" id="stripe-1"></div>
+                <div class="stripe" id="stripe-2"></div>
+                <div class="stripe" id="stripe-3"></div>
+                <div class="stripe" id="stripe-4"></div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+        </div>
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        /* Header */
-        .header {
-            text-align: center;
-            padding: 60px 20px 40px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .belt-icon {
-            font-size: 80px;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 2.8em;
-            margin-bottom: 15px;
-            color: #1e293b;
-            font-weight: 700;
-        }
-
-        .theme {
-            font-size: 1.8em;
-            color: #64748b;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .subtitle {
-            font-size: 1.2em;
-            color: #475569;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        /* Philosophy Section */
-        .philosophy {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 40px;
-            border-left: 6px solid #94a3b8;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .philosophy h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: #1e293b;
-        }
-
-        .philosophy p {
-            font-size: 1.1em;
-            line-height: 1.8;
-            color: #475569;
-            margin-bottom: 15px;
-        }
-
-        .philosophy .quote {
-            background: #f8fafc;
-            border-left: 4px solid #cbd5e1;
-            padding: 20px;
-            margin: 25px 0;
-            font-style: italic;
-            font-size: 1.15em;
-            color: #334155;
-        }
-
-        /* Progress Section */
-        .progress-section {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .progress-title {
-            font-size: 1.5em;
-            font-weight: 600;
-            color: #1e293b;
-        }
-
-        .progress-count {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: #64748b;
-        }
-
-        .progress-bar-container {
-            background: #f1f5f9;
-            height: 12px;
-            border-radius: 6px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
-
-        .progress-bar-fill {
-            background: linear-gradient(90deg, #94a3b8 0%, #64748b 100%);
-            height: 100%;
-            width: 0%;
-            transition: width 0.5s ease;
-            border-radius: 6px;
-        }
-
-        .progress-text {
-            text-align: center;
-            color: #64748b;
-            font-size: 0.95em;
-            margin-top: 10px;
-        }
-
-        /* Assessment Grid */
-        .assessments-section {
-            margin-bottom: 40px;
-        }
-
-        .section-title {
-            font-size: 2em;
-            margin-bottom: 30px;
-            color: #1e293b;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .assessment-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        .assessment-card {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            position: relative;
-        }
-
-        .assessment-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            border-color: #cbd5e1;
-        }
-
-        .assessment-card.completed {
-            border-color: #10b981;
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-        }
-
-        .assessment-card.coming-soon {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-
-        .assessment-card.coming-soon:hover {
-            transform: none;
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .card-icon {
-            font-size: 2.5em;
-        }
-
-        .status-badge {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            font-weight: 600;
-        }
-
-        .status-completed {
-            background: #10b981;
-            color: white;
-        }
-
-        .status-available {
-            background: #3b82f6;
-            color: white;
-        }
-
-        .status-coming {
-            background: #94a3b8;
-            color: white;
-        }
-
-        .card-title {
-            font-size: 1.4em;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #1e293b;
-        }
-
-        .card-duration {
-            font-size: 0.95em;
-            color: #64748b;
-            margin-bottom: 15px;
-        }
-
-        .card-description {
-            font-size: 1em;
-            color: #475569;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .card-button {
+        <div class="main-card">        .card-button {
             display: block;
             width: 100%;
             padding: 14px;
@@ -390,151 +247,154 @@
             <div class="section-title">🎯 Foundation Assessments</div>
             
             <div class="assessment-grid">
-                <!-- Worker Type -->
-                <div class="assessment-card" id="card-worker">
-                    <div class="card-header">
-                        <div class="card-icon">🏃</div>
-                        <div class="status-badge status-available">Available</div>
-                    </div>
-                    <div class="card-title">Worker Type Assessment</div>
-                    <div class="card-duration">⏱️ 5-7 minutes</div>
-                    <div class="card-description">
-                        Discover if you're a Sprinter, Jogger, or Ultrarunner. Understand your natural work rhythm and energy patterns.
-                    </div>
-                    <a href="worker-type-assessment.html" class="card-button">Start Assessment →</a>
-                </div>
+        <div class="main-card">
+            <div class="intro-box warning">
+                <h3>⚠️ Everything Starts Here</h3>
+                <p>You can't build a high-performing team without trust. And you can't build trust without <strong>knowing yourself first</strong>.</p>
+                <p>White Belt isn't about team skills—it's about self-awareness. Who are you? What drives you? What are your patterns, blindspots, and triggers?</p>
+            </div>
 
-                <!-- Work-Life Balance -->
-                <div class="assessment-card" id="card-balance">
-                    <div class="card-header">
-                        <div class="card-icon">⚖️</div>
-                        <div class="status-badge status-available">Available</div>
-                    </div>
-                    <div class="card-title">Work-Life Balance</div>
-                    <div class="card-duration">⏱️ 8-10 minutes</div>
-                    <div class="card-description">
-                        Assess your current balance across work, relationships, health, and personal growth. Find your sustainability score.
-                    </div>
-                    <a href="work-life-balance-assessment.html" class="card-button">Start Assessment →</a>
-                </div>
+            <div class="intro-box">
+                <h3>Why "Know Thyself" Matters</h3>
+                <p>Lencioni's first dysfunction is <strong>"Absence of Trust."</strong> But teams don't fail to trust because they're bad people—they fail because members hide their weaknesses, avoid vulnerability, and pretend to have it all figured out.</p>
+                <p><strong>You can't be vulnerable about what you don't know about yourself.</strong></p>
+                <p>White Belt is about building the self-awareness foundation that makes vulnerability possible.</p>
+            </div>
 
-                <!-- Impact Style -->
-                <div class="assessment-card" id="card-impact">
-                    <div class="card-header">
-                        <div class="card-icon">💫</div>
-                        <div class="status-badge status-available">Available</div>
-                    </div>
-                    <div class="card-title">Team Impact Style</div>
-                    <div class="card-duration">⏱️ 10-12 minutes</div>
-                    <div class="card-description">
-                        Understand how you naturally impact teams. Your collaboration style, influence patterns, and team role.
-                    </div>
-                    <a href="team-assessment-enhanced-v2.html" class="card-button">Start Assessment →</a>
-                </div>
+            <div class="intro-box philosophy">
+                <h3>🥋 The BJJ Principle: Foundations Win Fights</h3>
+                <p>In Brazilian Jiu-Jitsu, white belts spend 6-12 months learning the <strong>fundamentals</strong>: posture, base, frames, hip movement. It's not flashy. It's not exciting. But it's what separates beginners from practitioners.</p>
+                <p>Great grapplers don't skip the basics—they master them so deeply they become automatic.</p>
+                <p>Leadership is the same. <strong>Self-awareness is your base.</strong> Without it, every advanced technique fails.</p>
+                <p><em>"You can't build a house on sand. You need a foundation."</em></p>
+            </div>
 
-                <!-- Mental Health Baseline -->
-                <div class="assessment-card" id="card-mental">
-                    <div class="card-header">
-                        <div class="card-icon">🧠</div>
-                        <div class="status-badge status-available">Available</div>
-                    </div>
-                    <div class="card-title">Mental Health Baseline</div>
-                    <div class="card-duration">⏱️ 7-9 minutes</div>
-                    <div class="card-description">
-                        Assess current stress levels, energy patterns, warning signs, and establish your mental health baseline.
-                    </div>
-                    <a href="mental-health-assessment.html" class="card-button">Start Assessment →</a>
-                </div>
+            <div class="intro-box research">
+                <h3>📊 The Research</h3>
+                <p><strong>Google's Project Aristotle</strong> studied 180 teams over 2 years to find what makes teams effective. Their finding? It wasn't talent, resources, or structure.</p>
+                <p>It was <strong>psychological safety</strong>—the belief that you won't be punished for making mistakes, asking questions, or being yourself.</p>
+                <p>And psychological safety starts with leaders who model vulnerability—which requires knowing yourself well enough to admit what you don't know.</p>
+            </div>
 
-                <!-- Values Discovery -->
-                <div class="assessment-card" id="card-values">
-                    <div class="card-header">
-                        <div class="card-icon">🎯</div>
-                        <div class="status-badge status-available">Available</div>
-                    </div>
-                    <div class="card-title">Values Discovery</div>
-                    <div class="card-duration">⏱️ 10-12 minutes</div>
-                    <div class="card-description">
-                        Identify your core values. Discover what truly matters to you vs. what you think should matter. Find misalignments.
-                    </div>
-                    <a href="values-discovery-assessment.html" class="card-button">Start Assessment →</a>
-                </div>
+            <h2 style="color: var(--text-dark); margin: 1.5rem 0 1rem;">🥋 White Belt Principles</h2>
 
-                <!-- Communication Style -->
-                <div class="assessment-card" id="card-communication">
-                    <div class="card-header">
-                        <div class="card-icon">💬</div>
-                        <div class="status-badge status-available">Available</div>
-                    </div>
-                    <div class="card-title">Communication Style</div>
-                    <div class="card-duration">⏱️ 8-10 minutes</div>
-                    <div class="card-description">
-                        Understand your communication patterns. Direct vs. indirect? How do others perceive you? Your baseline style.
-                    </div>
-                    <a href="communication-style-assessment.html" class="card-button">Start Assessment →</a>
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <div class="icon">🪞</div>
+                    <h4>Self-Awareness</h4>
+                    <p>Know your patterns, triggers, and blind spots</p>
+                </div>
+                <div class="principle-card">
+                    <div class="icon">💪</div>
+                    <h4>Own Your Weaknesses</h4>
+                    <p>Vulnerability is strength, not weakness</p>
+                </div>
+                <div class="principle-card">
+                    <div class="icon">🎯</div>
+                    <h4>Values Clarity</h4>
+                    <p>Know what matters to you—and why</p>
+                </div>
+                <div class="principle-card">
+                    <div class="icon">🧭</div>
+                    <h4>Baseline Understanding</h4>
+                    <p>You can't improve what you don't measure</p>
                 </div>
             </div>
-        </div>
 
-        <!-- Completion Criteria -->
-        <div class="criteria-section">
-            <h2>🏆 White Belt Completion Criteria</h2>
-            <ul class="criteria-list">
-                <li class="criteria-item">
-                    <input type="checkbox" class="criteria-checkbox" id="criteria1">
-                    <span class="criteria-text">Complete all 6 foundation assessments</span>
-                </li>
-                <li class="criteria-item">
-                    <input type="checkbox" class="criteria-checkbox" id="criteria2">
-                    <span class="criteria-text">Review and reflect on all assessment results</span>
-                </li>
-                <li class="criteria-item">
-                    <input type="checkbox" class="criteria-checkbox" id="criteria3">
-                    <span class="criteria-text">Identify 3 key insights about yourself</span>
-                </li>
-                <li class="criteria-item">
-                    <input type="checkbox" class="criteria-checkbox" id="criteria4">
-                    <span class="criteria-text">Ready to move from awareness to action</span>
-                </li>
-            </ul>
-        </div>
+            <h2 style="color: var(--text-dark); margin: 2rem 0 1rem;">📚 Your White Belt Stripes</h2>
 
-        <!-- Back Link -->
-        <div class="back-link">
-            <a href="gym-dashboard.html">← Back to GYM Dashboard</a>
+            <div class="stripe-grid">
+                <a href="white-belt-stripe1-gamified.html" class="stripe-card" id="card-1">
+                    <div class="stripe-header">
+                        <div class="stripe-number">1</div>
+                        <div>
+                            <div class="stripe-title">Identity & Work Style</div>
+                            <div class="stripe-subtitle">Foundation</div>
+                        </div>
+                    </div>
+                    <p class="stripe-description">Discover your worker type, work-life balance, and natural rhythm patterns.</p>
+                    <div class="stripe-topics">
+                        <span class="topic-tag">Worker Type</span>
+                        <span class="topic-tag">Balance</span>
+                        <span class="topic-tag">Rhythm</span>
+                    </div>
+                </a>
+
+                <a href="white-belt-stripe2-gamified.html" class="stripe-card" id="card-2">
+                    <div class="stripe-header">
+                        <div class="stripe-number">2</div>
+                        <div>
+                            <div class="stripe-title">Communication & Impact</div>
+                            <div class="stripe-subtitle">Expression</div>
+                        </div>
+                    </div>
+                    <p class="stripe-description">Understand how you communicate and impact teams naturally.</p>
+                    <div class="stripe-topics">
+                        <span class="topic-tag">Communication</span>
+                        <span class="topic-tag">Team Impact</span>
+                        <span class="topic-tag">Style</span>
+                    </div>
+                </a>
+
+                <a href="white-belt-stripe3-gamified.html" class="stripe-card" id="card-3">
+                    <div class="stripe-header">
+                        <div class="stripe-number">3</div>
+                        <div>
+                            <div class="stripe-title">Values & Purpose</div>
+                            <div class="stripe-subtitle">Alignment</div>
+                        </div>
+                    </div>
+                    <p class="stripe-description">Discover what truly matters to you and why you do what you do.</p>
+                    <div class="stripe-topics">
+                        <span class="topic-tag">Values</span>
+                        <span class="topic-tag">Purpose</span>
+                        <span class="topic-tag">Motivation</span>
+                    </div>
+                </a>
+
+                <a href="white-belt-stripe4-gamified.html" class="stripe-card" id="card-4">
+                    <div class="stripe-header">
+                        <div class="stripe-number">4</div>
+                        <div>
+                            <div class="stripe-title">Mental Health Baseline</div>
+                            <div class="stripe-subtitle">Wellness</div>
+                        </div>
+                    </div>
+                    <p class="stripe-description">Establish your stress, energy, and mental health baseline for growth.</p>
+                    <div class="stripe-topics">
+                        <span class="topic-tag">Stress</span>
+                        <span class="topic-tag">Energy</span>
+                        <span class="topic-tag">Baseline</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="quote-block">
+                <p class="quote">"Know thyself." — Socrates</p>
+                <p class="author">This ancient wisdom is still the foundation of leadership mastery</p>
+            </div>
+
+            <div class="nav-buttons" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <a href="gym-dashboard.html" class="btn btn-secondary">← GYM Dashboard</a>
+                <a href="blue-belt.html" class="btn btn-primary">Preview Blue Belt →</a>
+            </div>
         </div>
     </div>
 
     <script>
-        // Load progress from localStorage
-        function updateProgress() {
-            const completed = JSON.parse(localStorage.getItem('whiteBeltProgress') || '[]');
-            const total = 6;
-            const progressBar = document.getElementById('progressBar');
-            const progressCount = document.getElementById('progressCount');
-            
-            const percentage = (completed.length / total) * 100;
-            progressBar.style.width = percentage + '%';
-            progressCount.textContent = completed.length + '/' + total;
-
-            // Mark completed cards
-            completed.forEach(assessment => {
-                const card = document.getElementById('card-' + assessment);
-                if (card && !card.classList.contains('coming-soon')) {
-                    card.classList.add('completed');
-                    const badge = card.querySelector('.status-badge');
-                    badge.textContent = 'Completed';
-                    badge.classList.remove('status-available');
-                    badge.classList.add('status-completed');
-                    const button = card.querySelector('.card-button');
-                    button.textContent = 'View Results →';
-                    button.classList.add('completed');
+        function updateStripeProgress() {
+            let completed = 0;
+            for (let i = 1; i <= 4; i++) {
+                if (localStorage.getItem(`whiteBeltStripe${i}Complete`) === 'true') {
+                    completed++;
+                    document.getElementById(`stripe-${i}`).classList.add('earned');
+                    document.getElementById(`card-${i}`).classList.add('complete');
                 }
-            });
+            }
+            document.getElementById('stripe-count').textContent = `${completed}/4 Stripes`;
+            document.getElementById('progress-fill').style.width = `${(completed / 4) * 100}%`;
         }
-
-        // Initialize
-        updateProgress();
+        updateStripeProgress();
     </script>
 </body>
 </html>
