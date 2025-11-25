@@ -1046,6 +1046,10 @@
             }
         }
     </style>
+    
+    <!-- Gamification System -->
+    <script src="js/gamification.js"></script>
+    <script src="js/gym-dashboard-init.js"></script>
 </head>
 <body>
     <!-- Top Navigation -->
@@ -1649,27 +1653,27 @@
                     </div>
                 </div>
 
-                <!-- Quick Stats -->
+                <!-- Quick Stats - Dynamic -->
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">📊 Your Stats</div>
                     </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                         <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px;">
-                            <div style="font-size: 1.75rem; font-weight: 700; color: var(--accent-gold);">12</div>
-                            <div style="font-size: 0.75rem; color: var(--text-muted);">Day Streak</div>
+                            <div style="font-size: 1.75rem; font-weight: 700; color: var(--accent-gold);" id="streakCount">0</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">Day Streak 🔥</div>
                         </div>
                         <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px;">
-                            <div style="font-size: 1.75rem; font-weight: 700; color: var(--success-green);">23</div>
-                            <div style="font-size: 0.75rem; color: var(--text-muted);">Reflections</div>
+                            <div style="font-size: 1.75rem; font-weight: 700; color: var(--success-green);" id="totalXP">0</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">Total XP ⚡</div>
                         </div>
                         <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px;">
-                            <div style="font-size: 1.75rem; font-weight: 700; color: var(--primary-navy);">4</div>
+                            <div style="font-size: 1.75rem; font-weight: 700; color: var(--primary-navy);" id="modulesComplete">0</div>
                             <div style="font-size: 0.75rem; color: var(--text-muted);">Modules Done</div>
                         </div>
                         <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px;">
-                            <div style="font-size: 1.75rem; font-weight: 700;">2h 34m</div>
-                            <div style="font-size: 0.75rem; color: var(--text-muted);">Total Time</div>
+                            <div style="font-size: 1.75rem; font-weight: 700;" id="badgesEarned">0</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">Badges Earned 🏆</div>
                         </div>
                     </div>
                 </div>
@@ -1824,6 +1828,271 @@
 
         // Run on page load
         updateBeltProgress();
+
+        // ============================================
+        // GAMIFICATION SYSTEM - XP, Streaks, Badges
+        // ============================================
+
+        // XP Configuration
+        const XP_VALUES = {
+            stripeComplete: 50,      // Complete a stripe module
+            assessmentComplete: 100, // Complete an assessment
+            openMatComplete: 25,     // Complete an open mat exercise
+            dailyLogin: 10,          // Login bonus
+            weekStreak: 50,          // 7-day streak bonus
+            beltComplete: 250        // Complete entire belt
+        };
+
+        // Initialize or get gamification data
+        function getGamificationData() {
+            const defaultData = {
+                totalXP: 0,
+                level: 1,
+                badges: [],
+                lastVisit: null,
+                streakCount: 0,
+                modulesComplete: 0,
+                assessmentsComplete: 0,
+                history: []
+            };
+            
+            const stored = localStorage.getItem('tapinGamification');
+            if (stored) {
+                try {
+                    return { ...defaultData, ...JSON.parse(stored) };
+                } catch (e) {
+                    return defaultData;
+                }
+            }
+            return defaultData;
+        }
+
+        function saveGamificationData(data) {
+            localStorage.setItem('tapinGamification', JSON.stringify(data));
+        }
+
+        // Award XP function
+        function awardXP(amount, reason) {
+            const data = getGamificationData();
+            data.totalXP += amount;
+            data.history.push({
+                amount,
+                reason,
+                timestamp: new Date().toISOString()
+            });
+            saveGamificationData(data);
+            updateGamificationDisplay();
+            
+            // Check for level up
+            const newLevel = Math.floor(data.totalXP / 500) + 1;
+            if (newLevel > data.level) {
+                data.level = newLevel;
+                saveGamificationData(data);
+                showLevelUpNotification(newLevel);
+            }
+        }
+
+        // Check and update streak
+        function updateStreak() {
+            const data = getGamificationData();
+            const today = new Date().toDateString();
+            const lastVisit = data.lastVisit ? new Date(data.lastVisit).toDateString() : null;
+            
+            if (lastVisit === today) {
+                // Already visited today
+                return data.streakCount;
+            }
+            
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            const yesterdayStr = yesterday.toDateString();
+            
+            if (lastVisit === yesterdayStr) {
+                // Continuing streak
+                data.streakCount += 1;
+                awardXP(XP_VALUES.dailyLogin, 'Daily login bonus 🔥');
+                
+                // Week streak bonus
+                if (data.streakCount % 7 === 0) {
+                    awardXP(XP_VALUES.weekStreak, `${data.streakCount}-day streak bonus! 🏆`);
+                    awardBadge(`streak_${data.streakCount}`, `${data.streakCount} Day Warrior`, `Maintained ${data.streakCount} consecutive days`);
+                }
+            } else if (lastVisit !== null) {
+                // Streak broken
+                data.streakCount = 1;
+                awardXP(XP_VALUES.dailyLogin, 'Daily login bonus');
+            } else {
+                // First visit
+                data.streakCount = 1;
+                awardXP(XP_VALUES.dailyLogin, 'First visit! 🎉');
+            }
+            
+            data.lastVisit = new Date().toISOString();
+            saveGamificationData(data);
+            return data.streakCount;
+        }
+
+        // Badge system
+        function awardBadge(badgeId, badgeName, badgeDesc) {
+            const data = getGamificationData();
+            
+            // Check if already has badge
+            if (data.badges.find(b => b.id === badgeId)) {
+                return false;
+            }
+            
+            data.badges.push({
+                id: badgeId,
+                name: badgeName,
+                description: badgeDesc,
+                earnedDate: new Date().toISOString()
+            });
+            
+            saveGamificationData(data);
+            showBadgeNotification(badgeName, badgeDesc);
+            return true;
+        }
+
+        // Count completed modules
+        function countCompletedModules() {
+            let count = 0;
+            const belts = ['white', 'blue', 'purple', 'brown', 'black'];
+            
+            belts.forEach(belt => {
+                for (let i = 1; i <= 4; i++) {
+                    const key = `${belt}BeltStripe${i}Complete`;
+                    if (localStorage.getItem(key) === 'true') {
+                        count++;
+                    }
+                }
+            });
+            
+            return count;
+        }
+
+        // Update all gamification displays
+        function updateGamificationDisplay() {
+            const data = getGamificationData();
+            
+            // Update streak
+            const streak = updateStreak();
+            document.getElementById('streakCount').textContent = streak;
+            
+            // Update XP
+            document.getElementById('totalXP').textContent = data.totalXP.toLocaleString();
+            
+            // Update modules complete
+            const modulesComplete = countCompletedModules();
+            data.modulesComplete = modulesComplete;
+            saveGamificationData(data);
+            document.getElementById('modulesComplete').textContent = modulesComplete;
+            
+            // Update badges
+            document.getElementById('badgesEarned').textContent = data.badges.length;
+            
+            // Update XP badge in nav (if it exists)
+            const xpBadge = document.querySelector('.xp-badge');
+            if (xpBadge) {
+                xpBadge.innerHTML = `⚡ ${data.totalXP.toLocaleString()} XP`;
+            }
+        }
+
+        // Show level up notification
+        function showLevelUpNotification(level) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: linear-gradient(135deg, var(--accent-gold) 0%, #ecc94b 100%);
+                color: var(--bg-dark);
+                padding: 3rem;
+                border-radius: 20px;
+                box-shadow: 0 20px 60px rgba(246, 224, 94, 0.5);
+                z-index: 10000;
+                text-align: center;
+                animation: scaleIn 0.5s ease;
+            `;
+            notification.innerHTML = `
+                <div style="font-size: 4rem; margin-bottom: 1rem;">🎉</div>
+                <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">LEVEL UP!</h2>
+                <p style="font-size: 1.5rem; font-weight: 600;">You reached Level ${level}</p>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'scaleOut 0.5s ease';
+                setTimeout(() => notification.remove(), 500);
+            }, 3000);
+        }
+
+        // Show badge notification
+        function showBadgeNotification(badgeName, badgeDesc) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: linear-gradient(135deg, var(--primary-navy) 0%, var(--navy-light) 100%);
+                color: white;
+                padding: 1.5rem;
+                border-radius: 12px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 10000;
+                max-width: 350px;
+                animation: slideInRight 0.5s ease;
+            `;
+            notification.innerHTML = `
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <div style="font-size: 2.5rem;">🏆</div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem;">Badge Unlocked!</div>
+                        <div style="font-weight: 600; color: var(--accent-gold);">${badgeName}</div>
+                        <div style="font-size: 0.85rem; opacity: 0.9; margin-top: 0.25rem;">${badgeDesc}</div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.5s ease';
+                setTimeout(() => notification.remove(), 500);
+            }, 4000);
+        }
+
+        // Add animations to head
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes scaleIn {
+                from { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+                to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            }
+            @keyframes scaleOut {
+                from { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+                to { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+            }
+            @keyframes slideInRight {
+                from { transform: translateX(400px); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOutRight {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(400px); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize gamification on page load
+        updateGamificationDisplay();
+
+        // Expose functions globally for other pages to award XP
+        window.tapinGamification = {
+            awardXP,
+            awardBadge,
+            getGamificationData,
+            XP_VALUES
+        };
     </script>
 </body>
 </html>
