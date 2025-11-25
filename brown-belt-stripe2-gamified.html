@@ -3,1106 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🟤 Brown Belt - Stripe 2 | Tap-In Leadership</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Brown Belt Stripe 2: Culture Design | TAP-IN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #92400e 0%, #78350f 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .module-header {
-            background: linear-gradient(135deg, #92400e 0%, #78350f 100%);
-            border: 3px solid #451a03;
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .belt-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 700;
-            color: #78350f;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            color: white;
-            font-size: 42px;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .module-subtitle {
-            color: #fef3c7;
-            font-size: 18px;
-            margin-bottom: 25px;
-        }
-
-        .progress-section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .progress-text {
-            color: #78350f;
-            font-weight: 600;
-        }
-
-        .progress-bar {
-            background: #e7e5e4;
-            height: 12px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 15px;
-        }
-
-        .progress-fill {
-            background: linear-gradient(90deg, #92400e 0%, #78350f 100%);
-            height: 100%;
-            border-radius: 10px;
-            transition: width 0.5s ease;
-            width: 0%;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .stat-box {
-            text-align: center;
-            padding: 12px;
-            background: #fef3c7;
-            border-radius: 10px;
-            border: 2px solid #fbbf24;
-        }
-
-        .stat-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: #78350f;
-        }
-
-        .stat-label {
-            font-size: 12px;
-            color: #92400e;
-            margin-top: 4px;
-        }
-
-        .lesson-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            border-left: 5px solid #92400e;
-        }
-
-        .lesson-card.locked {
-            opacity: 0.6;
-            background: #f5f5f5;
-        }
-
-        .lesson-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            cursor: pointer;
-        }
-
-        .lesson-number {
-            background: linear-gradient(135deg, #92400e 0%, #78350f 100%);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .lesson-number.complete {
-            background: #22c55e;
-        }
-
-        .lesson-title h2 {
-            color: #1e293b;
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-
-        .lesson-meta {
-            color: #64748b;
-            font-size: 14px;
-        }
-
-        .lesson-content {
-            display: none;
-        }
-
-        .lesson-content.active {
-            display: block;
-        }
-
-        .content-section {
-            margin-bottom: 30px;
-        }
-
-        .content-section h3 {
-            color: #78350f;
-            font-size: 20px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .content-section p {
-            color: #475569;
-            line-height: 1.8;
-            margin-bottom: 15px;
-        }
-
-        .content-section ul, .content-section ol {
-            color: #475569;
-            line-height: 1.8;
-            margin-left: 25px;
-            margin-bottom: 15px;
-        }
-
-        .content-section li {
-            margin-bottom: 10px;
-        }
-
-        .highlight-box {
-            background: #fef3c7;
-            border-left: 4px solid #92400e;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-
-        .highlight-box strong {
-            color: #78350f;
-        }
-
-        .example-box {
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-
-        .example-box h4 {
-            color: #92400e;
-            margin-bottom: 10px;
-        }
-
-        .bjj-connection {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border: 2px solid #92400e;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 25px 0;
-        }
-
-        .bjj-connection h4 {
-            color: #78350f;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .research-box {
-            background: #f1f5f9;
-            border-left: 4px solid #64748b;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-
-        .research-box h4 {
-            color: #334155;
-            margin-bottom: 10px;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-            padding-top: 25px;
-            border-top: 2px solid #e2e8f0;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            font-size: 16px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #92400e 0%, #78350f 100%);
-            color: white;
-            border: 2px solid #451a03;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(146, 64, 14, 0.3);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: #78350f;
-            border: 2px solid #92400e;
-        }
-
-        .btn-secondary:hover {
-            background: #fef3c7;
-        }
-
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .achievement-popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.8);
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            max-width: 400px;
-            border: 3px solid #92400e;
-        }
-
-        .achievement-popup.show {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-            pointer-events: all;
-        }
-
-        .achievement-icon {
-            font-size: 64px;
-            margin-bottom: 15px;
-        }
-
-        .achievement-title {
-            font-size: 24px;
-            color: #1e293b;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .achievement-desc {
-            color: #64748b;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .achievement-xp {
-            background: linear-gradient(135deg, #92400e 0%, #78350f 100%);
-            color: white;
-            padding: 10px 25px;
-            border-radius: 20px;
-            font-size: 20px;
-            font-weight: 700;
-            display: inline-block;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            z-index: 999;
-        }
-
-        .overlay.show {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: white;
-            text-decoration: none;
-            margin-bottom: 20px;
-            padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            transition: background 0.2s;
-        }
-
-        .back-link:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        th {
-            background: #fef3c7;
-            color: #78350f;
-            font-weight: 600;
-        }
-
-        tr:hover {
-            background: #f8fafc;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary-navy: #1a365d; --secondary-navy: #334155; --accent-red: #b91c1c; --accent-purple: #a78bfa; --success-green: #38a169; --warning-orange: #dd6b20; --card-bg: #ffffff; --border-light: #e2e8f0; --text-dark: #1e293b; --text-muted: #64748b; --light-bg: #f8fafc; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #78350f 0%, #92400e 100%); min-height: 100vh; padding: 2rem 1rem; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 2rem; color: white; }
+        .stripe-badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; margin-bottom: 1rem; }
+        .header h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.1rem; opacity: 0.9; }
+        .progress-container { background: rgba(255,255,255,0.2); border-radius: 10px; padding: 1rem 1.5rem; margin-bottom: 2rem; }
+        .progress-header { display: flex; justify-content: space-between; color: white; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .progress-bar { background: rgba(255,255,255,0.3); height: 8px; border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-red) 0%, #dc2626 100%); border-radius: 4px; transition: width 0.5s ease; }
+        .main-card { background: white; border-radius: 20px; padding: 2.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+        .section { display: none; }
+        .section.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .section-title { font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 1rem; }
+        .section-subtitle { color: var(--text-muted); margin-bottom: 1.5rem; }
+        .intro-box { background: var(--light-bg); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .intro-box h3 { color: var(--primary-navy); font-size: 1.1rem; margin-bottom: 0.75rem; }
+        .intro-box p { color: var(--text-dark); font-size: 0.95rem; margin-bottom: 0.75rem; line-height: 1.7; }
+        .intro-box p:last-child { margin-bottom: 0; }
+        .intro-box strong { color: var(--primary-navy); }
+        .intro-box.philosophy { background: linear-gradient(135deg, var(--light-bg) 0%, #e2e8f0 100%); border-left: 6px solid var(--primary-navy); }
+        .intro-box.philosophy em { color: var(--accent-purple); }
+        .intro-box.research { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%); border: none; }
+        .intro-box.research h3 { color: #fff; }
+        .intro-box.research p { color: #e2e8f0; }
+        .intro-box.research strong { color: var(--accent-purple); }
+        .intro-box.black-belt-wisdom { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-left: 6px solid var(--accent-red); }
+        .intro-box.black-belt-wisdom h3 { color: #ffffff; }
+        .intro-box.black-belt-wisdom p { color: #e2e8f0; }
+        .intro-box.black-belt-wisdom strong { color: #ffffff; }
+        .intro-box.black-belt-wisdom em { color: var(--accent-purple); }
+        .practice-card { background: #f0fdf4; border: 2px solid #86efac; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
+        .practice-card h4 { color: #166534; font-size: 1rem; margin-bottom: 0.5rem; }
+        .practice-card p { color: #14532d; font-size: 0.9rem; }
+        .reflection-box { background: #fffbeb; border: 2px solid #fcd34d; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+        .reflection-box h3 { color: #92400e; font-size: 1rem; margin-bottom: 0.75rem; }
+        .reflection-box p { color: #78350f; font-size: 0.95rem; margin-bottom: 1rem; }
+        .reflection-textarea { width: 100%; min-height: 100px; padding: 1rem; border: 1px solid #fcd34d; border-radius: 8px; font-family: inherit; font-size: 0.95rem; resize: vertical; }
+        .framework-box { background: #f0fdf4; border: 2px solid #86efac; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+        .framework-box h3 { color: #166534; font-size: 1.1rem; margin-bottom: 1rem; }
+        .framework-step { display: flex; align-items: flex-start; padding: 0.75rem 0; border-bottom: 1px solid #bbf7d0; }
+        .framework-step:last-child { border-bottom: none; }
+        .framework-number { width: 32px; height: 32px; background: #166534; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 1rem; flex-shrink: 0; font-size: 0.85rem; }
+        .framework-content h4 { color: #166534; font-size: 0.95rem; margin-bottom: 0.25rem; }
+        .framework-content p { color: var(--text-dark); font-size: 0.9rem; }
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 2rem; gap: 1rem; }
+        .btn { padding: 1rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; border: none; text-decoration: none; }
+        .btn-secondary { background: #edf2f7; color: var(--text-dark); }
+        .btn-primary { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%); color: white; }
+        .btn-success { background: linear-gradient(135deg, var(--success-green) 0%, #2f855a 100%); color: white; }
+        .stripe-earned { background: linear-gradient(135deg, #78350f 0%, #92400e 100%); border-radius: 16px; padding: 2rem; color: white; text-align: center; margin-bottom: 1.5rem; }
+        .stripe-earned h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .stripe-visual { font-size: 3rem; margin: 1rem 0; }
+        .quote-block { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-radius: 12px; padding: 1.5rem; text-align: center; margin: 1.5rem 0; }
+        .quote-block .quote { font-size: 1.1rem; color: white; font-style: italic; margin-bottom: 0.75rem; }
+        .quote-block .author { color: var(--accent-purple); font-weight: 600; font-size: 0.9rem; }
+        @media (max-width: 768px) { body { padding: 1rem; } .main-card { padding: 1.5rem; } .nav-buttons { flex-direction: column; } .btn { width: 100%; text-align: center; } }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="learning-hub.html" class="back-link">← Back to Learning Hub</a>
-
-        <div class="module-header">
-            <div class="belt-badge">🟤 BROWN BELT - STRIPE 2</div>
-            <h1>Driving Accountability</h1>
-            <p class="module-subtitle">How to hold others accountable without being a jerk</p>
-
-            <div class="progress-section">
-                <div class="progress-header">
-                    <span class="progress-text" id="progressText">0 of 3 lessons completed</span>
-                    <span class="progress-text" id="xpText">0 / 75 XP</span>
+        <div class="header">
+            <div class="stripe-badge">🟤 Brown Belt • Stripe 2 of 4</div>
+            <h1>Culture Design</h1>
+            <p>Building Intentional Culture</p>
+        </div>
+        <div class="progress-container">
+            <div class="progress-header"><span>Progress</span><span id="progress-text">0%</span></div>
+            <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        </div>
+        <div class="main-card">
+            <div class="section active" id="section-1">
+                <h2 class="section-title">🏗️ Culture Is Not an Accident</h2>
+                <p class="section-subtitle">Every organization has a culture. Few design it intentionally.</p>
+                <div class="intro-box">
+                    <h3>The Culture Equation</h3>
+                    <p><strong>Culture = What you tolerate + What you celebrate + What you repeat.</strong></p>
+                    <p>It's not your mission statement. It's not your values poster. It's what actually happens when nobody's watching.</p>
                 </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressBar"></div>
+                <div class="intro-box black-belt-wisdom">
+                    <h3>⬛ Black Belt Wisdom</h3>
+                    <p><em>"Culture is not what you say. It's what you tolerate."</em></p>
+                    <p><strong>The behavior you ignore is the behavior you endorse.</strong> Every time you let something slide, you're teaching the organization what's acceptable.</p>
                 </div>
-                <div class="stats-grid">
-                    <div class="stat-box">
-                        <div class="stat-value" id="lessonsDisplay">0/3</div>
-                        <div class="stat-label">Lessons</div>
+                <div class="intro-box philosophy">
+                    <h3>🥋 The BJJ Principle: Gym Culture</h3>
+                    <p>Walk into any BJJ gym and you'll feel the culture instantly. Is it competitive or collaborative? Ego-driven or ego-free? Do higher belts help lower belts, or crush them?</p>
+                    <p>That culture wasn't an accident. <strong>The head coach designed it</strong>—through who they promoted, what they celebrated, and what they refused to tolerate.</p>
+                </div>
+                <div class="intro-box research">
+                    <h3>📊 The Research</h3>
+                    <p><strong>Edgar Schein</strong>, the father of organizational culture, identified three levels: Artifacts (what you see), Espoused Values (what you say), and Basic Assumptions (what you actually believe).</p>
+                    <p>Most culture change fails because it targets artifacts and values but ignores the <strong>underlying assumptions</strong> that drive real behavior.</p>
+                </div>
+                <div class="nav-buttons">
+                    <a href="brown-belt.html" class="btn btn-secondary">← Back to Hub</a>
+                    <button class="btn btn-primary" onclick="nextSection()">Culture Levers →</button>
+                </div>
+            </div>
+            <div class="section" id="section-2">
+                <h2 class="section-title">🎚️ The Culture Levers</h2>
+                <p class="section-subtitle">The tools leaders use to shape culture.</p>
+                <div class="framework-box">
+                    <h3>5 Levers of Culture Design</h3>
+                    <div class="framework-step">
+                        <div class="framework-number">1</div>
+                        <div class="framework-content">
+                            <h4>Rituals</h4>
+                            <p>What you do repeatedly becomes who you are. Daily standups, weekly wins, monthly retrospectives—rituals encode culture.</p>
+                        </div>
                     </div>
-                    <div class="stat-box">
-                        <div class="stat-value" id="xpDisplay">0</div>
-                        <div class="stat-label">XP Earned</div>
+                    <div class="framework-step">
+                        <div class="framework-number">2</div>
+                        <div class="framework-content">
+                            <h4>Rewards</h4>
+                            <p>What gets rewarded gets repeated. Promotions, bonuses, recognition—these signal what really matters.</p>
+                        </div>
                     </div>
-                    <div class="stat-box">
-                        <div class="stat-value" id="badgesDisplay">0/1</div>
-                        <div class="stat-label">Stripe Earned</div>
+                    <div class="framework-step">
+                        <div class="framework-number">3</div>
+                        <div class="framework-content">
+                            <h4>Stories</h4>
+                            <p>The stories told about founders, heroes, and villains teach what's valued. What stories does your org tell?</p>
+                        </div>
                     </div>
+                    <div class="framework-step">
+                        <div class="framework-number">4</div>
+                        <div class="framework-content">
+                            <h4>Symbols</h4>
+                            <p>Office layout, dress code, titles—symbols communicate hierarchy and values without words.</p>
+                        </div>
+                    </div>
+                    <div class="framework-step">
+                        <div class="framework-number">5</div>
+                        <div class="framework-content">
+                            <h4>Selection</h4>
+                            <p>Who you hire and fire is the ultimate culture statement. "Culture fit" is real—if you define it intentionally.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="practice-card">
+                    <h4>💡 The "What Would Get Me Fired?" Test</h4>
+                    <p>Ask employees: "What behavior would definitely get someone fired here?" The answers reveal your actual values—not the ones on the wall.</p>
+                </div>
+                <div class="intro-box philosophy">
+                    <h3>🥋 Consistency Is Everything</h3>
+                    <p>Culture erodes through inconsistency. When the star performer violates values and nothing happens, everyone learns that values are optional.</p>
+                    <p><strong>The standard you walk past is the standard you accept.</strong></p>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary" onclick="prevSection()">← Back</button>
+                    <button class="btn btn-primary" onclick="nextSection()">Practice →</button>
+                </div>
+            </div>
+            <div class="section" id="section-3">
+                <h2 class="section-title">✍️ Your Culture Practice</h2>
+                <p class="section-subtitle">Diagnose and design your culture intentionally.</p>
+                <div class="reflection-box">
+                    <h3>📝 Your Actual Culture</h3>
+                    <p>Forget the values on the wall. What behaviors are actually tolerated, celebrated, and repeated in your organization?</p>
+                    <textarea class="reflection-textarea" id="actual" placeholder="The real culture here is..."></textarea>
+                </div>
+                <div class="reflection-box">
+                    <h3>📝 The Gap</h3>
+                    <p>What's the biggest gap between your stated values and your actual culture? Where does behavior contradict what you say you value?</p>
+                    <textarea class="reflection-textarea" id="gap" placeholder="The biggest gap is..."></textarea>
+                </div>
+                <div class="reflection-box">
+                    <h3>📝 One Lever to Pull</h3>
+                    <p>Pick one of the 5 levers (Rituals, Rewards, Stories, Symbols, Selection). What's one change you could make to close the gap?</p>
+                    <textarea class="reflection-textarea" id="lever" placeholder="The lever I'll pull is..."></textarea>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary" onclick="prevSection()">← Back</button>
+                    <button class="btn btn-primary" onclick="showResults()">Complete Stripe 2 →</button>
+                </div>
+            </div>
+            <div class="section" id="section-4">
+                <div class="stripe-earned">
+                    <h2>🎉 Stripe 2 Earned!</h2>
+                    <div class="stripe-visual">🟤 ▬▬</div>
+                    <p>You've completed Culture Design and earned your second Brown Belt stripe.</p>
+                </div>
+                <div class="intro-box">
+                    <h3>📋 What You Learned</h3>
+                    <ul style="margin: 1rem 0 0 1.5rem; color: var(--text-dark);">
+                        <li style="margin-bottom: 0.5rem;"><strong>Culture Equation</strong> — Tolerate + Celebrate + Repeat</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>5 Levers</strong> — Rituals, Rewards, Stories, Symbols, Selection</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Schein's 3 Levels</strong> — Artifacts, Values, Assumptions</li>
+                        <li><strong>Consistency</strong> — The standard you walk past is the standard you accept</li>
+                    </ul>
+                </div>
+                <div class="quote-block">
+                    <p class="quote">"The culture of any organization is shaped by the worst behavior the leader is willing to tolerate."</p>
+                    <p class="author">— Gruenter & Whitaker</p>
+                </div>
+                <div class="nav-buttons">
+                    <a href="brown-belt.html" class="btn btn-secondary">← Back to Brown Belt</a>
+                    <a href="brown-belt-stripe3-gamified.html" class="btn btn-success">Start Stripe 3: Strategic Leadership →</a>
                 </div>
             </div>
         </div>
-
-        <!-- Lesson 1: The Accountability Conversation -->
-        <div class="lesson-card" id="lesson1">
-            <div class="lesson-header" onclick="toggleLesson(1)">
-                <div class="lesson-number" id="lesson1-badge">1</div>
-                <div class="lesson-title">
-                    <h2>The Accountability Conversation</h2>
-                    <p class="lesson-meta">How to address gaps without destroying trust • 25 XP</p>
-                </div>
-            </div>
-            <div class="lesson-content" id="lesson1-content">
-                <div class="content-section">
-                    <h3>💬 The Conversation You're Avoiding</h3>
-                    <p>Someone on your team isn't delivering. You've noticed for weeks. You hope it gets better. It doesn't. Now you're frustrated, they're oblivious, and the gap keeps growing.</p>
-                    
-                    <div class="highlight-box">
-                        <strong>The cost of delay:</strong> Every day you wait to have the accountability conversation, the problem compounds. Trust erodes (team sees you tolerating it). Resentment builds (you're angry they haven't fixed it). Patterns entrench (they think it's acceptable).
-                        <br><br>
-                        <strong>The rule:</strong> Address accountability gaps within 48 hours of noticing them. Not weeks. Not months. 48 hours.
-                    </div>
-
-                    <p>But here's the problem: most leaders either avoid the conversation entirely OR have it so badly that they damage the relationship.</p>
-                    <p>This lesson: how to hold people accountable in a way that preserves trust and drives change.</p>
-                </div>
-
-                <div class="content-section">
-                    <h3>🎯 The Accountability Conversation Framework</h3>
-                    
-                    <p><strong>Step 1: State the Facts (No Interpretation)</strong></p>
-                    <p>Start with observable, specific behavior. Not your feelings about it. Not your judgment. Just what happened.</p>
-                    <ul>
-                        <li>✅ "You committed to shipping the feature by Friday. It's Monday and it's not done."</li>
-                        <li>❌ "You're always late with everything." (Interpretation)</li>
-                        <li>✅ "This is the third standup this week you've missed."</li>
-                        <li>❌ "You don't care about the team." (Judgment)</li>
-                    </ul>
-
-                    <p><strong>Step 2: Name the Impact</strong></p>
-                    <p>Explain WHY this gap matters. Connect behavior to consequences for team/customers/business.</p>
-                    <ul>
-                        <li>"When features miss deadlines, the product team can't plan launches."</li>
-                        <li>"When you skip standups, the team doesn't know if you're blocked."</li>
-                        <li>"When code ships without tests, bugs hit production and customers churn."</li>
-                    </ul>
-
-                    <p><strong>Step 3: Ask for Their Perspective</strong></p>
-                    <p>Create space for their side. Maybe there's context you're missing. Maybe they don't realize the impact.</p>
-                    <ul>
-                        <li>"What happened on your end?"</li>
-                        <li>"What's getting in the way?"</li>
-                        <li>"Help me understand what's going on."</li>
-                    </ul>
-
-                    <p><strong>Step 4: Reaffirm the Standard</strong></p>
-                    <p>Even if there's a good reason, the standard doesn't change. Be clear about what's expected.</p>
-                    <ul>
-                        <li>"I hear that you're overwhelmed. AND we still need features shipped on time."</li>
-                        <li>"I understand standups feel like overhead. AND the team needs visibility."</li>
-                        <li>"External blockers happen. AND when you see them early, you need to renegotiate the commitment."</li>
-                    </ul>
-
-                    <p><strong>Step 5: Agree on Next Actions</strong></p>
-                    <p>Don't leave the conversation vague. What specifically will change? By when? How will you know?</p>
-                    <ul>
-                        <li>"So you'll deliver the feature by Wednesday EOD and Slack me if any blockers come up before then?"</li>
-                        <li>"You'll attend standups this week and let me know if mornings genuinely don't work?"</li>
-                        <li>"You'll pair with Sarah to learn the testing process and have 80% coverage on your next PR?"</li>
-                    </ul>
-
-                    <p><strong>Step 6: State Consequences (If Pattern Continues)</strong></p>
-                    <p>If this is a repeated issue, be clear about what happens if it doesn't change.</p>
-                    <ul>
-                        <li>"If we miss another deadline without early warning, we'll need to reassess your project ownership."</li>
-                        <li>"If standup attendance doesn't improve, we'll escalate to your manager."</li>
-                        <li>"If code quality stays low, we'll pair you with a senior engineer until standards improve."</li>
-                    </ul>
-
-                    <div class="example-box">
-                        <h4>📖 Full Example: Missed Deadline</h4>
-                        <p><strong>Facts:</strong> "Sarah, you committed to shipping the auth API by Friday at 5pm. It's now Monday morning and it's not in production."</p>
-                        <p><strong>Impact:</strong> "The mobile team is blocked waiting for this. We're now 3 days behind on the app launch."</p>
-                        <p><strong>Perspective:</strong> "What happened on your end?"</p>
-                        <p><em>[Sarah explains DB migration took longer than expected]</em></p>
-                        <p><strong>Standard:</strong> "I hear that migrations are tricky. AND when you hit a blocker on Wednesday, that was the time to renegotiate the Friday deadline with the team, not push through and miss it."</p>
-                        <p><strong>Next actions:</strong> "So the auth API ships by Wednesday 2pm, and you'll Slack the team immediately if any other blockers emerge?"</p>
-                        <p><strong>Consequence (if repeat):</strong> "This is the second missed deadline this month. If it happens again, we'll need to bring in support or reduce your scope. I want you to succeed, but the pattern needs to change."</p>
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h3>⚠️ Common Mistakes That Kill Accountability Conversations</h3>
-                    
-                    <p><strong>1. The "Compliment Sandwich" (Bad Advice)</strong></p>
-                    <p>"You're doing great overall... but you missed this deadline... but keep up the good work!"</p>
-                    <p><strong>Why it fails:</strong> The critical message gets buried. They leave thinking "I'm doing great" and miss the accountability.</p>
-
-                    <p><strong>2. The Accusation Opener</strong></p>
-                    <p>"You clearly don't care about this project."</p>
-                    <p><strong>Why it fails:</strong> Starts with judgment, triggers defensiveness, shuts down dialogue.</p>
-
-                    <p><strong>3. The Vague Critique</strong></p>
-                    <p>"I feel like your work quality has slipped."</p>
-                    <p><strong>Why it fails:</strong> No specific behavior to address. They can't fix "feels like."</p>
-
-                    <p><strong>4. The Endless Why</strong></p>
-                    <p>"Why did this happen? But why? But why didn't you...?"</p>
-                    <p><strong>Why it fails:</strong> Feels interrogative, not supportive. Creates parent-child dynamic.</p>
-
-                    <p><strong>5. No Clear Next Step</strong></p>
-                    <p>"Just try to do better next time, okay?"</p>
-                    <p><strong>Why it fails:</strong> No concrete commitment. Pattern will repeat.</p>
-
-                    <div class="highlight-box">
-                        <strong>The golden rule:</strong> Be direct, be specific, be supportive. Not nice (avoiding truth). Not mean (attacking person). Direct and kind.
-                    </div>
-                </div>
-
-                <div class="bjj-connection">
-                    <h4>🥋 The BJJ Parallel: Coaching a Technique</h4>
-                    <p>When a training partner has bad form on a technique, good coaches don't say "you're doing it wrong" or "you suck at this." They say:</p>
-                    <p><em>"Your elbow is flaring out here [fact]. That's why they're escaping [impact]. Try tucking it tight to your ribs [action]. Let's drill it 10 times [commitment]."</em></p>
-                    <p>No shame. No vagueness. Just: here's the gap, here's why it matters, here's how to fix it.</p>
-                    <p><strong>Leadership parallel:</strong> Accountability conversations work the same way. Specific feedback + clear action + supportive pressure.</p>
-                </div>
-
-                <div class="content-section">
-                    <h3>💪 Practice: Script Your Next Conversation</h3>
-                    <p>Think of one accountability gap you need to address this week. Write out:</p>
-                    <ol>
-                        <li><strong>Facts:</strong> What specifically happened? (Observable behavior only)</li>
-                        <li><strong>Impact:</strong> Why does this gap matter? (Team/customer/business consequence)</li>
-                        <li><strong>Question:</strong> What will you ask to understand their perspective?</li>
-                        <li><strong>Standard:</strong> What expectation needs to be clear?</li>
-                        <li><strong>Action:</strong> What specific next step will you agree on?</li>
-                    </ol>
-                    <p>Then have the conversation within 48 hours. See what changes when you address gaps directly.</p>
-                </div>
-
-                <div class="action-buttons">
-                    <button class="btn btn-secondary" onclick="toggleLesson(1)">Close Lesson</button>
-                    <button class="btn btn-primary" onclick="completeLesson(1)">Complete Lesson (+25 XP)</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Lesson 2: Coaching vs. Managing Performance -->
-        <div class="lesson-card" id="lesson2">
-            <div class="lesson-header" onclick="toggleLesson(2)">
-                <div class="lesson-number" id="lesson2-badge">2</div>
-                <div class="lesson-title">
-                    <h2>Coaching vs. Managing Performance</h2>
-                    <p class="lesson-meta">When to support vs. when to exit • 25 XP</p>
-                </div>
-            </div>
-            <div class="lesson-content" id="lesson2-content">
-                <div class="content-section">
-                    <h3>🤔 The Leader's Dilemma</h3>
-                    <p>Someone's underperforming. You care about them. You want them to succeed. So you coach, you support, you give them "one more chance." Months pass. They're still underperforming. You've invested so much you can't quit now.</p>
-                    
-                    <div class="highlight-box">
-                        <strong>The trap:</strong> Confusing coaching with accountability. Coaching helps capable people grow. Accountability addresses persistent gaps in performance or fit.
-                        <br><br>
-                        <strong>The hard truth:</strong> Sometimes the kindest thing is to help someone find a role where they can actually succeed—even if that's not on your team.
-                    </div>
-
-                    <p>This lesson: how to know when to coach vs. when to manage someone out.</p>
-                </div>
-
-                <div class="content-section">
-                    <h3>🎯 Coaching Territory: Grow Capable People</h3>
-                    <p><strong>Use coaching when:</strong></p>
-                    <ul>
-                        <li>✅ They have the foundational skills but need refinement</li>
-                        <li>✅ They're motivated and receptive to feedback</li>
-                        <li>✅ The gap is specific and addressable (technical skill, process knowledge)</li>
-                        <li>✅ You've seen improvement when you provide support</li>
-                        <li>✅ They're new to the role/company and still ramping</li>
-                    </ul>
-
-                    <p><strong>What coaching looks like:</strong></p>
-                    <ul>
-                        <li>"Your code works but isn't readable. Let's pair on refactoring techniques."</li>
-                        <li>"You're struggling with prioritization. Here's how I think about urgent vs. important."</li>
-                        <li>"Your presentations are too detailed. Let's work on executive-level communication."</li>
-                    </ul>
-
-                    <div class="example-box">
-                        <h4>📖 Coaching Success: Junior Engineer</h4>
-                        <p><strong>Gap:</strong> Junior engineer ships buggy code, misses edge cases.</p>
-                        <p><strong>Coaching intervention:</strong></p>
-                        <ul>
-                            <li>Pair programming sessions 2x/week with senior engineer</li>
-                            <li>Checklist for code review self-assessment before submitting</li>
-                            <li>Weekly 30-min feedback on specific PRs</li>
-                        </ul>
-                        <p><strong>Outcome:</strong> Within 6 weeks, bug rate drops 70%. Engineer becomes self-sufficient. Coaching worked because the gap was skill-based and they were motivated.</p>
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h3>⚠️ Performance Management Territory: Address Persistent Gaps</h3>
-                    <p><strong>Use performance management when:</strong></p>
-                    <ul>
-                        <li>❗ You've coached repeatedly but behavior hasn't changed</li>
-                        <li>❗ They're defensive or dismissive of feedback</li>
-                        <li>❗ The gap is fundamental (work ethic, values alignment, critical skill deficit)</li>
-                        <li>❗ Their underperformance is dragging down the team</li>
-                        <li>❗ You find yourself making excuses for them or covering their work</li>
-                    </ul>
-
-                    <p><strong>What performance management looks like:</strong></p>
-                    <ul>
-                        <li>Clear written documentation of gaps</li>
-                        <li>Specific improvement plan with measurable goals and timeline</li>
-                        <li>Regular check-ins to assess progress</li>
-                        <li>Clear consequences if standards aren't met (role change, PIP, exit)</li>
-                    </ul>
-
-                    <div class="highlight-box">
-                        <strong>The shift:</strong> Coaching says "I'm investing in your growth." Performance management says "Here's the minimum standard. If you don't meet it, we'll need to make a change."
-                    </div>
-
-                    <div class="example-box">
-                        <h4>📖 Performance Management: Mid-Level PM</h4>
-                        <p><strong>Gap:</strong> PM repeatedly misses deadlines, blames others, doesn't take ownership.</p>
-                        <p><strong>Coaching attempts (3 months):</strong></p>
-                        <ul>
-                            <li>Weekly check-ins on project status</li>
-                            <li>Training on project management tools</li>
-                            <li>Reduced scope to give breathing room</li>
-                        </ul>
-                        <p><strong>Result:</strong> No improvement. Blame continues. Team frustrated.</p>
-                        <p><strong>Performance management intervention:</strong></p>
-                        <ul>
-                            <li>Documented gaps: 5 missed deadlines in 3 months, no early escalation</li>
-                            <li>30-day improvement plan: ship 2 projects on time, proactive communication about blockers</li>
-                            <li>Weekly manager check-ins with written status</li>
-                            <li>Clear consequence: If goals not met, role reassessment or exit</li>
-                        </ul>
-                        <p><strong>Outcome:</strong> PM either rises to standard (rare but happens) or exits to find better fit. Team morale improves either way.</p>
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h3>🔍 The Decision Matrix</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Question</th>
-                                <th>If YES → Coach</th>
-                                <th>If NO → Manage Out</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Are they improving with feedback?</td>
-                                <td>Keep coaching, they're on trajectory</td>
-                                <td>Move to performance plan</td>
-                            </tr>
-                            <tr>
-                                <td>Do they take ownership of gaps?</td>
-                                <td>Coachable mindset, invest more</td>
-                                <td>Blame/denial = not coachable</td>
-                            </tr>
-                            <tr>
-                                <td>Is the gap fixable with training?</td>
-                                <td>Provide resources and support</td>
-                                <td>Fundamental skill/fit issue</td>
-                            </tr>
-                            <tr>
-                                <td>Do they have the baseline capacity?</td>
-                                <td>Yes, just need development</td>
-                                <td>Role is beyond their ceiling</td>
-                            </tr>
-                            <tr>
-                                <td>Is the team willing to support them?</td>
-                                <td>Team sees potential, will help</td>
-                                <td>Team morale suffers from carrying them</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="content-section">
-                    <h3>💬 The Performance Management Conversation</h3>
-                    <p><strong>When coaching hasn't worked, shift to performance management:</strong></p>
-
-                    <p><em>"Marcus, we've been working together on [gap] for [timeframe]. I've provided coaching on [specific areas]. I'm not seeing the improvement we need. We're now moving to a formal performance improvement plan. Here's what needs to change, by when, and what happens if it doesn't."</em></p>
-
-                    <p><strong>Key elements:</strong></p>
-                    <ul>
-                        <li>Name the pattern (not a one-time miss)</li>
-                        <li>Acknowledge prior coaching attempts</li>
-                        <li>State clearly: this is now performance management, not coaching</li>
-                        <li>Document everything in writing</li>
-                        <li>Set specific timeline (usually 30-90 days)</li>
-                        <li>Be clear about consequences</li>
-                    </ul>
-
-                    <div class="highlight-box">
-                        <strong>Why this matters:</strong> Avoiding this conversation doesn't help the person. It keeps them in a role where they're failing, damages team morale, and delays them from finding work where they can succeed.
-                        <br><br>
-                        <strong>Kindness is clarity:</strong> Telling someone directly "this isn't working" is more respectful than months of false hope.
-                    </div>
-                </div>
-
-                <div class="bjj-connection">
-                    <h4>🥋 The BJJ Parallel: Promotion Standards</h4>
-                    <p>In jiu-jitsu, coaches help students develop. But there's a clear standard for each belt. You can't coach someone into a blue belt if they don't have the required techniques and rolling ability.</p>
-                    <p>Good coaches say: "You're not ready yet. Here's what you need to work on." They don't promote people out of kindness—it would set them up to fail at the next level.</p>
-                    <p><strong>Leadership parallel:</strong> Keeping someone in a role they can't perform isn't kindness. It's avoiding accountability. Sometimes the best thing is to help them find the right level or different path.</p>
-                </div>
-
-                <div class="research-box">
-                    <h4>📚 Research: The Cost of Carrying Low Performers</h4>
-                    <p><strong>Harvard Business Review study:</strong> One low performer on a team decreases overall team performance by 30-40%. High performers leave, others reduce effort ("why should I work hard when they don't?").</p>
-                    <p><strong>Leadership IQ research:</strong> 87% of managers say they knew within the first 6 months if a new hire would succeed. But average time to address underperformance? 18 months.</p>
-                    <p><strong>Key insight:</strong> The gap between knowing and acting is where teams suffer. Fast, clear performance management preserves culture.</p>
-                </div>
-
-                <div class="content-section">
-                    <h3>💪 Practice: Assess Your Team</h3>
-                    <p>For each person on your team, ask:</p>
-                    <ol>
-                        <li>Are they meeting the performance standard for their role?</li>
-                        <li>If not, have I clearly communicated the gap?</li>
-                        <li>Are they improving with coaching?</li>
-                        <li>If I've been coaching for 3+ months with no improvement, why am I still coaching?</li>
-                    </ol>
-                    <p>If you have someone in the "coaching isn't working" category, it's time for the performance management conversation. This week.</p>
-                </div>
-
-                <div class="action-buttons">
-                    <button class="btn btn-secondary" onclick="toggleLesson(2)">Close Lesson</button>
-                    <button class="btn btn-primary" onclick="completeLesson(2)">Complete Lesson (+25 XP)</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Lesson 3: Maintaining Standards Under Pressure -->
-        <div class="lesson-card" id="lesson3">
-            <div class="lesson-header" onclick="toggleLesson(3)">
-                <div class="lesson-number" id="lesson3-badge">3</div>
-                <div class="lesson-title">
-                    <h2>Maintaining Standards Under Pressure</h2>
-                    <p class="lesson-meta">When urgency tempts compromise • 25 XP</p>
-                </div>
-            </div>
-            <div class="lesson-content" id="lesson3-content">
-                <div class="content-section">
-                    <h3>🔥 The Pressure Cooker</h3>
-                    <p>The deadline is tomorrow. The customer is furious. The CEO is asking for updates every hour. Someone on your team says: "We can ship this if we skip the code review and testing. We'll fix it later."</p>
-                    
-                    <div class="highlight-box">
-                        <strong>The moment of truth:</strong> This is where accountability lives or dies. Not in the calm times when it's easy to follow process. In the pressure moments when everyone wants you to bend the rules.
-                        <br><br>
-                        <strong>What you do here defines your team's actual standards.</strong> What you say matters less.
-                    </div>
-
-                    <p>This lesson: how to maintain accountability when the pressure is highest.</p>
-                </div>
-
-                <div class="content-section">
-                    <h3>⚖️ The Accountability Under Pressure Framework</h3>
-                    <p><strong>Three types of pressure moments:</strong></p>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Pressure Type</th>
-                                <th>Example</th>
-                                <th>Accountability Response</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Urgent deadline</strong></td>
-                                <td>Ship feature by Friday or lose customer</td>
-                                <td>Clarify what's negotiable. "We can ship minimal version with full testing, or delay to Monday for complete feature."</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Quality vs. speed</strong></td>
-                                <td>Skip code review to hit deadline</td>
-                                <td>Hold the line. "Our standard is peer review. We ship with quality or we reset expectations on timeline."</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Executive override</strong></td>
-                                <td>CEO says "just get it done"</td>
-                                <td>Name the trade-off. "Understood. To hit this timeline, we're cutting [X]. That means [consequence]. Confirming that's acceptable."</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="content-section">
-                    <h3>🛡️ Five Strategies for Holding Standards Under Pressure</h3>
-                    
-                    <p><strong>1. Distinguish what's flexible from what's sacred</strong></p>
-                    <ul>
-                        <li><em>Flexible:</em> Scope, timeline, resource allocation, sequence</li>
-                        <li><em>Sacred:</em> Quality standards, security protocols, team values (e.g., "we don't blame people publicly"), ethical boundaries</li>
-                    </ul>
-                    <p><strong>Key:</strong> Be clear in advance. Don't decide in the heat of the moment.</p>
-
-                    <p><strong>2. Name the trade-off explicitly</strong></p>
-                    <p>Don't just say "we can't." Say "here's what we'd have to sacrifice."</p>
-                    <p><em>"To ship Friday, we'd skip testing. That historically leads to 3-4 critical bugs in production within a week. Are we willing to accept that customer experience risk?"</em></p>
-
-                    <p><strong>3. Offer alternatives, not just "no"</strong></p>
-                    <ul>
-                        <li>"We can't ship the full feature by Friday, but we can ship V1 with core functionality by Saturday morning."</li>
-                        <li>"We can't skip code review, but we can do rapid review with one senior engineer instead of the full team."</li>
-                        <li>"We can't add this without cutting something else. What's lower priority?"</li>
-                    </ul>
-
-                    <p><strong>4. Escalate with data, not emotion</strong></p>
-                    <p>Don't say: <em>"This is crazy! We can't do this!"</em></p>
-                    <p>Say: <em>"Based on past sprints, this scope would take 40 hours. We have 20 hours available. To hit the deadline, we need to cut scope by 50% or extend timeline by one week. Which do you prefer?"</em></p>
-
-                    <p><strong>5. Be the broken record</strong></p>
-                    <p>In high-pressure situations, people will push multiple times hoping you'll cave. You need to calmly repeat the same boundary.</p>
-                    <p><em>"I understand the urgency. Our standard is peer review before deployment. That's not negotiable. What we can negotiate is scope or timeline."</em></p>
-                    <p>Repeat this 3-4 times if needed. Eventually they'll accept it or make an explicit decision to override (which creates accountability for them).</p>
-                </div>
-
-                <div class="example-box">
-                    <h4>📖 Real Scenario: The Executive Override</h4>
-                    <p><strong>Context:</strong> VP of Sales promises customer a feature will ship Friday. It's Wednesday. Engineering team says it needs two more weeks.</p>
-                    
-                    <p><strong>❌ Low accountability response (manager caves):</strong></p>
-                    <p><em>"Okay team, I know this sucks but we have to deliver. Let's work late and get it done."</em></p>
-                    <p><strong>Result:</strong> Team works 60-hour week, ships buggy feature, customer complains anyway, team burns out and loses trust.</p>
-
-                    <p><strong>✅ High accountability response (manager holds standard):</strong></p>
-                    <p><em>"I understand the commitment to the customer. Based on our current progress, we have three options:</em></p>
-                    <ul>
-                        <li><em>Ship a minimal version Friday (60% of promised features, fully tested)</em></li>
-                        <li><em>Ship the full version in two weeks (100% of features, fully tested)</em></li>
-                        <li><em>Ship the full version Friday with skipped testing (high risk of bugs, not our standard)</em></li>
-                    </ul>
-                    <p><em>Which do you want to commit to? I need to reset expectations with the customer based on your decision."</em></p>
-                    <p><strong>Result:</strong> VP chooses option 1 (minimal version Friday). Customer gets working product, team maintains quality standards, full version ships two weeks later. Trust preserved.</p>
-                </div>
-
-                <div class="content-section">
-                    <h3>🚨 When Pressure Reveals Culture Gaps</h3>
-                    <p>If your team regularly faces "urgent" crises that require cutting corners, you don't have a pressure problem. You have a planning or prioritization problem.</p>
-
-                    <div class="highlight-box">
-                        <strong>Diagnostic questions:</strong>
-                        <ul>
-                            <li>How often do we face "urgent" deadlines? (If it's weekly, nothing is actually urgent.)</li>
-                            <li>Who's creating the pressure? (External customers or internal poor planning?)</li>
-                            <li>Do we learn from these moments or repeat them?</li>
-                        </ul>
-                        <strong>Action:</strong> After the crisis, hold a retro. "What would need to change so this doesn't happen again?" Then actually change it.
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <h3>💬 Scripts for Common Pressure Scenarios</h3>
-                    
-                    <p><strong>Scenario 1: Boss says "just get it done"</strong></p>
-                    <p><em>"I want to deliver. To do that with our quality standard, I need to be clear about what's in scope and what's not. Can we align on priorities?"</em></p>
-
-                    <p><strong>Scenario 2: Team member wants to skip testing</strong></p>
-                    <p><em>"I understand you're trying to move fast. Testing is non-negotiable. What we can do is focus testing on the critical path. Let's identify the 3 must-test scenarios."</em></p>
-
-                    <p><strong>Scenario 3: Customer escalation</strong></p>
-                    <p><em>"We take this seriously. Here's what we can commit to by [date], with our full quality process. If we cut quality, we risk making the problem worse. Is [reduced scope] acceptable for the timeline?"</em></p>
-
-                    <p><strong>Scenario 4: Executive wants to "just this once" override</strong></p>
-                    <p><em>"I hear the urgency. If we make an exception here, it sets a precedent for the team that standards are negotiable under pressure. Is that the culture we want?"</em></p>
-                </div>
-
-                <div class="bjj-connection">
-                    <h4>🥋 The BJJ Parallel: Rolling Light When Injured</h4>
-                    <p>You have a sore shoulder. Your training partner is a competitive person who likes to go hard. The round starts.</p>
-                    <p><strong>Low accountability:</strong> You try to keep up, don't want to seem weak. Your shoulder gets worse. Now you're out for a month.</p>
-                    <p><strong>High accountability:</strong> Before the round: <em>"Hey, my shoulder's tweaked. I need to roll light today. If I tap or slow down, I need you to respect that."</em></p>
-                    <p><strong>Leadership parallel:</strong> Protecting your team's sustainable pace isn't weakness. It's strategic. Burning out your team to hit one deadline means you lose capacity for the next three months.</p>
-                </div>
-
-                <div class="research-box">
-                    <h4>📚 Research: The Cost of Corner-Cutting</h4>
-                    <p><strong>Stanford study on technical debt:</strong> For every week of "urgent" shortcuts, teams add 2-3 weeks of future work fixing the problems created. The shortcut isn't faster—it's a loan with high interest.</p>
-                    <p><strong>Google's Project Aristotle:</strong> Teams with psychological safety (including permission to say "no" or "we need more time") outperform teams with fear-based urgency culture by 2x.</p>
-                    <p><strong>Key insight:</strong> Sustainable high performance requires protecting standards, especially under pressure.</p>
-                </div>
-
-                <div class="content-section">
-                    <h3>💪 Practice: Your Pressure Moments</h3>
-                    <p>Reflect on the last time you faced pressure to compromise standards:</p>
-                    <ol>
-                        <li>What was the pressure? (deadline, executive request, customer escalation)</li>
-                        <li>What standard were you asked to compromise? (quality, process, values)</li>
-                        <li>What did you do? (hold the line, cave, negotiate)</li>
-                        <li>What was the outcome?</li>
-                        <li>What would you do differently next time?</li>
-                    </ol>
-                    
-                    <div class="highlight-box">
-                        <strong>Action item:</strong> Identify your team's "sacred standards" (3-5 non-negotiables). Write them down. Share with your team. The next time pressure hits, you'll know exactly what to protect.
-                    </div>
-                </div>
-
-                <div class="action-buttons">
-                    <button class="btn btn-secondary" onclick="toggleLesson(3)">Close Lesson</button>
-                    <button class="btn btn-primary" onclick="completeLesson(3)">Complete Lesson (+25 XP)</button>
-                </div>
-            </div>
-        </div>
-
     </div>
-
-    <!-- Achievement Popup -->
-    <div class="achievement-popup" id="achievementPopup">
-        <div class="achievement-icon">🎉</div>
-        <div class="achievement-title" id="achievementTitle">Lesson Complete!</div>
-        <div class="achievement-desc" id="achievementDesc">Great work!</div>
-        <div class="achievement-xp" id="achievementXP">+25 XP</div>
-    </div>
-
-    <div class="overlay" id="overlay" onclick="closeAchievement()"></div>
-
     <script>
-        // Constants
-        const TOTAL_LESSONS = 3;
-        const XP_PER_LESSON = 25;
-        const MODULE_BONUS_XP = 100;
-        const STORAGE_KEY = 'brownbeltStripe2Completed';
-        const XP_KEY = 'brownbeltStripe2ModuleXP';
-
-        // Load progress
-        function loadProgress() {
-            const completed = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-            const moduleXP = parseInt(localStorage.getItem(XP_KEY) || '0');
-
-            completed.forEach(lessonNum => {
-                markLessonComplete(lessonNum);
-            });
-
-            updateAllStats();
-        }
-
-        // Toggle lesson expansion
-        function toggleLesson(lessonNum) {
-            const content = document.getElementById(`lesson${lessonNum}-content`);
-            if (content) {
-                content.classList.toggle('active');
-            }
-        }
-
-        // Mark lesson visually complete
-        function markLessonComplete(lessonNum) {
-            const badge = document.getElementById(`lesson${lessonNum}-badge`);
-            const card = document.getElementById(`lesson${lessonNum}`);
-            
-            if (badge) {
-                badge.classList.add('complete');
-                badge.textContent = '✓';
-            }
-            if (card) {
-                card.style.borderLeftColor = '#22c55e';
-            }
-        }
-
-        // Update all statistics
-        function updateAllStats() {
-            const completed = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-            let moduleXP = parseInt(localStorage.getItem(XP_KEY) || '0');
-
-            // Check if stripe earned
-            let stripesEarned = JSON.parse(localStorage.getItem('brownStripesEarned') || '[]');
-            const stripeEarned = stripesEarned.includes(2);
-
-            // Update displays
-            document.getElementById('lessonsDisplay').textContent = `${completed.length}/${TOTAL_LESSONS}`;
-            document.getElementById('xpDisplay').textContent = moduleXP;
-            document.getElementById('badgesDisplay').textContent = stripeEarned ? '✅ Earned' : '0/1';
-
-            const progress = (completed.length / TOTAL_LESSONS) * 100;
-            document.getElementById('progressBar').style.width = progress + '%';
-            document.getElementById('progressText').textContent = 
-                `${completed.length} of ${TOTAL_LESSONS} lessons completed`;
-            document.getElementById('xpText').textContent = 
-                `${moduleXP} / ${TOTAL_LESSONS * XP_PER_LESSON + MODULE_BONUS_XP} XP`;
-        }
-
-        // Complete a lesson
-        function completeLesson(lessonNum) {
-            let completed = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-            let moduleXP = parseInt(localStorage.getItem(XP_KEY) || '0');
-            
-            if (completed.includes(lessonNum)) {
-                showAchievement('Already Complete', 'You\'ve already completed this lesson', 'No XP');
-                return;
-            }
-            
-            // Add to completed
-            completed.push(lessonNum);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(completed));
-            
-            // Add XP
-            moduleXP += XP_PER_LESSON;
-            
-            // Check if all lessons complete - award stripe and bonus
-            if (completed.length === TOTAL_LESSONS) {
-                moduleXP += MODULE_BONUS_XP;
-                
-                // Award stripe 2
-                let stripesEarned = JSON.parse(localStorage.getItem('brownStripesEarned') || '[]');
-                if (!stripesEarned.includes(2)) {
-                    stripesEarned.push(2);
-                    localStorage.setItem('brownStripesEarned', JSON.stringify(stripesEarned));
-                }
-            }
-            
-            localStorage.setItem(XP_KEY, moduleXP.toString());
-            
-            // Add to global XP
-            let totalXP = parseInt(localStorage.getItem('totalXP') || '0');
-            const xpAwarded = (completed.length === TOTAL_LESSONS) ? XP_PER_LESSON + MODULE_BONUS_XP : XP_PER_LESSON;
-            totalXP += xpAwarded;
-            localStorage.setItem('totalXP', totalXP.toString());
-            
-            // Mark complete
-            markLessonComplete(lessonNum);
-            updateAllStats();
-            
-            if (completed.length === TOTAL_LESSONS) {
-                showAchievement('🟤 Stripe 2 Earned!', 'All lessons complete! You can drive accountability effectively', `+${xpAwarded} XP`);
-            } else {
-                showAchievement(`Lesson ${lessonNum} Complete!`, `Great work on mastering this concept`, `+${XP_PER_LESSON} XP`);
-            }
-        }
-
-        // Show achievement popup
-        function showAchievement(title, desc, xp) {
-            document.getElementById('achievementTitle').textContent = title;
-            document.getElementById('achievementDesc').textContent = desc;
-            document.getElementById('achievementXP').textContent = xp;
-            document.getElementById('achievementPopup').classList.add('show');
-            document.getElementById('overlay').classList.add('show');
-        }
-
-        // Close achievement popup
-        function closeAchievement() {
-            document.getElementById('achievementPopup').classList.remove('show');
-            document.getElementById('overlay').classList.remove('show');
-        }
-
-        // Initialize on page load
-        loadProgress();
+        let currentSection = 1; const totalSections = 4;
+        function nextSection() { if (currentSection < totalSections) { document.getElementById(`section-${currentSection}`).classList.remove('active'); currentSection++; document.getElementById(`section-${currentSection}`).classList.add('active'); updateProgress(); window.scrollTo({ top: 0, behavior: 'smooth' }); } }
+        function prevSection() { if (currentSection > 1) { document.getElementById(`section-${currentSection}`).classList.remove('active'); currentSection--; document.getElementById(`section-${currentSection}`).classList.add('active'); updateProgress(); window.scrollTo({ top: 0, behavior: 'smooth' }); } }
+        function updateProgress() { const progress = ((currentSection - 1) / (totalSections - 1)) * 100; document.getElementById('progress-fill').style.width = `${progress}%`; document.getElementById('progress-text').textContent = `${Math.round(progress)}%`; }
+        function showResults() { localStorage.setItem('brownBeltStripe2Complete', 'true'); ['actual', 'gap', 'lever'].forEach(f => { const el = document.getElementById(f); if (el && el.value) localStorage.setItem(`culture_${f}`, el.value); }); nextSection(); }
+        updateProgress();
     </script>
 </body>
 </html>

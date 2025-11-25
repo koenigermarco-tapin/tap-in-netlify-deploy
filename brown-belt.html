@@ -3,508 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🟤 Brown Belt: Own Your Life - Radical Accountability</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Brown Belt: Systems & Strategy | TAP-IN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            min-height: 100vh;
-            padding: 20px;
-            color: #1e293b;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .header {
-            text-align: center;
-            padding: 60px 20px 40px;
-            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-            border-radius: 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 20px rgba(217, 119, 6, 0.3);
-            color: white;
-        }
-
-        .belt-icon {
-            font-size: 80px;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 2.8em;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .theme {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            font-weight: 500;
-            opacity: 0.95;
-        }
-
-        .subtitle {
-            font-size: 1.2em;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.8;
-            opacity: 0.9;
-        }
-
-        .prerequisite-banner {
-            background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
-            border-left: 6px solid #dc2626;
-            border-radius: 12px;
-            padding: 20px 30px;
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .prerequisite-banner .icon {
-            font-size: 2em;
-        }
-
-        .prerequisite-text {
-            flex: 1;
-        }
-
-        .prerequisite-title {
-            font-weight: 600;
-            font-size: 1.2em;
-            color: #7f1d1d;
-            margin-bottom: 5px;
-        }
-
-        .prerequisite-desc {
-            color: #991b1b;
-            font-size: 1em;
-        }
-
-        .philosophy {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 40px;
-            border-left: 6px solid #d97706;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .philosophy h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: #1e293b;
-        }
-
-        .philosophy p {
-            font-size: 1.1em;
-            line-height: 1.8;
-            color: #475569;
-            margin-bottom: 15px;
-        }
-
-        .philosophy .quote {
-            background: #fffbeb;
-            border-left: 4px solid #d97706;
-            padding: 20px;
-            margin: 25px 0;
-            font-style: italic;
-            font-size: 1.15em;
-            color: #92400e;
-        }
-
-        .progress-section {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .progress-title {
-            font-size: 1.5em;
-            font-weight: 600;
-            color: #1e293b;
-        }
-
-        .progress-count {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: #d97706;
-        }
-
-        .progress-bar-container {
-            background: #f1f5f9;
-            height: 12px;
-            border-radius: 6px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
-
-        .progress-bar-fill {
-            background: linear-gradient(90deg, #d97706 0%, #b45309 100%);
-            height: 100%;
-            width: 0%;
-            transition: width 0.5s ease;
-            border-radius: 6px;
-        }
-
-        .progress-text {
-            text-align: center;
-            color: #64748b;
-            font-size: 0.95em;
-            margin-top: 10px;
-        }
-
-        .section-title {
-            font-size: 2em;
-            margin-bottom: 30px;
-            color: #1e293b;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .assessment-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .assessment-card {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .assessment-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            border-color: #d97706;
-        }
-
-        .assessment-card.locked {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .assessment-card.locked:hover {
-            transform: none;
-            border-color: transparent;
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .card-icon {
-            font-size: 2.5em;
-        }
-
-        .status-badge {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            font-weight: 600;
-        }
-
-        .status-available {
-            background: #d97706;
-            color: white;
-        }
-
-        .status-locked {
-            background: #94a3b8;
-            color: white;
-        }
-
-        .card-title {
-            font-size: 1.4em;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #1e293b;
-        }
-
-        .card-duration {
-            font-size: 0.95em;
-            color: #64748b;
-            margin-bottom: 15px;
-        }
-
-        .card-description {
-            font-size: 1em;
-            color: #475569;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .card-button {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 1em;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .card-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.4);
-        }
-
-        .card-button.locked {
-            background: #cbd5e1;
-            color: #64748b;
-            cursor: not-allowed;
-        }
-
-        .card-button.locked:hover {
-            transform: none;
-            box-shadow: none;
-        }
-
-        .criteria-section {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .criteria-section h2 {
-            font-size: 2em;
-            margin-bottom: 25px;
-            color: #1e293b;
-            text-align: center;
-        }
-
-        .criteria-list {
-            list-style: none;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .criteria-item {
-            display: flex;
-            align-items: center;
-            padding: 18px;
-            margin-bottom: 12px;
-            background: #f8fafc;
-            border-radius: 12px;
-            border-left: 4px solid #d97706;
-        }
-
-        .criteria-checkbox {
-            width: 24px;
-            height: 24px;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-
-        .criteria-text {
-            font-size: 1.1em;
-            color: #334155;
-        }
-
-        .nav-section {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        .nav-link {
-            flex: 1;
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #1e293b;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .nav-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-link.back {
-            border: 2px solid #a855f7;
-        }
-
-        .nav-link.next {
-            border: 2px solid #1a1a1a;
-            background: linear-gradient(135deg, #f5f5f5 0%, #e5e5e5 100%);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary-navy: #1a365d; --secondary-navy: #334155; --accent-red: #b91c1c; --accent-purple: #a78bfa; --success-green: #38a169; --warning-orange: #dd6b20; --card-bg: #ffffff; --border-light: #e2e8f0; --text-dark: #1e293b; --text-muted: #64748b; --light-bg: #f8fafc; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #78350f 0%, #92400e 100%); min-height: 100vh; padding: 2rem 1rem; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 2rem; color: white; }
+        .belt-badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.5rem 1.5rem; border-radius: 25px; font-size: 0.9rem; margin-bottom: 1rem; }
+        .header h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .stripe-progress { display: flex; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
+        .stripe { width: 60px; height: 8px; background: rgba(255,255,255,0.3); border-radius: 4px; }
+        .stripe.complete { background: var(--accent-red); }
+        .main-card { background: white; border-radius: 20px; padding: 2.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.2); margin-bottom: 2rem; }
+        .section-title { font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 1rem; }
+        .intro-box { background: var(--light-bg); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .intro-box h3 { color: var(--primary-navy); font-size: 1.1rem; margin-bottom: 0.75rem; }
+        .intro-box p { color: var(--text-dark); font-size: 0.95rem; margin-bottom: 0.75rem; line-height: 1.7; }
+        .intro-box p:last-child { margin-bottom: 0; }
+        .intro-box strong { color: var(--primary-navy); }
+        .intro-box.philosophy { background: linear-gradient(135deg, var(--light-bg) 0%, #e2e8f0 100%); border-left: 6px solid var(--primary-navy); }
+        .intro-box.philosophy em { color: var(--accent-purple); }
+        .intro-box.research { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%); border: none; }
+        .intro-box.research h3 { color: #fff; }
+        .intro-box.research p { color: #e2e8f0; }
+        .intro-box.research strong { color: var(--accent-purple); }
+        .intro-box.warning { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border-left: 6px solid var(--warning-orange); }
+        .intro-box.warning h3 { color: #92400e; }
+        .intro-box.warning p { color: #78350f; }
+        .stripe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .stripe-card { background: white; border: 2px solid var(--border-light); border-radius: 16px; padding: 1.5rem; transition: all 0.3s; }
+        .stripe-card:hover { border-color: #92400e; transform: translateY(-4px); box-shadow: 0 10px 30px rgba(120, 53, 15, 0.15); }
+        .stripe-card.complete { border-color: var(--success-green); background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); }
+        .stripe-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .stripe-number { width: 40px; height: 40px; background: linear-gradient(135deg, #78350f 0%, #92400e 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .stripe-card.complete .stripe-number { background: linear-gradient(135deg, var(--success-green) 0%, #2f855a 100%); }
+        .stripe-title { font-weight: 700; color: var(--text-dark); }
+        .stripe-subtitle { font-size: 0.85rem; color: var(--text-muted); }
+        .stripe-description { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+        .stripe-topics { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+        .topic-tag { background: #fef3c7; color: #92400e; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; }
+        .btn { display: inline-block; padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer; }
+        .btn-primary { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(26, 54, 93, 0.3); }
+        .btn-success { background: linear-gradient(135deg, var(--success-green) 0%, #2f855a 100%); color: white; }
+        .btn-secondary { background: #edf2f7; color: var(--text-dark); }
+        .principles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .principle-card { background: linear-gradient(135deg, var(--secondary-navy) 0%, var(--text-dark) 100%); border-radius: 12px; padding: 1.25rem; text-align: center; }
+        .principle-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .principle-card h4 { color: white; font-size: 0.95rem; margin-bottom: 0.5rem; }
+        .principle-card p { color: #cbd5e1; font-size: 0.85rem; }
+        .quote-block { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-radius: 12px; padding: 1.5rem; text-align: center; margin: 1.5rem 0; }
+        .quote-block .quote { font-size: 1.1rem; color: white; font-style: italic; margin-bottom: 0.75rem; }
+        .quote-block .author { color: var(--accent-purple); font-weight: 600; font-size: 0.9rem; }
+        .nav-buttons { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2rem; }
+        @media (max-width: 768px) { body { padding: 1rem; } .main-card { padding: 1.5rem; } .header h1 { font-size: 2rem; } .nav-buttons { flex-direction: column; } .btn { width: 100%; text-align: center; } }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="belt-icon">🟤</div>
-            <h1>Brown Belt</h1>
-            <div class="theme">Own Your Life</div>
-            <div class="subtitle">
-                Radical Accountability • Extreme Ownership • No Excuses
+            <div class="belt-badge">🟤 Brown Belt</div>
+            <h1>Systems & Strategy</h1>
+            <p>From team alignment to organizational impact. Brown Belt teaches you to design systems that scale.</p>
+            <div class="stripe-progress">
+                <div class="stripe" id="stripe-1"></div>
+                <div class="stripe" id="stripe-2"></div>
+                <div class="stripe" id="stripe-3"></div>
+                <div class="stripe" id="stripe-4"></div>
             </div>
         </div>
 
-        <div class="prerequisite-banner">
-            <div class="icon">⚠️</div>
-            <div class="prerequisite-text">
-                <div class="prerequisite-title">Purple Belt Required</div>
-                <div class="prerequisite-desc">Complete all Purple Belt requirements before starting Brown Belt work</div>
+        <div class="main-card">
+            <h2 class="section-title">🟤 The Systems Challenge</h2>
+            
+            <div class="intro-box warning">
+                <h3>⚠️ You Can't Scale Heroics</h3>
+                <p>Great individual leadership doesn't scale. <strong>Systems scale.</strong> Brown Belt is where you learn to build organizations that work without you in the room.</p>
+                <p>This is the transition from leading teams to leading organizations.</p>
             </div>
-        </div>
 
-        <div class="philosophy">
-            <h2>Extreme Ownership</h2>
-            <p>
-                You know yourself (White Belt). You can express yourself (Blue Belt). You've chosen your path (Purple Belt). Now it's time to own everything.
-            </p>
-            <p>
-                Brown Belt is about radical accountability—taking full ownership of your life, your results, and your impact on others. No more blaming circumstances, other people, or bad luck. If it's in your life, you own it.
-            </p>
-            <div class="quote">
-                "There are no bad teams, only bad leaders." — Jocko Willink
+            <div class="intro-box">
+                <h3>What Changes at Brown Belt</h3>
+                <p>Purple Belt aligned your team. Brown Belt asks: <strong>How do we align the entire organization?</strong> How do we build culture that persists? How do we create change that sticks?</p>
+                <p>You're no longer just a leader—you're an architect.</p>
             </div>
-            <p>
-                You'll get 360° feedback, assess your actual impact on others, and build accountability systems that ensure you follow through. This is where excuses die and ownership lives.
-            </p>
-        </div>
 
-        <div class="progress-section">
-            <div class="progress-header">
-                <div class="progress-title">Your Progress</div>
-                <div class="progress-count" id="progressCount">0/3</div>
+            <div class="intro-box philosophy">
+                <h3>🥋 The BJJ Principle: Game Development</h3>
+                <p>Brown belts in BJJ don't just execute techniques—they develop their own "game." They understand <strong>how all the pieces connect</strong> into a cohesive system.</p>
+                <p>Organizational leadership is the same. You're not just running plays—you're designing the playbook.</p>
+                <p><em>"Systems run the game. Game runs the player."</em></p>
             </div>
-            <div class="progress-bar-container">
-                <div class="progress-bar-fill" id="progressBar"></div>
-            </div>
-            <div class="progress-text">Complete all requirements to earn your Brown Belt</div>
-        </div>
 
-        <div class="section-title">🎯 Brown Belt Assessments & Work</div>
-        
-        <div class="assessment-grid">
-            <div class="assessment-card" id="card-impact">
-                <div class="card-header">
-                    <div class="card-icon">💫</div>
-                    <div class="status-badge status-available">Available</div>
+            <div class="intro-box research">
+                <h3>📊 The Research</h3>
+                <p><strong>Edwards Deming</strong> proved that 94% of problems are system problems, not people problems. Yet most leaders blame individuals.</p>
+                <p>Build better systems, and "people problems" disappear. <strong>The system is the solution.</strong></p>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 2rem;">🥋 Brown Belt Principles</h2>
+
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <div class="icon">⚙️</div>
+                    <h4>Systems Thinking</h4>
+                    <p>See the whole, not just the parts. Understand how everything connects.</p>
                 </div>
-                <div class="card-title">Team Impact Profile</div>
-                <div class="card-duration">⏱️ 15-18 minutes</div>
-                <div class="card-description">
-                    Understand your actual impact on teams and individuals. Your blind spots. Your patterns. Your effect on others.
+                <div class="principle-card">
+                    <div class="icon">🏗️</div>
+                    <h4>Culture Design</h4>
+                    <p>Culture isn't accidental. It's designed through rituals, rewards, and repetition.</p>
                 </div>
-                <a href="team-assessment-enhanced-v2.html" class="card-button">Start Assessment →</a>
+                <div class="principle-card">
+                    <div class="icon">🎯</div>
+                    <h4>Strategic Leverage</h4>
+                    <p>Find the small changes that create massive impact.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="icon">🔄</div>
+                    <h4>Change Leadership</h4>
+                    <p>Transform organizations without breaking them.</p>
+                </div>
             </div>
 
-            <div class="assessment-card" id="card-360">
-                <div class="card-header">
-                    <div class="card-icon">🔄</div>
-                    <div class="status-badge status-available">Available</div>
+            <h2 class="section-title" style="margin-top: 2rem;">📚 Your Brown Belt Stripes</h2>
+
+            <div class="stripe-grid">
+                <div class="stripe-card" id="card-1">
+                    <div class="stripe-header">
+                        <div class="stripe-number">1</div>
+                        <div>
+                            <div class="stripe-title">Systems Thinking</div>
+                            <div class="stripe-subtitle">Seeing the Whole Picture</div>
+                        </div>
+                    </div>
+                    <p class="stripe-description">Learn to see organizations as interconnected systems, not isolated parts. Find leverage points.</p>
+                    <div class="stripe-topics">
+                        <span class="topic-tag">Feedback Loops</span>
+                        <span class="topic-tag">Leverage</span>
+                        <span class="topic-tag">Root Cause</span>
+                    </div>
+                    <a href="brown-belt-stripe1-gamified.html" class="btn btn-primary">Start Stripe 1 →</a>
                 </div>
-                <div class="card-title">360° Feedback Collection</div>
-                <div class="card-duration">⏱️ 15-20 minutes</div>
-                <div class="card-description">
-                    Self-assess across 12 leadership dimensions. See how you rate yourself on accountability, vulnerability, and conflict.
+
+                <div class="stripe-card" id="card-2">
+                    <div class="stripe-header">
+                        <div class="stripe-number">2</div>
+                        <div>
+                            <div class="stripe-title">Culture Design</div>
+                            <div class="stripe-subtitle">Building Intentional Culture</div>
+                        </div>
+                    </div>
+                    <p class="stripe-description">Culture isn't what you say—it's what you tolerate. Learn to design culture that scales.</p>
+                    <div class="stripe-topics">
+                        <span class="topic-tag">Values</span>
+                        <span class="topic-tag">Rituals</span>
+                        <span class="topic-tag">Norms</span>
+                    </div>
+                    <a href="brown-belt-stripe2-gamified.html" class="btn btn-primary">Start Stripe 2 →</a>
                 </div>
-                <a href="360-feedback-assessment.html" class="card-button">Start Assessment →</a>
+
+                <div class="stripe-card" id="card-3">
+                    <div class="stripe-header">
+                        <div class="stripe-number">3</div>
+                        <div>
+                            <div class="stripe-title">Strategic Leadership</div>
+                            <div class="stripe-subtitle">Long-Term Thinking</div>
+                        </div>
+                    </div>
+                    <p class="stripe-description">Move from reactive to proactive. Build strategy that survives contact with reality.</p>
+                    <div class="stripe-topics">
+                        <span class="topic-tag">Vision</span>
+                        <span class="topic-tag">Priorities</span>
+                        <span class="topic-tag">Trade-offs</span>
+                    </div>
+                    <a href="brown-belt-stripe3-gamified.html" class="btn btn-primary">Start Stripe 3 →</a>
+                </div>
+
+                <div class="stripe-card" id="card-4">
+                    <div class="stripe-header">
+                        <div class="stripe-number">4</div>
+                        <div>
+                            <div class="stripe-title">Leading Change</div>
+                            <div class="stripe-subtitle">Transformation at Scale</div>
+                        </div>
+                    </div>
+                    <p class="stripe-description">Most change efforts fail. Learn the psychology of change and how to make it stick.</p>
+                    <div class="stripe-topics">
+                        <span class="topic-tag">Resistance</span>
+                        <span class="topic-tag">Adoption</span>
+                        <span class="topic-tag">Momentum</span>
+                    </div>
+                    <a href="brown-belt-stripe4-gamified.html" class="btn btn-primary">Start Stripe 4 →</a>
+                </div>
             </div>
 
-            <div class="assessment-card" id="card-accountability">
-                <div class="card-header">
-                    <div class="card-icon">📋</div>
-                    <div class="status-badge status-available">Available</div>
-                </div>
-                <div class="card-title">Accountability Audit</div>
-                <div class="card-duration">⏱️ 10-12 minutes</div>
-                <div class="card-description">
-                    10 real scenarios reveal your accountability patterns. Where do you avoid? Where do you deflect? Find your blind spots.
-                </div>
-                <a href="accountability-audit-assessment.html" class="card-button">Start Assessment →</a>
+            <div class="quote-block">
+                <p class="quote">"Every system is perfectly designed to get the results it gets."</p>
+                <p class="author">— W. Edwards Deming</p>
             </div>
-        </div>
 
-        <div class="criteria-section">
-            <h2>🏆 Brown Belt Completion Criteria</h2>
-            <ul class="criteria-list">
-                <li class="criteria-item">
-                    <input type="checkbox" class="criteria-checkbox" id="criteria1">
-                    <span class="criteria-text">Complete Team Impact Profile assessment</span>
-                </li>
-                <li class="criteria-item">
-                    <input type="checkbox" class="criteria-checkbox" id="criteria2">
-                    <span class="criteria-text">Collect and process 360° feedback from 3-5 people</span>
-                </li>
-                <li class="criteria-item">
-                    <input type="checkbox" class="criteria-checkbox" id="criteria3">
-                    <span class="criteria-text">Complete Accountability Audit</span>
-                </li>
-                <li class="criteria-item">
-                    <input type="checkbox" class="criteria-checkbox" id="criteria4">
-                    <span class="criteria-text">Establish accountability partner relationship</span>
-                </li>
-                <li class="criteria-item">
-                    <input type="checkbox" class="criteria-checkbox" id="criteria5">
-                    <span class="criteria-text">6 weeks of ownership tracking ("What did I own today?")</span>
-                </li>
-            </ul>
-        </div>
-
-        <div class="nav-section">
-            <a href="purple-belt.html" class="nav-link back">← Back: Purple Belt</a>
-            <a href="index.html" class="nav-link">🏠 The Gym</a>
-            <a href="black-belt.html" class="nav-link next">Next: Black Belt →</a>
+            <div class="nav-buttons">
+                <a href="purple-belt.html" class="btn btn-secondary">← Back to Purple Belt</a>
+                <a href="black-belt.html" class="btn btn-primary">Preview Black Belt →</a>
+            </div>
         </div>
     </div>
 
     <script>
-        function updateProgress() {
-            const completed = JSON.parse(localStorage.getItem('brownBeltProgress') || '[]');
-            const total = 3;
-            const progressBar = document.getElementById('progressBar');
-            const progressCount = document.getElementById('progressCount');
-            
-            const percentage = (completed.length / total) * 100;
-            progressBar.style.width = percentage + '%';
-            progressCount.textContent = completed.length + '/' + total;
+        function updateStripeProgress() {
+            for (let i = 1; i <= 4; i++) {
+                if (localStorage.getItem(`brownBeltStripe${i}Complete`) === 'true') {
+                    document.getElementById(`stripe-${i}`).classList.add('complete');
+                    document.getElementById(`card-${i}`).classList.add('complete');
+                }
+            }
         }
-
-        updateProgress();
+        updateStripeProgress();
     </script>
 </body>
 </html>
