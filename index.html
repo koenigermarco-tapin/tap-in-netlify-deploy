@@ -936,5 +936,67 @@
     <script>
         // Simple analytics tracking (analytics removed for production)
     </script>
+    
+    <script>
+        // Belt Locking System
+        document.addEventListener('DOMContentLoaded', function() {
+            const beltsUnlocked = localStorage.getItem('beltsUnlocked') === 'true';
+            
+            if (!beltsUnlocked) {
+                // Lock all belts except White Belt
+                const beltCards = document.querySelectorAll('.assessment-card');
+                
+                beltCards.forEach((card, index) => {
+                    // Skip White Belt (index 0 after belt assessment card)
+                    const cardTitle = card.querySelector('h2')?.textContent || '';
+                    
+                    if (cardTitle.includes('Blue Belt') || 
+                        cardTitle.includes('Purple Belt') || 
+                        cardTitle.includes('Brown Belt') || 
+                        cardTitle.includes('Black Belt')) {
+                        
+                        // Add locked styling
+                        card.style.opacity = '0.6';
+                        card.style.position = 'relative';
+                        
+                        // Add lock overlay
+                        const lockOverlay = document.createElement('div');
+                        lockOverlay.style.cssText = `
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            background: rgba(255, 255, 255, 0.9);
+                            border-radius: 20px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            z-index: 10;
+                            cursor: not-allowed;
+                        `;
+                        
+                        lockOverlay.innerHTML = `
+                            <div style="font-size: 4em; margin-bottom: 10px;">🔒</div>
+                            <div style="color: #1a365d; font-size: 1.3em; font-weight: 600; margin-bottom: 10px;">Belt Locked</div>
+                            <div style="color: #64748b; text-align: center; padding: 0 20px; margin-bottom: 20px;">Complete the Belt Assessment to unlock all training</div>
+                            <a href="belt-assessment.html" class="btn" style="background: linear-gradient(135deg, #92400e 0%, #78350f 100%); font-size: 1.1em; padding: 15px 35px; text-decoration: none; color: white; border-radius: 10px; box-shadow: 0 4px 15px rgba(146, 64, 14, 0.3); transition: all 0.3s;">Take Assessment →</a>
+                        `;
+                        
+                        card.style.position = 'relative';
+                        card.appendChild(lockOverlay);
+                        
+                        // Disable the original button
+                        const btn = card.querySelector('.btn');
+                        if (btn && btn !== lockOverlay.querySelector('.btn')) {
+                            btn.style.pointerEvents = 'none';
+                            btn.style.opacity = '0.5';
+                        }
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
