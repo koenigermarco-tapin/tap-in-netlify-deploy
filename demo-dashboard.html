@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tap-In Analytics Dashboard (DEMO)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .demo-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        body {
+            padding-top: 50px;
+        }
+        .stat-card {
+            transition: transform 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+        }
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        .pulse-demo {
+            animation: pulse-slow 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- DEMO BANNER -->
+    <div class="demo-banner pulse-demo">
+        🎭 DEMONSTRATION DATA - Not Real Leads - For Sales Presentations Only 🎭
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">Tap-In Analytics Dashboard</h1>
+            <p class="text-gray-600">Leadership development insights & lead generation</p>
+        </div>
+
+        <!-- Key Metrics -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Total Leads -->
+            <div class="stat-card bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-lg p-6 text-white">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-blue-100 text-sm font-medium">Total Leads</p>
+                        <p class="text-4xl font-bold mt-2">127</p>
+                        <p class="text-blue-100 text-xs mt-2">↑ 23% from last month</p>
+                    </div>
+                    <div class="text-6xl opacity-20">📊</div>
+                </div>
+            </div>
+
+            <!-- Qualified Leads -->
+            <div class="stat-card bg-gradient-to-br from-green-500 to-green-600 rounded-lg shadow-lg p-6 text-white">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-green-100 text-sm font-medium">Qualified Leads</p>
+                        <p class="text-4xl font-bold mt-2">43</p>
+                        <p class="text-green-100 text-xs mt-2">34% conversion rate</p>
+                    </div>
+                    <div class="text-6xl opacity-20">✅</div>
+                </div>
+            </div>
+
+            <!-- Game Plays -->
+            <div class="stat-card bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg shadow-lg p-6 text-white">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-purple-100 text-sm font-medium">Game Plays</p>
+                        <p class="text-4xl font-bold mt-2">584</p>
+                        <p class="text-purple-100 text-xs mt-2">Avg 4.6 per lead</p>
+                    </div>
+                    <div class="text-6xl opacity-20">🎮</div>
+                </div>
+            </div>
+
+            <!-- Revenue Pipeline -->
+            <div class="stat-card bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg shadow-lg p-6 text-white">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-orange-100 text-sm font-medium">Revenue Pipeline</p>
+                        <p class="text-4xl font-bold mt-2">€84K</p>
+                        <p class="text-orange-100 text-xs mt-2">14 active opportunities</p>
+                    </div>
+                    <div class="text-6xl opacity-20">💰</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <!-- Leads Over Time -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">Leads Over Time</h3>
+                <canvas id="leadsChart"></canvas>
+            </div>
+
+            <!-- Game Popularity -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">Game Popularity</h3>
+                <canvas id="gamesChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Leads Table -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-bold text-gray-900">Recent Leads</h3>
+                <button onclick="exportToCSV()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
+                    Export to CSV
+                </button>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full" id="leadsTable">
+                    <thead>
+                        <tr class="border-b-2 border-gray-200">
+                            <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700">Name</th>
+                            <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700">Company</th>
+                            <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700">Title</th>
+                            <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700">Game Played</th>
+                            <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700">Score</th>
+                            <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700">Date</th>
+                            <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leadsTableBody">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer Info -->
+        <div class="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-6">
+            <h4 class="font-bold text-yellow-800 mb-2">⚠️ Demo Dashboard Information</h4>
+            <ul class="text-sm text-yellow-700 space-y-1">
+                <li>• All data shown is <strong>synthetic/fake</strong> for demonstration purposes</li>
+                <li>• Real implementation would connect to actual database (Firebase/PostgreSQL)</li>
+                <li>• GDPR compliance requires proper consent management before capturing real data</li>
+                <li>• This demonstrates what the analytics <em>could</em> look like with proper infrastructure</li>
+                <li>• Use this dashboard for sales presentations to show potential clients the vision</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Fake Lead Generator
+        class FakeLeadGenerator {
+            constructor() {
+                this.firstNames = {
+                    german: ['Markus', 'Stefan', 'Andreas', 'Michael', 'Thomas', 'Julia', 'Anna', 'Sophie', 'Lisa', 'Maria', 'Klaus', 'Hans', 'Wolfgang', 'Petra', 'Sabine'],
+                    austrian: ['Franz', 'Johann', 'Karl', 'Elisabeth', 'Johanna', 'Magdalena', 'Sebastian', 'Maximilian', 'Florian', 'Katharina'],
+                    swiss: ['Lukas', 'Urs', 'Beat', 'Daniel', 'Laura', 'Sandra', 'Nicole', 'Martina', 'Patrick', 'Marco']
+                };
+                
+                this.lastNames = ['Müller', 'Schmidt', 'Schneider', 'Fischer', 'Weber', 'Meyer', 'Wagner', 'Becker', 'Schulz', 'Hoffmann', 'Koch', 'Richter', 'Klein', 'Wolf', 'Schröder', 'Neumann', 'Schwarz', 'Zimmermann', 'Braun', 'Hofmann', 'Hartmann', 'Lange'];
+                
+                this.companies = [
+                    'TechCorp GmbH',
+                    'InnovateLabs AG',
+                    'Digital Solutions SE',
+                    'Future Systems',
+                    'Smart Analytics GmbH',
+                    'CloudNine Technologies',
+                    'DataDriven AG',
+                    'NextGen Consulting',
+                    'Agile Partners GmbH',
+                    'Transform Industries',
+                    'Synergy Group',
+                    'Momentum Ventures',
+                    'Catalyst Solutions',
+                    'Elevate Enterprises',
+                    'Pioneer Systems AG'
+                ];
+                
+                this.titles = [
+                    'Head of L&D',
+                    'VP of People & Culture',
+                    'Chief Human Resources Officer',
+                    'Learning & Development Manager',
+                    'Talent Development Lead',
+                    'Director of Training',
+                    'HR Business Partner',
+                    'Organizational Development Manager',
+                    'Leadership Development Specialist',
+                    'Team Lead - People Development'
+                ];
+                
+                this.games = [
+                    'Confession Poker',
+                    'Conflict Cards',
+                    'Take the Back',
+                    'Disagree & Commit'
+                ];
+                
+                this.statuses = [
+                    { label: 'New', color: 'bg-blue-100 text-blue-800' },
+                    { label: 'Qualified', color: 'bg-green-100 text-green-800' },
+                    { label: 'Demo Scheduled', color: 'bg-purple-100 text-purple-800' },
+                    { label: 'Proposal Sent', color: 'bg-yellow-100 text-yellow-800' },
+                    { label: 'Won', color: 'bg-green-100 text-green-800' }
+                ];
+            }
+            
+            getRandomElement(array) {
+                return array[Math.floor(Math.random() * array.length)];
+            }
+            
+            getRandomDate(daysAgo) {
+                const date = new Date();
+                date.setDate(date.getDate() - Math.floor(Math.random() * daysAgo));
+                return date.toISOString().split('T')[0];
+            }
+            
+            generateLead() {
+                const region = this.getRandomElement(['german', 'austrian', 'swiss']);
+                const firstName = this.getRandomElement(this.firstNames[region]);
+                const lastName = this.getRandomElement(this.lastNames);
+                
+                return {
+                    name: `${firstName} ${lastName}`,
+                    company: this.getRandomElement(this.companies),
+                    title: this.getRandomElement(this.titles),
+                    game: this.getRandomElement(this.games),
+                    score: Math.floor(Math.random() * 40) + 60, // 60-100
+                    date: this.getRandomDate(90),
+                    status: this.getRandomElement(this.statuses)
+                };
+            }
+            
+            generateLeads(count) {
+                const leads = [];
+                for (let i = 0; i < count; i++) {
+                    leads.push(this.generateLead());
+                }
+                // Sort by date descending
+                return leads.sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
+        }
+
+        // Generate fake leads
+        const generator = new FakeLeadGenerator();
+        const leads = generator.generateLeads(30);
+
+        // Populate table
+        const tableBody = document.getElementById('leadsTableBody');
+        leads.forEach(lead => {
+            const row = document.createElement('tr');
+            row.className = 'border-b border-gray-100 hover:bg-gray-50';
+            row.innerHTML = `
+                <td class="py-3 px-4 text-sm font-medium text-gray-900">${lead.name}</td>
+                <td class="py-3 px-4 text-sm text-gray-700">${lead.company}</td>
+                <td class="py-3 px-4 text-sm text-gray-600">${lead.title}</td>
+                <td class="py-3 px-4 text-sm text-gray-700">${lead.game}</td>
+                <td class="py-3 px-4 text-sm text-gray-700">${lead.score}</td>
+                <td class="py-3 px-4 text-sm text-gray-600">${lead.date}</td>
+                <td class="py-3 px-4 text-sm">
+                    <span class="px-2 py-1 rounded-full text-xs font-medium ${lead.status.color}">
+                        ${lead.status.label}
+                    </span>
+                </td>
+            `;
+            tableBody.appendChild(row);
+        });
+
+        // Leads Over Time Chart
+        const leadsCtx = document.getElementById('leadsChart').getContext('2d');
+        new Chart(leadsCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
+                datasets: [{
+                    label: 'New Leads',
+                    data: [8, 12, 15, 18, 22, 28, 25, 32, 38, 42, 47],
+                    borderColor: 'rgb(59, 130, 246)',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Game Popularity Chart
+        const gamesCtx = document.getElementById('gamesChart').getContext('2d');
+        new Chart(gamesCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Confession Poker', 'Conflict Cards', 'Take the Back', 'Disagree & Commit'],
+                datasets: [{
+                    data: [245, 168, 97, 74],
+                    backgroundColor: [
+                        'rgb(59, 130, 246)',
+                        'rgb(16, 185, 129)',
+                        'rgb(249, 115, 22)',
+                        'rgb(139, 92, 246)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Export to CSV function
+        function exportToCSV() {
+            let csv = 'Name,Company,Title,Game Played,Score,Date,Status\n';
+            
+            leads.forEach(lead => {
+                csv += `"${lead.name}","${lead.company}","${lead.title}","${lead.game}",${lead.score},${lead.date},"${lead.status.label}"\n`;
+            });
+            
+            // Create download
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'tap-in-demo-leads.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+            
+            alert('✓ Demo data exported! Remember: This is fake data for presentations only.');
+        }
+
+        // Add demo warning on page load
+        window.onload = function() {
+            console.log('%c⚠️ DEMO DASHBOARD', 'color: #ff6b6b; font-size: 24px; font-weight: bold;');
+            console.log('%cAll data shown is synthetic/fake for demonstration purposes only.', 'color: #666; font-size: 14px;');
+            console.log('%cReal implementation requires proper database and GDPR compliance.', 'color: #666; font-size: 14px;');
+        };
+    </script>
+</body>
+</html>

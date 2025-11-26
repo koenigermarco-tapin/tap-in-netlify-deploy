@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take the Back - Ownership Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    <style>
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } }
+        @keyframes countdown { 0% { transform: scale(1); } 50% { transform: scale(1.2); color: #ef4444; } 100% { transform: scale(1); } }
+        .fade-in { animation: fadeIn 0.5s ease-out; }
+        .pulse-animation { animation: pulse 1s infinite; }
+        .shake-animation { animation: shake 0.3s ease-in-out; }
+        .countdown-animation { animation: countdown 1s ease-in-out; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-orange-900 via-red-900 to-pink-900 min-h-screen">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // BROKEN THINGS CARDS (60 total across 4 categories)
+        const BROKEN_THINGS = [
+            // Team Culture (15 cards)
+            { id: 1, text: "Team morale is at an all-time low", category: "culture", intensity: 4 },
+            { id: 2, text: "People stop sharing ideas in meetings", category: "culture", intensity: 3 },
+            { id: 3, text: "Your best performers are updating their LinkedIn profiles", category: "culture", intensity: 5 },
+            { id: 4, text: "The team celebrates individual wins but ignores team failures", category: "culture", intensity: 3 },
+            { id: 5, text: "Nobody volunteers for challenging projects anymore", category: "culture", intensity: 3 },
+            { id: 6, text: "Sarcasm and cynicism become the default tone", category: "culture", intensity: 3 },
+            { id: 7, text: "People arrive late and leave early without explanation", category: "culture", intensity: 2 },
+            { id: 8, text: "Your team meeting attendance keeps dropping", category: "culture", intensity: 2 },
+            { id: 9, text: "Back-channel conversations replace direct discussions", category: "culture", intensity: 4 },
+            { id: 10, text: "The team stops caring about quality", category: "culture", intensity: 4 },
+            { id: 11, text: "People hoard information instead of sharing it", category: "culture", intensity: 3 },
+            { id: 12, text: "Your team's Slack is suddenly silent", category: "culture", intensity: 2 },
+            { id: 13, text: "New hires quit within their first month", category: "culture", intensity: 5 },
+            { id: 14, text: "Team members stop giving each other feedback", category: "culture", intensity: 3 },
+            { id: 15, text: "The company values poster becomes a running joke", category: "culture", intensity: 3 },
+
+            // Communication (15 cards)
+            { id: 16, text: "Important decisions happen in hallway conversations", category: "communication", intensity: 3 },
+            { id: 17, text: "Your team stops reading emails", category: "communication", intensity: 2 },
+            { id: 18, text: "Meeting actions items never get followed up on", category: "communication", intensity: 3 },
+            { id: 19, text: "People say 'yes' in meetings then do nothing", category: "communication", intensity: 4 },
+            { id: 20, text: "Your Slack channels have 47 unread threads", category: "communication", intensity: 2 },
+            { id: 21, text: "Nobody knows who owns what anymore", category: "communication", intensity: 4 },
+            { id: 22, text: "The team learns about changes from gossip, not leadership", category: "communication", intensity: 4 },
+            { id: 23, text: "People stop asking clarifying questions", category: "communication", intensity: 3 },
+            { id: 24, text: "Your stand-ups turn into status reports nobody listens to", category: "communication", intensity: 2 },
+            { id: 25, text: "Written communication becomes passive-aggressive", category: "communication", intensity: 4 },
+            { id: 26, text: "People schedule meetings to prepare for other meetings", category: "communication", intensity: 2 },
+            { id: 27, text: "Your project documentation is months out of date", category: "communication", intensity: 3 },
+            { id: 28, text: "Teams work on duplicate efforts without knowing it", category: "communication", intensity: 4 },
+            { id: 29, text: "The same question gets different answers from different people", category: "communication", intensity: 3 },
+            { id: 30, text: "People stop responding to messages altogether", category: "communication", intensity: 3 },
+
+            // Performance (15 cards)
+            { id: 31, text: "Your sprint velocity drops 40% in one quarter", category: "performance", intensity: 5 },
+            { id: 32, text: "Technical debt is growing faster than new features", category: "performance", intensity: 4 },
+            { id: 33, text: "The same bugs keep getting reopened", category: "performance", intensity: 3 },
+            { id: 34, text: "Your team consistently misses deadlines by weeks", category: "performance", intensity: 4 },
+            { id: 35, text: "Code reviews turn into rubber-stamping exercises", category: "performance", intensity: 3 },
+            { id: 36, text: "Production incidents are becoming the new normal", category: "performance", intensity: 5 },
+            { id: 37, text: "Your test coverage drops below 20%", category: "performance", intensity: 4 },
+            { id: 38, text: "Nobody wants to touch the legacy codebase", category: "performance", intensity: 3 },
+            { id: 39, text: "Your best engineer is spending all their time firefighting", category: "performance", intensity: 4 },
+            { id: 40, text: "The team ships features that nobody asked for", category: "performance", intensity: 3 },
+            { id: 41, text: "Your retrospectives identify problems but nothing changes", category: "performance", intensity: 4 },
+            { id: 42, text: "Work-in-progress items keep growing", category: "performance", intensity: 3 },
+            { id: 43, text: "Your team's definition of done becomes meaningless", category: "performance", intensity: 3 },
+            { id: 44, text: "Features ship without proper testing", category: "performance", intensity: 4 },
+            { id: 45, text: "Your tech stack is five years behind industry standard", category: "performance", intensity: 3 },
+
+            // Customer/Stakeholder (15 cards)
+            { id: 46, text: "Your NPS score dropped 30 points this quarter", category: "customer", intensity: 5 },
+            { id: 47, text: "Customer support tickets are piling up unanswered", category: "customer", intensity: 4 },
+            { id: 48, text: "Your biggest client just threatened to leave", category: "customer", intensity: 5 },
+            { id: 49, text: "Product demos keep getting postponed", category: "customer", intensity: 3 },
+            { id: 50, text: "Sales won't bring prospects to meet the team anymore", category: "customer", intensity: 4 },
+            { id: 51, text: "Customer feedback goes into a black hole", category: "customer", intensity: 3 },
+            { id: 52, text: "Your churn rate doubled in six months", category: "customer", intensity: 5 },
+            { id: 53, text: "Stakeholders stop attending sprint reviews", category: "customer", intensity: 3 },
+            { id: 54, text: "Your product roadmap hasn't been updated in months", category: "customer", intensity: 3 },
+            { id: 55, text: "Customer success team can't get engineering time", category: "customer", intensity: 4 },
+            { id: 56, text: "Your competitors are winning deals you used to own", category: "customer", intensity: 4 },
+            { id: 57, text: "Feature requests sit in the backlog for years", category: "customer", intensity: 3 },
+            { id: 58, text: "Your product has a 2-star rating in the app store", category: "customer", intensity: 5 },
+            { id: 59, text: "Customers are building workarounds instead of using your product", category: "customer", intensity: 4 },
+            { id: 60, text: "Support escalations go straight to the CEO now", category: "customer", intensity: 4 },
+        ];
+
+        // Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyBvK_vZ3vXj5k5L0Qp6X9K5Z6Yq8L0A5B0",
+            authDomain: "take-the-back.firebaseapp.com",
+            databaseURL: "https://take-the-back-default-rtdb.firebaseio.com",
+            projectId: "take-the-back"
+        };
+
+        let firebaseApp = null;
+        try {
+            if (!firebase.apps.length) firebaseApp = firebase.initializeApp(firebaseConfig);
+        } catch (error) {
+            console.warn('Firebase init failed:', error);
+        }
+
+        class GameRoom {
+            constructor(roomCode, multiDevice = false) {
+                this.roomCode = roomCode;
+                this.multiDevice = multiDevice && firebaseApp !== null;
+                this.storageKey = `take-the-back-${roomCode}`;
+                if (this.multiDevice) {
+                    this.dbRef = firebase.database().ref(`rooms/${roomCode}`);
+                }
+            }
+
+            async getState() {
+                if (this.multiDevice) {
+                    const snapshot = await this.dbRef.once('value');
+                    return snapshot.val();
+                }
+                const data = localStorage.getItem(this.storageKey);
+                return data ? JSON.parse(data) : null;
+            }
+
+            async setState(state) {
+                if (this.multiDevice) {
+                    await this.dbRef.set(state);
+                } else {
+                    localStorage.setItem(this.storageKey, JSON.stringify(state));
+                    window.dispatchEvent(new Event('storage'));
+                }
+            }
+
+            subscribe(callback) {
+                if (this.multiDevice) {
+                    this.dbRef.on('value', (snapshot) => callback(snapshot.val()));
+                    return () => this.dbRef.off('value');
+                } else {
+                    const handler = () => {
+                        const data = localStorage.getItem(this.storageKey);
+                        callback(data ? JSON.parse(data) : null);
+                    };
+                    window.addEventListener('storage', handler);
+                    return () => window.removeEventListener('storage', handler);
+                }
+            }
+        }
+
+        function TakeTheBack() {
+            const [screen, setScreen] = useState('mode-select');
+            const [gameMode, setGameMode] = useState(null);
+            const [roomCode, setRoomCode] = useState('');
+            const [myName, setMyName] = useState('');
+            const [players, setPlayers] = useState([]);
+            const [currentCard, setCurrentCard] = useState(null);
+            const [timeLeft, setTimeLeft] = useState(30);
+            const [phase, setPhase] = useState('waiting'); // waiting, claiming, explaining, voting
+            const [claimer, setClaimer] = useState(null);
+            const [votes, setVotes] = useState({});
+            const [delivered, setDelivered] = useState({});
+            const [abandoned, setAbandoned] = useState({});
+            const [usedCards, setUsedCards] = useState([]);
+            const [round, setRound] = useState(0);
+
+            const roomRef = useRef(null);
+            const timerRef = useRef(null);
+
+            useEffect(() => {
+                if (!roomCode || screen === 'mode-select') return;
+
+                const room = new GameRoom(roomCode, gameMode === 'multi-device');
+                roomRef.current = room;
+
+                const unsubscribe = room.subscribe((state) => {
+                    if (state) {
+                        setPlayers(state.players || []);
+                        setCurrentCard(state.currentCard || null);
+                        setTimeLeft(state.timeLeft || 30);
+                        setPhase(state.phase || 'waiting');
+                        setClaimer(state.claimer || null);
+                        setVotes(state.votes || {});
+                        setDelivered(state.delivered || {});
+                        setAbandoned(state.abandoned || {});
+                        setUsedCards(state.usedCards || []);
+                        setRound(state.round || 0);
+                        if (state.screen) setScreen(state.screen);
+                    }
+                });
+
+                room.getState().then(state => {
+                    if (!state) {
+                        const initialDelivered = {};
+                        const initialAbandoned = {};
+                        room.setState({
+                            players: [],
+                            delivered: initialDelivered,
+                            abandoned: initialAbandoned,
+                            usedCards: [],
+                            round: 0,
+                            phase: 'waiting',
+                            screen: 'lobby'
+                        });
+                    }
+                });
+
+                return unsubscribe;
+            }, [roomCode, gameMode]);
+
+            // Timer effect
+            useEffect(() => {
+                if (phase === 'claiming' || phase === 'explaining') {
+                    timerRef.current = setInterval(async () => {
+                        if (timeLeft > 0) {
+                            await updateRoom({ timeLeft: timeLeft - 1 });
+                        } else {
+                            if (phase === 'claiming') {
+                                // Time's up, draw new card
+                                drawCard();
+                            } else if (phase === 'explaining') {
+                                // Time's up, auto-vote abandon
+                                const state = await roomRef.current.getState();
+                                const newAbandoned = { ...state.abandoned };
+                                newAbandoned[claimer] = (newAbandoned[claimer] || 0) + 1;
+                                await updateRoom({
+                                    abandoned: newAbandoned,
+                                    phase: 'waiting'
+                                });
+                                setTimeout(() => drawCard(), 2000);
+                            }
+                        }
+                    }, 1000);
+
+                    return () => clearInterval(timerRef.current);
+                }
+            }, [phase, timeLeft, claimer]);
+
+            const updateRoom = async (updates) => {
+                if (!roomRef.current) return;
+                const state = await roomRef.current.getState();
+                await roomRef.current.setState({ ...state, ...updates });
+            };
+
+            const selectMode = (mode) => {
+                setGameMode(mode);
+                setScreen('lobby');
+                const code = Math.random().toString(36).substring(2, 8).toUpperCase();
+                setRoomCode(code);
+            };
+
+            const addPlayer = async (name) => {
+                if (!name.trim() || !roomRef.current) return;
+                const state = await roomRef.current.getState();
+                if (state.players.some(p => p.name === name)) {
+                    alert('Name taken!');
+                    return;
+                }
+
+                const newPlayer = { name, id: Date.now() };
+                const newDelivered = { ...state.delivered, [name]: 0 };
+                const newAbandoned = { ...state.abandoned, [name]: 0 };
+                
+                await updateRoom({
+                    players: [...state.players, newPlayer],
+                    delivered: newDelivered,
+                    abandoned: newAbandoned
+                });
+                setMyName(name);
+            };
+
+            const startGame = async () => {
+                const state = await roomRef.current.getState();
+                if (state.players.length < 4) {
+                    alert('Need at least 4 players!');
+                    return;
+                }
+
+                await updateRoom({
+                    screen: 'game',
+                    round: 1
+                });
+                
+                drawCard();
+            };
+
+            const drawCard = async () => {
+                const state = await roomRef.current.getState();
+                const available = BROKEN_THINGS.filter(c => !state.usedCards.includes(c.id));
+                
+                if (available.length === 0 || state.round >= 20) {
+                    await updateRoom({ screen: 'end' });
+                    return;
+                }
+
+                const card = available[Math.floor(Math.random() * available.length)];
+                await updateRoom({
+                    currentCard: card,
+                    usedCards: [...state.usedCards, card.id],
+                    phase: 'claiming',
+                    timeLeft: 30,
+                    claimer: null,
+                    votes: {},
+                    round: state.round + 1
+                });
+            };
+
+            const claimCard = async () => {
+                await updateRoom({
+                    claimer: myName,
+                    phase: 'explaining',
+                    timeLeft: 15
+                });
+            };
+
+            const vote = async (voteType) => {
+                const state = await roomRef.current.getState();
+                const newVotes = { ...state.votes, [myName]: voteType };
+                await updateRoom({ votes: newVotes });
+
+                // Check if all voted
+                const totalVotes = Object.keys(newVotes).length;
+                if (totalVotes === state.players.length - 1) {
+                    resolveVote(newVotes);
+                }
+            };
+
+            const resolveVote = async (voteResults) => {
+                const state = await roomRef.current.getState();
+                const thumbsUp = Object.values(voteResults).filter(v => v === 'up').length;
+                const thumbsDown = Object.values(voteResults).filter(v => v === 'down').length;
+
+                const newDelivered = { ...state.delivered };
+                const newAbandoned = { ...state.abandoned };
+
+                if (thumbsUp > thumbsDown) {
+                    newDelivered[claimer] = (newDelivered[claimer] || 0) + 1;
+                } else {
+                    newAbandoned[claimer] = (newAbandoned[claimer] || 0) + 1;
+                }
+
+                await updateRoom({
+                    delivered: newDelivered,
+                    abandoned: newAbandoned,
+                    phase: 'waiting'
+                });
+
+                // Check win condition
+                if (newDelivered[claimer] >= 10) {
+                    await updateRoom({ screen: 'end' });
+                    return;
+                }
+
+                setTimeout(() => drawCard(), 2000);
+            };
+
+            const resetGame = () => {
+                setScreen('mode-select');
+                setGameMode(null);
+                setMyName('');
+                setRoomCode('');
+            };
+
+            const getScore = (playerName) => {
+                return (delivered[playerName] || 0) - (abandoned[playerName] || 0);
+            };
+
+            const isClaimer = claimer === myName;
+            const hasVoted = votes[myName] !== undefined;
+
+            // Mode Select
+            if (screen === 'mode-select') {
+                return (
+                    <div className="min-h-screen flex items-center justify-center p-4">
+                        <div className="max-w-2xl w-full">
+                            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-12 shadow-2xl border border-white/20 fade-in">
+                                <h1 className="text-5xl font-bold text-white mb-4 text-center">
+                                    🔥 Take the Back
+                                </h1>
+                                <p className="text-white/80 text-center mb-12 text-lg">
+                                    Claim ownership. Explain yourself. Earn trust.
+                                </p>
+
+                                <div className="space-y-6">
+                                    <button
+                                        onClick={() => selectMode('pass-play')}
+                                        className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-6 rounded-2xl font-bold text-xl hover:shadow-2xl transform hover:scale-105 transition"
+                                    >
+                                        <div className="text-3xl mb-2">📱</div>
+                                        Pass & Play
+                                    </button>
+
+                                    <button
+                                        onClick={() => selectMode('multi-device')}
+                                        className="w-full bg-gradient-to-r from-red-500 to-pink-500 text-white px-8 py-6 rounded-2xl font-bold text-xl hover:shadow-2xl transform hover:scale-105 transition"
+                                    >
+                                        <div className="text-3xl mb-2">🌐</div>
+                                        Multi-Device
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            // Lobby
+            if (screen === 'lobby') {
+                return (
+                    <div className="min-h-screen flex items-center justify-center p-4">
+                        <div className="max-w-2xl w-full">
+                            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 shadow-2xl border border-white/20 fade-in">
+                                <div className="text-center mb-8">
+                                    <h2 className="text-3xl font-bold text-white mb-4">Game Lobby</h2>
+                                    <div className="inline-block bg-gradient-to-r from-orange-500/30 to-red-500/30 rounded-lg px-6 py-3 border border-orange-500/50">
+                                        <p className="text-white/60 text-sm">Room Code</p>
+                                        <p className="text-4xl font-mono font-bold text-white">{roomCode}</p>
+                                    </div>
+                                </div>
+
+                                {!myName ? (
+                                    <input
+                                        type="text"
+                                        placeholder="Enter your name"
+                                        className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-orange-500 mb-6"
+                                        onKeyPress={(e) => {
+                                            if (e.key === 'Enter') {
+                                                addPlayer(e.target.value);
+                                                e.target.value = '';
+                                            }
+                                        }}
+                                    />
+                                ) : (
+                                    <>
+                                        <div className="mb-6">
+                                            <h3 className="text-white font-bold mb-4">Players ({players.length}/8)</h3>
+                                            <div className="space-y-2">
+                                                {players.map(player => (
+                                                    <div key={player.id} className="bg-white/5 rounded-lg p-3 flex justify-between">
+                                                        <span className="text-white">{player.name}</span>
+                                                        {player.name === myName && <span className="text-orange-400">(You)</span>}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        {players.length >= 4 && players[0]?.name === myName && (
+                                            <button
+                                                onClick={startGame}
+                                                className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-xl font-bold text-xl hover:shadow-lg transform hover:scale-105 transition pulse-animation"
+                                            >
+                                                Start Game
+                                            </button>
+                                        )}
+
+                                        {players.length < 4 && (
+                                            <p className="text-white/60 text-center">Need {4 - players.length} more players</p>
+                                        )}
+                                    </>
+                                )}
+
+                                <button onClick={() => setScreen('mode-select')} className="w-full mt-4 text-white/60 hover:text-white">
+                                    ← Back
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            // Game
+            if (screen === 'game') {
+                return (
+                    <div className="min-h-screen p-4">
+                        <div className="max-w-6xl mx-auto">
+                            {/* Header */}
+                            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 mb-6">
+                                <div className="flex justify-between items-center">
+                                    <div>
+                                        <h2 className="text-2xl font-bold text-white">Round {round}/20</h2>
+                                        <p className="text-white/60">Room: {roomCode}</p>
+                                    </div>
+                                    <div className="text-right">
+                                        <p className={`text-6xl font-bold ${timeLeft <= 5 ? 'text-red-400 countdown-animation' : 'text-white'}`}>
+                                            {timeLeft}
+                                        </p>
+                                        <p className="text-white/60 text-sm">
+                                            {phase === 'claiming' ? 'Claim time' : phase === 'explaining' ? 'Explain time' : 'Voting...'}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                                {/* Main Area */}
+                                <div className="lg:col-span-2">
+                                    {currentCard && (
+                                        <div className="bg-gradient-to-br from-orange-600 to-red-600 border-4 border-white rounded-3xl p-12 shadow-2xl mb-6 shake-animation">
+                                            <div className="text-center mb-4">
+                                                <span className={`inline-block px-4 py-2 rounded-full text-sm font-bold ${
+                                                    currentCard.category === 'culture' ? 'bg-purple-500' :
+                                                    currentCard.category === 'communication' ? 'bg-blue-500' :
+                                                    currentCard.category === 'performance' ? 'bg-green-500' :
+                                                    'bg-pink-500'
+                                                } text-white`}>
+                                                    {currentCard.category.toUpperCase()}
+                                                </span>
+                                            </div>
+                                            <p className="text-white text-3xl md:text-4xl font-bold text-center">
+                                                {currentCard.text}
+                                            </p>
+                                        </div>
+                                    )}
+
+                                    {/* Claiming Phase */}
+                                    {phase === 'claiming' && !isClaimer && (
+                                        <button
+                                            onClick={claimCard}
+                                            className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-12 py-8 rounded-3xl font-bold text-3xl hover:shadow-2xl transform hover:scale-105 transition pulse-animation"
+                                        >
+                                            I'VE GOT THE BACK!
+                                        </button>
+                                    )}
+
+                                    {/* Explaining Phase */}
+                                    {phase === 'explaining' && isClaimer && (
+                                        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 text-center">
+                                            <p className="text-white text-2xl font-bold mb-4">
+                                                Explain your ownership NOW!
+                                            </p>
+                                            <p className="text-white/80">
+                                                You have {timeLeft} seconds to verbally explain how you've owned this failure
+                                            </p>
+                                        </div>
+                                    )}
+
+                                    {phase === 'explaining' && !isClaimer && (
+                                        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 text-center">
+                                            <p className="text-white text-2xl font-bold mb-4">
+                                                {claimer} is explaining...
+                                            </p>
+                                            <p className="text-white/80">Listen carefully, then vote below</p>
+                                        </div>
+                                    )}
+
+                                    {/* Voting Phase */}
+                                    {phase === 'explaining' && !isClaimer && !hasVoted && (
+                                        <div className="mt-6 flex gap-4">
+                                            <button
+                                                onClick={() => vote('up')}
+                                                className="flex-1 bg-green-500 text-white px-8 py-6 rounded-xl font-bold text-2xl hover:shadow-lg transform hover:scale-105 transition"
+                                            >
+                                                👍 Delivered
+                                            </button>
+                                            <button
+                                                onClick={() => vote('down')}
+                                                className="flex-1 bg-red-500 text-white px-8 py-6 rounded-xl font-bold text-2xl hover:shadow-lg transform hover:scale-105 transition"
+                                            >
+                                                👎 Abandoned
+                                            </button>
+                                        </div>
+                                    )}
+
+                                    {hasVoted && (
+                                        <p className="text-green-400 text-center text-xl mt-6">
+                                            ✓ Vote submitted! ({Object.keys(votes).length}/{players.length - 1})
+                                        </p>
+                                    )}
+
+                                    {phase === 'waiting' && (
+                                        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 text-center">
+                                            <p className="text-white text-xl">Next card coming...</p>
+                                        </div>
+                                    )}
+                                </div>
+
+                                {/* Scoreboard */}
+                                <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6">
+                                    <h3 className="text-xl font-bold text-white mb-4">Scoreboard</h3>
+                                    <div className="space-y-3">
+                                        {players
+                                            .sort((a, b) => getScore(b.name) - getScore(a.name))
+                                            .map(player => (
+                                                <div
+                                                    key={player.id}
+                                                    className={`p-3 rounded-lg ${
+                                                        player.name === claimer ? 'bg-yellow-500/30 border border-yellow-500' : 'bg-white/5'
+                                                    }`}
+                                                >
+                                                    <div className="flex justify-between items-center mb-2">
+                                                        <div>
+                                                            <span className="text-white font-medium">{player.name}</span>
+                                                            {player.name === myName && <span className="ml-2 text-orange-400 text-xs">(You)</span>}
+                                                        </div>
+                                                        <span className="text-2xl font-bold text-orange-400">
+                                                            {getScore(player.name)}
+                                                        </span>
+                                                    </div>
+                                                    <div className="flex gap-2 text-xs text-white/60">
+                                                        <span>✓ {delivered[player.name] || 0}D</span>
+                                                        <span>✗ {abandoned[player.name] || 0}A</span>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                    </div>
+                                    <button onClick={resetGame} className="w-full mt-4 text-white/60 hover:text-white text-sm">
+                                        End Game
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            // End
+            if (screen === 'end') {
+                const sorted = [...players].sort((a, b) => getScore(b.name) - getScore(a.name));
+                const winner = sorted[0];
+
+                return (
+                    <div className="min-h-screen flex items-center justify-center p-4">
+                        <div className="max-w-4xl w-full">
+                            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-12 shadow-2xl border border-white/20">
+                                <h1 className="text-6xl text-center mb-8">🏆</h1>
+                                <h2 className="text-4xl font-bold text-white text-center mb-8">Game Over!</h2>
+                                
+                                <div className="bg-gradient-to-r from-orange-500/30 to-red-500/30 rounded-xl p-8 mb-8 border border-orange-500/50 text-center">
+                                    <p className="text-white/80 mb-2">Winner</p>
+                                    <p className="text-5xl font-bold text-white">{winner?.name}</p>
+                                    <p className="text-3xl text-orange-400 mt-4">
+                                        Score: +{getScore(winner?.name)} ({delivered[winner?.name]}D - {abandoned[winner?.name]}A)
+                                    </p>
+                                </div>
+
+                                <div className="space-y-3 mb-8">
+                                    {sorted.map((player, i) => (
+                                        <div key={player.id} className="bg-white/5 rounded-lg p-4 flex justify-between items-center">
+                                            <div>
+                                                <span className="text-white font-medium">#{i + 1} {player.name}</span>
+                                                <span className="text-white/60 text-sm ml-4">
+                                                    {delivered[player.name] || 0}D / {abandoned[player.name] || 0}A
+                                                </span>
+                                            </div>
+                                            <span className="text-2xl font-bold text-orange-400">{getScore(player.name)}</span>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <button
+                                    onClick={resetGame}
+                                    className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white px-12 py-4 rounded-xl font-bold text-xl hover:shadow-lg transform hover:scale-105 transition"
+                                >
+                                    Play Again
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            return null;
+        }
+
+        ReactDOM.render(<TakeTheBack />, document.getElementById('root'));
+    </script>
+</body>
+</html>
