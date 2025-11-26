@@ -200,6 +200,294 @@ QUIZ_QUESTIONS = {
             'correct': 1
         }
     ],
+    
+    # PURPLE BELT - Stripe 9: Commitment Foundations
+    9: [
+        {
+            'question': 'When team members nod in meetings but don\'t execute after, the root cause is usually:',
+            'options': ['Lack of skills', 'Lack of commitment due to unclear decisions', 'Lack of time', 'Lack of resources'],
+            'correct': 1
+        },
+        {
+            'question': 'The "Disagree and Commit" principle means:',
+            'options': ['Everyone must agree before moving forward', 'Leaders make decisions alone', 'Voice concerns fully, then commit to the decision', 'Only commit to decisions you personally agree with'],
+            'correct': 2
+        },
+        {
+            'question': 'According to research, what percentage of strategic clarity is lost between each organizational level?',
+            'options': ['10-15%', '25-30%', '40-50%', '60-70%'],
+            'correct': 2
+        },
+        {
+            'question': 'In BJJ, commitment is like:',
+            'options': ['Choosing a submission and forcing it', 'Committing to a position before seeing the outcome', 'Abandoning a technique if it feels uncomfortable', 'Waiting for the perfect moment that never comes'],
+            'correct': 1
+        }
+    ],
+    
+    # PURPLE BELT - Stripe 10: Creating Clarity
+    10: [
+        {
+            'question': 'Buy-in differs from consensus because:',
+            'options': ['It requires everyone to agree', 'It requires everyone to commit regardless of initial agreement', 'It\'s faster but less effective', 'It\'s only needed for major decisions'],
+            'correct': 1
+        },
+        {
+            'question': 'How many times should leaders communicate key decisions for them to stick?',
+            'options': ['Once, clearly', '2-3 times', '5-7 times', '10+ times'],
+            'correct': 2
+        },
+        {
+            'question': 'A "commitment ritual" might include:',
+            'options': ['Everyone verbally stating what they\'ll do by when', 'Silent agreement', 'Written signatures on documents', 'Manager follow-up emails'],
+            'correct': 0
+        },
+        {
+            'question': 'In rolling, commitment shows when you:',
+            'options': ['Hesitate mid-technique', 'Fully commit to a pass even if unsure', 'Wait for perfect setups', 'Abandon plans quickly'],
+            'correct': 1
+        }
+    ],
+    
+    # PURPLE BELT - Stripe 11: Driving Buy-In
+    11: [
+        {
+            'question': 'When everything is a priority:',
+            'options': ['Teams work harder', 'Nothing is actually a priority', 'Leaders must delegate more', 'More resources are needed'],
+            'correct': 1
+        },
+        {
+            'question': 'The best teams limit work-in-progress to:',
+            'options': ['As many initiatives as team members', '1-2 critical goals at a time', '5-7 major projects', 'Whatever stakeholders request'],
+            'correct': 1
+        },
+        {
+            'question': 'Saying "no" to good opportunities is necessary because:',
+            'options': ['Resources are always limited', 'Commitment requires trade-offs', 'Focus creates better outcomes than diffusion', 'All of the above'],
+            'correct': 3
+        },
+        {
+            'question': 'In BJJ, trying to do "everything" leads to:',
+            'options': ['Mastery of all techniques', 'Being average at many things, excellent at none', 'Faster progression', 'Better competition results'],
+            'correct': 1
+        }
+    ],
+    
+    # PURPLE BELT - Stripe 12: Commitment Mastery
+    12: [
+        {
+            'question': 'When deadlines consistently slip, teams lose:',
+            'options': ['Money', 'Credibility and trust', 'Talent', 'Customers'],
+            'correct': 1
+        },
+        {
+            'question': 'Course correction is healthier than blind commitment when:',
+            'options': ['Teams feel uncomfortable', 'New information fundamentally changes assumptions', 'Leaders want to avoid accountability', 'Individual contributors disagree'],
+            'correct': 1
+        },
+        {
+            'question': 'The best accountability systems are:',
+            'options': ['Manager-driven', 'Peer-driven', 'HR-driven', 'Tool-driven'],
+            'correct': 1
+        },
+        {
+            'question': 'Commitment in BJJ means:',
+            'options': ['Never tapping', 'Finishing every technique you start', 'Committing fully to positions while staying adaptive', 'Always going for submissions'],
+            'correct': 2
+        }
+    ],
+    
+    # BROWN BELT - Stripe 13: Accountability Foundations
+    13: [
+        {
+            'question': 'Peer accountability works better than top-down because:',
+            'options': ['Managers are too busy', 'Peers interact daily and spot issues faster', 'It\'s less confrontational', 'HR recommends it'],
+            'correct': 1
+        },
+        {
+            'question': '"Calling in" means:',
+            'options': ['Reporting issues to management', 'Addressing issues privately with care', 'Ignoring problems', 'Public confrontation'],
+            'correct': 1
+        },
+        {
+            'question': 'When teams avoid accountability, performance:',
+            'options': ['Improves due to autonomy', 'Stays the same', 'Declines gradually then rapidly', 'Depends on individual motivation'],
+            'correct': 2
+        },
+        {
+            'question': 'In rolling, accountability looks like:',
+            'options': ['Your partner tapping when caught', 'Both partners respecting position and technique', 'Calling out bad technique', 'Only the coach providing feedback'],
+            'correct': 1
+        }
+    ],
+    
+    # BROWN BELT - Stripe 14: Accountability Skills
+    14: [
+        {
+            'question': 'Standards differ from expectations because:',
+            'options': ['They\'re written down', 'They\'re non-negotiable and consistently enforced', 'They come from leadership', 'They\'re easier to measure'],
+            'correct': 1
+        },
+        {
+            'question': 'Radical Candor combines:',
+            'options': ['Honesty and empathy', 'Care personally and challenge directly', 'Feedback and consequences', 'Standards and flexibility'],
+            'correct': 1
+        },
+        {
+            'question': 'Accountability without blame focuses on:',
+            'options': ['Who made the mistake', 'What happened and how to prevent it', 'Punishing poor performance', 'Documentation for HR'],
+            'correct': 1
+        },
+        {
+            'question': 'In BJJ, holding position demonstrates:',
+            'options': ['Superior strength', 'Technical accountability to fundamentals', 'Stalling', 'Defensive mindset'],
+            'correct': 1
+        }
+    ],
+    
+    # BROWN BELT - Stripe 15: Accountability Systems
+    15: [
+        {
+            'question': 'Issues should be addressed:',
+            'options': ['Immediately when noticed', 'After three occurrences', 'During annual reviews', 'When they become serious'],
+            'correct': 0
+        },
+        {
+            'question': 'High-performing teams combine:',
+            'options': ['High standards + high support', 'High standards + high pressure', 'High autonomy + low oversight', 'High safety + low expectations'],
+            'correct': 0
+        },
+        {
+            'question': '"Feedback velocity" means:',
+            'options': ['Speaking quickly in feedback sessions', 'The speed from observation to conversation', 'Number of feedback sessions per quarter', 'How fast people improve'],
+            'correct': 1
+        },
+        {
+            'question': 'Delayed feedback in BJJ:',
+            'options': ['Allows bad habits to solidify', 'Gives time for self-correction', 'Builds independence', 'Prevents over-coaching'],
+            'correct': 0
+        }
+    ],
+    
+    # BROWN BELT - Stripe 16: Accountability Mastery
+    16: [
+        {
+            'question': 'Public performance metrics work when:',
+            'options': ['They shame poor performers', 'They create transparency and shared responsibility', 'Only leaders see them', 'They\'re used for compensation decisions'],
+            'correct': 1
+        },
+        {
+            'question': 'Self-correction happens when:',
+            'options': ['Managers constantly monitor', 'Teams own their metrics and standards', 'Consequences are severe', 'External pressure increases'],
+            'correct': 1
+        },
+        {
+            'question': 'Accountability rituals might include:',
+            'options': ['Daily stand-ups where commitments are stated', 'Weekly retrospectives on missed goals', 'Monthly one-on-ones', 'All of the above'],
+            'correct': 3
+        },
+        {
+            'question': 'In competition, accountability shows through:',
+            'options': ['Winning', 'Consistent drilling of fundamentals', 'Training when you don\'t feel like it', 'Both B and C'],
+            'correct': 3
+        }
+    ],
+    
+    # BLACK BELT - Stripe 17: Results Foundations
+    17: [
+        {
+            'question': 'Teams fail when members:',
+            'options': ['Prioritize individual metrics over team goals', 'Work too collaboratively', 'Don\'t compete internally', 'Focus too much on results'],
+            'correct': 0
+        },
+        {
+            'question': 'A shared scoreboard should:',
+            'options': ['Rank individual performance', 'Show only lagging indicators', 'Display collective progress toward shared goals', 'Be kept private'],
+            'correct': 2
+        },
+        {
+            'question': '"Ego is the enemy" means:',
+            'options': ['Confidence is bad', 'Personal pride blocks team success', 'Individual achievement doesn\'t matter', 'Only team wins count'],
+            'correct': 1
+        },
+        {
+            'question': 'In team training, the goal is:',
+            'options': ['Being the best in the room', 'Everyone getting better together', 'Individual promotion', 'Proving superiority'],
+            'correct': 1
+        }
+    ],
+    
+    # BLACK BELT - Stripe 18: Defining Success
+    18: [
+        {
+            'question': 'Leading indicators:',
+            'options': ['Show past results', 'Predict future outcomes', 'Are easier to measure', 'Matter less than lagging indicators'],
+            'correct': 1
+        },
+        {
+            'question': 'Course correction should happen:',
+            'options': ['Quarterly', 'When results miss targets', 'Continuously based on leading indicators', 'After project completion'],
+            'correct': 2
+        },
+        {
+            'question': 'Celebrating wins reinforces:',
+            'options': ['Complacency', 'The behaviors that led to success', 'Individual achievement', 'Competitive advantage'],
+            'correct': 1
+        },
+        {
+            'question': 'In competition, learning happens most when:',
+            'options': ['You win', 'You analyze both wins and losses', 'You focus only on what worked', 'Your coach tells you what to fix'],
+            'correct': 1
+        }
+    ],
+    
+    # BLACK BELT - Stripe 19: Sustaining Results
+    19: [
+        {
+            'question': 'Activity-based cultures reward:',
+            'options': ['Busyness', 'Long hours', 'Meeting attendance', 'All of the above'],
+            'correct': 3
+        },
+        {
+            'question': 'Quarterly cycles work because:',
+            'options': ['They align with business calendars', 'They balance urgency with strategic perspective', 'HR recommends them', 'They\'re easier to plan'],
+            'correct': 1
+        },
+        {
+            'question': 'Outcome clarity means:',
+            'options': ['Everyone knows the goal', 'Everyone knows what success looks like specifically', 'Goals are documented', 'Leaders set targets'],
+            'correct': 1
+        },
+        {
+            'question': 'Black belts focus on:',
+            'options': ['Learning new techniques constantly', 'Mastering fundamentals at highest level', 'Flashy moves', 'Competition wins only'],
+            'correct': 1
+        }
+    ],
+    
+    # BLACK BELT - Stripe 20: Legacy Leadership
+    20: [
+        {
+            'question': 'Legacy is built through:',
+            'options': ['Personal achievements', 'Systems and people you develop', 'Titles and promotions', 'Years of service'],
+            'correct': 1
+        },
+        {
+            'question': 'The best leaders:',
+            'options': ['Are irreplaceable', 'Make themselves unnecessary', 'Maintain control', 'Do the most important work themselves'],
+            'correct': 1
+        },
+        {
+            'question': 'Embodied leadership means:',
+            'options': ['Physical fitness', 'Living your values under pressure', 'Demonstrating techniques', 'Leading by example only'],
+            'correct': 1
+        },
+        {
+            'question': 'A black belt is:',
+            'options': ['The end of the journey', 'The beginning of true mastery', 'A status symbol', 'Proof of superiority'],
+            'correct': 1
+        }
+    ],
 }
 
 def generate_quiz_html(questions, stripe_num):

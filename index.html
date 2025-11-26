@@ -3,700 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>TAP-IN - Your Personal Development GYM</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Tap-In Leadership Gym</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        :root {
-            --primary-navy: #1a365d;
-            --navy-light: #2d4a7c;
-            --accent-gold: #f6e05e;
-            --bg-dark: #0a0a0a;
-            --bg-card: #141414;
-            --text-white: #ffffff;
-            --text-muted: #a0aec0;
-        }
-
+        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-white);
-            line-height: 1.6;
-        }
-
-        /* Hero Section */
-        .hero {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 600px;
             text-align: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, var(--primary-navy) 0%, #0f2744 100%);
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
-
-        .hero::before {
-            content: '🥋';
-            position: absolute;
-            font-size: 600px;
-            opacity: 0.03;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-15deg);
+        
+        h1 {
+            font-size: 48px;
+            color: #1a365d;
+            margin-bottom: 20px;
         }
-
-        .hero-content {
-            max-width: 900px;
-            position: relative;
-            z-index: 1;
+        
+        p {
+            font-size: 20px;
+            color: #475569;
+            margin-bottom: 40px;
+            line-height: 1.6;
         }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff 0%, var(--accent-gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero .tagline {
-            font-size: clamp(1.2rem, 3vw, 2rem);
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .hero .subtitle {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            margin-bottom: 3rem;
-            opacity: 0.8;
-            line-height: 1.8;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1.25rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 700;
+        
+        .button {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 18px 40px;
             border-radius: 12px;
             text-decoration: none;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .btn-primary {
-            background: var(--accent-gold);
-            color: var(--bg-dark);
-        }
-
-        .btn-primary:hover {
-            background: #ecc94b;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(246, 224, 94, 0.3);
-        }
-
-        .btn-secondary {
-            background: rgba(255,255,255,0.1);
-            color: var(--text-white);
-            border: 2px solid rgba(255,255,255,0.2);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: rgba(255,255,255,0.4);
-        }
-
-        /* Diagnostic Section */
-        .diagnostic {
-            background: var(--bg-card);
-            padding: 4rem 2rem;
-        }
-
-        .diagnostic .container {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .diagnostic h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .diagnostic p {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-        }
-
-        .quiz-card {
-            background: linear-gradient(135deg, var(--primary-navy) 0%, #2d4a7c 100%);
-            border-radius: 20px;
-            padding: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .quiz-question {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+            font-size: 18px;
             font-weight: 600;
-        }
-
-        .quiz-options {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .quiz-option {
-            background: rgba(255,255,255,0.1);
-            padding: 1.5rem;
-            border-radius: 12px;
-            cursor: pointer;
             transition: all 0.3s;
-            border: 2px solid transparent;
+            margin: 10px;
         }
-
-        .quiz-option:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: var(--accent-gold);
-            transform: translateX(5px);
+        
+        .button:hover {
+            background: #1e40af;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
         }
-
-        .quiz-option.selected {
-            background: rgba(246, 224, 94, 0.2);
-            border-color: var(--accent-gold);
+        
+        .button.secondary {
+            background: #64748b;
         }
-
-        .quiz-result {
-            display: none;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            border-radius: 20px;
-            padding: 3rem;
-            text-align: center;
+        
+        .button.secondary:hover {
+            background: #475569;
         }
-
-        .quiz-result.show {
-            display: block;
+        
+        .belt-emoji {
+            font-size: 60px;
+            margin-bottom: 20px;
         }
-
-        .quiz-result h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .quiz-result p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: rgba(255,255,255,0.9);
-        }
-
-        /* Features Grid */
-        .features {
-            background: var(--bg-dark);
-            padding: 4rem 2rem;
-        }
-
-        .features .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .features h2 {
-            text-align: center;
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 3rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: var(--bg-card);
-            border: 1px solid #2d2d2d;
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            border-color: var(--primary-navy);
-            transform: translateY(-5px);
-        }
-
-        .feature-card .icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            line-height: 1.8;
-        }
-
-        /* Belt Assessment Section */
-        .belt-assessment {
-            background: linear-gradient(135deg, #0f2744 0%, #1a365d 100%);
-            padding: 5rem 2rem;
-        }
-
-        .section-label {
-            display: inline-block;
-            background: rgba(220,38,38,0.15);
-            border: 1px solid rgba(220,38,38,0.3);
-            color: #ef4444;
-            padding: 0.5rem 1.5rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 1.5rem;
-        }
-
-        .belt-assessment h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 900;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .section-intro {
-            text-align: center;
-            font-size: 1.15rem;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .belt-system-overview {
-            max-width: 900px;
-            margin: 0 auto 3rem;
-            display: grid;
-            gap: 1rem;
-        }
-
-        .belt-level {
-            background: var(--bg-card);
-            border: 2px solid #2d2d2d;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .belt-level:hover {
-            border-color: var(--primary-navy);
-            transform: translateX(8px);
-        }
-
-        .belt-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.25rem 1.5rem;
-            font-weight: 700;
-        }
-
-        .belt-header.white-belt {
-            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-            color: #0a0a0a;
-        }
-
-        .belt-header.blue-belt {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            color: white;
-        }
-
-        .belt-header.purple-belt {
-            background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
-            color: white;
-        }
-
-        .belt-header.brown-belt {
-            background: linear-gradient(135deg, #92400e 0%, #78350f 100%);
-            color: white;
-        }
-
-        .belt-header.black-belt {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            color: white;
-        }
-
-        .belt-icon {
-            font-size: 2rem;
-        }
-
-        .belt-header h3 {
-            font-size: 1.35rem;
-            margin: 0;
-        }
-
-        .belt-header p {
-            font-size: 0.9rem;
-            margin: 0;
-            opacity: 0.9;
-            font-weight: 500;
-        }
-
-        .belt-content {
-            padding: 1.25rem 1.5rem;
-        }
-
-        .belt-content p {
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 0.75rem;
-            line-height: 1.6;
-        }
-
-        .belt-time {
-            display: inline-block;
-            background: rgba(220,38,38,0.1);
-            color: #ef4444;
-            padding: 0.25rem 0.75rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .assessment-cta-box {
-            background: linear-gradient(135deg, var(--bg-card) 0%, #1a1a1a 100%);
-            border: 2px solid var(--primary-navy);
-            border-radius: 16px;
-            padding: 3rem 2rem;
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .assessment-cta-box h3 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .assessment-cta-box p {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .btn-large {
-            font-size: 1.25rem;
-            padding: 1.25rem 3rem;
-        }
-
-        .cta-note {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.6);
-        }
-
+        
         @media (max-width: 768px) {
-            .cta-buttons {
-                flex-direction: column;
+            h1 {
+                font-size: 36px;
             }
             
-            .quiz-card {
-                padding: 2rem 1.5rem;
+            p {
+                font-size: 18px;
             }
-
-            .belt-assessment {
-                padding: 3rem 1.5rem;
-            }
-
-            .belt-level:hover {
-                transform: none;
-            }
-
-            .assessment-cta-box {
-                padding: 2rem 1.5rem;
+            
+            .container {
+                padding: 40px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>THE GYM</h1>
-            <p class="tagline">Your Personal Leadership Development System</p>
-            <p class="subtitle">
-                60-second diagnostic → Personalized development path → Track your progress<br>
-                Built on research from Lencioni, Sinek, and top performance coaches
+    <div class="container">
+        <div class="belt-emoji">🥋</div>
+        <h1>Tap-In Leadership Gym</h1>
+        <p>
+            Master leadership through vulnerability-based trust.<br>
+            Based on Lencioni's 5 Dysfunctions of a Team.
+        </p>
+        
+        <a href="stripe-navigator.html" class="button">
+            Start Your Journey
+        </a>
+        
+        <a href="learning-hub.html" class="button secondary">
+            Learning Hub
+        </a>
+        
+        <div style="margin-top: 40px; padding-top: 40px; border-top: 2px solid #e2e8f0;">
+            <p style="font-size: 16px; color: #94a3b8;">
+                🏆 20 Stripes • 5 Belts • 80 Lessons
             </p>
-            <div class="cta-buttons">
-                <a href="#diagnostic" class="btn btn-primary">
-                    ⚡ Start 60-Second Diagnostic
-                </a>
-                <a href="stripe-navigator.html" class="btn btn-primary">
-                    🥋 Start Training (Belt System)
-                </a>
-                <a href="leadership-games.html" class="btn btn-secondary">
-                    🎮 Play Leadership Games
-                </a>
-                <a href="gym-dashboard.html" class="btn btn-secondary">
-                    📊 Dashboard
-                </a>
-            </div>
         </div>
-    </section>
-
-    <!-- Diagnostic Section -->
-    <section id="diagnostic" class="diagnostic">
-        <div class="container">
-            <h2>Find Your Starting Point</h2>
-            <p>Answer one question to get your personalized path</p>
-
-            <div class="quiz-card" id="quizCard">
-                <div class="quiz-question">
-                    What brings you here today?
-                </div>
-                <div class="quiz-options">
-                    <div class="quiz-option" data-path="individual">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏃</div>
-                        <div style="font-weight: 600; margin-bottom: 0.5rem;">Individual Development</div>
-                        <div style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">
-                            I want to understand my work style, mental health, and personal growth
-                        </div>
-                    </div>
-                    <div class="quiz-option" data-path="team">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🤝</div>
-                        <div style="font-weight: 600; margin-bottom: 0.5rem;">Team Development</div>
-                        <div style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">
-                            I lead a team and want to improve collaboration, trust, and results
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="quiz-result" id="individualResult">
-                <div style="font-size: 4rem; margin-bottom: 1rem;">🎯</div>
-                <h3>Your Individual Development Path</h3>
-                <p>Start with these quick assessments (2-3 minutes each):</p>
-                <div class="cta-buttons">
-                    <a href="worker-type-assessment.html" class="btn btn-primary">
-                        🏃 Worker Type (Sprinter/Jogger/Ultra)
-                    </a>
-                    <a href="mental-health-assessment.html" class="btn btn-secondary">
-                        💚 Mental Wellness Baseline
-                    </a>
-                </div>
-                <p style="margin-top: 2rem; font-size: 1rem;">Then explore the GYM Dashboard to track your progress</p>
-                <a href="gym-dashboard.html" style="color: var(--accent-gold); text-decoration: underline;">→ Go to GYM Dashboard</a>
-            </div>
-
-            <div class="quiz-result" id="teamResult">
-                <div style="font-size: 4rem; margin-bottom: 1rem;">🏆</div>
-                <h3>Your Team Development Path</h3>
-                <p>Choose your assessment based on the depth you need:</p>
-                <div class="cta-buttons">
-                    <a href="team-dynamics-start.html" class="btn btn-primary">
-                        🤝 Start Team Assessment
-                    </a>
-                    <a href="gym-dashboard.html" class="btn btn-secondary">
-                        🎯 View GYM Dashboard
-                    </a>
-                </div>
-                <p style="margin-top: 2rem; font-size: 1rem;">Quick snapshot or comprehensive analysis – you choose</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Belt Assessment Section -->
-    <section class="belt-assessment">
-        <div class="container">
-            <div class="section-label">ADVANCED DEVELOPMENT</div>
-            <h2>Ready for Structured Leadership Growth?</h2>
-            <p class="section-intro">
-                The Belt System is a self-paced leadership development program. 
-                Five progressive levels from foundational vulnerability to visionary leadership.
-            </p>
-
-            <div class="belt-system-overview">
-                <div class="belt-level">
-                    <div class="belt-header white-belt">
-                        <span class="belt-icon">⚪</span>
-                        <div>
-                            <h3>White Belt</h3>
-                            <p>Foundation of Vulnerability</p>
-                        </div>
-                    </div>
-                    <div class="belt-content">
-                        <p>Self-awareness, emotional intelligence, feedback receptivity, acknowledging weaknesses</p>
-                        <span class="belt-time">⏱️ ~35-45 min total</span>
-                    </div>
-                </div>
-
-                <div class="belt-level">
-                    <div class="belt-header blue-belt">
-                        <span class="belt-icon">🔵</span>
-                        <div>
-                            <h3>Blue Belt</h3>
-                            <p>Building Meaningful Connections</p>
-                        </div>
-                    </div>
-                    <div class="belt-content">
-                        <p>Relational intelligence, active listening, empathy, trust-building, psychological safety</p>
-                        <span class="belt-time">⏱️ ~40-50 min total</span>
-                    </div>
-                </div>
-
-                <div class="belt-level">
-                    <div class="belt-header purple-belt">
-                        <span class="belt-icon">🟣</span>
-                        <div>
-                            <h3>Purple Belt</h3>
-                            <p>Conflict & Commitment</p>
-                        </div>
-                    </div>
-                    <div class="belt-content">
-                        <p>Healthy debate, decision-making, alignment, uncomfortable conversations, clarity</p>
-                        <span class="belt-time">⏱️ ~40-50 min total</span>
-                    </div>
-                </div>
-
-                <div class="belt-level">
-                    <div class="belt-header brown-belt">
-                        <span class="belt-icon">🟤</span>
-                        <div>
-                            <h3>Brown Belt</h3>
-                            <p>Accountability & Results</p>
-                        </div>
-                    </div>
-                    <div class="belt-content">
-                        <p>Peer accountability, collective results, standards, calling out performance gaps</p>
-                        <span class="belt-time">⏱️ ~40-50 min total</span>
-                    </div>
-                </div>
-
-                <div class="belt-level">
-                    <div class="belt-header black-belt">
-                        <span class="belt-icon">⚫</span>
-                        <div>
-                            <h3>Black Belt</h3>
-                            <p>Visionary Leadership</p>
-                        </div>
-                    </div>
-                    <div class="belt-content">
-                        <p>Strategic thinking, organizational impact, vision creation, culture transformation</p>
-                        <span class="belt-time">⏱️ ~45-59 min total</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="assessment-cta-box">
-                <h3>Find Your Starting Belt</h3>
-                <p>Take the comprehensive belt assessment to discover where you are and create your development roadmap</p>
-                <a href="belt-assessment.html" class="btn btn-primary btn-large">
-                    🥋 Start Belt Assessment
-                </a>
-                <p class="cta-note">45-59 minutes • Self-paced • Instant results & personalized plan</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2>What's Inside THE GYM</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="icon">🥋</div>
-                    <h3>Belt System</h3>
-                    <p>Progress through White → Blue → Purple → Brown → Black belts, mastering the 5 team dysfunctions step by step</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">⚡</div>
-                    <h3>Quick Assessments</h3>
-                    <p>2-3 minute diagnostics for work style, mental health, work-life balance, and team dynamics</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">🛠️</div>
-                    <h3>Open Mat Tools</h3>
-                    <p>Practical exercises: box breathing, morning routines, energy audits, weekly reviews, decision frameworks</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">📊</div>
-                    <h3>Progress Tracking</h3>
-                    <p>See your journey over time, celebrate wins, identify growth areas - all stored locally in your browser</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">🎓</div>
-                    <h3>Research-Backed</h3>
-                    <p>Built on frameworks from Lencioni (5 Dysfunctions), Sinek (Start With Why), and peak performance science</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">🆓</div>
-                    <h3>100% Free</h3>
-                    <p>No paywalls, no upsells, no data harvesting. Just pure development tools for you and your team</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Quiz interaction
-        document.querySelectorAll('.quiz-option').forEach(option => {
-            option.addEventListener('click', function() {
-                // Remove selected from all
-                document.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
-                
-                // Add selected to clicked
-                this.classList.add('selected');
-                
-                // Get path
-                const path = this.getAttribute('data-path');
-                
-                // Hide quiz card and show result after brief delay
-                setTimeout(() => {
-                    document.getElementById('quizCard').style.display = 'none';
-                    if (path === 'individual') {
-                        document.getElementById('individualResult').classList.add('show');
-                    } else {
-                        document.getElementById('teamResult').classList.add('show');
-                    }
-                }, 300);
-            });
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
+    </div>
 </body>
 </html>

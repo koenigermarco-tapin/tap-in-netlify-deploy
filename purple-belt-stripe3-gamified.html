@@ -573,7 +573,190 @@
         <!-- Assessment Form -->
         <div class="question-card hidden" id="assessmentForm">
             <div id="questionCard"></div>
-            <div class="nav-buttons">
+            
+        <!-- QUIZ SECTION -->
+        <div class="progress-section" style="margin-top: 60px; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border: 3px solid #2563eb;">
+            <h2 style="color: #1e40af; margin-bottom: 20px; font-size: 28px;">📝 Stripe Knowledge Check</h2>
+            <p style="color: #1e40af; margin-bottom: 30px; font-size: 16px;">
+                Answer all questions to complete this stripe and earn your bonus XP!
+            </p>
+
+            <div style="background: white; border-radius: 12px; padding: 25px; margin-bottom: 20px; border: 2px solid #cbd5e1;">
+                <p style="font-size: 18px; font-weight: 600; color: #1a365d; margin-bottom: 15px;">
+                    1. When everything is a priority:
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+
+                    <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.3s;" class="quiz-option">
+                        <input type="radio" name="quiz_q1" value="0"  style="width: 20px; height: 20px;">
+                        <span style="color: #475569; font-size: 16px;">Teams work harder</span>
+                    </label>
+
+                    <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.3s;" class="quiz-option">
+                        <input type="radio" name="quiz_q1" value="1" data-correct="true" style="width: 20px; height: 20px;">
+                        <span style="color: #475569; font-size: 16px;">Nothing is actually a priority</span>
+                    </label>
+
+                    <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.3s;" class="quiz-option">
+                        <input type="radio" name="quiz_q1" value="2"  style="width: 20px; height: 20px;">
+                        <span style="color: #475569; font-size: 16px;">Leaders must delegate more</span>
+                    </label>
+
+                    <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.3s;" class="quiz-option">
+                        <input type="radio" name="quiz_q1" value="3"  style="width: 20px; height: 20px;">
+                        <span style="color: #475569; font-size: 16px;">More resources are needed</span>
+                    </label>
+
+                </div>
+            </div>
+
+            <div style="background: white; border-radius: 12px; padding: 25px; margin-bottom: 20px; border: 2px solid #cbd5e1;">
+                <p style="font-size: 18px; font-weight: 600; color: #1a365d; margin-bottom: 15px;">
+                    2. The best teams limit work-in-progress to:
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+
+                    <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.3s;" class="quiz-option">
+                        <input type="radio" name="quiz_q2" value="0"  style="width: 20px; height: 20px;">
+                        <span style="color: #475569; font-size: 16px;">As many initiatives as team members</span>
+                    </label>
+
+                    <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.3s;" class="quiz-option">
+                        <input type="radio" name="quiz_q2" value="1" data-correct="true" style="width: 20px; height: 20px;">
+                        <span style="color: #475569; font-size: 16px;">1-2 critical goals at a time</span>
+                    </label>
+
+                    <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.3s;" class="quiz-option">
+                        <input type="radio" name="quiz_q2" value="2"  style="width: 20px; height: 20px;">
+                        <span style="color: #475569; font-size: 16px;">5-7 major projects</span>
+                    </label>
+
+                    <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.3s;" class="quiz-option">
+                        <input type="radio" name="quiz_q2" value="3"  style="width: 20px; height: 20px;">
+                        <span style="color: #475569; font-size: 16px;">Whatever stakeholders request</span>
+                    </label>
+
+                </div>
+            </div>
+
+            <div style="background: white; border-radius: 12px; padding: 25px; margin-bottom: 20px; border: 2px solid #cbd5e1;">
+                <p style="font-size: 18px; font-weight: 600; color: #1a365d; margin-bottom: 15px;">
+                    3. Saying "no" to good opportunities is necessary because:
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+
+                    <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.3s;" class="quiz-option">
+                        <input type="radio" name="quiz_q3" value="0"  style="width: 20px; height: 20px;">
+                        <span style="color: #475569; font-size: 16px;">Resources are always limited</span>
+                    </label>
+
+                    <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.3s;" class="quiz-option">
+                        <input type="radio" name="quiz_q3" value="1"  style="width: 20px; height: 20px;">
+                        <span style="color: #475569; font-size: 16px;">Commitment requires trade-offs</span>
+                    </label>
+
+                    <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.3s;" class="quiz-option">
+                        <input type="radio" name="quiz_q3" value="2"  style="width: 20px; height: 20px;">
+                        <span style="color: #475569; font-size: 16px;">Focus creates better outcomes than diffusion</span>
+                    </label>
+
+                    <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.3s;" class="quiz-option">
+                        <input type="radio" name="quiz_q3" value="3" data-correct="true" style="width: 20px; height: 20px;">
+                        <span style="color: #475569; font-size: 16px;">All of the above</span>
+                    </label>
+
+                </div>
+            </div>
+
+            <div style="background: white; border-radius: 12px; padding: 25px; margin-bottom: 20px; border: 2px solid #cbd5e1;">
+                <p style="font-size: 18px; font-weight: 600; color: #1a365d; margin-bottom: 15px;">
+                    4. In BJJ, trying to do "everything" leads to:
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+
+                    <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.3s;" class="quiz-option">
+                        <input type="radio" name="quiz_q4" value="0"  style="width: 20px; height: 20px;">
+                        <span style="color: #475569; font-size: 16px;">Mastery of all techniques</span>
+                    </label>
+
+                    <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.3s;" class="quiz-option">
+                        <input type="radio" name="quiz_q4" value="1" data-correct="true" style="width: 20px; height: 20px;">
+                        <span style="color: #475569; font-size: 16px;">Being average at many things, excellent at none</span>
+                    </label>
+
+                    <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.3s;" class="quiz-option">
+                        <input type="radio" name="quiz_q4" value="2"  style="width: 20px; height: 20px;">
+                        <span style="color: #475569; font-size: 16px;">Faster progression</span>
+                    </label>
+
+                    <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.3s;" class="quiz-option">
+                        <input type="radio" name="quiz_q4" value="3"  style="width: 20px; height: 20px;">
+                        <span style="color: #475569; font-size: 16px;">Better competition results</span>
+                    </label>
+
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button onclick="submitQuiz(11)" class="btn btn-primary" style="padding: 18px 40px; font-size: 18px;">
+                    Submit Quiz & Complete Stripe <span class="xp-badge">+100 XP Bonus</span>
+                </button>
+                <p id="quizFeedback" style="margin-top: 20px; font-size: 16px; font-weight: 600;"></p>
+            </div>
+        </div>
+
+        <script>
+        function submitQuiz(stripeNum) {
+            const totalQuestions = 4;
+            let answered = 0;
+            let correct = 0;
+            
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selected = document.querySelector('input[name="quiz_q' + i + '"]:checked');
+                if (selected) {
+                    answered++;
+                    if (selected.dataset.correct === "true") {
+                        correct++;
+                    }
+                }
+            }
+            
+            if (answered < totalQuestions) {
+                alert('Please answer all ' + totalQuestions + ' questions before submitting!');
+                return;
+            }
+            
+            const percentage = Math.round((correct / totalQuestions) * 100);
+            const passed = percentage >= 70;
+            
+            if (passed) {
+                // Award bonus XP
+                let xp = parseInt(localStorage.getItem('whitebeltStripe' + stripeNum + 'ModuleXP') || '0');
+                xp += 100;
+                localStorage.setItem('whitebeltStripe' + stripeNum + 'ModuleXP', xp);
+                
+                alert('✓ Quiz Passed!\n\nScore: ' + correct + '/' + totalQuestions + ' (' + percentage + '%)\n+100 XP Bonus Earned!\n\nStripe ' + stripeNum + ' Complete!');
+                
+                // Navigate to next stripe or back to hub
+                const nextStripe = stripeNum + 1;
+                if (nextStripe <= 4) {
+                    if (confirm('Continue to Stripe ' + nextStripe + '?')) {
+                        window.location.href = 'white-belt-stripe' + nextStripe + '-gamified.html';
+                    } else {
+                        window.location.href = 'learning-hub.html';
+                    }
+                } else {
+                    alert('🎉 White Belt Complete! Ready for Blue Belt.');
+                    window.location.href = 'learning-hub.html';
+                }
+            } else {
+                document.getElementById('quizFeedback').innerHTML = 
+                    '<span style="color: #dc2626;">Score: ' + correct + '/' + totalQuestions + ' (' + percentage + '%) - Need 70% to pass. Review lessons and try again!</span>';
+            }
+        }
+        </script>
+
+        <div class="nav-buttons">
                 <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()">← Previous</button>
                 <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
             </div>
