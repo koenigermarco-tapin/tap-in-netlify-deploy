@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="theme-color" content="#1a365d">
-    <title>Impact Belt Bewertung - TAP-IN</title>
+    <title>Impact Belt Assessment - TAP-IN</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -825,8 +825,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🥋 Impact Belt Bewertung</h1>
-            <p class="subtitle">Finde deine Lücken, erhalte deinen Fahrplan, verdiene deine Gürtel</p>
+            <h1>🥋 Impact Belt Assessment</h1>
+            <p class="subtitle">Find your gaps, get your roadmap, earn your belts</p>
             <div class="belt-icons">⚪ 🔵 🟣 🟤 ⚫</div>
         </div>
 
@@ -848,14 +848,14 @@
         <!-- Intro Screen -->
         <div class="screen active" id="screen-intro">
             <div class="intro-box philosophy">
-                <h3>🎯 Viele stecken fest</h3>
+                <h3>🎯 Most People Are Stuck</h3>
                 <p><strong>You know you should be making more impact. You read the books. You take the courses. But something's missing.</strong></p>
                 <p>The gap between knowing what great impact looks like and <em>actually creating it</em> is where most people get stuck.</p>
                 <p>This assessment will show you exactly where that gap is—and how to close it.</p>
             </div>
 
             <div class="intro-box">
-                <h3>📊 Was diese Bewertung bietet</h3>
+                <h3>📊 What This Assessment Does</h3>
                 <p>In 15 minutes, you'll get a comprehensive analysis of your impact potential across 5 critical dimensions:</p>
                 <ul>
                     <li><strong>⚪ Trust:</strong> Can you be vulnerable and build real connections?</li>
@@ -868,7 +868,7 @@
             </div>
 
             <div class="intro-box philosophy">
-                <h3>🥋 Wir vergeben keine Gürtel</h3>
+                <h3>🥋 We Don't Hand Out Belts</h3>
                 <p><strong>"A black belt is just a white belt who never gave up."</strong></p>
                 <p>In Brazilian Jiu-Jitsu, you earn belts through demonstrated mastery—not time served. A purple belt isn't "better" than a white belt. They've just mastered different techniques.</p>
                 <p><strong>This assessment is rigorous.</strong> Scoring 60% in Purple Belt doesn't unlock it—it shows you what you need to work on before you're ready. We'll tell you exactly what exercises and modules you need to complete first.</p>
@@ -876,8 +876,8 @@
             </div>
 
             <div class="intro-box">
-                <h3>⏱️ Was dich erwartet</h3>
-                <p><strong>50 Fragen auf 5 Gürtelstufen</strong> (10 Fragen pro Gürtel)</p>
+                <h3>⏱️ What to Expect</h3>
+                <p><strong>50 questions across 5 belt levels</strong> (10 questions per belt)</p>
                 <p><strong>Time:</strong> 12-15 minutes</p>
                 <p><strong>Question types:</strong> Real scenarios, self-assessments, tough choices</p>
                 <p><strong>Honesty required:</strong> Choose what you <em>actually do</em>, not what you wish you did. The assessment only works if you're brutally honest.</p>
@@ -896,7 +896,7 @@
             </div>
 
             <div class="nav-buttons" style="justify-content: center;">
-                <button class="btn btn-primary" onclick="startAssessment()" style="font-size: 1.3em; padding: 20px 50px;">Bewertung starten →</button>
+                <button class="btn btn-primary" onclick="startAssessment()" style="font-size: 1.3em; padding: 20px 50px;">Begin Assessment →</button>
             </div>
         </div>
 
@@ -916,13 +916,13 @@
             </div>
 
             <div class="nav-buttons">
-                <button class="btn-secondary" onclick="previousQuestion()" id="prevBtn">← Zurück</button>
-                <button class="btn-primary" onclick="nextQuestion()" id="nextBtn" disabled>Weiter →</button>
+                <button class="btn-secondary" onclick="previousQuestion()" id="prevBtn">← Previous</button>
+                <button class="btn-primary" onclick="nextQuestion()" id="nextBtn" disabled>Next →</button>
             </div>
             
             <div style="text-align: center; margin-top: 30px;">
                 <button class="btn-tap" onclick="showTapModal()">🥋 Tap</button>
-                <p style="color: #64748b; font-size: 0.9em; margin-top: 10px;">Bereit ins Training zu starten? Oder brauchst du eine Pause?</p>
+                <p style="color: #64748b; font-size: 0.9em; margin-top: 10px;">Ready to start training? Or need a break?</p>
             </div>
         </div>
         
@@ -935,18 +935,18 @@
                 <div class="tap-out-options">
                     <div class="tap-out-option" onclick="showBeltSelector()">
                         <div class="tap-out-icon">🎯</div>
-                        <h3>Tap → Training starten</h3>
+                        <h3>Tap → Start Training</h3>
                         <p>Stop the assessment and jump to a belt level to start learning</p>
                     </div>
                     
                     <div class="tap-out-option" onclick="tapOutToGym()">
                         <div class="tap-out-icon">💾</div>
-                        <h3>Tap Out → Zurück zum Gym</h3>
+                        <h3>Tap Out → Back to Gym</h3>
                         <p>Save progress and return to the main hub</p>
                     </div>
                 </div>
                 
-                <button class="btn-secondary" onclick="closeTapModal()" style="margin-top: 20px;">← Zurück zur Bewertung</button>
+                <button class="btn-secondary" onclick="closeTapModal()" style="margin-top: 20px;">← Back to Assessment</button>
             </div>
         </div>
         
@@ -988,7 +988,7 @@
                     </div>
                 </div>
                 
-                <button class="btn-secondary" onclick="closeBeltSelector()" style="margin-top: 20px;">← Zurück</button>
+                <button class="btn-secondary" onclick="closeBeltSelector()" style="margin-top: 20px;">← Back</button>
             </div>
         </div>
 
@@ -1018,7 +1018,7 @@
                 </div>
 
                 <div class="nav-buttons">
-                    <a href="index.html" class="btn-primary">Training starten →</a>
+                    <a href="index.html" class="btn-primary">Start Your Training →</a>
                 </div>
             </div>
         </div>
@@ -1830,7 +1830,7 @@
                 
                 // Auto-enable next button for enhancement boxes
                 document.getElementById('nextBtn').disabled = false;
-                document.getElementById('nextBtn').textContent = 'Weiter →';
+                document.getElementById('nextBtn').textContent = 'Continue →';
                 document.getElementById('prevBtn').disabled = currentQuestion === 0;
                 
                 return;
@@ -1856,7 +1856,7 @@
             updateSectionProgress();
             
             // Update question
-            document.getElementById('questionNumber').textContent = `Frage ${currentQuestion + 1} von ${questions.length}`;
+            document.getElementById('questionNumber').textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
             document.getElementById('questionText').textContent = q.text;
             
             // Create scale
@@ -1884,7 +1884,7 @@
             // Update buttons
             document.getElementById('prevBtn').disabled = currentQuestion === 0;
             document.getElementById('nextBtn').disabled = !answers[q.id];
-            document.getElementById('nextBtn').textContent = currentQuestion === questions.length - 1 ? 'Fertigstellen →' : 'Weiter →';
+            document.getElementById('nextBtn').textContent = currentQuestion === questions.length - 1 ? 'Finish →' : 'Next →';
             
             updateProgress();
         }
@@ -1904,7 +1904,7 @@
             const questionsCompleted = questions.slice(0, currentQuestion + 1).filter(q => q.type !== 'enhancement').length;
             const progress = (questionsCompleted / totalQuestions) * 100;
             document.getElementById('progressFill').style.width = progress + '%';
-            document.getElementById('progressText').textContent = `Frage ${questionsCompleted} von ${totalQuestions}`;
+            document.getElementById('progressText').textContent = `Question ${questionsCompleted} of ${totalQuestions}`;
         }
 
         function updateSectionProgress() {
