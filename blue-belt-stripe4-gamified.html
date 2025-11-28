@@ -277,8 +277,8 @@
                         window.location.href = 'learning-hub.html';
                     }
                 } else {
-                    alert('🎉 White Belt Complete! Ready for Blue Belt.');
-                    window.location.href = 'learning-hub.html';
+                    const goToPurple = confirm('🎉 Blue Belt Complete!\n\nReady to start Purple Belt now?\n\n(OK = Purple Belt, Cancel = Hub)');
+                    window.location.href = goToPurple ? 'purple-belt.html' : 'learning-hub.html';
                 }
             } else {
                 document.getElementById('quizFeedback').innerHTML = 
@@ -489,8 +489,8 @@
                         window.location.href = 'learning-hub.html';
                     }
                 } else {
-                    alert('🎉 White Belt Complete! Ready for Blue Belt.');
-                    window.location.href = 'learning-hub.html';
+                    const goToPurple = confirm('🎉 Blue Belt Complete!\n\nReady to start Purple Belt now?\n\n(OK = Purple Belt, Cancel = Hub)');
+                    window.location.href = goToPurple ? 'purple-belt.html' : 'learning-hub.html';
                 }
             } else {
                 document.getElementById('quizFeedback').innerHTML = 
@@ -695,8 +695,8 @@
                         window.location.href = 'learning-hub.html';
                     }
                 } else {
-                    alert('🎉 White Belt Complete! Ready for Blue Belt.');
-                    window.location.href = 'learning-hub.html';
+                    const goToPurple = confirm('🎉 Blue Belt Complete!\n\nReady to start Purple Belt now?\n\n(OK = Purple Belt, Cancel = Hub)');
+                    window.location.href = goToPurple ? 'purple-belt.html' : 'learning-hub.html';
                 }
             } else {
                 document.getElementById('quizFeedback').innerHTML = 
@@ -912,8 +912,8 @@
                         window.location.href = 'learning-hub.html';
                     }
                 } else {
-                    alert('🎉 White Belt Complete! Ready for Blue Belt.');
-                    window.location.href = 'learning-hub.html';
+                    const goToPurple = confirm('🎉 Blue Belt Complete!\n\nReady to start Purple Belt now?\n\n(OK = Purple Belt, Cancel = Hub)');
+                    window.location.href = goToPurple ? 'purple-belt.html' : 'learning-hub.html';
                 }
             } else {
                 document.getElementById('quizFeedback').innerHTML = 
@@ -968,7 +968,10 @@
         updateProgress();
     </script>
     <!-- Gamification System -->
-    <script src="js/gamification.js"></script>
-    <script src="js/stripe-completion-helper.js"></script>
+    <!-- Performance Optimizer - Load First -->
+<script src="js/performance-optimizer.js"></script>
+
+    <script src="js/gamification.js" defer></script>
+    <script src="js/stripe-completion-helper.js" defer></script>
 </body>
 </html>

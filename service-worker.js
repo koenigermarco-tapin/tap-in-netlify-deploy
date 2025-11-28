@@ -1,10 +1,8 @@
 // TAP-IN Service Worker - Offline Support & Caching
-const CACHE_NAME = 'tap-in-v10-2024-11-27-FORCE-REFRESH'; // CRITICAL: Updated to force all users to refresh
+const CACHE_NAME = 'tap-in-v11-2024-11-27-FORCE-REFRESH'; // bump version to force update
 const urlsToCache = [
   '/',
   '/index.html',
-  
-  // Learning Hub & Modules
   '/learning-hub.html',
   '/energy-management-module-gamified.html',
   '/boundaries-module-gamified.html',
@@ -16,8 +14,6 @@ const urlsToCache = [
   '/active-listening-module-gamified.html',
   '/empathy-module-gamified.html',
   '/coaching-module-gamified.html',
-  
-  // Assessments
   '/worker-type-assessment.html',
   '/worker-type-assessment.de.html',
   '/leadership-style-carousel.html',
@@ -29,74 +25,63 @@ const urlsToCache = [
   '/manifest.json'
 ];
 
-// Install event - cache resources
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
-      .catch(err => {
-        console.log('Cache install error:', err);
-      })
+      .then(cache => cache.addAll(urlsToCache))
+      .catch(err => console.log('Cache install error:', err))
   );
   self.skipWaiting();
 });
 
-// Fetch event - serve from cache, fallback to network
 self.addEventListener('fetch', event => {
+  const requestUrl = new URL(event.request.url);
+
+  if (requestUrl.pathname === '/' || requestUrl.pathname.endsWith('/index.html')) {
+    event.respondWith(
+      fetch(event.request)
+        .then(networkResponse => {
+          if (networkResponse && networkResponse.status === 200) {
+            const responseClone = networkResponse.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseClone));
+          }
+          return networkResponse;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Cache hit - return response
-        if (response) {
-          return response;
+    caches.match(event.request).then(response => {
+      if (response) {
+        return response;
+      }
+
+      const fetchRequest = event.request.clone();
+      return fetch(fetchRequest).then(networkResponse => {
+        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
+          return networkResponse;
         }
 
-        // Clone the request
-        const fetchRequest = event.request.clone();
-
-        return fetch(fetchRequest).then(response => {
-          // Check if valid response
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
-          }
-
-          // Clone the response
-          const responseToCache = response.clone();
-
-          caches.open(CACHE_NAME)
-            .then(cache => {
-              cache.put(event.request, responseToCache);
-            });
-
-          return response;
-        });
-      })
-  );
-});
-
-// Activate event - cleanup old caches
-self.addEventListener('activate', event => {
-  const cacheWhitelist = [CACHE_NAME];
-  
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
+        const responseToCache = networkResponse.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseToCache));
+        return networkResponse;
+      });
     })
   );
-  
-  return self.clients.claim();
 });
 
-// Background sync for when connection returns
+self.addEventListener('activate', event => {
+  const cacheWhitelist = [CACHE_NAME];
+  event.waitUntil(
+    caches.keys().then(cacheNames => Promise.all(
+      cacheNames.map(cacheName => cacheWhitelist.includes(cacheName) ? null : caches.delete(cacheName))
+    ))
+  );
+  self.clients.claim();
+});
+
 self.addEventListener('sync', event => {
   if (event.tag === 'sync-assessments') {
     event.waitUntil(syncAssessments());
@@ -104,6 +89,5 @@ self.addEventListener('sync', event => {
 });
 
 function syncAssessments() {
-  // Sync any pending assessment submissions when online
   return Promise.resolve();
 }

@@ -1,10 +1,15 @@
 /**
  * Supabase Configuration
  * Connect to existing Supabase backend
+ * 
+ * NOTE: Placeholder values are intentional - the system gracefully falls back to localStorage
+ * when Supabase is not configured. This allows the platform to work without cloud sync.
+ * 
+ * To enable cloud sync (optional):
+ * 1. Go to https://supabase.com → Your Project → Settings → API
+ * 2. Copy Project URL and Anon Key
+ * 3. Replace the values below
  */
-
-// TODO: Replace with actual credentials from Supabase Dashboard
-// Go to: https://supabase.com → Your Project → Settings → API
 const SUPABASE_URL = 'REPLACE_WITH_YOUR_URL';
 const SUPABASE_ANON_KEY = 'REPLACE_WITH_YOUR_KEY';
 

@@ -19,6 +19,9 @@
 <!-- System font fallback CSS -->
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CACHE BUSTER - Load FIRST, before anything else -->
+    <script src="cache-buster.js"></script>
+
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -1064,6 +1067,10 @@
     </style>
     
     <!-- Gamification System -->
+    <!-- Performance Optimizer - Load First -->
+    <script src="js/performance-optimizer.js"></script>
+    
+    <!-- Core scripts - deferred -->
     <script src="js/gamification.js" defer></script>
     <script src="js/gym-dashboard-init.js" defer></script>
     <script src="js/belt-progression.js" defer></script>
@@ -1254,7 +1261,7 @@
                         <a href="#" class="card-action">View All →</a>
                     </div>
                     <div class="modules-grid">
-                        <div class="module-card">
+                        <div class="module-card" data-target="white-belt-stripe1-gamified.html">
                             <div class="module-icon">🧠</div>
                             <div class="module-title">Self-Awareness</div>
                             <div class="module-progress">5/5 Lessons Complete</div>
@@ -1262,7 +1269,7 @@
                                 <div class="module-bar-fill" style="width: 100%"></div>
                             </div>
                         </div>
-                        <div class="module-card">
+                        <div class="module-card" data-target="white-belt-stripe2-gamified.html">
                             <div class="module-icon">💪</div>
                             <div class="module-title">Vulnerability as Strength</div>
                             <div class="module-progress">4/5 Lessons Complete</div>
@@ -1270,7 +1277,7 @@
                                 <div class="module-bar-fill" style="width: 80%"></div>
                             </div>
                         </div>
-                        <div class="module-card">
+                        <div class="module-card" data-target="white-belt-stripe3-gamified.html">
                             <div class="module-icon">🔓</div>
                             <div class="module-title">Building Self-Trust</div>
                             <div class="module-progress">3/7 Lessons Complete</div>
@@ -1278,7 +1285,7 @@
                                 <div class="module-bar-fill" style="width: 43%"></div>
                             </div>
                         </div>
-                        <div class="module-card">
+                        <div class="module-card" data-target="white-belt-stripe4-gamified.html">
                             <div class="module-icon">📝</div>
                             <div class="module-title">Journaling Practice</div>
                             <div class="module-progress">0/5 Lessons Complete</div>
@@ -1499,8 +1506,8 @@
                                 <span>🎯 Comprehensive</span>
                             </div>
                             <div class="team-assessment-actions">
-                                <button class="team-btn team-btn-primary" onclick="window.location.href='combined-leadership-profile.html'">Full Profile</button>
-                                <button class="team-btn team-btn-secondary" onclick="alert('Share link: ' + window.location.origin + '/combined-leadership-profile.html')">📤 Share</button>
+                                <button class="team-btn team-btn-primary" onclick="window.location.href='combined-profile-carousel.html'">Full Profile</button>
+                                <button class="team-btn team-btn-secondary" onclick="alert('Share link: ' + window.location.origin + '/combined-profile-carousel.html')">📤 Share</button>
                             </div>
                         </div>
                         
@@ -1778,30 +1785,56 @@
 
     <script>
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        // OPTIMIZED INITIALIZATION - BATCH LOCALSTORAGE READS
+        // ULTRA-OPTIMIZED INITIALIZATION - SINGLE BATCH READ
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         
-        // Single batch read of all localStorage data (performance optimization)
-        const appState = {
-            totalXP: parseInt(localStorage.getItem('totalXP') || '0'),
-            currentBelt: localStorage.getItem('currentBelt') || localStorage.getItem('beltLevel') || 'white',
-            currentStripe: parseInt(localStorage.getItem('currentStripe') || '1'),
-            completedLessons: JSON.parse(localStorage.getItem('completedLessons') || '[]'),
-            userName: localStorage.getItem('userName') || 'Warrior',
-            streakCount: parseInt(localStorage.getItem('streakCount') || '0'),
-            lastVisit: localStorage.getItem('lastVisit'),
-            gamificationData: null // Will be loaded below
+        // Use performance optimizer if available, otherwise fallback
+        const getBatchRead = (keys) => {
+            if (window.PerfOpt) {
+                return window.PerfOpt.batchRead(keys);
+            }
+            // Fallback: single read
+            const results = {};
+            keys.forEach(key => {
+                try {
+                    results[key] = localStorage.getItem(key);
+                } catch (e) {
+                    results[key] = null;
+                }
+            });
+            return results;
         };
         
-        // Load gamification data once
-        try {
-            const stored = localStorage.getItem('tapinGamification');
-            if (stored) {
-                appState.gamificationData = JSON.parse(stored);
-            }
-        } catch (e) {
-            console.error('Failed to parse gamification data:', e);
-        }
+        // Single batch read of ALL localStorage data
+        const storageKeys = [
+            'totalXP', 'currentBelt', 'beltLevel', 'currentStripe',
+            'completedLessons', 'userName', 'streakCount', 'lastVisit',
+            'tapinGamification', 'tapinTotalXP', 'tapinCurrentStreak',
+            'tapinLongestStreak', 'tapinLastVisit', 'tapinCurrentBelt',
+            'tapinCompletedStripes', 'tapinCompletedLessons'
+        ];
+        
+        const storageData = getBatchRead(storageKeys);
+        
+        // Build appState from batched read
+        const appState = {
+            totalXP: parseInt(storageData.totalXP || storageData.tapinTotalXP || '0'),
+            currentBelt: storageData.currentBelt || storageData.tapinCurrentBelt || storageData.beltLevel || 'white',
+            currentStripe: parseInt(storageData.currentStripe || '1'),
+            completedLessons: (() => {
+                try {
+                    return JSON.parse(storageData.completedLessons || storageData.tapinCompletedLessons || '[]');
+                } catch { return []; }
+            })(),
+            userName: storageData.userName || 'Warrior',
+            streakCount: parseInt(storageData.streakCount || storageData.tapinCurrentStreak || '0'),
+            lastVisit: storageData.lastVisit || storageData.tapinLastVisit,
+            gamificationData: (() => {
+                try {
+                    return storageData.tapinGamification ? JSON.parse(storageData.tapinGamification) : null;
+                } catch { return null; }
+            })()
+        };
         
         // Quotes array
         const quotes = [
@@ -1847,8 +1880,13 @@
         // Module cards click
         document.querySelectorAll('.module-card:not(.locked)').forEach(card => {
             card.addEventListener('click', function() {
-                const title = this.querySelector('.module-title').textContent;
-                alert(`Opening module: ${title}`);
+                const target = this.dataset.target;
+                if (target) {
+                    window.location.href = target;
+                } else {
+                    const title = this.querySelector('.module-title').textContent;
+                    alert(`Opening module: ${title}`);
+                }
             });
         });
 
@@ -2491,20 +2529,91 @@
 </script>
 
 
+<!-- Global Error Handling -->
+<script>
+// Global error handling
+window.addEventListener('error', (event) => {
+  console.error('💥 Error:', event.error);
+  showErrorToast('Something went wrong. Please refresh the page.');
+});
+
+window.addEventListener('unhandledrejection', (event) => {
+  // FIXED: Suppress Service Worker errors during uninstall
+  const reason = event.reason?.toString() || '';
+  if (reason.includes('Service Worker') || reason.includes('serviceWorker') || reason.includes('sw.js')) {
+    console.log('✓ SW error suppressed (expected during uninstall)');
+    event.preventDefault(); // Prevent the notification
+    return;
+  }
+  
+  console.error('💥 Unhandled promise rejection:', event.reason);
+  showErrorToast('A background process failed. Everything else should work fine.');
+});
+
+function showErrorToast(message) {
+  const toast = document.createElement('div');
+  toast.style.cssText = `
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff8787 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(255,107,107,0.4);
+    z-index: 100000;
+    animation: slideUp 0.3s ease-out;
+    max-width: 300px;
+  `;
+  toast.innerHTML = `
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <span style="font-size: 1.5rem;">⚠️</span>
+      <span>${message}</span>
+    </div>
+  `;
+  
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes slideUp {
+      from {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+  
+  document.body.appendChild(toast);
+  setTimeout(() => {
+    toast.style.animation = 'slideUp 0.3s ease-out reverse';
+    setTimeout(() => toast.remove(), 300);
+  }, 5000);
+}
+
+window.showErrorToast = showErrorToast;
+</script>
+
 <!-- Service Worker Registration -->
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/sw.js')
-        .then(reg => console.log('✅ Service Worker registered'))
-        .catch(err => console.log('❌ SW registration failed:', err));
+        .catch(err => console.log('SW uninstalling'));
     });
   }
 </script>
 
 
-<script src="js/loading-states.js"></script>
-<script src="js/error-handler.js"></script>
-<script src="js/cache-buster.js"></script>
+    <!-- Performance Optimizer - Load First -->
+    <script src="js/performance-optimizer.js"></script>
+    
+    <!-- Defer all non-critical scripts -->
+    <script src="js/loading-states.js" defer></script>
+    <script src="js/error-handler.js" defer></script>
+    
 </body>
 </html>

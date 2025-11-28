@@ -1170,8 +1170,8 @@
                         window.location.href = 'learning-hub.html';
                     }
                 } else {
-                    alert('🎉 White Belt Complete! Ready for Blue Belt.');
-                    window.location.href = 'learning-hub.html';
+                    const goToBlue = confirm('🎉 White Belt Complete!\n\nReady to start Blue Belt now?\n\n(OK = Blue Belt, Cancel = Hub)');
+                    window.location.href = goToBlue ? 'blue-belt.html' : 'learning-hub.html';
                 }
             } else {
                 document.getElementById('quizFeedback').innerHTML = 
@@ -1323,8 +1323,11 @@
     </script>
 
     <!-- Gamification System -->
-    <script src="js/gamification.js"></script>
-    <script src="js/stripe-completion-helper.js"></script>
+    <!-- Performance Optimizer - Load First -->
+<script src="js/performance-optimizer.js"></script>
+
+    <script src="js/gamification.js" defer></script>
+    <script src="js/stripe-completion-helper.js" defer></script>
 </body>
 </html>
 </html>

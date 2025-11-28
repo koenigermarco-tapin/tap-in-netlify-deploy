@@ -1,53 +1,66 @@
-# Netlify Headers Configuration
-# Basic caching strategy - allowing caching but with validation
+# Netlify Headers Configuration - FIXED VERSION
 
+# Security headers for all pages
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
 
-# HTML files - short cache with revalidation
+# HTML FILES - NEVER CACHE
 /*.html
-  Cache-Control: public, max-age=0, must-revalidate
-
-# Force fresh fetch for module files (prevent rainbow cache)
-/*-module-gamified.html
   Cache-Control: no-cache, no-store, must-revalidate
   Pragma: no-cache
   Expires: 0
 
-/learning-hub.html
+# Learning hub - extra aggressive
+/learning-hub*.html
   Cache-Control: no-cache, no-store, must-revalidate
   Pragma: no-cache
   Expires: 0
 
-/learning-hub-de.html
+# Module pages - extra aggressive
+/*-module*.html
   Cache-Control: no-cache, no-store, must-revalidate
   Pragma: no-cache
   Expires: 0
 
-# CSS and JavaScript - moderate cache
-/*.css
-  Cache-Control: public, max-age=3600, immutable
-
+# JAVASCRIPT - SHORT CACHE (5 minutes)
 /*.js
-  Cache-Control: public, max-age=3600, immutable
+  Cache-Control: public, max-age=300, must-revalidate
 
-# Images - long cache
+# CSS - SHORT CACHE (5 minutes)
+/*.css
+  Cache-Control: public, max-age=300, must-revalidate
+
+# JSON - SHORT CACHE
+/*.json
+  Cache-Control: public, max-age=300, must-revalidate
+
+# IMAGES - MODERATE CACHE (1 day)
 /*.jpg
-  Cache-Control: public, max-age=86400, immutable
+  Cache-Control: public, max-age=86400
+
+/*.jpeg
+  Cache-Control: public, max-age=86400
 
 /*.png
-  Cache-Control: public, max-age=86400, immutable
+  Cache-Control: public, max-age=86400
+
+/*.gif
+  Cache-Control: public, max-age=86400
 
 /*.svg
-  Cache-Control: public, max-age=86400, immutable
+  Cache-Control: public, max-age=86400
 
 /*.webp
-  Cache-Control: public, max-age=86400, immutable
+  Cache-Control: public, max-age=86400
 
-# Fonts - very long cache
+/*.ico
+  Cache-Control: public, max-age=86400
+
+# FONTS - LONG CACHE (1 year)
 /*.woff
   Cache-Control: public, max-age=31536000, immutable
 
@@ -56,3 +69,17 @@
 
 /*.ttf
   Cache-Control: public, max-age=31536000, immutable
+
+# SPECIAL FILES - NEVER CACHE
+/sw.js
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
+
+/cache-buster.js
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
+
+/manifest.json
+  Cache-Control: public, max-age=300, must-revalidate

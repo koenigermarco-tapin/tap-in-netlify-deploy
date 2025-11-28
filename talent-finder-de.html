@@ -397,8 +397,11 @@
     }
   </script>
   
-  <script src="js/gamification.js"></script>
-  <script src="js/talent-finder.js"></script>
+  <!-- Performance Optimizer - Load First -->
+<script src="js/performance-optimizer.js"></script>
+
+    <script src="js/gamification.js" defer></script>
+  <script src="js/talent-finder.js" defer></script>
   
   <!-- Wisdom Tracker & Hub Unlock Systems -->
   <script src="js/wisdom-tracker.js" defer></script>

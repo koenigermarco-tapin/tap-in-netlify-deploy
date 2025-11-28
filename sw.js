@@ -1,101 +1,81 @@
 /**
- * Service Worker for Tap-In PWA
- * Enables offline functionality and fast loading
+ * Service Worker UNINSTALLER
+ * 
+ * This file completely removes the old service worker and clears all caches.
+ * What this does:
+ * 1. Unregisters the service worker
+ * 2. Deletes all cached content
+ * 3. Reloads all open tabs with fresh content
+ * 4. Stops intercepting network requests
  */
 
-const CACHE_NAME = 'tap-in-v1-2024-11-27';
-const urlsToCache = [
-  '/',
-  '/index-DUAL-ENTRY.html',
-  '/gym-dashboard.html',
-  '/learning-hub.html',
-  '/js/gamification.js',
-  '/js/belt-progression.js',
-  '/js/wisdom-tracker.js',
-  '/js/hub-unlock-system.js',
-  '/js/progress-sync-init.js',
-  '/manifest.json'
-];
+console.log('🧹 SW UNINSTALLER: Starting cleanup process...');
 
-// Install event - cache core files
+// Install immediately
 self.addEventListener('install', event => {
-  console.log('Service Worker: Installing...');
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Service Worker: Caching files');
-        return cache.addAll(urlsToCache).catch(err => {
-          console.log('Service Worker: Some files failed to cache', err);
-        });
-      })
-      .then(() => self.skipWaiting())
-  );
+  console.log('🧹 SW UNINSTALLER: Installing...');
+  self.skipWaiting();
 });
 
-// Activate event - clean old caches
+// When activated, clean everything and unregister
 self.addEventListener('activate', event => {
-  console.log('Service Worker: Activating...');
+  console.log('🧹 SW UNINSTALLER: Activating...');
+  
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cache => {
-          if (cache !== CACHE_NAME) {
-            console.log('Service Worker: Clearing old cache');
-            return caches.delete(cache);
-          }
-        })
-      );
-    }).then(() => self.clients.claim())
-  );
-});
-
-// Fetch event - serve from cache, fallback to network
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Cache hit - return response
-        if (response) {
-          return response;
+    // Step 1: Delete ALL caches
+    caches.keys()
+      .then(cacheNames => {
+        console.log('🧹 SW UNINSTALLER: Found', cacheNames.length, 'caches to delete');
+        return Promise.all(
+          cacheNames.map(cacheName => {
+            console.log('🧹 SW UNINSTALLER: Deleting cache:', cacheName);
+            return caches.delete(cacheName);
+          })
+        );
+      })
+      .then(() => {
+        console.log('✅ SW UNINSTALLER: All caches deleted');
+        // Step 2: Unregister this service worker
+        return self.registration.unregister();
+      })
+      .then(unregistered => {
+        if (unregistered) {
+          console.log('✅ SW UNINSTALLER: Service worker unregistered');
         }
-        
-        // Clone the request
-        const fetchRequest = event.request.clone();
-        
-        return fetch(fetchRequest).then(response => {
-          // Check if valid response
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
-          }
-          
-          // Clone the response
-          const responseToCache = response.clone();
-          
-          // Cache the fetched response
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, responseToCache);
-          });
-          
-          return response;
-        }).catch(err => {
-          console.log('Service Worker: Fetch failed', err);
-          // Return cached response if available
-          return caches.match(event.request);
+        return self.clients.claim();
+      })
+      .then(() => {
+        return self.clients.matchAll({ 
+          type: 'window',
+          includeUncontrolled: true 
         });
+      })
+      .then(clients => {
+        console.log('🧹 SW UNINSTALLER: Reloading', clients.length, 'client(s)');
+        clients.forEach(client => {
+          client.postMessage({
+            type: 'SW_UNINSTALLED',
+            message: 'Service worker removed. Reloading for fresh content...'
+          });
+        });
+        console.log('🎉 SW UNINSTALLER: Cleanup complete!');
+      })
+      .catch(error => {
+        console.error('❌ SW UNINSTALLER: Error during cleanup:', error);
       })
   );
 });
 
-// Background sync
-self.addEventListener('sync', event => {
-  if (event.tag === 'sync-progress') {
-    event.waitUntil(syncProgress());
+// DON'T INTERCEPT ANY REQUESTS
+self.addEventListener('fetch', event => {
+  console.log('🚫 SW UNINSTALLER: Not intercepting:', event.request.url);
+  return;
+});
+
+// Listen for messages
+self.addEventListener('message', event => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    console.log('🧹 SW UNINSTALLER: Received SKIP_WAITING message');
+    self.skipWaiting();
   }
 });
-
-async function syncProgress() {
-  // Sync localStorage to cloud when online
-  console.log('Background sync: Syncing progress...');
-  // This will be called by StorageManager when implemented
-}
-

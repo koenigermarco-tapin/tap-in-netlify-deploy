@@ -227,7 +227,7 @@
                 <div class="cta-box">
                     <h3>Want to Optimize Your Team?</h3>
                     <p>Discover how to build balanced teams with the right mix of Sprinters, Joggers, and Ultrarunners.</p>
-                    <a href="/cdn-cgi/l/email-protection#40232f2e34212334003421306d292e6d21232124252d396e232f2d7f3335222a2523347d172f322b253260143930256013343221342527396013253333292f2e" class="btn" style="background: white; color: #1a365d;" data-i18n="schedule_session">📅 Schedule Strategy Session</a>
+                    <a href="mailto:contact@tap-in-academy.com?subject=Team%20Optimization%20Strategy%20Session" class="btn" style="background: white; color: #1a365d;" data-i18n="schedule_session">📅 Schedule Strategy Session</a>
                     <div style="margin-top: 20px;">
                         <a href="index.html" class="btn" style="background: transparent; border: 2px solid white; color: white;" data-i18n="back_to_assessments">← Back to Assessments</a>
                     </div>
@@ -1339,7 +1339,10 @@ What's YOUR worker type?`;
     </script>
 
     <!-- Gamification System -->
-    <script src="js/gamification.js"></script>
-    <script src="js/assessment-completion-helper.js"></script>
+    <!-- Performance Optimizer - Load First -->
+<script src="js/performance-optimizer.js"></script>
+
+    <script src="js/gamification.js" defer></script>
+    <script src="js/assessment-completion-helper.js" defer></script>
 </body>
 </html>

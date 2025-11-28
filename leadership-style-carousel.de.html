@@ -1321,7 +1321,10 @@
             
             html += '</table>';
             html += '<p><strong>Primärer Typ:</strong> ' + sortedScores[0].type + '</p>';
-            html += '</body></html>';
+            html += '
+    <!-- Performance Optimizer - Load First -->
+<script src="js/performance-optimizer.js"></script>
+</body></html>';
             
             const blob = new Blob([html], { type: 'application/vnd.ms-excel' });
             const url = window.URL.createObjectURL(blob);

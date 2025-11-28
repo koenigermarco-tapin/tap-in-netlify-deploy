@@ -2,11 +2,64 @@
   publish = "."
   command = "echo 'No build needed - static site'"
 
-# Redirects for clean URLs
-[[redirects]]
-  from = "/"
-  to = "/index-DUAL-ENTRY.html"
-  status = 200
+# ========================================
+# SECURITY HEADERS (ALL PAGES)
+# ========================================
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# ========================================
+# CACHE STRATEGY - FIXED VERSION
+# ========================================
+
+# HTML Files - NEVER CACHE
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Pragma = "no-cache"
+    Expires = "0"
+
+# JavaScript - SHORT CACHE (5 minutes)
+# REMOVED "immutable" - files DO change!
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
+
+# CSS - SHORT CACHE (5 minutes)
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
+
+# JSON Files - SHORT CACHE
+[[headers]]
+  for = "/*.json"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
+
+# Images - MODERATE CACHE (1 day)
+[[headers]]
+  for = "/*.{jpg,jpeg,png,gif,svg,webp,ico}"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# Fonts - LONG CACHE (1 year) - these truly never change
+[[headers]]
+  for = "/*.{woff,woff2,ttf,eot}"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ========================================
+# REDIRECTS (CLEAN URLs)
+# ========================================
 
 [[redirects]]
   from = "/de"
@@ -25,42 +78,10 @@
 
 [[redirects]]
   from = "/assessment"
-  to = "/assessment-belt-landing.html"
+  to = "/belt-assessment-sales-landing.html"
   status = 200
 
 [[redirects]]
   from = "/business"
   to = "/business-portal.html"
   status = 200
-
-# Security headers
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
-
-# Cache static assets
-[[headers]]
-  for = "/*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.woff2"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Don't cache HTML (for updates)
-[[headers]]
-  for = "/*.html"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"

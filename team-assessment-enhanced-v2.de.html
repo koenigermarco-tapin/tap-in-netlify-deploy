@@ -268,7 +268,7 @@
                 <div class="cta-box">
                     <h3>Bereit, dein Team zu transformieren?</h3>
                     <p>Buche eine kostenlose 30-minütige Team-Dynamik-Strategie-Session, um deine Ergebnisse zu besprechen und einen 90-Tage-Aktionsplan zu erstellen.</p>
-                    <a href="/cdn-cgi/l/email-protection#b9dad6d7cdd8dacdf9cdd8c994d0d794d8dad8dddcd4c097dad6d486caccdbd3dcdacd84eddcd8d499f8cacadccacad4dcd7cd99eacdcbd8cddcdec099eadccacad0d6d7" class="btn" style="background: white; color: #a93226;">📅 Strategie-Sitzung buchen</a>
+                    <a href="mailto:kontakt@tap-in-academy.com?subject=Team-Dynamik%20Strategie-Session" class="btn" style="background: white; color: #a93226;">📅 Strategie-Sitzung buchen</a>
                     <div style="margin-top: 20px;">
                         <a href="index.de.html" class="btn" style="background: transparent; border: 2px solid white; color: white;">← Zurück zu Assessments</a>
                     </div>
@@ -1252,7 +1252,10 @@ Wie gesund ist EUER Team?`;
             html += `<tr><td>${dimensionNames[dim]}</td><td>${avg}</td><td>${level}</td></tr>`;
         });
         
-        html += '</table></body></html>';
+        html += '</table>
+    <!-- Performance Optimizer - Load First -->
+<script src="js/performance-optimizer.js"></script>
+</body></html>';
         
         const blob = new Blob([html], { type: 'application/vnd.ms-excel' });
         const url = window.URL.createObjectURL(blob);

@@ -1830,7 +1830,10 @@
             
             html += '</table>';
             html += '<p><strong>Primary Type:</strong> ' + sortedTypes[0][0].charAt(0).toUpperCase() + sortedTypes[0][0].slice(1) + '</p>';
-            html += '</body></html>';
+            html += '
+    <!-- Performance Optimizer - Load First -->
+<script src="js/performance-optimizer.js"></script>
+</body></html>';
             
             const blob = new Blob([html], { type: 'application/vnd.ms-excel' });
             const url = window.URL.createObjectURL(blob);

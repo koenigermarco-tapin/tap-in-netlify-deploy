@@ -19,6 +19,9 @@
 <!-- System font fallback CSS -->
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CACHE BUSTER - Load FIRST, before anything else -->
+    <script src="cache-buster.js"></script>
+
     <title>Der Hub | TAP-IN</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1039,7 +1042,10 @@
 
 
 <!-- Wisdom Tracker & Hub Unlock Systems -->
-<script src="js/wisdom-tracker.js" defer></script>
+<!-- Performance Optimizer - Load First -->
+<script src="js/performance-optimizer.js"></script>
+
+    <script src="js/wisdom-tracker.js" defer></script>
 <script src="js/hub-unlock-system.js" defer></script>
 <script src="js/progress-sync-init.js" defer></script>
 
@@ -1073,9 +1079,9 @@
 </script>
 
 
-<script src="js/loading-states.js"></script>
-<script src="js/error-handler.js"></script>
-<script src="js/cache-buster.js"></script>
+<script src="js/loading-states.js" defer></script>
+<script src="js/error-handler.js" defer></script>
+
 </body>
 </html>
 

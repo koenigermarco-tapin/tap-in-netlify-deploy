@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CACHE BUSTER - Load FIRST, before anything else -->
+    <script src="cache-buster.js"></script>
+
   <title>Business Portal | Tap-In Team Dashboard</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -86,6 +89,34 @@
       border-radius: 16px;
       padding: 2rem;
       margin-bottom: 2rem;
+    }
+
+    .combined-card {
+      background: linear-gradient(135deg, #1a365d 0%, #131b2f 100%);
+      border-color: #4a5568;
+      box-shadow: 0 12px 30px rgba(10, 15, 35, 0.5);
+    }
+
+    .combined-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 0.5rem;
+    }
+
+    .combined-subtitle {
+      color: #cbd5f5;
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+
+    .combined-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: #9ca3af;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
     }
 
     .card-header {
@@ -316,6 +347,33 @@
       <div class="stat-card">
         <div class="stat-value" id="activeMembers">0</div>
         <div class="stat-label">Active This Week</div>
+      </div>
+    </div>
+
+    <div class="card combined-card">
+      <div class="card-header" style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+        <div class="combined-title">🚀 Combined Leadership Assessment</div>
+        <button class="btn btn-primary" onclick="window.location.href='combined-profile-carousel.html'">
+          Launch Assessment
+        </button>
+      </div>
+      <p class="combined-subtitle">
+        One journey. Worker Type + Leadership Style + Team Dynamics in a single 46-question
+        impact profile with gamified rewards and insights. Perfect for sales, ops, and leadership teams.
+      </p>
+      <div class="combined-meta">
+        <span>46 questions</span>
+        <span>+150 XP unlock</span>
+        <span>Team-ready insights</span>
+        <span>Includes German & English versions</span>
+      </div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <button class="btn btn-secondary" onclick="window.location.href='combined-profile-carousel.html'">
+          Start Now
+        </button>
+        <button class="btn btn-secondary" onclick="window.location.href='combined-profile-carousel.de.html'">
+          Unsere deutsche Version
+        </button>
       </div>
     </div>
 
@@ -617,7 +675,10 @@
   </script>
 
 <!-- Wisdom Tracker & Hub Unlock Systems -->
-<script src="js/wisdom-tracker.js" defer></script>
+<!-- Performance Optimizer - Load First -->
+<script src="js/performance-optimizer.js"></script>
+
+    <script src="js/wisdom-tracker.js" defer></script>
 <script src="js/hub-unlock-system.js" defer></script>
 <script src="js/progress-sync-init.js" defer></script>
 
@@ -798,8 +859,8 @@ function analyzeTeam() {
 </script>
 
 
-<script src="js/loading-states.js"></script>
-<script src="js/error-handler.js"></script>
-<script src="js/cache-buster.js"></script>
+<script src="js/loading-states.js" defer></script>
+<script src="js/error-handler.js" defer></script>
+
 </body>
 </html>

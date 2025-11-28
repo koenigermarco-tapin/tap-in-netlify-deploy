@@ -137,8 +137,11 @@
   </div>
   
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/supabase-config.js"></script>
-  <script src="js/auth-system.js"></script>
+  <!-- Performance Optimizer - Load First -->
+<script src="js/performance-optimizer.js"></script>
+
+    <script src="js/supabase-config.js" defer></script>
+  <script src="js/auth-system.js" defer></script>
   
   <script>
     function enableCloudSync() {
