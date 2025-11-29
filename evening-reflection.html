@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evening Reflection - TAP-IN</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a365d 0%, #0f2744 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1em;
+        }
+        .question {
+            margin-bottom: 25px;
+        }
+        .question label {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .question textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-family: inherit;
+            font-size: 1em;
+            resize: vertical;
+        }
+        .question textarea:focus {
+            outline: none;
+            border-color: #7c3aed;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #7c3aed 0%, #1a365d 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(124, 58, 237, 0.4);
+        }
+        .back-link {
+            display: inline-block;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        .back-link:hover {
+            color: #fff;
+        }
+        .success {
+            text-align: center;
+            padding: 20px;
+            background: rgba(56, 161, 105, 0.2);
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        .success.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="gym-dashboard.html" class="back-link">← Back to The Gym</a>
+        
+        <div class="header">
+            <h1>🌙 Evening Reflection</h1>
+            <p>Process your day • 3 minutes</p>
+        </div>
+
+        <form id="reflectionForm">
+            <div class="question">
+                <label>What went well today?</label>
+                <textarea id="wentWell" placeholder="What are you grateful for? What did you accomplish?"></textarea>
+            </div>
+
+            <div class="question">
+                <label>What didn't go as planned?</label>
+                <textarea id="challenges" placeholder="What obstacles did you face? What would you do differently?"></textarea>
+            </div>
+
+            <div class="question">
+                <label>What did you learn?</label>
+                <textarea id="learned" placeholder="Any insights, realizations, or lessons from today?"></textarea>
+            </div>
+
+            <button type="submit" class="btn">Save Reflection</button>
+        </form>
+
+        <div class="success" id="successMessage">
+            ✅ Reflection saved! Returning to The Gym...
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('reflectionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const reflection = {
+                date: new Date().toISOString(),
+                wentWell: document.getElementById('wentWell').value,
+                challenges: document.getElementById('challenges').value,
+                learned: document.getElementById('learned').value
+            };
+            
+            // Save to localStorage
+            const reflections = JSON.parse(localStorage.getItem('eveningReflections') || '[]');
+            reflections.push(reflection);
+            localStorage.setItem('eveningReflections', JSON.stringify(reflections));
+            
+            // Award XP
+            const currentXP = parseInt(localStorage.getItem('totalXP') || '0');
+            localStorage.setItem('totalXP', (currentXP + 10).toString());
+            
+            // Show success
+            document.getElementById('successMessage').classList.add('show');
+            
+            // Return to dashboard after 2 seconds
+            setTimeout(() => {
+                window.location.href = 'gym-dashboard.html';
+            }, 2000);
+        });
+    </script>
+<!-- TAP-IN Utilities -->
+<script src="js/shared-utilities.js"></script>
+<script src="js/global-error-handler.js"></script>
+<script src="js/storage-health.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#1a365d">
+    <title>🤍 White Belt Stripe 2: How You Operate? - Mental Health Patterns - TAP-IN</title>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1a365d 0%, #7c3aed 100%); min-height: 100vh; padding: 20px; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+        .header { text-align: center; margin-bottom: 30px; padding-bottom: 25px; border-bottom: 3px solid #f0f0f0; }
+        .header h1 { color: #1a365d; font-size: 2.3em; margin-bottom: 15px; }
+        .header .subtitle { color: #666; font-size: 1.1em; margin-bottom: 10px; }
+        .header .duration { color: #999; font-size: 0.9em; font-style: italic; }
+        
+        .progress-bar { position: sticky; top: 10px; background: white; padding: 15px; border-radius: 10px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 100; }
+        .progress-text { text-align: center; color: #666; font-size: 0.9em; margin-bottom: 8px; }
+        .progress-fill { height: 8px; background: #e0e0e0; border-radius: 10px; overflow: hidden; }
+        .progress-fill-bar { background: linear-gradient(90deg, #1a365d 0%, #7c3aed 100%); height: 100%; width: 0%; transition: width 0.3s ease; }
+        
+        .section-header { background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; padding: 15px 20px; border-radius: 10px; margin-bottom: 20px; }
+        .section-header h3 { font-size: 1.2em; margin-bottom: 5px; }
+        .section-header .section-desc { font-size: 0.9em; opacity: 0.95; font-style: italic; }
+        
+        .question-card { background: #f8f9fa; padding: 30px; border-radius: 12px; margin-bottom: 20px; }
+        .question-number { color: #1a365d; font-weight: bold; font-size: 0.9em; margin-bottom: 10px; }
+        .question-text { font-size: 1.2em; color: #333; margin-bottom: 25px; font-weight: 500; line-height: 1.5; }
+        
+        .scale-options { display: flex; justify-content: space-between; align-items: flex-end; gap: 2px; flex-wrap: nowrap; height: 140px; position: relative; background: linear-gradient(to top right, rgba(26, 54, 93, 0.1) 0%, rgba(124, 58, 237, 0.05) 50%, transparent 50%); border-radius: 8px; padding: 5px; cursor: pointer; user-select: none; }
+        .scale-option { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; background: linear-gradient(135deg, rgba(26, 54, 93, 0.15) 0%, rgba(124, 58, 237, 0.1) 100%); border: 3px solid #cbd5e1; border-radius: 6px; transition: all 0.15s ease; position: relative; z-index: 1; padding: 10px 5px; }
+        .scale-option:nth-child(1) { height: 50px; opacity: 0.15; }
+        .scale-option:nth-child(2) { height: 70px; opacity: 0.35; }
+        .scale-option:nth-child(3) { height: 90px; opacity: 0.55; }
+        .scale-option:nth-child(4) { height: 110px; opacity: 0.75; }
+        .scale-option:nth-child(5) { height: 130px; opacity: 0.85; }
+        .scale-option span { font-size: 1.3em; font-weight: 800; color: #1e293b; opacity: 1; margin-bottom: 5px; }
+        .scale-option small { font-size: 0.7em; color: #475569; font-weight: 600; opacity: 1; text-align: center; line-height: 1.2; }
+        .scale-option:hover { transform: scale(1.05); border-color: #1a365d; }
+        .scale-option.active, .scale-option.selected { background: linear-gradient(135deg, #1a365d 0%, #7c3aed 100%); color: white; border-color: #0f1f3d; box-shadow: 0 2px 8px rgba(26, 54, 93, 0.4); }
+        .scale-option.active ~ .scale-option { background: linear-gradient(135deg, rgba(26, 54, 93, 0.15) 0%, rgba(124, 58, 237, 0.1) 100%); color: #333; }
+        .scale-option.active span, .scale-option.selected span { color: white; }
+        .scale-option.active small, .scale-option.selected small { color: rgba(255,255,255,0.9); }
+        
+        .insight-card { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 4px solid #1a365d; padding: 20px; margin: 20px 0; border-radius: 10px; animation: slideIn 0.4s ease; }
+        .insight-icon { font-size: 2rem; margin-bottom: 10px; }
+        .insight-title { color: #1a365d; font-size: 1.1em; font-weight: bold; margin-bottom: 12px; }
+        .insight-content { color: #555; line-height: 1.7; margin-bottom: 12px; }
+        .insight-quote { font-style: italic; color: #666; font-size: 0.95em; padding: 12px; background: rgba(255,255,255,0.7); border-radius: 6px; border-left: 3px solid #1a365d; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Scenario Question Styles */
+        .scenario-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .scenario-option {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .scenario-option:hover {
+            border-color: #667eea;
+            background: #f0f0ff;
+            transform: translateX(5px);
+        }
+        .scenario-option.selected {
+            border-color: #667eea;
+            background: #e8e8ff;
+        }
+        .scenario-option.correct {
+            border-color: #10b981;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        }
+        .scenario-option.correct .option-letter {
+            background: #10b981;
+        }
+        .scenario-option.incorrect {
+            border-color: #ef4444;
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+        }
+        .scenario-option.incorrect .option-letter {
+            background: #ef4444;
+        }
+        .scenario-option.neutral {
+            border-color: #f59e0b;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        }
+        .scenario-option.neutral .option-letter {
+            background: #f59e0b;
+        }
+        .option-letter {
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+        .option-text {
+            color: #333;
+            line-height: 1.6;
+            font-size: 1rem;
+            padding-top: 8px;
+        }
+        .scenario-feedback {
+            margin-top: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        .scenario-insight {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 4px solid #3b82f6;
+        }
+        
+        /* Multiple Choice Styles */
+        .mc-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .mc-option {
+            background: #ffffff;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 18px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .mc-option:hover {
+            border-color: #667eea;
+            background: #fafbff;
+            transform: translateX(3px);
+        }
+        .mc-option.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+        }
+        .mc-radio {
+            padding-top: 2px;
+        }
+        .mc-radio input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #667eea;
+            cursor: pointer;
+        }
+        .mc-content {
+            flex: 1;
+        }
+        .mc-text {
+            color: #333;
+            line-height: 1.6;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+        .mc-type {
+            color: #667eea;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .mc-feedback {
+            margin-top: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        .mc-insight {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-left: 4px solid #10b981;
+        }
+        .mc-type-badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(360deg) translateX(200px);
+                opacity: 0;
+            }
+        }
+        .milestone-content button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .fun-fact-box {
+            animation: slideIn 0.4s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .scenario-option {
+                padding: 12px 15px;
+                gap: 12px;
+            }
+            .option-letter {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+            .option-text {
+                font-size: 0.9rem;
+            }
+            .mc-option {
+                padding: 15px;
+            }
+            .mc-text {
+                font-size: 0.9rem;
+            }
+        }
+        
+        .nav-buttons { display: flex; gap: 15px; justify-content: space-between; margin-top: 25px; }
+        .btn { padding: 12px 30px; border: none; border-radius: 8px; font-size: 1em; cursor: pointer; transition: all 0.2s; font-weight: 600; }
+        .btn-secondary { background: #e0e0e0; color: #333; }
+        .btn-secondary:hover { background: #d0d0d0; }
+        .btn-primary { background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(26, 54, 93, 0.4); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        
+        .results-container { display: none; }
+        .results-container.active { display: block; }
+        .overall-score { background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; border-radius: 20px; padding: 40px; text-align: center; margin-bottom: 30px; }
+        .score-number { font-size: 4em; font-weight: bold; margin-bottom: 10px; }
+        .score-label { font-size: 1.3em; opacity: 0.95; }
+        .type-card { background: #f8f9fa; padding: 30px; border-radius: 15px; margin: 20px 0; border-left: 4px solid #1a365d; }
+        .type-card h3 { color: #1a365d; margin-bottom: 15px; font-size: 1.5em; }
+        .type-card ul { list-style: none; padding-left: 0; }
+        .type-card li { padding: 8px 0; padding-left: 25px; position: relative; color: #555; line-height: 1.7; }
+        .type-card li:before { content: "→"; position: absolute; left: 0; color: #1a365d; font-weight: bold; }
+        .cta-box { background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; border-radius: 15px; padding: 30px; text-align: center; margin-top: 30px; }
+        .cta-box h3 { font-size: 1.6em; margin-bottom: 15px; }
+        .cta-box p { font-size: 1em; margin-bottom: 20px; opacity: 0.95; }
+        .cta-btn { background: white; color: #1a365d; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; display: inline-block; transition: all 0.2s; }
+        .cta-btn:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(255,255,255,0.3); }
+        
+        .tap-out-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+        }
+        .tap-out-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.6);
+        }
+        @media (max-width: 768px) {
+            .container { padding: 25px; }
+            .header h1 { font-size: 2em; }
+            .scale-option small { font-size: 0.65em; }
+            .tap-out-button {
+                top: 10px;
+                right: 10px;
+                padding: 10px 16px;
+                font-size: 0.9em;
+            }
+        }
+    
+        /* ============= NUMBERED OPTION BOX READABILITY FIX ============= */
+        .scale-option,
+        .rating-option,
+        .numbered-option,
+        .option-number,
+        [data-value="1"],
+        [data-value="2"],
+        [data-value="3"],
+        [data-value="4"],
+        [data-value="5"] {
+            color: #FFFFFF !important;
+            font-weight: 700 !important;
+            font-size: 1.1rem !important;
+            background: #1e293b !important;
+            border: 2px solid #475569 !important;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+        }
+        .scale-option:hover,
+        .rating-option:hover,
+        .numbered-option:hover,
+        .option-number:hover,
+        [data-value]:hover {
+            background: #334155 !important;
+            border-color: #667eea !important;
+            color: #FFFFFF !important;
+            transform: scale(1.05) !important;
+        }
+        .scale-option.selected,
+        .rating-option.selected,
+        .numbered-option.selected,
+        .option-number.selected,
+        [data-value].selected {
+            background: #667eea !important;
+            border-color: #818cf8 !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3) !important;
+        }
+        .scale-label,
+        .rating-label,
+        .option-label {
+            color: #FFFFFF !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            text-align: center !important;
+            margin-top: 0.5rem !important;
+        }
+        .scale-container,
+        .rating-container,
+        .options-row {
+            display: flex !important;
+            justify-content: space-between !important;
+            gap: 0.75rem !important;
+            margin: 1.5rem 0 !important;
+        }
+        .scale-container > *,
+        .rating-container > *,
+        .options-row > * {
+            flex: 1 !important;
+            min-width: 60px !important;
+            text-align: center !important;
+            padding: 1rem 0.5rem !important;
+            border-radius: 8px !important;
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+        }
+        @media (max-width: 768px) {
+            .scale-option,
+            .rating-option,
+            .numbered-option,
+            .option-number,
+            [data-value] {
+                font-size: 1rem !important;
+                padding: 0.75rem 0.25rem !important;
+                min-width: 50px !important;
+            }
+            .scale-label,
+            .rating-label,
+            .option-label {
+                font-size: 0.75rem !important;
+            }
+        }
+        input[type="range"] {
+            -webkit-appearance: none !important;
+            width: 100% !important;
+            height: 8px !important;
+            background: #334155 !important;
+            border-radius: 5px !important;
+            outline: none !important;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none !important;
+            width: 24px !important;
+            height: 24px !important;
+            background: #667eea !important;
+            cursor: pointer !important;
+            border-radius: 50% !important;
+            border: 3px solid #FFFFFF !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 24px !important;
+            height: 24px !important;
+            background: #667eea !important;
+            cursor: pointer !important;
+            border-radius: 50% !important;
+            border: 3px solid #FFFFFF !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+        }
+        .slider-value,
+        .range-value {
+            display: block !important;
+            text-align: center !important;
+            font-size: 1.5rem !important;
+            font-weight: 700 !important;
+            color: #667eea !important;
+            margin-top: 1rem !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+        }
+        .slider-labels {
+            display: flex !important;
+            justify-content: space-between !important;
+            margin-top: 0.5rem !important;
+        }
+        .slider-labels span {
+            font-size: 0.85rem !important;
+            color: #cbd5e1 !important;
+            font-weight: 600 !important;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- TAP OUT Button -->
+    <button class="tap-out-button" onclick="tapOut()" id="tapOutBtn" style="display: none;">
+        <div class="tap-icon">🥋</div>
+        <div class="tap-text">TAP</div>
+    </button>
+    
+    <!-- Language Switcher -->
+    <div style="position:fixed;top:16px;right:16px;z-index:1200;">
+        <div style="background:white;border-radius:999px;padding:8px 12px;box-shadow:0 6px 20px rgba(0,0,0,0.15);font-size:0.95em;">
+            <a href="white-belt-stripe2-carousel-NEW.html" style="color:#1a365d;text-decoration:none;font-weight:700;margin-right:10px;">EN</a>
+            <a href="white-belt-stripe2-carousel-NEW-de.html" style="color:#333;text-decoration:none;font-weight:700;border-left:1px solid #eee;padding-left:10px;margin-left:10px;">DE</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Assessment Form -->
+        <div id="assessmentForm">
+            <div class="header">
+                <h1>🤍 White Belt - Stripe 2: How You Operate?</h1>
+                <p class="subtitle">Discover Your Mental Health Patterns & Energy Management</p>
+                <p class="duration">⏱️ 5-7 Minutes • 15 Questions</p>
+            </div>
+
+            <!-- Intro Section -->
+            <div id="introSection" style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #1a365d;">
+                <h3 style="color: #333; margin-bottom: 15px;">🧠 Self-Awareness - The Foundation of Emotional Intelligence</h3>
+                <p style="color: #666; line-height: 1.7; margin-bottom: 15px;">
+                    <strong>Understanding your mental health patterns is the foundation of self-regulation.</strong> This assessment reveals how you manage stress, energy, emotions, and recovery. Just like knowing your worker type, understanding these patterns helps you design your life to work WITH your nature, not against it.
+                </p>
+                
+                <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #1a365d;">
+                    <p style="font-style: italic; color: #555; margin-bottom: 10px;">
+                        "You can't manage what you don't measure. Self-awareness is the first step to self-mastery."
+                    </p>
+                    <p style="text-align: right; color: #888; font-size: 0.9em;">— Ancient Wisdom</p>
+                </div>
+
+                <p style="color: #666; line-height: 1.7; margin-bottom: 15px;">
+                    <strong>Research from the American Psychological Association</strong> shows that people who understand their mental health patterns have 40% better stress management and 60% lower burnout rates. This assessment helps you:
+                </p>
+                <ul style="color: #666; line-height: 1.8; margin-left: 20px; margin-bottom: 15px;">
+                    <li>Identify your stress triggers and energy patterns</li>
+                    <li>Recognize early warning signs of burnout</li>
+                    <li>Design recovery strategies that actually work for you</li>
+                    <li>Build emotional resilience through self-awareness</li>
+                </ul>
+
+                <p style="color: #666; line-height: 1.7; margin-top: 15px; padding: 15px; background: #f0f4ff; border-radius: 8px; font-size: 0.95em;">
+                    <strong>🥋 In BJJ:</strong> Just like fighters need to know their energy levels, recovery needs, and stress responses, leaders need to understand their mental patterns. The best fighters don't ignore their body's signals—they listen and adapt. Same with mental health.
+                </p>
+                
+                <button onclick="startAssessment()" style="background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(26, 54, 93, 0.3); display: block; margin: 20px auto 0; width: auto;">
+                    Start Assessment →
+                </button>
+            </div>
+
+            <div class="progress-bar" style="display: none;" id="progressBarContainer">
+                <div class="progress-text"><span id="currentSection">Stress & Energy</span> • Question <span id="currentQ">1</span> of 15</div>
+                <div class="progress-fill">
+                    <div class="progress-fill-bar" id="progressBar"></div>
+                </div>
+            </div>
+
+            <div id="questionContainer" style="display: none;"></div>
+
+            <div class="nav-buttons" style="display: none;" id="navButtons">
+                <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>← Previous</button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next →</button>
+            </div>
+        </div>
+
+        <!-- Results Container -->
+        <div id="resultsContainer" class="results-container">
+            <div class="header">
+                <h1>🤍 Your Mental Health Pattern Profile</h1>
+            </div>
+
+            <div class="overall-score" id="typeResultCard">
+                <div class="score-number" id="typeEmoji">🧠</div>
+                <div class="score-label" id="typeLabel">Calculating...</div>
+            </div>
+
+            <div id="typeDetails"></div>
+
+            <div class="cta-box">
+                <h3>🤍 White Belt Stripe 2 Complete!</h3>
+                <p>You now understand your mental health patterns. Ready to continue your journey?</p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
+                    <a href="white-belt-stripe3-carousel-NEW.html" class="cta-btn" style="margin: 0;">Continue to Stripe 3 →</a>
+                    <a href="gym-dashboard.html" class="cta-btn" style="background: rgba(255,255,255,0.2); border: 2px solid white; margin: 0;">Back to The Gym</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            // STRESS & ENERGY MANAGEMENT (5 questions)
+            {
+                section: 'Stress & Energy Management',
+                sectionDesc: 'How you handle pressure and manage your energy',
+                question: 'When you experience high stress, your typical response is...',
+                category: 'stress'
+            },
+            {
+                question: 'Your energy levels throughout the day tend to...',
+                category: 'energy'
+            },
+            {
+                question: 'When you feel overwhelmed, you typically...',
+                category: 'stress'
+            },
+            {
+                question: 'Your relationship with sleep is...',
+                category: 'energy'
+            },
+            {
+                question: 'When facing multiple deadlines, you...',
+                category: 'stress'
+            },
+            // EMOTIONAL PATTERNS (5 questions)
+            {
+                section: 'Emotional Patterns',
+                sectionDesc: 'How you process and regulate emotions',
+                question: 'When you feel anxious or worried, you tend to...',
+                category: 'emotion'
+            },
+            {
+                question: 'Your emotional reactions to setbacks are typically...',
+                category: 'emotion'
+            },
+            {
+                question: 'When you feel frustrated or angry, you usually...',
+                category: 'emotion'
+            },
+            {
+                question: 'Your ability to recognize your emotions in the moment is...',
+                category: 'emotion'
+            },
+            {
+                question: 'When you experience negative emotions, you tend to...',
+                category: 'emotion'
+            },
+            // RECOVERY & RESILIENCE (5 questions)
+            {
+                section: 'Recovery & Resilience',
+                sectionDesc: 'How you recharge and bounce back from challenges',
+                question: 'After a difficult day or week, you recover by...',
+                category: 'recovery'
+            },
+            {
+                question: 'Your approach to taking breaks is...',
+                category: 'recovery'
+            },
+            {
+                question: 'When you experience burnout or exhaustion, you...',
+                category: 'recovery'
+            },
+            {
+                question: 'Your resilience when facing repeated challenges is...',
+                category: 'resilience'
+            },
+            {
+                question: 'When you need to recharge mentally, you prefer to...',
+                category: 'recovery'
+            }
+        ];
+
+        const insights = [
+            // STRESS & ENERGY INSIGHTS (5)
+            { icon: '⚡', title: 'Stress Response Pattern', content: 'Your stress response reveals your mental health baseline. <strong>Research shows</strong> that people who recognize their stress patterns early have 50% better recovery rates. In BJJ, fighters who know their stress responses can maintain composure under pressure—same in leadership.', quote: '"The best fighters stay calm when others panic. That\'s not natural—it\'s trained awareness." - BJJ Wisdom' },
+            { icon: '🔋', title: 'Energy Management Style', content: 'Your energy patterns are unique to you. <strong>Tony Schwartz\'s research</strong> shows that matching your schedule to your energy cycles increases productivity by 30%. Some people are morning warriors, others are night owls—knowing yours prevents burnout.', quote: '"Energy, not time, is the fundamental currency of high performance." - Tony Schwartz' },
+            { icon: '🌊', title: 'Overwhelm Response', content: 'How you handle overwhelm reveals your mental health capacity. <strong>Studies show</strong> that people who have clear overwhelm strategies recover 40% faster. In BJJ, when you\'re overwhelmed, you tap—same principle applies to mental overwhelm.', quote: '"Tapping isn\'t failure—it\'s intelligence. Knowing when you\'re overwhelmed and need to reset is wisdom." - BJJ Philosophy' },
+            { icon: '💤', title: 'Sleep Relationship', content: 'Your relationship with sleep is foundational. <strong>Dr. Matthew Walker\'s research</strong> shows that sleep is the single most effective thing we can do to reset our brain. Poor sleep = poor mental health. Good sleep = better resilience.', quote: '"Sleep is the best meditation." - Dalai Lama' },
+            { icon: '📅', title: 'Deadline Management', content: 'How you handle multiple deadlines reveals your stress capacity. <strong>Research shows</strong> that people who break deadlines into manageable chunks have 60% less stress. In BJJ, you don\'t try to win the whole match at once—you focus on the next position.', quote: '"One position at a time, one deadline at a time." - BJJ Strategy' },
+            
+            // EMOTIONAL PATTERNS INSIGHTS (5)
+            { icon: '😰', title: 'Anxiety Response', content: 'Your anxiety response reveals your emotional regulation capacity. <strong>Research shows</strong> that people who recognize anxiety early can manage it 50% better. In BJJ, anxiety before a match is normal—but you learn to channel it into focus, not panic.', quote: '"Anxiety is energy. The question is: do you control it, or does it control you?" - BJJ Wisdom' },
+            { icon: '💔', title: 'Setback Recovery', content: 'How you respond to setbacks reveals your emotional resilience. <strong>Studies show</strong> that people who reframe setbacks as learning opportunities recover 40% faster. In BJJ, every loss is a lesson—same in life.', quote: '"In BJJ, you either win or you learn. There\'s no losing." - Gracie Philosophy' },
+            { icon: '🔥', title: 'Frustration Management', content: 'Your frustration response reveals your emotional maturity. <strong>Research shows</strong> that people who can pause before reacting have 60% better outcomes. In BJJ, frustration leads to mistakes—same in leadership.', quote: '"The best fighters stay calm when others get emotional. That\'s the difference between white belt and black belt." - BJJ Wisdom' },
+            { icon: '🎯', title: 'Emotional Awareness', content: 'Your ability to recognize emotions in the moment is emotional intelligence. <strong>Daniel Goleman\'s research</strong> shows that emotional awareness is the foundation of all emotional intelligence. In BJJ, you need to feel what\'s happening—same with emotions.', quote: '"You can\'t manage what you don\'t notice. Awareness comes first." - Emotional Intelligence' },
+            { icon: '🔄', title: 'Emotional Processing', content: 'How you process negative emotions reveals your mental health patterns. <strong>Research shows</strong> that people who process emotions (rather than suppress them) have 50% better mental health. In BJJ, you don\'t ignore pain—you acknowledge it and adapt.', quote: '"Suppressing emotions is like ignoring a tap—it doesn\'t make the problem go away." - BJJ Philosophy' },
+            
+            // RECOVERY & RESILIENCE INSIGHTS (5)
+            { icon: '🛡️', title: 'Recovery Strategy', content: 'Your recovery method is critical for mental health. <strong>Research shows</strong> that people who have intentional recovery strategies have 60% lower burnout rates. In BJJ, recovery between rounds isn\'t optional—it\'s essential. Same with mental recovery.', quote: '"Recovery isn\'t weakness—it\'s strategy. The best fighters know when to rest." - BJJ Wisdom' },
+            { icon: '⏸️', title: 'Break Philosophy', content: 'Your approach to breaks reveals your mental health awareness. <strong>Studies show</strong> that people who take regular breaks have 40% better focus and 50% less stress. In BJJ, you can\'t go 100% all the time—you need breaks to maintain performance.', quote: '"Rest is not a reward for finishing—it\'s part of the process." - Recovery Philosophy' },
+            { icon: '⚠️', title: 'Burnout Recognition', content: 'How you recognize burnout reveals your self-awareness. <strong>Research shows</strong> that early burnout detection prevents 80% of mental health crises. In BJJ, you learn to recognize when you\'re gassed—same with mental exhaustion.', quote: '"The best time to fix the roof is when the sun is shining." - JFK' },
+            { icon: '💪', title: 'Resilience Capacity', content: 'Your resilience when facing repeated challenges reveals your mental toughness. <strong>Research shows</strong> that resilience is trainable—people who practice resilience have 50% better outcomes. In BJJ, you get better at handling pressure through practice.', quote: '"Resilience isn\'t something you\'re born with—it\'s something you build through practice." - BJJ Philosophy' },
+            { icon: '🔋', title: 'Mental Recharge', content: 'Your mental recharge method is personal. <strong>Research shows</strong> that matching your recharge method to your needs increases recovery by 40%. Some people need solitude, others need connection—knowing yours is key.', quote: '"You can\'t pour from an empty cup. Mental recharge isn\'t optional—it\'s essential." - Mental Health Wisdom' }
+        ];
+
+        const sectionIntros = {
+            'Stress & Energy Management': `
+                <strong>Why stress and energy patterns matter:</strong> Research from the American Psychological Association shows that <strong>understanding your stress and energy patterns reduces burnout by 60%</strong>. Just like in BJJ, where fighters need to know their energy levels, leaders need to understand their mental patterns.
+                <br><br>
+                <strong>The key insight:</strong> Stress isn't bad—it's how you respond to it that matters. Energy isn't infinite—it needs to be managed. Understanding your patterns helps you design your life to work WITH your nature, not against it.
+                <br><br>
+                <strong>🥋 In BJJ:</strong> Fighters who know their energy patterns can pace themselves through a match. Leaders who know their stress patterns can maintain composure under pressure. Both require self-awareness.
+            `,
+            'Emotional Patterns': `
+                <strong>Why emotional patterns matter:</strong> Research from Daniel Goleman (emotional intelligence) shows that <strong>emotional awareness is the foundation of all emotional intelligence</strong>. You can't manage emotions you don't recognize. You can't regulate what you don't understand.
+                <br><br>
+                <strong>The key insight:</strong> Emotions aren't good or bad—they're information. How you process them determines your mental health. Suppressing emotions is like ignoring a tap in BJJ—it doesn't make the problem go away.
+                <br><br>
+                <strong>🥋 In BJJ:</strong> Fighters who can stay calm under pressure win more matches. Leaders who can regulate their emotions make better decisions. Both require emotional awareness and practice.
+            `,
+            'Recovery & Resilience': `
+                <strong>Why recovery and resilience matter:</strong> Research shows that <strong>intentional recovery strategies reduce burnout by 60%</strong>. Resilience isn't something you're born with—it's something you build through practice. Recovery isn't optional—it's essential.
+                <br><br>
+                <strong>The key insight:</strong> You can't go 100% all the time. Recovery between rounds isn't weakness—it's strategy. The best fighters know when to rest. The best leaders know when to recharge.
+                <br><br>
+                <strong>🥋 In BJJ:</strong> Recovery between rounds isn't optional—it's essential. Mental recovery between challenges isn't optional—it's essential. Both require intentional practice.
+            `
+        };
+
+        // TAP OUT Configuration
+        const currentStripeName = 'whiteBeltStripe2';
+        const totalQuestions = 15;
+        
+        let currentQuestionIndex = 0;
+        let answers = {};
+        
+        // TAP OUT function
+        function tapOut() {
+            const confirmed = confirm(
+                "🥋 TAP OUT\n\n" +
+                "Your progress will be saved.\n" +
+                "You can continue from Question " + (currentQuestionIndex + 1) + " anytime.\n\n" +
+                "Return to Gym Dashboard?"
+            );
+            
+            if (!confirmed) return;
+            
+            // Save progress
+            const progressData = {
+                stripe: currentStripeName,
+                currentQuestion: currentQuestionIndex + 1,
+                questionIndex: currentQuestionIndex,
+                answers: answers,
+                timestamp: Date.now(),
+                partialComplete: true,
+                totalQuestions: totalQuestions
+            };
+            
+            localStorage.setItem('currentProgress', JSON.stringify(progressData));
+            
+            // Show toast
+            showToast("✅ Progress saved! See you soon.");
+            
+            // Redirect to gym
+            setTimeout(() => {
+                window.location.href = 'gym-dashboard.html';
+            }, 1000);
+        }
+        
+        // Toast notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                color: white;
+                padding: 16px 32px;
+                border-radius: 50px;
+                box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+                z-index: 10000;
+                font-weight: 600;
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.remove(), 3000);
+        }
+        
+        // Check for saved progress on load
+        function checkForSavedProgress() {
+            const saved = localStorage.getItem('currentProgress');
+            if (!saved) return false;
+            
+            try {
+                const progress = JSON.parse(saved);
+                
+                // Check if this is the right stripe
+                if (progress.stripe !== currentStripeName) return false;
+                
+                // Check if recent (within 7 days)
+                const daysSince = (Date.now() - progress.timestamp) / (1000 * 60 * 60 * 24);
+                if (daysSince > 7) {
+                    localStorage.removeItem('currentProgress');
+                    return false;
+                }
+                
+                // Ask to resume
+                const resume = confirm(
+                    "🥋 WELCOME BACK!\n\n" +
+                    "You were on Question " + progress.currentQuestion + " of " + (progress.totalQuestions || totalQuestions) + ".\n" +
+                    "Resume where you left off?"
+                );
+                
+                if (resume) {
+                    currentQuestionIndex = progress.questionIndex || (progress.currentQuestion - 1);
+                    answers = progress.answers || {};
+                    return true;
+                } else {
+                    localStorage.removeItem('currentProgress');
+                    return false;
+                }
+            } catch (e) {
+                console.error('Error loading saved progress:', e);
+                return false;
+            }
+        }
+        
+        // Save progress after each answer
+        function saveProgress() {
+            const progressData = {
+                stripe: currentStripeName,
+                currentQuestion: currentQuestionIndex + 1,
+                questionIndex: currentQuestionIndex,
+                answers: answers,
+                timestamp: Date.now(),
+                partialComplete: true,
+                totalQuestions: totalQuestions
+            };
+            localStorage.setItem('currentProgress', JSON.stringify(progressData));
+        }
+        
+        // Clear progress on completion
+        function clearProgress() {
+            localStorage.removeItem('currentProgress');
+        }
+        
+        function startAssessment() {
+            // Track start time for speed achievements
+            localStorage.setItem('assessmentStartTime', Date.now().toString());
+            
+            document.getElementById('introSection').style.display = 'none';
+            document.getElementById('progressBarContainer').style.display = 'block';
+            document.getElementById('questionContainer').style.display = 'block';
+            document.getElementById('navButtons').style.display = 'flex';
+            document.getElementById('tapOutBtn').style.display = 'flex';
+            
+            // Check for saved progress
+            const resumed = checkForSavedProgress();
+            if (resumed) {
+                renderQuestion(currentQuestionIndex);
+                updateProgress();
+            } else {
+                currentQuestionIndex = 0;
+                answers = {};
+                renderQuestion(0);
+            }
+        }
+
+        let isDragging = false;
+
+        function renderQuestion(index) {
+            const q = questions[index];
+            
+            // Handle different question types
+            if (q.type === 'scenario') {
+                renderScenario(index, q);
+            } else if (q.type === 'multiple-choice') {
+                renderMultipleChoice(index, q);
+            } else {
+                // Existing Likert scale rendering
+                renderLikertScale(index, q);
+            }
+            
+            updateProgress();
+        }
+        
+        function renderLikertScale(index, q) {
+            const container = document.getElementById('questionContainer');
+            
+            let html = '';
+            
+            if (q.section) {
+                html += `
+                    <div class="section-header">
+                        <h3>${q.section}</h3>
+                        <div class="section-desc">${q.sectionDesc}</div>
+                    </div>
+                `;
+                document.getElementById('currentSection').textContent = q.section;
+                
+                if (sectionIntros[q.section]) {
+                    html += `
+                        <div class="insight-card" style="margin-bottom: 25px;">
+                            <div class="insight-icon">💡</div>
+                            <div class="insight-title">Why This Matters</div>
+                            <div class="insight-content">${sectionIntros[q.section]}</div>
+                        </div>
+                    `;
+                }
+            }
+            
+            // Create answer options based on question type
+            const options = getOptionsForQuestion(q);
+            
+            html += `
+                <div class="question-card">
+                    <div class="question-number">Question ${index + 1} of ${questions.length}</div>
+                    <div class="question-text">${q.question}</div>
+                    <div class="scale-options" id="scaleContainer">
+                        ${options.map((opt, idx) => `
+                            <div class="scale-option ${answers[index] === opt.value ? 'selected' : ''}" data-value="${opt.value}" onclick="selectOption(event, ${opt.value})">
+                                <span>${idx + 1}</span>
+                                <small>${opt.text}</small>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div id="insightContainer"></div>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+            document.getElementById('currentQ').textContent = index + 1;
+            setupDragHandlers();
+            
+            if (answers[index]) {
+                showInsight(insights[index]);
+            }
+        }
+        
+        function renderScenario(index, question) {
+            const container = document.getElementById('questionContainer');
+            
+            let html = '';
+            
+            if (question.section) {
+                html += `
+                    <div class="section-header">
+                        <h3>${question.section}</h3>
+                        <div class="section-desc">${question.sectionDesc || ''}</div>
+                    </div>
+                `;
+                if (document.getElementById('currentSection')) {
+                    document.getElementById('currentSection').textContent = question.section;
+                }
+            }
+            
+            html += `
+                <div class="question-card">
+                    <div class="question-number">Scenario ${index + 1} of ${questions.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="scenario-options">
+                        ${question.options.map((opt, idx) => `
+                            <div class="scenario-option" data-option="${idx}" onclick="selectScenario(${index}, ${idx})">
+                                <div class="option-letter">${String.fromCharCode(65 + idx)}</div>
+                                <div class="option-text">${opt.text}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div id="scenarioFeedback" class="scenario-feedback" style="display: none;"></div>
+                </div>
+                <div id="insightContainer"></div>
+            `;
+            
+            container.innerHTML = html;
+            if (document.getElementById('currentQ')) {
+                document.getElementById('currentQ').textContent = index + 1;
+            }
+            
+            if (answers[index] !== undefined) {
+                const selectedIdx = question.options.findIndex(opt => opt.value === answers[index]);
+                if (selectedIdx >= 0) {
+                    selectScenario(index, selectedIdx);
+                }
+            }
+        }
+        
+        function selectScenario(questionIndex, optionIndex) {
+            const q = questions[questionIndex];
+            const selectedOption = q.options[optionIndex];
+            
+            // Store answer
+            answers[questionIndex] = selectedOption.value;
+            
+            // Visual feedback on options
+            document.querySelectorAll('.scenario-option').forEach((opt, idx) => {
+                opt.classList.remove('selected', 'correct', 'incorrect', 'neutral');
+                
+                if (idx === optionIndex) {
+                    opt.classList.add('selected');
+                    
+                    // Color code based on value
+                    if (selectedOption.value >= 4) {
+                        opt.classList.add('correct');
+                    } else if (selectedOption.value <= 2) {
+                        opt.classList.add('incorrect');
+                    } else {
+                        opt.classList.add('neutral');
+                    }
+                }
+            });
+            
+            // Show feedback
+            const feedbackDiv = document.getElementById('scenarioFeedback');
+            if (feedbackDiv && selectedOption.feedback) {
+                feedbackDiv.innerHTML = `
+                    <div class="insight-card scenario-insight">
+                        <div class="insight-content">${selectedOption.feedback}</div>
+                        ${selectedOption.insight ? `<div class="insight-quote">${selectedOption.insight}</div>` : ''}
+                    </div>
+                `;
+                feedbackDiv.style.display = 'block';
+                feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            
+            // Enable next button
+            if (document.getElementById('nextBtn')) {
+                document.getElementById('nextBtn').disabled = false;
+            }
+            
+            // Save progress
+            saveProgress();
+        }
+        
+        function renderMultipleChoice(index, question) {
+            const container = document.getElementById('questionContainer');
+            
+            let html = '';
+            
+            if (question.section) {
+                html += `
+                    <div class="section-header">
+                        <h3>${question.section}</h3>
+                        <div class="section-desc">${question.sectionDesc || ''}</div>
+                    </div>
+                `;
+                if (document.getElementById('currentSection')) {
+                    document.getElementById('currentSection').textContent = question.section;
+                }
+            }
+            
+            html += `
+                <div class="question-card">
+                    <div class="question-number">Question ${index + 1} of ${questions.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="mc-options">
+                        ${question.options.map((opt, idx) => `
+                            <div class="mc-option" data-option="${idx}" onclick="selectMultipleChoice(${index}, ${idx})">
+                                <div class="mc-radio">
+                                    <input type="radio" name="mc${index}" value="${idx}">
+                                </div>
+                                <div class="mc-content">
+                                    <div class="mc-text">${opt.text}</div>
+                                    ${opt.type ? `<div class="mc-type">${opt.type}</div>` : ''}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div id="mcFeedback" class="mc-feedback" style="display: none;"></div>
+                </div>
+                <div id="insightContainer"></div>
+            `;
+            
+            container.innerHTML = html;
+            if (document.getElementById('currentQ')) {
+                document.getElementById('currentQ').textContent = index + 1;
+            }
+            
+            if (answers[index] !== undefined) {
+                const selectedIdx = question.options.findIndex(opt => opt.value === answers[index]);
+                if (selectedIdx >= 0) {
+                    selectMultipleChoice(index, selectedIdx);
+                }
+            }
+        }
+        
+        function selectMultipleChoice(questionIndex, optionIndex) {
+            const q = questions[questionIndex];
+            const selectedOption = q.options[optionIndex];
+            
+            // Store answer
+            answers[questionIndex] = selectedOption.value;
+            
+            // Visual feedback
+            document.querySelectorAll('.mc-option').forEach((opt, idx) => {
+                opt.classList.remove('selected');
+                if (idx === optionIndex) {
+                    opt.classList.add('selected');
+                    opt.querySelector('input').checked = true;
+                }
+            });
+            
+            // Show feedback
+            const feedbackDiv = document.getElementById('mcFeedback');
+            if (feedbackDiv && selectedOption.feedback) {
+                feedbackDiv.innerHTML = `
+                    <div class="insight-card mc-insight">
+                        ${selectedOption.type ? `<div class="mc-type-badge">${selectedOption.type}</div>` : ''}
+                        <div class="insight-content">${selectedOption.feedback}</div>
+                    </div>
+                `;
+                feedbackDiv.style.display = 'block';
+                feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            
+            // Enable next button
+            if (document.getElementById('nextBtn')) {
+                document.getElementById('nextBtn').disabled = false;
+            }
+            
+            // Save progress
+            saveProgress();
+        }
+
+        function getOptionsForQuestion(q) {
+            const questionText = q.question.toLowerCase();
+            
+            // Stress & Energy questions
+            if (questionText.includes('high stress')) {
+                return [
+                    { text: 'Panic or shut down completely', value: 1 },
+                    { text: 'Feel overwhelmed but push through', value: 2 },
+                    { text: 'Stay calm and assess the situation', value: 3 },
+                    { text: 'Break it down and prioritize', value: 4 },
+                    { text: 'See it as a challenge to overcome', value: 5 }
+                ];
+            } else if (questionText.includes('energy levels')) {
+                return [
+                    { text: 'Crash suddenly, very unpredictable', value: 1 },
+                    { text: 'Have peaks and valleys throughout', value: 2 },
+                    { text: 'Stay relatively steady', value: 3 },
+                    { text: 'Manage well with breaks', value: 4 },
+                    { text: 'Maintain consistent high energy', value: 5 }
+                ];
+            } else if (questionText.includes('overwhelmed')) {
+                return [
+                    { text: 'Shut down completely', value: 1 },
+                    { text: 'Push harder despite feeling overwhelmed', value: 2 },
+                    { text: 'Take a step back and breathe', value: 3 },
+                    { text: 'Break tasks into smaller pieces', value: 4 },
+                    { text: 'Recognize early and adjust proactively', value: 5 }
+                ];
+            } else if (questionText.includes('sleep')) {
+                return [
+                    { text: 'Poor - struggle to sleep or sleep too much', value: 1 },
+                    { text: 'Inconsistent - sleep varies greatly', value: 2 },
+                    { text: 'Okay - get enough but not optimal', value: 3 },
+                    { text: 'Good - prioritize and maintain routine', value: 4 },
+                    { text: 'Excellent - sleep is a priority', value: 5 }
+                ];
+            } else if (questionText.includes('multiple deadlines')) {
+                return [
+                    { text: 'Panic and work frantically', value: 1 },
+                    { text: 'Feel stressed but manage somehow', value: 2 },
+                    { text: 'Prioritize and work through them', value: 3 },
+                    { text: 'Break them down systematically', value: 4 },
+                    { text: 'Stay calm and execute methodically', value: 5 }
+                ];
+            
+            // Emotional Patterns questions
+            } else if (questionText.includes('anxious or worried')) {
+                return [
+                    { text: 'Spiral into worst-case scenarios', value: 1 },
+                    { text: 'Feel anxious but try to ignore it', value: 2 },
+                    { text: 'Acknowledge it and try to manage', value: 3 },
+                    { text: 'Use techniques to calm myself', value: 4 },
+                    { text: 'Recognize it early and reframe', value: 5 }
+                ];
+            } else if (questionText.includes('setbacks')) {
+                return [
+                    { text: 'Feel defeated and give up', value: 1 },
+                    { text: 'Get discouraged but keep going', value: 2 },
+                    { text: 'Feel disappointed but learn from it', value: 3 },
+                    { text: 'See it as a learning opportunity', value: 4 },
+                    { text: 'Reframe it as part of the journey', value: 5 }
+                ];
+            } else if (questionText.includes('frustrated or angry')) {
+                return [
+                    { text: 'Lash out or explode', value: 1 },
+                    { text: 'Feel angry but suppress it', value: 2 },
+                    { text: 'Acknowledge it and try to calm down', value: 3 },
+                    { text: 'Process it and express it constructively', value: 4 },
+                    { text: 'Recognize it early and channel it productively', value: 5 }
+                ];
+            } else if (questionText.includes('recognize your emotions')) {
+                return [
+                    { text: 'Rarely - emotions surprise me', value: 1 },
+                    { text: 'Sometimes - after the fact', value: 2 },
+                    { text: 'Often - during the moment', value: 3 },
+                    { text: 'Usually - I\'m aware of my emotions', value: 4 },
+                    { text: 'Always - high emotional awareness', value: 5 }
+                ];
+            } else if (questionText.includes('negative emotions')) {
+                return [
+                    { text: 'Suppress them completely', value: 1 },
+                    { text: 'Try to ignore or distract myself', value: 2 },
+                    { text: 'Acknowledge them but struggle to process', value: 3 },
+                    { text: 'Process them and learn from them', value: 4 },
+                    { text: 'Welcome them as information and adapt', value: 5 }
+                ];
+            
+            // Recovery & Resilience questions
+            } else if (questionText.includes('difficult day or week')) {
+                return [
+                    { text: 'Crash and need days to recover', value: 1 },
+                    { text: 'Feel drained but bounce back slowly', value: 2 },
+                    { text: 'Take a day off and recharge', value: 3 },
+                    { text: 'Use intentional recovery strategies', value: 4 },
+                    { text: 'Have built-in recovery routines', value: 5 }
+                ];
+            } else if (questionText.includes('taking breaks')) {
+                return [
+                    { text: 'Rarely - feel guilty about breaks', value: 1 },
+                    { text: 'Sometimes - when I\'m exhausted', value: 2 },
+                    { text: 'Often - when I feel I need them', value: 3 },
+                    { text: 'Regularly - schedule them intentionally', value: 4 },
+                    { text: 'Always - breaks are part of my routine', value: 5 }
+                ];
+            } else if (questionText.includes('burnout or exhaustion')) {
+                return [
+                    { text: 'Don\'t recognize it until I crash', value: 1 },
+                    { text: 'Notice it but keep pushing', value: 2 },
+                    { text: 'Recognize it and take time off', value: 3 },
+                    { text: 'Catch it early and adjust', value: 4 },
+                    { text: 'Prevent it through boundaries', value: 5 }
+                ];
+            } else if (questionText.includes('resilience')) {
+                return [
+                    { text: 'Low - challenges overwhelm me', value: 1 },
+                    { text: 'Moderate - I struggle but recover', value: 2 },
+                    { text: 'Good - I bounce back reasonably well', value: 3 },
+                    { text: 'Strong - I adapt and learn quickly', value: 4 },
+                    { text: 'Very strong - challenges make me stronger', value: 5 }
+                ];
+            } else if (questionText.includes('recharge mentally')) {
+                return [
+                    { text: 'Don\'t know how to recharge', value: 1 },
+                    { text: 'Try various things but nothing works well', value: 2 },
+                    { text: 'Have some methods that help', value: 3 },
+                    { text: 'Have effective recharge strategies', value: 4 },
+                    { text: 'Have intentional, proven recharge routines', value: 5 }
+                ];
+            } else {
+                // Default 5-point scale
+                return [
+                    { text: 'Very Low', value: 1 },
+                    { text: 'Low', value: 2 },
+                    { text: 'Moderate', value: 3 },
+                    { text: 'High', value: 4 },
+                    { text: 'Very High', value: 5 }
+                ];
+            }
+        }
+
+        function setupDragHandlers() {
+            const scaleContainer = document.getElementById('scaleContainer');
+            if (!scaleContainer) return;
+            
+            function handleInteraction(e) {
+                const rect = scaleContainer.getBoundingClientRect();
+                const x = (e.clientX || e.touches?.[0]?.clientX) - rect.left;
+                const relativeX = Math.max(0, Math.min(1, x / rect.width));
+                const value = Math.ceil(relativeX * 5) || 1;
+                selectOption(e, value);
+                updateSliderVisual(value);
+            }
+
+            scaleContainer.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                handleInteraction(e);
+            });
+
+            scaleContainer.addEventListener('mousemove', (e) => {
+                if (isDragging) handleInteraction(e);
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            scaleContainer.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                handleInteraction(e);
+            }, { passive: false });
+
+            scaleContainer.addEventListener('touchmove', (e) => {
+                if (isDragging) {
+                    e.preventDefault();
+                    handleInteraction(e);
+                }
+            }, { passive: false });
+
+            scaleContainer.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+        }
+
+        function updateSliderVisual(value) {
+            const options = document.querySelectorAll('.scale-option');
+            options.forEach((opt, idx) => {
+                if (idx < value) {
+                    opt.classList.add('active');
+                } else {
+                    opt.classList.remove('active');
+                }
+            });
+        }
+
+        function selectOption(e, value) {
+            e.stopPropagation();
+            answers[currentQuestionIndex] = value;
+            
+            document.querySelectorAll('.scale-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            const selectedOpt = document.querySelector(`[data-value="${value}"]`);
+            if (selectedOpt) {
+                selectedOpt.classList.add('selected');
+            }
+            
+            updateSliderVisual(value);
+            document.getElementById('nextBtn').disabled = false;
+            showInsight(insights[currentQuestionIndex]);
+            
+            // Save progress after each answer
+            saveProgress();
+        }
+
+        function showInsight(insight) {
+            const container = document.getElementById('insightContainer');
+            container.innerHTML = `
+                <div class="insight-card">
+                    <div class="insight-icon">${insight.icon}</div>
+                    <div class="insight-title">${insight.title}</div>
+                    <div class="insight-content">${insight.content}</div>
+                    <div class="insight-quote">${insight.quote}</div>
+                </div>
+            `;
+            container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion(currentQuestionIndex);
+                document.getElementById('prevBtn').disabled = false;
+                document.getElementById('nextBtn').disabled = !answers[currentQuestionIndex];
+                document.getElementById('nextBtn').textContent = 'Next →';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                showResults();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion(currentQuestionIndex);
+                document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+                document.getElementById('nextBtn').disabled = false;
+                document.getElementById('nextBtn').textContent = 'Next →';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function updateProgress() {
+            const answered = Object.keys(answers).length;
+            const progress = (answered / questions.length) * 100;
+            if (document.getElementById('progressBar')) {
+                document.getElementById('progressBar').style.width = progress + '%';
+            }
+            
+            // Milestone celebrations
+            checkMilestones(progress);
+            
+            if (currentQuestionIndex === questions.length - 1) {
+                if (document.getElementById('nextBtn')) {
+                    document.getElementById('nextBtn').textContent = 'See Results 🎯';
+                }
+            }
+        }
+        
+        // Milestone system
+        function checkMilestones(progress) {
+            if (!window.milestonesShown) {
+                window.milestonesShown = [];
+            }
+            
+            const milestones = [25, 50, 75, 100];
+            const currentMilestone = Math.floor(progress / 25) * 25;
+            
+            if (milestones.includes(currentMilestone) && 
+                !window.milestonesShown.includes(currentMilestone) &&
+                progress >= currentMilestone) {
+                
+                window.milestonesShown.push(currentMilestone);
+                showMilestoneCelebration(currentMilestone);
+            }
+        }
+        
+        function showMilestoneCelebration(percent) {
+            const messages = {
+                25: {
+                    emoji: '🎯',
+                    title: '25% Complete!',
+                    message: 'You\'re building momentum! Great start!',
+                    color: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%)'
+                },
+                50: {
+                    emoji: '🔥',
+                    title: 'Halfway There!',
+                    message: 'You\'re crushing it! Keep going!',
+                    color: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)'
+                },
+                75: {
+                    emoji: '💪',
+                    title: '75% Complete!',
+                    message: 'Almost done! Finish strong!',
+                    color: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)'
+                },
+                100: {
+                    emoji: '🎉',
+                    title: 'Assessment Complete!',
+                    message: 'Amazing work! Time to see your results!',
+                    color: 'linear-gradient(135deg, #10b981 0%, #059669 100%)'
+                }
+            };
+            
+            const milestone = messages[percent];
+            
+            // Create modal
+            const modal = document.createElement('div');
+            modal.className = 'milestone-modal';
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0,0,0,0.7); z-index: 10000;
+                display: flex; align-items: center; justify-content: center;
+                animation: fadeIn 0.3s ease;
+            `;
+            
+            modal.innerHTML = `
+                <div class="milestone-content" style="
+                    background: ${milestone.color}; color: white;
+                    padding: 50px; border-radius: 20px; text-align: center;
+                    max-width: 500px; animation: scaleIn 0.3s ease;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                ">
+                    <div style="font-size: 5rem; margin-bottom: 1rem;">${milestone.emoji}</div>
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem; font-weight: 800;">${milestone.title}</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.95;">${milestone.message}</p>
+                    <button onclick="this.closest('.milestone-modal').remove()" style="
+                        background: white; color: #333; padding: 15px 30px;
+                        border: none; border-radius: 10px; font-size: 1.1rem;
+                        font-weight: 700; cursor: pointer; transition: all 0.2s;
+                    ">
+                        Continue →
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Trigger confetti
+            triggerConfetti();
+            
+            // Auto-close after 3 seconds if not dismissed
+            setTimeout(() => {
+                if (document.body.contains(modal)) {
+                    modal.style.opacity = '0';
+                    setTimeout(() => modal.remove(), 300);
+                }
+            }, 3000);
+        }
+        
+        function triggerConfetti() {
+            const emojis = ['🎉', '⭐', '✨', '🎊', '💫', '🌟'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                confetti.style.cssText = `
+                    position: fixed; font-size: 2rem; z-index: 9999;
+                    left: ${Math.random() * 100}vw; top: -50px;
+                    pointer-events: none;
+                    animation: confettiFall ${2 + Math.random() * 2}s ease-out forwards;
+                `;
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 4000);
+            }
+        }
+        
+        function showAchievementBadge(badgeId, title, description, xpValue) {
+            const badge = document.createElement('div');
+            badge.className = 'achievement-modal';
+            badge.style.cssText = `
+                position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0,0,0,0.8); z-index: 10000;
+                display: flex; align-items: center; justify-content: center;
+                animation: fadeIn 0.3s ease;
+            `;
+            
+            const badgeEmojis = {
+                'first-stripe': '👣',
+                'perfect-score': '🎯',
+                'speed-demon': '⚡',
+                'streak-3': '🔥',
+                'streak-7': '🔥',
+                'streak-30': '🔥',
+                'dedicated': '💪',
+                'scholar': '📚',
+                'master': '👑'
+            };
+            
+            const emoji = badgeEmojis[badgeId] || '🏆';
+            
+            badge.innerHTML = `
+                <div class="achievement-content" style="
+                    background: white; padding: 50px; border-radius: 20px;
+                    text-align: center; max-width: 500px;
+                    animation: scaleIn 0.3s ease;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                ">
+                    <div style="font-size: 6rem; margin-bottom: 1rem;">${emoji}</div>
+                    <div style="
+                        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+                        color: white; display: inline-block; padding: 8px 20px;
+                        border-radius: 20px; font-size: 0.9rem; font-weight: 700;
+                        margin-bottom: 1rem; text-transform: uppercase;
+                        letter-spacing: 1px;
+                    ">Achievement Unlocked!</div>
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem; font-weight: 800; color: #333;">${title}</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: #666; line-height: 1.6;">${description}</p>
+                    <div style="
+                        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                        color: white; display: inline-block; padding: 12px 24px;
+                        border-radius: 12px; font-size: 1.2rem; font-weight: 700;
+                        margin-bottom: 1.5rem;
+                    ">+${xpValue} XP</div>
+                    <div>
+                        <button onclick="this.closest('.achievement-modal').remove()" style="
+                            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                            color: white; padding: 15px 30px; border: none;
+                            border-radius: 10px; font-size: 1.1rem; font-weight: 700;
+                            cursor: pointer; transition: all 0.2s;
+                        ">
+                            Awesome! ✨
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(badge);
+            triggerConfetti();
+        }
+        
+        function checkAchievements() {
+            // Perfect Score
+            let perfectScore = true;
+            for (let i = 0; i < questions.length; i++) {
+                if (answers[i] < 4) {
+                    perfectScore = false;
+                    break;
+                }
+            }
+            if (perfectScore) {
+                showAchievementBadge('perfect-score', '🎯 Perfect Score', 'You answered all questions at mastery level!', 50);
+            }
+            
+            // Speed Demon
+            const startTime = parseInt(localStorage.getItem('assessmentStartTime') || '0');
+            const completionTime = (Date.now() - startTime) / 1000 / 60; // minutes
+            if (completionTime < 5 && startTime > 0) {
+                showAchievementBadge('speed-demon', '⚡ Speed Demon', 'Completed in under 5 minutes!', 25);
+            }
+            
+            // First Stripe
+            const completedStripes = Object.keys(localStorage).filter(k => k.includes('Complete')).length;
+            if (completedStripes === 1) {
+                showAchievementBadge('first-stripe', '👣 First Steps', 'You completed your first stripe!', 25);
+            }
+        }
+
+        function showResults() {
+            // Check achievements before showing results
+            checkAchievements();
+            
+            // Calculate mental health pattern scores
+            let stressScore = 0;
+            let emotionScore = 0;
+            let recoveryScore = 0;
+            
+            // Stress & Energy (questions 0-4)
+            for (let i = 0; i < 5; i++) {
+                if (answers[i]) stressScore += answers[i];
+            }
+            
+            // Emotional Patterns (questions 5-9)
+            for (let i = 5; i < 10; i++) {
+                if (answers[i]) emotionScore += answers[i];
+            }
+            
+            // Recovery & Resilience (questions 10-14)
+            for (let i = 10; i < 15; i++) {
+                if (answers[i]) recoveryScore += answers[i];
+            }
+            
+            const avgStress = stressScore / 5;
+            const avgEmotion = emotionScore / 5;
+            const avgRecovery = recoveryScore / 5;
+            const overallScore = (avgStress + avgEmotion + avgRecovery) / 3;
+            
+            let patternType = '';
+            let typeEmoji = '';
+            let typeLabel = '';
+            let typeColor = '';
+            let strengths = [];
+            let challenges = [];
+            let strategies = [];
+            
+            if (overallScore <= 2.0) {
+                patternType = 'Developing';
+                typeEmoji = '🌱';
+                typeLabel = '🌱 Developing Self-Awareness';
+                typeColor = '#f4a261';
+                strengths = [
+                    'Awareness is the first step to growth',
+                    'You\'re honest about where you are',
+                    'Every master was once a beginner',
+                    'You have room to build strong foundations',
+                    'Growth mindset is already present'
+                ];
+                challenges = [
+                    'Stress management needs development',
+                    'Emotional regulation requires practice',
+                    'Recovery strategies need to be built',
+                    'Self-awareness is still developing',
+                    'Resilience needs intentional training'
+                ];
+                strategies = [
+                    'Start with one area: stress, emotions, or recovery',
+                    'Build awareness through daily check-ins',
+                    'Practice one recovery technique consistently',
+                    'Track your patterns for 30 days',
+                    'Seek support and resources for growth'
+                ];
+            } else if (overallScore <= 3.5) {
+                patternType = 'Building';
+                typeEmoji = '🏗️';
+                typeLabel = '🏗️ Building Mental Health';
+                typeColor = '#457b9d';
+                strengths = [
+                    'You have some awareness of your patterns',
+                    'You recognize areas that need work',
+                    'You\'re building foundational skills',
+                    'You have some effective strategies',
+                    'You\'re committed to growth'
+                ];
+                challenges = [
+                    'Consistency in practice is key',
+                    'Some patterns still need attention',
+                    'Recovery strategies could be more intentional',
+                    'Emotional awareness is developing',
+                    'Stress management needs refinement'
+                ];
+                strategies = [
+                    'Double down on what\'s working',
+                    'Add one new recovery technique',
+                    'Practice emotional awareness daily',
+                    'Build routines around your strengths',
+                    'Track progress to see improvements'
+                ];
+            } else {
+                patternType = 'Strong';
+                typeEmoji = '💪';
+                typeLabel = '💪 Strong Mental Health Patterns';
+                typeColor = '#2a9d8f';
+                strengths = [
+                    'High self-awareness of your patterns',
+                    'Effective stress management strategies',
+                    'Strong emotional regulation skills',
+                    'Intentional recovery practices',
+                    'Good resilience and adaptability'
+                ];
+                challenges = [
+                    'Maintain consistency during high stress',
+                    'Continue refining your strategies',
+                    'Support others in their growth',
+                    'Stay aware of changing patterns',
+                    'Prevent complacency in good times'
+                ];
+                strategies = [
+                    'Share your strategies with others',
+                    'Continue refining what works',
+                    'Stay aware of changing life patterns',
+                    'Support others in their mental health journey',
+                    'Use your strength to help build team resilience'
+                ];
+            }
+
+            document.getElementById('assessmentForm').style.display = 'none';
+            document.getElementById('resultsContainer').classList.add('active');
+            
+            document.getElementById('typeEmoji').textContent = typeEmoji;
+            document.getElementById('typeLabel').textContent = typeLabel;
+            document.getElementById('typeResultCard').style.background = `linear-gradient(135deg, ${typeColor} 0%, ${typeColor}dd 100%)`;
+            
+            const typeDetailsHTML = `
+                <div class="type-card">
+                    <h3>💪 Your Strengths</h3>
+                    <ul>
+                        ${strengths.map(s => `<li>${s}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="type-card" style="background: #fff5f0; border-left-color: ${typeColor};">
+                    <h3 style="color: ${typeColor};">⚠️ Areas for Growth</h3>
+                    <ul>
+                        ${challenges.map(c => `<li>${c}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="type-card" style="background: #f0f4ff; border-left-color: ${typeColor};">
+                    <h3 style="color: ${typeColor};">🎯 Recommended Strategies</h3>
+                    <ul>
+                        ${strategies.map(s => `<li>${s}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="insight-card" style="margin-top: 30px;">
+                    <div class="insight-icon">💡</div>
+                    <div class="insight-title">The Key Insight</div>
+                    <div class="insight-content">
+                        <strong>Mental health patterns are not fixed—they're trainable.</strong> Just like in BJJ, where you build skills through practice, you can build mental health patterns through intentional practice. Self-awareness is the foundation. Recovery is essential. Resilience is trainable.
+                        <br><br>
+                        <strong>🥋 BJJ Wisdom:</strong> "The best fighters don't ignore their body's signals—they listen and adapt. Same with mental health. Awareness comes first, then action."
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('typeDetails').innerHTML = typeDetailsHTML;
+            
+            // Clear partial progress
+            clearProgress();
+            
+            // Save completion to localStorage
+            localStorage.setItem('whiteBeltStripe2Complete', 'true');
+            localStorage.setItem('whiteBeltStripe2CompletedDate', new Date().toISOString());
+            localStorage.setItem('mentalHealthPattern', patternType);
+            
+            // Award XP
+            const currentXP = parseInt(localStorage.getItem('totalXP') || '0');
+            const xpReward = 100; // +100 XP for completing Stripe 2
+            localStorage.setItem('totalXP', (currentXP + xpReward).toString());
+            
+            // Show completion notification
+            setTimeout(() => {
+                const notification = document.createElement('div');
+                notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, #38a169 0%, #2f855a 100%); color: white; padding: 1rem 1.5rem; border-radius: 10px; box-shadow: 0 4px 20px rgba(56, 161, 105, 0.4); z-index: 1000; font-weight: 600;';
+                notification.innerHTML = `✅ Stripe 2 Complete! +${xpReward} XP`;
+                document.body.appendChild(notification);
+                setTimeout(() => notification.remove(), 3000);
+            }, 500);
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+<!-- TAP-IN Utilities -->
+<script src="js/shared-utilities.js"></script>
+<script src="js/global-error-handler.js"></script>
+<script src="js/storage-health.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account | TAP-IN</title>
+    
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/auth-system.js"></script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+        
+        .backup-code-section {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .code-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+        
+        .code {
+            font-family: 'Courier New', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            word-break: break-all;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 12px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary { background: #3b82f6; color: white; }
+        .btn-success { background: #10b981; color: white; }
+        .btn-secondary { background: #64748b; color: white; }
+        
+        .warning {
+            color: #dc2626;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #fee2e2;
+            border-radius: 8px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .stat-card {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+        }
+        
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>🔐 Your Account</h1>
+            <p class="subtitle">Manage your anonymous account and backup code</p>
+            
+            <div class="backup-code-section">
+                <div class="code-label">Your Backup Code</div>
+                <div class="code" id="backupCodeDisplay">Loading...</div>
+                
+                <p style="color: #64748b; font-size: 0.9rem; margin-top: 1rem;">
+                    Save this code to restore your progress on any device
+                </p>
+                
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="copyCode()">
+                        📋 Copy Code
+                    </button>
+                    <button class="btn btn-success" onclick="downloadCode()">
+                        💾 Download
+                    </button>
+                </div>
+                
+                <div class="warning">
+                    ⚠️ Keep this code safe! It's the ONLY way to restore your progress.
+                </div>
+            </div>
+            
+            <h3 style="margin-bottom: 1rem; color: #1e293b;">Account Stats</h3>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">User ID</div>
+                    <div class="stat-value" style="font-size: 0.9rem; word-break: break-all;" id="userId">-</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">Total XP</div>
+                    <div class="stat-value" id="totalXP">0</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">Current Belt</div>
+                    <div class="stat-value" id="currentBelt">White</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">Rank</div>
+                    <div class="stat-value" id="userRank">-</div>
+                </div>
+            </div>
+        </div>
+        
+        <a href="gym-dashboard.html" class="back-link">← Back to Dashboard</a>
+    </div>
+    
+    <script>
+        async function loadAccountData() {
+            // Wait for auth to initialize
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            // Display backup code
+            const backupCode = window.tapInAuth.getBackupCode();
+            document.getElementById('backupCodeDisplay').textContent = backupCode || 'Not available';
+            
+            // Display user ID
+            const userId = window.tapInAuth.getUserId();
+            document.getElementById('userId').textContent = userId ? userId.substring(0, 8) + '...' : 'Not available';
+            
+            // Load progress from cloud
+            const progress = await window.tapInAuth.loadProgress();
+            if (progress) {
+                document.getElementById('totalXP').textContent = progress.total_xp.toLocaleString();
+                document.getElementById('currentBelt').textContent = progress.current_belt;
+            } else {
+                // Fallback to localStorage
+                const xp = localStorage.getItem('totalXP') || '0';
+                const belt = localStorage.getItem('currentBelt') || 'White';
+                document.getElementById('totalXP').textContent = parseInt(xp).toLocaleString();
+                document.getElementById('currentBelt').textContent = belt;
+            }
+            
+            // Get rank
+            const rank = await window.tapInAuth.getCurrentUserRank();
+            document.getElementById('userRank').textContent = rank ? `#${rank}` : '-';
+        }
+        
+        function copyCode() {
+            const code = window.tapInAuth.getBackupCode();
+            if (code) {
+                navigator.clipboard.writeText(code);
+                alert('✅ Backup code copied to clipboard!');
+            }
+        }
+        
+        function downloadCode() {
+            const code = window.tapInAuth.getBackupCode();
+            if (code) {
+                const text = `TAP-IN Leadership Academy - Backup Code\n\n${code}\n\nKeep this code safe! You need it to restore your progress on any device.\n\nWebsite: https://tap-in-academy.com`;
+                const blob = new Blob([text], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'tap-in-backup-code.txt';
+                a.click();
+                URL.revokeObjectURL(url);
+                alert('✅ Backup code downloaded!');
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', loadAccountData);
+    </script>
+<!-- TAP-IN Utilities -->
+<script src="js/shared-utilities.js"></script>
+<script src="js/global-error-handler.js"></script>
+<script src="js/storage-health.js"></script>
+</body>
+</html>
+
+

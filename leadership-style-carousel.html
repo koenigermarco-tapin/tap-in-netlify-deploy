@@ -1833,6 +1833,10 @@
             html += '
     <!-- Performance Optimizer - Load First -->
 <script src="js/performance-optimizer.js"></script>
+<!-- TAP-IN Utilities -->
+<script src="js/shared-utilities.js"></script>
+<script src="js/global-error-handler.js"></script>
+<script src="js/storage-health.js"></script>
 </body></html>';
             
             const blob = new Blob([html], { type: 'application/vnd.ms-excel' });
@@ -1866,6 +1870,10 @@
             window.URL.revokeObjectURL(url);
         }
     </script>
+<!-- TAP-IN Utilities -->
+<script src="js/shared-utilities.js"></script>
+<script src="js/global-error-handler.js"></script>
+<script src="js/storage-health.js"></script>
 </body>
 </html>
 

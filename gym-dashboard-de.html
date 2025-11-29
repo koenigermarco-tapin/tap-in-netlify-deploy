@@ -1269,7 +1269,7 @@
                         </div>
                         <button class="practice-action done">Fertig</button>
                     </div>
-                    <div class="practice-item" onclick="alert('Opening Abendreflexion...')">
+                    <div class="practice-item" onclick="window.location.href='evening-reflection.html'" style="cursor: pointer;">
                         <div class="practice-icon">🌙</div>
                         <div class="practice-info">
                             <div class="practice-title">Abendreflexion</div>
@@ -1283,7 +1283,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">📚 Weißgurt Module</div>
-                        <a href="#" class="card-action">Alle ansehen →</a>
+                        <a href="white-belt.html" class="card-action">Alle ansehen →</a>
                     </div>
                     <div class="modules-grid">
                         <div class="module-card">
@@ -1342,7 +1342,7 @@
                             <h2 class="section-title">🥋 Offene Matte</h2>
                             <p class="section-subtitle">Zusätzliches Training, Tiefgang und Entdeckung</p>
                         </div>
-                        <a href="#" class="card-action">Alle durchsuchen →</a>
+                        <a href="white-belt.html" class="card-action">Alle durchsuchen →</a>
                     </div>
                     <div class="open-mat-grid">
                         <div class="open-mat-card featured">
@@ -1490,7 +1490,7 @@
                             </div>
                             <div class="team-assessment-actions">
                                 <button class="team-btn team-btn-primary" onclick="window.location.href='worker-type-assessment.html'">Take Assessment</button>
-                                <button class="team-btn team-btn-secondary" onclick="alert('Share link: ' + window.location.origin + '/worker-type-assessment.html')">📤 Share</button>
+                                <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/worker-type-assessment.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
                             </div>
                         </div>
                         
@@ -1504,7 +1504,7 @@
                             </div>
                             <div class="team-assessment-actions">
                                 <button class="team-btn team-btn-primary" onclick="window.location.href='team-assessment-enhanced-v2.html'">Start Team Scan</button>
-                                <button class="team-btn team-btn-secondary" onclick="alert('Share link: ' + window.location.origin + '/team-assessment-enhanced-v2.html')">📤 Share</button>
+                                <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/team-assessment-enhanced-v2.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
                             </div>
                         </div>
                         
@@ -1518,7 +1518,7 @@
                             </div>
                             <div class="team-assessment-actions">
                                 <button class="team-btn team-btn-primary" onclick="window.location.href='team-profile-complete.html'">Discover My Profile</button>
-                                <button class="team-btn team-btn-secondary" onclick="alert('Share link: ' + window.location.origin + '/team-profile-complete.html')">📤 Share</button>
+                                <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/team-profile-complete.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
                             </div>
                         </div>
                         
@@ -1532,7 +1532,7 @@
                             </div>
                             <div class="team-assessment-actions">
                                 <button class="team-btn team-btn-primary" onclick="window.location.href='combined-profile-carousel.html'">Full Profile</button>
-                                <button class="team-btn team-btn-secondary" onclick="alert('Share link: ' + window.location.origin + '/combined-profile-carousel.html')">📤 Share</button>
+                                <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/combined-profile-carousel.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
                             </div>
                         </div>
                         
@@ -1546,7 +1546,7 @@
                             </div>
                             <div class="team-assessment-actions">
                                 <button class="team-btn team-btn-primary" onclick="window.location.href='team-composition-analyzer.html'">Analyze Team</button>
-                                <button class="team-btn team-btn-secondary" onclick="alert('Share link: ' + window.location.origin + '/team-composition-analyzer.html')">📤 Share</button>
+                                <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/team-composition-analyzer.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
                             </div>
                         </div>
                     </div>
@@ -1557,7 +1557,7 @@
                                 <div style="font-size: 0.9rem; color: rgba(255,255,255,0.9); font-weight: 600; margin-bottom: 0.25rem;">💼 For Organizations</div>
                                 <div style="font-size: 0.8rem; color: rgba(255,255,255,0.7);">Bulk send, track completion, export results, and get team insights dashboard</div>
                             </div>
-                            <button class="team-btn team-btn-secondary" style="flex: 0 0 auto; padding: 0.75rem 1.5rem;" onclick="alert('Contact us for organization features')">Learn More →</button>
+                            <button class="team-btn team-btn-secondary" style="flex: 0 0 auto; padding: 0.75rem 1.5rem;" onclick="window.location.href='business-portal.html'">Learn More →</button>
                         </div>
                     </div>
                 </div>
@@ -1566,39 +1566,39 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">🧰 Your Toolbox</div>
-                        <a href="#" class="card-action">See All Tools →</a>
+                        <a href="learning-hub.html" class="card-action">See All Tools →</a>
                     </div>
                     <div class="toolbox-grid">
-                        <div class="tool-card">
+                        <a href="tool-journal.html" class="tool-card" style="text-decoration: none; color: inherit;">
                             <div class="tool-icon">📓</div>
                             <div class="tool-name">Journal</div>
                             <div class="tool-desc">Free-write anytime</div>
-                        </div>
-                        <div class="tool-card">
+                        </a>
+                        <a href="tool-goal-tracker.html" class="tool-card" style="text-decoration: none; color: inherit;">
                             <div class="tool-icon">🎯</div>
                             <div class="tool-name">Goal Tracker</div>
                             <div class="tool-desc">3 active goals</div>
-                        </div>
-                        <div class="tool-card">
+                        </a>
+                        <a href="tool-mood-tracker.html" class="tool-card" style="text-decoration: none; color: inherit;">
                             <div class="tool-icon">📊</div>
-                            <div class="tool-name">Mood Log</div>
+                            <div class="tool-name">Mood Tracker</div>
                             <div class="tool-desc">28 day history</div>
-                        </div>
-                        <div class="tool-card">
+                        </a>
+                        <a href="open-mat-box-breathing.html" class="tool-card" style="text-decoration: none; color: inherit;">
                             <div class="tool-icon">🧘</div>
                             <div class="tool-name">Breathing</div>
                             <div class="tool-desc">Guided exercises</div>
-                        </div>
-                        <div class="tool-card">
+                        </a>
+                        <a href="open-mat-inner-game-leadership.html" class="tool-card" style="text-decoration: none; color: inherit;">
                             <div class="tool-icon">⏱️</div>
                             <div class="tool-name">Focus Timer</div>
-                            <div class="tool-desc">Pomodoro mode</div>
-                        </div>
-                        <div class="tool-card">
+                            <div class="tool-desc">Deep work tools</div>
+                        </a>
+                        <a href="open-mat-reframe-60.html" class="tool-card" style="text-decoration: none; color: inherit;">
                             <div class="tool-icon">🎲</div>
                             <div class="tool-name">Random Prompt</div>
-                            <div class="tool-desc">Surprise reflection</div>
-                        </div>
+                            <div class="tool-desc">Quick reflection</div>
+                        </a>
                         <div class="tool-card">
                             <div class="tool-icon">📈</div>
                             <div class="tool-name">Progress Report</div>
@@ -1616,7 +1616,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">📚 Resource Library</div>
-                        <a href="#" class="card-action">Alle durchsuchen →</a>
+                        <a href="white-belt.html" class="card-action">Alle durchsuchen →</a>
                     </div>
                     <div class="library-tabs">
                         <button class="library-tab active">All</button>
@@ -1840,48 +1840,94 @@
             });
         });
 
-        // Tool cards click
+        // Tool cards click - link to real tools
         document.querySelectorAll('.tool-card').forEach(card => {
+            card.style.cursor = 'pointer';
             card.addEventListener('click', function() {
                 const toolName = this.querySelector('.tool-name').textContent;
-                alert(`Opening ${toolName}...`);
-            });
-        });
-
-        // Offene Matte cards click
-        document.querySelectorAll('.open-mat-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const title = this.querySelector('.open-mat-title').textContent;
-                alert(`Opening: ${title}`);
-            });
-        });
-
-        // Module cards click
-        document.querySelectorAll('.module-card:not(.locked)').forEach(card => {
-            card.addEventListener('click', function() {
-                const title = this.querySelector('.module-title').textContent;
-                alert(`Opening module: ${title}`);
-            });
-        });
-
-        // Assessment items click
-        document.querySelectorAll('.assessment-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const name = this.querySelector('.assessment-name').textContent;
-                const status = this.querySelector('.assessment-status');
-                if (status.classList.contains('available')) {
-                    alert(`Starting ${name} Assessment...`);
+                // Map tool names to actual pages
+                if (toolName.includes('Journal')) {
+                    window.location.href = 'tool-journal.html';
+                } else if (toolName.includes('Goal')) {
+                    window.location.href = 'tool-goal-tracker.html';
+                } else if (toolName.includes('Mood')) {
+                    window.location.href = 'tool-mood-tracker.html';
+                } else if (toolName.includes('Breathing')) {
+                    window.location.href = 'open-mat-box-breathing.html';
+                } else if (toolName.includes('Focus')) {
+                    window.location.href = 'open-mat-inner-game-leadership.html';
                 } else {
-                    alert(`Viewing ${name} Results...`);
+                    window.location.href = 'learning-hub.html';
                 }
             });
         });
 
-        // Library items click
+        // Offene Matte cards click - only handle cards without onclick
+        document.querySelectorAll('.open-mat-card:not([onclick])').forEach(card => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', function() {
+                window.location.href = 'open-mat-inner-game-leadership.html';
+            });
+        });
+
+        // Module cards click - use data-target or link to white belt
+        document.querySelectorAll('.module-card:not(.locked)').forEach(card => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', function() {
+                const target = this.dataset.target;
+                if (target) {
+                    window.location.href = target;
+                } else {
+                    // Map German module names to stripe pages
+                    const title = this.querySelector('.module-title').textContent;
+                    if (title.includes('Selbstbewusstsein') || title.includes('Who Are You')) {
+                        window.location.href = 'white-belt-stripe1-carousel-NEW.html';
+                    } else if (title.includes('Verletzlichkeit') || title.includes('How You Operate')) {
+                        window.location.href = 'white-belt-stripe2-gamified.html';
+                    } else if (title.includes('Selbstvertrauen') || title.includes('What You Value')) {
+                        window.location.href = 'white-belt-stripe3-gamified.html';
+                    } else if (title.includes('Journaling') || title.includes('How You Show Up')) {
+                        window.location.href = 'white-belt-stripe4-gamified.html';
+                    } else {
+                        window.location.href = 'white-belt.html';
+                    }
+                }
+            });
+        });
+
+        // Assessment items click - use data attributes for links
+        document.querySelectorAll('.assessment-item').forEach(item => {
+            item.style.cursor = 'pointer';
+            item.addEventListener('click', function() {
+                const assessmentLink = this.dataset.assessmentLink;
+                if (assessmentLink) {
+                    window.location.href = assessmentLink;
+                } else {
+                    const link = this.querySelector('a');
+                    if (link && link.href !== '#') {
+                        window.location.href = link.href;
+                    }
+                }
+            });
+        });
+
+        // Library items click - link to relevant content
         document.querySelectorAll('.library-item').forEach(item => {
+            item.style.cursor = 'pointer';
             item.addEventListener('click', function() {
                 const title = this.querySelector('h4').textContent;
-                alert(`Opening: ${title}`);
+                // Map library items to existing content
+                if (title.includes('5 Dysfunctions')) {
+                    window.location.href = 'team-dynamics-assessment.html';
+                } else if (title.includes('Project Aristotle')) {
+                    window.location.href = 'learning-hub.html';
+                } else if (title.includes('Values Discovery')) {
+                    window.location.href = 'values-discovery-assessment.html';
+                } else if (title.includes('Stoic')) {
+                    window.location.href = 'open-mat-inner-game-leadership.html';
+                } else {
+                    window.location.href = 'learning-hub.html';
+                }
             });
         });
 
@@ -2554,5 +2600,9 @@ window.showErrorToast = showErrorToast;
 <script src="js/loading-states.js" defer></script>
 <script src="js/error-handler.js" defer></script>
 
+<!-- TAP-IN Utilities -->
+<script src="js/shared-utilities.js"></script>
+<script src="js/global-error-handler.js"></script>
+<script src="js/storage-health.js"></script>
 </body>
 </html>

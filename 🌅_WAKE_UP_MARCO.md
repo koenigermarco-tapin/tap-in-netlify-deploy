@@ -367,3 +367,4 @@ You're about to launch a **dual-architecture leadership gym** that:
 
 **P.S.** The dual architecture solves the "content overwhelm" problem beautifully. Users now have two clear paths (Gym for individual, Hub for team) instead of one overwhelming dashboard. Smart nudges guide them between systems. All XP counts toward belt progression. It's elegant, focused, and professional. You're going to love it! 🎯
 
+

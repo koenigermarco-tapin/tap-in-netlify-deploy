@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#1a365d">
+    <title>🤍 White Belt Stripe 1: Who Are You? - Worker Type Assessment - TAP-IN</title>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1a365d 0%, #7c3aed 100%); min-height: 100vh; padding: 20px; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+        .header { text-align: center; margin-bottom: 30px; padding-bottom: 25px; border-bottom: 3px solid #f0f0f0; }
+        .header h1 { color: #1a365d; font-size: 2.3em; margin-bottom: 15px; }
+        .header .subtitle { color: #666; font-size: 1.1em; margin-bottom: 10px; }
+        .header .duration { color: #999; font-size: 0.9em; font-style: italic; }
+        
+        .progress-bar { position: sticky; top: 10px; background: white; padding: 15px; border-radius: 10px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 100; }
+        .progress-text { text-align: center; color: #666; font-size: 0.9em; margin-bottom: 8px; }
+        .progress-fill { height: 8px; background: #e0e0e0; border-radius: 10px; overflow: hidden; }
+        .progress-fill-bar { background: linear-gradient(90deg, #1a365d 0%, #7c3aed 100%); height: 100%; width: 0%; transition: width 0.3s ease; }
+        
+        .section-header { background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; padding: 15px 20px; border-radius: 10px; margin-bottom: 20px; }
+        .section-header h3 { font-size: 1.2em; margin-bottom: 5px; }
+        .section-header .section-desc { font-size: 0.9em; opacity: 0.95; font-style: italic; }
+        
+        .question-card { background: #f8f9fa; padding: 30px; border-radius: 12px; margin-bottom: 20px; }
+        .question-number { color: #1a365d; font-weight: bold; font-size: 0.9em; margin-bottom: 10px; }
+        .question-text { font-size: 1.2em; color: #333; margin-bottom: 25px; font-weight: 500; line-height: 1.5; }
+        
+        .scale-options { display: flex; justify-content: space-between; align-items: flex-end; gap: 2px; flex-wrap: nowrap; height: 140px; position: relative; background: linear-gradient(to top right, rgba(26, 54, 93, 0.1) 0%, rgba(124, 58, 237, 0.05) 50%, transparent 50%); border-radius: 8px; padding: 5px; cursor: pointer; user-select: none; }
+        .scale-option { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; background: linear-gradient(135deg, rgba(26, 54, 93, 0.15) 0%, rgba(124, 58, 237, 0.1) 100%); border: 3px solid #cbd5e1; border-radius: 6px; transition: all 0.15s ease; position: relative; z-index: 1; padding: 10px 5px; }
+        .scale-option:nth-child(1) { height: 50px; opacity: 0.15; }
+        .scale-option:nth-child(2) { height: 70px; opacity: 0.35; }
+        .scale-option:nth-child(3) { height: 90px; opacity: 0.55; }
+        .scale-option:nth-child(4) { height: 110px; opacity: 0.75; }
+        .scale-option:nth-child(5) { height: 130px; opacity: 0.85; }
+        .scale-option span { font-size: 1.3em; font-weight: 800; color: #1e293b; opacity: 1; margin-bottom: 5px; }
+        .scale-option small { font-size: 0.7em; color: #475569; font-weight: 600; opacity: 1; text-align: center; line-height: 1.2; }
+        .scale-option:hover { transform: scale(1.05); border-color: #1a365d; }
+        .scale-option.active, .scale-option.selected { background: linear-gradient(135deg, #1a365d 0%, #7c3aed 100%); color: white; border-color: #0f1f3d; box-shadow: 0 2px 8px rgba(26, 54, 93, 0.4); }
+        .scale-option.active ~ .scale-option { background: linear-gradient(135deg, rgba(26, 54, 93, 0.15) 0%, rgba(124, 58, 237, 0.1) 100%); color: #333; }
+        .scale-option.active span, .scale-option.selected span { color: white; }
+        .scale-option.active small, .scale-option.selected small { color: rgba(255,255,255,0.9); }
+        
+        .insight-card { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 4px solid #1a365d; padding: 20px; margin: 20px 0; border-radius: 10px; animation: slideIn 0.4s ease; }
+        .insight-icon { font-size: 2rem; margin-bottom: 10px; }
+        .insight-title { color: #1a365d; font-size: 1.1em; font-weight: bold; margin-bottom: 12px; }
+        .insight-content { color: #555; line-height: 1.7; margin-bottom: 12px; }
+        .insight-quote { font-style: italic; color: #666; font-size: 0.95em; padding: 12px; background: rgba(255,255,255,0.7); border-radius: 6px; border-left: 3px solid #1a365d; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Scenario Question Styles */
+        .scenario-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .scenario-option {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .scenario-option:hover {
+            border-color: #667eea;
+            background: #f0f0ff;
+            transform: translateX(5px);
+        }
+        .scenario-option.selected {
+            border-color: #667eea;
+            background: #e8e8ff;
+        }
+        .scenario-option.correct {
+            border-color: #10b981;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        }
+        .scenario-option.correct .option-letter {
+            background: #10b981;
+        }
+        .scenario-option.incorrect {
+            border-color: #ef4444;
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+        }
+        .scenario-option.incorrect .option-letter {
+            background: #ef4444;
+        }
+        .scenario-option.neutral {
+            border-color: #f59e0b;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        }
+        .scenario-option.neutral .option-letter {
+            background: #f59e0b;
+        }
+        .option-letter {
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+        .option-text {
+            color: #333;
+            line-height: 1.6;
+            font-size: 1rem;
+            padding-top: 8px;
+        }
+        .scenario-feedback {
+            margin-top: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        .scenario-insight {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 4px solid #3b82f6;
+        }
+        
+        /* Multiple Choice Styles */
+        .mc-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .mc-option {
+            background: #ffffff;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 18px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .mc-option:hover {
+            border-color: #667eea;
+            background: #fafbff;
+            transform: translateX(3px);
+        }
+        .mc-option.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+        }
+        .mc-radio {
+            padding-top: 2px;
+        }
+        .mc-radio input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #667eea;
+            cursor: pointer;
+        }
+        .mc-content {
+            flex: 1;
+        }
+        .mc-text {
+            color: #333;
+            line-height: 1.6;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+        .mc-type {
+            color: #667eea;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .mc-feedback {
+            margin-top: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        .mc-insight {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-left: 4px solid #10b981;
+        }
+        .mc-type-badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(360deg) translateX(200px);
+                opacity: 0;
+            }
+        }
+        .milestone-content button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .fun-fact-box {
+            animation: slideIn 0.4s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .scenario-option {
+                padding: 12px 15px;
+                gap: 12px;
+            }
+            .option-letter {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+            .option-text {
+                font-size: 0.9rem;
+            }
+            .mc-option {
+                padding: 15px;
+            }
+            .mc-text {
+                font-size: 0.9rem;
+            }
+        }
+        
+        .nav-buttons { display: flex; gap: 15px; justify-content: space-between; margin-top: 25px; }
+        .btn { padding: 12px 30px; border: none; border-radius: 8px; font-size: 1em; cursor: pointer; transition: all 0.2s; font-weight: 600; }
+        .btn-secondary { background: #e0e0e0; color: #333; }
+        .btn-secondary:hover { background: #d0d0d0; }
+        .btn-primary { background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(26, 54, 93, 0.4); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        
+        .results-container { display: none; }
+        .results-container.active { display: block; }
+        .overall-score { background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; border-radius: 20px; padding: 40px; text-align: center; margin-bottom: 30px; }
+        .score-number { font-size: 4em; font-weight: bold; margin-bottom: 10px; }
+        .score-label { font-size: 1.3em; opacity: 0.95; }
+        .type-card { background: #f8f9fa; padding: 30px; border-radius: 15px; margin: 20px 0; border-left: 4px solid #1a365d; }
+        .type-card h3 { color: #1a365d; margin-bottom: 15px; font-size: 1.5em; }
+        .type-card ul { list-style: none; padding-left: 0; }
+        .type-card li { padding: 8px 0; padding-left: 25px; position: relative; color: #555; line-height: 1.7; }
+        .type-card li:before { content: "→"; position: absolute; left: 0; color: #1a365d; font-weight: bold; }
+        .cta-box { background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; border-radius: 15px; padding: 30px; text-align: center; margin-top: 30px; }
+        .cta-box h3 { font-size: 1.6em; margin-bottom: 15px; }
+        .cta-box p { font-size: 1em; margin-bottom: 20px; opacity: 0.95; }
+        .cta-btn { background: white; color: #1a365d; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; display: inline-block; transition: all 0.2s; }
+        .cta-btn:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(255,255,255,0.3); }
+        
+        .tap-out-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+        }
+        .tap-out-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.6);
+        }
+        @media (max-width: 768px) {
+            .container { padding: 25px; }
+            .header h1 { font-size: 2em; }
+            .scale-option small { font-size: 0.65em; }
+            .tap-out-button {
+                top: 10px;
+                right: 10px;
+                padding: 10px 16px;
+                font-size: 0.9em;
+            }
+        }
+    
+        /* ============= NUMBERED OPTION BOX READABILITY FIX ============= */
+        .scale-option,
+        .rating-option,
+        .numbered-option,
+        .option-number,
+        [data-value="1"],
+        [data-value="2"],
+        [data-value="3"],
+        [data-value="4"],
+        [data-value="5"] {
+            color: #FFFFFF !important;
+            font-weight: 700 !important;
+            font-size: 1.1rem !important;
+            background: #1e293b !important;
+            border: 2px solid #475569 !important;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+        }
+        .scale-option:hover,
+        .rating-option:hover,
+        .numbered-option:hover,
+        .option-number:hover,
+        [data-value]:hover {
+            background: #334155 !important;
+            border-color: #667eea !important;
+            color: #FFFFFF !important;
+            transform: scale(1.05) !important;
+        }
+        .scale-option.selected,
+        .rating-option.selected,
+        .numbered-option.selected,
+        .option-number.selected,
+        [data-value].selected {
+            background: #667eea !important;
+            border-color: #818cf8 !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3) !important;
+        }
+        .scale-label,
+        .rating-label,
+        .option-label {
+            color: #FFFFFF !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            text-align: center !important;
+            margin-top: 0.5rem !important;
+        }
+        .scale-container,
+        .rating-container,
+        .options-row {
+            display: flex !important;
+            justify-content: space-between !important;
+            gap: 0.75rem !important;
+            margin: 1.5rem 0 !important;
+        }
+        .scale-container > *,
+        .rating-container > *,
+        .options-row > * {
+            flex: 1 !important;
+            min-width: 60px !important;
+            text-align: center !important;
+            padding: 1rem 0.5rem !important;
+            border-radius: 8px !important;
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+        }
+        @media (max-width: 768px) {
+            .scale-option,
+            .rating-option,
+            .numbered-option,
+            .option-number,
+            [data-value] {
+                font-size: 1rem !important;
+                padding: 0.75rem 0.25rem !important;
+                min-width: 50px !important;
+            }
+            .scale-label,
+            .rating-label,
+            .option-label {
+                font-size: 0.75rem !important;
+            }
+        }
+        input[type="range"] {
+            -webkit-appearance: none !important;
+            width: 100% !important;
+            height: 8px !important;
+            background: #334155 !important;
+            border-radius: 5px !important;
+            outline: none !important;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none !important;
+            width: 24px !important;
+            height: 24px !important;
+            background: #667eea !important;
+            cursor: pointer !important;
+            border-radius: 50% !important;
+            border: 3px solid #FFFFFF !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 24px !important;
+            height: 24px !important;
+            background: #667eea !important;
+            cursor: pointer !important;
+            border-radius: 50% !important;
+            border: 3px solid #FFFFFF !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+        }
+        .slider-value,
+        .range-value {
+            display: block !important;
+            text-align: center !important;
+            font-size: 1.5rem !important;
+            font-weight: 700 !important;
+            color: #667eea !important;
+            margin-top: 1rem !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+        }
+        .slider-labels {
+            display: flex !important;
+            justify-content: space-between !important;
+            margin-top: 0.5rem !important;
+        }
+        .slider-labels span {
+            font-size: 0.85rem !important;
+            color: #cbd5e1 !important;
+            font-weight: 600 !important;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- TAP OUT Button -->
+    <button class="tap-out-button" onclick="tapOut()" id="tapOutBtn" style="display: none;">
+        <div class="tap-icon">🥋</div>
+        <div class="tap-text">TAP</div>
+    </button>
+    
+    <!-- Language Switcher -->
+    <div style="position:fixed;top:16px;right:16px;z-index:1200;">
+        <div style="background:white;border-radius:999px;padding:8px 12px;box-shadow:0 6px 20px rgba(0,0,0,0.15);font-size:0.95em;">
+            <a href="white-belt-stripe1-carousel-NEW.html" style="color:#1a365d;text-decoration:none;font-weight:700;margin-right:10px;">EN</a>
+            <a href="white-belt-stripe1-carousel-NEW-de.html" style="color:#333;text-decoration:none;font-weight:700;border-left:1px solid #eee;padding-left:10px;margin-left:10px;">DE</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Assessment Form -->
+        <div id="assessmentForm">
+            <div class="header">
+                <h1>🤍 White Belt - Stripe 1: Who Are You?</h1>
+                <p class="subtitle">Discover Your Worker Type: Sprinter, Jogger, or Ultrarunner</p>
+                <p class="duration">⏱️ 5-7 Minutes • 18 Questions</p>
+            </div>
+
+            <!-- Intro Section -->
+            <div id="introSection" style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #1a365d;">
+                <h3 style="color: #333; margin-bottom: 15px;">🤍 Know Thyself - The Foundation</h3>
+                <p style="color: #666; line-height: 1.7; margin-bottom: 15px;">
+                    <strong>Before you can lead others, you must understand yourself.</strong> This assessment reveals your natural work pattern: Are you a <strong>Sprinter</strong> (intense bursts), a <strong>Jogger</strong> (steady pace), or an <strong>Ultrarunner</strong> (long-term sustainability)?
+                </p>
+                
+                <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #1a365d;">
+                    <p style="font-style: italic; color: #555; margin-bottom: 10px;">
+                        "You can't change your type. But you CAN design your life to leverage it instead of fighting it."
+                    </p>
+                    <p style="text-align: right; color: #888; font-size: 0.9em;">— Ancient Wisdom</p>
+                </div>
+
+                <p style="color: #666; line-height: 1.7; margin-bottom: 15px;">
+                    <strong>Google's Project Aristotle</strong> found that diverse worker types create balanced teams. Understanding YOUR type helps you:
+                </p>
+                <ul style="color: #666; line-height: 1.8; margin-left: 20px; margin-bottom: 15px;">
+                    <li>Design your schedule to match your energy patterns</li>
+                    <li>Avoid burnout by working WITH your nature, not against it</li>
+                    <li>Build teams that complement your strengths</li>
+                    <li>Make better decisions about when to sprint vs. when to pace</li>
+                </ul>
+
+                <p style="color: #666; line-height: 1.7; margin-top: 15px; padding: 15px; background: #f0f4ff; border-radius: 8px; font-size: 0.95em;">
+                    <strong>🥋 In BJJ:</strong> Just like some fighters are explosive (sprinters) and others are grinders (joggers), neither is wrong—but both need to know which they are. This assessment reveals YOUR pattern.
+                </p>
+                
+                <button onclick="startAssessment()" style="background: linear-gradient(135deg, #1a365d 0%, #0f1f3d 100%); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(26, 54, 93, 0.3); display: block; margin: 20px auto 0; width: auto;">
+                    Start Assessment →
+                </button>
+            </div>
+
+            <div class="progress-bar" style="display: none;" id="progressBarContainer">
+                <div class="progress-text"><span id="currentSection">Work Patterns</span> • Question <span id="currentQ">1</span> of 18</div>
+                <div class="progress-fill">
+                    <div class="progress-fill-bar" id="progressBar"></div>
+                </div>
+            </div>
+
+            <div id="questionContainer" style="display: none;"></div>
+
+            <div class="nav-buttons" style="display: none;" id="navButtons">
+                <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>← Previous</button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next →</button>
+            </div>
+        </div>
+
+        <!-- Results Container -->
+        <div id="resultsContainer" class="results-container">
+            <div class="header">
+                <h1>🤍 Your Worker Type Profile</h1>
+            </div>
+
+            <div class="overall-score" id="typeResultCard">
+                <div class="score-number" id="typeEmoji">🏃</div>
+                <div class="score-label" id="typeLabel">Calculating...</div>
+            </div>
+
+            <div id="typeDetails"></div>
+
+            <div class="cta-box">
+                <h3>🤍 White Belt Stripe 1 Complete!</h3>
+                <p>You now know your worker type. Ready to continue your journey?</p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
+                    <a href="white-belt-stripe2-gamified.html" class="cta-btn" style="margin: 0;">Continue to Stripe 2 →</a>
+                    <a href="gym-dashboard.html" class="cta-btn" style="background: rgba(255,255,255,0.2); border: 2px solid white; margin: 0;">Back to The Gym</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            // WORK PATTERNS (6 questions)
+            {
+                section: 'Work Patterns',
+                sectionDesc: 'How you naturally approach projects and tasks',
+                question: 'When you have a big project, you typically...',
+                category: 'pattern'
+            },
+            {
+                question: 'Your ideal work schedule is...',
+                category: 'pattern'
+            },
+            {
+                question: 'When facing a deadline, you...',
+                category: 'pattern'
+            },
+            {
+                question: 'You feel most productive when...',
+                category: 'pattern'
+            },
+            {
+                question: 'Your approach to long-term goals is...',
+                category: 'pattern'
+            },
+            {
+                question: 'When you finish a major project, you...',
+                category: 'pattern'
+            },
+            // ENERGY MANAGEMENT (6 questions)
+            {
+                section: 'Energy & Recovery',
+                sectionDesc: 'How you recharge and manage your energy',
+                question: 'You recharge energy by...',
+                category: 'energy'
+            },
+            {
+                question: 'After an intense work period, you need...',
+                category: 'energy'
+            },
+            {
+                question: 'Your relationship with rest is...',
+                category: 'energy'
+            },
+            {
+                question: 'You know you\'re burning out when...',
+                category: 'energy'
+            },
+            {
+                question: 'Your ideal vacation is...',
+                category: 'energy'
+            },
+            {
+                question: 'You handle stress by...',
+                category: 'energy'
+            },
+            // LEARNING & GROWTH (6 questions)
+            {
+                section: 'Learning Style',
+                sectionDesc: 'How you acquire new skills and knowledge',
+                question: 'When learning something new, you prefer...',
+                category: 'learning'
+            },
+            {
+                question: 'Your ideal learning environment is...',
+                category: 'learning'
+            },
+            {
+                question: 'You master new skills by...',
+                category: 'learning'
+            },
+            {
+                question: 'When you hit a learning plateau, you...',
+                category: 'learning'
+            },
+            {
+                question: 'You prefer to learn through...',
+                category: 'learning'
+            },
+            {
+                question: 'Your approach to skill development is...',
+                category: 'learning'
+            }
+        ];
+
+        // Scoring: 1-2 = Sprinter, 3 = Jogger, 4-5 = Ultrarunner
+        const insights = [
+            // WORK PATTERNS INSIGHTS (6)
+            { icon: '⚡', title: 'Sprint Mode Detected', content: 'You thrive on intensity and deadlines. <strong>Research shows</strong> that sprinters can deliver exceptional output in short bursts—but need recovery to avoid burnout cycles. Elon Musk and Steve Jobs were sprinters who mastered the art of intense focus followed by strategic rest.', quote: '"Some fighters are explosive, some are grinders. Neither is wrong—but both need to know which they are." - BJJ Wisdom' },
+            { icon: '🏃', title: 'Steady Pace Identified', content: 'You prefer consistent, sustainable effort. <strong>Studies show</strong> joggers have 40% less burnout and maintain higher long-term performance. Warren Buffett exemplifies this: steady, methodical, compounding results over decades.', quote: '"The best time to plant a tree was 20 years ago. The second best time is now." - Chinese Proverb' },
+            { icon: '🏔️', title: 'Long-Term Vision', content: 'You think in years, not weeks. <strong>Research on ultrarunners</strong> shows they make better strategic decisions because they\'re not reactive to short-term pressure. They build systems that compound over time.', quote: '"It\'s not the mountain we conquer, but ourselves." - Sir Edmund Hillary' },
+            { icon: '🎯', title: 'Deadline Energy', content: 'Deadlines activate your peak performance. <strong>Neuroscience shows</strong> that sprinters have higher dopamine release under pressure, which explains why you do your best work when the clock is ticking.', quote: '"Pressure makes diamonds." - Unknown' },
+            { icon: '📅', title: 'Routine vs. Flexibility', content: 'Your answer reveals whether you need structure (jogger) or flexibility (sprinter/ultrarunner). <strong>Research shows</strong> that matching your schedule to your type increases productivity by 30%.', quote: '"The secret of your future is hidden in your daily routine." - Mike Murdock' },
+            { icon: '🔄', content: 'Recovery Patterns', content: 'How you finish projects reveals your recovery needs. <strong>Sprinters need immediate rest</strong>, joggers need brief pauses, ultrarunners need active recovery. Understanding this prevents burnout.', quote: '"Rest is not idleness." - John Lubbock' },
+            
+            // ENERGY INSIGHTS (6)
+            { icon: '🔋', title: 'Energy Recharge Style', content: 'Your recharge method matches your type. <strong>Sprinters need complete disconnection</strong>, joggers need routine activities, ultrarunners need active recovery. Mismatch = burnout.', quote: '"You can\'t pour from an empty cup." - Ancient Wisdom' },
+            { icon: '💤', title: 'Recovery Needs', content: 'Post-intensity recovery is critical. <strong>Stanford research</strong> shows that sprinters who skip recovery have 60% higher burnout rates. Your type determines how much rest you need.', quote: '"Sleep is the single most effective thing we can do to reset our brain." - Dr. Matthew Walker' },
+            { icon: '🛡️', title: 'Rest Philosophy', content: 'Your relationship with rest reveals your type. <strong>Sprinters see rest as earned</strong>, joggers see it as routine, ultrarunners see it as strategic. All are valid—but different.', quote: '"Rest is not a reward for finishing—it\'s part of the process." - Unknown' },
+            { icon: '⚠️', title: 'Burnout Awareness', content: 'Your burnout signals are unique to your type. <strong>Early detection prevents 80% of burnout cases</strong>. Sprinters crash suddenly, joggers decline gradually, ultrarunners plateau.', quote: '"The best time to fix the roof is when the sun is shining." - JFK' },
+            { icon: '🌴', title: 'Vacation Style', content: 'Your ideal vacation matches your energy needs. <strong>Research shows</strong> that mismatched vacations (sprinter forced to relax, jogger forced to adventure) increase stress.', quote: '"Almost everything will work again if you unplug it for a few minutes, including you." - Anne Lamott' },
+            { icon: '🧘', title: 'Stress Response', content: 'How you handle stress reveals your type. <strong>Sprinters channel it into action</strong>, joggers maintain routines, ultrarunners reframe it as part of the journey.', quote: '"Between stimulus and response there is a space. In that space is our power." - Viktor Frankl' },
+            
+            // LEARNING INSIGHTS (6)
+            { icon: '📚', title: 'Learning Preference', content: 'Your learning style matches your type. <strong>Sprinters prefer immersion</strong>, joggers prefer structure, ultrarunners prefer exploration. Teaching methods should match.', quote: '"Tell me and I forget. Teach me and I remember. Involve me and I learn." - Benjamin Franklin' },
+            { icon: '🎓', title: 'Learning Environment', content: 'Your ideal environment reflects your type. <strong>Research shows</strong> that matching environment to type increases learning speed by 40%. Sprinters need intensity, joggers need routine, ultrarunners need space.', quote: '"The environment shapes the behavior." - B.F. Skinner' },
+            { icon: '💪', title: 'Mastery Path', content: 'How you master skills reveals your type. <strong>Anders Ericsson\'s research</strong> shows that deliberate practice works differently for each type. Sprinters need focused bursts, joggers need daily practice, ultrarunners need long cycles.', quote: '"Mastery is not a function of genius or talent. It is a function of time and intense focus." - Robert Greene' },
+            { icon: '📈', title: 'Plateau Response', content: 'Your response to plateaus reveals your type. <strong>Sprinters push harder</strong>, joggers adjust routines, ultrarunners trust the process. All work—but different approaches.', quote: '"Plateaus are not failures—they\'re data." - Unknown' },
+            { icon: '🎯', title: 'Learning Method', content: 'Your preferred method matches your type. <strong>Research shows</strong> that matching learning method to type increases retention by 50%. Sprinters need hands-on, joggers need step-by-step, ultrarunners need conceptual.', quote: '"I hear and I forget. I see and I remember. I do and I understand." - Confucius' },
+            { icon: '🌱', title: 'Skill Development', content: 'Your approach to skill development reveals your type. <strong>Carol Dweck\'s research</strong> shows that growth mindset works differently for each type. Understanding this accelerates learning.', quote: '"Becoming is better than being." - Carol Dweck' }
+        ];
+
+        const sectionIntros = {
+            'Work Patterns': `
+                <strong>Why work patterns matter:</strong> Research from Harvard Business Review shows that <strong>matching your work style to your natural pattern increases productivity by 30%</strong>. Sprinters, joggers, and ultrarunners aren't just different—they need different systems, schedules, and strategies.
+                <br><br>
+                <strong>The three types:</strong> Sprinters deliver intense bursts (Elon Musk), joggers maintain steady pace (Warren Buffett), ultrarunners think in decades (Jeff Bezos). None is better—but each requires different management.
+                <br><br>
+                <strong>🥋 In BJJ:</strong> Some fighters are explosive (sprinters), some are grinders (joggers), some are strategists (ultrarunners). The best fighters know which they are and train accordingly.
+            `,
+            'Energy & Recovery': `
+                <strong>Why energy management is type-specific:</strong> Tony Schwartz's research at The Energy Project found that <strong>each worker type has different energy cycles</strong>. Sprinters operate in 90-minute bursts, joggers in daily rhythms, ultrarunners in seasonal patterns.
+                <br><br>
+                <strong>The recovery paradox:</strong> Sprinters who skip recovery burn out 60% faster. Joggers who don't maintain routines lose momentum. Ultrarunners who rush decisions make poor choices. Recovery isn't optional—it's type-specific.
+                <br><br>
+                <strong>🥋 In BJJ:</strong> Recovery between rounds isn't weakness—it's strategy. Understanding your energy pattern helps you train smarter, not just harder.
+            `,
+            'Learning Style': `
+                <strong>Why learning style matches worker type:</strong> Research from Anders Ericsson (deliberate practice) shows that <strong>learning methods should match your type</strong>. Sprinters learn through immersion, joggers through structure, ultrarunners through exploration.
+                <br><br>
+                <strong>The mastery path:</strong> Each type has a different path to mastery. Sprinters need focused bursts, joggers need daily practice, ultrarunners need long cycles. Understanding this accelerates skill development.
+                <br><br>
+                <strong>🥋 In BJJ:</strong> Some learn techniques quickly (sprinters), some through repetition (joggers), some through understanding principles (ultrarunners). All paths lead to mastery—but they're different.
+            `
+        };
+
+        // TAP OUT Configuration
+        const currentStripeName = 'whiteBeltStripe1';
+        const totalQuestions = 18;
+        
+        let currentQuestionIndex = 0;
+        let answers = {};
+        
+        // TAP OUT function
+        function tapOut() {
+            const confirmed = confirm(
+                "🥋 TAP OUT\n\n" +
+                "Your progress will be saved.\n" +
+                "You can continue from Question " + (currentQuestionIndex + 1) + " anytime.\n\n" +
+                "Return to Gym Dashboard?"
+            );
+            
+            if (!confirmed) return;
+            
+            // Save progress
+            const progressData = {
+                stripe: currentStripeName,
+                currentQuestion: currentQuestionIndex + 1,
+                questionIndex: currentQuestionIndex,
+                answers: answers,
+                timestamp: Date.now(),
+                partialComplete: true,
+                totalQuestions: totalQuestions
+            };
+            
+            localStorage.setItem('currentProgress', JSON.stringify(progressData));
+            
+            // Show toast
+            showToast("✅ Progress saved! See you soon.");
+            
+            // Redirect to gym
+            setTimeout(() => {
+                window.location.href = 'gym-dashboard.html';
+            }, 1000);
+        }
+        
+        // Toast notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                color: white;
+                padding: 16px 32px;
+                border-radius: 50px;
+                box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+                z-index: 10000;
+                font-weight: 600;
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.remove(), 3000);
+        }
+        
+        // Check for saved progress on load
+        function checkForSavedProgress() {
+            const saved = localStorage.getItem('currentProgress');
+            if (!saved) return false;
+            
+            try {
+                const progress = JSON.parse(saved);
+                
+                // Check if this is the right stripe
+                if (progress.stripe !== currentStripeName) return false;
+                
+                // Check if recent (within 7 days)
+                const daysSince = (Date.now() - progress.timestamp) / (1000 * 60 * 60 * 24);
+                if (daysSince > 7) {
+                    localStorage.removeItem('currentProgress');
+                    return false;
+                }
+                
+                // Ask to resume
+                const resume = confirm(
+                    "🥋 WELCOME BACK!\n\n" +
+                    "You were on Question " + progress.currentQuestion + " of " + (progress.totalQuestions || totalQuestions) + ".\n" +
+                    "Resume where you left off?"
+                );
+                
+                if (resume) {
+                    currentQuestionIndex = progress.questionIndex || (progress.currentQuestion - 1);
+                    answers = progress.answers || {};
+                    return true;
+                } else {
+                    localStorage.removeItem('currentProgress');
+                    return false;
+                }
+            } catch (e) {
+                console.error('Error loading saved progress:', e);
+                return false;
+            }
+        }
+        
+        // Save progress after each answer
+        function saveProgress() {
+            const progressData = {
+                stripe: currentStripeName,
+                currentQuestion: currentQuestionIndex + 1,
+                questionIndex: currentQuestionIndex,
+                answers: answers,
+                timestamp: Date.now(),
+                partialComplete: true,
+                totalQuestions: totalQuestions
+            };
+            localStorage.setItem('currentProgress', JSON.stringify(progressData));
+        }
+        
+        // Clear progress on completion
+        function clearProgress() {
+            localStorage.removeItem('currentProgress');
+        }
+        
+        function startAssessment() {
+            document.getElementById('introSection').style.display = 'none';
+            document.getElementById('progressBarContainer').style.display = 'block';
+            document.getElementById('questionContainer').style.display = 'block';
+            document.getElementById('navButtons').style.display = 'flex';
+            document.getElementById('tapOutBtn').style.display = 'flex';
+            
+            // Check for saved progress
+            const resumed = checkForSavedProgress();
+            if (resumed) {
+                renderQuestion(currentQuestionIndex);
+                updateProgress();
+            } else {
+                currentQuestionIndex = 0;
+                answers = {};
+                renderQuestion(0);
+            }
+        }
+
+        let isDragging = false;
+
+        function renderQuestion(index) {
+            const q = questions[index];
+            
+            // Handle different question types
+            if (q.type === 'scenario') {
+                renderScenario(index, q);
+            } else if (q.type === 'multiple-choice') {
+                renderMultipleChoice(index, q);
+            } else {
+                // Existing Likert scale rendering
+                renderLikertScale(index, q);
+            }
+            
+            updateProgress();
+        }
+        
+        function renderLikertScale(index, q) {
+            const container = document.getElementById('questionContainer');
+            
+            let html = '';
+            
+            if (q.section) {
+                html += `
+                    <div class="section-header">
+                        <h3>${q.section}</h3>
+                        <div class="section-desc">${q.sectionDesc}</div>
+                    </div>
+                `;
+                document.getElementById('currentSection').textContent = q.section;
+                
+                if (sectionIntros[q.section]) {
+                    html += `
+                        <div class="insight-card" style="margin-bottom: 25px;">
+                            <div class="insight-icon">💡</div>
+                            <div class="insight-title">Why This Matters</div>
+                            <div class="insight-content">${sectionIntros[q.section]}</div>
+                        </div>
+                    `;
+                }
+            }
+            
+            // Create answer options based on question type
+            const options = getOptionsForQuestion(q);
+            
+            html += `
+                <div class="question-card">
+                    <div class="question-number">Question ${index + 1} of ${questions.length}</div>
+                    <div class="question-text">${q.question}</div>
+                    <div class="scale-options" id="scaleContainer">
+                        ${options.map((opt, idx) => `
+                            <div class="scale-option ${answers[index] === opt.value ? 'selected' : ''}" data-value="${opt.value}" onclick="selectOption(event, ${opt.value})">
+                                <span>${idx + 1}</span>
+                                <small>${opt.text}</small>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div id="insightContainer"></div>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+            document.getElementById('currentQ').textContent = index + 1;
+            setupDragHandlers();
+            
+            if (answers[index]) {
+                showInsight(insights[index]);
+            }
+        }
+        
+        function renderScenario(index, question) {
+            const container = document.getElementById('questionContainer');
+            
+            let html = '';
+            
+            if (question.section) {
+                html += `
+                    <div class="section-header">
+                        <h3>${question.section}</h3>
+                        <div class="section-desc">${question.sectionDesc || ''}</div>
+                    </div>
+                `;
+                if (document.getElementById('currentSection')) {
+                    document.getElementById('currentSection').textContent = question.section;
+                }
+            }
+            
+            html += `
+                <div class="question-card">
+                    <div class="question-number">Scenario ${index + 1} of ${questions.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="scenario-options">
+                        ${question.options.map((opt, idx) => `
+                            <div class="scenario-option" data-option="${idx}" onclick="selectScenario(${index}, ${idx})">
+                                <div class="option-letter">${String.fromCharCode(65 + idx)}</div>
+                                <div class="option-text">${opt.text}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div id="scenarioFeedback" class="scenario-feedback" style="display: none;"></div>
+                </div>
+                <div id="insightContainer"></div>
+            `;
+            
+            container.innerHTML = html;
+            if (document.getElementById('currentQ')) {
+                document.getElementById('currentQ').textContent = index + 1;
+            }
+            
+            if (answers[index] !== undefined) {
+                const selectedIdx = question.options.findIndex(opt => opt.value === answers[index]);
+                if (selectedIdx >= 0) {
+                    selectScenario(index, selectedIdx);
+                }
+            }
+        }
+        
+        function selectScenario(questionIndex, optionIndex) {
+            const q = questions[questionIndex];
+            const selectedOption = q.options[optionIndex];
+            
+            // Store answer
+            answers[questionIndex] = selectedOption.value;
+            
+            // Visual feedback on options
+            document.querySelectorAll('.scenario-option').forEach((opt, idx) => {
+                opt.classList.remove('selected', 'correct', 'incorrect', 'neutral');
+                
+                if (idx === optionIndex) {
+                    opt.classList.add('selected');
+                    
+                    // Color code based on value
+                    if (selectedOption.value >= 4) {
+                        opt.classList.add('correct');
+                    } else if (selectedOption.value <= 2) {
+                        opt.classList.add('incorrect');
+                    } else {
+                        opt.classList.add('neutral');
+                    }
+                }
+            });
+            
+            // Show feedback
+            const feedbackDiv = document.getElementById('scenarioFeedback');
+            if (feedbackDiv && selectedOption.feedback) {
+                feedbackDiv.innerHTML = `
+                    <div class="insight-card scenario-insight">
+                        <div class="insight-content">${selectedOption.feedback}</div>
+                        ${selectedOption.insight ? `<div class="insight-quote">${selectedOption.insight}</div>` : ''}
+                    </div>
+                `;
+                feedbackDiv.style.display = 'block';
+                feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            
+            // Enable next button
+            if (document.getElementById('nextBtn')) {
+                document.getElementById('nextBtn').disabled = false;
+            }
+            
+            // Save progress
+            saveProgress();
+        }
+        
+        function renderMultipleChoice(index, question) {
+            const container = document.getElementById('questionContainer');
+            
+            let html = '';
+            
+            if (question.section) {
+                html += `
+                    <div class="section-header">
+                        <h3>${question.section}</h3>
+                        <div class="section-desc">${question.sectionDesc || ''}</div>
+                    </div>
+                `;
+                if (document.getElementById('currentSection')) {
+                    document.getElementById('currentSection').textContent = question.section;
+                }
+            }
+            
+            html += `
+                <div class="question-card">
+                    <div class="question-number">Question ${index + 1} of ${questions.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="mc-options">
+                        ${question.options.map((opt, idx) => `
+                            <div class="mc-option" data-option="${idx}" onclick="selectMultipleChoice(${index}, ${idx})">
+                                <div class="mc-radio">
+                                    <input type="radio" name="mc${index}" value="${idx}">
+                                </div>
+                                <div class="mc-content">
+                                    <div class="mc-text">${opt.text}</div>
+                                    ${opt.type ? `<div class="mc-type">${opt.type}</div>` : ''}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div id="mcFeedback" class="mc-feedback" style="display: none;"></div>
+                </div>
+                <div id="insightContainer"></div>
+            `;
+            
+            container.innerHTML = html;
+            if (document.getElementById('currentQ')) {
+                document.getElementById('currentQ').textContent = index + 1;
+            }
+            
+            if (answers[index] !== undefined) {
+                const selectedIdx = question.options.findIndex(opt => opt.value === answers[index]);
+                if (selectedIdx >= 0) {
+                    selectMultipleChoice(index, selectedIdx);
+                }
+            }
+        }
+        
+        function selectMultipleChoice(questionIndex, optionIndex) {
+            const q = questions[questionIndex];
+            const selectedOption = q.options[optionIndex];
+            
+            // Store answer
+            answers[questionIndex] = selectedOption.value;
+            
+            // Visual feedback
+            document.querySelectorAll('.mc-option').forEach((opt, idx) => {
+                opt.classList.remove('selected');
+                if (idx === optionIndex) {
+                    opt.classList.add('selected');
+                    opt.querySelector('input').checked = true;
+                }
+            });
+            
+            // Show feedback
+            const feedbackDiv = document.getElementById('mcFeedback');
+            if (feedbackDiv && selectedOption.feedback) {
+                feedbackDiv.innerHTML = `
+                    <div class="insight-card mc-insight">
+                        ${selectedOption.type ? `<div class="mc-type-badge">${selectedOption.type}</div>` : ''}
+                        <div class="insight-content">${selectedOption.feedback}</div>
+                    </div>
+                `;
+                feedbackDiv.style.display = 'block';
+                feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            
+            // Enable next button
+            if (document.getElementById('nextBtn')) {
+                document.getElementById('nextBtn').disabled = false;
+            }
+            
+            // Save progress
+            saveProgress();
+        }
+
+        function getOptionsForQuestion(q) {
+            const questionText = q.question.toLowerCase();
+            
+            // Work Patterns questions
+            if (questionText.includes('big project')) {
+                return [
+                    { text: 'Sprint hard, finish fast, then crash', value: 1 },
+                    { text: 'Work intensely with breaks', value: 2 },
+                    { text: 'Work steadily, consistent daily pace', value: 3 },
+                    { text: 'Pace myself for sustainability', value: 4 },
+                    { text: 'Plan long-term, execute patiently', value: 5 }
+                ];
+            } else if (questionText.includes('ideal work schedule')) {
+                return [
+                    { text: 'Intense blocks with long breaks', value: 1 },
+                    { text: 'Flexible, adapt to energy', value: 2 },
+                    { text: 'Fixed routine, same hours daily', value: 3 },
+                    { text: 'Regular rhythm with flexibility', value: 4 },
+                    { text: 'Long cycles, seasonal patterns', value: 5 }
+                ];
+            } else if (questionText.includes('deadline')) {
+                return [
+                    { text: 'Thrive - pressure activates me', value: 1 },
+                    { text: 'Rise to occasion, then crash', value: 2 },
+                    { text: 'Stay calm, maintain pace', value: 3 },
+                    { text: 'Plan ahead to avoid pressure', value: 4 },
+                    { text: 'Deadlines don\'t affect my pace', value: 5 }
+                ];
+            } else if (questionText.includes('most productive')) {
+                return [
+                    { text: 'Under intense pressure', value: 1 },
+                    { text: 'In focused bursts', value: 2 },
+                    { text: 'With consistent routine', value: 3 },
+                    { text: 'When I can pace myself', value: 4 },
+                    { text: 'Over long timeframes', value: 5 }
+                ];
+            } else if (questionText.includes('long-term goals')) {
+                return [
+                    { text: 'Break into intense sprints', value: 1 },
+                    { text: 'Mix sprints with recovery', value: 2 },
+                    { text: 'Steady daily progress', value: 3 },
+                    { text: 'Patient, consistent effort', value: 4 },
+                    { text: 'Think in years, not weeks', value: 5 }
+                ];
+            } else if (questionText.includes('finish a major project')) {
+                return [
+                    { text: 'Immediately start next sprint', value: 1 },
+                    { text: 'Brief rest, then next project', value: 2 },
+                    { text: 'Short break, maintain routine', value: 3 },
+                    { text: 'Celebrate, then plan next', value: 4 },
+                    { text: 'Reflect, integrate, then continue', value: 5 }
+                ];
+            
+            // Energy & Recovery questions
+            } else if (questionText.includes('recharge energy')) {
+                return [
+                    { text: 'Intense bursts - work hard, then fully unplug', value: 1 },
+                    { text: 'Short breaks between intense work', value: 2 },
+                    { text: 'Daily routine - consistent habits', value: 3 },
+                    { text: 'Regular rhythms with occasional deep rest', value: 4 },
+                    { text: 'Long cycles - seasonal patterns', value: 5 }
+                ];
+            } else if (questionText.includes('intense work period')) {
+                return [
+                    { text: 'Complete shutdown, days off', value: 1 },
+                    { text: 'Short break, then ready again', value: 2 },
+                    { text: 'Return to normal routine', value: 3 },
+                    { text: 'Gradual transition back', value: 4 },
+                    { text: 'Continue at sustainable pace', value: 5 }
+                ];
+            } else if (questionText.includes('relationship with rest')) {
+                return [
+                    { text: 'Rest is earned after intensity', value: 1 },
+                    { text: 'Rest when exhausted', value: 2 },
+                    { text: 'Rest is part of daily routine', value: 3 },
+                    { text: 'Rest is strategic recovery', value: 4 },
+                    { text: 'Rest is essential, not optional', value: 5 }
+                ];
+            } else if (questionText.includes('burning out')) {
+                return [
+                    { text: 'I don\'t see it coming - sudden crash', value: 1 },
+                    { text: 'People tell me but I dismiss it', value: 2 },
+                    { text: 'I notice but keep pushing', value: 3 },
+                    { text: 'I catch early warning signs', value: 4 },
+                    { text: 'I prevent it through boundaries', value: 5 }
+                ];
+            } else if (questionText.includes('ideal vacation')) {
+                return [
+                    { text: 'Complete disconnect, do nothing', value: 1 },
+                    { text: 'Active but different activities', value: 2 },
+                    { text: 'Maintain some routine', value: 3 },
+                    { text: 'Balance rest and exploration', value: 4 },
+                    { text: 'Long, slow, immersive experience', value: 5 }
+                ];
+            } else if (questionText.includes('handle stress')) {
+                return [
+                    { text: 'Channel into intense action', value: 1 },
+                    { text: 'Push through, then recover', value: 2 },
+                    { text: 'Maintain routines, stay steady', value: 3 },
+                    { text: 'Adjust pace, take breaks', value: 4 },
+                    { text: 'Reframe as part of journey', value: 5 }
+                ];
+            
+            // Learning Style questions
+            } else if (questionText.includes('learning something new')) {
+                return [
+                    { text: 'Immersion - dive deep fast', value: 1 },
+                    { text: 'Intensive study periods', value: 2 },
+                    { text: 'Structure - steady progression', value: 3 },
+                    { text: 'Gradual exploration over time', value: 4 },
+                    { text: 'Slow discovery, long timeframes', value: 5 }
+                ];
+            } else if (questionText.includes('ideal learning environment')) {
+                return [
+                    { text: 'Intense, focused, no distractions', value: 1 },
+                    { text: 'Flexible, adapt to energy', value: 2 },
+                    { text: 'Structured, consistent schedule', value: 3 },
+                    { text: 'Comfortable, self-paced', value: 4 },
+                    { text: 'Open, exploratory, no pressure', value: 5 }
+                ];
+            } else if (questionText.includes('master new skills')) {
+                return [
+                    { text: 'Focused bursts of practice', value: 1 },
+                    { text: 'Intensive periods then breaks', value: 2 },
+                    { text: 'Daily practice, steady progress', value: 3 },
+                    { text: 'Regular practice over time', value: 4 },
+                    { text: 'Long-term exploration', value: 5 }
+                ];
+            } else if (questionText.includes('learning plateau')) {
+                return [
+                    { text: 'Push harder, double down', value: 1 },
+                    { text: 'Take break, come back fresh', value: 2 },
+                    { text: 'Adjust routine, keep going', value: 3 },
+                    { text: 'Be patient, trust process', value: 4 },
+                    { text: 'Accept it, explore other areas', value: 5 }
+                ];
+            } else if (questionText.includes('prefer to learn through')) {
+                return [
+                    { text: 'Hands-on, trial and error', value: 1 },
+                    { text: 'Intensive workshops', value: 2 },
+                    { text: 'Step-by-step courses', value: 3 },
+                    { text: 'Self-paced exploration', value: 4 },
+                    { text: 'Long-term immersion', value: 5 }
+                ];
+            } else if (questionText.includes('skill development')) {
+                return [
+                    { text: 'Rapid improvement bursts', value: 1 },
+                    { text: 'Intensive then recovery', value: 2 },
+                    { text: 'Consistent daily practice', value: 3 },
+                    { text: 'Gradual, steady improvement', value: 4 },
+                    { text: 'Long-term mastery journey', value: 5 }
+                ];
+            } else {
+                // Default 5-point scale
+                return [
+                    { text: 'Strongly Sprint', value: 1 },
+                    { text: 'Somewhat Sprint', value: 2 },
+                    { text: 'Balanced', value: 3 },
+                    { text: 'Somewhat Pace', value: 4 },
+                    { text: 'Strongly Pace', value: 5 }
+                ];
+            }
+        }
+
+        function setupDragHandlers() {
+            const scaleContainer = document.getElementById('scaleContainer');
+            if (!scaleContainer) return;
+            
+            function handleInteraction(e) {
+                const rect = scaleContainer.getBoundingClientRect();
+                const x = (e.clientX || e.touches?.[0]?.clientX) - rect.left;
+                const relativeX = Math.max(0, Math.min(1, x / rect.width));
+                const value = Math.ceil(relativeX * 5) || 1;
+                selectOption(e, value);
+                updateSliderVisual(value);
+            }
+
+            scaleContainer.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                handleInteraction(e);
+            });
+
+            scaleContainer.addEventListener('mousemove', (e) => {
+                if (isDragging) handleInteraction(e);
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            scaleContainer.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                handleInteraction(e);
+            }, { passive: false });
+
+            scaleContainer.addEventListener('touchmove', (e) => {
+                if (isDragging) {
+                    e.preventDefault();
+                    handleInteraction(e);
+                }
+            }, { passive: false });
+
+            scaleContainer.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+        }
+
+        function updateSliderVisual(value) {
+            const options = document.querySelectorAll('.scale-option');
+            options.forEach((opt, idx) => {
+                if (idx < value) {
+                    opt.classList.add('active');
+                } else {
+                    opt.classList.remove('active');
+                }
+            });
+        }
+
+        function selectOption(e, value) {
+            e.stopPropagation();
+            answers[currentQuestionIndex] = value;
+            
+            document.querySelectorAll('.scale-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            const selectedOpt = document.querySelector(`[data-value="${value}"]`);
+            if (selectedOpt) {
+                selectedOpt.classList.add('selected');
+            }
+            
+            updateSliderVisual(value);
+            document.getElementById('nextBtn').disabled = false;
+            showInsight(insights[currentQuestionIndex]);
+            
+            // Save progress after each answer
+            saveProgress();
+        }
+
+        function showInsight(insight) {
+            const container = document.getElementById('insightContainer');
+            container.innerHTML = `
+                <div class="insight-card">
+                    <div class="insight-icon">${insight.icon}</div>
+                    <div class="insight-title">${insight.title}</div>
+                    <div class="insight-content">${insight.content}</div>
+                    <div class="insight-quote">${insight.quote}</div>
+                </div>
+            `;
+            container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion(currentQuestionIndex);
+                document.getElementById('prevBtn').disabled = false;
+                document.getElementById('nextBtn').disabled = !answers[currentQuestionIndex];
+                document.getElementById('nextBtn').textContent = 'Next →';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                showResults();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion(currentQuestionIndex);
+                document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+                document.getElementById('nextBtn').disabled = false;
+                document.getElementById('nextBtn').textContent = 'Next →';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function updateProgress() {
+            const answered = Object.keys(answers).length;
+            const progress = (answered / questions.length) * 100;
+            if (document.getElementById('progressBar')) {
+                document.getElementById('progressBar').style.width = progress + '%';
+            }
+            
+            // Milestone celebrations
+            checkMilestones(progress);
+            
+            if (currentQuestionIndex === questions.length - 1) {
+                if (document.getElementById('nextBtn')) {
+                    document.getElementById('nextBtn').textContent = 'See Results 🎯';
+                }
+            }
+        }
+        
+        // Milestone system
+        function checkMilestones(progress) {
+            if (!window.milestonesShown) {
+                window.milestonesShown = [];
+            }
+            
+            const milestones = [25, 50, 75, 100];
+            const currentMilestone = Math.floor(progress / 25) * 25;
+            
+            if (milestones.includes(currentMilestone) && 
+                !window.milestonesShown.includes(currentMilestone) &&
+                progress >= currentMilestone) {
+                
+                window.milestonesShown.push(currentMilestone);
+                showMilestoneCelebration(currentMilestone);
+            }
+        }
+        
+        function showMilestoneCelebration(percent) {
+            const messages = {
+                25: {
+                    emoji: '🎯',
+                    title: '25% Complete!',
+                    message: 'You\'re building momentum! Great start!',
+                    color: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%)'
+                },
+                50: {
+                    emoji: '🔥',
+                    title: 'Halfway There!',
+                    message: 'You\'re crushing it! Keep going!',
+                    color: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)'
+                },
+                75: {
+                    emoji: '💪',
+                    title: '75% Complete!',
+                    message: 'Almost done! Finish strong!',
+                    color: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)'
+                },
+                100: {
+                    emoji: '🎉',
+                    title: 'Assessment Complete!',
+                    message: 'Amazing work! Time to see your results!',
+                    color: 'linear-gradient(135deg, #10b981 0%, #059669 100%)'
+                }
+            };
+            
+            const milestone = messages[percent];
+            
+            // Create modal
+            const modal = document.createElement('div');
+            modal.className = 'milestone-modal';
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0,0,0,0.7); z-index: 10000;
+                display: flex; align-items: center; justify-content: center;
+                animation: fadeIn 0.3s ease;
+            `;
+            
+            modal.innerHTML = `
+                <div class="milestone-content" style="
+                    background: ${milestone.color}; color: white;
+                    padding: 50px; border-radius: 20px; text-align: center;
+                    max-width: 500px; animation: scaleIn 0.3s ease;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                ">
+                    <div style="font-size: 5rem; margin-bottom: 1rem;">${milestone.emoji}</div>
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem; font-weight: 800;">${milestone.title}</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.95;">${milestone.message}</p>
+                    <button onclick="this.closest('.milestone-modal').remove()" style="
+                        background: white; color: #333; padding: 15px 30px;
+                        border: none; border-radius: 10px; font-size: 1.1rem;
+                        font-weight: 700; cursor: pointer; transition: all 0.2s;
+                    ">
+                        Continue →
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Trigger confetti
+            triggerConfetti();
+            
+            // Auto-close after 3 seconds if not dismissed
+            setTimeout(() => {
+                if (document.body.contains(modal)) {
+                    modal.style.opacity = '0';
+                    setTimeout(() => modal.remove(), 300);
+                }
+            }, 3000);
+        }
+        
+        function triggerConfetti() {
+            const emojis = ['🎉', '⭐', '✨', '🎊', '💫', '🌟'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                confetti.style.cssText = `
+                    position: fixed; font-size: 2rem; z-index: 9999;
+                    left: ${Math.random() * 100}vw; top: -50px;
+                    pointer-events: none;
+                    animation: confettiFall ${2 + Math.random() * 2}s ease-out forwards;
+                `;
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 4000);
+            }
+        }
+        
+        function showAchievementBadge(badgeId, title, description, xpValue) {
+            const badge = document.createElement('div');
+            badge.className = 'achievement-modal';
+            badge.style.cssText = `
+                position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0,0,0,0.8); z-index: 10000;
+                display: flex; align-items: center; justify-content: center;
+                animation: fadeIn 0.3s ease;
+            `;
+            
+            const badgeEmojis = {
+                'first-stripe': '👣',
+                'perfect-score': '🎯',
+                'speed-demon': '⚡',
+                'streak-3': '🔥',
+                'streak-7': '🔥',
+                'streak-30': '🔥',
+                'dedicated': '💪',
+                'scholar': '📚',
+                'master': '👑'
+            };
+            
+            const emoji = badgeEmojis[badgeId] || '🏆';
+            
+            badge.innerHTML = `
+                <div class="achievement-content" style="
+                    background: white; padding: 50px; border-radius: 20px;
+                    text-align: center; max-width: 500px;
+                    animation: scaleIn 0.3s ease;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                ">
+                    <div style="font-size: 6rem; margin-bottom: 1rem;">${emoji}</div>
+                    <div style="
+                        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+                        color: white; display: inline-block; padding: 8px 20px;
+                        border-radius: 20px; font-size: 0.9rem; font-weight: 700;
+                        margin-bottom: 1rem; text-transform: uppercase;
+                        letter-spacing: 1px;
+                    ">Achievement Unlocked!</div>
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem; font-weight: 800; color: #333;">${title}</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: #666; line-height: 1.6;">${description}</p>
+                    <div style="
+                        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                        color: white; display: inline-block; padding: 12px 24px;
+                        border-radius: 12px; font-size: 1.2rem; font-weight: 700;
+                        margin-bottom: 1.5rem;
+                    ">+${xpValue} XP</div>
+                    <div>
+                        <button onclick="this.closest('.achievement-modal').remove()" style="
+                            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                            color: white; padding: 15px 30px; border: none;
+                            border-radius: 10px; font-size: 1.1rem; font-weight: 700;
+                            cursor: pointer; transition: all 0.2s;
+                        ">
+                            Awesome! ✨
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(badge);
+            triggerConfetti();
+        }
+        
+        function checkAchievements() {
+            // Perfect Score
+            let perfectScore = true;
+            for (let i = 0; i < questions.length; i++) {
+                if (answers[i] < 4) {
+                    perfectScore = false;
+                    break;
+                }
+            }
+            if (perfectScore) {
+                showAchievementBadge('perfect-score', '🎯 Perfect Score', 'You answered all questions at mastery level!', 50);
+            }
+            
+            // Speed Demon
+            const startTime = parseInt(localStorage.getItem('assessmentStartTime') || '0');
+            const completionTime = (Date.now() - startTime) / 1000 / 60; // minutes
+            if (completionTime < 5 && startTime > 0) {
+                showAchievementBadge('speed-demon', '⚡ Speed Demon', 'Completed in under 5 minutes!', 25);
+            }
+            
+            // First Stripe
+            const completedStripes = Object.keys(localStorage).filter(k => k.includes('Complete')).length;
+            if (completedStripes === 1) {
+                showAchievementBadge('first-stripe', '👣 First Steps', 'You completed your first stripe!', 25);
+            }
+        }
+
+        function showResults() {
+            // Check achievements before showing results
+            checkAchievements();
+            
+            // Calculate worker type
+            let sprinterScore = 0;
+            let joggerScore = 0;
+            let ultrarunnerScore = 0;
+            
+            questions.forEach((q, idx) => {
+                const answer = answers[idx];
+                if (!answer) return;
+                
+                if (answer <= 2) sprinterScore += (3 - answer); // 1 = 2 points, 2 = 1 point
+                else if (answer === 3) joggerScore += 2;
+                else if (answer >= 4) ultrarunnerScore += (answer - 2); // 4 = 2 points, 5 = 3 points
+            });
+            
+            let workerType = '';
+            let typeEmoji = '';
+            let typeLabel = '';
+            let typeColor = '';
+            let strengths = [];
+            let challenges = [];
+            let strategies = [];
+            let famousExamples = [];
+            
+            if (sprinterScore >= joggerScore && sprinterScore >= ultrarunnerScore) {
+                workerType = 'Sprinter';
+                typeEmoji = '⚡';
+                typeLabel = '⚡ You\'re a SPRINTER!';
+                typeColor = '#f4a261';
+                strengths = [
+                    'Intense bursts of exceptional productivity',
+                    'Thrives under deadlines and pressure',
+                    'Can deliver breakthrough results quickly',
+                    'Excels in crisis and urgency situations',
+                    'High energy and motivation when activated'
+                ];
+                challenges = [
+                    'Burnout cycles (sprint → crash → repeat)',
+                    'Difficulty with sustained long-term effort',
+                    'Can neglect "boring but important" tasks',
+                    'Energy management blind spots',
+                    'Struggles with steady-state maintenance'
+                ];
+                strategies = [
+                    'Schedule RECOVERY time after sprints (not optional)',
+                    'Batch "sprint-worthy" work strategically',
+                    'Delegate steady-state maintenance tasks',
+                    'Build energy reserves BETWEEN sprints',
+                    'Use deadlines as activation, not constant state'
+                ];
+                famousExamples = [
+                    'Elon Musk (intense bursts across companies)',
+                    'Steve Jobs (legendary sprint-mode launches)',
+                    'Kobe Bryant (intense training sessions)'
+                ];
+            } else if (joggerScore >= ultrarunnerScore) {
+                workerType = 'Jogger';
+                typeEmoji = '🏃';
+                typeLabel = '🏃 You\'re a JOGGER!';
+                typeColor = '#457b9d';
+                strengths = [
+                    'Consistent, reliable daily output',
+                    'Sustainable pace over long periods',
+                    'Excellent at routine and maintenance',
+                    'Steady progress without burnout',
+                    'Predictable and dependable'
+                ];
+                challenges = [
+                    'Can be slow to respond to urgent needs',
+                    'May miss opportunities requiring speed',
+                    'Risk of becoming too routine',
+                    'Can struggle with intense deadlines',
+                    'May lack breakthrough moments'
+                ];
+                strategies = [
+                    'Protect your daily routine fiercely',
+                    'Schedule "sprint" periods strategically',
+                    'Use consistency as your superpower',
+                    'Build systems that compound over time',
+                    'Partner with sprinters for urgent work'
+                ];
+                famousExamples = [
+                    'Warren Buffett (steady, methodical investing)',
+                    'Cal Newport (deep work routines)',
+                    'James Clear (atomic habits consistency)'
+                ];
+            } else {
+                workerType = 'Ultrarunner';
+                typeEmoji = '🏔️';
+                typeLabel = '🏔️ You\'re an ULTRARUNNER!';
+                typeColor = '#2a9d8f';
+                strengths = [
+                    'Long-term strategic thinking',
+                    'Exceptional patience and persistence',
+                    'Builds systems that compound over decades',
+                    'Makes decisions with long time horizons',
+                    'Resilient through setbacks and plateaus'
+                ];
+                challenges = [
+                    'Can be slow to act on opportunities',
+                    'May over-plan and under-execute',
+                    'Struggles with urgent deadlines',
+                    'Can miss short-term wins',
+                    'May seem disconnected from immediate needs'
+                ];
+                strategies = [
+                    'Think in years, not weeks',
+                    'Build systems that outlast motivation',
+                    'Partner with sprinters for urgent needs',
+                    'Focus on compounding, not quick wins',
+                    'Trust the process over long timeframes'
+                ];
+                famousExamples = [
+                    'Jeff Bezos (long-term Amazon vision)',
+                    'Warren Buffett (decades of compounding)',
+                    'Elon Musk (multi-decade company building)'
+                ];
+            }
+
+            document.getElementById('assessmentForm').style.display = 'none';
+            document.getElementById('resultsContainer').classList.add('active');
+            
+            document.getElementById('typeEmoji').textContent = typeEmoji;
+            document.getElementById('typeLabel').textContent = typeLabel;
+            document.getElementById('typeResultCard').style.background = `linear-gradient(135deg, ${typeColor} 0%, ${typeColor}dd 100%)`;
+            
+            const typeDetailsHTML = `
+                <div class="type-card">
+                    <h3>⚡ Your Superpowers</h3>
+                    <ul>
+                        ${strengths.map(s => `<li>${s}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="type-card" style="background: #fff5f0; border-left-color: ${typeColor};">
+                    <h3 style="color: ${typeColor};">⚠️ Your Challenges</h3>
+                    <ul>
+                        ${challenges.map(c => `<li>${c}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="type-card" style="background: #f0f4ff; border-left-color: ${typeColor};">
+                    <h3 style="color: ${typeColor};">🎯 How to Work WITH This (Not Against It)</h3>
+                    <ul>
+                        ${strategies.map(s => `<li>${s}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="type-card" style="background: #f8f9fa; border-left-color: ${typeColor};">
+                    <h3 style="color: ${typeColor};">📊 Famous ${workerType}s</h3>
+                    <ul>
+                        ${famousExamples.map(e => `<li>${e}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="insight-card" style="margin-top: 30px;">
+                    <div class="insight-icon">💡</div>
+                    <div class="insight-title">The Key Insight</div>
+                    <div class="insight-content">
+                        <strong>You can't change your type. But you CAN design your life to leverage it instead of fighting it.</strong> This applies to EVERYTHING—not just work. Your relationships, hobbies, fitness, and learning all benefit from understanding your natural pattern.
+                        <br><br>
+                        <strong>🥋 BJJ Wisdom:</strong> "Some fighters are explosive, some are grinders. Neither is wrong—but both need to know which they are."
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('typeDetails').innerHTML = typeDetailsHTML;
+            
+            // Clear partial progress
+            clearProgress();
+            
+            // Save completion to localStorage
+            localStorage.setItem('whiteBeltStripe1Complete', 'true');
+            localStorage.setItem('whiteBeltStripe1CompletedDate', new Date().toISOString());
+            localStorage.setItem('workerType', workerType);
+            
+            // Award XP
+            const currentXP = parseInt(localStorage.getItem('totalXP') || '0');
+            const xpReward = 100; // +100 XP for completing Stripe 1
+            localStorage.setItem('totalXP', (currentXP + xpReward).toString());
+            
+            // Show completion notification
+            setTimeout(() => {
+                const notification = document.createElement('div');
+                notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, #38a169 0%, #2f855a 100%); color: white; padding: 1rem 1.5rem; border-radius: 10px; box-shadow: 0 4px 20px rgba(56, 161, 105, 0.4); z-index: 1000; font-weight: 600;';
+                notification.innerHTML = `✅ Stripe 1 Complete! +${xpReward} XP`;
+                document.body.appendChild(notification);
+                setTimeout(() => notification.remove(), 3000);
+            }, 500);
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+<!-- TAP-IN Utilities -->
+<script src="js/shared-utilities.js"></script>
+<script src="js/global-error-handler.js"></script>
+<script src="js/storage-health.js"></script>
+</body>
+</html>
+
+
+

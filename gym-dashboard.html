@@ -27,6 +27,14 @@
     <meta http-equiv="Expires" content="0">
     <title>THE GYM | TAP-IN Personal Development</title>
     
+    <!-- Supabase & Auth -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/auth-system.js"></script>
+    
+    <!-- Avatar System -->
+    <link rel="stylesheet" href="avatar-styles.css">
+    <script src="js/avatar-system.js"></script>
+    
     <style>
         * {
             margin: 0;
@@ -1159,7 +1167,8 @@
             <a href="learning-hub.html" style="color: rgba(255,255,255,0.7); padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='white';" onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.7)';">🏢 The Hub</a>
         </div>
         <div class="nav-right">
-            <a href="profile-backup.html" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 0.5rem 1rem; border-radius: 6px; transition: all 0.2s; font-weight: 600;" onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='white';" onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.7)';">💾 Backup</a>
+            <a href="account.html" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 0.5rem 1rem; border-radius: 6px; transition: all 0.2s; font-weight: 600;" onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='white';" onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.7)';">🔐 Account</a>
+            <a href="leaderboard.html" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 0.5rem 1rem; border-radius: 6px; transition: all 0.2s; font-weight: 600;" onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='white';" onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.7)';">🏆 Leaderboard</a>
             <div class="streak-badge">
                 🔥 12 Day Streak
             </div>
@@ -1182,13 +1191,36 @@
         <div class="dashboard-grid">
             <!-- Main Content -->
             <div class="main-content">
+                <!-- Resume Card - shows when partial progress exists -->
+                <div class="card current-progress" id="resumeCard" style="display: none; margin-bottom: 1.5rem;">
+                    <div class="card-header">
+                        <div class="card-title">⏸️ Continue Where You Left Off</div>
+                    </div>
+                    <div class="resume-content" style="padding: 1.5rem;">
+                        <div class="resume-stripe" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div class="resume-icon" style="font-size: 2rem;" id="resumeIcon">⚪</div>
+                            <div class="resume-info">
+                                <div class="resume-title" style="font-weight: 600; margin-bottom: 0.25rem; color: var(--text-white);" id="resumeTitle">
+                                    White Belt Stripe 1: Who Are You?
+                                </div>
+                                <div class="resume-meta" style="color: var(--text-muted); font-size: 0.9rem;" id="resumeMeta">
+                                    Question 7 of 15 • Saved 2 hours ago
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-primary" onclick="resumeStripe()" style="width: 100%; padding: 1rem; font-size: 1.1em; font-weight: 600;">
+                            Resume →
+                        </button>
+                    </div>
+                </div>
+                
                 <!-- Belt Progress Card -->
                 <div class="card belt-progress-card">
                     <div class="belt-current">
                         <div class="belt-icon-large">🤍</div>
                         <div class="belt-info">
                             <h2>White Belt</h2>
-                            <p>Foundation of Self-Awareness</p>
+                            <p>Know Thyself</p>
                         </div>
                     </div>
                     <div class="belt-progress-bar">
@@ -1198,26 +1230,22 @@
                         <span>45% Complete</span>
                         <span>520 / 1000 XP to Blue Belt</span>
                     </div>
-                    <div class="belt-path">
-                        <div class="belt-step">
+                    <div class="belt-path" id="whiteBeltPath">
+                        <div class="belt-step" id="stripe1-step">
                             <div class="belt-dot completed">✓</div>
-                            <div class="belt-step-label">Assessment</div>
+                            <div class="belt-step-label">Who Are You?</div>
                         </div>
-                        <div class="belt-step">
+                        <div class="belt-step" id="stripe2-step">
                             <div class="belt-dot completed">✓</div>
-                            <div class="belt-step-label">Self-Aware</div>
+                            <div class="belt-step-label">How You Operate</div>
                         </div>
-                        <div class="belt-step">
+                        <div class="belt-step" id="stripe3-step">
                             <div class="belt-dot active">3</div>
-                            <div class="belt-step-label active">Trust</div>
+                            <div class="belt-step-label active">What You Value</div>
                         </div>
-                        <div class="belt-step">
+                        <div class="belt-step" id="stripe4-step">
                             <div class="belt-dot">4</div>
-                            <div class="belt-step-label">Journaling</div>
-                        </div>
-                        <div class="belt-step">
-                            <div class="belt-dot">5</div>
-                            <div class="belt-step-label">Final</div>
+                            <div class="belt-step-label">How You Show Up</div>
                         </div>
                     </div>
                 </div>
@@ -1228,7 +1256,7 @@
                         <div class="card-title">☀️ Today's Practice</div>
                         <span style="color: var(--text-muted); font-size: 0.85rem;">2 of 3 complete</span>
                     </div>
-                    <div class="practice-item">
+                    <div class="practice-item" onclick="window.location.href='open-mat-5-minute-morning-routine.html'" style="cursor: pointer;">
                         <div class="practice-icon completed">✓</div>
                         <div class="practice-info">
                             <div class="practice-title">Morning Intention</div>
@@ -1236,15 +1264,15 @@
                         </div>
                         <button class="practice-action done">Done</button>
                     </div>
-                    <div class="practice-item">
+                    <div class="practice-item" onclick="window.location.href='white-belt-stripe1-carousel-NEW.html'" style="cursor: pointer;">
                         <div class="practice-icon completed">✓</div>
                         <div class="practice-info">
-                            <div class="practice-title">Trust Module: Lesson 3</div>
-                            <div class="practice-meta">Building Trust With Yourself • 8 min</div>
+                            <div class="practice-title">Who Are You? Assessment</div>
+                            <div class="practice-meta">Worker Type Discovery • 5-7 min</div>
                         </div>
                         <button class="practice-action done">Done</button>
                     </div>
-                    <div class="practice-item" onclick="alert('Opening Evening Reflection...')">
+                    <div class="practice-item" onclick="window.location.href='evening-reflection.html'" style="cursor: pointer;">
                         <div class="practice-icon">🌙</div>
                         <div class="practice-info">
                             <div class="practice-title">Evening Reflection</div>
@@ -1258,55 +1286,46 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">📚 White Belt Modules</div>
-                        <a href="#" class="card-action">View All →</a>
+                        <a href="white-belt.html" class="card-action">View All →</a>
                     </div>
                     <div class="modules-grid">
-                        <div class="module-card" data-target="white-belt-stripe1-gamified.html">
+                        <div class="module-card" data-target="white-belt-stripe1-carousel-NEW.html" id="module-stripe1">
+                            <div class="module-icon">🏃</div>
+                            <div class="module-title">Who Are You?</div>
+                            <div class="module-progress" id="module-stripe1-progress">Worker Type Assessment</div>
+                            <div class="module-bar">
+                                <div class="module-bar-fill" id="module-stripe1-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="module-card" data-target="white-belt-stripe2-carousel-NEW.html" id="module-stripe2">
                             <div class="module-icon">🧠</div>
-                            <div class="module-title">Self-Awareness</div>
-                            <div class="module-progress">5/5 Lessons Complete</div>
+                            <div class="module-title">How Do You Operate?</div>
+                            <div class="module-progress" id="module-stripe2-progress">Mental Health & Energy</div>
                             <div class="module-bar">
-                                <div class="module-bar-fill" style="width: 100%"></div>
+                                <div class="module-bar-fill" id="module-stripe2-bar" style="width: 0%"></div>
                             </div>
                         </div>
-                        <div class="module-card" data-target="white-belt-stripe2-gamified.html">
-                            <div class="module-icon">💪</div>
-                            <div class="module-title">Vulnerability as Strength</div>
-                            <div class="module-progress">4/5 Lessons Complete</div>
+                        <div class="module-card" data-target="white-belt-stripe3-carousel-NEW.html" id="module-stripe3">
+                            <div class="module-icon">💎</div>
+                            <div class="module-title">What Do You Value?</div>
+                            <div class="module-progress" id="module-stripe3-progress">Values & Alignment</div>
                             <div class="module-bar">
-                                <div class="module-bar-fill" style="width: 80%"></div>
+                                <div class="module-bar-fill" id="module-stripe3-bar" style="width: 0%"></div>
                             </div>
                         </div>
-                        <div class="module-card" data-target="white-belt-stripe3-gamified.html">
-                            <div class="module-icon">🔓</div>
-                            <div class="module-title">Building Self-Trust</div>
-                            <div class="module-progress">3/7 Lessons Complete</div>
-                            <div class="module-bar">
-                                <div class="module-bar-fill" style="width: 43%"></div>
-                            </div>
-                        </div>
-                        <div class="module-card" data-target="white-belt-stripe4-gamified.html">
-                            <div class="module-icon">📝</div>
-                            <div class="module-title">Journaling Practice</div>
-                            <div class="module-progress">0/5 Lessons Complete</div>
-                            <div class="module-bar">
-                                <div class="module-bar-fill" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="module-card locked">
+                        <div class="module-card" data-target="white-belt-stripe4-carousel-NEW.html" id="module-stripe4">
                             <div class="module-icon">🎯</div>
-                            <div class="module-title">Inner Critic vs Coach</div>
-                            <div class="module-progress">Locked</div>
-                            <div class="module-bar"></div>
-                            <span class="module-lock">🔒</span>
+                            <div class="module-title">How Do You Show Up?</div>
+                            <div class="module-progress" id="module-stripe4-progress">Mission & Purpose</div>
+                            <div class="module-bar">
+                                <div class="module-bar-fill" id="module-stripe4-bar" style="width: 0%"></div>
+                            </div>
                         </div>
-                        <div class="module-card locked">
-                            <div class="module-icon">🏆</div>
-                            <div class="module-title">White Belt Final</div>
-                            <div class="module-progress">Locked</div>
-                            <div class="module-bar"></div>
-                            <span class="module-lock">🔒</span>
-                        </div>
+                    </div>
+                    <div style="margin-top: 1.5rem; text-align: center;">
+                        <button onclick="continueWhiteBelt()" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1em;">
+                            Continue Your Journey →
+                        </button>
                     </div>
                 </div>
 
@@ -1317,10 +1336,10 @@
                             <h2 class="section-title">🥋 Open Mat</h2>
                             <p class="section-subtitle">Extra training, deep dives, and discovery</p>
                         </div>
-                        <a href="#" class="card-action">Browse All →</a>
+                        <a href="white-belt.html" class="card-action">Browse All →</a>
                     </div>
                     <div class="open-mat-grid">
-                        <div class="open-mat-card featured">
+                        <div class="open-mat-card featured" onclick="window.location.href='open-mat-inner-game-leadership.html'" style="cursor: pointer;">
                             <span class="open-mat-badge new">New</span>
                             <div class="open-mat-icon">🎙️</div>
                             <div class="open-mat-title">The Inner Game of Leadership</div>
@@ -1382,6 +1401,78 @@
                                 <span>⏱️ 7 days</span>
                                 <span>⭐ +100 XP</span>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Research Articles Section -->
+                <div class="open-mat-section">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title">📚 Research Articles</h2>
+                            <p class="section-subtitle">Deep dives into the science behind leadership and performance</p>
+                        </div>
+                    </div>
+                    <div class="open-mat-grid">
+                        <div class="open-mat-card featured" id="article-inner-game-card" onclick="window.location.href='article-inner-game-leadership.html'" style="cursor: pointer;">
+                            <span class="open-mat-badge" id="article-inner-game-badge">Research</span>
+                            <div class="open-mat-icon">🧠</div>
+                            <div class="open-mat-title">The Inner Game of Leadership</div>
+                            <div class="open-mat-desc">How Timothy Gallwey's tennis research explains leadership performance</div>
+                            <div class="open-mat-meta">
+                                <span>📖 Research</span>
+                                <span>⏱️ 8-10 min</span>
+                                <span>⭐ +25 XP</span>
+                            </div>
+                            <div id="article-inner-game-status" style="display: none; margin-top: 0.5rem; font-size: 0.85rem; color: var(--success-green);">✅ Completed</div>
+                        </div>
+                        <div class="open-mat-card" id="article-energy-card" onclick="window.location.href='article-energy-management.html'" style="cursor: pointer;">
+                            <span class="open-mat-badge" id="article-energy-badge">Research</span>
+                            <div class="open-mat-icon">⚡</div>
+                            <div class="open-mat-title">The Science of Energy Management</div>
+                            <div class="open-mat-desc">Why time management fails and what high performers do instead</div>
+                            <div class="open-mat-meta">
+                                <span>📖 Research</span>
+                                <span>⏱️ 10-12 min</span>
+                                <span>⭐ +25 XP</span>
+                            </div>
+                            <div id="article-energy-status" style="display: none; margin-top: 0.5rem; font-size: 0.85rem; color: var(--success-green);">✅ Completed</div>
+                        </div>
+                        <div class="open-mat-card" id="article-decision-card" onclick="window.location.href='article-decision-fatigue.html'" style="cursor: pointer;">
+                            <span class="open-mat-badge" id="article-decision-badge">Research</span>
+                            <div class="open-mat-icon">🎯</div>
+                            <div class="open-mat-title">Decision Fatigue</div>
+                            <div class="open-mat-desc">The Baumeister research on willpower depletion and how to protect it</div>
+                            <div class="open-mat-meta">
+                                <span>📖 Research</span>
+                                <span>⏱️ 8 min</span>
+                                <span>⭐ +20 XP</span>
+                            </div>
+                            <div id="article-decision-status" style="display: none; margin-top: 0.5rem; font-size: 0.85rem; color: var(--success-green);">✅ Completed</div>
+                        </div>
+                        <div class="open-mat-card" id="article-boundaries-card" onclick="window.location.href='article-boundaries-at-work.html'" style="cursor: pointer;">
+                            <span class="open-mat-badge" id="article-boundaries-badge">Research</span>
+                            <div class="open-mat-icon">🛡️</div>
+                            <div class="open-mat-title">Boundaries at Work</div>
+                            <div class="open-mat-desc">Brené Brown's research on boundaries plus scripts for setting them</div>
+                            <div class="open-mat-meta">
+                                <span>📖 Research</span>
+                                <span>⏱️ 10 min</span>
+                                <span>⭐ +25 XP</span>
+                            </div>
+                            <div id="article-boundaries-status" style="display: none; margin-top: 0.5rem; font-size: 0.85rem; color: var(--success-green);">✅ Completed</div>
+                        </div>
+                        <div class="open-mat-card featured" id="article-flow-card" onclick="window.location.href='article-flow-state.html'" style="cursor: pointer;">
+                            <span class="open-mat-badge" id="article-flow-badge">Research</span>
+                            <div class="open-mat-icon">🌊</div>
+                            <div class="open-mat-title">Flow State</div>
+                            <div class="open-mat-desc">Csikszentmihalyi's flow research and Cal Newport's deep work protocols</div>
+                            <div class="open-mat-meta">
+                                <span>📖 Research</span>
+                                <span>⏱️ 12 min</span>
+                                <span>⭐ +30 XP</span>
+                            </div>
+                            <div id="article-flow-status" style="display: none; margin-top: 0.5rem; font-size: 0.85rem; color: var(--success-green);">✅ Completed</div>
                         </div>
                     </div>
                 </div>
@@ -1465,7 +1556,7 @@
                             </div>
                             <div class="team-assessment-actions">
                                 <button class="team-btn team-btn-primary" onclick="window.location.href='worker-type-assessment.html'">Take Assessment</button>
-                                <button class="team-btn team-btn-secondary" onclick="alert('Share link: ' + window.location.origin + '/worker-type-assessment.html')">📤 Share</button>
+                                <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/worker-type-assessment.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
                             </div>
                         </div>
                         
@@ -1479,7 +1570,7 @@
                             </div>
                             <div class="team-assessment-actions">
                                 <button class="team-btn team-btn-primary" onclick="window.location.href='team-assessment-enhanced-v2.html'">Start Team Scan</button>
-                                <button class="team-btn team-btn-secondary" onclick="alert('Share link: ' + window.location.origin + '/team-assessment-enhanced-v2.html')">📤 Share</button>
+                                <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/team-assessment-enhanced-v2.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
                             </div>
                         </div>
                         
@@ -1493,7 +1584,7 @@
                             </div>
                             <div class="team-assessment-actions">
                                 <button class="team-btn team-btn-primary" onclick="window.location.href='team-profile-complete.html'">Discover My Profile</button>
-                                <button class="team-btn team-btn-secondary" onclick="alert('Share link: ' + window.location.origin + '/team-profile-complete.html')">📤 Share</button>
+                                <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/team-profile-complete.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
                             </div>
                         </div>
                         
@@ -1507,7 +1598,7 @@
                             </div>
                             <div class="team-assessment-actions">
                                 <button class="team-btn team-btn-primary" onclick="window.location.href='combined-profile-carousel.html'">Full Profile</button>
-                                <button class="team-btn team-btn-secondary" onclick="alert('Share link: ' + window.location.origin + '/combined-profile-carousel.html')">📤 Share</button>
+                                <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/combined-profile-carousel.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
                             </div>
                         </div>
                         
@@ -1521,7 +1612,7 @@
                             </div>
                             <div class="team-assessment-actions">
                                 <button class="team-btn team-btn-primary" onclick="window.location.href='team-composition-analyzer.html'">Analyze Team</button>
-                                <button class="team-btn team-btn-secondary" onclick="alert('Share link: ' + window.location.origin + '/team-composition-analyzer.html')">📤 Share</button>
+                                <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/team-composition-analyzer.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
                             </div>
                         </div>
                     </div>
@@ -1532,7 +1623,7 @@
                                 <div style="font-size: 0.9rem; color: rgba(255,255,255,0.9); font-weight: 600; margin-bottom: 0.25rem;">💼 For Organizations</div>
                                 <div style="font-size: 0.8rem; color: rgba(255,255,255,0.7);">Bulk send, track completion, export results, and get team insights dashboard</div>
                             </div>
-                            <button class="team-btn team-btn-secondary" style="flex: 0 0 auto; padding: 0.75rem 1.5rem;" onclick="alert('Contact us for organization features')">Learn More →</button>
+                            <button class="team-btn team-btn-secondary" style="flex: 0 0 auto; padding: 0.75rem 1.5rem;" onclick="window.location.href='business-portal.html'">Learn More →</button>
                         </div>
                     </div>
                 </div>
@@ -1541,7 +1632,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">🧰 Your Toolbox</div>
-                        <a href="#" class="card-action">See All Tools →</a>
+                        <a href="learning-hub.html" class="card-action">See All Tools →</a>
                     </div>
                     <div class="toolbox-grid">
                         <a href="tool-journal.html" class="tool-card" style="text-decoration: none; color: inherit;">
@@ -1559,31 +1650,31 @@
                             <div class="tool-name">Mood Tracker</div>
                             <div class="tool-desc">28 day history</div>
                         </a>
-                        <div class="tool-card" onclick="alert('Breathing exercises coming soon!')">
+                        <a href="open-mat-box-breathing.html" class="tool-card" style="text-decoration: none; color: inherit;">
                             <div class="tool-icon">🧘</div>
                             <div class="tool-name">Breathing</div>
                             <div class="tool-desc">Guided exercises</div>
-                        </div>
-                        <div class="tool-card" onclick="alert('Focus timer coming soon!')">
+                        </a>
+                        <a href="open-mat-inner-game-leadership.html" class="tool-card" style="text-decoration: none; color: inherit;">
                             <div class="tool-icon">⏱️</div>
                             <div class="tool-name">Focus Timer</div>
-                            <div class="tool-desc">Pomodoro mode</div>
-                        </div>
-                        <div class="tool-card" onclick="alert('Random prompts coming soon!')">
+                            <div class="tool-desc">Deep work tools</div>
+                        </a>
+                        <a href="open-mat-reframe-60.html" class="tool-card" style="text-decoration: none; color: inherit;">
                             <div class="tool-icon">🎲</div>
                             <div class="tool-name">Random Prompt</div>
-                            <div class="tool-desc">Surprise reflection</div>
-                        </div>
-                        <div class="tool-card" onclick="alert('Progress reports coming soon!')">
+                            <div class="tool-desc">Quick reflection</div>
+                        </a>
+                        <a href="open-mat-weekly-review.html" class="tool-card" style="text-decoration: none; color: inherit;">
                             <div class="tool-icon">📈</div>
                             <div class="tool-name">Progress Report</div>
                             <div class="tool-desc">Weekly insights</div>
-                        </div>
-                        <div class="tool-card" onclick="alert('AI Coach coming soon!')">
+                        </a>
+                        <a href="open-mat-decision-framework.html" class="tool-card" style="text-decoration: none; color: inherit;">
                             <div class="tool-icon">🤖</div>
-                            <div class="tool-name">AI Coach</div>
-                            <div class="tool-desc">Ask anything</div>
-                        </div>
+                            <div class="tool-name">Decision Helper</div>
+                            <div class="tool-desc">Clarity tools</div>
+                        </a>
                     </div>
                 </div>
 
@@ -1591,7 +1682,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">📚 Resource Library</div>
-                        <a href="#" class="card-action">Browse All →</a>
+                        <a href="white-belt.html" class="card-action">Browse All →</a>
                     </div>
                     <div class="library-tabs">
                         <button class="library-tab active">All</button>
@@ -1869,11 +1960,17 @@
 
         // Tool cards - now using direct links instead of JavaScript handlers
 
-        // Open Mat cards click
-        document.querySelectorAll('.open-mat-card').forEach(card => {
+        // Open Mat cards click - only handle cards without onclick
+        document.querySelectorAll('.open-mat-card:not([onclick])').forEach(card => {
             card.addEventListener('click', function() {
-                const title = this.querySelector('.open-mat-title').textContent;
-                alert(`Opening: ${title}`);
+                // Check if card has a link or data attribute
+                const link = this.querySelector('a');
+                if (link) {
+                    window.location.href = link.href;
+                } else {
+                    // Default: link to inner game leadership
+                    window.location.href = 'open-mat-inner-game-leadership.html';
+                }
             });
         });
 
@@ -1884,30 +1981,46 @@
                 if (target) {
                     window.location.href = target;
                 } else {
-                    const title = this.querySelector('.module-title').textContent;
-                    alert(`Opening module: ${title}`);
+                    // Fallback: link to white belt page
+                    window.location.href = 'white-belt.html';
                 }
             });
         });
 
-        // Assessment items click
+        // Assessment items click - use data attributes for links
         document.querySelectorAll('.assessment-item').forEach(item => {
             item.addEventListener('click', function() {
-                const name = this.querySelector('.assessment-name').textContent;
-                const status = this.querySelector('.assessment-status');
-                if (status.classList.contains('available')) {
-                    alert(`Starting ${name} Assessment...`);
+                const assessmentLink = this.dataset.assessmentLink;
+                if (assessmentLink) {
+                    window.location.href = assessmentLink;
                 } else {
-                    alert(`Viewing ${name} Results...`);
+                    // Fallback: try to find link in the item
+                    const link = this.querySelector('a');
+                    if (link && link.href !== '#') {
+                        window.location.href = link.href;
+                    }
                 }
             });
         });
 
-        // Library items click
+        // Library items click - link to relevant content
         document.querySelectorAll('.library-item').forEach(item => {
+            item.style.cursor = 'pointer';
             item.addEventListener('click', function() {
                 const title = this.querySelector('h4').textContent;
-                alert(`Opening: ${title}`);
+                // Map library items to existing content
+                if (title.includes('5 Dysfunctions')) {
+                    window.location.href = 'team-dynamics-assessment.html';
+                } else if (title.includes('Project Aristotle')) {
+                    window.location.href = 'learning-hub.html';
+                } else if (title.includes('Values Discovery')) {
+                    window.location.href = 'values-discovery-assessment.html';
+                } else if (title.includes('Stoic')) {
+                    window.location.href = 'open-mat-inner-game-leadership.html';
+                } else {
+                    // Default to learning hub
+                    window.location.href = 'learning-hub.html';
+                }
             });
         });
 
@@ -1981,6 +2094,275 @@
 
         // Run on page load
         updateBeltProgress();
+        updateWhiteBeltProgress();
+        checkResumeAvailable();
+        
+        // Resume functionality
+        function checkResumeAvailable() {
+            const progress = localStorage.getItem('currentProgress');
+            if (!progress) return;
+            
+            try {
+                const data = JSON.parse(progress);
+                
+                // Check if recent (within 7 days)
+                const hoursSince = (Date.now() - data.timestamp) / (1000 * 60 * 60);
+                if (hoursSince > 168) {
+                    localStorage.removeItem('currentProgress');
+                    return;
+                }
+                
+                // Show resume card
+                const resumeCard = document.getElementById('resumeCard');
+                if (resumeCard) {
+                    resumeCard.style.display = 'block';
+                    
+                    // Update details
+                    const timeAgo = formatTimeAgo(data.timestamp);
+                    const metaEl = document.getElementById('resumeMeta');
+                    if (metaEl) {
+                        metaEl.textContent = `Question ${data.currentQuestion} of ${data.totalQuestions || 15} • Saved ${timeAgo}`;
+                    }
+                    
+                    // Update stripe name
+                    const stripeNames = {
+                        'whiteBeltStripe1': 'White Belt Stripe 1: Who Are You?',
+                        'whiteBeltStripe2': 'White Belt Stripe 2: How You Operate',
+                        'whiteBeltStripe3': 'White Belt Stripe 3: What You Value',
+                        'whiteBeltStripe4': 'White Belt Stripe 4: How You Show Up',
+                        'blueBeltStripe1': 'Blue Belt Stripe 1: Difficult Conversations',
+                        'blueBeltStripe2': 'Blue Belt Stripe 2: Active Listening',
+                        'blueBeltStripe3': 'Blue Belt Stripe 3: Feedback Systems',
+                        'blueBeltStripe4': 'Blue Belt Stripe 4: Boundaries',
+                        'purpleBeltStripe1': 'Purple Belt Stripe 1: Team Alignment',
+                        'purpleBeltStripe2': 'Purple Belt Stripe 2: Healthy Conflict',
+                        'purpleBeltStripe3': 'Purple Belt Stripe 3: Collective Accountability',
+                        'purpleBeltStripe4': 'Purple Belt Stripe 4: Results Focus',
+                        'brownBeltStripe1': 'Brown Belt Stripe 1: Accountability Foundation',
+                        'brownBeltStripe2': 'Brown Belt Stripe 2: Accountability Depth',
+                        'brownBeltStripe3': 'Brown Belt Stripe 3: Accountability Systems',
+                        'brownBeltStripe4': 'Brown Belt Stripe 4: Accountability Mastery',
+                        'blackBeltStripe1': 'Black Belt Stripe 1: Integration',
+                        'blackBeltStripe2': 'Black Belt Stripe 2: Teaching Others',
+                        'blackBeltStripe3': 'Black Belt Stripe 3: Leadership Philosophy',
+                        'blackBeltStripe4': 'Black Belt Stripe 4: Legacy'
+                    };
+                    
+                    const titleEl = document.getElementById('resumeTitle');
+                    if (titleEl) {
+                        titleEl.textContent = stripeNames[data.stripe] || 'Continue Your Journey';
+                    }
+                    
+                    // Update icon based on belt
+                    const iconEl = document.getElementById('resumeIcon');
+                    if (iconEl) {
+                        if (data.stripe.startsWith('white')) iconEl.textContent = '⚪';
+                        else if (data.stripe.startsWith('blue')) iconEl.textContent = '🔵';
+                        else if (data.stripe.startsWith('purple')) iconEl.textContent = '🟣';
+                        else if (data.stripe.startsWith('brown')) iconEl.textContent = '🟤';
+                        else if (data.stripe.startsWith('black')) iconEl.textContent = '⚫';
+                    }
+                }
+            } catch (e) {
+                console.error('Error checking resume:', e);
+            }
+        }
+        
+        function resumeStripe() {
+            const progress = localStorage.getItem('currentProgress');
+            if (!progress) return;
+            
+            try {
+                const data = JSON.parse(progress);
+                
+                // Route to correct stripe page
+                const stripePages = {
+                    'whiteBeltStripe1': 'white-belt-stripe1-carousel-NEW.html',
+                    'whiteBeltStripe2': 'white-belt-stripe2-carousel-NEW.html',
+                    'whiteBeltStripe3': 'white-belt-stripe3-carousel-NEW.html',
+                    'whiteBeltStripe4': 'white-belt-stripe4-carousel-NEW.html',
+                    'blueBeltStripe1': 'blue-belt-stripe1-gamified.html',
+                    'blueBeltStripe2': 'blue-belt-stripe2-gamified.html',
+                    'blueBeltStripe3': 'blue-belt-stripe3-gamified.html',
+                    'blueBeltStripe4': 'blue-belt-stripe4-gamified.html',
+                    'purpleBeltStripe1': 'purple-belt-stripe1-gamified.html',
+                    'purpleBeltStripe2': 'purple-belt-stripe2-gamified.html',
+                    'purpleBeltStripe3': 'purple-belt-stripe3-gamified.html',
+                    'purpleBeltStripe4': 'purple-belt-stripe4-gamified.html',
+                    'brownBeltStripe1': 'brown-belt-stripe1-gamified.html',
+                    'brownBeltStripe2': 'brown-belt-stripe2-gamified.html',
+                    'brownBeltStripe3': 'brown-belt-stripe3-gamified.html',
+                    'brownBeltStripe4': 'brown-belt-stripe4-gamified.html',
+                    'blackBeltStripe1': 'black-belt-stripe1-gamified.html',
+                    'blackBeltStripe2': 'black-belt-stripe2-gamified.html',
+                    'blackBeltStripe3': 'black-belt-stripe3-gamified.html',
+                    'blackBeltStripe4': 'black-belt-stripe4-gamified.html'
+                };
+                
+                const targetPage = stripePages[data.stripe];
+                if (targetPage) {
+                    window.location.href = targetPage;
+                } else {
+                    alert('Stripe page not found. Starting fresh.');
+                    localStorage.removeItem('currentProgress');
+                }
+            } catch (e) {
+                console.error('Error resuming stripe:', e);
+                alert('Error loading saved progress. Starting fresh.');
+                localStorage.removeItem('currentProgress');
+            }
+        }
+        
+        function formatTimeAgo(timestamp) {
+            const hours = Math.floor((Date.now() - timestamp) / (1000 * 60 * 60));
+            if (hours < 1) return 'just now';
+            if (hours === 1) return '1 hour ago';
+            if (hours < 24) return hours + ' hours ago';
+            const days = Math.floor(hours / 24);
+            if (days === 1) return '1 day ago';
+            return days + ' days ago';
+        }
+        
+        // White Belt Progress Tracking
+        function updateWhiteBeltProgress() {
+            const stripe1 = localStorage.getItem('whiteBeltStripe1Complete') === 'true';
+            const stripe2 = localStorage.getItem('whiteBeltStripe2Complete') === 'true';
+            const stripe3 = localStorage.getItem('whiteBeltStripe3Complete') === 'true';
+            const stripe4 = localStorage.getItem('whiteBeltStripe4Complete') === 'true';
+            
+            const completed = [stripe1, stripe2, stripe3, stripe4].filter(Boolean).length;
+            const percentage = (completed / 4) * 100;
+            
+            // Update progress bar
+            const progressFill = document.querySelector('.belt-progress-fill');
+            if (progressFill) {
+                progressFill.style.width = percentage + '%';
+            }
+            
+            // Update progress stats
+            const progressStats = document.querySelector('.belt-progress-stats');
+            if (progressStats) {
+                progressStats.innerHTML = `
+                    <span>${Math.round(percentage)}% Complete</span>
+                    <span>${completed}/4 Stripes</span>
+                `;
+            }
+            
+            // Update belt path steps
+            if (stripe1) {
+                const step1 = document.getElementById('stripe1-step');
+                if (step1) {
+                    step1.querySelector('.belt-dot').textContent = '✓';
+                    step1.querySelector('.belt-dot').classList.add('completed');
+                    step1.querySelector('.belt-dot').classList.remove('active');
+                }
+                updateModuleCard('module-stripe1', true);
+            }
+            
+            if (stripe2) {
+                const step2 = document.getElementById('stripe2-step');
+                if (step2) {
+                    step2.querySelector('.belt-dot').textContent = '✓';
+                    step2.querySelector('.belt-dot').classList.add('completed');
+                    step2.querySelector('.belt-dot').classList.remove('active');
+                }
+                updateModuleCard('module-stripe2', true);
+            }
+            
+            if (stripe3) {
+                const step3 = document.getElementById('stripe3-step');
+                if (step3) {
+                    step3.querySelector('.belt-dot').textContent = '✓';
+                    step3.querySelector('.belt-dot').classList.add('completed');
+                    step3.querySelector('.belt-dot').classList.remove('active');
+                }
+                updateModuleCard('module-stripe3', true);
+            }
+            
+            if (stripe4) {
+                const step4 = document.getElementById('stripe4-step');
+                if (step4) {
+                    step4.querySelector('.belt-dot').textContent = '✓';
+                    step4.querySelector('.belt-dot').classList.add('completed');
+                    step4.querySelector('.belt-dot').classList.remove('active');
+                }
+                updateModuleCard('module-stripe4', true);
+            }
+            
+            // Set active step
+            if (!stripe1) {
+                setActiveStep('stripe1-step');
+            } else if (!stripe2) {
+                setActiveStep('stripe2-step');
+            } else if (!stripe3) {
+                setActiveStep('stripe3-step');
+            } else if (!stripe4) {
+                setActiveStep('stripe4-step');
+            } else {
+                // All complete - ready for Blue Belt
+                const progressStats = document.querySelector('.belt-progress-stats');
+                if (progressStats) {
+                    progressStats.innerHTML = `
+                        <span>✅ White Belt Complete!</span>
+                        <span>Ready for Blue Belt →</span>
+                    `;
+                }
+            }
+        }
+        
+        function setActiveStep(stepId) {
+            // Remove active from all steps
+            document.querySelectorAll('.belt-step').forEach(step => {
+                const dot = step.querySelector('.belt-dot');
+                const label = step.querySelector('.belt-step-label');
+                if (dot) dot.classList.remove('active');
+                if (label) label.classList.remove('active');
+            });
+            
+            // Set active
+            const step = document.getElementById(stepId);
+            if (step) {
+                const dot = step.querySelector('.belt-dot');
+                const label = step.querySelector('.belt-step-label');
+                if (dot) {
+                    dot.classList.add('active');
+                    if (!dot.classList.contains('completed')) {
+                        dot.textContent = stepId.replace('stripe', '').replace('-step', '');
+                    }
+                }
+                if (label) label.classList.add('active');
+            }
+        }
+        
+        function updateModuleCard(moduleId, isComplete) {
+            const module = document.getElementById(moduleId);
+            if (!module) return;
+            
+            if (isComplete) {
+                const progressEl = module.querySelector('.module-progress');
+                const barEl = module.querySelector('.module-bar-fill');
+                if (progressEl) progressEl.textContent = 'Complete ✓';
+                if (barEl) barEl.style.width = '100%';
+            }
+        }
+        
+        function continueWhiteBelt() {
+            // Find next incomplete stripe
+            if (!localStorage.getItem('whiteBeltStripe1Complete')) {
+                window.location.href = 'white-belt-stripe1-carousel-NEW.html';
+            } else if (!localStorage.getItem('whiteBeltStripe2Complete')) {
+                window.location.href = 'white-belt-stripe2-carousel-NEW.html';
+            } else if (!localStorage.getItem('whiteBeltStripe3Complete')) {
+                window.location.href = 'white-belt-stripe3-carousel-NEW.html';
+            } else if (!localStorage.getItem('whiteBeltStripe4Complete')) {
+                window.location.href = 'white-belt-stripe4-carousel-NEW.html';
+            } else {
+                // All complete - go to Blue Belt
+                if (confirm('White Belt Complete! Ready to start Blue Belt?')) {
+                    window.location.href = 'blue-belt.html';
+                }
+            }
+        }
 
         // ============================================
         // GAMIFICATION SYSTEM - XP, Streaks, Badges
@@ -2246,6 +2628,41 @@
 
         // Initialize gamification on page load
         updateGamificationDisplay();
+
+        // Track Open Mat article completion status
+        function updateArticleCompletionStatus() {
+            const completed = JSON.parse(localStorage.getItem('tapinOpenMatCompleted') || '[]');
+            
+            const articles = [
+                { id: 'article-inner-game-leadership', cardId: 'article-inner-game-card', badgeId: 'article-inner-game-badge', statusId: 'article-inner-game-status' },
+                { id: 'article-energy-management', cardId: 'article-energy-card', badgeId: 'article-energy-badge', statusId: 'article-energy-status' },
+                { id: 'article-decision-fatigue', cardId: 'article-decision-card', badgeId: 'article-decision-badge', statusId: 'article-decision-status' },
+                { id: 'article-boundaries-at-work', cardId: 'article-boundaries-card', badgeId: 'article-boundaries-badge', statusId: 'article-boundaries-status' },
+                { id: 'article-flow-state', cardId: 'article-flow-card', badgeId: 'article-flow-badge', statusId: 'article-flow-status' }
+            ];
+            
+            articles.forEach(article => {
+                const card = document.getElementById(article.cardId);
+                const badge = document.getElementById(article.badgeId);
+                const status = document.getElementById(article.statusId);
+                
+                if (card && completed.includes(article.id)) {
+                    // Mark as completed
+                    card.style.opacity = '0.7';
+                    card.style.border = '2px solid var(--success-green)';
+                    if (badge) {
+                        badge.textContent = '✅ Completed';
+                        badge.style.background = 'linear-gradient(135deg, var(--success-green) 0%, #2f855a 100%)';
+                    }
+                    if (status) {
+                        status.style.display = 'block';
+                    }
+                }
+            });
+        }
+
+        // Initialize article completion status on page load
+        updateArticleCompletionStatus();
 
         // Expose functions globally for other pages to award XP
         window.tapinGamification = {
@@ -2525,6 +2942,11 @@
       HubUnlockSystem.init();
       console.log('✅ Hub Unlock System initialized');
     }
+    
+    // Update article completion status
+    if (typeof updateArticleCompletionStatus === 'function') {
+      updateArticleCompletionStatus();
+    }
   });
 </script>
 
@@ -2597,6 +3019,103 @@ function showErrorToast(message) {
 window.showErrorToast = showErrorToast;
 </script>
 
+<!-- ============================================
+     AUTH & SYNC INTEGRATION
+     ============================================ -->
+<script>
+async function initAuthSync() {
+    // Wait for auth to initialize
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    if (!window.tapInAuth || !window.tapInAuth.isAuthenticated()) {
+        console.log('Auth not ready yet');
+        return;
+    }
+    
+    console.log('✅ Auth initialized:', window.tapInAuth.getUserId());
+    
+    // Load progress from cloud
+    const cloudProgress = await window.tapInAuth.loadProgress();
+    
+    if (cloudProgress) {
+        // Merge cloud data with local
+        const localXP = parseInt(localStorage.getItem('totalXP') || '0');
+        
+        if (cloudProgress.total_xp > localXP) {
+            // Cloud has more recent data
+            localStorage.setItem('totalXP', cloudProgress.total_xp);
+            localStorage.setItem('currentBelt', cloudProgress.current_belt);
+            
+            // Update UI if updateDashboard function exists
+            if (typeof updateDashboard === 'function') {
+                updateDashboard();
+            }
+            
+            console.log('✅ Synced from cloud');
+        }
+    }
+}
+
+// Sync progress to cloud (call this after XP changes)
+async function syncProgressToCloud() {
+    if (!window.tapInAuth || !window.tapInAuth.isAuthenticated()) {
+        return;
+    }
+    
+    const progressData = {
+        currentBelt: localStorage.getItem('currentBelt') || 'White',
+        stripesCompleted: getStripesCompleted(),
+        totalXP: parseInt(localStorage.getItem('totalXP') || '0'),
+        completedLessons: getCompletedLessons()
+    };
+    
+    await window.tapInAuth.saveProgress(progressData);
+    console.log('✅ Synced to cloud');
+}
+
+function getStripesCompleted() {
+    // Get all completed stripes
+    const stripes = {};
+    ['white', 'blue', 'purple', 'brown', 'black'].forEach(belt => {
+        for (let i = 1; i <= 4; i++) {
+            const key = `${belt}BeltStripe${i}Complete`;
+            if (localStorage.getItem(key) === 'true') {
+                if (!stripes[belt]) stripes[belt] = [];
+                stripes[belt].push(i);
+            }
+        }
+    });
+    return stripes;
+}
+
+function getCompletedLessons() {
+    // Get all completed lessons
+    const lessons = [];
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.includes('Complete') && localStorage.getItem(key) === 'true') {
+            lessons.push(key);
+        }
+    }
+    return lessons;
+}
+
+// Initialize auth sync
+initAuthSync();
+
+// Override existing awardXP to add cloud sync
+const originalAwardXP = window.awardXP || function() {};
+window.awardXP = async function(amount, reason) {
+    // Call original function if it exists
+    if (originalAwardXP && typeof originalAwardXP === 'function') {
+        originalAwardXP(amount, reason);
+    }
+    
+    // Sync to cloud
+    await syncProgressToCloud();
+};
+</script>
+
 <!-- Service Worker Registration -->
 <script>
   if ('serviceWorker' in navigator) {
@@ -2615,5 +3134,10 @@ window.showErrorToast = showErrorToast;
     <script src="js/loading-states.js" defer></script>
     <script src="js/error-handler.js" defer></script>
     
+<!-- TAP-IN Utilities -->
+<script src="js/shared-utilities.js"></script>
+<script src="js/global-error-handler.js"></script>
+<script src="js/storage-health.js"></script>
 </body>
 </html>
+

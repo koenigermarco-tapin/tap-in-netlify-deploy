@@ -17,10 +17,14 @@
 </noscript>
 
 <!-- System font fallback CSS -->
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CACHE BUSTER - Load FIRST, before anything else -->
     <script src="cache-buster.js"></script>
+    
+    <!-- Supabase & Auth -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/auth-system.js"></script>
 
     <title>TAP-IN | Choose Your Path</title>
     
@@ -1127,6 +1131,10 @@ window.showErrorToast = showErrorToast;
 <script src="js/loading-states.js" defer></script>
 <script src="js/error-handler.js" defer></script>
 
+<!-- TAP-IN Utilities -->
+<script src="js/shared-utilities.js"></script>
+<script src="js/global-error-handler.js"></script>
+<script src="js/storage-health.js"></script>
 </body>
 </html>
 

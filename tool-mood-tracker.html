@@ -296,9 +296,14 @@
       if (history.length > 30) history.pop(); // Keep last 30 entries
       localStorage.setItem('moodHistory', JSON.stringify(history));
 
-      // Award XP
-      const currentXP = parseInt(localStorage.getItem('totalXP') || '0');
-      localStorage.setItem('totalXP', currentXP + 5);
+      // Award XP with enhanced gamification
+      if (typeof TapInGamification !== 'undefined') {
+        TapInGamification.awardXP(5, 'Mood Tracked');
+      } else {
+        // Fallback for backward compatibility
+        const currentXP = parseInt(localStorage.getItem('totalXP') || '0');
+        localStorage.setItem('totalXP', currentXP + 5);
+      }
 
       alert('✅ Mood tracked! +5 XP');
 
@@ -339,5 +344,11 @@
     // Load history on page load
     loadHistory();
   </script>
+<!-- Enhanced Gamification System -->
+<script src="js/gamification-enhanced.js"></script>
+<!-- TAP-IN Utilities -->
+<script src="js/shared-utilities.js"></script>
+<script src="js/global-error-handler.js"></script>
+<script src="js/storage-health.js"></script>
 </body>
 </html>

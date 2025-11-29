@@ -296,9 +296,14 @@
       goals.unshift(goal);
       localStorage.setItem('goals', JSON.stringify(goals));
 
-      // Award XP
-      const currentXP = parseInt(localStorage.getItem('totalXP') || '0');
-      localStorage.setItem('totalXP', currentXP + 10);
+      // Award XP with enhanced gamification
+      if (typeof TapInGamification !== 'undefined') {
+        TapInGamification.awardXP(10, 'Goal Created');
+      } else {
+        // Fallback for backward compatibility
+        const currentXP = parseInt(localStorage.getItem('totalXP') || '0');
+        localStorage.setItem('totalXP', currentXP + 10);
+      }
 
       alert('✅ Goal added! +10 XP');
 
@@ -319,9 +324,14 @@
         goal.completedAt = new Date().toISOString();
         localStorage.setItem('goals', JSON.stringify(goals));
 
-        // Award bonus XP
-        const currentXP = parseInt(localStorage.getItem('totalXP') || '0');
-        localStorage.setItem('totalXP', currentXP + 25);
+        // Award XP with enhanced gamification
+        if (typeof TapInGamification !== 'undefined') {
+          TapInGamification.awardXP(25, 'Goal Completed');
+        } else {
+          // Fallback for backward compatibility
+          const currentXP = parseInt(localStorage.getItem('totalXP') || '0');
+          localStorage.setItem('totalXP', currentXP + 25);
+        }
 
         alert('🎉 Goal completed! +25 XP');
         loadGoals();
@@ -375,5 +385,11 @@
     // Load goals on page load
     loadGoals();
   </script>
+<!-- Enhanced Gamification System -->
+<script src="js/gamification-enhanced.js"></script>
+<!-- TAP-IN Utilities -->
+<script src="js/shared-utilities.js"></script>
+<script src="js/global-error-handler.js"></script>
+<script src="js/storage-health.js"></script>
 </body>
 </html>

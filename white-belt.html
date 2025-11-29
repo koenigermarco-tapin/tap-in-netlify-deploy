@@ -6,7 +6,12 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>White Belt: Trust & Self-Awareness | TAP-IN</title>
+    <title>White Belt: Know Thyself | TAP-IN</title>
+    
+    <!-- Supabase & Auth -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/auth-system.js"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -50,29 +55,21 @@
         .intro-box.research h3 { color: #fff; }
         .intro-box.research p { color: #e2e8f0; }
         .intro-box.research strong { color: var(--accent-purple); }
-        .intro-box.warning { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border-left: 6px solid var(--warning-orange); }
-        .intro-box.warning h3 { color: #92400e; }
-        .intro-box.warning p { color: #78350f; }
         .stripe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
-        .stripe-card { background: white; border: 2px solid var(--border-light); border-radius: 16px; padding: 1.5rem; transition: all 0.3s; text-decoration: none; display: block; }
+        .stripe-card { background: white; border: 2px solid var(--border-light); border-radius: 16px; padding: 1.5rem; transition: all 0.3s; text-decoration: none; display: block; cursor: pointer; }
         .stripe-card:hover { border-color: #cbd5e1; transform: translateY(-4px); box-shadow: 0 10px 30px rgba(30, 41, 59, 0.15); }
         .stripe-card.complete { border-color: var(--success-green); background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); }
+        .stripe-card.locked { opacity: 0.6; cursor: not-allowed; position: relative; }
+        .stripe-card.locked::after { content: '🔒'; position: absolute; top: 1rem; right: 1rem; font-size: 1.5rem; }
         .stripe-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
         .stripe-number { width: 50px; height: 50px; background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; flex-shrink: 0; }
         .stripe-card.complete .stripe-number { background: linear-gradient(135deg, var(--success-green) 0%, #2f855a 100%); }
+        .stripe-card.locked .stripe-number { background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%); opacity: 0.5; }
         .stripe-title { font-weight: 700; color: var(--text-dark); font-size: 1.1rem; }
         .stripe-subtitle { font-size: 0.85rem; color: var(--text-muted); }
         .stripe-description { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
         .stripe-topics { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
         .topic-tag { background: #f1f5f9; color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; }
-        .principles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
-        .principle-card { background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%); border-radius: 12px; padding: 1.25rem; text-align: center; }
-        .principle-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
-        .principle-card h4 { color: white; font-size: 0.95rem; margin-bottom: 0.5rem; }
-        .principle-card p { color: #f8fafc; font-size: 0.85rem; }
-        .quote-block { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); border-radius: 12px; padding: 1.5rem; text-align: center; margin: 1.5rem 0; border: 1px solid rgba(255,255,255,0.1); }
-        .quote-block .quote { font-size: 1.1rem; color: white; font-style: italic; margin-bottom: 0.75rem; }
-        .quote-block .author { color: var(--accent-purple); font-weight: 600; font-size: 0.9rem; }
         .btn { display: inline-block; padding: 1rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 600; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer; text-align: center; }
         .btn-primary { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%); color: white; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(26, 54, 93, 0.3); }
@@ -85,8 +82,8 @@
     <div class="container">
         <div class="header">
             <div class="belt-badge">⚪ WHITE BELT</div>
-            <h1>Trust & Self-Awareness</h1>
-            <p>The foundation of everything. You can't build a great team without trust—and trust starts with knowing yourself.</p>
+            <h1>Know Thyself</h1>
+            <p>Before you can lead others, you must understand yourself. This is your foundation.</p>
         </div>
 
         <div class="progress-section">
@@ -105,299 +102,184 @@
             </div>
         </div>
 
-        <div class="main-card">        .card-button {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #64748b 0%, #475569 100%);
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 1em;
-            transition: all 0.3s ease;
-        }
-
-        .card-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(100, 116, 139, 0.4);
-        }
-
-        .card-button.completed {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        }
-
-        .card-button.coming-soon {
-            background: #cbd5e1;
-            color: #64748b;
-            cursor: not-allowed;
-        }
-
-        .card-button.coming-soon:hover {
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* Completion Criteria */
-        .criteria-section {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .criteria-section h2 {
-            font-size: 2em;
-            margin-bottom: 25px;
-            color: #1e293b;
-            text-align: center;
-        }
-
-        .criteria-list {
-            list-style: none;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .criteria-item {
-            display: flex;
-            align-items: center;
-            padding: 18px;
-            margin-bottom: 12px;
-            background: #f8fafc;
-            border-radius: 12px;
-            border-left: 4px solid #cbd5e1;
-        }
-
-        .criteria-checkbox {
-            width: 24px;
-            height: 24px;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-
-        .criteria-text {
-            font-size: 1.1em;
-            color: #334155;
-        }
-
-        /* Back to Home */
-        .back-link {
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .back-link a {
-            color: #64748b;
-            text-decoration: none;
-            font-size: 1.1em;
-            transition: color 0.3s ease;
-        }
-
-        .back-link a:hover {
-            color: #1e293b;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="belt-icon">⚪</div>
-            <h1>White Belt</h1>
-            <div class="theme">Know Thyself</div>
-            <div class="subtitle">
-                Foundation of Trust • Complete Self-Assessment • Build Self-Awareness
-            </div>
-        </div>
-
-        <!-- Philosophy -->
-        <div class="philosophy">
-            <h2>The Foundation of Everything</h2>
-            <p>
-                You can't lead others until you lead yourself. And you can't lead yourself until you truly know yourself.
-            </p>
-            <p>
-                White Belt is where every journey begins—not just in leadership, but in life. This is your complete self-assessment foundation: understanding your work style, your values, your communication patterns, your energy, and your current state.
-            </p>
-            <div class="quote">
-                "The unexamined life is not worth living." — Socrates
-            </div>
-            <p>
-                Complete all 6 foundational assessments to unlock Blue Belt. No rushing. Take your time. These insights will guide your entire journey through The Gym.
-            </p>
-        </div>
-
-        <!-- Progress Tracker -->
-        <div class="progress-section">
-            <div class="progress-header">
-                <div class="progress-title">Your Progress</div>
-                <div class="progress-count" id="progressCount">0/6</div>
-            </div>
-            <div class="progress-bar-container">
-                <div class="progress-bar-fill" id="progressBar"></div>
-            </div>
-            <div class="progress-text">Complete all 6 assessments to earn your White Belt</div>
-        </div>
-
-        <!-- Assessments -->
-        <div class="assessments-section">
-            <div class="section-title">🎯 Foundation Assessments</div>
-            
-            <div class="assessment-grid">
         <div class="main-card">
-            <div class="intro-box warning">
-                <h3>⚠️ Everything Starts Here</h3>
-                <p>You can't build a high-performing team without trust. And you can't build trust without <strong>knowing yourself first</strong>.</p>
-                <p>White Belt isn't about team skills—it's about self-awareness. Who are you? What drives you? What are your patterns, blindspots, and triggers?</p>
-            </div>
-
-            <div class="intro-box">
-                <h3>Why "Know Thyself" Matters</h3>
-                <p>Lencioni's first dysfunction is <strong>"Absence of Trust."</strong> But teams don't fail to trust because they're bad people—they fail because members hide their weaknesses, avoid vulnerability, and pretend to have it all figured out.</p>
-                <p><strong>You can't be vulnerable about what you don't know about yourself.</strong></p>
-                <p>White Belt is about building the self-awareness foundation that makes vulnerability possible.</p>
-            </div>
-
             <div class="intro-box philosophy">
-                <h3>🥋 The BJJ Principle: Foundations Win Fights</h3>
-                <p>In Brazilian Jiu-Jitsu, white belts spend 6-12 months learning the <strong>fundamentals</strong>: posture, base, frames, hip movement. It's not flashy. It's not exciting. But it's what separates beginners from practitioners.</p>
-                <p>Great grapplers don't skip the basics—they master them so deeply they become automatic.</p>
-                <p>Leadership is the same. <strong>Self-awareness is your base.</strong> Without it, every advanced technique fails.</p>
-                <p><em>"You can't build a house on sand. You need a foundation."</em></p>
+                <h3>🏛️ Ancient Wisdom, Modern Application</h3>
+                <p><em>"Know Thyself"</em> - inscribed at the Temple of Apollo at Delphi</p>
+                <p>You can't build trust with others until you're honest with yourself. You can't have healthy conflict if you don't know your triggers. You can't make commitments if you don't know your values.</p>
+                <p><strong>White Belt is about YOU.</strong> Understanding who you are, how you operate, what you value, and why you're here.</p>
             </div>
 
             <div class="intro-box research">
-                <h3>📊 The Research</h3>
-                <p><strong>Google's Project Aristotle</strong> studied 180 teams over 2 years to find what makes teams effective. Their finding? It wasn't talent, resources, or structure.</p>
-                <p>It was <strong>psychological safety</strong>—the belief that you won't be punished for making mistakes, asking questions, or being yourself.</p>
-                <p>And psychological safety starts with leaders who model vulnerability—which requires knowing yourself well enough to admit what you don't know.</p>
+                <h3>📊 Why This Matters</h3>
+                <p><strong>Google's Project Aristotle</strong> studied 180 teams and found that <strong>psychological safety</strong> (the ability to be vulnerable without fear) was the #1 predictor of team success—stronger than talent, resources, or strategy.</p>
+                <p>But you can't be vulnerable about what you don't know about yourself. White Belt builds the self-awareness foundation that makes vulnerability possible.</p>
             </div>
 
-            <h2 style="color: var(--text-dark); margin: 1.5rem 0 1rem;">🥋 White Belt Principles</h2>
-
-            <div class="principles-grid">
-                <div class="principle-card">
-                    <div class="icon">🪞</div>
-                    <h4>Self-Awareness</h4>
-                    <p>Know your patterns, triggers, and blind spots</p>
-                </div>
-                <div class="principle-card">
-                    <div class="icon">💪</div>
-                    <h4>Own Your Weaknesses</h4>
-                    <p>Vulnerability is strength, not weakness</p>
-                </div>
-                <div class="principle-card">
-                    <div class="icon">🎯</div>
-                    <h4>Values Clarity</h4>
-                    <p>Know what matters to you—and why</p>
-                </div>
-                <div class="principle-card">
-                    <div class="icon">🧭</div>
-                    <h4>Baseline Understanding</h4>
-                    <p>You can't improve what you don't measure</p>
-                </div>
+            <div class="intro-box">
+                <h3>🥋 BJJ Principle: Position Before Submission</h3>
+                <p>In Jiu-Jitsu, you must secure your position before attempting a submission. Same in leadership: secure your self-knowledge before engaging with others.</p>
+                <p><strong>White Belt = Your Position</strong><br>Blue Belt = Engaging with Others</p>
             </div>
 
-            <h2 style="color: var(--text-dark); margin: 2rem 0 1rem;">📚 Your White Belt Stripes</h2>
+            <h2 style="color: var(--text-dark); margin: 2rem 0 1rem; text-align: center;">🥋 Your White Belt Journey</h2>
 
             <div class="stripe-grid">
-                <a href="white-belt-stripe1-gamified.html" class="stripe-card" id="card-1">
+                <!-- Stripe 1 -->
+                <a href="white-belt-stripe1-carousel-NEW.html" class="stripe-card" id="stripe1-card">
                     <div class="stripe-header">
                         <div class="stripe-number">1</div>
                         <div>
-                            <div class="stripe-title">Identity & Work Style</div>
-                            <div class="stripe-subtitle">Foundation</div>
+                            <div class="stripe-title">Who Are You?</div>
+                            <div class="stripe-subtitle">5-7 minutes</div>
                         </div>
                     </div>
-                    <p class="stripe-description">Discover your worker type, work-life balance, and natural rhythm patterns.</p>
+                    <p class="stripe-description">
+                        Discover your worker type: Are you a Sprinter, Jogger, or Ultrarunner? Understanding your natural rhythm is the first step to self-knowledge.
+                    </p>
                     <div class="stripe-topics">
-                        <span class="topic-tag">Worker Type</span>
-                        <span class="topic-tag">Balance</span>
-                        <span class="topic-tag">Rhythm</span>
+                        <span class="topic-tag">🏃 Worker Type</span>
+                        <span class="topic-tag">⚡ Energy Patterns</span>
+                        <span class="topic-tag">💪 Strengths</span>
                     </div>
                 </a>
 
-                <a href="white-belt-stripe2-gamified.html" class="stripe-card" id="card-2">
+                <!-- Stripe 2 -->
+                <a href="white-belt-stripe2-carousel-NEW.html" class="stripe-card" id="stripe2-card">
                     <div class="stripe-header">
                         <div class="stripe-number">2</div>
                         <div>
-                            <div class="stripe-title">Communication & Impact</div>
-                            <div class="stripe-subtitle">Expression</div>
+                            <div class="stripe-title">How Do You Operate?</div>
+                            <div class="stripe-subtitle">5-7 minutes</div>
                         </div>
                     </div>
-                    <p class="stripe-description">Understand how you communicate and impact teams naturally.</p>
+                    <p class="stripe-description">
+                        Understand your mental health patterns, stress responses, and energy management. Self-awareness is the foundation of self-regulation.
+                    </p>
                     <div class="stripe-topics">
-                        <span class="topic-tag">Communication</span>
-                        <span class="topic-tag">Team Impact</span>
-                        <span class="topic-tag">Style</span>
+                        <span class="topic-tag">🧠 Mental Health</span>
+                        <span class="topic-tag">⚡ Energy Management</span>
+                        <span class="topic-tag">🎯 Patterns</span>
                     </div>
                 </a>
 
-                <a href="white-belt-stripe3-gamified.html" class="stripe-card" id="card-3">
+                <!-- Stripe 3 -->
+                <a href="white-belt-stripe3-carousel-NEW.html" class="stripe-card locked" id="stripe3-card">
                     <div class="stripe-header">
                         <div class="stripe-number">3</div>
                         <div>
-                            <div class="stripe-title">Values & Purpose</div>
-                            <div class="stripe-subtitle">Alignment</div>
+                            <div class="stripe-title">What Do You Value?</div>
+                            <div class="stripe-subtitle">5-7 minutes</div>
                         </div>
                     </div>
-                    <p class="stripe-description">Discover what truly matters to you and why you do what you do.</p>
+                    <p class="stripe-description">
+                        Clarify your core values and priorities. You can't set boundaries if you don't know what matters most.
+                    </p>
                     <div class="stripe-topics">
-                        <span class="topic-tag">Values</span>
-                        <span class="topic-tag">Purpose</span>
-                        <span class="topic-tag">Motivation</span>
+                        <span class="topic-tag">💎 Values</span>
+                        <span class="topic-tag">🎯 Priorities</span>
+                        <span class="topic-tag">⚖️ Alignment</span>
                     </div>
                 </a>
 
-                <a href="white-belt-stripe4-gamified.html" class="stripe-card" id="card-4">
+                <!-- Stripe 4 -->
+                <a href="white-belt-stripe4-carousel-NEW.html" class="stripe-card locked" id="stripe4-card">
                     <div class="stripe-header">
                         <div class="stripe-number">4</div>
                         <div>
-                            <div class="stripe-title">Mental Health Baseline</div>
-                            <div class="stripe-subtitle">Wellness</div>
+                            <div class="stripe-title">How Do You Show Up?</div>
+                            <div class="stripe-subtitle">5-7 minutes</div>
                         </div>
                     </div>
-                    <p class="stripe-description">Establish your stress, energy, and mental health baseline for growth.</p>
+                    <p class="stripe-description">
+                        Define your mission and purpose. Why are you here? What's your "why"? This completes your self-knowledge foundation.
+                    </p>
                     <div class="stripe-topics">
-                        <span class="topic-tag">Stress</span>
-                        <span class="topic-tag">Energy</span>
-                        <span class="topic-tag">Baseline</span>
+                        <span class="topic-tag">🎯 Mission</span>
+                        <span class="topic-tag">🌟 Purpose</span>
+                        <span class="topic-tag">🏆 Legacy</span>
                     </div>
                 </a>
             </div>
 
-            <div class="quote-block">
-                <p class="quote">"Know thyself." — Socrates</p>
-                <p class="author">This ancient wisdom is still the foundation of leadership mastery</p>
-            </div>
-
-            <div class="nav-buttons" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                <a href="gym-dashboard.html" class="btn btn-secondary">← GYM Dashboard</a>
-                <a href="blue-belt.html" class="btn btn-primary">Preview Blue Belt →</a>
+            <div class="nav-buttons">
+                <a href="gym-dashboard.html" class="btn btn-secondary">
+                    ← Back to Gym
+                </a>
+                <button onclick="continueStripe()" class="btn btn-primary">
+                    Continue Journey →
+                </button>
             </div>
         </div>
     </div>
 
     <script>
-        function updateStripeProgress() {
-            let completed = 0;
-            for (let i = 1; i <= 4; i++) {
-                if (localStorage.getItem(`whiteBeltStripe${i}Complete`) === 'true') {
-                    completed++;
-                    document.getElementById(`stripe-${i}`).classList.add('earned');
-                    document.getElementById(`card-${i}`).classList.add('complete');
+        // Progress tracking
+        function updateProgress() {
+            const stripe1 = localStorage.getItem('whiteBeltStripe1Complete') === 'true';
+            const stripe2 = localStorage.getItem('whiteBeltStripe2Complete') === 'true';
+            const stripe3 = localStorage.getItem('whiteBeltStripe3Complete') === 'true';
+            const stripe4 = localStorage.getItem('whiteBeltStripe4Complete') === 'true';
+            
+            const completed = [stripe1, stripe2, stripe3, stripe4].filter(Boolean).length;
+            const percentage = (completed / 4) * 100;
+            
+            // Update progress count
+            document.getElementById('stripe-count').textContent = `${completed}/4 Stripes`;
+            
+            // Update progress bar
+            document.getElementById('progress-fill').style.width = percentage + '%';
+            
+            // Update stripe visuals
+            if (stripe1) {
+                document.getElementById('stripe-1').classList.add('earned');
+                document.getElementById('stripe1-card').classList.add('complete');
+                document.getElementById('stripe1-card').classList.remove('locked');
+                document.getElementById('stripe2-card').classList.remove('locked');
+            }
+            if (stripe2) {
+                document.getElementById('stripe-2').classList.add('earned');
+                document.getElementById('stripe2-card').classList.add('complete');
+                document.getElementById('stripe2-card').classList.remove('locked');
+                document.getElementById('stripe3-card').classList.remove('locked');
+            }
+            if (stripe3) {
+                document.getElementById('stripe-3').classList.add('earned');
+                document.getElementById('stripe3-card').classList.add('complete');
+                document.getElementById('stripe3-card').classList.remove('locked');
+                document.getElementById('stripe4-card').classList.remove('locked');
+            }
+            if (stripe4) {
+                document.getElementById('stripe-4').classList.add('earned');
+                document.getElementById('stripe4-card').classList.add('complete');
+                document.getElementById('stripe4-card').classList.remove('locked');
+            }
+        }
+
+        function continueStripe() {
+            // Find next incomplete stripe
+            if (!localStorage.getItem('whiteBeltStripe1Complete')) {
+                window.location.href = 'white-belt-stripe1-carousel-NEW.html';
+            } else if (!localStorage.getItem('whiteBeltStripe2Complete')) {
+                window.location.href = 'white-belt-stripe2-carousel-NEW.html';
+            } else if (!localStorage.getItem('whiteBeltStripe3Complete')) {
+                window.location.href = 'white-belt-stripe3-carousel-NEW.html';
+            } else if (!localStorage.getItem('whiteBeltStripe4Complete')) {
+                window.location.href = 'white-belt-stripe4-carousel-NEW.html';
+            } else {
+                // All complete!
+                if (confirm('White Belt Complete! Ready for Blue Belt?')) {
+                    window.location.href = 'blue-belt.html';
                 }
             }
-            document.getElementById('stripe-count').textContent = `${completed}/4 Stripes`;
-            document.getElementById('progress-fill').style.width = `${(completed / 4) * 100}%`;
         }
-        updateStripeProgress();
-    </script>
 
-    <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+        // Run on load
+        updateProgress();
+    </script>
+<!-- TAP-IN Utilities -->
+<script src="js/shared-utilities.js"></script>
+<script src="js/global-error-handler.js"></script>
+<script src="js/storage-health.js"></script>
 </body>
 </html>
