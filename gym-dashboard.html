@@ -196,7 +196,7 @@
         }
 
         .user-avatar {
-            width: 40px;
+            max-width: 40px; width: auto;;
             height: 40px;
             background: linear-gradient(135deg, var(--primary-navy) 0%, var(--navy-light) 100%);
             border-radius: 50%;
@@ -209,7 +209,7 @@
 
         /* Main Container */
         .main-container {
-            max-width: 1400px;
+            max-width: 100%; max-width: 1400px;;
             margin: 0 auto;
             padding: 2rem;
         }
@@ -314,7 +314,7 @@
         }
 
         .belt-icon-large {
-            width: 60px;
+            max-width: 60px; width: auto;;
             height: 60px;
             background: rgba(255,255,255,0.1);
             border-radius: 12px;
@@ -371,7 +371,7 @@
         }
 
         .belt-dot {
-            width: 24px;
+            max-width: 24px; width: auto;;
             height: 24px;
             border-radius: 50%;
             background: rgba(255,255,255,0.2);
@@ -428,7 +428,7 @@
         }
 
         .practice-icon {
-            width: 48px;
+            max-width: 48px; width: auto;;
             height: 48px;
             background: rgba(255,255,255,0.1);
             border-radius: 12px;
@@ -856,7 +856,7 @@
         }
 
         .activity-icon {
-            width: 36px;
+            max-width: 36px; width: auto;;
             height: 36px;
             background: var(--border-subtle);
             border-radius: 8px;
@@ -1053,7 +1053,7 @@
         }
 
         .library-thumb {
-            width: 60px;
+            max-width: 60px; width: auto;;
             height: 60px;
             background: var(--border-subtle);
             border-radius: 8px;
@@ -1081,7 +1081,7 @@
         }
 
         /* Responsive */
-        @media (max-width: 1200px) {
+        @media (max-width: 100%; max-width: 1200px;) {
             .dashboard-grid {
                 grid-template-columns: 1fr;
             }
@@ -1105,7 +1105,7 @@
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 100%; max-width: 768px;) {
             .main-container {
                 padding: 1rem;
             
@@ -1173,7 +1173,7 @@ select:focus,
 /* Screen reader only class */
 .sr-only {
     position: absolute;
-    width: 1px;
+    max-width: 1px; width: auto;;
     height: 1px;
     padding: 0;
     margin: -1px;
@@ -1206,7 +1206,7 @@ select:focus,
 .empty-state-description {
     font-size: 1rem;
     margin-bottom: 1.5rem;
-    max-width: 500px;
+    max-width: min(50.0%, 500px);;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1274,7 +1274,7 @@ select:focus,
     }
     
     .loading-spinner {
-        width: 60px;
+        max-width: 60px; width: auto;;
         height: 60px;
         border: 4px solid #3d4466;
         border-top-color: #6366f1;
@@ -2810,7 +2810,7 @@ select:focus,
                 border-radius: 12px;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.3);
                 z-index: 10000;
-                max-width: 350px;
+                max-width: min(35.0%, 350px);;
                 animation: slideInRight 0.5s ease;
             `;
             notification.innerHTML = `
@@ -2957,7 +2957,7 @@ select:focus,
         border-radius: 8px;
         overflow: hidden;
         display: none;
-        min-width: 150px;
+        min-width: min(15.0%, 150px);;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     }
     
@@ -3002,7 +3002,7 @@ select:focus,
         font-size: 20px;
     }
     
-    @media (max-width: 768px) {
+    @media (max-width: 100%; max-width: 768px;) {
         .language-switcher {
             top: 10px;
             right: 10px;
@@ -3249,7 +3249,7 @@ function showErrorToast(message) {
     box-shadow: 0 8px 24px rgba(255,107,107,0.4);
     z-index: 100000;
     animation: slideUp 0.3s ease-out;
-    max-width: 300px;
+    max-width: min(30.0%, 300px);;
   `;
   toast.innerHTML = `
     <div style="display: flex; align-items: center; gap: 0.5rem;">
@@ -3455,8 +3455,8 @@ document.addEventListener('DOMContentLoaded', function() {
             padding: 1rem 1.5rem;
             border-radius: 8px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            min-width: 300px;
-            max-width: 500px;
+            min-width: min(30.0%, 300px);;
+            max-width: min(50.0%, 500px);;
             animation: slideInRight 0.3s ease;
             display: flex;
             align-items: center;
