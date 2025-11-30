@@ -79,10 +79,10 @@
     <meta property="og:type" content="website">
     
     <!-- Supabase & Auth -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
     <script src="js/auth-system.js"></script>
     <!-- CACHE BUSTER - Load FIRST, before anything else -->
-    <script src="cache-buster.js"></script>
+    <script src="cache-buster.js" defer></script>
 
     <title>The Hub | TAP-IN</title>
     <style>
@@ -1143,14 +1143,16 @@ select:focus,
 
     <script>
     // Global error handler - prevents silent failures
-    window.addEventListener('error', function(e) {
+    /* Duplicate error handler removed */
+{
         if(typeof showToast === 'function') { showToast('Something went wrong. Please try again.', 'error'); } console.error('Resource failed to load:', e.target.src || e.target.href || e.message);
         // Don't break the page, just log
         e.preventDefault();
     });
     
     // Handle promise rejections
-    window.addEventListener('unhandledrejection', function(e) {
+    /* Duplicate rejection handler removed */
+{
         if(typeof showToast === 'function') { showToast('Unhandled promise rejection:', 'error'); } console.error('Unhandled promise rejection:', e.reason);
         e.preventDefault();
     });
@@ -1183,7 +1185,7 @@ select:focus,
   });
 </script>
 
-<script src="js/performance-monitor.js"></script>
+<script src="js/performance-monitor.js" defer></script>
 
 <!-- Global Error Handling -->
 <script>
@@ -1258,7 +1260,18 @@ window.showErrorToast = showErrorToast;
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/sw.js')
-        .catch(err => console.log('SW uninstalling'));
+        .then(() => {
+            if (console && console.debug) {
+                console.debug('[SW] Registered successfully');
+            }
+        })
+        .catch(err => {
+            // Expected failures: private mode, older browsers, etc.
+            if (console && console.debug) {
+                console.debug('[SW] Registration note:', err.message || err);
+            }
+            return Promise.resolve(); // Swallow error
+        }));
     });
   }
 </script>
@@ -1269,17 +1282,17 @@ window.showErrorToast = showErrorToast;
 <script src="js/error-handler.js" defer></script>
 
 <!-- TAP-IN Utilities -->
-<script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/shared-utilities.js" defer></script>
+<script src="js/global-error-handler.js" defer></script>
+<script src="js/storage-health.js" defer></script>
 <!-- Core Modules -->
 <script src="js/core-gamification.js"></script>
-<script src="js/keyboard-nav.js"></script>
+<script src="js/keyboard-nav.js" defer></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
-    <script src="js/meta-tags-manager.js"></script>
-    <script src="js/achievement-badges.js"></script>
-    <script src="js/structured-data.js"></script>
+    <script src="js/language-switcher.js" defer></script>
+    <script src="js/meta-tags-manager.js" defer></script>
+    <script src="js/achievement-badges.js" defer></script>
+    <script src="js/structured-data.js" defer></script>
 
 <!-- Toast Notification System -->
 <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 10000; display: flex; flex-direction: column; gap: 10px;"></div>
@@ -1350,9 +1363,9 @@ window.showErrorToast = showErrorToast;
 })();
 </script>
 
-    <script src="js/dark-mode.js"></script>
-    <script src="js/micro-interactions.js"></script>
-    <script src="js/enhanced-loading-states.js"></script>
+    <script src="js/dark-mode.js" defer></script>
+    <script src="js/micro-interactions.js" defer></script>
+    <script src="js/enhanced-loading-states.js" defer></script>
     <script src="js/keyboard-navigation.js" defer></script>
 
 

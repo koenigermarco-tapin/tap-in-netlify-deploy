@@ -2435,14 +2435,16 @@
 
     <script>
     // Global error handler - prevents silent failures
-    window.addEventListener('error', function(e) {
+    /* Duplicate error handler removed */
+{
         console.error('Resource failed to load:', e.target.src || e.target.href || e.message);
         // Don't break the page, just log
         e.preventDefault();
     });
     
     // Handle promise rejections
-    window.addEventListener('unhandledrejection', function(e) {
+    /* Duplicate rejection handler removed */
+{
         console.error('Unhandled promise rejection:', e.reason);
         e.preventDefault();
     });
@@ -2545,7 +2547,18 @@ window.showErrorToast = showErrorToast;
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/sw.js')
-        .catch(err => console.log('SW uninstalling'));
+        .then(() => {
+            if (console && console.debug) {
+                console.debug('[SW] Registered successfully');
+            }
+        })
+        .catch(err => {
+            // Expected failures: private mode, older browsers, etc.
+            if (console && console.debug) {
+                console.debug('[SW] Registration note:', err.message || err);
+            }
+            return Promise.resolve(); // Swallow error
+        }));
     });
   }
 </script>
@@ -2559,6 +2572,10 @@ window.showErrorToast = showErrorToast;
     <script src="js/achievement-badges.js"></script>
     <script src="js/structured-data.js"></script>
 
+
+
+<!-- Unified Error Handling System -->
+<script src="js/unified-error-system.js"></script>
 
 </body>
 </html>

@@ -88,7 +88,7 @@
 <meta property="twitter:image" content="/og-image.png">
 
     <!-- CACHE BUSTER - Load FIRST, before anything else -->
-    <script src="cache-buster.js"></script>
+    <script src="cache-buster.js" defer></script>
 
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
@@ -96,19 +96,19 @@
     <title>THE GYM | TAP-IN Personal Development</title>
     
     <!-- Supabase & Auth -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
     <script src="js/auth-system.js"></script>
     
     <!-- Avatar System -->
     <link rel="stylesheet" href="avatar-styles.css">
-    <script src="js/avatar-system.js"></script>
+    <script src="js/avatar-system.js" defer></script>
     
     <!-- Gamification Systems -->
     <link rel="stylesheet" href="css/xp-level-system.css">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script src="js/xp-level-system.js"></script>
-    <script src="js/daily-streak.js"></script>
-    <script src="js/gamification-celebrations.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js" defer></script>
+    <script src="js/xp-level-system.js" defer></script>
+    <script src="js/daily-streak.js" defer></script>
+    <script src="js/gamification-celebrations.js" defer></script>
     
     <style>
         * {
@@ -3113,7 +3113,8 @@ select:focus,
 
     <script>
     // Global error handler - smart error suppression
-    window.addEventListener('error', function(e) {
+    /* Duplicate error handler removed */
+{
         // Suppress expected errors (service worker, favicon, analytics, etc.)
         const target = e.target;
         const isScript = target && target.tagName === 'SCRIPT';
@@ -3135,7 +3136,8 @@ select:focus,
     });
     
     // Handle promise rejections - suppress service worker errors
-    window.addEventListener('unhandledrejection', function(e) {
+    /* Duplicate rejection handler removed */
+{
         const reason = e.reason ? e.reason.toString() : '';
         // Suppress service worker errors
         if (reason.includes('Service Worker') || reason.includes('serviceWorker') || 
@@ -3385,7 +3387,18 @@ window.awardXP = async function(amount, reason) {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/sw.js')
-        .catch(err => console.log('SW uninstalling'));
+        .then(() => {
+            if (console && console.debug) {
+                console.debug('[SW] Registered successfully');
+            }
+        })
+        .catch(err => {
+            // Expected failures: private mode, older browsers, etc.
+            if (console && console.debug) {
+                console.debug('[SW] Registration note:', err.message || err);
+            }
+            return Promise.resolve(); // Swallow error
+        }));
     });
   }
 </script>
@@ -3423,20 +3436,20 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!-- TAP-IN Utilities -->
-<script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/shared-utilities.js" defer></script>
+<script src="js/global-error-handler.js" defer></script>
+<script src="js/storage-health.js" defer></script>
 <!-- Core Modules -->
 <script src="js/core-gamification.js"></script>
-<script src="js/core-progress-tracker.js"></script>
-<script src="js/storage-manager.js"></script>
-<script src="js/keyboard-nav.js"></script>
+<script src="js/core-progress-tracker.js" defer></script>
+<script src="js/storage-manager.js" defer></script>
+<script src="js/keyboard-nav.js" defer></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
-    <script src="js/meta-tags-manager.js"></script>
-    <script src="js/achievement-badges.js"></script>
-    <script src="js/structured-data.js"></script>
-    <script src="js/performance-monitor.js"></script>
+    <script src="js/language-switcher.js" defer></script>
+    <script src="js/meta-tags-manager.js" defer></script>
+    <script src="js/achievement-badges.js" defer></script>
+    <script src="js/structured-data.js" defer></script>
+    <script src="js/performance-monitor.js" defer></script>
 
 <!-- Toast Notification System -->
 <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 10000; display: flex; flex-direction: column; gap: 10px;"></div>
@@ -3508,9 +3521,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- showToast moved earlier -->
 
-    <script src="js/dark-mode.js"></script>
-    <script src="js/micro-interactions.js"></script>
-    <script src="js/enhanced-loading-states.js"></script>
+    <script src="js/dark-mode.js" defer></script>
+    <script src="js/micro-interactions.js" defer></script>
+    <script src="js/enhanced-loading-states.js" defer></script>
     <script src="js/keyboard-navigation.js" defer></script>
 
 
