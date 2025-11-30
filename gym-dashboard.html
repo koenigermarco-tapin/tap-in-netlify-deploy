@@ -1123,6 +1123,49 @@ select:focus,
     white-space: nowrap;
     border-width: 0;
 }
+
+/* Empty States */
+.empty-state {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.empty-state-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.empty-state-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.empty-state-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.empty-state-action {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #6366f1;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.empty-state-action:hover {
+    background: #4f46e5;
+}
 </style>
     
     <!-- Gamification System -->
@@ -1236,6 +1279,27 @@ select:focus,
 
     <!-- Main Container -->
     <div class="main-container">
+    
+<!-- Empty State Template (for achievements) -->
+<div id="empty-achievements" class="empty-state" style="display: none;">
+    <div class="empty-state-icon">🏆</div>
+    <div class="empty-state-title">No Achievements Yet</div>
+    <div class="empty-state-description">
+        Start your leadership journey to unlock achievements and track your progress!
+    </div>
+    <a href="/gym-dashboard.html" class="empty-state-action">Start Training</a>
+</div>
+
+<!-- Empty State Template (for progress) -->
+<div id="empty-progress" class="empty-state" style="display: none;">
+    <div class="empty-state-icon">📊</div>
+    <div class="empty-state-title">Welcome to TAP-IN!</div>
+    <div class="empty-state-description">
+        Begin your leadership development journey. Complete your first assessment or start a belt stripe to see your progress here.
+    </div>
+    <a href="/belt-assessment-v2.html" class="empty-state-action">Take Assessment</a>
+</div>
+
         <!-- User Avatar Component -->
         <div id="dashboardAvatar" style="margin-bottom: 2rem;"></div>
         

@@ -12,6 +12,7 @@ const STATIC_ASSETS = [
     '/index.html',
     '/gym-dashboard.html',
     '/learning-hub.html',
+    '/offline.html',  // Offline fallback page
     '/css/core-styles.css',
     '/js/performance-optimizer.js',
     '/js/gamification.js',
@@ -71,8 +72,16 @@ self.addEventListener('fetch', (event) => {
         // Static assets: Cache First
         event.respondWith(cacheFirst(request));
     } else if (isHTML(request)) {
-        // HTML pages: Network First (always fresh)
-        event.respondWith(networkFirst(request));
+        // HTML pages: Network First (always fresh), fallback to offline.html
+        event.respondWith(
+            networkFirst(request).catch(() => {
+                // If network fails and it's a navigation request, serve offline page
+                if (request.mode === 'navigate') {
+                    return caches.match('/offline.html');
+                }
+                return caches.match(request);
+            })
+        );
     } else {
         // Other files: Cache First
         event.respondWith(cacheFirst(request));
