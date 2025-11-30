@@ -338,7 +338,7 @@
         }
         
         .progress-label {
-            font-size: 13px;
+            font-size: 14px;
             color: #94a3b8;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -452,7 +452,15 @@
         }
         
         @media (max-width: 768px) {
-            .header { padding-top: 20px; margin-bottom: 40px; }
+            .header { padding-top: 20px; margin-bottom: 40px; 
+        /* Mobile font size fix - ensure readable text */
+        body {
+            font-size: 16px !important;
+        }
+        p, li, span {
+            font-size: 14px !important;
+        }
+}
             .logo { font-size: 36px; }
             .tagline { font-size: 16px; }
             .question { font-size: 22px; margin: 30px 0; }
@@ -801,7 +809,7 @@ select:focus,
     }
     
     .lang-arrow {
-        font-size: 10px;
+        font-size: 12px;
         opacity: 0.7;
     }
     
@@ -869,7 +877,7 @@ select:focus,
         
         .lang-toggle {
             padding: 6px 12px;
-            font-size: 13px;
+            font-size: 14px;
         }
     }
 </style>

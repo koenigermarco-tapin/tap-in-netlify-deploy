@@ -34,9 +34,12 @@ def fix_font_sizes(content):
     # This is a safety check - we'll add a media query if missing
     if '@media' in content and 'max-width: 768' in content:
         # Check if there's a body font-size in mobile breakpoint
-        if 'font-size:' not in re.search(r'@media[^}]+max-width:\s*768[^}]+}', content, re.DOTALL):
-            # Add minimum font size for mobile
-            mobile_fix = '''
+        mobile_match = re.search(r'@media[^}]+max-width:\s*768[^}]+}', content, re.DOTALL)
+        if mobile_match:
+            mobile_content = mobile_match.group(0)
+            if 'font-size:' not in mobile_content:
+                # Add minimum font size for mobile
+                mobile_fix = '''
         /* Mobile font size fix - ensure readable text */
         body {
             font-size: 16px !important;
@@ -45,14 +48,14 @@ def fix_font_sizes(content):
             font-size: 14px !important;
         }
 '''
-            # Insert before closing brace of mobile media query
-            content = re.sub(
-                r'(@media[^}]+max-width:\s*768[^}]+)(})',
-                r'\1' + mobile_fix + r'\2',
-                content,
-                count=1,
-                flags=re.DOTALL
-            )
+                # Insert before closing brace of mobile media query
+                content = re.sub(
+                    r'(@media[^}]+max-width:\s*768[^}]+)(})',
+                    r'\1' + mobile_fix + r'\2',
+                    content,
+                    count=1,
+                    flags=re.DOTALL
+                )
     
     return content, changes > 0
 

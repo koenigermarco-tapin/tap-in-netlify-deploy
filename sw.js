@@ -145,7 +145,10 @@ async function networkFirst(request) {
         if (cached) {
             return cached;
         }
-        // Fallback to index.html for offline
+        // Fallback to offline.html for navigation requests
+        if (request.mode === 'navigate') {
+            return caches.match('/offline.html') || caches.match('/index.html') || new Response('Offline', { status: 503 });
+        }
         return caches.match('/index.html') || new Response('Offline', { status: 503 });
     }
 }
