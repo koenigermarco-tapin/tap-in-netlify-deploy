@@ -1,0 +1,20 @@
+{
+  "name": "tap-in-netlify-functions",
+  "version": "1.0.0",
+  "description": "Netlify serverless functions for TAP-IN platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  },
+  "keywords": [
+    "netlify",
+    "serverless",
+    "functions"
+  ],
+  "author": "TAP-IN Leadership Academy",
+  "license": "MIT"
+}
+

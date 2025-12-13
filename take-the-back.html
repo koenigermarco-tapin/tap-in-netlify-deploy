@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
 <<<<<<< HEAD
     <title>Take the Back - Ownership Game</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -100,7 +114,19 @@
         ];
 
         // Firebase config
-        const firebaseConfig = {
+        
+    // ============================================
+    // PRODUCTION BACKEND CONFIG
+    // ============================================
+    // TODO: Replace demo config with production:
+    // 1. Option A: Use Supabase Real-time (recommended)
+    //    - See PRODUCTION-GAME-BACKEND-SETUP.md
+    // 2. Option B: Use Production Firebase
+    //    - Create Firebase project
+    //    - Get production keys
+    //    - Replace config below
+    // ============================================
+const firebaseConfig = {
             apiKey: "AIzaSyBvK_vZ3vXj5k5L0Qp6X9K5Z6Yq8L0A5B0",
             authDomain: "take-the-back.firebaseapp.com",
             databaseURL: "https://take-the-back-default-rtdb.firebaseio.com",
@@ -109,7 +135,11 @@
 
         let firebaseApp = null;
         try {
-            if (!firebase.apps.length) firebaseApp = firebase.initializeApp(firebaseConfig);
+            if (!firebase.apps.length) firebaseApp = firebase.initializeApp(firebaseConfig)
+    // Backend Status
+    console.log('⚠️ Using demo Firebase config - replace with production backend');
+    console.log('See PRODUCTION-GAME-BACKEND-SETUP.md for setup instructions');
+;
         } catch (error) {
             console.warn('Firebase init failed:', error);
         }
@@ -579,7 +609,7 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <main role="main"><div class="container">
         <a href="leadership-games.html" class="back-link">← Back to Games</a>
 
         <!-- Setup Screen -->
@@ -592,11 +622,11 @@
                 <div class="input-group">
                     <label>Add Players (4-8 players recommended)</label>
                     <input type="text" id="playerInput" placeholder="Enter player name..." onkeypress="if(event.key==='Enter') addPlayer()">
-                    <button onclick="addPlayer()" class="btn btn-primary" style="margin-top: 10px; width: 100%;">Add Player</button>
+                    <button onclick="addPlayer()" class="btn btn-primary" style="margin-top: 10px; width: 100%;" aria-label="Button">Add Player</button>
                     <div id="playerTags" class="player-tags"></div>
                 </div>
 
-                <button onclick="startGame()" id="startButton" class="btn btn-primary" disabled>
+                <button onclick="startGame()" id="startButton" class="btn btn-primary" disabled aria-label="Button">
                     Start Game
                 </button>
 
@@ -629,7 +659,7 @@
                 <div class="timer-display" id="timer">30</div>
                 <div class="timer-label" id="timerLabel">Get ready to claim!</div>
 
-                <button class="claim-button" id="claimButton" onclick="claimCard()">
+                <button class="claim-button" id="claimButton" onclick="claimCard()" aria-label="Button">
                     🔥 I'VE GOT THE BACK! 🔥
                 </button>
 
@@ -650,10 +680,10 @@
                 <div class="voting-section">
                     <div class="voting-title">Did they own it convincingly?</div>
                     <div class="voting-buttons">
-                        <button class="vote-btn delivered" onclick="vote('delivered')">
+                        <button class="vote-btn delivered" onclick="vote('delivered')" aria-label="Button">
                             👍
                         </button>
-                        <button class="vote-btn abandoned" onclick="vote('abandoned')">
+                        <button class="vote-btn abandoned" onclick="vote('abandoned')" aria-label="Button">
                             👎
                         </button>
                     </div>
@@ -673,10 +703,10 @@
                 <div class="score-grid" id="finalScoreGrid"></div>
 
                 <div style="display: flex; gap: 15px; margin-top: 40px;">
-                    <button onclick="location.reload()" class="btn btn-primary" style="flex: 1;">
+                    <button onclick="location.reload()" class="btn btn-primary" style="flex: 1;" aria-label="Button">
                         Play Again
                     </button>
-                    <button onclick="location.href='leadership-games.html'" class="btn btn-primary" style="flex: 1;">
+                    <button onclick="location.href='leadership-games.html'" class="btn btn-primary" style="flex: 1;" aria-label="Button">
                         More Games
                     </button>
                 </div>
@@ -1061,7 +1091,7 @@
 
                                 <div className="space-y-6">
                                     <button
-                                        onClick={() => selectMode('pass-play')}
+                                        onClick={() = aria-label="Button"> selectMode('pass-play')}
                                         className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-6 rounded-2xl font-bold text-xl hover:shadow-2xl transform hover:scale-105 transition"
                                     >
                                         <div className="text-3xl mb-2">📱</div>
@@ -1069,7 +1099,7 @@
                                     </button>
 
                                     <button
-                                        onClick={() => selectMode('multi-device')}
+                                        onClick={() = aria-label="Button"> selectMode('multi-device')}
                                         className="w-full bg-gradient-to-r from-red-500 to-pink-500 text-white px-8 py-6 rounded-2xl font-bold text-xl hover:shadow-2xl transform hover:scale-105 transition"
                                     >
                                         <div className="text-3xl mb-2">🌐</div>
@@ -1126,7 +1156,7 @@
                                             <button
                                                 onClick={startGame}
                                                 className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-xl font-bold text-xl hover:shadow-lg transform hover:scale-105 transition pulse-animation"
-                                            >
+                                             aria-label="Button">
                                                 Start Game
                                             </button>
                                         )}
@@ -1137,7 +1167,7 @@
                                     </>
                                 )}
 
-                                <button onClick={() => setScreen('mode-select')} className="w-full mt-4 text-white/60 hover:text-white">
+                                <button onClick={() = aria-label="Button"> setScreen('mode-select')} className="w-full mt-4 text-white/60 hover:text-white">
                                     ← Back
                                 </button>
                             </div>
@@ -1195,7 +1225,7 @@
                                         <button
                                             onClick={claimCard}
                                             className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-12 py-8 rounded-3xl font-bold text-3xl hover:shadow-2xl transform hover:scale-105 transition pulse-animation"
-                                        >
+                                         aria-label="Button">
                                             I'VE GOT THE BACK!
                                         </button>
                                     )}
@@ -1225,13 +1255,13 @@
                                     {phase === 'explaining' && !isClaimer && !hasVoted && (
                                         <div className="mt-6 flex gap-4">
                                             <button
-                                                onClick={() => vote('up')}
+                                                onClick={() = aria-label="Button"> vote('up')}
                                                 className="flex-1 bg-green-500 text-white px-8 py-6 rounded-xl font-bold text-2xl hover:shadow-lg transform hover:scale-105 transition"
                                             >
                                                 👍 Delivered
                                             </button>
                                             <button
-                                                onClick={() => vote('down')}
+                                                onClick={() = aria-label="Button"> vote('down')}
                                                 className="flex-1 bg-red-500 text-white px-8 py-6 rounded-xl font-bold text-2xl hover:shadow-lg transform hover:scale-105 transition"
                                             >
                                                 👎 Abandoned
@@ -1281,7 +1311,7 @@
                                                 </div>
                                             ))}
                                     </div>
-                                    <button onClick={resetGame} className="w-full mt-4 text-white/60 hover:text-white text-sm">
+                                    <button onClick={resetGame} className="w-full mt-4 text-white/60 hover:text-white text-sm" aria-label="Button">
                                         End Game
                                     </button>
                                 </div>
@@ -1328,7 +1358,7 @@
                                 <button
                                     onClick={resetGame}
                                     className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white px-12 py-4 rounded-xl font-bold text-xl hover:shadow-lg transform hover:scale-105 transition"
-                                >
+                                 aria-label="Button">
                                     Play Again
                                 </button>
                             </div>
@@ -1344,13 +1374,13 @@
     </script>
 
     <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/global-error-handler.min.js"></script>
+<script src="js/storage-health.min.js"></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
+    <script src="js/language-switcher.min.js"></script>
     <script src="js/meta-tags-manager.js"></script>
     <script src="js/achievement-badges.js"></script>
     <script src="js/structured-data.js"></script>
@@ -1463,8 +1493,11 @@
     </script>
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/global-error-handler.min.js"></script>
+<script src="js/storage-health.min.js"></script>
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>
 </body>
 </html>
 

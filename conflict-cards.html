@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
 <<<<<<< HEAD
     <title>Conflict Cards - Workplace Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -29,6 +43,13 @@
             transform: translateY(-10px) rotateX(5deg);
         }
     </style>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#c62828">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="TAP-IN">
+    <link rel="stylesheet" href="css/pwa-install-banner.css">
 </head>
 <body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen">
     <div id="root"></div>
@@ -254,7 +275,19 @@
         ];
 
         // Firebase config
-        const firebaseConfig = {
+        
+    // ============================================
+    // PRODUCTION BACKEND CONFIG
+    // ============================================
+    // TODO: Replace demo config with production:
+    // 1. Option A: Use Supabase Real-time (recommended)
+    //    - See PRODUCTION-GAME-BACKEND-SETUP.md
+    // 2. Option B: Use Production Firebase
+    //    - Create Firebase project
+    //    - Get production keys
+    //    - Replace config below
+    // ============================================
+const firebaseConfig = {
             apiKey: "AIzaSyBvK_vZ3vXj5k5L0Qp6X9K5Z6Yq8L0A5B0",
             authDomain: "conflict-cards.firebaseapp.com",
             databaseURL: "https://conflict-cards-default-rtdb.firebaseio.com",
@@ -540,7 +573,7 @@
 
                                 <div className="space-y-6">
                                     <button
-                                        onClick={() => selectMode('pass-play')}
+                                        onClick={() = aria-label="Button"> selectMode('pass-play')}
                                         className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-6 rounded-2xl font-bold text-xl hover:shadow-2xl transform hover:scale-105 transition"
                                     >
                                         <div className="text-3xl mb-2">📱</div>
@@ -548,7 +581,7 @@
                                     </button>
 
                                     <button
-                                        onClick={() => selectMode('multi-device')}
+                                        onClick={() = aria-label="Button"> selectMode('multi-device')}
                                         className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-6 rounded-2xl font-bold text-xl hover:shadow-2xl transform hover:scale-105 transition"
                                     >
                                         <div className="text-3xl mb-2">🌐</div>
@@ -605,7 +638,7 @@
                                             <button
                                                 onClick={startGame}
                                                 className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-xl font-bold text-xl hover:shadow-lg transform hover:scale-105 transition pulse-animation"
-                                            >
+                                             aria-label="Button">
                                                 Start Game
                                             </button>
                                         )}
@@ -616,7 +649,7 @@
                                     </>
                                 )}
 
-                                <button onClick={() => setScreen('mode-select')} className="w-full mt-4 text-white/60 hover:text-white">
+                                <button onClick={() = aria-label="Button"> setScreen('mode-select')} className="w-full mt-4 text-white/60 hover:text-white">
                                     ← Back
                                 </button>
                             </div>
@@ -675,7 +708,7 @@
                                             {Object.entries(submissions).map(([name, card], i) => (
                                                 <button
                                                     key={i}
-                                                    onClick={() => pickWinner(name)}
+                                                    onClick={() = aria-label="Button"> pickWinner(name)}
                                                     className="w-full bg-white rounded-xl p-6 text-left hover:bg-purple-100 transition transform hover:scale-105 shadow-lg"
                                                 >
                                                     <p className="text-gray-800 text-lg">{card}</p>
@@ -694,7 +727,7 @@
                                                         {myHand.map((card, i) => (
                                                             <button
                                                                 key={i}
-                                                                onClick={() => submitCard(card)}
+                                                                onClick={() = aria-label="Button"> submitCard(card)}
                                                                 className="bg-white rounded-xl p-4 text-left hover:bg-purple-100 transition transform hover:scale-105 shadow-lg"
                                                             >
                                                                 <p className="text-gray-800">{card}</p>
@@ -745,7 +778,7 @@
                                                 </div>
                                             ))}
                                     </div>
-                                    <button onClick={resetGame} className="w-full mt-4 text-white/60 hover:text-white text-sm">
+                                    <button onClick={resetGame} className="w-full mt-4 text-white/60 hover:text-white text-sm" aria-label="Button">
                                         End Game
                                     </button>
                                 </div>
@@ -801,7 +834,7 @@
                                 <button
                                     onClick={resetGame}
                                     className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white px-12 py-4 rounded-xl font-bold text-xl hover:shadow-lg transform hover:scale-105 transition"
-                                >
+                                 aria-label="Button">
                                     Play Again
                                 </button>
                             </div>
@@ -817,17 +850,43 @@
     </script>
 
     <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/global-error-handler.min.js"></script>
+<script src="js/storage-health.min.js"></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
+    <script src="js/language-switcher.min.js"></script>
     <script src="js/meta-tags-manager.js"></script>
     <script src="js/achievement-badges.js"></script>
     <script src="js/structured-data.js"></script>
 
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(function(registration) {
+                        console.log('Service Worker registered:', registration.scope);
+                        
+                        // Check for updates
+                        registration.addEventListener('updatefound', function() {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', function() {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New service worker available
+                                    console.log('New service worker available');
+                                }
+                            });
+                        });
+                    })
+                    .catch(function(error) {
+                        // Silent fail - not critical
+                    });
+            });
+        }
+    </script>
+    <script src="js/pwa-install-prompt.js"></script>
 </body>
 </html>
 =======
@@ -1184,7 +1243,7 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <main role="main"><div class="container">
         <a href="leadership-games.html" class="back-link">← Back to Games</a>
 
         <!-- Setup -->
@@ -1197,11 +1256,11 @@
                 <div class="input-group">
                     <label>Add Players (4-10 players)</label>
                     <input type="text" id="playerInput" placeholder="Enter player name..." onkeypress="if(event.key==='Enter') addPlayer()">
-                    <button onclick="addPlayer()" class="btn btn-primary" style="margin-top: 10px; width: 100%;">Add Player</button>
+                    <button onclick="addPlayer()" class="btn btn-primary" style="margin-top: 10px; width: 100%;" aria-label="Button">Add Player</button>
                     <div id="playerTags" class="player-tags"></div>
                 </div>
 
-                <button onclick="startGame()" id="startButton" class="btn btn-primary" disabled>
+                <button onclick="startGame()" id="startButton" class="btn btn-primary" disabled aria-label="Button">
                     Start Game
                 </button>
 
@@ -1238,7 +1297,7 @@
                     <div class="hand-grid" id="handGrid"></div>
                 </div>
 
-                <button onclick="submitCard()" id="submitButton" class="btn btn-primary" style="width: 100%; margin-top: 20px;" disabled>
+                <button onclick="submitCard()" id="submitButton" class="btn btn-primary" style="width: 100%; margin-top: 20px;" disabled aria-label="Button">
                     Submit Response
                 </button>
             </div>
@@ -1280,10 +1339,10 @@
                 <div class="player-scores" id="finalScores"></div>
 
                 <div style="display: flex; gap: 15px; margin-top: 40px;">
-                    <button onclick="location.reload()" class="btn btn-primary" style="flex: 1;">
+                    <button onclick="location.reload()" class="btn btn-primary" style="flex: 1;" aria-label="Button">
                         Play Again
                     </button>
-                    <button onclick="location.href='leadership-games.html'" class="btn btn-primary" style="flex: 1;">
+                    <button onclick="location.href='leadership-games.html'" class="btn btn-primary" style="flex: 1;" aria-label="Button">
                         More Games
                     </button>
                 </div>
@@ -1558,8 +1617,11 @@
     </script>
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/global-error-handler.min.js"></script>
+<script src="js/storage-health.min.js"></script>
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>
 </body>
 </html>
 

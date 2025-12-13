@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn to handle difficult conversations with confidence in Blue Belt Stripe 1. Master the STATE framework for productive conflict resolution."><!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
     <!-- Open Graph / Facebook -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://tap-in-platform.netlify.app/blue-belt-stripe1-gamified.html">
@@ -21,6 +35,11 @@
     <meta http-equiv="Expires" content="0">
     <title>Blue Belt Stripe 1: Difficult Conversations | TAP-IN</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/core-styles.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+
     <link rel="stylesheet" href="css/dark-mode.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -2555,7 +2574,12 @@ select:focus,
         }
 
         function showResults() {
-            localStorage.setItem('blueBeltStripe1Complete', 'true');
+            localStorage.setItem("blueBeltBeltStripe1Complete", 'true')
+            // Sync to backend
+            if (typeof ProgressSyncService !== 'undefined' && ProgressSyncService.syncStripeComplete) {
+                ProgressSyncService.syncStripeComplete('blue', 1, 175);
+            }
+;
                     window.dispatchEvent(new CustomEvent(\'lessonCompleted\'));
             
             const fields = ['scenario-context', 'state-s', 'state-t', 'state-a', 'reflection-when', 'reflection-cost'];
@@ -2608,15 +2632,15 @@ select:focus,
 
     <!-- Gamification System -->
     <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 
     <script src="js/shared-quiz-system.js"></script>
     <script src="js/gamification.js" defer></script>
-    <script src="js/stripe-completion-helper.js" defer></script>
+    <script src="js/stripe-completion-helper.min.js" defer></script>
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/global-error-handler.min.js"></script>
+<script src="js/storage-health.min.js"></script>
 <script>
         // Quiz functionality
         let quizAnswers = [];
@@ -2824,11 +2848,11 @@ select:focus,
                 if (confirm('Quiz Complete! Continue to Stripe ' + nextStripe + '?')) {
                     window.location.href = 'blue-belt-stripe' + nextStripe + '-gamified.html';
                 } else {
-                    window.location.href = 'learning-hub.html';
+                    window.location.href = 'gym-dashboard.html';
                 }
             } else {
                 alert('🎉 Blue Belt Complete! Ready for the next level.');
-                window.location.href = 'learning-hub.html';
+                window.location.href = 'gym-dashboard.html';
             }
         }
 </script>
@@ -2836,7 +2860,7 @@ select:focus,
         
     <!-- Platform Integration Modules -->
     <script src="js/achievement-badges.js"></script>
-    <script src="js/language-switcher.js"></script>
+    <script src="js/language-switcher.min.js"></script>
     <script src="js/structured-data.js"></script>
 <!-- QUIZ SECTION -->
         <div class="quiz-section" id="quizSection" style="margin-top: 60px;">
@@ -3399,3 +3423,6 @@ select:focus,
             </div>
         </div>
 
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>

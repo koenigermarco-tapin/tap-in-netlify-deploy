@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
     <meta name="theme-color" content="#2d2d2d">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
@@ -83,7 +97,7 @@
     </div>
     <div id="lang-switch" style="position:fixed;top:16px;right:16px;z-index:1200;font-family:inherit;">
         <div style="background:white;border-radius:999px;padding:8px 12px;box-shadow:0 6px 20px rgba(0,0,0,0.15);font-size:0.95em;">
-            <a href="worker-type-assessment.html" style="color:#64748b;text-decoration:none;font-weight:700;margin-right:10px;">EN</a>
+            <a href="worker-type-assessment.de.html" style="color:#64748b;text-decoration:none;font-weight:700;margin-right:10px;">EN</a>
             <a href="worker-type-assessment.de.html" style="color:#1a365d;text-decoration:none;font-weight:700;border-left:1px solid #eee;padding-left:10px;margin-left:10px;">DE</a>
         </div>
     </div>
@@ -330,25 +344,8 @@
                 ]
             }
         ];
-        function getQuestionsFromI18n() {
-            const i18n = window.__i18n;
-            if (!i18n || !i18n.t) return fallbackQuestions;
-            const out = [];
-            for (let i = 0; i < fallbackQuestions.length; i++) {
-                const base = `worker.q${i}`;
-                const qText = i18n.t(`${base}.question`) || fallbackQuestions[i].question;
-                const opts = [];
-                for (let j = 0; j < 3; j++) {
-                    const optKey = `${base}.opt${j}`;
-                    const label = i18n.t(optKey) || fallbackQuestions[i].options[j].label;
-                    const value = fallbackQuestions[i].options[j].value;
-                    opts.push({ value, label });
-                }
-                out.push({ question: qText, options: opts });
-            }
-            return out;
-        }
-        const questions = getQuestionsFromI18n();
+        // German page - use hardcoded German questions directly (no i18n needed)
+        const questions = fallbackQuestions;
         let currentQuestion = 0;
         let answers = {};
                     // Progress Saving System
@@ -509,20 +506,14 @@
         function updateProgress() {
             const progress = ((currentQuestion + 1) / questions.length) * 100;
             document.getElementById('progressFill').style.width = progress + '%';
-            const i18n = window.__i18n;
-            const questionLabel = (i18n && i18n.t) ? i18n.t('question_label') || 'Frage' : 'Frage';
-            document.getElementById('progressText').textContent = `${questionLabel} ${currentQuestion + 1} von ${questions.length}`;
+            document.getElementById('progressText').textContent = `Frage ${currentQuestion + 1} von ${questions.length}`;
         }
         function updateButtons() {
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
-            const i18n = window.__i18n;
-            const prevText = (i18n && i18n.t) ? i18n.t('prev_btn') || '← Zurück' : '← Zurück';
-            const nextText = (i18n && i18n.t) ? i18n.t('next_btn') || 'Weiter →' : 'Weiter →';
-            const seeResultsText = (i18n && i18n.t) ? (i18n.t('see_results') || 'Ergebnisse anzeigen →') : 'Ergebnisse anzeigen →';
             prevBtn.style.display = currentQuestion > 0 ? 'block' : 'none';
-            prevBtn.textContent = prevText;
-            nextBtn.textContent = currentQuestion === questions.length - 1 ? seeResultsText : nextText;
+            prevBtn.textContent = '← Zurück';
+            nextBtn.textContent = currentQuestion === questions.length - 1 ? 'Ergebnisse anzeigen →' : 'Weiter →';
             nextBtn.disabled = !answers.hasOwnProperty(currentQuestion);
         }
         function nextQuestion() {
@@ -680,15 +671,7 @@
             celebrateCompletion();
             setTimeout(() => addAchievementBadges(), 500);
             
-            const i18n = window.__i18n;
-            if (i18n && i18n.t) {
-                const want = i18n.t('want_optimize_team') || document.getElementById('ctaHeading').textContent;
-                const para = i18n.t('cta_paragraph') || document.getElementById('ctaParagraph').textContent;
-                const back = i18n.t('back_to_assessments') || document.getElementById('ctaBackBtn').textContent;
-                document.getElementById('ctaHeading').textContent = want;
-                document.getElementById('ctaParagraph').textContent = para;
-                document.getElementById('ctaBackBtn').textContent = back;
-            }
+            // German page - text already in German, no i18n needed
             window.scrollTo(0, 0);
             document.querySelector('.result-card').focus?.();
         }
@@ -1135,16 +1118,22 @@ Was ist DEIN Arbeitstyp?`;
     </script>
 
     <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/global-error-handler.min.js"></script>
+<script src="js/storage-health.min.js"></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
+    <script src="js/language-switcher.min.js"></script>
     <script src="js/meta-tags-manager.js"></script>
     <script src="js/achievement-badges.js"></script>
     <script src="js/structured-data.js"></script>
 
+
+    <!-- Focus Management for Accessibility -->
+    <script src="js/focus-management.js" defer></script>
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>
 </body>
 </html>

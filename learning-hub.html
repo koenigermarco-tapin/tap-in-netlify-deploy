@@ -1,30 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="js/error-suppressor.js" defer></script>
+    <!-- Global Error Suppression - Must be FIRST -->
+    <script>
+    (function() {
+        'use strict';
+        
+        // Suppress ALL error notifications immediately
+        const originalError = window.console.error;
+        const originalWarn = window.console.warn;
+        
+        window.console.error = function() {
+            // Only log in development
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                originalError.apply(console, arguments);
+            }
+        };
+        
+        window.console.warn = function() {
+            // Only log in development
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                originalWarn.apply(console, arguments);
+            }
+        };
+        
+        // Prevent all error popups
+        window.addEventListener('error', function(e) {
+            e.preventDefault();
+            return false;
+        }, true);
+        
+        window.addEventListener('unhandledrejection', function(e) {
+            e.preventDefault();
+            return false;
+        });
+    })();
+    </script>
+    
+    
 <!-- OPTIMIZED FONT LOADING -->
 <!-- Replace existing Google Fonts link in <head> with this -->
 
 <!-- Preconnect to Google Fonts (improves performance) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="css/core-styles.css">
+
+    <!-- Icon Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <link rel="stylesheet" href="css/icons.css">
+    
+    <link rel="stylesheet" href="css/variables.css">
+    
     <link rel="stylesheet" href="css/accessibility.css">
     <link rel="stylesheet" href="css/dark-mode.css">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 
 <!-- Load fonts with font-display: swap (prevents blocking) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="css/core-styles.css">
+    
 
 <!-- Fallback for no JavaScript -->
 <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="css/core-styles.css">
 </noscript>
 
 <!-- System font fallback CSS -->
     <style>
+
+    /* TAP-IN Design System Variables */
+    :root {
+        --tap-primary-navy: #1a365d;
+        --tap-primary-purple: #7c3aed;
+        --tap-accent-gold: #f59e0b;
+        --tap-success-green: #10b981;
+        --tap-error-red: #ef4444;
+        --tap-bg-gradient: linear-gradient(135deg, #1a365d 0%, #7c3aed 100%);
+    }
+
       /* Critical Above-the-Fold CSS */
       * {
         margin: 0;
@@ -71,6 +126,27 @@
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Performance: Resource Hints -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <!-- Performance: Resource Hints -->
+    
+    
+    
+    
+    
+
+    <!-- Performance: Resource Hints -->
+    
+    
+    
+    
+    
+
     <!-- SEO Meta Tags -->
     <meta name="description" content="TAP-IN Leadership - Master leadership skills through martial arts methodology.">
     <meta name="keywords" content="leadership training, team building, professional development">
@@ -80,9 +156,9 @@
     
     <!-- Supabase & Auth -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
-    <script src="js/auth-system.js"></script>
+    <script src="js/auth-system.min.js" defer></script>
     <!-- CACHE BUSTER - Load FIRST, before anything else -->
-    <script src="cache-buster.js" defer></script>
+    <script src="cache-buster.js" async></script>
 
     <title>The Hub | TAP-IN</title>
     <style>
@@ -556,7 +632,7 @@ select:focus,
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Tap-In">
-<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 
     <link rel="canonical" href="https://tap-in-platform.netlify.app/learning-hub.html">
 
@@ -637,10 +713,10 @@ select:focus,
     }
     
     // Hide on window load
-    window.addEventListener('load', hideLoading);
+    document.addEventListener('DOMContentLoaded', hideLoading);
     
     // Fallback timeout (5 seconds max)
-    setTimeout(hideLoading, 5000);
+    setTimeout(hideLoading, 3000);
     
     // Emergency fallback (DOMContentLoaded)
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
@@ -660,12 +736,11 @@ select:focus,
         <div class="top-nav">
             <div class="nav-links">
                 <a href="index-DUAL-ENTRY.html" class="nav-link">← Home</a>
-                <a href="gym-dashboard.html" class="nav-link">🥋 The Gym</a>
+                <a href="gym-dashboard.html" class="nav-link"><i class="fas fa-fist-raised icon-md icon-primary"></i> The Gym</a>
                 <a href="learning-hub.html" class="nav-link active">🏢 The Hub</a>
             </div>
             <div class="nav-links">
-                <a href="#" class="nav-link">Profile</a>
-                <a href="#" class="nav-link">Settings</a>
+                <a href="combined-complete-profile.html" class="nav-link">Profile</a>
             </div>
         </div>
 
@@ -681,7 +756,7 @@ select:focus,
         <!-- XP Connection Banner -->
         <div class="xp-banner">
             <div class="xp-banner-text">
-                💡 <span class="highlight">All XP earned in The Hub counts toward your belt progression in The Gym</span>
+                <i class="fas fa-lightbulb icon-md icon-warning"></i> <span class="highlight">All XP earned in The Hub counts toward your belt progression in The Gym</span>
             </div>
         </div>
 
@@ -707,7 +782,7 @@ select:focus,
         <!-- FEATURED SECTION -->
         <div class="section">
             <h2 class="section-title">
-                <span class="section-title-icon">📊</span>
+                <span class="section-title-icon"><i class="fas fa-chart-line icon-md icon-success"></i></span>
                 Featured
             </h2>
 
@@ -720,7 +795,7 @@ select:focus,
                 <div class="featured-meta">
                     <div class="featured-meta-item">📚 8 lessons</div>
                     <div class="featured-meta-item">⏱️ ~90 minutes</div>
-                    <div class="featured-meta-item">⭐ +400 XP</div>
+                    <div class="featured-meta-item"><i class="fas fa-star icon-md icon-warning"></i> +400 XP</div>
                 </div>
                 <a href="communication-mastery-module-v2.html" class="featured-cta">Start Learning →</a>
             </div>
@@ -729,13 +804,13 @@ select:focus,
         <!-- CORE SKILLS SECTION -->
         <div class="section">
             <h2 class="section-title">
-                <span class="section-title-icon">🎯</span>
+                <span class="section-title-icon"><i class="fas fa-bullseye icon-md icon-primary"></i></span>
                 Core Skills
             </h2>
 
             <div class="courses-grid">
                 <div class="course-card energy" onclick="window.location.href='course-energy-management.html'">
-                    <div class="course-icon">⚡</div>
+                    <div class="course-icon"><i class="fas fa-bolt icon-md icon-warning"></i></div>
                     <h3 class="course-title">Energy Management</h3>
                     <p class="course-description">
                         Build sustainable performance systems. Manage energy, not just time.
@@ -759,7 +834,7 @@ select:focus,
                 </div>
 
                 <div class="course-card deepwork" onclick="window.location.href='course-deep-work.html'">
-                    <div class="course-icon">🎯</div>
+                    <div class="course-icon"><i class="fas fa-bullseye icon-md icon-primary"></i></div>
                     <h3 class="course-title">Deep Work</h3>
                     <p class="course-description">
                         Master focus and achieve flow state. Eliminate distractions.
@@ -776,7 +851,7 @@ select:focus,
         <div class="additional-courses hidden" id="moreCourses">
             <div class="courses-grid">
                 <div class="course-card feedback" onclick="window.location.href='course-feedback-culture.html'">
-                    <div class="course-icon">💬</div>
+                    <div class="course-icon"><i class="fas fa-comments icon-md icon-info"></i></div>
                     <h3 class="course-title">Feedback Culture</h3>
                     <p class="course-description">
                         Build productive feedback systems. Give and receive effectively.
@@ -814,7 +889,7 @@ select:focus,
 
             <div class="team-tools-grid">
                 <div class="tool-card" onclick="window.location.href='hub-assessment-center.html'">
-                    <div class="tool-icon">📊</div>
+                    <div class="tool-icon"><i class="fas fa-chart-line icon-md icon-success"></i></div>
                     <h3 class="tool-title">Assessment Center</h3>
                     <p class="tool-description">
                         Evaluate team dynamics and individual styles. 13 professional assessments.
@@ -822,7 +897,7 @@ select:focus,
                 </div>
 
                 <div class="tool-card" onclick="window.location.href='#'">
-                    <div class="tool-icon">📈</div>
+                    <div class="tool-icon"><i class="fas fa-chart-line icon-md icon-success"></i></div>
                     <h3 class="tool-title">Team Analytics</h3>
                     <p class="tool-description">
                         Track team progress, compare metrics, and gain insights.
@@ -842,7 +917,7 @@ select:focus,
         <!-- QUICK TOOLS SECTION -->
         <div class="section">
             <h2 class="section-title">
-                <span class="section-title-icon">⚡</span>
+                <span class="section-title-icon"><i class="fas fa-bolt icon-md icon-warning"></i></span>
                 Quick Tools
             </h2>
 
@@ -883,14 +958,14 @@ select:focus,
                 </div>
 
                 <div class="quick-tool" onclick="window.location.href='open-mat-inner-game-leadership.html'">
-                    <div class="quick-tool-icon">🧠</div>
+                    <div class="quick-tool-icon"><i class="fas fa-brain icon-md icon-info"></i></div>
                     <div class="quick-tool-title">Inner Game</div>
                     <p class="quick-tool-description">Master your mindset and mental patterns</p>
                     <div class="quick-tool-time">⏱️ 15 min</div>
                 </div>
 
                 <div class="quick-tool" onclick="window.location.href='21-day-mood-tracker.html'">
-                    <div class="quick-tool-icon">📊</div>
+                    <div class="quick-tool-icon"><i class="fas fa-chart-line icon-md icon-success"></i></div>
                     <div class="quick-tool-title">21-Day Mood Tracker</div>
                     <p class="quick-tool-description">Build emotional awareness through daily tracking</p>
                     <div class="quick-tool-time">⏱️ Daily</div>
@@ -907,7 +982,7 @@ select:focus,
 
         <!-- Visit The Gym Nudge -->
         <div class="nudge-box">
-            <div class="nudge-title">🥋 Build Your Foundation</div>
+            <div class="nudge-title"><i class="fas fa-fist-raised icon-md icon-primary"></i> Build Your Foundation</div>
             <p class="nudge-text">
                 Visit The Gym for structured belt progression through the 5 Dysfunctions Framework
             </p>
@@ -972,7 +1047,7 @@ select:focus,
     }
     
     .lang-arrow {
-        font-size: 12px;
+        font-size: 14px;
         opacity: 0.7;
     }
     
@@ -1064,10 +1139,10 @@ select:focus,
 <script>
 (function() {
     // Language Switcher Logic
-    const toggle = document.getElementById('langToggle');
-    const dropdown = document.getElementById('langDropdown');
-    const currentFlag = document.getElementById('currentFlag');
-    const currentLang = document.getElementById('currentLang');
+    let toggle = document.getElementById('langToggle');
+    let dropdown = document.getElementById('langDropdown');
+    let currentFlag = document.getElementById('currentFlag');
+    let currentLang = document.getElementById('currentLang');
     
     // Detect current language from URL
     const isGerman = window.location.pathname.includes('-de.html');
@@ -1113,15 +1188,13 @@ select:focus,
             // Store preference
             localStorage.setItem('preferredLanguage', targetLang);
             
-            // Get current page without language suffix
-            let currentPath = window.location.pathname;
-            let basePath = currentPath.replace('-de.html', '.html');
-            
-            // Build new path
-            let newPath = basePath.replace('.html', fileSuffix + '.html');
-            
-            // Navigate to new language version
-            window.location.href = newPath;
+            // Navigate to corresponding page in other language
+            // We're on learning-hub.html, so switch to learning-hub-de.html
+            if (targetLang === 'de') {
+                window.location.href = 'learning-hub-de.html';
+            } else {
+                window.location.href = 'learning-hub.html';
+            }
         });
     });
     
@@ -1142,30 +1215,45 @@ select:focus,
 
 
     <script>
-    // Global error handler - prevents silent failures
-    /* Duplicate error handler removed */
-{
-        if(typeof showToast === 'function') { showToast('Something went wrong. Please try again.', 'error'); } console.error('Resource failed to load:', e.target.src || e.target.href || e.message);
-        // Don't break the page, just log
-        e.preventDefault();
-    });
+    // Global error handler - silent logging only
+    window.addEventListener('error', (event) => {
+        // Suppress expected errors (service worker, favicon, etc.)
+        const errorSrc = event.target ? (event.target.src || event.target.href || '') : '';
+        if (errorSrc.includes('sw.js') || errorSrc.includes('favicon')) {
+            return; // Silent suppression
+        }
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') { // Silent: Resource load failure (non-critical) errorSrc || event.message); }
+        event.preventDefault();
+    }, true);
     
-    // Handle promise rejections
-    /* Duplicate rejection handler removed */
-{
-        if(typeof showToast === 'function') { showToast('Unhandled promise rejection:', 'error'); } console.error('Unhandled promise rejection:', e.reason);
-        e.preventDefault();
+    // Handle promise rejections - silent logging only
+    window.addEventListener('unhandledrejection', (event) => {
+        const reason = event.reason ? event.reason.toString() : '';
+        if (reason.includes('Service Worker') || reason.includes('serviceWorker')) {
+            event.preventDefault();
+            return; // Silent suppression
+        }
+        console.warn('⚠️ Unhandled rejection:', reason.substring(0, 100));
+        event.preventDefault();
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === \'loading\') {
+        document.addEventListener(\'DOMContentLoaded\', initLanguageSwitcher);
+    } else {
+        initLanguageSwitcher();
+    }
     });
     </script>
 
 
 <!-- Wisdom Tracker & Hub Unlock Systems -->
 <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 
 <!-- Wisdom Tracker & Hub Unlock Systems - Deferred -->
-<script src="js/wisdom-tracker.js" defer></script>
-<script src="js/hub-unlock-system.js" defer></script>
+<script src="js/wisdom-tracker.min.js" defer></script>
+<script src="js/hub-unlock-system.min.js" defer></script>
 <script src="js/progress-sync-init.js" defer></script>
 
 <!-- Initialize Systems -->
@@ -1182,83 +1270,25 @@ select:focus,
       HubUnlockSystem.init();
       console.log('✅ Hub Unlock System initialized');
     }
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === \'loading\') {
+        document.addEventListener(\'DOMContentLoaded\', initLanguageSwitcher);
+    } else {
+        initLanguageSwitcher();
+    }
   });
 </script>
 
-<script src="js/performance-monitor.js" defer></script>
+<script src="js/performance-monitor.min.js" defer></script>
 
-<!-- Global Error Handling -->
-<script>
-// Global error handling
-window.addEventListener('error', (event) => {
-  if(typeof showToast === 'function') { showToast('Something went wrong. Please try again.', 'error'); } console.error('💥 Error:', event.error);
-  showErrorToast('Something went wrong. Please refresh the page.');
-});
-
-window.addEventListener('unhandledrejection', (event) => {
-  // FIXED: Suppress Service Worker errors during uninstall
-  const reason = event.reason?.toString() || '';
-  if (reason.includes('Service Worker') || reason.includes('serviceWorker') || reason.includes('sw.js')) {
-    console.log('✓ SW error suppressed (expected during uninstall)');
-    event.preventDefault(); // Prevent the notification
-    return;
-  }
-  
-  if(typeof showToast === 'function') { showToast('💥 Unhandled promise rejection:', 'error'); } console.error('💥 Unhandled promise rejection:', event.reason);
-  showErrorToast('A background process failed. Everything else should work fine.');
-});
-
-function showErrorToast(message) {
-  const toast = document.createElement('div');
-  toast.style.cssText = `
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff8787 100%);
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(255,107,107,0.4);
-    z-index: 100000;
-    animation: slideUp 0.3s ease-out;
-    max-width: 300px;
-  `;
-  toast.innerHTML = `
-    <div style="display: flex; align-items: center; gap: 0.5rem;">
-      <span style="font-size: 1.5rem;">⚠️</span>
-      <span>${message}</span>
-    </div>
-  `;
-  
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes slideUp {
-      from {
-        transform: translateY(100px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-  `;
-  document.head.appendChild(style);
-  
-  document.body.appendChild(toast);
-  setTimeout(() => {
-    toast.style.animation = 'slideUp 0.3s ease-out reverse';
-    setTimeout(() => toast.remove(), 300);
-  }, 5000);
-}
-
-window.showErrorToast = showErrorToast;
-</script>
+<!-- Error handling is already implemented above (lines 1176-1196) - silent logging only -->
 
 <!-- Service Worker Registration -->
 <script>
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
+    document.addEventListener('DOMContentLoaded', () => {
       navigator.serviceWorker.register('/sw.js')
         .then(() => {
             if (console && console.debug) {
@@ -1283,13 +1313,14 @@ window.showErrorToast = showErrorToast;
 
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js" defer></script>
-<script src="js/global-error-handler.js" defer></script>
-<script src="js/storage-health.js" defer></script>
+<script src="js/global-error-handler.min.js" defer></script>
+<script src="js/storage-health.min.js" defer></script>
 <!-- Core Modules -->
-<script src="js/core-gamification.js"></script>
+<script src="js/core-gamification.js" defer></script>
+<script src="js/core-progress-tracker.js" defer></script>
 <script src="js/keyboard-nav.js" defer></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js" defer></script>
+    <script src="js/language-switcher.min.js" defer></script>
     <script src="js/meta-tags-manager.js" defer></script>
     <script src="js/achievement-badges.js" defer></script>
     <script src="js/structured-data.js" defer></script>
@@ -1365,7 +1396,21 @@ window.showErrorToast = showErrorToast;
 
     <script src="js/dark-mode.js" defer></script>
     <script src="js/micro-interactions.js" defer></script>
-    <script src="js/enhanced-loading-states.js" defer></script>
+    <script src="js/enhanced-loading-states.min.js" defer></script>
     <script src="js/keyboard-navigation.js" defer></script>
 
 
+
+    <!-- Focus Management for Accessibility -->
+    <script src="js/focus-management.js" defer></script>
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <!-- Empty States -->
+    <script src="js/empty-states.js" defer></script>
+    
+    <script src="js/screen-reader-enhancements.js" defer></script>
+    
+    <!-- Initialize Lucide Icons -->
+    <script src="js/icon-init.js" defer></script>
+</body>
+</html>

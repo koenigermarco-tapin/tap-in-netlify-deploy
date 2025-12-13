@@ -1,0 +1,417 @@
+{
+  "language_switcher": {
+    "found": 701,
+    "missing": [],
+    "errors": []
+  },
+  "german_files": {
+    "total": 101,
+    "links_checked": 101,
+    "broken_links": [
+      {
+        "file": "hub-assessment-center-de.html",
+        "broken_link": "gym-dashboard.de.html"
+      },
+      {
+        "file": "hub-assessment-center-de.html",
+        "broken_link": "worker-type-assessment.de.html"
+      },
+      {
+        "file": "hub-assessment-center-de.html",
+        "broken_link": "worker-type-assessment.de.html"
+      },
+      {
+        "file": "hub-assessment-center-de.html",
+        "broken_link": "team-assessment-enhanced-v2.de.html"
+      },
+      {
+        "file": "hub-assessment-center-de.html",
+        "broken_link": "team-assessment-enhanced-v2.de.html"
+      },
+      {
+        "file": "hub-assessment-center-de.html",
+        "broken_link": "leadership-style-assessment.de.html"
+      },
+      {
+        "file": "hub-assessment-center-de.html",
+        "broken_link": "leadership-style-assessment.de.html"
+      },
+      {
+        "file": "hub-assessment-center-de.html",
+        "broken_link": "mental-health-assessment.de.html"
+      },
+      {
+        "file": "hub-assessment-center-de.html",
+        "broken_link": "mental-health-assessment.de.html"
+      },
+      {
+        "file": "hub-assessment-center-de.html",
+        "broken_link": "work-life-balance-assessment.de.html"
+      },
+      {
+        "file": "hub-assessment-center-de.html",
+        "broken_link": "work-life-balance-assessment.de.html"
+      },
+      {
+        "file": "team-dynamics-start-de.html",
+        "broken_link": "team-profile-complete.html"
+      },
+      {
+        "file": "open-mat-inner-game-leadership-de.html",
+        "broken_link": "gym-dashboard.de.html"
+      }
+    ]
+  },
+  "avatar_system": {
+    "found": true,
+    "customization": true,
+    "issues": []
+  },
+  "coins_system": {
+    "found": true,
+    "conversion": true,
+    "issues": []
+  },
+  "shop_system": {
+    "found": false,
+    "items": 0
+  },
+  "profile_page": {
+    "found": true,
+    "avatar_display": false
+  },
+  "errors": [],
+  "integration_points": [
+    {
+      "file": "js/stripe-completion-helper.js",
+      "type": "LocalStorage usage",
+      "count": 9
+    },
+    {
+      "file": "js/wisdom-tracker.js",
+      "type": "LocalStorage usage",
+      "count": 3
+    },
+    {
+      "file": "js/feedback-widget.js",
+      "type": "LocalStorage usage",
+      "count": 4
+    },
+    {
+      "file": "js/safe-storage.js",
+      "type": "LocalStorage usage",
+      "count": 5
+    },
+    {
+      "file": "js/enhanced-avatar-system.js",
+      "type": "LocalStorage usage",
+      "count": 8
+    },
+    {
+      "file": "js/auth-system.js",
+      "type": "Supabase connection",
+      "count": 5
+    },
+    {
+      "file": "js/auth-system.js",
+      "type": "LocalStorage usage",
+      "count": 5
+    },
+    {
+      "file": "js/global-error-handler.js",
+      "type": "LocalStorage usage",
+      "count": 3
+    },
+    {
+      "file": "js/coins-system.js",
+      "type": "LocalStorage usage",
+      "count": 9
+    },
+    {
+      "file": "js/daily-streak.js",
+      "type": "LocalStorage usage",
+      "count": 11
+    },
+    {
+      "file": "js/avatar-system.js",
+      "type": "LocalStorage usage",
+      "count": 9
+    },
+    {
+      "file": "js/sync-manager.js",
+      "type": "LocalStorage usage",
+      "count": 8
+    },
+    {
+      "file": "js/hub-unlock-system.js",
+      "type": "LocalStorage usage",
+      "count": 6
+    },
+    {
+      "file": "js/lineage-system.js",
+      "type": "LocalStorage usage",
+      "count": 13
+    },
+    {
+      "file": "js/language-switcher.js",
+      "type": "LocalStorage usage",
+      "count": 2
+    },
+    {
+      "file": "js/performance-optimizer.js",
+      "type": "LocalStorage usage",
+      "count": 2
+    },
+    {
+      "file": "js/pwa-install-prompt.js",
+      "type": "LocalStorage usage",
+      "count": 3
+    },
+    {
+      "file": "js/storage-health.js",
+      "type": "LocalStorage usage",
+      "count": 8
+    },
+    {
+      "file": "js/invite-system.js",
+      "type": "LocalStorage usage",
+      "count": 23
+    },
+    {
+      "file": "js/assessment-completion-helper.js",
+      "type": "LocalStorage usage",
+      "count": 10
+    },
+    {
+      "file": "js/unified-error-system.js",
+      "type": "LocalStorage usage",
+      "count": 3
+    },
+    {
+      "file": "js/welcome-tour.js",
+      "type": "LocalStorage usage",
+      "count": 2
+    },
+    {
+      "file": "js/progress-sync-service.js",
+      "type": "Supabase connection",
+      "count": 4
+    },
+    {
+      "file": "js/progress-sync-service.js",
+      "type": "LocalStorage usage",
+      "count": 15
+    },
+    {
+      "file": "js/shared-quiz-system.js",
+      "type": "LocalStorage usage",
+      "count": 3
+    },
+    {
+      "file": "js/achievement-badges.js",
+      "type": "LocalStorage usage",
+      "count": 4
+    },
+    {
+      "file": "js/supabase-client-wrapper.js",
+      "type": "Supabase connection",
+      "count": 3
+    },
+    {
+      "file": "js/supabase-client-wrapper.js",
+      "type": "LocalStorage usage",
+      "count": 4
+    },
+    {
+      "file": "js/dark-mode.js",
+      "type": "LocalStorage usage",
+      "count": 3
+    },
+    {
+      "file": "js/core-progress-tracker.js",
+      "type": "LocalStorage usage",
+      "count": 19
+    },
+    {
+      "file": "js/analytics.js",
+      "type": "LocalStorage usage",
+      "count": 3
+    },
+    {
+      "file": "js/progress-sync-init.js",
+      "type": "LocalStorage usage",
+      "count": 3
+    },
+    {
+      "file": "js/belt-progression.js",
+      "type": "LocalStorage usage",
+      "count": 7
+    },
+    {
+      "file": "js/supabase-config.js",
+      "type": "Supabase connection",
+      "count": 1
+    },
+    {
+      "file": "js/gamification.js",
+      "type": "LocalStorage usage",
+      "count": 15
+    },
+    {
+      "file": "js/gamification-enhanced.js",
+      "type": "LocalStorage usage",
+      "count": 4
+    },
+    {
+      "file": "js/core-gamification.js",
+      "type": "LocalStorage usage",
+      "count": 10
+    },
+    {
+      "file": "js/user-checklist.js",
+      "type": "LocalStorage usage",
+      "count": 7
+    },
+    {
+      "file": "js/content-loader.js",
+      "type": "API fetch call",
+      "count": 4
+    },
+    {
+      "file": "js/talent-finder.js",
+      "type": "API fetch call",
+      "count": 1
+    },
+    {
+      "file": "js/talent-finder.js",
+      "type": "LocalStorage usage",
+      "count": 6
+    },
+    {
+      "file": "js/xp-level-system.js",
+      "type": "LocalStorage usage",
+      "count": 7
+    },
+    {
+      "file": "js/supabase-client.js",
+      "type": "Supabase connection",
+      "count": 2
+    },
+    {
+      "file": "js/supabase-client.js",
+      "type": "LocalStorage usage",
+      "count": 16
+    },
+    {
+      "file": "js/cache-buster.js",
+      "type": "LocalStorage usage",
+      "count": 2
+    },
+    {
+      "file": "js/tap-in-xp-enhanced.js",
+      "type": "LocalStorage usage",
+      "count": 24
+    },
+    {
+      "file": "js/sync-status-indicator.js",
+      "type": "LocalStorage usage",
+      "count": 1
+    },
+    {
+      "file": "game-analytics-snippet.js",
+      "type": "API fetch call",
+      "count": 1
+    },
+    {
+      "file": "stripe3-engine.js",
+      "type": "LocalStorage usage",
+      "count": 8
+    },
+    {
+      "file": "xp-unified-system.js",
+      "type": "LocalStorage usage",
+      "count": 18
+    },
+    {
+      "file": "stripe4-engine.js",
+      "type": "LocalStorage usage",
+      "count": 8
+    },
+    {
+      "file": "stripe2-engine.js",
+      "type": "LocalStorage usage",
+      "count": 8
+    },
+    {
+      "file": "gamification.js",
+      "type": "LocalStorage usage",
+      "count": 5
+    },
+    {
+      "file": "stripe1-engine.js",
+      "type": "LocalStorage usage",
+      "count": 8
+    },
+    {
+      "file": "demo-data.js",
+      "type": "LocalStorage usage",
+      "count": 5
+    },
+    {
+      "file": "create-backend-sync-recommendation.js",
+      "type": "Supabase connection",
+      "count": 3
+    },
+    {
+      "file": "create-backend-sync-recommendation.js",
+      "type": "LocalStorage usage",
+      "count": 13
+    },
+    {
+      "file": "service-worker.js",
+      "type": "API fetch call",
+      "count": 1
+    },
+    {
+      "file": "service-worker.js",
+      "type": "LocalStorage usage",
+      "count": 2
+    },
+    {
+      "file": "service-worker.js",
+      "type": "Message listener",
+      "count": 1
+    },
+    {
+      "file": "create-unified-error-system.js",
+      "type": "LocalStorage usage",
+      "count": 3
+    },
+    {
+      "file": "cache-buster.js",
+      "type": "LocalStorage usage",
+      "count": 5
+    },
+    {
+      "file": "cache-buster.js",
+      "type": "Message listener",
+      "count": 1
+    },
+    {
+      "file": "cache-buster.js",
+      "type": "PostMessage communication",
+      "count": 1
+    },
+    {
+      "file": "sw.js",
+      "type": "Message listener",
+      "count": 1
+    },
+    {
+      "file": "smart-nudges.js",
+      "type": "LocalStorage usage",
+      "count": 10
+    }
+  ],
+  "recommendations": []
+}

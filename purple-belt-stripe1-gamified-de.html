@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
     <!-- SEO Meta Tags -->
     <meta name="description" content="TAP-IN Leadership Training - Purple Belt Streifen 1: Team Ausrichtung & Gemeinsame Ziele. Meistere Purple Belt Streifen 1 mit interaktiven Lektionen, Szenarien und Quizzes.">
     <meta name="keywords" content="Leadership, Teambuilding, Persönliche Entwicklung, Purple Belt, Management Training, TAP-IN">
@@ -1282,11 +1296,11 @@
                     if (confirm('Weiter zu Streifen ' + nextStripe + '?')) {
                         window.location.href = 'white-belt-stripe' + nextStripe + '-gamified.html';
                     } else {
-                        window.location.href = 'learning-hub.html';
+                        window.location.href = 'gym-dashboard-de.html';
                     }
                 } else {
                     alert('🎉 White Belt abgeschlossen! Bereit für Blue Belt.');
-                    window.location.href = 'learning-hub.html';
+                    window.location.href = 'gym-dashboard-de.html';
                 }
             } else {
                 document.getElementById('quizFeedback').innerHTML = 
@@ -2183,15 +2197,15 @@
     </script>
     <!-- Gamification System -->
     <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 
     <script src="js/gamification.js" defer></script>
-    <script src="js/stripe-completion-helper.js" defer></script>
+    <script src="js/stripe-completion-helper.min.js" defer></script>
 
     <!-- TAP-IN Utilities -->
     <script src="js/shared-utilities.js"></script>
-    <script src="js/global-error-handler.js"></script>
-    <script src="js/storage-health.js"></script>
+    <script src="js/global-error-handler.min.js"></script>
+    <script src="js/storage-health.min.js"></script>
 
         <!-- Scenario Handling Script -->
         <script>
@@ -2520,9 +2534,12 @@
         <!-- Core JavaScript Modules -->
     <script src="js/core-gamification.js"></script>
     <script src="js/core-progress-tracker.js"></script>
-    <script src="js/lazy-confetti.js"></script>
+    <script src="js/lazy-confetti.min.js"></script>
     <script src="js/validation.js"></script>
-    <script src="js/storage-manager.js"></script>
-    <script src="js/keyboard-nav.js"></script>
+    <script src="js/safe-storage.min.js"></script>
+    <script src="js/keyboard-navigation.js"></script>
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>
 </body>
 </html>

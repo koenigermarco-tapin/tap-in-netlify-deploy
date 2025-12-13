@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
     <!-- Open Graph / Facebook -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://tap-in-platform.netlify.app/white-belt-assessment.html">
@@ -798,7 +812,7 @@
             </div>
 
             <div class="action-buttons" style="margin-top: 40px;">
-                <button class="btn btn-primary" onclick="window.location.href='learning-hub.html'">
+                <button class="btn btn-primary" onclick="window.location.href='gym-dashboard.html'">
                     Return to Learning Hub
                 </button>
                 <button class="btn btn-secondary" onclick="window.location.href='blue-belt-stripe1-gamified.html'" id="nextBeltBtn" style="display: none;">
@@ -808,7 +822,7 @@
         </div>
 
         <div style="text-align: center; margin: 40px 0;">
-            <a href="learning-hub.html" style="color: white; text-decoration: none; font-weight: 600; background: rgba(255,255,255,0.2); padding: 12px 24px; border-radius: 10px; display: inline-block;">
+            <a href="gym-dashboard.html" style="color: white; text-decoration: none; font-weight: 600; background: rgba(255,255,255,0.2); padding: 12px 24px; border-radius: 10px; display: inline-block;">
                 ← Back to Learning Hub
             </a>
         </div>
@@ -1261,25 +1275,30 @@
 
     <!-- Gamification System -->
     <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 
     <script src="js/gamification.js" defer></script>
     <script src="js/assessment-completion-helper.js" defer></script>
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/global-error-handler.min.js"></script>
+<script src="js/storage-health.min.js"></script>
 <!-- Core Modules -->
 <script src="js/core-gamification.js"></script>
 <script src="js/core-progress-tracker.js"></script>
-<script src="js/lazy-confetti.js"></script>
-<script src="js/keyboard-nav.js"></script>
+<script src="js/lazy-confetti.min.js"></script>
+<script src="js/keyboard-navigation.js"></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
+    <script src="js/language-switcher.min.js"></script>
     <script src="js/meta-tags-manager.js"></script>
     <script src="js/achievement-badges.js"></script>
     <script src="js/structured-data.js"></script>
 
-    <script src="js/performance-monitor.js"></script>
+    <script src="js/performance-monitor.min.js"></script>
 
 </html>
+    <!-- Focus Management for Accessibility -->
+    <script src="js/focus-management.js" defer></script>
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>

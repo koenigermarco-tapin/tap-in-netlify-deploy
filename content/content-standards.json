@@ -1,0 +1,12 @@
+{
+  "quiz_questions_per_stripe": 10,
+  "passing_threshold": 0.7,
+  "black_belt_threshold": 0.85,
+  "scenarios_per_stripe": 4,
+  "fun_facts_per_stripe": 3,
+  "multiple_choice_per_stripe": 3,
+  "min_lesson_length": 800,
+  "max_lesson_length": 1500,
+  "research_citations_required": true,
+  "actionable_steps_required": true
+}

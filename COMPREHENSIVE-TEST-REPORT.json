@@ -1,0 +1,414 @@
+{
+  "pages_tested": 46,
+  "pages_passed": 31,
+  "pages_failed": 15,
+  "issues": [
+    {
+      "page": "belt-assessment-de.html",
+      "type": "Broken Link",
+      "description": "Link 'index-de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "type": "Broken Link",
+      "description": "Link '/icons/icon-192.png' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "type": "Broken Link",
+      "description": "Link 'achievements.de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "type": "Broken Link",
+      "description": "Link 'evening-reflection-de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "type": "Broken Link",
+      "description": "Link 'worker-type-assessment-de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "type": "Broken Link",
+      "description": "Link 'team-assessment-enhanced-v2-de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "type": "Broken Link",
+      "description": "Link 'team-profile-complete-de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "type": "Broken Link",
+      "description": "Link 'combined-profile-carousel-de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "type": "Broken Link",
+      "description": "Link 'team-composition-analyzer-de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "type": "Broken Link",
+      "description": "Link 'open-mat-reframe-60-de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard.de.html",
+      "type": "Missing Language Switcher",
+      "description": "Critical page missing language switcher HTML",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard.de.html",
+      "type": "Broken Link",
+      "description": "Link 'team-profile-complete.de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard.de.html",
+      "type": "Broken Link",
+      "description": "Link 'team-composition-analyzer.de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard.html",
+      "type": "Broken Link",
+      "description": "Link 'icons/icon-192.png' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard.html",
+      "type": "Broken Link",
+      "description": "Link 'achievements.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard.html",
+      "type": "Broken Link",
+      "description": "Link 'article-inner-game-leadership.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard.html",
+      "type": "Broken Link",
+      "description": "Link 'article-energy-management.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard.html",
+      "type": "Broken Link",
+      "description": "Link 'article-decision-fatigue.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard.html",
+      "type": "Broken Link",
+      "description": "Link 'article-boundaries-at-work.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "gym-dashboard.html",
+      "type": "Broken Link",
+      "description": "Link 'article-flow-state.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "index-DUAL-ENTRY-de.html",
+      "type": "Broken Link",
+      "description": "Link '/icons/icon-192.png' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "index-DUAL-ENTRY.html",
+      "type": "Broken Link",
+      "description": "Link '/icons/icon-192.png' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "learning-hub-de.html",
+      "type": "Broken Link",
+      "description": "Link '/icons/icon-192.png' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "learning-hub-de.html",
+      "type": "Broken Link",
+      "description": "Link 'open-mat-5-minute-morning-routine-de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "learning-hub-de.html",
+      "type": "Broken Link",
+      "description": "Link 'open-mat-decision-framework-de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "learning-hub-de.html",
+      "type": "Broken Link",
+      "description": "Link 'open-mat-energy-audit-de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "learning-hub-de.html",
+      "type": "Broken Link",
+      "description": "Link 'open-mat-weekly-review-de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "learning-hub-de.html",
+      "type": "Broken Link",
+      "description": "Link '21-day-mood-tracker-de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "learning-hub-de.html",
+      "type": "Broken Link",
+      "description": "Link 'calendar-integration-de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "learning-hub.de.html",
+      "type": "Missing Language Switcher",
+      "description": "Critical page missing language switcher HTML",
+      "severity": "error"
+    },
+    {
+      "page": "learning-hub.html",
+      "type": "Broken Link",
+      "description": "Link 'icons/icon-192.png' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "purple-belt-assessment.de.html",
+      "type": "Broken Link",
+      "description": "Link 'belt-check.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "QUICK-ADD-DEMO-DATA.html",
+      "type": "Broken Link",
+      "description": "Link '/dashboard.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "achievement-badges.html",
+      "type": "Broken Link",
+      "description": "Link '/dashboard.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "advanced-analytics.html",
+      "type": "Broken Link",
+      "description": "Link '/dashboard.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "assessment-belt-landing-de.html",
+      "type": "Broken Link",
+      "description": "Link 'index-de.html' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "assessment-belt-results-de.html",
+      "type": "Broken Link",
+      "description": "Link '${routing.gymLink}' points to non-existent file",
+      "severity": "error"
+    },
+    {
+      "page": "assessment-belt-results-de.html",
+      "type": "Broken Link",
+      "description": "Link '${r.hubLink}' points to non-existent file",
+      "severity": "error"
+    }
+  ],
+  "language_switchers": [
+    {
+      "page": "gym-dashboard-de.html",
+      "status": "ok",
+      "has_corresponding": true
+    },
+    {
+      "page": "gym-dashboard.html",
+      "status": "ok",
+      "has_corresponding": true
+    },
+    {
+      "page": "index-DUAL-ENTRY-de.html",
+      "status": "ok",
+      "has_corresponding": true
+    },
+    {
+      "page": "index-DUAL-ENTRY.html",
+      "status": "ok",
+      "has_corresponding": true
+    },
+    {
+      "page": "learning-hub-de.html",
+      "status": "ok",
+      "has_corresponding": true
+    },
+    {
+      "page": "learning-hub.html",
+      "status": "ok",
+      "has_corresponding": true
+    }
+  ],
+  "broken_links": [
+    {
+      "page": "belt-assessment-de.html",
+      "link": "index-de.html"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "link": "/icons/icon-192.png"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "link": "achievements.de.html"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "link": "evening-reflection-de.html"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "link": "worker-type-assessment-de.html"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "link": "team-assessment-enhanced-v2-de.html"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "link": "team-profile-complete-de.html"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "link": "combined-profile-carousel-de.html"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "link": "team-composition-analyzer-de.html"
+    },
+    {
+      "page": "gym-dashboard-de.html",
+      "link": "open-mat-reframe-60-de.html"
+    },
+    {
+      "page": "gym-dashboard.de.html",
+      "link": "team-profile-complete.de.html"
+    },
+    {
+      "page": "gym-dashboard.de.html",
+      "link": "team-composition-analyzer.de.html"
+    },
+    {
+      "page": "gym-dashboard.html",
+      "link": "icons/icon-192.png"
+    },
+    {
+      "page": "gym-dashboard.html",
+      "link": "achievements.html"
+    },
+    {
+      "page": "gym-dashboard.html",
+      "link": "article-inner-game-leadership.html"
+    },
+    {
+      "page": "gym-dashboard.html",
+      "link": "article-energy-management.html"
+    },
+    {
+      "page": "gym-dashboard.html",
+      "link": "article-decision-fatigue.html"
+    },
+    {
+      "page": "gym-dashboard.html",
+      "link": "article-boundaries-at-work.html"
+    },
+    {
+      "page": "gym-dashboard.html",
+      "link": "article-flow-state.html"
+    },
+    {
+      "page": "index-DUAL-ENTRY-de.html",
+      "link": "/icons/icon-192.png"
+    },
+    {
+      "page": "index-DUAL-ENTRY.html",
+      "link": "/icons/icon-192.png"
+    },
+    {
+      "page": "learning-hub-de.html",
+      "link": "/icons/icon-192.png"
+    },
+    {
+      "page": "learning-hub-de.html",
+      "link": "open-mat-5-minute-morning-routine-de.html"
+    },
+    {
+      "page": "learning-hub-de.html",
+      "link": "open-mat-decision-framework-de.html"
+    },
+    {
+      "page": "learning-hub-de.html",
+      "link": "open-mat-energy-audit-de.html"
+    },
+    {
+      "page": "learning-hub-de.html",
+      "link": "open-mat-weekly-review-de.html"
+    },
+    {
+      "page": "learning-hub-de.html",
+      "link": "21-day-mood-tracker-de.html"
+    },
+    {
+      "page": "learning-hub-de.html",
+      "link": "calendar-integration-de.html"
+    },
+    {
+      "page": "learning-hub.html",
+      "link": "icons/icon-192.png"
+    },
+    {
+      "page": "purple-belt-assessment.de.html",
+      "link": "belt-check.html"
+    },
+    {
+      "page": "QUICK-ADD-DEMO-DATA.html",
+      "link": "/dashboard.html"
+    },
+    {
+      "page": "achievement-badges.html",
+      "link": "/dashboard.html"
+    },
+    {
+      "page": "advanced-analytics.html",
+      "link": "/dashboard.html"
+    },
+    {
+      "page": "assessment-belt-landing-de.html",
+      "link": "index-de.html"
+    },
+    {
+      "page": "assessment-belt-results-de.html",
+      "link": "${routing.gymLink}"
+    },
+    {
+      "page": "assessment-belt-results-de.html",
+      "link": "${r.hubLink}"
+    }
+  ],
+  "missing_corresponding_pages": []
+}

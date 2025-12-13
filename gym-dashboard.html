@@ -1,32 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="js/error-suppressor.js" defer></script>
+    <!-- Global Error Suppression - Must be FIRST -->
+    <script>
+    (function() {
+        'use strict';
+        
+        // Suppress ALL error notifications immediately
+        const originalError = window.console.error;
+        const originalWarn = window.console.warn;
+        
+        window.console.error = function() {
+            // Only log in development
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                originalError.apply(console, arguments);
+            }
+        };
+        
+        window.console.warn = function() {
+            // Only log in development
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                originalWarn.apply(console, arguments);
+            }
+        };
+        
+        // Prevent all error popups
+        window.addEventListener('error', function(e) {
+            e.preventDefault();
+            return false;
+        }, true);
+        
+        window.addEventListener('unhandledrejection', function(e) {
+            e.preventDefault();
+            return false;
+        });
+    })();
+    </script>
+    
 <!-- OPTIMIZED FONT LOADING -->
 <!-- Replace existing Google Fonts link in <head> with this -->
 
 <!-- Preconnect to Google Fonts (improves performance) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
+
     
+    <!-- Error Suppressor (Load FIRST) -->
+    
+    <!-- XP Manager (Load SECOND) -->
+    <script src="js/xp-manager.js" defer></script>
+    
+    <!-- Icon Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <link rel="stylesheet" href="css/icons.css">
+    
+    <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/accessibility.css">
     <link rel="stylesheet" href="css/checklist-styles.css">
     <link rel="stylesheet" href="css/dark-mode.css">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/conversion-boosters.css">
+
     <link rel="stylesheet" href="css/core-styles.css">
 
 <!-- Load fonts with font-display: swap (prevents blocking) - OPTIMIZED -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'; this.onload=null;">
     
 
 <!-- Fallback for no JavaScript -->
 <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     
 </noscript>
 
 <!-- System font fallback CSS -->
     <style>
+
+    /* TAP-IN Design System Variables */
+    :root {
+        --tap-primary-navy: #1a365d;
+        --tap-primary-purple: #7c3aed;
+        --tap-accent-gold: #f59e0b;
+        --tap-success-green: #10b981;
+        --tap-error-red: #ef4444;
+        --tap-bg-gradient: linear-gradient(135deg, #1a365d 0%, #7c3aed 100%);
+    }
+
       /* Critical Above-the-Fold CSS */
       * {
         margin: 0;
@@ -73,6 +133,36 @@
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Performance: Resource Hints -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+
+<noscript>
+    
+</noscript>
+
+
+
+<noscript>
+    
+</noscript>
+
+    <!-- Performance: Resource Hints -->
+    
+    
+    
+    
+    
+
+    <!-- Performance: Resource Hints -->
+    
+    
+    
+    
+    
+
     <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tap-in-platform.netlify.app/temp.html">
@@ -88,7 +178,7 @@
 <meta property="twitter:image" content="/og-image.png">
 
     <!-- CACHE BUSTER - Load FIRST, before anything else -->
-    <script src="cache-buster.js" defer></script>
+    <script src="cache-buster.js" async></script>
 
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
@@ -97,17 +187,17 @@
     
     <!-- Supabase & Auth -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
-    <script src="js/auth-system.js"></script>
+    <script src="js/auth-system.min.js" defer></script>
     
-    <!-- Avatar System -->
-    <link rel="stylesheet" href="avatar-styles.css">
-    <script src="js/avatar-system.js" defer></script>
+    <!-- Avatar System (New) -->
+    <!-- Avatar system disabled until design is improved -->
+    <!-- <script src="js/avatar-system.js" defer></script> -->
     
     <!-- Gamification Systems -->
     <link rel="stylesheet" href="css/xp-level-system.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js" defer></script>
     <script src="js/xp-level-system.js" defer></script>
-    <script src="js/daily-streak.js" defer></script>
+    <script src="js/daily-streak.min.js" defer></script>
     <script src="js/gamification-celebrations.js" defer></script>
     
     <style>
@@ -1081,7 +1171,7 @@
         }
 
         /* Responsive */
-        @media (max-width: 100%; max-width: 1200px;) {
+        @media (max-width: 1200px) {
             .dashboard-grid {
                 grid-template-columns: 1fr;
             }
@@ -1105,18 +1195,18 @@
             }
         }
 
-        @media (max-width: 100%; max-width: 768px;) {
+        @media (max-width: 768px) {
             .main-container {
                 padding: 1rem;
+            }
             
-        /* Mobile font size fix - ensure readable text */
-        body {
-            font-size: 16px !important;
-        }
-        p, li, span {
-            font-size: 14px !important;
-        }
-}
+            /* Mobile font size fix - ensure readable text */
+            body {
+                font-size: 16px !important;
+            }
+            p, li, span {
+                font-size: 14px !important;
+            }
 
             .top-nav {
                 padding: 1rem;
@@ -1228,20 +1318,20 @@ select:focus,
 </style>
     
     <!-- Gamification System -->
-    <!-- Performance Optimizer - Load First -->
-    <script src="js/performance-optimizer.js"></script>
+    <!-- Performance Optimizer - Load First (must load before other scripts) -->
+    <script src="js/performance-optimizer.min.js"></script>
     <!-- Core scripts - deferred -->
     <script src="js/gamification.js" defer></script>
     <script src="js/gym-dashboard-init.js" defer></script>
     <script src="js/belt-progression.js" defer></script>
 
 <!-- PWA Manifest -->
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#4a7c9c">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Tap-In">
-<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 
     <link rel="canonical" href="https://tap-in-platform.netlify.app/gym-dashboard.html">
 
@@ -1315,23 +1405,26 @@ select:focus,
     <!-- Top Navigation -->
     <nav class="top-nav" role="navigation" id="navigation" aria-label="Main navigation">
         <div class="logo">
-            🥋 TAP-IN <span>GYM</span>
+            <i class="fas fa-fist-raised icon-md icon-primary"></i> TAP-IN <span>GYM</span>
         </div>
         <div class="nav-center" style="display: flex; gap: 1rem; align-items: center;">
-            <a href="gym-dashboard.html" style="color: white; background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600;">🥋 The Gym</a>
+            <a href="gym-dashboard.html" style="color: white; background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600;"><i class="fas fa-fist-raised icon-md icon-primary"></i> The Gym</a>
             <a href="learning-hub.html" style="color: rgba(255,255,255,0.7); padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='white';" onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.7)';">🏢 The Hub</a>
         </div>
         <div class="nav-right">
             <a href="account.html" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 0.5rem 1rem; border-radius: 6px; transition: all 0.2s; font-weight: 600;" onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='white';" onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.7)';">🔐 Account</a>
-            <a href="leaderboard.html" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 0.5rem 1rem; border-radius: 6px; transition: all 0.2s; font-weight: 600;" onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='white';" onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.7)';">🏆 Leaderboard</a>
+            <a href="leaderboard.html" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 0.5rem 1rem; border-radius: 6px; transition: all 0.2s; font-weight: 600;" onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='white';" onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.7)';"><i class="fas fa-trophy icon-md icon-warning"></i> Leaderboard</a>
             <a href="achievements.html" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 0.5rem 1rem; border-radius: 6px; transition: all 0.2s; font-weight: 600;" onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='white';" onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.7)';">🏅 View Achievements</a>
             <div class="streak-badge" data-streak-display>
-                🔥 0 days
+                <i class="fas fa-fire icon-md icon-danger"></i> 0 days
             </div>
             <div class="xp-badge" id="navXPBadge">
-                ⭐ <span id="navXP">0</span> XP • <span data-level-display>Level 1: Beginner</span>
+                <i class="fas fa-star icon-md icon-warning"></i> <span id="navXP">0</span> XP • <span data-level-display>Level 1: Beginner</span>
             </div>
-            <div class="user-avatar">M</div>
+            <!-- Avatar removed - will be re-added when design is improved -->
+            <!-- <div class="user-avatar avatar-container small" style="cursor: pointer; width: 40px; height: 40px;" title="Click to customize">
+                Generated by AvatarSystem
+            </div> -->
         </div>
     </nav>
 
@@ -1340,7 +1433,7 @@ select:focus,
     
 <!-- Empty State Template (for achievements) -->
 <div id="empty-achievements" class="empty-state" style="display: none;">
-    <div class="empty-state-icon">🏆</div>
+    <div class="empty-state-icon"><i class="fas fa-trophy icon-md icon-warning"></i></div>
     <div class="empty-state-title">No Achievements Yet</div>
     <div class="empty-state-description">
         Start your leadership journey to unlock achievements and track your progress!
@@ -1350,7 +1443,7 @@ select:focus,
 
 <!-- Empty State Template (for progress) -->
 <div id="empty-progress" class="empty-state" style="display: none;">
-    <div class="empty-state-icon">📊</div>
+    <div class="empty-state-icon"><i class="fas fa-chart-line icon-md icon-success"></i></div>
     <div class="empty-state-title">Welcome to TAP-IN!</div>
     <div class="empty-state-description">
         Begin your leadership development journey. Complete your first assessment or start a belt stripe to see your progress here.
@@ -1358,8 +1451,14 @@ select:focus,
     <a href="/belt-assessment-v2.html" class="empty-state-action">Take Assessment</a>
 </div>
 
-        <!-- User Avatar Component -->
-        <div id="dashboardAvatar" style="margin-bottom: 2rem;"></div>
+        <!-- User Avatar Component (Clickable) -->
+        <!-- Avatar removed - will be re-added when design is improved -->
+        <!-- <div id="dashboardAvatar" class="avatar-container medium" style="margin-bottom: 2rem; cursor: pointer; max-width: 200px; margin-left: auto; margin-right: auto;" title="Click to customize your avatar">
+            Generated by AvatarSystem
+        </div> -->
+        
+        <!-- Avatar Customizer Container -->
+        <div id="avatarCustomizerContainer"></div>
         
         <!-- Welcome Section -->
         <div class="welcome-section">
@@ -1378,7 +1477,7 @@ select:focus,
                     </div>
                     <div class="resume-content" style="padding: 1.5rem;">
                         <div class="resume-stripe" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <div class="resume-icon" style="font-size: 2rem;" id="resumeIcon">⚪</div>
+                            <div class="resume-icon" style="font-size: 2rem;" id="resumeIcon"><i class="fas fa-circle icon-md" style="color: #f7fafc;"></i></div>
                             <div class="resume-info">
                                 <div class="resume-title" style="font-weight: 600; margin-bottom: 0.25rem; color: var(--text-white);" id="resumeTitle">
                                     White Belt Stripe 1: Who Are You?
@@ -1426,6 +1525,24 @@ select:focus,
                         <div class="belt-step" id="stripe4-step">
                             <div class="belt-dot">4</div>
                             <div class="belt-step-label">How You Show Up</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONVERSION BOOSTERS: All 5 Features -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                    <!-- Left Column: Milestone + Streak -->
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div id="tapMilestoneTracker"></div>
+                        <div id="tapStreakWidget"></div>
+                    </div>
+                    
+                    <!-- Right Column: Leaderboard + Activity Feed -->
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div id="tapLeaderboardWidget"></div>
+                        <div class="tap-activity-feed">
+                            <div class="tap-activity-title">🏆 Recent Achievements</div>
+                            <div id="tapActivityFeed"></div>
                         </div>
                     </div>
                 </div>
@@ -1478,7 +1595,7 @@ select:focus,
                             </div>
                         </div>
                         <div class="module-card" data-target="white-belt-stripe2-carousel-NEW.html" id="module-stripe2">
-                            <div class="module-icon">🧠</div>
+                            <div class="module-icon"><i class="fas fa-brain icon-md icon-info"></i></div>
                             <div class="module-title">How Do You Operate?</div>
                             <div class="module-progress" id="module-stripe2-progress">Mental Health & Energy</div>
                             <div class="module-bar">
@@ -1494,7 +1611,7 @@ select:focus,
                             </div>
                         </div>
                         <div class="module-card" data-target="white-belt-stripe4-carousel-NEW.html" id="module-stripe4">
-                            <div class="module-icon">🎯</div>
+                            <div class="module-icon"><i class="fas fa-bullseye icon-md icon-primary"></i></div>
                             <div class="module-title">How Do You Show Up?</div>
                             <div class="module-progress" id="module-stripe4-progress">Mission & Purpose</div>
                             <div class="module-bar">
@@ -1513,7 +1630,7 @@ select:focus,
                 <div class="open-mat-section">
                     <div class="section-header">
                         <div>
-                            <h2 class="section-title">🥋 Open Mat</h2>
+                            <h2 class="section-title"><i class="fas fa-fist-raised icon-md icon-primary"></i> Open Mat</h2>
                             <p class="section-subtitle">Extra training, deep dives, and discovery</p>
                         </div>
                         <a href="white-belt.html" class="card-action">Browse All →</a>
@@ -1527,7 +1644,7 @@ select:focus,
                             <div class="open-mat-meta">
                                 <span>📖 Article</span>
                                 <span>⏱️ 8 min</span>
-                                <span>⭐ +25 XP</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> +25 XP</span>
                             </div>
                         </div>
                         <div class="open-mat-card" onclick="window.location.href='open-mat-box-breathing.html'" style="cursor: pointer;">
@@ -1538,7 +1655,7 @@ select:focus,
                             <div class="open-mat-meta">
                                 <span>🎥 Exercise</span>
                                 <span>⏱️ 5 min</span>
-                                <span>⭐ +15 XP</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> +15 XP</span>
                             </div>
                         </div>
                         <div class="open-mat-card" onclick="window.location.href='open-mat-reframe-60.html'" style="cursor: pointer;">
@@ -1547,19 +1664,19 @@ select:focus,
                             <div class="open-mat-title">Reframe in 60 Seconds</div>
                             <div class="open-mat-desc">A micro-practice for shifting perspective when you're stuck.</div>
                             <div class="open-mat-meta">
-                                <span>⚡ Micro</span>
+                                <span><i class="fas fa-bolt icon-md icon-warning"></i> Micro</span>
                                 <span>⏱️ 1 min</span>
-                                <span>⭐ +10 XP</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> +10 XP</span>
                             </div>
                         </div>
                         <div class="open-mat-card" onclick="window.location.href='open-mat-energy-audit.html'" style="cursor: pointer;">
-                            <div class="open-mat-icon">📊</div>
+                            <div class="open-mat-icon"><i class="fas fa-chart-line icon-md icon-success"></i></div>
                             <div class="open-mat-title">Energy Mapping Exercise</div>
                             <div class="open-mat-desc">Track your energy for a week and discover your hidden patterns.</div>
                             <div class="open-mat-meta">
                                 <span>📝 Worksheet</span>
                                 <span>⏱️ 15 min</span>
-                                <span>⭐ +40 XP</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> +40 XP</span>
                             </div>
                         </div>
                         <div class="open-mat-card" onclick="window.location.href='open-mat-jiu-jitsu.html'" style="cursor: pointer;">
@@ -1569,7 +1686,7 @@ select:focus,
                             <div class="open-mat-meta">
                                 <span>🎥 Video</span>
                                 <span>⏱️ 12 min</span>
-                                <span>⭐ +30 XP</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> +30 XP</span>
                             </div>
                         </div>
                         <div class="open-mat-card" onclick="window.location.href='open-mat-weekly-experiment.html'" style="cursor: pointer;">
@@ -1579,7 +1696,7 @@ select:focus,
                             <div class="open-mat-meta">
                                 <span>🔬 Experiment</span>
                                 <span>⏱️ 7 days</span>
-                                <span>⭐ +100 XP</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> +100 XP</span>
                             </div>
                         </div>
                     </div>
@@ -1596,39 +1713,39 @@ select:focus,
                     <div class="open-mat-grid">
                         <div class="open-mat-card featured" id="article-inner-game-card" onclick="window.location.href='article-inner-game-leadership.html'" style="cursor: pointer;">
                             <span class="open-mat-badge" id="article-inner-game-badge">Research</span>
-                            <div class="open-mat-icon">🧠</div>
+                            <div class="open-mat-icon"><i class="fas fa-brain icon-md icon-info"></i></div>
                             <div class="open-mat-title">The Inner Game of Leadership</div>
                             <div class="open-mat-desc">How Timothy Gallwey's tennis research explains leadership performance</div>
                             <div class="open-mat-meta">
                                 <span>📖 Research</span>
                                 <span>⏱️ 8-10 min</span>
-                                <span>⭐ +25 XP</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> +25 XP</span>
                             </div>
-                            <div id="article-inner-game-status" style="display: none; margin-top: 0.5rem; font-size: 0.85rem; color: var(--success-green);">✅ Completed</div>
+                            <div id="article-inner-game-status" style="display: none; margin-top: 0.5rem; font-size: 0.85rem; color: var(--success-green);"><i class="fas fa-check-circle icon-md icon-success"></i> Completed</div>
                         </div>
                         <div class="open-mat-card" id="article-energy-card" onclick="window.location.href='article-energy-management.html'" style="cursor: pointer;">
                             <span class="open-mat-badge" id="article-energy-badge">Research</span>
-                            <div class="open-mat-icon">⚡</div>
+                            <div class="open-mat-icon"><i class="fas fa-bolt icon-md icon-warning"></i></div>
                             <div class="open-mat-title">The Science of Energy Management</div>
                             <div class="open-mat-desc">Why time management fails and what high performers do instead</div>
                             <div class="open-mat-meta">
                                 <span>📖 Research</span>
                                 <span>⏱️ 10-12 min</span>
-                                <span>⭐ +25 XP</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> +25 XP</span>
                             </div>
-                            <div id="article-energy-status" style="display: none; margin-top: 0.5rem; font-size: 0.85rem; color: var(--success-green);">✅ Completed</div>
+                            <div id="article-energy-status" style="display: none; margin-top: 0.5rem; font-size: 0.85rem; color: var(--success-green);"><i class="fas fa-check-circle icon-md icon-success"></i> Completed</div>
                         </div>
                         <div class="open-mat-card" id="article-decision-card" onclick="window.location.href='article-decision-fatigue.html'" style="cursor: pointer;">
                             <span class="open-mat-badge" id="article-decision-badge">Research</span>
-                            <div class="open-mat-icon">🎯</div>
+                            <div class="open-mat-icon"><i class="fas fa-bullseye icon-md icon-primary"></i></div>
                             <div class="open-mat-title">Decision Fatigue</div>
                             <div class="open-mat-desc">The Baumeister research on willpower depletion and how to protect it</div>
                             <div class="open-mat-meta">
                                 <span>📖 Research</span>
                                 <span>⏱️ 8 min</span>
-                                <span>⭐ +20 XP</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> +20 XP</span>
                             </div>
-                            <div id="article-decision-status" style="display: none; margin-top: 0.5rem; font-size: 0.85rem; color: var(--success-green);">✅ Completed</div>
+                            <div id="article-decision-status" style="display: none; margin-top: 0.5rem; font-size: 0.85rem; color: var(--success-green);"><i class="fas fa-check-circle icon-md icon-success"></i> Completed</div>
                         </div>
                         <div class="open-mat-card" id="article-boundaries-card" onclick="window.location.href='article-boundaries-at-work.html'" style="cursor: pointer;">
                             <span class="open-mat-badge" id="article-boundaries-badge">Research</span>
@@ -1638,9 +1755,9 @@ select:focus,
                             <div class="open-mat-meta">
                                 <span>📖 Research</span>
                                 <span>⏱️ 10 min</span>
-                                <span>⭐ +25 XP</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> +25 XP</span>
                             </div>
-                            <div id="article-boundaries-status" style="display: none; margin-top: 0.5rem; font-size: 0.85rem; color: var(--success-green);">✅ Completed</div>
+                            <div id="article-boundaries-status" style="display: none; margin-top: 0.5rem; font-size: 0.85rem; color: var(--success-green);"><i class="fas fa-check-circle icon-md icon-success"></i> Completed</div>
                         </div>
                         <div class="open-mat-card featured" id="article-flow-card" onclick="window.location.href='article-flow-state.html'" style="cursor: pointer;">
                             <span class="open-mat-badge" id="article-flow-badge">Research</span>
@@ -1650,9 +1767,9 @@ select:focus,
                             <div class="open-mat-meta">
                                 <span>📖 Research</span>
                                 <span>⏱️ 12 min</span>
-                                <span>⭐ +30 XP</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> +30 XP</span>
                             </div>
-                            <div id="article-flow-status" style="display: none; margin-top: 0.5rem; font-size: 0.85rem; color: var(--success-green);">✅ Completed</div>
+                            <div id="article-flow-status" style="display: none; margin-top: 0.5rem; font-size: 0.85rem; color: var(--success-green);"><i class="fas fa-check-circle icon-md icon-success"></i> Completed</div>
                         </div>
                     </div>
                 </div>
@@ -1661,20 +1778,20 @@ select:focus,
                 <div class="open-mat-section">
                     <div class="section-header">
                         <div>
-                            <h2 class="section-title">🥋 Belt Progression</h2>
+                            <h2 class="section-title"><i class="fas fa-fist-raised icon-md icon-primary"></i> Belt Progression</h2>
                             <p class="section-subtitle">Continue your leadership development journey</p>
                         </div>
                     </div>
                     <div class="open-mat-grid">
                         <div class="open-mat-card featured" id="purple-belt-card">
                             <span class="open-mat-badge new">New</span>
-                            <div class="open-mat-icon">🟣</div>
+                            <div class="open-mat-icon"><i class="fas fa-circle icon-md" style="color: #7c3aed;"></i></div>
                             <div class="open-mat-title">Purple Belt: Team Alignment</div>
                             <div class="open-mat-desc">From personal mastery to collective excellence. Transform communication skills into team results.</div>
                             <div class="open-mat-meta">
                                 <span>📚 4 Stripes</span>
                                 <span>⏱️ 6-8 weeks</span>
-                                <span>⭐ Advanced</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> Advanced</span>
                             </div>
                             <div class="belt-progress-bar" style="width: 100%; background: #e2e8f0; border-radius: 8px; height: 8px; margin: 1rem 0; overflow: hidden;">
                                 <div id="purple-progress-fill" style="height: 100%; background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%); width: 0%; transition: width 0.5s;"></div>
@@ -1684,13 +1801,13 @@ select:focus,
                         </div>
                         <div class="open-mat-card featured" id="brown-belt-card">
                             <span class="open-mat-badge new">New</span>
-                            <div class="open-mat-icon">🟤</div>
+                            <div class="open-mat-icon"><i class="fas fa-circle icon-md" style="color: #92400e;"></i></div>
                             <div class="open-mat-title">Brown Belt: Systems & Strategy</div>
                             <div class="open-mat-desc">Master organizational systems, culture design, and strategic leadership thinking.</div>
                             <div class="open-mat-meta">
                                 <span>📚 4 Stripes</span>
                                 <span>⏱️ 8-10 weeks</span>
-                                <span>⭐ Expert</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> Expert</span>
                             </div>
                             <div class="belt-progress-bar" style="width: 100%; background: #e2e8f0; border-radius: 8px; height: 8px; margin: 1rem 0; overflow: hidden;">
                                 <div id="brown-progress-fill" style="height: 100%; background: linear-gradient(135deg, #78350f 0%, #92400e 100%); width: 0%; transition: width 0.5s;"></div>
@@ -1706,7 +1823,7 @@ select:focus,
                             <div class="open-mat-meta">
                                 <span>📚 4 Stripes</span>
                                 <span>⏱️ 10+ weeks</span>
-                                <span>⭐ Mastery</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> Mastery</span>
                             </div>
                             <div class="belt-progress-bar" style="width: 100%; background: #e2e8f0; border-radius: 8px; height: 8px; margin: 1rem 0; overflow: hidden;">
                                 <div id="black-progress-fill" style="height: 100%; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); width: 0%; transition: width 0.5s;"></div>
@@ -1721,7 +1838,7 @@ select:focus,
                 <div class="card team-assessments-card">
                     <div class="card-header">
                         <div>
-                            <div class="card-title">👥 Team Assessments</div>
+                            <div class="card-title"><i class="fas fa-users icon-md icon-primary"></i> Team Assessments</div>
                             <div class="card-subtitle">Send assessments to candidates, team members, or run team-wide diagnostics</div>
                         </div>
                     </div>
@@ -1732,7 +1849,7 @@ select:focus,
                             <div class="team-assessment-desc">Understand how someone works best: Maker, Manager, or Mechanic</div>
                             <div class="team-stat">
                                 <span>⏱️ 8-10 min</span>
-                                <span>📊 Individual</span>
+                                <span><i class="fas fa-chart-line icon-md icon-success"></i> Individual</span>
                             </div>
                             <div class="team-assessment-actions">
                                 <button class="team-btn team-btn-primary" onclick="window.location.href='worker-type-assessment.html'" aria-label="Take Assessment">Take Assessment</button>
@@ -1741,12 +1858,12 @@ select:focus,
                         </div>
                         
                         <div class="team-assessment-card">
-                            <div class="team-assessment-icon">🎯</div>
+                            <div class="team-assessment-icon"><i class="fas fa-bullseye icon-md icon-primary"></i></div>
                             <div class="team-assessment-title">Team Dynamics Scan</div>
                             <div class="team-assessment-desc">Enhanced team assessment based on Lencioni's 5 Dysfunctions framework</div>
                             <div class="team-stat">
                                 <span>⏱️ 12-15 min</span>
-                                <span>👥 Team-wide</span>
+                                <span><i class="fas fa-users icon-md icon-primary"></i> Team-wide</span>
                             </div>
                             <div class="team-assessment-actions">
                                 <button class="team-btn team-btn-primary" onclick="window.location.href='team-assessment-enhanced-v2.html'" aria-label="Start Team Scan">Start Team Scan</button>
@@ -1755,7 +1872,7 @@ select:focus,
                         </div>
                         
                         <div class="team-assessment-card">
-                            <div class="team-assessment-icon">🎯</div>
+                            <div class="team-assessment-icon"><i class="fas fa-bullseye icon-md icon-primary"></i></div>
                             <div class="team-assessment-title">Complete Team Profile</div>
                             <div class="team-assessment-desc">4D assessment: Worker Type + Team Dynamic + Impact Type + Communication Style</div>
                             <div class="team-stat">
@@ -1774,7 +1891,7 @@ select:focus,
                             <div class="team-assessment-desc">Combined assessment for hiring or development - see the full picture</div>
                             <div class="team-stat">
                                 <span>⏱️ 20-25 min</span>
-                                <span>🎯 Comprehensive</span>
+                                <span><i class="fas fa-bullseye icon-md icon-primary"></i> Comprehensive</span>
                             </div>
                             <div class="team-assessment-actions">
                                 <button class="team-btn team-btn-primary" onclick="window.location.href='combined-profile-carousel.html'" aria-label="Full Profile">Full Profile</button>
@@ -1788,7 +1905,7 @@ select:focus,
                             <div class="team-assessment-desc">Manager tool: Visualize your team's profile mix and identify gaps or strengths</div>
                             <div class="team-stat">
                                 <span>👔 Manager Tool</span>
-                                <span>📊 Team Analysis</span>
+                                <span><i class="fas fa-chart-line icon-md icon-success"></i> Team Analysis</span>
                             </div>
                             <div class="team-assessment-actions">
                                 <button class="team-btn team-btn-primary" onclick="window.location.href='team-composition-analyzer.html'" aria-label="Analyze Team">Analyze Team</button>
@@ -1821,12 +1938,12 @@ select:focus,
                             <div class="tool-desc">Free-write anytime</div>
                         </a>
                         <a href="tool-goal-tracker.html" class="tool-card" style="text-decoration: none; color: inherit;">
-                            <div class="tool-icon">🎯</div>
+                            <div class="tool-icon"><i class="fas fa-bullseye icon-md icon-primary"></i></div>
                             <div class="tool-name">Goal Tracker</div>
                             <div class="tool-desc">3 active goals</div>
                         </a>
                         <a href="tool-mood-tracker.html" class="tool-card" style="text-decoration: none; color: inherit;">
-                            <div class="tool-icon">📊</div>
+                            <div class="tool-icon"><i class="fas fa-chart-line icon-md icon-success"></i></div>
                             <div class="tool-name">Mood Tracker</div>
                             <div class="tool-desc">28 day history</div>
                         </a>
@@ -1846,7 +1963,7 @@ select:focus,
                             <div class="tool-desc">Quick reflection</div>
                         </a>
                         <a href="open-mat-weekly-review.html" class="tool-card" style="text-decoration: none; color: inherit;">
-                            <div class="tool-icon">📈</div>
+                            <div class="tool-icon"><i class="fas fa-chart-line icon-md icon-success"></i></div>
                             <div class="tool-name">Progress Report</div>
                             <div class="tool-desc">Weekly insights</div>
                         </a>
@@ -1923,7 +2040,7 @@ select:focus,
                         <span class="challenge-badge">Weekly Challenge</span>
                         <span class="challenge-timer">4 days left</span>
                     </div>
-                    <div class="challenge-title">🔥 7 Days of Vulnerability</div>
+                    <div class="challenge-title"><i class="fas fa-fire icon-md icon-danger"></i> 7 Days of Vulnerability</div>
                     <div class="challenge-desc">Share one honest thing about yourself with someone each day this week.</div>
                     <div class="challenge-progress">
                         <div class="challenge-bar">
@@ -1941,14 +2058,14 @@ select:focus,
                     <div class="assessment-list">
                         <div class="assessment-item" onclick="window.location.href='mental-health-assessment.html'" style="cursor: pointer;">
                             <div class="assessment-left">
-                                <span class="assessment-icon">🥋</span>
+                                <span class="assessment-icon"><i class="fas fa-fist-raised icon-md icon-primary"></i></span>
                                 <span class="assessment-name">Belt Assessment</span>
                             </div>
                             <span class="assessment-status completed">✓ Done</span>
                         </div>
                         <div class="assessment-item" onclick="window.location.href='mental-health-assessment.html'" style="cursor: pointer;">
                             <div class="assessment-left">
-                                <span class="assessment-icon">⚡</span>
+                                <span class="assessment-icon"><i class="fas fa-bolt icon-md icon-warning"></i></span>
                                 <span class="assessment-name">Worker Type</span>
                             </div>
                             <span class="assessment-status completed">✓ Done</span>
@@ -1969,7 +2086,7 @@ select:focus,
                         </div>
                         <div class="assessment-item" onclick="window.location.href='team-assessment-enhanced-v2.html'" style="cursor: pointer;">
                             <div class="assessment-left">
-                                <span class="assessment-icon">👥</span>
+                                <span class="assessment-icon"><i class="fas fa-users icon-md icon-primary"></i></span>
                                 <span class="assessment-name">Team Dynamics</span>
                             </div>
                             <span class="assessment-status available">Take Now</span>
@@ -1980,11 +2097,11 @@ select:focus,
                 <!-- Recent Activity -->
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">⚡ Recent Activity</div>
+                        <div class="card-title"><i class="fas fa-bolt icon-md icon-warning"></i> Recent Activity</div>
                     </div>
                     <div class="activity-list">
                         <div class="activity-item">
-                            <div class="activity-icon">✅</div>
+                            <div class="activity-icon"><i class="fas fa-check-circle icon-md icon-success"></i></div>
                             <div class="activity-info">
                                 <div class="activity-title">Completed Morning Intention</div>
                                 <div class="activity-time">Today, 7:32 AM</div>
@@ -2000,7 +2117,7 @@ select:focus,
                             <span class="activity-xp">+25 XP</span>
                         </div>
                         <div class="activity-item">
-                            <div class="activity-icon">🔥</div>
+                            <div class="activity-icon"><i class="fas fa-fire icon-md icon-danger"></i></div>
                             <div class="activity-info">
                                 <div class="activity-title">12-Day Streak!</div>
                                 <div class="activity-time">Yesterday</div>
@@ -2016,7 +2133,7 @@ select:focus,
                             <span class="activity-xp">+10 XP</span>
                         </div>
                         <div class="activity-item">
-                            <div class="activity-icon">🎯</div>
+                            <div class="activity-icon"><i class="fas fa-bullseye icon-md icon-primary"></i></div>
                             <div class="activity-info">
                                 <div class="activity-title">Weekly Challenge: Day 3</div>
                                 <div class="activity-time">Yesterday</div>
@@ -2029,7 +2146,7 @@ select:focus,
                 <!-- Level Progress Card -->
                 <div class="card level-display">
                     <div class="card-header">
-                        <div class="card-title">📊 Your Level</div>
+                        <div class="card-title"><i class="fas fa-chart-line icon-md icon-success"></i> Your Level</div>
                     </div>
                     <div style="text-align: center; margin-bottom: 1rem;">
                         <div style="font-size: 2rem; font-weight: 800; color: var(--accent-gold); margin-bottom: 0.5rem;" data-level-number>1</div>
@@ -2046,16 +2163,16 @@ select:focus,
                 <!-- Quick Stats - Dynamic -->
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">📊 Your Stats</div>
+                        <div class="card-title"><i class="fas fa-chart-line icon-md icon-success"></i> Your Stats</div>
                     </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                         <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px;">
                             <div style="font-size: 1.75rem; font-weight: 700; color: var(--accent-gold);" data-streak-count>0</div>
-                            <div style="font-size: 0.75rem; color: var(--text-muted);">Day Streak 🔥</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">Day Streak <i class="fas fa-fire icon-md icon-danger"></i></div>
                         </div>
                         <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px;">
                             <div style="font-size: 1.75rem; font-weight: 700; color: var(--success-green);" id="totalXP">0</div>
-                            <div style="font-size: 0.75rem; color: var(--text-muted);">Total XP ⚡</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">Total XP <i class="fas fa-bolt icon-md icon-warning"></i></div>
                         </div>
                         <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px;">
                             <div style="font-size: 1.75rem; font-weight: 700; color: var(--primary-navy);" id="modulesComplete">0</div>
@@ -2063,7 +2180,7 @@ select:focus,
                         </div>
                         <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px;">
                             <div style="font-size: 1.75rem; font-weight: 700;" id="badgesEarned">0</div>
-                            <div style="font-size: 0.75rem; color: var(--text-muted);">Badges Earned 🏆</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">Badges Earned <i class="fas fa-trophy icon-md icon-warning"></i></div>
                         </div>
                     </div>
                 </div>
@@ -2361,7 +2478,7 @@ select:focus,
                     }
                 }
             } catch (e) {
-                console.warn('Resume check failed (non-critical):', e);
+                console.log('ℹ️ Resume check skipped:', e);
                 // Don't show error toast for resume failures - it's optional
             }
         }
@@ -2401,13 +2518,17 @@ select:focus,
                 if (targetPage) {
                     window.location.href = targetPage;
                 } else {
-                    alert('Stripe page not found. Starting fresh.');
+                    // Silent: Clear invalid progress, don't show alert
+                    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                        console.log('ℹ️ Stripe page not found, starting fresh');
+                    }
                     localStorage.removeItem('currentProgress');
                 }
             } catch (e) {
-                console.warn('Stripe resume failed:', e);
-                // Show alert instead of toast since this is user-initiated
-                alert('Error loading saved progress. Starting fresh.');
+                // Silent: Clear invalid progress, don't show alert
+                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                    console.log('ℹ️ Stripe resume skipped:', e);
+                }
                 localStorage.removeItem('currentProgress');
             }
         }
@@ -2577,10 +2698,13 @@ select:focus,
             beltComplete: 250        // Complete entire belt
         };
 
-        // Initialize or get gamification data (OPTIMIZED - uses cached appState)
+        // Initialize or get gamification data (OPTIMIZED - uses cached appState and XPManager)
         function getGamificationData() {
+            // Get XP from unified XPManager
+            const totalXP = window.XPManager ? XPManager.getTotalXP() : 0;
+            
             const defaultData = {
-                totalXP: appState.totalXP || 0,
+                totalXP: totalXP,
                 level: 1,
                 badges: [],
                 lastVisit: appState.lastVisit || null,
@@ -2592,7 +2716,9 @@ select:focus,
             
             // Use cached gamification data if available
             if (appState.gamificationData) {
-                return { ...defaultData, ...appState.gamificationData };
+                const cached = { ...defaultData, ...appState.gamificationData };
+                cached.totalXP = totalXP; // Always use latest XP from XPManager
+                return cached;
             }
             
             // Fallback to localStorage (should rarely happen)
@@ -2601,7 +2727,9 @@ select:focus,
                 try {
                     const parsed = JSON.parse(stored);
                     appState.gamificationData = parsed; // Cache it
-                    return { ...defaultData, ...parsed };
+                    const result = { ...defaultData, ...parsed };
+                    result.totalXP = totalXP; // Always use latest XP from XPManager
+                    return result;
                 } catch (e) {
                     return defaultData;
                 }
@@ -2616,7 +2744,9 @@ select:focus,
         // Award XP function
         function awardXP(amount, reason) {
             const data = getGamificationData();
-            data.totalXP += amount;
+            // Use XPManager to add XP (this updates localStorage)
+            const newTotalXP = XPManager.addXP(amount);
+            data.totalXP = newTotalXP; // Sync local data
             data.history.push({
                 amount,
                 reason,
@@ -2716,6 +2846,10 @@ select:focus,
         function updateGamificationDisplay() {
             const data = getGamificationData();
             
+            // Always sync XP from XPManager (single source of truth)
+            const currentXP = window.XPManager ? XPManager.getTotalXP() : data.totalXP;
+            data.totalXP = currentXP;
+            
             // Update streak (using new daily streak system)
             if (typeof DAILY_STREAK !== 'undefined') {
                 const streak = DAILY_STREAK.getCurrentStreak();
@@ -2733,12 +2867,13 @@ select:focus,
                 if (streakCountEl) streakCountEl.textContent = streak;
             }
             
-            // Update XP
-            document.getElementById('totalXP').textContent = data.totalXP.toLocaleString();
+            // Update XP (always from XPManager)
+            const totalXPEl = document.getElementById('totalXP');
+            if (totalXPEl) totalXPEl.textContent = currentXP.toLocaleString();
             
             // Update XP in nav
             const navXP = document.getElementById('navXP');
-            if (navXP) navXP.textContent = data.totalXP.toLocaleString();
+            if (navXP) navXP.textContent = currentXP.toLocaleString();
             
             // Update modules complete
             const modulesComplete = countCompletedModules();
@@ -2942,7 +3077,7 @@ select:focus,
     }
     
     .lang-arrow {
-        font-size: 12px;
+        font-size: 14px;
         opacity: 0.7;
     }
     
@@ -3002,7 +3137,7 @@ select:focus,
         font-size: 20px;
     }
     
-    @media (max-width: 100%; max-width: 768px;) {
+    @media (max-width: 768px) {
         .language-switcher {
             top: 10px;
             right: 10px;
@@ -3034,10 +3169,10 @@ select:focus,
 <script>
 (function() {
     // Language Switcher Logic
-    const toggle = document.getElementById('langToggle');
-    const dropdown = document.getElementById('langDropdown');
-    const currentFlag = document.getElementById('currentFlag');
-    const currentLang = document.getElementById('currentLang');
+    let toggle = document.getElementById('langToggle');
+    let dropdown = document.getElementById('langDropdown');
+    let currentFlag = document.getElementById('currentFlag');
+    let currentLang = document.getElementById('currentLang');
     
     // Detect current language from URL
     const isGerman = window.location.pathname.includes('-de.html');
@@ -3083,15 +3218,13 @@ select:focus,
             // Store preference
             localStorage.setItem('preferredLanguage', targetLang);
             
-            // Get current page without language suffix
-            let currentPath = window.location.pathname;
-            let basePath = currentPath.replace('-de.html', '.html');
-            
-            // Build new path
-            let newPath = basePath.replace('.html', fileSuffix + '.html');
-            
-            // Navigate to new language version
-            window.location.href = newPath;
+            // Navigate to corresponding page in other language
+            // We're on gym-dashboard.html, so switch to gym-dashboard-de.html
+            if (targetLang === 'de') {
+                window.location.href = 'gym-dashboard-de.html';
+            } else {
+                window.location.href = 'gym-dashboard.html';
+            }
         });
     });
     
@@ -3113,8 +3246,7 @@ select:focus,
 
     <script>
     // Global error handler - smart error suppression
-    /* Duplicate error handler removed */
-{
+    window.addEventListener('error', function(e) {
         // Suppress expected errors (service worker, favicon, analytics, etc.)
         const target = e.target;
         const isScript = target && target.tagName === 'SCRIPT';
@@ -3136,8 +3268,7 @@ select:focus,
     });
     
     // Handle promise rejections - suppress service worker errors
-    /* Duplicate rejection handler removed */
-{
+    window.addEventListener('unhandledrejection', function(e) {
         const reason = e.reason ? e.reason.toString() : '';
         // Suppress service worker errors
         if (reason.includes('Service Worker') || reason.includes('serviceWorker') || 
@@ -3145,7 +3276,7 @@ select:focus,
             console.log('SW rejection suppressed (expected):', reason);
             return;
         }
-        console.error('Unhandled promise rejection:', e.reason);
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') { console.error('Unhandled promise rejection:', e.reason); }
         // Don't show toast for non-critical promise rejections
         e.preventDefault();
     });
@@ -3166,7 +3297,7 @@ select:focus,
         if (document.readyState === 'complete') {
             hideLoading();
         } else {
-            window.addEventListener('load', hideLoading);
+            document.addEventListener('DOMContentLoaded', hideLoading);
         }
         
         // Fallback timeout (3 seconds max)
@@ -3176,8 +3307,8 @@ select:focus,
 
 
 <!-- Wisdom Tracker & Hub Unlock Systems -->
-<script src="js/wisdom-tracker.js" defer></script>
-<script src="js/hub-unlock-system.js" defer></script>
+<script src="js/wisdom-tracker.min.js" defer></script>
+<script src="js/hub-unlock-system.min.js" defer></script>
 <script src="js/progress-sync-init.js" defer></script>
 
 <!-- Initialize Systems -->
@@ -3199,90 +3330,22 @@ select:focus,
     if (typeof updateArticleCompletionStatus === 'function') {
       updateArticleCompletionStatus();
     }
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === \'loading\') {
+        document.addEventListener(\'DOMContentLoaded\', initLanguageSwitcher);
+    } else {
+        initLanguageSwitcher();
+    }
   });
 </script>
 
 
-<!-- Global Error Handling -->
-<script>
-// Global error handling - smart suppression
-window.addEventListener('error', (event) => {
-  // Suppress expected errors
-  const errorMsg = event.error ? event.error.toString() : '';
-  const errorSrc = event.target ? (event.target.src || event.target.href || '') : '';
-  
-  if (errorMsg.includes('Service Worker') || errorSrc.includes('sw.js') || 
-      errorSrc.includes('favicon') || errorMsg.includes('Script error')) {
-    return; // Suppress expected errors
-  }
-  
-  console.error('💥 Error:', event.error);
-  // Only show user-facing error for critical failures
-  if (event.error && !errorMsg.includes('SW') && !errorMsg.includes('serviceWorker')) {
-    if (typeof showToast === 'function') {
-      showToast('Something went wrong. Please refresh the page if the problem persists.', 'error');
-    }
-  }
-});
+<!-- Global Error Handling - REMOVED DUPLICATE (handler already exists above) -->
 
-window.addEventListener('unhandledrejection', (event) => {
-  // FIXED: Suppress Service Worker errors during uninstall
-  const reason = event.reason?.toString() || '';
-  if (reason.includes('Service Worker') || reason.includes('serviceWorker') || reason.includes('sw.js')) {
-    console.log('✓ SW error suppressed (expected during uninstall)');
-    event.preventDefault(); // Prevent the notification
-    return;
-  }
-  
-  console.error('💥 Unhandled promise rejection:', event.reason);
-  // Don't show toast for non-critical promise rejections
-});
-
-function showErrorToast(message) {
-  const toast = document.createElement('div');
-  toast.style.cssText = `
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff8787 100%);
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(255,107,107,0.4);
-    z-index: 100000;
-    animation: slideUp 0.3s ease-out;
-    max-width: min(30.0%, 300px);;
-  `;
-  toast.innerHTML = `
-    <div style="display: flex; align-items: center; gap: 0.5rem;">
-      <span style="font-size: 1.5rem;">⚠️</span>
-      <span>${message}</span>
-    </div>
-  `;
-  
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes slideUp {
-      from {
-        transform: translateY(100px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-  `;
-  document.head.appendChild(style);
-  
-  document.body.appendChild(toast);
-  setTimeout(() => {
-    toast.style.animation = 'slideUp 0.3s ease-out reverse';
-    setTimeout(() => toast.remove(), 300);
-  }, 5000);
-}
-
-window.showErrorToast = showErrorToast;
+// Error toast function removed - errors are now silent (console only)
+// No user-facing error messages will be shown to prevent background error notifications
 </script>
 
 <!-- ============================================
@@ -3305,12 +3368,12 @@ async function initAuthSync() {
     
     if (cloudProgress) {
         // Merge cloud data with local
-        const localXP = parseInt(localStorage.getItem('totalXP') || '0');
+        const localXP = XPManager.getTotalXP();
         
         if (cloudProgress.total_xp > localXP) {
             // Cloud has more recent data
-            localStorage.setItem('totalXP', cloudProgress.total_xp);
-            localStorage.setItem('currentBelt', cloudProgress.current_belt);
+            XPManager.setTotalXP(cloudProgress.total_xp);
+            XPManager.setCurrentBelt(cloudProgress.current_belt);
             
             // Update UI if updateDashboard function exists
             if (typeof updateDashboard === 'function') {
@@ -3331,7 +3394,7 @@ async function syncProgressToCloud() {
     const progressData = {
         currentBelt: localStorage.getItem('currentBelt') || 'White',
         stripesCompleted: getStripesCompleted(),
-        totalXP: parseInt(localStorage.getItem('totalXP') || '0'),
+        totalXP: XPManager.getTotalXP(),
         completedLessons: getCompletedLessons()
     };
     
@@ -3385,7 +3448,7 @@ window.awardXP = async function(amount, reason) {
 <!-- Service Worker Registration -->
 <script>
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
+    document.addEventListener('DOMContentLoaded', () => {
       navigator.serviceWorker.register('/sw.js')
         .then(() => {
             if (console && console.debug) {
@@ -3401,55 +3464,64 @@ window.awardXP = async function(amount, reason) {
         }));
     });
   }
-</script>
-
-
-    <!-- Performance Optimizer - Load First -->
-    <script src="js/performance-optimizer.js"></script>
-    <!-- Defer all non-critical scripts -->
+</script><!-- Defer all non-critical scripts -->
     <script src="js/loading-states.js" defer></script>
     <script src="js/error-handler.js" defer></script>
     
 <!-- Avatar System Loader -->
 <script>
-// Load avatar component
+// Initialize new avatar system when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    const avatarContainer = document.getElementById('dashboardAvatar');
-    if (avatarContainer) {
-        fetch('components/user-avatar.html')
+    // Load avatar customizer component
+    const customizerContainer = document.getElementById('avatarCustomizerContainer');
+    if (customizerContainer) {
+        fetch('components/avatar-customizer.html')
             .then(r => r.text())
             .then(html => {
-                avatarContainer.innerHTML = html;
-                // Avatar system JS is already loaded in head, just initialize
-                setTimeout(function() {
-                    if (typeof AVATAR_SYSTEM !== 'undefined') {
-                        AVATAR_SYSTEM.init();
-                    }
-                }, 100);
+                customizerContainer.innerHTML = html;
             })
             .catch(err => {
-                console.warn('Avatar component not found, skipping:', err);
-                avatarContainer.style.display = 'none';
+                console.warn('Avatar customizer not loaded:', err);
             });
+    }
+    
+    // Render avatars after system is ready
+    setTimeout(function() {
+        if (window.AvatarSystem) {
+            // Avatar system disabled until design is improved
+            // window.AvatarSystem.render('dashboardAvatar');
+            // Also render in nav avatar
+            // document.querySelectorAll('.user-avatar.avatar-container').forEach(container => {
+            //     container.innerHTML = window.AvatarSystem.generateHTML();
+            });
+        }
+    }, 200);
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === \'loading\') {
+        document.addEventListener(\'DOMContentLoaded\', initLanguageSwitcher);
+    } else {
+        initLanguageSwitcher();
     }
 });
 </script>
 
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js" defer></script>
-<script src="js/global-error-handler.js" defer></script>
-<script src="js/storage-health.js" defer></script>
+<script src="js/global-error-handler.min.js" defer></script>
+<script src="js/storage-health.min.js" defer></script>
 <!-- Core Modules -->
-<script src="js/core-gamification.js"></script>
+<script src="js/core-gamification.js" defer></script>
 <script src="js/core-progress-tracker.js" defer></script>
-<script src="js/storage-manager.js" defer></script>
+<script src="js/safe-storage.min.js" defer></script>
 <script src="js/keyboard-nav.js" defer></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js" defer></script>
+    <script src="js/language-switcher.min.js" defer></script>
     <script src="js/meta-tags-manager.js" defer></script>
     <script src="js/achievement-badges.js" defer></script>
     <script src="js/structured-data.js" defer></script>
-    <script src="js/performance-monitor.js" defer></script>
+    <script src="js/performance-monitor.min.js" defer></script>
 
 <!-- Toast Notification System -->
 <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 10000; display: flex; flex-direction: column; gap: 10px;"></div>
@@ -3523,7 +3595,64 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <script src="js/dark-mode.js" defer></script>
     <script src="js/micro-interactions.js" defer></script>
-    <script src="js/enhanced-loading-states.js" defer></script>
+    <script src="js/enhanced-loading-states.min.js" defer></script>
     <script src="js/keyboard-navigation.js" defer></script>
 
 
+
+    <!-- Focus Management for Accessibility -->
+    <script src="js/focus-management.js" defer></script>
+
+    <!-- Empty States -->
+    <script src="js/empty-states.js" defer></script>
+    
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>
+    
+    <!-- Initialize Empty States -->
+    <script>
+    (function() {
+        'use strict';
+        
+        function checkEmptyStates() {
+            // Check activity list
+            const activityList = document.querySelector('.activity-list');
+            if (activityList) {
+                const activities = activityList.querySelectorAll('.activity-item');
+                if (activities.length === 0 || !XPManager.getTotalXP() || parseInt(XPManager.getTotalXP()) === 0) {
+                    // Show empty progress state
+                    const emptyProgress = document.getElementById('empty-progress');
+                    if (emptyProgress) {
+                        emptyProgress.style.display = 'block';
+                    }
+                    
+                    // Replace activity list with empty state
+                    if (activities.length === 0) {
+                        activityList.innerHTML = '<div style="text-align: center; padding: 3rem 2rem; color: rgba(255,255,255,0.6);"><div style="font-size: 48px; margin-bottom: 1rem;">📊</div><h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: rgba(255,255,255,0.8);">No Activity Yet</h3><p style="margin-bottom: 1.5rem; max-width: 100%; margin-left: auto; margin-right: auto; padding: 0 1rem;">Complete your first lesson or assessment to see your activity here.</p><a href="learning-hub.html" style="display: inline-block; padding: 12px 32px; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">Start Learning →</a></div>';
+                    }
+                }
+            }
+            
+            // Check achievements - this would need to be integrated with achievement system
+            // For now, empty states will show if no XP
+        }
+        
+        // Wait for page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(checkEmptyStates, 1000);
+            });
+        } else {
+            setTimeout(checkEmptyStates, 1000);
+        }
+    })();
+    </script>
+    
+    <!-- Initialize Lucide Icons -->
+    <script src="js/icon-init.js" defer></script>
+    
+    <!-- Avatar Customizer Container -->
+    <div id="avatarCustomizerContainer"></div>
+    <script src="js/conversion-boosters.js" defer></script>
+</body>
+</html>

@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<!-- OPTIMIZED FONT LOADING -->
-<!-- Replace existing Google Fonts link in <head> with this -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Preconnect to Google Fonts (improves performance) -->
+<!-- Performance: Resource Hints (Single Set) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 
-<!-- Load fonts with font-display: swap (prevents blocking) -->
+<!-- OPTIMIZED FONT LOADING - Non-blocking -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-
-<!-- Fallback for no JavaScript -->
 <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
 </noscript>
 
-<!-- System font fallback CSS -->
-<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CACHE BUSTER - Load FIRST, before anything else -->
-    <script src="cache-buster.js"></script>
+<!-- CACHE BUSTER - Async to prevent blocking -->
+<script src="cache-buster.js" async></script>
 
     <title>TAP-IN | Wähle deinen Pfad</title>
     
@@ -64,6 +60,124 @@
             color: #ffffff;
             margin-top: 40px;
             margin-bottom: 40px;
+        }
+        
+        /* Featured Boxes */
+        .featured-box {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .featured-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4a7c9c 0%, #5a8cac 100%);
+        }
+
+        .featured-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(74, 124, 156, 0.3);
+            border-color: #4a7c9c;
+        }
+
+        /* Assessment Box - Special Accent */
+        .assessment-box::before {
+            background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%);
+        }
+
+        .assessment-box:hover {
+            box-shadow: 0 12px 32px rgba(251, 191, 36, 0.3);
+        }
+
+        .box-icon {
+            font-size: 4rem;
+            line-height: 1;
+            opacity: 0.9;
+        }
+
+        .box-content {
+            flex: 1;
+        }
+
+        .box-content h2 {
+            color: #e2e8f0;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .box-subtitle {
+            color: #4a7c9c;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .box-description {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            max-width: 800px;
+        }
+
+        .box-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .feature-tag {
+            background: rgba(74, 124, 156, 0.2);
+            color: #4a7c9c;
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(74, 124, 156, 0.3);
+        }
+
+        .featured-btn {
+            background: #4a7c9c;
+            color: white;
+            border: none;
+            padding: 1.25rem 2.5rem;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(74, 124, 156, 0.3);
+        }
+
+        .featured-btn:hover {
+            background: #5a8cac;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 124, 156, 0.4);
+        }
+
+        .assessment-btn {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        }
+
+        .assessment-btn:hover {
+            background: linear-gradient(135deg, #fcd34d 0%, #fbbf24 100%);
+            box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
         }
         
         /* Dual Entry Cards */
@@ -334,31 +448,23 @@
 </div>
 
 <script>
-// Hide loading screen when page is ready
+// Hide loading screen immediately when DOM is ready (optimized for speed)
 (function() {
     function hideLoading() {
         const loader = document.getElementById('loadingScreen');
         if (loader) {
-            loader.classList.add('hidden');
-            setTimeout(() => {
-                loader.style.display = 'none';
-            }, 300);
+            loader.style.display = 'none'; // Immediate hide, no animation delay
         }
     }
     
-    // Hide on window load
-    window.addEventListener('load', hideLoading);
-    
-    // Fallback timeout (5 seconds max)
-    setTimeout(hideLoading, 5000);
-    
-    // Emergency fallback (DOMContentLoaded)
+    // Hide immediately if already loaded
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
-        setTimeout(hideLoading, 100);
+        hideLoading();
     } else {
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(hideLoading, 500);
-        });
+        // Hide as soon as DOM is ready (much faster than window.load)
+        document.addEventListener('DOMContentLoaded', hideLoading, { once: true });
+        // Fallback timeout (max 2 seconds)
+        setTimeout(hideLoading, 2000);
     }
 })();
 </script>
@@ -373,44 +479,66 @@
             <div class="question">Wohin möchtest du heute gehen?</div>
         </div>
         
+        <!-- Belt Assessment Box -->
+        <div class="featured-box assessment-box">
+            <div class="box-icon">🥋</div>
+            <div class="box-content">
+                <h2>Gürtel-Bewertung</h2>
+                <p class="box-subtitle">Entdecke dein Führungsniveau</p>
+                <p class="box-description">
+                    Nimm die umfassende 5-Dysfunktionen-Bewertung vor, um dein aktuelles Gürtelniveau zu bestimmen. 
+                    Überspringe basierend auf deinen bestehenden Fähigkeiten und Erfahrungen.
+                </p>
+                <div class="box-features">
+                    <span class="feature-tag">✓ 50 Fragen</span>
+                    <span class="feature-tag">✓ 5 Dysfunktionen Modell</span>
+                    <span class="feature-tag">✓ Sofortige Gürtel-Empfehlung</span>
+                    <span class="feature-tag">✓ +150 XP freischalten</span>
+                </div>
+            </div>
+            <button class="featured-btn assessment-btn" onclick="location.href='belt-assessment-sales-landing-de.html'">
+                Bewertung starten →
+            </button>
+        </div>
+        
         <!-- Dual Entry Point -->
         <div class="dual-entry">
             <!-- DAS GYM -->
-            <div class="entry-card gym" onclick="window.location.href='gym-dashboard-de.html'">
+            <div class="entry-card gym" style="cursor: pointer;" onclick="window.location.href='gym-dashboard-de.html'">
                 <span class="entry-icon">🥋</span>
                 <h2 class="entry-title">DAS GYM</h2>
                 <p class="entry-subtitle">Persönlicher Trainingsplatz</p>
                 
                 <p class="entry-description">
-                    Build your leadership foundation through structured belt progression. 
-                    Master trust, conflict, commitment, accountability, and results.
+                    Baue deine Führungsgrundlage durch strukturierte Gürtel-Progression auf. 
+                    Meistere Vertrauen, Konflikt, Commitment, Verantwortlichkeit und Ergebnisse.
                 </p>
                 
                 <ul class="entry-features">
                     <li>20 progressive Trainings-Streifen</li>
-                    <li>5 belt levels (White → Black)</li>
+                    <li>5 Gürtel-Stufen (Weiß → Schwarz)</li>
                     <li>Selbstbestimmte individuelle Entwicklung</li>
                     <li>Persönliches XP-Tracking</li>
                 </ul>
                 
                 <div class="entry-progress">
-                    <div class="progress-label">Your Progress</div>
-                    <div class="progress-value" id="gym-belt">⚪ White Belt</div>
-                    <div class="progress-detail" id="gym-progress">Stripe 2 of 4 • 75 XP</div>
+                    <div class="progress-label">Dein Fortschritt</div>
+                    <div class="progress-value" id="gym-belt">⚪ Weißgurt</div>
+                    <div class="progress-detail" id="gym-progress">Streifen 2 von 4 • 75 XP</div>
                 </div>
                 
-                <button class="entry-button">Betrete das Gym →</button>
+                <button class="entry-button" onclick="event.stopPropagation(); window.location.href='gym-dashboard-de.html'">Betrete das Gym →</button>
             </div>
             
             <!-- DER HUB -->
-            <div class="entry-card hub" onclick="window.location.href='learning-hub-de.html'">
+            <div class="entry-card hub" style="cursor: pointer;" onclick="window.location.href='learning-hub-de.html'">
                 <span class="entry-icon">🏢</span>
                 <h2 class="entry-title">DER HUB</h2>
-                <p class="entry-subtitle">Team Development & Business Tools</p>
+                <p class="entry-subtitle">Team-Entwicklung & Business-Tools</p>
                 
                 <p class="entry-description">
-                    Apply leadership in team contexts. Access team analytics, 
-                    comprehensive learning paths, and business-focused tools.
+                    Wende Führung in Team-Kontexten an. Greife auf Team-Analytik, 
+                    umfassende Lernpfade und business-fokussierte Tools zu.
                 </p>
                 
                 <ul class="entry-features">
@@ -421,26 +549,26 @@
                 </ul>
                 
                 <div class="entry-progress">
-                    <div class="progress-label">Available Paths</div>
-                    <div class="progress-value">8 Modules</div>
-                    <div class="progress-detail">Communication • Analytics • Assessments</div>
+                    <div class="progress-label">Verfügbare Pfade</div>
+                    <div class="progress-value">8 Module</div>
+                    <div class="progress-detail">Kommunikation • Analytik • Assessments</div>
                 </div>
                 
-                <button class="entry-button">Betrete den Hub →</button>
+                <button class="entry-button" onclick="event.stopPropagation(); window.location.href='learning-hub-de.html'">Betrete den Hub →</button>
             </div>
         </div>
         
         <!-- Recent Activity -->
         <div class="recent-activity">
-            <div class="activity-title">📊 Recent Activity</div>
+            <div class="activity-title">📊 Letzte Aktivitäten</div>
             <div class="activity-item">
                 <span class="activity-icon">🥋</span>
-                <span class="activity-text">Completed White Belt Stripe 1 (Gym)</span>
+                <span class="activity-text">Weißgurt Streifen 1 abgeschlossen (Gym)</span>
                 <span class="activity-xp">+25 XP</span>
             </div>
             <div class="activity-item">
                 <span class="activity-icon">🏢</span>
-                <span class="activity-text">Started Communication Module 1 (Hub)</span>
+                <span class="activity-text">Kommunikations-Modul 1 gestartet (Hub)</span>
                 <span class="activity-xp">+5 XP</span>
             </div>
         </div>
@@ -454,33 +582,59 @@
     
     <script>
         // Load progress from localStorage
-        window.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
             const totalXP = parseInt(localStorage.getItem('totalXP') || '0');
             const completedStripes = JSON.parse(localStorage.getItem('completedStripes') || '[]');
             
-            // Calculate current belt
-            let currentBelt = '⚪ White Belt';
-            let stripeProgress = 'Stripe 1 of 4';
+            // Calculate current belt (German)
+            let currentBelt = '⚪ Weißgurt';
+            let stripeProgress = 'Streifen 1 von 4';
             
             if (completedStripes.length >= 16) {
-                currentBelt = '⚫ Black Belt';
-                stripeProgress = `Stripe ${completedStripes.length - 15} of 4`;
+                currentBelt = '⚫ Schwarzgurt';
+                stripeProgress = `Streifen ${completedStripes.length - 15} von 4`;
             } else if (completedStripes.length >= 12) {
-                currentBelt = '🟤 Brown Belt';
-                stripeProgress = `Stripe ${completedStripes.length - 11} of 4`;
+                currentBelt = '🟤 Braungurt';
+                stripeProgress = `Streifen ${completedStripes.length - 11} von 4`;
             } else if (completedStripes.length >= 8) {
-                currentBelt = '🟣 Purple Belt';
-                stripeProgress = `Stripe ${completedStripes.length - 7} of 4`;
+                currentBelt = '🟣 Lila Gurt';
+                stripeProgress = `Streifen ${completedStripes.length - 7} von 4`;
             } else if (completedStripes.length >= 4) {
-                currentBelt = '🔵 Blue Belt';
-                stripeProgress = `Stripe ${completedStripes.length - 3} of 4`;
+                currentBelt = '🔵 Blaugurt';
+                stripeProgress = `Streifen ${completedStripes.length - 3} von 4`;
             } else if (completedStripes.length > 0) {
-                currentBelt = '⚪ White Belt';
-                stripeProgress = `Stripe ${completedStripes.length + 1} of 4`;
+                currentBelt = '⚪ Weißgurt';
+                stripeProgress = `Streifen ${completedStripes.length + 1} von 4`;
             }
             
             document.getElementById('gym-belt').textContent = currentBelt;
             document.getElementById('gym-progress').textContent = `${stripeProgress} • ${totalXP} XP`;
+        });
+        
+        // Ensure gym and hub cards are clickable
+        document.addEventListener('DOMContentLoaded', function() {
+            const gymCard = document.querySelector('.entry-card.gym');
+            const hubCard = document.querySelector('.entry-card.hub');
+            
+            if (gymCard) {
+                gymCard.addEventListener('click', function(e) {
+                    // Don't navigate if clicking the button (it has its own handler)
+                    if (e.target.closest('.entry-button')) {
+                        return;
+                    }
+                    window.location.href = 'gym-dashboard-de.html';
+                });
+            }
+            
+            if (hubCard) {
+                hubCard.addEventListener('click', function(e) {
+                    // Don't navigate if clicking the button (it has its own handler)
+                    if (e.target.closest('.entry-button')) {
+                        return;
+                    }
+                    window.location.href = 'learning-hub-de.html';
+                });
+            }
         });
     </script>
 
@@ -601,8 +755,8 @@
 
 <div class="language-switcher">
     <button class="lang-toggle" id="langToggle">
-        <span class="lang-flag" id="currentFlag">🇬🇧</span>
-        <span class="lang-code" id="currentLang">EN</span>
+        <span class="lang-flag" id="currentFlag">🇩🇪</span>
+        <span class="lang-code" id="currentLang">DE</span>
         <span class="lang-arrow">▼</span>
     </button>
     <div class="lang-dropdown" id="langDropdown">
@@ -618,45 +772,63 @@
 <script>
 (function() {
     // Language Switcher Logic
-    const toggle = document.getElementById('langToggle');
-    const dropdown = document.getElementById('langDropdown');
-    const currentFlag = document.getElementById('currentFlag');
-    const currentLang = document.getElementById('currentLang');
+    // Variables will be set in initLanguageSwitcher after DOM is ready
+    let toggle, dropdown, currentFlag, currentLang;
     
     // Detect current language from URL
-    const isGerman = window.location.pathname.includes('-de.html');
+    const isGerman = window.location.pathname.includes('-de.html') || window.location.pathname.includes('index-DUAL-ENTRY-de.html');
     const currentLanguage = isGerman ? 'de' : 'en';
     
-    // Update UI to show current language
-    if (isGerman) {
-        currentFlag.textContent = '🇩🇪';
-        currentLang.textContent = 'DE';
-    }
-    
-    // Mark active language option
-    document.querySelectorAll('.lang-option').forEach(option => {
-        if (option.dataset.lang === currentLanguage) {
-            option.classList.add('active');
+    // Wait for DOM to be ready
+    function initLanguageSwitcher() {
+        // Get elements after DOM is ready
+        toggle = document.getElementById('langToggle');
+        dropdown = document.getElementById('langDropdown');
+        currentFlag = document.getElementById('currentFlag');
+        currentLang = document.getElementById('currentLang');
+        
+        // Check if elements exist
+        if (!toggle || !dropdown || !currentFlag || !currentLang) {
+            console.error('Language switcher elements not found');
+            return;
         }
-    });
-    
-    // Toggle dropdown
-    toggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dropdown.classList.toggle('show');
-    });
-    
-    // Close dropdown when clicking outside
-    document.addEventListener('click', () => {
-        dropdown.classList.remove('show');
-    });
-    
-    // Language switch handler
-    document.querySelectorAll('.lang-option').forEach(option => {
-        option.addEventListener('click', (e) => {
+        
+        // Update UI to show current language immediately
+        if (isGerman) {
+            currentFlag.textContent = '🇩🇪';
+            currentLang.textContent = 'DE';
+        } else {
+            currentFlag.textContent = '🇬🇧';
+            currentLang.textContent = 'EN';
+        }
+        
+        // Mark active language option
+        document.querySelectorAll('.lang-option').forEach(option => {
+            if (option.dataset.lang === currentLanguage) {
+                option.classList.add('active');
+            }
+        });
+        
+        // Toggle dropdown
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             e.preventDefault();
-            const targetLang = option.dataset.lang;
-            const fileSuffix = option.dataset.file;
+            dropdown.classList.toggle('show');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!toggle.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+        
+        // Language switch handler
+        document.querySelectorAll('.lang-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const targetLang = option.dataset.lang;
             
             // Don't switch if already on that language
             if (targetLang === currentLanguage) {
@@ -667,31 +839,58 @@
             // Store preference
             localStorage.setItem('preferredLanguage', targetLang);
             
-            // Get current page without language suffix
-            let currentPath = window.location.pathname;
-            let basePath = currentPath.replace('-de.html', '.html');
-            
-            // Build new path
-            let newPath = basePath.replace('.html', fileSuffix + '.html');
+            // Simple path building - we're on index-DUAL-ENTRY-de.html
+            let newPath;
+            if (targetLang === 'en') {
+                // Switch to English version
+                newPath = 'index-DUAL-ENTRY.html';
+            } else {
+                // Switch to German version
+                newPath = 'index-DUAL-ENTRY-de.html';
+            }
             
             // Navigate to new language version
             window.location.href = newPath;
         });
     });
-    
-    // Auto-redirect based on stored preference (optional)
-    // Uncomment if you want automatic redirects
-    /*
-    const storedLang = localStorage.getItem('preferredLanguage');
-    if (storedLang && storedLang !== currentLanguage) {
-        const fileSuffix = storedLang === 'de' ? '-de' : '';
-        let basePath = window.location.pathname.replace('-de.html', '.html');
-        let newPath = basePath.replace('.html', fileSuffix + '.html');
-        window.location.href = newPath;
     }
-    */
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
+    } else {
+        initLanguageSwitcher();
+    }
 })();
 </script>
+    
+    <!-- Ensure gym and hub cards are clickable -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const gymCard = document.querySelector('.entry-card.gym');
+        const hubCard = document.querySelector('.entry-card.hub');
+        
+        if (gymCard) {
+            gymCard.addEventListener('click', function(e) {
+                // Don't navigate if clicking the button (it has its own handler)
+                if (e.target.closest('.entry-button')) {
+                    return;
+                }
+                window.location.href = 'gym-dashboard-de.html';
+            });
+        }
+        
+        if (hubCard) {
+            hubCard.addEventListener('click', function(e) {
+                // Don't navigate if clicking the button (it has its own handler)
+                if (e.target.closest('.entry-button')) {
+                    return;
+                }
+                window.location.href = 'learning-hub-de.html';
+            });
+        }
+    });
+    </script>
 
 
 
@@ -703,22 +902,13 @@
         // Don't break the page, just log
         e.preventDefault();
     });
-    
-    // Handle promise rejections
-    /* Duplicate rejection handler removed */
-{
-        console.error('Unhandled promise rejection:', e.reason);
-        e.preventDefault();
-    });
     </script>
 
 
-<!-- Wisdom Tracker & Hub Unlock Systems -->
-<!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
-
-    <script src="js/wisdom-tracker.js" defer></script>
-<script src="js/hub-unlock-system.js" defer></script>
+<!-- Wisdom Tracker & Hub Unlock Systems - All Deferred -->
+<script src="js/performance-optimizer.min.js" defer></script>
+<script src="js/wisdom-tracker.min.js" defer></script>
+<script src="js/hub-unlock-system.min.js" defer></script>
 <script src="js/progress-sync-init.js" defer></script>
 
 <!-- Initialize Systems -->
@@ -739,78 +929,41 @@
 </script>
 
 
-<!-- Global Error Handling -->
+<!-- Global Error Handling - Silent Logging Only -->
 <script>
-// Global error handling
+// Global error handling - silent logging only
 window.addEventListener('error', (event) => {
-  console.error('💥 Error:', event.error);
-  showErrorToast('Etwas ist schief gelaufen. Bitte aktualisieren Sie die Seite.');
+  // Suppress expected errors (service worker, favicon, etc.)
+  const errorSrc = event.target ? (event.target.src || event.target.href || '') : '';
+  if (errorSrc.includes('sw.js') || errorSrc.includes('favicon') || errorSrc.includes('analytics')) {
+    return; // Silent suppression
+  }
+  // Only log to console, never show toast
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    console.error('Error:', event.error || event.message);
+  }
+  event.preventDefault();
 });
 
 window.addEventListener('unhandledrejection', (event) => {
-  // FIXED: Suppress Service Worker errors during uninstall
+  // Suppress Service Worker errors during uninstall
   const reason = event.reason?.toString() || '';
   if (reason.includes('Service Worker') || reason.includes('serviceWorker') || reason.includes('sw.js')) {
-    console.log('✓ SW error suppressed (expected during uninstall)');
-    event.preventDefault(); // Prevent the notification
+    event.preventDefault();
     return;
   }
-  
-  console.error('💥 Unhandled promise rejection:', event.reason);
-  showErrorToast('Ein Hintergrundprozess ist fehlgeschlagen. Alles andere sollte funktionieren.');
+  // Only log to console, never show toast
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    console.error('Unhandled promise rejection:', event.reason);
+  }
+  event.preventDefault();
 });
-
-function showErrorToast(message) {
-  const toast = document.createElement('div');
-  toast.style.cssText = `
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff8787 100%);
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(255,107,107,0.4);
-    z-index: 100000;
-    animation: slideUp 0.3s ease-out;
-    max-width: 300px;
-  `;
-  toast.innerHTML = `
-    <div style="display: flex; align-items: center; gap: 0.5rem;">
-      <span style="font-size: 1.5rem;">⚠️</span>
-      <span>${message}</span>
-    </div>
-  `;
-  
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes slideUp {
-      from {
-        transform: translateY(100px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-  `;
-  document.head.appendChild(style);
-  
-  document.body.appendChild(toast);
-  setTimeout(() => {
-    toast.style.animation = 'slideUp 0.3s ease-out reverse';
-    setTimeout(() => toast.remove(), 300);
-  }, 5000);
-}
-
-window.showErrorToast = showErrorToast;
 </script>
 
-<!-- Service Worker Registration -->
-<script>
+<!-- Service Worker Registration - Deferred -->
+<script defer>
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
+    document.addEventListener('DOMContentLoaded', () => {
       navigator.serviceWorker.register('/sw.js')
         .then(() => {
             if (console && console.debug) {
@@ -823,29 +976,29 @@ window.showErrorToast = showErrorToast;
                 console.debug('[SW] Registration note:', err.message || err);
             }
             return Promise.resolve(); // Swallow error
-        }));
+        });
     });
-  }
 </script>
 
 
 <script src="js/loading-states.js" defer></script>
 <script src="js/error-handler.js" defer></script>
 
-<!-- TAP-IN Utilities -->
-<script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
-    <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
-    <script src="js/meta-tags-manager.js"></script>
-    <script src="js/achievement-badges.js"></script>
-    <script src="js/structured-data.js"></script>
+<!-- TAP-IN Utilities - Deferred for faster initial load -->
+<script src="js/shared-utilities.js" defer></script>
+<script src="js/global-error-handler.min.js" defer></script>
+<script src="js/storage-health.min.js" defer></script>
+<!-- TAP-IN Core Modules - Deferred -->
+<script src="js/language-switcher.min.js" defer></script>
+<script src="js/meta-tags-manager.js" defer></script>
+<script src="js/achievement-badges.js" defer></script>
+<script src="js/structured-data.js" defer></script>
+<!-- Unified Error Handling System - Deferred -->
+<script src="js/unified-error-system.js" defer></script>
 
 
-<!-- Unified Error Handling System -->
-<script src="js/unified-error-system.js"></script>
-
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>
 </body>
 </html>
 

@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Develop systems thinking and strategic leadership in Brown Belt Stripe 1. Learn to see patterns, connections, and long-term implications."><!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
     <!-- Open Graph / Facebook -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://tap-in-platform.netlify.app/brown-belt-stripe1-gamified.html">
@@ -1230,7 +1244,12 @@
             document.getElementById('recommendation').innerHTML = recommendation;
             
             // Save to localStorage
-            localStorage.setItem('brownBeltStripe1Complete', 'true');
+            localStorage.setItem("brownBeltBeltStripe1Complete", 'true')
+            // Sync to backend
+            if (typeof ProgressSyncService !== 'undefined' && ProgressSyncService.syncStripeComplete) {
+                ProgressSyncService.syncStripeComplete('brown', 1, 225);
+            }
+;
                     window.dispatchEvent(new CustomEvent(\'lessonCompleted\'));
             localStorage.setItem('brownBeltStripe1Score', percentage);
         }
@@ -1272,18 +1291,18 @@
 
     <!-- Gamification System -->
     <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 <script src="js/xp-level-system.js"></script>
 <script src="js/gamification-celebrations.js"></script>
     <script src="js/shared-quiz-system.js"></script>
     <script src="js/gamification.js" defer></script>
-    <script src="js/stripe-completion-helper.js" defer></script>
+    <script src="js/stripe-completion-helper.min.js" defer></script>
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/global-error-handler.min.js"></script>
+<script src="js/storage-health.min.js"></script>
 <script>
         // Quiz functionality
         let quizAnswers = [];
@@ -1491,22 +1510,48 @@
                 if (confirm('Quiz Complete! Continue to Stripe ' + nextStripe + '?')) {
                     window.location.href = 'brown-belt-stripe' + nextStripe + '-gamified.html';
                 } else {
-                    window.location.href = 'learning-hub.html';
+                    window.location.href = 'gym-dashboard.html';
                 }
             } else {
                 alert('🎉 Brown Belt Complete! Ready for the next level.');
-                window.location.href = 'learning-hub.html';
+                window.location.href = 'gym-dashboard.html';
             }
         }
 </script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
+    <script src="js/language-switcher.min.js"></script>
     <script src="js/meta-tags-manager.js"></script>
     <script src="js/achievement-badges.js"></script>
     <script src="js/structured-data.js"></script>
 
     <script src="js/dark-mode.js"></script>
 
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(function(registration) {
+                        console.log('Service Worker registered:', registration.scope);
+                        
+                        // Check for updates
+                        registration.addEventListener('updatefound', function() {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', function() {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New service worker available
+                                    console.log('New service worker available');
+                                }
+                            });
+                        });
+                    })
+                    .catch(function(error) {
+                        // Silent fail - not critical
+                    });
+            });
+        }
+    </script>
+    <script src="js/pwa-install-prompt.js"></script>
 </html>
 
 <!-- ============================================================================ -->
@@ -1514,3 +1559,6 @@
 <!-- Total: ~1,050 lines when combined -->
 <!-- Assembly: Part 1 + Part 2 + Part 3 = Complete file -->
 <!-- ============================================================================ -->
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>

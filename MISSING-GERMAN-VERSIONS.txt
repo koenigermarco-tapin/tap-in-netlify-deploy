@@ -1,0 +1,25 @@
+Missing German Versions
+================================================================================
+
+- /team-composition-analyzer.html
+- /team-profile-complete.html
+- QUICK-ADD-DEMO-DATA.html
+- achievement-badges.html
+- active-listening-module-gamified.html
+- advanced-analytics.html
+- belt-check.html
+- calendar-integration.html
+- coaching-module-gamified.html
+- communication-mastery-2-clarity.html
+- communication-mastery-2.html
+- communication-mastery-v2.html
+- data-manager.html
+- empathy-module-gamified.html
+- goals.html
+- limiting-beliefs-module-gamified.html
+- notifications.html
+- recruiter-portal.html
+- team-dashboard.html
+- team-dynamics-assessment.html
+- team-profile-complete.html
+- white-label-customization.html

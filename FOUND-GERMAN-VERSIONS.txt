@@ -1,0 +1,24 @@
+Found German Versions
+================================================================================
+
+/combined-profile-carousel.html:
+  ✅ combined-profile-carousel.de.html
+
+/team-assessment-enhanced-v2.html:
+  ✅ team-assessment-enhanced-v2.de.html
+
+/worker-type-assessment.html:
+  ✅ worker-type-assessment.de.html
+
+combined-profile-carousel.html:
+  ✅ combined-profile-carousel.de.html
+
+open-mat-box-breathing.html:
+  ✅ open-mat-box-breathing-de.html
+
+team-assessment-enhanced-v2.html:
+  ✅ team-assessment-enhanced-v2.de.html
+
+worker-type-assessment.html:
+  ✅ worker-type-assessment.de.html
+

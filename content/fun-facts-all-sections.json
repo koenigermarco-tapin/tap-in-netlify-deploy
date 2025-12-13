@@ -1,0 +1,652 @@
+{
+  "white": {
+    "stripe_1": [
+      {
+        "id": "white-stripe1-fact1",
+        "belt": "white",
+        "stripe": 1,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "white-stripe1-fact2",
+        "belt": "white",
+        "stripe": 1,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "white-stripe1-fact3",
+        "belt": "white",
+        "stripe": 1,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ],
+    "stripe_2": [
+      {
+        "id": "white-stripe2-fact1",
+        "belt": "white",
+        "stripe": 2,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "white-stripe2-fact2",
+        "belt": "white",
+        "stripe": 2,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "white-stripe2-fact3",
+        "belt": "white",
+        "stripe": 2,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ],
+    "stripe_3": [
+      {
+        "id": "white-stripe3-fact1",
+        "belt": "white",
+        "stripe": 3,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "white-stripe3-fact2",
+        "belt": "white",
+        "stripe": 3,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "white-stripe3-fact3",
+        "belt": "white",
+        "stripe": 3,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ],
+    "stripe_4": [
+      {
+        "id": "white-stripe4-fact1",
+        "belt": "white",
+        "stripe": 4,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "white-stripe4-fact2",
+        "belt": "white",
+        "stripe": 4,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "white-stripe4-fact3",
+        "belt": "white",
+        "stripe": 4,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ]
+  },
+  "blue": {
+    "stripe_1": [
+      {
+        "id": "blue-stripe1-fact1",
+        "belt": "blue",
+        "stripe": 1,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "blue-stripe1-fact2",
+        "belt": "blue",
+        "stripe": 1,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "blue-stripe1-fact3",
+        "belt": "blue",
+        "stripe": 1,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ],
+    "stripe_2": [
+      {
+        "id": "blue-stripe2-fact1",
+        "belt": "blue",
+        "stripe": 2,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "blue-stripe2-fact2",
+        "belt": "blue",
+        "stripe": 2,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "blue-stripe2-fact3",
+        "belt": "blue",
+        "stripe": 2,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ],
+    "stripe_3": [
+      {
+        "id": "blue-stripe3-fact1",
+        "belt": "blue",
+        "stripe": 3,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "blue-stripe3-fact2",
+        "belt": "blue",
+        "stripe": 3,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "blue-stripe3-fact3",
+        "belt": "blue",
+        "stripe": 3,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ],
+    "stripe_4": [
+      {
+        "id": "blue-stripe4-fact1",
+        "belt": "blue",
+        "stripe": 4,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "blue-stripe4-fact2",
+        "belt": "blue",
+        "stripe": 4,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "blue-stripe4-fact3",
+        "belt": "blue",
+        "stripe": 4,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ]
+  },
+  "purple": {
+    "stripe_1": [
+      {
+        "id": "purple-stripe1-fact1",
+        "belt": "purple",
+        "stripe": 1,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "purple-stripe1-fact2",
+        "belt": "purple",
+        "stripe": 1,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "purple-stripe1-fact3",
+        "belt": "purple",
+        "stripe": 1,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ],
+    "stripe_2": [
+      {
+        "id": "purple-stripe2-fact1",
+        "belt": "purple",
+        "stripe": 2,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "purple-stripe2-fact2",
+        "belt": "purple",
+        "stripe": 2,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "purple-stripe2-fact3",
+        "belt": "purple",
+        "stripe": 2,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ],
+    "stripe_3": [
+      {
+        "id": "purple-stripe3-fact1",
+        "belt": "purple",
+        "stripe": 3,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "purple-stripe3-fact2",
+        "belt": "purple",
+        "stripe": 3,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "purple-stripe3-fact3",
+        "belt": "purple",
+        "stripe": 3,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ],
+    "stripe_4": [
+      {
+        "id": "purple-stripe4-fact1",
+        "belt": "purple",
+        "stripe": 4,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "purple-stripe4-fact2",
+        "belt": "purple",
+        "stripe": 4,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "purple-stripe4-fact3",
+        "belt": "purple",
+        "stripe": 4,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ]
+  },
+  "brown": {
+    "stripe_1": [
+      {
+        "id": "brown-stripe1-fact1",
+        "belt": "brown",
+        "stripe": 1,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "brown-stripe1-fact2",
+        "belt": "brown",
+        "stripe": 1,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "brown-stripe1-fact3",
+        "belt": "brown",
+        "stripe": 1,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ],
+    "stripe_2": [
+      {
+        "id": "brown-stripe2-fact1",
+        "belt": "brown",
+        "stripe": 2,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "brown-stripe2-fact2",
+        "belt": "brown",
+        "stripe": 2,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "brown-stripe2-fact3",
+        "belt": "brown",
+        "stripe": 2,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ],
+    "stripe_3": [
+      {
+        "id": "brown-stripe3-fact1",
+        "belt": "brown",
+        "stripe": 3,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "brown-stripe3-fact2",
+        "belt": "brown",
+        "stripe": 3,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "brown-stripe3-fact3",
+        "belt": "brown",
+        "stripe": 3,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ],
+    "stripe_4": [
+      {
+        "id": "brown-stripe4-fact1",
+        "belt": "brown",
+        "stripe": 4,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "brown-stripe4-fact2",
+        "belt": "brown",
+        "stripe": 4,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "brown-stripe4-fact3",
+        "belt": "brown",
+        "stripe": 4,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ]
+  },
+  "black": {
+    "stripe_1": [
+      {
+        "id": "black-stripe1-fact1",
+        "belt": "black",
+        "stripe": 1,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "black-stripe1-fact2",
+        "belt": "black",
+        "stripe": 1,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "black-stripe1-fact3",
+        "belt": "black",
+        "stripe": 1,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ],
+    "stripe_2": [
+      {
+        "id": "black-stripe2-fact1",
+        "belt": "black",
+        "stripe": 2,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "black-stripe2-fact2",
+        "belt": "black",
+        "stripe": 2,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "black-stripe2-fact3",
+        "belt": "black",
+        "stripe": 2,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ],
+    "stripe_3": [
+      {
+        "id": "black-stripe3-fact1",
+        "belt": "black",
+        "stripe": 3,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "black-stripe3-fact2",
+        "belt": "black",
+        "stripe": 3,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "black-stripe3-fact3",
+        "belt": "black",
+        "stripe": 3,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ],
+    "stripe_4": [
+      {
+        "id": "black-stripe4-fact1",
+        "belt": "black",
+        "stripe": 4,
+        "fact_number": 1,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "black-stripe4-fact2",
+        "belt": "black",
+        "stripe": 4,
+        "fact_number": 2,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      },
+      {
+        "id": "black-stripe4-fact3",
+        "belt": "black",
+        "stripe": 4,
+        "fact_number": 3,
+        "fact_text": "",
+        "source": "",
+        "citation": "",
+        "related_topic": ""
+      }
+    ]
+  }
+}

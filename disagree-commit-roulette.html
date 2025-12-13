@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
     <title>Disagree & Commit Roulette</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -20,8 +34,37 @@
         .bounce-animation { animation: bounce 1s infinite; }
         .spin-wheel { animation: spin 3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     </style>
+
+    <style>
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body { padding: 10px !important; }
+            .container { max-width: 100% !important; padding: 10px !important; }
+            h1 { font-size: 24px !important; }
+            h2 { font-size: 20px !important; }
+            button { padding: 12px 20px !important; font-size: 14px !important; }
+            .card, .game-card { padding: 20px !important; }
+        }
+        @media (max-width: 480px) {
+            body { padding: 5px !important; }
+            h1 { font-size: 20px !important; }
+            button { padding: 10px 16px !important; font-size: 12px !important; }
+        }
+    </style>
+
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#c62828">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="TAP-IN">
+    <link rel="stylesheet" href="css/pwa-install-banner.css">
 </head>
 <body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 min-h-screen">
+    <a href="#main-content" class="skip-link" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">
+        Skip to main content
+    </a>
+
     <div id="root"></div>
 
     <script type="text/babel">
@@ -192,7 +235,19 @@
         ];
 
         // Firebase config
-        const firebaseConfig = {
+        
+    // ============================================
+    // PRODUCTION BACKEND CONFIG
+    // ============================================
+    // TODO: Replace demo config with production:
+    // 1. Option A: Use Supabase Real-time (recommended)
+    //    - See PRODUCTION-GAME-BACKEND-SETUP.md
+    // 2. Option B: Use Production Firebase
+    //    - Create Firebase project
+    //    - Get production keys
+    //    - Replace config below
+    // ============================================
+const firebaseConfig = {
             apiKey: "AIzaSyBvK_vZ3vXj5k5L0Qp6X9K5Z6Yq8L0A5B0",
             authDomain: "disagree-commit.firebaseapp.com",
             databaseURL: "https://disagree-commit-default-rtdb.firebaseio.com",
@@ -502,7 +557,7 @@
 
                                 <div className="space-y-6">
                                     <button
-                                        onClick={() => selectMode('pass-play')}
+                                        onClick={() = aria-label="Button"> selectMode('pass-play')}
                                         className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-8 py-6 rounded-2xl font-bold text-xl hover:shadow-2xl transform hover:scale-105 transition"
                                     >
                                         <div className="text-3xl mb-2">📱</div>
@@ -510,7 +565,7 @@
                                     </button>
 
                                     <button
-                                        onClick={() => selectMode('multi-device')}
+                                        onClick={() = aria-label="Button"> selectMode('multi-device')}
                                         className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-6 rounded-2xl font-bold text-xl hover:shadow-2xl transform hover:scale-105 transition"
                                     >
                                         <div className="text-3xl mb-2">🌐</div>
@@ -567,7 +622,7 @@
                                             <button
                                                 onClick={startGame}
                                                 className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-xl font-bold text-xl hover:shadow-lg transform hover:scale-105 transition pulse-animation"
-                                            >
+                                             aria-label="Button">
                                                 Start Game
                                             </button>
                                         )}
@@ -578,7 +633,7 @@
                                     </>
                                 )}
 
-                                <button onClick={() => setScreen('mode-select')} className="w-full mt-4 text-white/60 hover:text-white">
+                                <button onClick={() = aria-label="Button"> setScreen('mode-select')} className="w-full mt-4 text-white/60 hover:text-white">
                                     ← Back
                                 </button>
                             </div>
@@ -623,7 +678,7 @@
                                                 <button
                                                     onClick={spinWheel}
                                                     className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-12 py-6 rounded-2xl font-bold text-2xl hover:shadow-lg transform hover:scale-105 transition pulse-animation"
-                                                >
+                                                 aria-label="Button">
                                                     SPIN THE WHEEL
                                                 </button>
                                             )}
@@ -654,13 +709,13 @@
                                             <p className="text-white text-center text-xl font-bold">Cast Your Vote:</p>
                                             <div className="flex gap-4">
                                                 <button
-                                                    onClick={() => vote('agree')}
+                                                    onClick={() = aria-label="Button"> vote('agree')}
                                                     className="flex-1 bg-green-500 text-white px-8 py-6 rounded-xl font-bold text-xl hover:shadow-lg transform hover:scale-105 transition"
                                                 >
                                                     ✓ AGREE
                                                 </button>
                                                 <button
-                                                    onClick={() => vote('disagree')}
+                                                    onClick={() = aria-label="Button"> vote('disagree')}
                                                     className="flex-1 bg-red-500 text-white px-8 py-6 rounded-xl font-bold text-xl hover:shadow-lg transform hover:scale-105 transition"
                                                 >
                                                     ✗ DISAGREE
@@ -670,7 +725,7 @@
                                                 <button
                                                     onClick={useBlock}
                                                     className="w-full bg-orange-500 text-white px-6 py-4 rounded-xl font-bold hover:shadow-lg transform hover:scale-105 transition"
-                                                >
+                                                 aria-label="Button">
                                                     🚫 BLOCK (Costs 1 token & -1 point)
                                                 </button>
                                             )}
@@ -742,7 +797,7 @@
                                                 </div>
                                             ))}
                                     </div>
-                                    <button onClick={resetGame} className="w-full text-white/60 hover:text-white text-sm">
+                                    <button onClick={resetGame} className="w-full text-white/60 hover:text-white text-sm" aria-label="Button">
                                         End Game
                                     </button>
                                 </div>
@@ -799,7 +854,7 @@
                                 <button
                                     onClick={resetGame}
                                     className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-12 py-4 rounded-xl font-bold text-xl hover:shadow-lg transform hover:scale-105 transition"
-                                >
+                                 aria-label="Button">
                                     Play Again
                                 </button>
                             </div>
@@ -815,16 +870,45 @@
     </script>
 
     <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/global-error-handler.min.js"></script>
+<script src="js/storage-health.min.js"></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
+    <script src="js/language-switcher.min.js"></script>
     <script src="js/meta-tags-manager.js"></script>
     <script src="js/achievement-badges.js"></script>
     <script src="js/structured-data.js"></script>
 
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(function(registration) {
+                        console.log('Service Worker registered:', registration.scope);
+                        
+                        // Check for updates
+                        registration.addEventListener('updatefound', function() {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', function() {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New service worker available
+                                    console.log('New service worker available');
+                                }
+                            });
+                        });
+                    })
+                    .catch(function(error) {
+                        // Silent fail - not critical
+                    });
+            });
+        }
+    </script>
+    <script src="js/pwa-install-prompt.js"></script>
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>
 </body>
 </html>

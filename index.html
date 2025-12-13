@@ -1,31 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="js/error-suppressor.js" defer></script>
+    <!-- CRITICAL: Block ALL error toasts IMMEDIATELY -->
+    <script>
+    (function() {
+        'use strict';
+        
+        // BLOCK ALL error toast methods IMMEDIATELY - before anything else loads
+        window.showToast = function(message, type, duration) {
+            // NEVER show error toasts - completely silent
+            if (type === 'error' || (message && (message.includes('went wrong') || message.includes('refresh')))) {
+                return; // Block immediately - don't show anything
+            }
+            // Only allow success/info toasts
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            const toast = document.createElement('div');
+            toast.style.cssText = `background: ${type === 'success' ? '#10b981' : '#3b82f6'}; color: white; padding: 1rem 1.5rem; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); min-width: 300px; max-width: 500px; animation: slideInRight 0.3s ease; display: flex; align-items: center; gap: 0.75rem; font-weight: 500;`;
+            toast.innerHTML = `<span style="font-size: 1.25rem;">${type === 'success' ? '✅' : 'ℹ️'}</span><span>${message}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => { toast.style.animation = 'slideOutRight 0.3s ease'; setTimeout(() => toast.remove(), 300); }, duration || 3000);
+        };
+        
+        // Also block TapInUtils.showToast when it loads
+        Object.defineProperty(window, 'TapInUtils', {
+            set: function(value) {
+                if (value && value.showToast) {
+                    const originalShowToast = value.showToast;
+                    value.showToast = function(message, type, duration) {
+                        if (type === 'error' || (message && (message.includes('went wrong') || message.includes('refresh')))) {
+                            return; // Block error toasts
+                        }
+                        originalShowToast(message, type, duration);
+                    };
+                }
+                this._tapInUtils = value;
+            },
+            get: function() {
+                return this._tapInUtils;
+            },
+            configurable: true
+        });
+        
+        // Suppress ALL error notifications immediately
+        const originalError = window.console.error;
+        const originalWarn = window.console.warn;
+        
+        window.console.error = function() {
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                originalError.apply(console, arguments);
+            }
+        };
+        
+        window.console.warn = function() {
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                originalWarn.apply(console, arguments);
+            }
+        };
+        
+        // Prevent all error popups
+        window.addEventListener('error', function(e) {
+            e.preventDefault();
+            return false;
+        }, true);
+        
+        window.addEventListener('unhandledrejection', function(e) {
+            e.preventDefault();
+            return false;
+        });
+    })();
+    </script>
 <!-- OPTIMIZED FONT LOADING -->
-<!-- Replace existing Google Fonts link in <head> with this -->
+<!-- Replace existing Google Fonts link in <head>
+    
+     with this -->
 
 <!-- Preconnect to Google Fonts (improves performance) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="css/core-styles.css">
+
+    <!-- Icon Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <link rel="stylesheet" href="css/icons.css">
+    
+    <link rel="stylesheet" href="css/variables.css">
+    
     <link rel="stylesheet" href="css/accessibility.css">
     <link rel="stylesheet" href="css/checklist-styles.css">
     <link rel="stylesheet" href="css/dark-mode.css">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/conversion-boosters.css">
+
 
 <!-- Load fonts with font-display: swap (prevents blocking) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="css/core-styles.css">
+    
 
 <!-- Fallback for no JavaScript -->
 <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="css/core-styles.css">
 </noscript>
 
 <!-- System font fallback CSS -->
         <style>
+
+    /* TAP-IN Design System Variables */
+    :root {
+        --tap-primary-navy: #1a365d;
+        --tap-primary-purple: #7c3aed;
+        --tap-accent-gold: #f59e0b;
+        --tap-success-green: #10b981;
+        --tap-error-red: #ef4444;
+        --tap-bg-gradient: linear-gradient(135deg, #1a365d 0%, #7c3aed 100%);
+    }
+
       /* Critical Above-the-Fold CSS */
       * {
         margin: 0;
@@ -72,6 +162,27 @@
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Performance: Resource Hints -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <!-- Performance: Resource Hints -->
+    
+    
+    
+    
+    
+
+    <!-- Performance: Resource Hints -->
+    
+    
+    
+    
+    
+
     <!-- SEO Meta Tags -->
     <meta name="description" content="TAP-IN Leadership - Master leadership skills through martial arts methodology.">
     <meta name="keywords" content="leadership training, team building, professional development">
@@ -79,44 +190,50 @@
     <meta property="og:description" content="Progress from White to Black Belt in leadership skills.">
     <meta property="og:type" content="website">
     <!-- CACHE BUSTER - Load FIRST, before anything else -->
-    <script src="cache-buster.js" defer></script>
+    <script src="cache-buster.js" async></script>
     
     <!-- Supabase & Auth -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
-    <script src="js/auth-system.js"></script>
+    <script src="js/auth-system.min.js" defer></script>
 
     <title>TAP-IN | Choose Your Path</title>
     
     <!-- Language Detection & Redirect -->
     <script>
         (function() {
-            // Check if we should redirect to German
+            // IMMEDIATE REDIRECT - No inline translations on this page
+            // This page should only redirect to the appropriate dual entry page
             const path = window.location.pathname;
             
-            // Don't redirect if already on a specific page
-            if (path !== '/' && path !== '/index.html') {
+            // Don't redirect if already on a specific page (not index.html or root)
+            if (path !== '/' && path !== '/index.html' && !path.endsWith('/index.html')) {
                 return;
             }
             
-            // Check localStorage preference first
+            // Detect language from URL first (if coming from language switcher)
+            const isGermanPage = path.includes('index.de.html') || path.includes('index-de.html');
+            
+            // Check localStorage preference
             const preferredLang = localStorage.getItem('preferredLanguage');
-            if (preferredLang === 'de') {
-                window.location.href = 'index-DUAL-ENTRY-de.html';
-                return;
+            
+            // Determine target language
+            let targetLang = 'en';
+            if (isGermanPage || preferredLang === 'de') {
+                targetLang = 'de';
+            } else {
+                // Check browser language as fallback
+                const browserLang = navigator.language || navigator.userLanguage;
+                if (browserLang.startsWith('de')) {
+                    targetLang = 'de';
+                    localStorage.setItem('preferredLanguage', 'de');
+                }
             }
             
-            // Check browser language
-            const browserLang = navigator.language || navigator.userLanguage;
-            if (browserLang.startsWith('de')) {
-                // Store preference
-                localStorage.setItem('preferredLanguage', 'de');
-                window.location.href = 'index-DUAL-ENTRY-de.html';
-                return;
-            }
-            
-            // Default: redirect to English dual entry
-            if (path === '/' || path === '/index.html') {
-                window.location.href = 'index-DUAL-ENTRY.html';
+            // Redirect immediately to the correct dual entry page
+            if (targetLang === 'de') {
+                window.location.replace('index-DUAL-ENTRY-de.html');
+            } else {
+                window.location.replace('index-DUAL-ENTRY.html');
             }
         })();
     </script>
@@ -550,12 +667,12 @@ select:focus,
 </style>
 
 <!-- PWA Manifest -->
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#4a7c9c">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Tap-In">
-<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 
     <link rel="canonical" href="https://tap-in-platform.netlify.app/index.html">
 
@@ -636,10 +753,10 @@ select:focus,
     }
     
     // Hide on window load
-    window.addEventListener('load', hideLoading);
+    document.addEventListener('DOMContentLoaded', hideLoading);
     
     // Fallback timeout (5 seconds max)
-    setTimeout(hideLoading, 5000);
+    setTimeout(hideLoading, 3000);
     
     // Emergency fallback (DOMContentLoaded)
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
@@ -662,9 +779,23 @@ select:focus,
             <div class="question">Where do you want to go today?</div>
         </div>
         
+        <!-- CONVERSION BOOSTERS: Live Counter & Activity Feed -->
+        <div style="max-width: 1200px; margin: 2rem auto; padding: 0 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+            <div class="tap-live-counter">
+                <span class="tap-live-dot">🔴</span>
+                <span class="tap-live-count">
+                    <span id="tapLiveCounter">1,247</span> leaders training now
+                </span>
+            </div>
+            <div class="tap-activity-feed">
+                <div class="tap-activity-title">🏆 Recent Achievements</div>
+                <div id="tapActivityFeed"></div>
+            </div>
+        </div>
+        
         <!-- Belt Assessment Box -->
         <div class="featured-box assessment-box">
-            <div class="box-icon">🥋</div>
+            <div class="box-icon"><i class="fas fa-fist-raised icon-md icon-primary"></i></div>
             <div class="box-content">
                 <h2>Belt Assessment</h2>
                 <p class="box-subtitle">Discover your leadership level</p>
@@ -686,7 +817,7 @@ select:focus,
         
         <!-- Business Portal Box -->
         <div class="featured-box business-box">
-            <div class="box-icon">📊</div>
+            <div class="box-icon"><i class="fas fa-chart-line icon-md icon-success"></i></div>
             <div class="box-content">
                 <h2>Business Portal</h2>
                 <p class="box-subtitle">For HR Leaders & Team Managers</p>
@@ -710,7 +841,7 @@ select:focus,
         <div class="dual-entry">
             <!-- THE GYM -->
             <div class="entry-card gym" onclick="window.location.href='gym-dashboard.html'">
-                <span class="entry-icon">🥋</span>
+                <span class="entry-icon"><i class="fas fa-fist-raised icon-md icon-primary"></i></span>
                 <h2 class="entry-title">THE GYM</h2>
                 <p class="entry-subtitle">Personal Training Ground</p>
                 
@@ -728,7 +859,7 @@ select:focus,
                 
                 <div class="entry-progress">
                     <div class="progress-label">Your Progress</div>
-                    <div class="progress-value" id="gym-belt">⚪ White Belt</div>
+                    <div class="progress-value" id="gym-belt"><i class="fas fa-circle icon-md" style="color: #f7fafc;"></i> White Belt</div>
                     <div class="progress-detail" id="gym-progress">Stripe 2 of 4 • 75 XP</div>
                 </div>
                 
@@ -765,9 +896,9 @@ select:focus,
         
         <!-- Recent Activity -->
         <div class="recent-activity">
-            <div class="activity-title">📊 Recent Activity</div>
+            <div class="activity-title"><i class="fas fa-chart-line icon-md icon-success"></i> Recent Activity</div>
             <div class="activity-item">
-                <span class="activity-icon">🥋</span>
+                <span class="activity-icon"><i class="fas fa-fist-raised icon-md icon-primary"></i></span>
                 <span class="activity-text">Completed White Belt Stripe 1 (Gym)</span>
                 <span class="activity-xp">+25 XP</span>
             </div>
@@ -780,7 +911,7 @@ select:focus,
         
         <!-- Footer Note -->
         <div style="text-align: center; color: #64748b; font-size: 14px; padding: 20px;">
-            <p style="margin-bottom: 10px;">💡 <strong>Pro Tip:</strong> XP earned in The Hub counts toward your belt progression in The Gym!</p>
+            <p style="margin-bottom: 10px;"><i class="fas fa-lightbulb icon-md icon-warning"></i> <strong>Pro Tip:</strong> XP earned in The Hub counts toward your belt progression in The Gym!</p>
             <p>Two paths, one journey. Both build better leaders.</p>
         </div>
     </div>
@@ -859,7 +990,7 @@ select:focus,
     }
     
     .lang-arrow {
-        font-size: 12px;
+        font-size: 14px;
         opacity: 0.7;
     }
     
@@ -950,14 +1081,17 @@ select:focus,
 
 <script>
 (function() {
-    // Language Switcher Logic - Inline Translation (No Page Reload)
-    const toggle = document.getElementById('langToggle');
-    const dropdown = document.getElementById('langDropdown');
-    const currentFlag = document.getElementById('currentFlag');
-    const currentLang = document.getElementById('currentLang');
+    // NOTE: This page should redirect immediately, so this code should rarely execute
+    // But we keep it as a fallback in case redirect fails
+    let toggle, dropdown, currentFlag, currentLang;
     
-    // Get saved language preference or default to English
-    let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
+    // This page redirects to index-DUAL-ENTRY.html or index-DUAL-ENTRY-de.html
+    // So we don't need inline translations here - just detect and redirect
+    const isGerman = window.location.pathname.includes('index.de.html') || window.location.pathname.includes('/index-de.html');
+    let currentLanguage = isGerman ? 'de' : 'en';
+    
+    // Update localStorage to match URL
+    localStorage.setItem('preferredLanguage', currentLanguage);
     
     // Translation dictionary
     const translations = {
@@ -1091,76 +1225,149 @@ select:focus,
         }
     }
     
-    // Initialize with saved language
-    updateLanguageDisplay();
-    applyTranslations(currentLanguage);
-    
-    // Toggle dropdown
-    toggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dropdown.classList.toggle('show');
-    });
-    
-    // Close dropdown when clicking outside
-    document.addEventListener('click', () => {
-        dropdown.classList.remove('show');
-    });
-    
-    // Language switch handler
-    document.querySelectorAll('.lang-option').forEach(option => {
-        option.addEventListener('click', (e) => {
+    // Wait for DOM to be fully loaded before initializing
+    function initLanguageSwitcher() {
+        // This page should redirect immediately, but if we get here, detect language
+        const isGerman = window.location.pathname.includes('index.de.html') || window.location.pathname.includes('/index-de.html');
+        currentLanguage = isGerman ? 'de' : 'en';
+        localStorage.setItem('preferredLanguage', currentLanguage);
+        
+        // Get elements after DOM is ready
+        toggle = document.getElementById('langToggle');
+        dropdown = document.getElementById('langDropdown');
+        currentFlag = document.getElementById('currentFlag');
+        currentLang = document.getElementById('currentLang');
+        
+        // Check if elements exist
+        if (!toggle || !dropdown || !currentFlag || !currentLang) {
+            // Elements not found - page might be redirecting, that's okay
+            return;
+        }
+        
+        // Initialize with detected language from URL
+        updateLanguageDisplay();
+        applyTranslations(currentLanguage);
+        
+        // Toggle dropdown
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             e.preventDefault();
-            const targetLang = option.dataset.lang;
-            
-            // Don't switch if already on that language
-            if (targetLang === currentLanguage) {
-                dropdown.classList.remove('show');
-                return;
-            }
-            
-            // Update language
-            currentLanguage = targetLang;
-            
-            // Store preference
-            localStorage.setItem('preferredLanguage', targetLang);
-            
-            // Apply translations
-            applyTranslations(targetLang);
-            updateLanguageDisplay();
-            
-            // Close dropdown
-            dropdown.classList.remove('show');
+            dropdown.classList.toggle('show');
         });
-    });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!toggle.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+        
+        // Language switch handler
+        document.querySelectorAll('.lang-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const targetLang = option.dataset.lang;
+                const fileSuffix = option.dataset.file || '';
+                
+                // Don't switch if already on that language
+                if (targetLang === currentLanguage) {
+                    dropdown.classList.remove('show');
+                    return;
+                }
+                
+                // Store preference
+                localStorage.setItem('preferredLanguage', targetLang);
+                
+                // For index.html, always redirect to dual entry pages (not index.de.html)
+                const isIndexPage = window.location.pathname.includes('index.html') || window.location.pathname.includes('index.de.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/');
+                
+                if (isIndexPage) {
+                    // Store preference and redirect to appropriate page
+                    localStorage.setItem('preferredLanguage', targetLang);
+                    if (targetLang === 'de') {
+                        window.location.href = 'index.de.html';
+                    } else {
+                        window.location.href = 'index.html';
+                    }
+                    return;
+                } else {
+                    // For other pages, redirect to language version
+                    let currentPath = window.location.pathname;
+                    let newPath;
+                    
+                    if (targetLang === 'de') {
+                        // Switch to German version
+                        newPath = currentPath.replace('.html', '-de.html').replace('-de-de.html', '-de.html');
+                    } else {
+                        // Switch to English version
+                        newPath = currentPath.replace('-de.html', '.html');
+                    }
+                    
+                    if (newPath !== currentPath) {
+                        window.location.href = newPath;
+                    } else {
+                        currentLanguage = targetLang;
+                        applyTranslations(targetLang);
+                        updateLanguageDisplay();
+                        dropdown.classList.remove('show');
+                    }
+                }
+            });
+        });
+    }
+    
+    // Initialize when DOM is ready (but page should redirect before this)
+    // This is just a fallback in case redirect fails
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
+    } else {
+        // Small delay to allow redirect to happen first
+        setTimeout(initLanguageSwitcher, 100);
+    }
 })();
 </script>
 
 
 
     <script>
-    // Global error handler - prevents silent failures
-    /* Duplicate error handler removed */
-{
-        if(typeof showToast === 'function') { showToast('Something went wrong. Please try again.', 'error'); } console.error('Resource failed to load:', e.target.src || e.target.href || e.message);
-        // Don't break the page, just log
-        e.preventDefault();
+    // Global error handler - silent logging only
+    window.addEventListener('error', (event) => {
+        // Suppress expected errors (service worker, favicon, etc.)
+        const errorSrc = event.target ? (event.target.src || event.target.href || '') : '';
+        if (errorSrc.includes('sw.js') || errorSrc.includes('favicon') || errorSrc.includes('analytics')) {
+            return; // Silent suppression
+        }
+        // Only log to console, never show toast
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            console.error('Error:', event.error || event.message);
+        }
+        event.preventDefault();
     });
     
-    // Handle promise rejections
-    /* Duplicate rejection handler removed */
-{
-        if(typeof showToast === 'function') { showToast('Unhandled promise rejection:', 'error'); } console.error('Unhandled promise rejection:', e.reason);
-        e.preventDefault();
+    // Handle promise rejections - silent logging only
+    window.addEventListener('unhandledrejection', (event) => {
+        // Suppress Service Worker errors during uninstall
+        const reason = event.reason?.toString() || '';
+        if (reason.includes('Service Worker') || reason.includes('serviceWorker') || reason.includes('sw.js')) {
+            event.preventDefault();
+            return;
+        }
+        // Only log to console, never show toast
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            console.error('Unhandled promise rejection:', event.reason);
+        }
+        event.preventDefault();
     });
     </script>
 
 
 <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 
 <!-- Wisdom Tracker & Hub Unlock Systems - Deferred -->
-<script src="js/wisdom-tracker.js" defer></script>
-<script src="js/hub-unlock-system.js" defer></script>
+<script src="js/wisdom-tracker.min.js" defer></script>
+<script src="js/hub-unlock-system.min.js" defer></script>
 <script src="js/progress-sync-init.js" defer></script>
 
 <!-- Initialize Systems -->
@@ -1169,90 +1376,53 @@ select:focus,
     // Initialize Wisdom Tracker
     if (typeof WisdomTracker !== 'undefined') {
       WisdomTracker.init();
-      console.log('✅ Wisdom Tracker initialized');
+      // Wisdom Tracker initialized
     }
     
     // Initialize Hub Unlock System  
     if (typeof HubUnlockSystem !== 'undefined') {
       HubUnlockSystem.init();
-      console.log('✅ Hub Unlock System initialized');
+      // Hub Unlock System initialized
     }
   });
 </script>
 
 
-<!-- Global Error Handling -->
+<!-- Global Error Handling - Silent Logging Only -->
 <script>
-// Global error handling
+// Global error handling - silent logging only
 window.addEventListener('error', (event) => {
-  if(typeof showToast === 'function') { showToast('Something went wrong. Please try again.', 'error'); } console.error('💥 Error:', event.error);
-  showErrorToast('Something went wrong. Please refresh the page.');
+  // Suppress expected errors (service worker, favicon, etc.)
+  const errorSrc = event.target ? (event.target.src || event.target.href || '') : '';
+  if (errorSrc.includes('sw.js') || errorSrc.includes('favicon') || errorSrc.includes('analytics')) {
+    return; // Silent suppression
+  }
+  // Only log to console, never show toast
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    console.error('Error:', event.error || event.message);
+  }
+  event.preventDefault();
 });
 
 window.addEventListener('unhandledrejection', (event) => {
-  // FIXED: Suppress Service Worker errors during uninstall
+  // Suppress Service Worker errors during uninstall
   const reason = event.reason?.toString() || '';
   if (reason.includes('Service Worker') || reason.includes('serviceWorker') || reason.includes('sw.js')) {
-    console.log('✓ SW error suppressed (expected during uninstall)');
-    event.preventDefault(); // Prevent the notification
+    event.preventDefault();
     return;
   }
-  
-  if(typeof showToast === 'function') { showToast('💥 Unhandled promise rejection:', 'error'); } console.error('💥 Unhandled promise rejection:', event.reason);
-  showErrorToast('A background process failed. Everything else should work fine.');
+  // Only log to console, never show toast
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    console.error('Unhandled promise rejection:', event.reason);
+  }
+  event.preventDefault();
 });
-
-function showErrorToast(message) {
-  const toast = document.createElement('div');
-  toast.style.cssText = `
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff8787 100%);
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(255,107,107,0.4);
-    z-index: 100000;
-    animation: slideUp 0.3s ease-out;
-    max-width: 300px;
-  `;
-  toast.innerHTML = `
-    <div style="display: flex; align-items: center; gap: 0.5rem;">
-      <span style="font-size: 1.5rem;">⚠️</span>
-      <span>${message}</span>
-    </div>
-  `;
-  
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes slideUp {
-      from {
-        transform: translateY(100px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-  `;
-  document.head.appendChild(style);
-  
-  document.body.appendChild(toast);
-  setTimeout(() => {
-    toast.style.animation = 'slideUp 0.3s ease-out reverse';
-    setTimeout(() => toast.remove(), 300);
-  }, 5000);
-}
-
-window.showErrorToast = showErrorToast;
 </script>
 
 <!-- Service Worker Registration -->
 <script>
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
+    document.addEventListener('DOMContentLoaded', () => {
       navigator.serviceWorker.register('/sw.js')
         .then(() => {
             if (console && console.debug) {
@@ -1269,7 +1439,7 @@ window.showErrorToast = showErrorToast;
     });
   }
 </script>
-<script src="js/performance-monitor.js" defer></script>
+<script src="js/performance-monitor.min.js" defer></script>
 
 
 <!-- All scripts deferred for performance -->
@@ -1278,13 +1448,14 @@ window.showErrorToast = showErrorToast;
 
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js" defer></script>
-<script src="js/global-error-handler.js" defer></script>
-<script src="js/storage-health.js" defer></script>
+<script src="js/global-error-handler.min.js" defer></script>
+<script src="js/storage-health.min.js" defer></script>
 <!-- Core Modules -->
-<script src="js/core-gamification.js"></script>
+<script src="js/core-gamification.js" defer></script>
+<script src="js/core-progress-tracker.js" defer></script>
 <script src="js/keyboard-nav.js" defer></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js" defer></script>
+    <!-- REMOVED: language-switcher.min.js - conflicts with inline script -->
     <script src="js/meta-tags-manager.js" defer></script>
     <script src="js/achievement-badges.js" defer></script>
     <script src="js/structured-data.js" defer></script>
@@ -1296,36 +1467,8 @@ window.showErrorToast = showErrorToast;
 (function() {
     'use strict';
     
-    window.showToast = function(message, type = 'info', duration = 3000) {
-        const container = document.getElementById('toast-container');
-        if (!container) return;
-        
-        const toast = document.createElement('div');
-        toast.style.cssText = `
-            background: ${type === 'error' ? '#ef4444' : type === 'success' ? '#10b981' : '#3b82f6'};
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            min-width: 300px;
-            max-width: 500px;
-            animation: slideInRight 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 500;
-        `;
-        
-        const icon = type === 'error' ? '❌' : type === 'success' ? '✅' : 'ℹ️';
-        toast.innerHTML = `<span style="font-size: 1.25rem;">${icon}</span><span>${message}</span>`;
-        
-        container.appendChild(toast);
-        
-        setTimeout(() => {
-            toast.style.animation = 'slideOutRight 0.3s ease';
-            setTimeout(() => toast.remove(), 300);
-        }, duration);
-    };
+    // showToast already blocked at top of page - do NOT redefine
+    // Error toasts are completely blocked by the early override at line 11
     
     // Add animations if not present
     if (!document.getElementById('toast-animations')) {
@@ -1360,7 +1503,16 @@ window.showErrorToast = showErrorToast;
 
     <script src="js/dark-mode.js" defer></script>
     <script src="js/micro-interactions.js" defer></script>
-    <script src="js/enhanced-loading-states.js" defer></script>
+    <script src="js/enhanced-loading-states.min.js" defer></script>
     <script src="js/keyboard-navigation.js" defer></script>
 
 
+
+    <!-- Focus Management for Accessibility -->
+    <script src="js/focus-management.js" defer></script>
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>
+    
+    <!-- Conversion Boosters -->
+    <script src="js/conversion-boosters.js" defer></script>

@@ -1,11 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="js/error-suppressor.js"></script>
+    <!-- Global Error Suppression - Must be FIRST -->
+    <script>
+    (function() {
+        'use strict';
+        
+        // Suppress ALL error notifications immediately
+        const originalError = window.console.error;
+        const originalWarn = window.console.warn;
+        
+        window.console.error = function() {
+            // Only log in development
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                originalError.apply(console, arguments);
+            }
+        };
+        
+        window.console.warn = function() {
+            // Only log in development
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                originalWarn.apply(console, arguments);
+            }
+        };
+        
+        // Prevent all error popups
+        window.addEventListener('error', function(e) {
+            e.preventDefault();
+            return false;
+        }, true);
+        
+        window.addEventListener('unhandledrejection', function(e) {
+            e.preventDefault();
+            return false;
+        });
+    })();
+    </script>
+    
+    
+    
     <meta charset="UTF-8">
         <!-- Preload Critical Resources -->
-    <link rel="preload" href="/css/core-styles.css" as="style">
-    <link rel="preload" href="/js/core-gamification.js" as="script">
-    <link rel="preload" href="/css/accessibility.css" as="style">
+    <link rel="preload" href="css/core-styles.css" as="style">
+    <link rel="preload" href="js/core-gamification.js" as="script">
+    <link rel="preload" href="css/accessibility.css" as="style">
 
     <!-- Resource Hints for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,6 +73,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/accessibility.css">
     <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/email-capture.css">
     <style>
         * {
             margin: 0;
@@ -56,22 +96,27 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #4a7c9c 0%, #3d6680 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+            color: #e2e8f0;
             min-height: 100vh;
-            padding: 2rem 1rem;
-            line-height: 1.6;
+            padding: 20px;
         }
 
         .container {
-            max-width: 700px;
+            max-width: 960px;
             margin: 0 auto;
+            background: #020617;
+            border-radius: 22px;
+            padding: 42px;
+            box-shadow: 0 20px 60px rgba(2, 6, 23, 0.75);
+            border: 1px solid rgba(148, 163, 184, 0.3);
         }
 
         /* Header */
         .header {
             text-align: center;
             margin-bottom: 2rem;
-            color: white;
+            color: #e2e8f0;
         }
 
         .header h1 {
@@ -87,7 +132,7 @@
 
         /* Main Card */
         .assessment-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             padding: 2rem;
             box-shadow: 0 20px 60px rgba(0,0,0,0.15);
@@ -95,15 +140,17 @@
 
         /* Intro Boxes */
         .intro-box {
-            background: #f7fafc;
-            border: 1px solid var(--border-light);
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.3);
             border-radius: 12px;
             padding: 1.5rem;
             margin: 1rem 0;
         }
 
         .intro-box h3 {
-            color: var(--primary-navy);
+            color: #e2e8f0;  /* Light text */
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
             font-size: 1.1rem;
             margin-bottom: 0.75rem;
             display: flex;
@@ -112,7 +159,7 @@
         }
 
         .intro-box p {
-            color: var(--text-dark);
+            color: #cbd5e1;  /* Light text */
             font-size: 0.95rem;
             margin-bottom: 0.5rem;
         }
@@ -123,7 +170,7 @@
         }
 
         .intro-box li {
-            color: var(--text-dark);
+            color: #cbd5e1;  /* Light text */
             font-size: 0.95rem;
             margin-bottom: 0.5rem;
         }
@@ -140,7 +187,7 @@
         }
 
         .intro-box.philosophy h3 {
-            color: #ffffff;
+            color: #e2e8f0;
         }
 
         .intro-box.philosophy p {
@@ -148,7 +195,7 @@
         }
 
         .intro-box.philosophy strong {
-            color: #ffffff;
+            color: #e2e8f0;
         }
 
         /* Begin Button */
@@ -159,7 +206,7 @@
             margin: 2rem auto;
             padding: 1.25rem 2rem;
             background: linear-gradient(135deg, var(--primary-navy) 0%, var(--navy-light) 100%);
-            color: white;
+            color: #e2e8f0;
             border: none;
             border-radius: 12px;
             font-size: 1.2rem;
@@ -233,14 +280,16 @@
         .question-text {
             font-size: 1.2rem;
             font-weight: 600;
-            color: var(--text-dark);
+            color: #f8fafc;  /* Light color for readability on dark background */
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
             margin-bottom: 1.5rem;
             line-height: 1.5;
         }
 
         /* Insight Card */
         .insight-card {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
             border: 2px solid var(--primary-navy);
             border-radius: 12px;
             padding: 1.5rem;
@@ -255,16 +304,19 @@
 
         .insight-title {
             font-weight: 700;
-            color: var(--primary-navy);
+            color: #e2e8f0;  /* Light text */
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
             font-size: 1.05rem;
             margin-bottom: 0.5rem;
         }
 
         .insight-content {
-            color: #4a5568;
+            color: #cbd5e1;  /* Light text */
             font-size: 0.9rem;
-            line-height: 1.6;
             margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+                        margin-bottom: 0.75rem;
         }
 
         .insight-quote {
@@ -286,26 +338,26 @@
         .scale-option {
             flex: 1;
             padding: 1rem 0.5rem;
-            background: #ffffff;
-            border: 2px solid var(--border-light);
+            background: rgba(15, 23, 42, 0.9);
+            border: 2px solid rgba(148, 163, 184, 0.3);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s;
             text-align: center;
             font-weight: 600;
             font-size: 1.1rem;
-            color: var(--text-dark);
+            color: #f8fafc;  /* Light text for readability */
         }
 
         .scale-option:hover {
             border-color: var(--primary-navy);
-            background: #f7fafc;
+            background: rgba(15, 23, 42, 0.7);
         }
 
         .scale-option.selected {
             border-color: var(--primary-navy);
             background: var(--primary-navy);
-            color: #ffffff;
+            color: #e2e8f0;
         }
 
         .scale-labels {
@@ -327,25 +379,25 @@
 
         .choice-option {
             padding: 1rem 1.25rem;
-            background: #ffffff;
-            border: 2px solid var(--border-light);
+            background: rgba(15, 23, 42, 0.9);
+            border: 2px solid rgba(148, 163, 184, 0.3);
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.2s;
             text-align: left;
             font-size: 0.95rem;
-            color: var(--text-dark);
+            color: #f8fafc;  /* Light text for readability */
         }
 
         .choice-option:hover {
             border-color: var(--primary-navy);
-            background: #f7fafc;
+            background: rgba(15, 23, 42, 0.7);
         }
 
         .choice-option.selected {
             border-color: var(--primary-navy);
             background: var(--primary-navy);
-            color: #ffffff;
+            color: #e2e8f0;
         }
 
         /* Navigation Buttons */
@@ -380,7 +432,7 @@
         .nav-btn.next {
             background: linear-gradient(135deg, var(--primary-navy) 0%, var(--navy-light) 100%);
             border: none;
-            color: white;
+            color: #e2e8f0;
             flex: 1;
             max-width: 200px;
         }
@@ -412,7 +464,7 @@
 
         .stripe-unlock {
             background: linear-gradient(135deg, var(--primary-navy) 0%, var(--navy-light) 100%);
-            color: white;
+            color: #e2e8f0;
             padding: 2.5rem 3rem;
             border-radius: 20px;
             text-align: center;
@@ -461,7 +513,7 @@
         }
 
         .stripe-continue {
-            background: white;
+            background: rgba(255, 255, 255, 0.05);
             color: var(--primary-navy);
             border: none;
             padding: 0.875rem 2rem;
@@ -480,7 +532,7 @@
 
         .belt-result {
             background: linear-gradient(135deg, var(--primary-navy) 0%, var(--navy-light) 100%);
-            color: white;
+            color: #e2e8f0;
             padding: 2.5rem;
             border-radius: 16px;
             margin-bottom: 2rem;
@@ -515,12 +567,11 @@
             opacity: 0.9;
             max-width: 400px;
             margin: 0 auto;
-            line-height: 1.6;
-        }
+                    }
 
         /* Stripes Summary */
         .stripes-summary {
-            background: #f7fafc;
+            background: rgba(15, 23, 42, 0.7);
             padding: 1.5rem;
             border-radius: 12px;
             margin-bottom: 1.5rem;
@@ -528,7 +579,7 @@
 
         .stripes-summary h3 {
             font-size: 1rem;
-            color: var(--text-dark);
+            color: #f8fafc;  /* Light text for dark background */
             margin-bottom: 0.75rem;
         }
 
@@ -553,8 +604,8 @@
 
         /* Result Cards */
         .result-card {
-            background: white;
-            border: 1px solid var(--border-light);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(148, 163, 184, 0.3);
             border-radius: 12px;
             padding: 1.5rem;
             margin-bottom: 1rem;
@@ -576,9 +627,8 @@
 
         .result-card p {
             font-size: 0.9rem;
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
+            color: #f8fafc;  /* Light text for dark background */
+                    }
 
         /* Score Cards */
         .score-cards {
@@ -589,8 +639,8 @@
         }
 
         .score-card {
-            background: white;
-            border: 1px solid var(--border-light);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(148, 163, 184, 0.3);
             border-radius: 12px;
             padding: 1.25rem;
             text-align: center;
@@ -625,7 +675,7 @@
 
         .growth-areas h3 {
             font-size: 1rem;
-            color: var(--text-dark);
+            color: #f8fafc;  /* Light text for dark background */
             margin-bottom: 0.75rem;
         }
 
@@ -636,7 +686,7 @@
 
         .growth-areas li {
             font-size: 0.9rem;
-            color: var(--text-dark);
+            color: #f8fafc;  /* Light text for dark background */
             margin-bottom: 0.5rem;
         }
 
@@ -722,7 +772,19 @@ select:focus,
     <link rel="canonical" href="https://tap-in-platform.netlify.app/belt-assessment-v2.html">
 
 <body>
-    <a href="#main-content" class="skip-link" style="position: absolute; top: -40px; left: 0; background: #6366f1; color: white; padding: 8px 16px; text-decoration: none; z-index: 9999; border-radius: 0 0 4px 0; font-weight: 600;"
+    <!-- Language Switcher -->
+    <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+        <button onclick="location.href='belt-assessment-v2-de.html'" 
+                style="background: rgba(255,255,255,0.95); border: 2px solid #1a365d; 
+                       color: #1a365d; padding: 10px 20px; border-radius: 8px; 
+                       font-weight: 600; cursor: pointer; transition: all 0.2s; 
+                       font-family: inherit; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" 
+                onmouseover="this.style.background='#1a365d'; this.style.color='white';" 
+                onmouseout="this.style.background='rgba(255,255,255,0.95)'; this.style.color='#1a365d';">
+            🇩🇪 Deutsche Version
+        </button>
+    </div>
+    <a href="#main-content" class="skip-link" style="position: absolute; top: -40px; left: 0; background: #6366f1; color: #e2e8f0; padding: 8px 16px; text-decoration: none; z-index: 9999; border-radius: 0 0 4px 0; font-weight: 600;"
     onfocus="this.style.top='0';" onblur="this.style.top='-40px';">Skip to main content</a>
     <div class="container">
         <div class="header">
@@ -1329,6 +1391,16 @@ select:focus,
             }
         }
 
+        // Navigate to gym dashboard after assessment
+        function goToGymDashboard() {
+            // Save assessment completion
+            localStorage.setItem('assessmentCompleted', 'true');
+            localStorage.setItem('assessmentCompletedDate', new Date().toISOString());
+            
+            // Navigate to gym dashboard
+            window.location.href = 'gym-dashboard.html';
+        }
+
         function calculateResults() {
             // Worker Type (Q1-Q8)
             let sprinter = 0, jogger = 0, ultrarunner = 0;
@@ -1577,7 +1649,7 @@ select:focus,
                 </div>
                 
                 <div class="results-cta">
-                    <button class="begin-button" onclick="location.href='${results.belt.toLowerCase()}-belt.html'" aria-label="Start ${results.belt} Belt Training →">
+                    <button class="begin-button" onclick="goToGymDashboard(); return false;" aria-label="Start ${results.belt} Belt Training →">
                         Start ${results.belt} Belt Training →
                     </button>
                     <p class="cta-subtext">Your personalized development path awaits. Time to earn your stripes.</p>
@@ -1613,18 +1685,34 @@ select:focus,
                 ...results,
                 answers
             }));
+            
+            // Initialize email capture after results are displayed
+            setTimeout(function() {
+                if (typeof EmailCaptureComponent !== 'undefined') {
+                    EmailCaptureComponent.init({
+                        assessmentType: 'belt-assessment',
+                        results: results,
+                        scores: {
+                            totalScore: results.totalScore || 0,
+                            trustScore: results.trustScore || 0,
+                            conflictScore: results.conflictScore || 0
+                        },
+                        showDelay: 0 // Already delayed by setTimeout
+                    });
+                }
+            }, 3000);
         }
     </script>
 
     <!-- Avatar System -->
-    <script src="js/avatar-system.js"></script>
+    <script src="js/avatar-system.min.js"></script>
     
     <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/global-error-handler.min.js"></script>
+<script src="js/storage-health.min.js"></script>
 
 <!-- Load Avatar in Results -->
 <script>
@@ -1651,12 +1739,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
+    <script src="js/language-switcher.min.js"></script>
     <script src="js/meta-tags-manager.js"></script>
     <script src="js/achievement-badges.js"></script>
     <script src="js/structured-data.js"></script>
 
-<script src="js/performance-monitor.js"></script>
+<script src="js/performance-monitor.min.js"></script>
 <!-- Toast Notification System -->
 <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 10000; display: flex; flex-direction: column; gap: 10px;"></div>
 
@@ -1671,7 +1759,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const toast = document.createElement('div');
         toast.style.cssText = `
             background: ${type === 'error' ? '#ef4444' : type === 'success' ? '#10b981' : '#3b82f6'};
-            color: white;
+            color: #e2e8f0;
             padding: 1rem 1.5rem;
             border-radius: 8px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
@@ -1728,6 +1816,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <script src="js/dark-mode.js"></script>
     <script src="js/micro-interactions.js"></script>
-    <script src="js/enhanced-loading-states.js"></script>
+    <script src="js/enhanced-loading-states.min.js"></script>
     <script src="js/keyboard-navigation.js" defer></script>
 
+
+    <!-- Focus Management for Accessibility -->
+    <script src="js/focus-management.js" defer></script>
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>

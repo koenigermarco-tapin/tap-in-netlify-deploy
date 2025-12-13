@@ -5,11 +5,22 @@
 <!-- Replace existing Google Fonts link in <head> with this -->
 
 <!-- Preconnect to Google Fonts (improves performance) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
 
 <!-- Load fonts with font-display: swap (prevents blocking) -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+    <!-- Icon Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/hero-icons.css">
+    
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/core-styles.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+
 
 <!-- Fallback for no JavaScript -->
 <noscript>
@@ -19,12 +30,65 @@
 <!-- System font fallback CSS -->
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Performance: Resource Hints -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <!-- Performance: Resource Hints -->
+    
+    
+    
+    
+    
+
+    <!-- Performance: Resource Hints -->
+    
+    
+    
+    
+    
+
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="TAP-IN Leadership Development Platform">
+    <meta name="keywords" content="leadership training, team building, professional development">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TAP-IN Leadership Development">
+    <meta property="og:description" content="Master leadership skills through martial arts methodology">
+    <meta property="og:url" content="https://tap-in-platform.netlify.app/">
+    <meta property="og:image" content="/og-image.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="TAP-IN Leadership Development">
+    <meta property="twitter:description" content="Master leadership skills through martial arts methodology">
+    <meta property="twitter:image" content="/og-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://tap-in-platform.netlify.app/">
+
     <!-- CACHE BUSTER - Load FIRST, before anything else -->
-    <script src="cache-buster.js"></script>
+    <script src="cache-buster.js" async></script>
 
     <title>TAP-IN | Choose Your Path</title>
     
     <style>
+
+    /* TAP-IN Design System Variables */
+    :root {
+        --tap-primary-navy: #1a365d;
+        --tap-primary-purple: #7c3aed;
+        --tap-accent-gold: #f59e0b;
+        --tap-success-green: #10b981;
+        --tap-error-red: #ef4444;
+        --tap-bg-gradient: linear-gradient(135deg, #1a365d 0%, #7c3aed 100%);
+    }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
@@ -501,10 +565,10 @@
     }
     
     // Hide on window load
-    window.addEventListener('load', hideLoading);
+    document.addEventListener('DOMContentLoaded', hideLoading);
     
     // Fallback timeout (5 seconds max)
-    setTimeout(hideLoading, 5000);
+    setTimeout(hideLoading, 3000);
     
     // Emergency fallback (DOMContentLoaded)
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
@@ -529,7 +593,7 @@
         
         <!-- Belt Assessment Box -->
         <div class="featured-box assessment-box">
-            <div class="box-icon">🥋</div>
+            <div class="box-icon"><i class="fas fa-fist-raised icon-md icon-primary"></i></div>
             <div class="box-content">
                 <h2>Belt Assessment</h2>
                 <p class="box-subtitle">Discover your leadership level</p>
@@ -551,13 +615,13 @@
         
         <!-- Business Portal Box -->
         <div class="featured-box business-box">
-            <div class="box-icon">📊</div>
+            <div class="box-icon"><i class="fas fa-chart-line icon-md icon-success"></i></div>
             <div class="box-content">
                 <h2>Business Portal</h2>
                 <p class="box-subtitle">For HR Leaders & Team Managers</p>
                 <p class="box-description">
                     Access team analytics, track group progress, view engagement metrics, and manage your 
-                    organization's leadership development initiatives.
+                    organization\'s leadership development initiatives.
                 </p>
                 <div class="box-features">
                     <span class="feature-tag">✓ Team dashboards</span>
@@ -574,8 +638,8 @@
         <!-- Dual Entry Point -->
         <div class="dual-entry">
             <!-- THE GYM -->
-            <div class="entry-card gym" onclick="window.location.href='gym-dashboard.html'">
-                <span class="entry-icon">🥋</span>
+            <div class="entry-card gym" style="cursor: pointer;" onclick="window.location.href='gym-dashboard.html'">
+                <span class="entry-icon"><i class="fas fa-fist-raised icon-md icon-primary"></i></span>
                 <h2 class="entry-title">THE GYM</h2>
                 <p class="entry-subtitle">Personal Training Ground</p>
                 
@@ -593,16 +657,20 @@
                 
                 <div class="entry-progress">
                     <div class="progress-label">Your Progress</div>
-                    <div class="progress-value" id="gym-belt">⚪ White Belt</div>
+                    <div class="progress-value" id="gym-belt"><i class="fas fa-circle icon-md" style="color: #f7fafc;"></i> White Belt</div>
                     <div class="progress-detail" id="gym-progress">Stripe 2 of 4 • 75 XP</div>
                 </div>
                 
-                <button class="entry-button">Enter The Gym →</button>
+                <button class="entry-button" onclick="event.stopPropagation(); window.location.href='gym-dashboard.html'">Enter The Gym →</button>
             </div>
             
             <!-- THE HUB -->
             <div class="entry-card hub" onclick="window.location.href='learning-hub.html'">
-                <span class="entry-icon">🏢</span>
+                <span class="entry-icon">
+                    <svg class="hero-icon hero-icon-lg" aria-hidden="true">
+                        <use href="icons/sprite.svg#icon-briefcase"></use>
+                    </svg>
+                </span>
                 <h2 class="entry-title">THE HUB</h2>
                 <p class="entry-subtitle">Team Development & Business Tools</p>
                 
@@ -630,14 +698,18 @@
         
         <!-- Recent Activity -->
         <div class="recent-activity">
-            <div class="activity-title">📊 Recent Activity</div>
+            <div class="activity-title"><i class="fas fa-chart-line icon-md icon-success"></i> Recent Activity</div>
             <div class="activity-item">
-                <span class="activity-icon">🥋</span>
+                <span class="activity-icon"><i class="fas fa-fist-raised icon-md icon-primary"></i></span>
                 <span class="activity-text">Completed White Belt Stripe 1 (Gym)</span>
                 <span class="activity-xp">+25 XP</span>
             </div>
             <div class="activity-item">
-                <span class="activity-icon">🏢</span>
+                <span class="activity-icon">
+                    <svg class="hero-icon hero-icon-sm" aria-hidden="true">
+                        <use href="icons/sprite.svg#icon-briefcase"></use>
+                    </svg>
+                </span>
                 <span class="activity-text">Started Communication Module 1 (Hub)</span>
                 <span class="activity-xp">+5 XP</span>
             </div>
@@ -645,9 +717,16 @@
         
         <!-- Footer Note -->
         <div style="text-align: center; color: #64748b; font-size: 14px; padding: 20px;">
-            <p style="margin-bottom: 10px;">💡 <strong>Pro Tip:</strong> XP earned in The Hub counts toward your belt progression in The Gym!</p>
+            <p style="margin-bottom: 10px;"><i class="fas fa-lightbulb icon-md icon-warning"></i> <strong>Pro Tip:</strong> XP earned in The Hub counts toward your belt progression in The Gym!</p>
             <p>Two paths, one journey. Both build better leaders.</p>
         </div>
+    </div>
+    
+    <!-- Icon Sprite (hidden, loaded once) -->
+    <div style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <use href="icons/sprite.svg"></use>
+        </svg>
     </div>
     
     <script>
@@ -657,23 +736,23 @@
             const completedStripes = JSON.parse(localStorage.getItem('completedStripes') || '[]');
             
             // Calculate current belt
-            let currentBelt = '⚪ White Belt';
+            let currentBelt = '<svg class="hero-icon hero-icon-sm" aria-hidden="true" style="vertical-align: middle;"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> White Belt';
             let stripeProgress = 'Stripe 1 of 4';
             
             if (completedStripes.length >= 16) {
-                currentBelt = '⚫ Black Belt';
+                currentBelt = '<svg class="hero-icon hero-icon-sm" aria-hidden="true" style="vertical-align: middle;"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> Black Belt';
                 stripeProgress = `Stripe ${completedStripes.length - 15} of 4`;
             } else if (completedStripes.length >= 12) {
-                currentBelt = '🟤 Brown Belt';
+                currentBelt = '<svg class="hero-icon hero-icon-sm" aria-hidden="true" style="vertical-align: middle;"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> Brown Belt';
                 stripeProgress = `Stripe ${completedStripes.length - 11} of 4`;
             } else if (completedStripes.length >= 8) {
-                currentBelt = '🟣 Purple Belt';
+                currentBelt = '<svg class="hero-icon hero-icon-sm" aria-hidden="true" style="vertical-align: middle;"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> Purple Belt';
                 stripeProgress = `Stripe ${completedStripes.length - 7} of 4`;
             } else if (completedStripes.length >= 4) {
-                currentBelt = '🔵 Blue Belt';
+                currentBelt = '<svg class="hero-icon hero-icon-sm" aria-hidden="true" style="vertical-align: middle;"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> Blue Belt';
                 stripeProgress = `Stripe ${completedStripes.length - 3} of 4`;
             } else if (completedStripes.length > 0) {
-                currentBelt = '⚪ White Belt';
+                currentBelt = '<svg class="hero-icon hero-icon-sm" aria-hidden="true" style="vertical-align: middle;"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> White Belt';
                 stripeProgress = `Stripe ${completedStripes.length + 1} of 4`;
             }
             
@@ -816,13 +895,18 @@
 <script>
 (function() {
     // Language Switcher Logic - Inline Translation (No Page Reload)
-    const toggle = document.getElementById('langToggle');
-    const dropdown = document.getElementById('langDropdown');
-    const currentFlag = document.getElementById('currentFlag');
-    const currentLang = document.getElementById('currentLang');
+    // Variables will be set in initLanguageSwitcher after DOM is ready
+    let toggle, dropdown, currentFlag, currentLang;
     
-    // Get saved language preference or default to English
-    let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
+    // Detect current language from URL first (most reliable)
+    // This page is index-DUAL-ENTRY.html (English version)
+    // If we're on -de.html, we shouldn't be here, but handle it anyway
+    const isGerman = window.location.pathname.includes('-de.html');
+    let currentLanguage = isGerman ? 'de' : 'en';
+    
+    // Always use URL to determine language, ignore localStorage for detection
+    // Update localStorage to match URL
+    localStorage.setItem('preferredLanguage', currentLanguage);
     
     // Translation dictionary
     const translations = {
@@ -850,7 +934,7 @@
             assessmentButton: 'Take Assessment →',
             businessTitle: 'Business Portal',
             businessSubtitle: 'For HR Leaders & Team Managers',
-            businessDesc: 'Access team analytics, track group progress, view engagement metrics, and manage your organization's leadership development initiatives.',
+            businessDesc: 'Access team analytics, track group progress, view engagement metrics, and manage your organization\'s leadership development initiatives.',
             businessButton: 'Enter Portal →'
         },
         de: {
@@ -956,76 +1040,120 @@
         }
     }
     
-    // Initialize with saved language
-    updateLanguageDisplay();
-    applyTranslations(currentLanguage);
-    
-    // Toggle dropdown
-    toggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dropdown.classList.toggle('show');
-    });
-    
-    // Close dropdown when clicking outside
-    document.addEventListener('click', () => {
-        dropdown.classList.remove('show');
-    });
-    
-    // Language switch handler
-    document.querySelectorAll('.lang-option').forEach(option => {
-        option.addEventListener('click', (e) => {
+    // Wait for DOM to be ready before initializing
+    function initLanguageSwitcher() {
+        // Get elements after DOM is ready
+        toggle = document.getElementById('langToggle');
+        dropdown = document.getElementById('langDropdown');
+        currentFlag = document.getElementById('currentFlag');
+        currentLang = document.getElementById('currentLang');
+        
+        // Check if elements exist
+        if (!toggle || !dropdown || !currentFlag || !currentLang) {
+            console.error('Language switcher elements not found');
+            return;
+        }
+        
+        // Initialize - detect from URL first, then apply
+        // Force English if we're on the English page (not -de.html)
+        const isOnGermanPage = window.location.pathname.includes('-de.html');
+        if (!isOnGermanPage) {
+            currentLanguage = 'en';
+            localStorage.setItem('preferredLanguage', 'en');
+        }
+        updateLanguageDisplay();
+        applyTranslations(currentLanguage);
+        
+        // Toggle dropdown
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             e.preventDefault();
-            const targetLang = option.dataset.lang;
-            
-            // Don't switch if already on that language
-            if (targetLang === currentLanguage) {
-                dropdown.classList.remove('show');
-                return;
-            }
-            
-            // Update language
-            currentLanguage = targetLang;
-            
-            // Store preference
-            localStorage.setItem('preferredLanguage', targetLang);
-            
-            // Apply translations
-            applyTranslations(targetLang);
-            updateLanguageDisplay();
-            
-            // Close dropdown
-            dropdown.classList.remove('show');
+            dropdown.classList.toggle('show');
         });
-    });
-})();
-</script>
-
-
-
-    <script>
-    // Global error handler - prevents silent failures
-    /* Duplicate error handler removed */
-{
-        console.error('Resource failed to load:', e.target.src || e.target.href || e.message);
-        // Don't break the page, just log
-        e.preventDefault();
-    });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!toggle.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+        
+        // Language switch handler - Navigate to language-specific page
+        document.querySelectorAll('.lang-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const targetLang = option.dataset.lang;
+                
+                // Get current file path
+                const currentFile = window.location.pathname;
+                const isCurrentlyGerman = currentFile.includes('-de.html');
+                const wantsGerman = targetLang === 'de';
+                
+                // Don't switch if already on that language
+                if ((isCurrentlyGerman && wantsGerman) || (!isCurrentlyGerman && !wantsGerman)) {
+                    dropdown.classList.remove('show');
+                    return;
+                }
+                
+                // Store preference
+                localStorage.setItem('preferredLanguage', targetLang);
+                
+                // Navigate to language-specific page
+                if (targetLang === 'de') {
+                    window.location.href = 'index-DUAL-ENTRY-de.html';
+                } else {
+                    window.location.href = 'index-DUAL-ENTRY.html';
+                }
+            });
+        });
+    }
     
-    // Handle promise rejections
-    /* Duplicate rejection handler removed */
-{
-        console.error('Unhandled promise rejection:', e.reason);
-        e.preventDefault();
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
+    } else {
+        initLanguageSwitcher();
+    }
+})(); // Close the IIFE (Immediately Invoked Function Expression)
+    // All errors are now silently logged in production
+    </script>
+    
+    <!-- Ensure gym and hub cards are clickable -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const gymCard = document.querySelector('.entry-card.gym');
+        const hubCard = document.querySelector('.entry-card.hub');
+        
+        if (gymCard) {
+            gymCard.addEventListener('click', function(e) {
+                // Don't navigate if clicking the button (it has its own handler)
+                if (e.target.closest('.entry-button')) {
+                    return;
+                }
+                window.location.href = 'gym-dashboard.html';
+            });
+        }
+        
+        if (hubCard) {
+            hubCard.addEventListener('click', function(e) {
+                // Don't navigate if clicking the button (it has its own handler)
+                if (e.target.closest('.entry-button')) {
+                    return;
+                }
+                window.location.href = 'learning-hub.html';
+            });
+        }
     });
     </script>
 
 
 <!-- Wisdom Tracker & Hub Unlock Systems -->
 <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 
-    <script src="js/wisdom-tracker.js" defer></script>
-<script src="js/hub-unlock-system.js" defer></script>
+    <script src="js/wisdom-tracker.min.js" defer></script>
+<script src="js/hub-unlock-system.min.js" defer></script>
 <script src="js/progress-sync-init.js" defer></script>
 
 <!-- Initialize Systems -->
@@ -1034,90 +1162,53 @@
     // Initialize Wisdom Tracker
     if (typeof WisdomTracker !== 'undefined') {
       WisdomTracker.init();
-      console.log('✅ Wisdom Tracker initialized');
+      console.log('Check Circle Wisdom Tracker initialized');
     }
     
     // Initialize Hub Unlock System  
     if (typeof HubUnlockSystem !== 'undefined') {
       HubUnlockSystem.init();
-      console.log('✅ Hub Unlock System initialized');
+      console.log('Check Circle Hub Unlock System initialized');
     }
   });
 </script>
 
 
-<!-- Global Error Handling -->
+<!-- Global Error Handling - Silent Logging Only -->
 <script>
-// Global error handling
+// Global error handling - silent logging only
 window.addEventListener('error', (event) => {
-  console.error('💥 Error:', event.error);
-  showErrorToast('Something went wrong. Please refresh the page.');
+  // Suppress expected errors (service worker, favicon, etc.)
+  const errorSrc = event.target ? (event.target.src || event.target.href || '') : '';
+  if (errorSrc.includes('sw.js') || errorSrc.includes('favicon') || errorSrc.includes('analytics')) {
+    return; // Silent suppression
+  }
+  // Only log to console, never show toast
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    console.error('Error:', event.error || event.message);
+  }
+  event.preventDefault();
 });
 
 window.addEventListener('unhandledrejection', (event) => {
-  // FIXED: Suppress Service Worker errors during uninstall
+  // Suppress Service Worker errors during uninstall
   const reason = event.reason?.toString() || '';
   if (reason.includes('Service Worker') || reason.includes('serviceWorker') || reason.includes('sw.js')) {
-    console.log('✓ SW error suppressed (expected during uninstall)');
-    event.preventDefault(); // Prevent the notification
+    event.preventDefault();
     return;
   }
-  
-  console.error('💥 Unhandled promise rejection:', event.reason);
-  showErrorToast('A background process failed. Everything else should work fine.');
+  // Only log to console, never show toast
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    console.error('Unhandled promise rejection:', event.reason);
+  }
+  event.preventDefault();
 });
-
-function showErrorToast(message) {
-  const toast = document.createElement('div');
-  toast.style.cssText = `
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff8787 100%);
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(255,107,107,0.4);
-    z-index: 100000;
-    animation: slideUp 0.3s ease-out;
-    max-width: 300px;
-  `;
-  toast.innerHTML = `
-    <div style="display: flex; align-items: center; gap: 0.5rem;">
-      <span style="font-size: 1.5rem;">⚠️</span>
-      <span>${message}</span>
-    </div>
-  `;
-  
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes slideUp {
-      from {
-        transform: translateY(100px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-  `;
-  document.head.appendChild(style);
-  
-  document.body.appendChild(toast);
-  setTimeout(() => {
-    toast.style.animation = 'slideUp 0.3s ease-out reverse';
-    setTimeout(() => toast.remove(), 300);
-  }, 5000);
-}
-
-window.showErrorToast = showErrorToast;
 </script>
 
 <!-- Service Worker Registration -->
 <script>
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
+    document.addEventListener('DOMContentLoaded', () => {
       navigator.serviceWorker.register('/sw.js')
         .then(() => {
             if (console && console.debug) {
@@ -1130,7 +1221,7 @@ window.showErrorToast = showErrorToast;
                 console.debug('[SW] Registration note:', err.message || err);
             }
             return Promise.resolve(); // Swallow error
-        }));
+        });
     });
   }
 </script>
@@ -1140,19 +1231,31 @@ window.showErrorToast = showErrorToast;
 <script src="js/error-handler.js" defer></script>
 
 <!-- TAP-IN Utilities -->
-<script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/shared-utilities.js" defer></script>
+<script src="js/global-error-handler.min.js" defer></script>
+<script src="js/storage-health.min.js" defer></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
-    <script src="js/meta-tags-manager.js"></script>
-    <script src="js/achievement-badges.js"></script>
-    <script src="js/structured-data.js"></script>
+    <!-- REMOVED: Conflicting external language-switcher script -->
+    <script src="js/meta-tags-manager.js" defer></script>
+    <script src="js/achievement-badges.js" defer></script>
+    <script src="js/structured-data.js" defer></script>
 
 
 <!-- Unified Error Handling System -->
-<script src="js/unified-error-system.js"></script>
+<script src="js/unified-error-system.js" defer></script>
 
+    <script src="js/core-gamification.js" defer></script>
+    <script src="js/core-progress-tracker.js" defer></script>
+    <script src="js/keyboard-navigation.js" defer></script>
+    <script src="js/safe-storage.min.js" defer></script>
+
+    <!-- Focus Management for Accessibility -->
+    <script src="js/focus-management.js" defer></script>
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>
+    <!-- Initialize Lucide Icons -->
+    <script src="js/icon-init.js" defer></script>
 </body>
 </html>
 

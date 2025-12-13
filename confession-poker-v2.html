@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
     <title>Confession Poker - Multiplayer Trust Game</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -62,8 +76,37 @@
             transform: rotateY(180deg);
         }
     </style>
+
+    <style>
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body { padding: 10px !important; }
+            .container { max-width: 100% !important; padding: 10px !important; }
+            h1 { font-size: 24px !important; }
+            h2 { font-size: 20px !important; }
+            button { padding: 12px 20px !important; font-size: 14px !important; }
+            .card, .game-card { padding: 20px !important; }
+        }
+        @media (max-width: 480px) {
+            body { padding: 5px !important; }
+            h1 { font-size: 20px !important; }
+            button { padding: 10px 16px !important; font-size: 12px !important; }
+        }
+    </style>
+
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#c62828">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="TAP-IN">
+    <link rel="stylesheet" href="css/pwa-install-banner.css">
 </head>
 <body class="bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 min-h-screen">
+    <a href="#main-content" class="skip-link" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">
+        Skip to main content
+    </a>
+
     <div id="root"></div>
 
     <script type="text/babel">
@@ -136,7 +179,19 @@
 
         // Firebase Configuration - Using a public demo database
         // REPLACE WITH YOUR OWN FIREBASE CONFIG FOR PRODUCTION
-        const firebaseConfig = {
+        
+    // ============================================
+    // PRODUCTION BACKEND CONFIG
+    // ============================================
+    // TODO: Replace demo config with production:
+    // 1. Option A: Use Supabase Real-time (recommended)
+    //    - See PRODUCTION-GAME-BACKEND-SETUP.md
+    // 2. Option B: Use Production Firebase
+    //    - Create Firebase project
+    //    - Get production keys
+    //    - Replace config below
+    // ============================================
+const firebaseConfig = {
             apiKey: "AIzaSyBvK_vZ3vXj5k5L0Qp6X9K5Z6Yq8L0A5B0",
             authDomain: "demo-confession-poker.firebaseapp.com",
             databaseURL: "https://demo-confession-poker-default-rtdb.firebaseio.com",
@@ -150,7 +205,7 @@
                 firebaseApp = firebase.initializeApp(firebaseConfig);
             }
         } catch (error) {
-            console.warn('Firebase init failed, using LocalStorage fallback:', error);
+            console.log('ℹ️ Using localStorage mode:', error);
         }
 
         // Game Room Manager
@@ -459,7 +514,7 @@
 
                                 <div className="space-y-6">
                                     <button
-                                        onClick={() => selectMode('pass-play')}
+                                        onClick={() = aria-label="Button"> selectMode('pass-play')}
                                         className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-6 rounded-2xl font-bold text-xl hover:shadow-2xl transform hover:scale-105 transition"
                                     >
                                         <div className="text-3xl mb-2">📱</div>
@@ -470,7 +525,7 @@
                                     </button>
 
                                     <button
-                                        onClick={() => selectMode('multi-device')}
+                                        onClick={() = aria-label="Button"> selectMode('multi-device')}
                                         className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-6 rounded-2xl font-bold text-xl hover:shadow-2xl transform hover:scale-105 transition"
                                     >
                                         <div className="text-3xl mb-2">🌐</div>
@@ -562,7 +617,7 @@
                                             <button
                                                 onClick={startGame}
                                                 className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-xl font-bold text-xl hover:shadow-lg transform hover:scale-105 transition pulse-animation"
-                                            >
+                                             aria-label="Button">
                                                 Start Game
                                             </button>
                                         )}
@@ -576,7 +631,7 @@
                                 )}
 
                                 <button
-                                    onClick={() => {
+                                    onClick={() = aria-label="Button"> {
                                         setScreen('mode-select');
                                         setGameMode(null);
                                         setMyName('');
@@ -619,7 +674,7 @@
                                                 <button
                                                     onClick={drawCard}
                                                     className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-12 py-6 rounded-2xl font-bold text-2xl hover:shadow-lg transform hover:scale-105 transition mx-auto pulse-animation"
-                                                >
+                                                 aria-label="Button">
                                                     Draw Card
                                                 </button>
                                             ) : (
@@ -652,7 +707,7 @@
                                                             {[1, 2, 3, 4, 5].map(rating => (
                                                                 <button
                                                                     key={rating}
-                                                                    onClick={() => submitRating(rating)}
+                                                                    onClick={() = aria-label="Button"> submitRating(rating)}
                                                                     className="w-14 h-14 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 border-2 border-white/30 rounded-xl text-white font-bold text-xl md:text-2xl transition transform hover:scale-110"
                                                                 >
                                                                     {rating}
@@ -672,7 +727,7 @@
                                                             {[1, 2, 3, 4, 5].map(guess => (
                                                                 <button
                                                                     key={guess}
-                                                                    onClick={() => submitGuess(guess)}
+                                                                    onClick={() = aria-label="Button"> submitGuess(guess)}
                                                                     className="w-14 h-14 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 border-2 border-white/30 rounded-xl text-white font-bold text-xl md:text-2xl transition transform hover:scale-110"
                                                                 >
                                                                     {guess}
@@ -692,7 +747,7 @@
                                                     <button
                                                         onClick={revealResults}
                                                         className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-xl font-bold text-xl hover:shadow-lg transform hover:scale-105 transition mx-auto block"
-                                                    >
+                                                     aria-label="Button">
                                                         Reveal Results
                                                     </button>
                                                 )}
@@ -705,7 +760,7 @@
                                         <button
                                             onClick={initiateChallenge}
                                             className="w-full mt-4 bg-gradient-to-r from-red-500 to-orange-500 text-white px-6 py-3 rounded-xl font-bold hover:shadow-lg transform hover:scale-105 transition"
-                                        >
+                                         aria-label="Button">
                                             🚨 Challenge This Rating
                                         </button>
                                     )}
@@ -749,7 +804,7 @@
                                     <button
                                         onClick={resetGame}
                                         className="w-full mt-6 text-white/60 hover:text-white text-sm transition"
-                                    >
+                                     aria-label="Button">
                                         End Game
                                     </button>
                                 </div>
@@ -812,13 +867,13 @@
                                     {challengeVotes[myName] === undefined ? (
                                         <div className="flex gap-4 flex-col md:flex-row">
                                             <button
-                                                onClick={() => voteChallenge('believe')}
+                                                onClick={() = aria-label="Button"> voteChallenge('believe')}
                                                 className="flex-1 bg-green-500 text-white px-8 py-6 rounded-xl font-bold text-xl hover:shadow-lg transform hover:scale-105 transition"
                                             >
                                                 ✓ Believe It
                                             </button>
                                             <button
-                                                onClick={() => voteChallenge('challenge')}
+                                                onClick={() = aria-label="Button"> voteChallenge('challenge')}
                                                 className="flex-1 bg-red-700 text-white px-8 py-6 rounded-xl font-bold text-xl hover:shadow-lg transform hover:scale-105 transition"
                                             >
                                                 ✗ Challenge!
@@ -877,7 +932,7 @@
                                 <button
                                     onClick={resetGame}
                                     className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white px-12 py-4 rounded-xl font-bold text-xl hover:shadow-lg transform hover:scale-105 transition"
-                                >
+                                 aria-label="Button">
                                     Play Again
                                 </button>
                             </div>
@@ -894,16 +949,45 @@
     </script>
 
     <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/global-error-handler.min.js"></script>
+<script src="js/storage-health.min.js"></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
+    <script src="js/language-switcher.min.js"></script>
     <script src="js/meta-tags-manager.js"></script>
     <script src="js/achievement-badges.js"></script>
     <script src="js/structured-data.js"></script>
 
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(function(registration) {
+                        console.log('Service Worker registered:', registration.scope);
+                        
+                        // Check for updates
+                        registration.addEventListener('updatefound', function() {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', function() {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New service worker available
+                                    console.log('New service worker available');
+                                }
+                            });
+                        });
+                    })
+                    .catch(function(error) {
+                        // Silent fail - not critical
+                    });
+            });
+        }
+    </script>
+    <script src="js/pwa-install-prompt.js"></script>
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>
 </body>
 </html>

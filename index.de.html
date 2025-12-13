@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
     <meta name="theme-color" content="#2d2d2d">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
@@ -10,9 +24,25 @@
     <meta name="version" content="3.0.0">
     <meta name="description" content="Kostenlose Team-Impact-Assessments von TAP-IN. Entdecke dein komplettes Profil: Arbeitsstil, Team-Impact-Ansatz und Teamdynamik in wenigen Minuten.">
     <meta name="keywords" content="team impact assessment, team dynamics, arbeitstyp, impact style, team performance, professional development, embodied leadership">
-    <title>TAP-IN Assessments – Entdecke dein komplettes Team-Impact-Profil</title>
+    <title>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/core-styles.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+TAP-IN Assessments – Entdecke dein komplettes Team-Impact-Profil</title>
     <script src="/i18n/i18n.js"></script>
     <style>
+
+    /* TAP-IN Design System Variables */
+    :root {
+        --tap-primary-navy: #1a365d;
+        --tap-primary-purple: #7c3aed;
+        --tap-accent-gold: #f59e0b;
+        --tap-success-green: #10b981;
+        --tap-error-red: #ef4444;
+        --tap-bg-gradient: linear-gradient(135deg, #1a365d 0%, #7c3aed 100%);
+    }
+
         * {
             margin: 0;
             padding: 0;
@@ -571,7 +601,7 @@
                     <span class="feature-tag">✓ Recruiter-Tools</span>
                 </div>
             </div>
-            <button class="featured-btn business-btn" onclick="location.href='business-portal.html'">
+            <button class="featured-btn business-btn" onclick="location.href='business-portal-de.html'">
                 Portal betreten →
             </button>
         </div>
@@ -769,7 +799,7 @@
             <div class="assessment-cta-box">
                 <h3>Finde deinen Start-Belt</h3>
                 <p>Mache das umfassende Belt Assessment, um herauszufinden, wo du stehst und erstelle deine Entwicklungs-Roadmap</p>
-                <a href="gym-dashboard.de.html" class="btn btn-primary btn-large">
+                <a href="gym-dashboard-de.html" class="btn btn-primary btn-large">
                     🥋 Belt System starten
                 </a>
                 <p class="cta-note">Selbstgesteuert • Sofortige Ergebnisse & personalisierter Plan</p>
@@ -825,21 +855,28 @@
         </footer>
     </div>
     <script>
-        // Localize UI using i18n.js if present
-        if (window.__i18n && window.__i18n.localizePage) window.__i18n.localizePage();
+        // German page - no i18n needed (already in German)
     </script>
 
     <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/global-error-handler.min.js"></script>
+<script src="js/storage-health.min.js"></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
+    <script src="js/language-switcher.min.js"></script>
     <script src="js/meta-tags-manager.js"></script>
     <script src="js/achievement-badges.js"></script>
     <script src="js/structured-data.js"></script>
 
+    <script src="js/core-gamification.js" defer></script>
+    <script src="js/core-progress-tracker.js" defer></script>
+    <script src="js/keyboard-navigation.js" defer></script>
+    <script src="js/unified-error-system.js" defer></script>
+    <script src="js/safe-storage.min.js" defer></script>
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>
 </body>
 </html>

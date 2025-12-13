@@ -1,33 +1,30 @@
 /**
- * TAP-IN Service Worker
- * Enhanced caching strategy for offline capability
+ * TAP-IN Service Worker - Minimal Version
+ * Only caches static assets, NEVER intercepts HTML navigation
  */
 
-const CACHE_VERSION = 'tap-in-v1.0.0';
+// Cache version - Updated on deployment to force fresh cache
+const CACHE_VERSION = 'tap-in-v2.0.1-ERROR-TOAST-FIX';
 const CACHE_NAME = `${CACHE_VERSION}`;
 
-// Assets to cache immediately
+// ONLY cache static assets (CSS, JS, images) - NEVER HTML files
 const STATIC_ASSETS = [
-    '/',
-    '/index.html',
-    '/gym-dashboard.html',
-    '/learning-hub.html',
-    '/offline.html',  // Offline fallback page
     '/css/core-styles.css',
-    '/js/performance-optimizer.js',
+    '/js/performance-optimizer.min.js',
     '/js/gamification.js',
     '/js/core-gamification.js',
-    '/js/shared-quiz-system.js',
 ];
 
-// Install event - cache static assets
+// Install event - cache ONLY static assets
 self.addEventListener('install', (event) => {
-    console.log('[SW] Installing service worker...');
+    console.log('[SW] Installing minimal service worker...');
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => {
-                console.log('[SW] Caching static assets');
-                return cache.addAll(STATIC_ASSETS);
+                console.log('[SW] Caching static assets only');
+                return cache.addAll(STATIC_ASSETS).catch(err => {
+                    console.warn('[SW] Some assets failed to cache:', err);
+                });
             })
             .then(() => self.skipWaiting()) // Activate immediately
     );
@@ -52,7 +49,7 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - CRITICAL: NEVER intercept HTML navigation
 self.addEventListener('fetch', (event) => {
     const { request } = event;
     const url = new URL(request.url);
@@ -67,23 +64,17 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    // Strategy: Cache First for static assets, Network First for HTML
+    // CRITICAL: NEVER intercept HTML pages or navigation
+    // This allows back button and normal navigation to work
+    if (request.mode === 'navigate' || 
+        url.pathname.endsWith('.html') ||
+        url.pathname === '/' ||
+        !url.pathname.includes('.')) {
+        return; // Let browser handle navigation naturally - NO interception
+    }
+
+    // Only handle static assets (CSS, JS, images)
     if (isStaticAsset(url.pathname)) {
-        // Static assets: Cache First
-        event.respondWith(cacheFirst(request));
-    } else if (isHTML(request)) {
-        // HTML pages: Network First (always fresh), fallback to offline.html
-        event.respondWith(
-            networkFirst(request).catch(() => {
-                // If network fails and it's a navigation request, serve offline page
-                if (request.mode === 'navigate') {
-                    return caches.match('/offline.html');
-                }
-                return caches.match(request);
-            })
-        );
-    } else {
-        // Other files: Cache First
         event.respondWith(cacheFirst(request));
     }
 });
@@ -96,60 +87,26 @@ function isStaticAsset(pathname) {
 }
 
 /**
- * Check if request is for HTML
- */
-function isHTML(request) {
-    return request.headers.get('accept').includes('text/html');
-}
-
-/**
- * Cache First strategy
+ * Cache First strategy - ONLY for static assets
  */
 async function cacheFirst(request) {
-    const cached = await caches.match(request);
-    if (cached) {
-        return cached;
-    }
-
     try {
-        const response = await fetch(request);
-        if (response.ok) {
-            const cache = await caches.open(CACHE_NAME);
-            cache.put(request, response.clone());
-        }
-        return response;
-    } catch (error) {
-        console.error('[SW] Fetch failed:', error);
-        // Return offline page for HTML, or empty response for assets
-        if (isHTML(request)) {
-            return caches.match('/index.html') || new Response('Offline', { status: 503 });
-        }
-        return new Response('', { status: 503 });
-    }
-}
-
-/**
- * Network First strategy
- */
-async function networkFirst(request) {
-    try {
-        const response = await fetch(request);
-        if (response.ok) {
-            const cache = await caches.open(CACHE_NAME);
-            cache.put(request, response.clone());
-        }
-        return response;
-    } catch (error) {
-        console.log('[SW] Network failed, serving from cache');
+        // Check cache first
         const cached = await caches.match(request);
         if (cached) {
             return cached;
         }
-        // Fallback to offline.html for navigation requests
-        if (request.mode === 'navigate') {
-            return caches.match('/offline.html') || caches.match('/index.html') || new Response('Offline', { status: 503 });
+
+        // Fetch from network
+        const response = await fetch(request);
+        if (response.ok) {
+            const cache = await caches.open(CACHE_NAME);
+            cache.put(request, response.clone());
         }
-        return caches.match('/index.html') || new Response('Offline', { status: 503 });
+        return response;
+    } catch (error) {
+        console.log('[SW] Cache fetch failed for:', request.url);
+        return new Response('', { status: 503 });
     }
 }
 

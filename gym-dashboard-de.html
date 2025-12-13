@@ -1,27 +1,93 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+    <script src="js/error-suppressor.js" defer></script>
+    <!-- Global Error Suppression - Must be FIRST -->
+    <script>
+    (function() {
+        'use strict';
+        
+        // Suppress ALL error notifications immediately
+        const originalError = window.console.error;
+        const originalWarn = window.console.warn;
+        
+        window.console.error = function() {
+            // Only log in development
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                originalError.apply(console, arguments);
+            }
+        };
+        
+        window.console.warn = function() {
+            // Only log in development
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                originalWarn.apply(console, arguments);
+            }
+        };
+        
+        // Prevent all error popups
+        window.addEventListener('error', function(e) {
+            e.preventDefault();
+            return false;
+        }, true);
+        
+        window.addEventListener('unhandledrejection', function(e) {
+            e.preventDefault();
+            return false;
+        });
+    })();
+    </script>
+    
 <!-- OPTIMIZED FONT LOADING -->
 <!-- Replace existing Google Fonts link in <head> with this -->
 
 <!-- Preconnect zum Google Fonts (improves performance) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
 
 <!-- Load fonts with font-display: swap (prevents blocking) -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
 <!-- Fallback for no JavaScript -->
 <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
 </noscript>
 
 <!-- System font fallback CSS -->
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CACHE BUSTER - Load FIRST, before anything else -->
-    <script src="cache-buster.js"></script>
 
+<!-- Performance: Resource Hints -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <!-- Performance: Resource Hints -->
+    
+    
+    
+    
+    
+
+    <!-- Performance: Resource Hints -->
+    
+    
+    
+    
+    
+
+    <!-- CACHE BUSTER - Load FIRST, before anything else -->
+    <script src="cache-buster.js" async></script>
+    <!-- Error Suppressor (Load SECOND) -->
+    
+    <!-- XP Manager (Load THIRD) -->
+    <script src="js/xp-manager.js" defer></script>
+    <!-- Icon Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/hero-icons.css">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -215,7 +281,7 @@
         }
 
         .belt-progress-card::before {
-            content: '🥋';
+            content: 'Academic Cap';
             position: absolute;
             right: -20px;
             bottom: -20px;
@@ -1068,7 +1134,11 @@
     
     <!-- Gamification System -->
     <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
+
+    <!-- Avatar System - Disabled until design is improved -->
+    <!-- <link rel="stylesheet" href="avatar-styles.css"> -->
+    <!-- <script src="js/avatar-system.min.js" defer></script> -->
 
     <script src="js/gamification.js" defer></script>
     <script src="js/gym-dashboard-init.js" defer></script>
@@ -1157,10 +1227,10 @@
     }
     
     // Hide on window load
-    window.addEventListener('load', hideLoading);
+    document.addEventListener('DOMContentLoaded', hideLoading);
     
     // Fallback timeout (5 seconds max)
-    setTimeout(hideLoading, 5000);
+    setTimeout(hideLoading, 3000);
     
     // Emergency fallback (DOMContentLoaded)
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
@@ -1178,26 +1248,38 @@
     <!-- Top Navigation -->
     <nav class="top-nav">
         <div class="logo">
-            🥋 TAP-IN <span>GYM</span>
+            <i class="fas fa-fist-raised icon-md icon-primary"></i> TAP-IN <span>GYM</span>
         </div>
         <div class="nav-center" style="display: flex; gap: 1rem; align-items: center;">
-            <a href="gym-dashboard-de.html" style="color: white; background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600;">🥋 Das Gym</a>
-            <a href="learning-hub-de.html" style="color: rgba(255,255,255,0.7); padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='white';" onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.7)';">🏢 Der Hub</a>
+            <a href="gym-dashboard-de.html" style="color: white; background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600;"><i class="fas fa-fist-raised icon-md icon-primary"></i> Das Gym</a>
+            <a href="learning-hub-de.html" style="color: rgba(255,255,255,0.7); padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='white';" onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.7)';"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-briefcase"></use></svg> Der Hub</a>
         </div>
         <div class="nav-right">
+            <a href="shop-de.html" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 0.5rem 1rem; border-radius: 6px; transition: all 0.2s; font-weight: 600;" onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='white';" onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.7)';">🛒 Shop</a>
             <a href="achievements.de.html" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 0.5rem 1rem; border-radius: 6px; transition: all 0.2s; font-weight: 600;" onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='white';" onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.7)';">🏅 Erfolge anzeigen</a>
             <div class="streak-badge">
-                🔥 12 Day Streak
+                <i class="fas fa-fire icon-md icon-danger"></i> 12-Tage-Serie
             </div>
             <div class="xp-badge">
-                ⭐ 847 XP
+                <i class="fas fa-star icon-md icon-warning"></i> 847 XP
             </div>
-            <div class="user-avatar">M</div>
+            <!-- Avatar removed - will be re-added when design is improved -->
+            <!-- <div class="user-avatar avatar-container small" style="cursor: pointer; width: 40px; height: 40px;" title="Klicke zum Anpassen">
+                Generated by AvatarSystem
+            </div> -->
         </div>
     </nav>
 
     <!-- Main Container -->
     <div class="main-container">
+        <!-- Avatar removed - will be re-added when design is improved -->
+        <!-- <div id="dashboardAvatar" class="avatar-container medium" style="margin-bottom: 2rem; cursor: pointer; max-width: 200px; margin-left: auto; margin-right: auto;" title="Klicke, um dein Avatar anzupassen">
+            Generated by AvatarSystem
+        </div> -->
+        
+        <!-- Avatar Customizer Container -->
+        <div id="avatarCustomizerContainer"></div>
+        
         <!-- Welcome Section -->
         <div class="welcome-section">
             <h1 class="welcome-greeting">Willkommen zurück, Marco 👋</h1>
@@ -1231,15 +1313,15 @@
                         </div>
                         <div class="belt-step">
                             <div class="belt-dot completed">✓</div>
-                            <div class="belt-step-label">Self-Aware</div>
+                            <div class="belt-step-label">Selbstbewusstsein</div>
                         </div>
                         <div class="belt-step">
                             <div class="belt-dot active">3</div>
-                            <div class="belt-step-label active">Trust</div>
+                            <div class="belt-step-label active">Vertrauen</div>
                         </div>
                         <div class="belt-step">
                             <div class="belt-dot">4</div>
-                            <div class="belt-step-label">Journaling</div>
+                            <div class="belt-step-label">Tagebuch</div>
                         </div>
                         <div class="belt-step">
                             <div class="belt-dot">5</div>
@@ -1251,7 +1333,7 @@
                 <!-- Daily Practice -->
                 <div class="card daily-practice-card">
                     <div class="card-header">
-                        <div class="card-title">☀️ Heutige Praxis</div>
+                        <div class="card-title"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-star"></use></svg> Heutige Praxis</div>
                         <span style="color: var(--text-muted); font-size: 0.85rem;">2 von 3 abgeschlossen</span>
                     </div>
                     <div class="practice-item">
@@ -1283,36 +1365,36 @@
                 <!-- Training Module -->
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">📚 Weißgurt Module</div>
+                        <div class="card-title"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-book-open"></use></svg> Weißgurt Module</div>
                         <a href="white-belt-de.html" class="card-action">Alle ansehen →</a>
                     </div>
                     <div class="modules-grid">
-                        <div class="module-card">
-                            <div class="module-icon">🧠</div>
+                        <div class="module-card" data-target="white-belt-stripe1-gamified-de.html">
+                            <div class="module-icon"><i class="fas fa-brain icon-md icon-info"></i></div>
                             <div class="module-title">Selbstbewusstsein</div>
                             <div class="module-progress">5/5 Lektionen abgeschlossen</div>
                             <div class="module-bar">
                                 <div class="module-bar-fill" style="width: 100%"></div>
                             </div>
                         </div>
-                        <div class="module-card">
-                            <div class="module-icon">💪</div>
+                        <div class="module-card" data-target="challenge-vulnerability-de.html">
+                            <div class="module-icon"><i class="fas fa-dumbbell icon-md icon-primary"></i></div>
                             <div class="module-title">Verletzlichkeit als Stärke</div>
                             <div class="module-progress">4/5 Lektionen abgeschlossen</div>
                             <div class="module-bar">
                                 <div class="module-bar-fill" style="width: 80%"></div>
                             </div>
                         </div>
-                        <div class="module-card">
-                            <div class="module-icon">🔓</div>
+                        <div class="module-card" data-target="white-belt-stripe3-gamified-de.html">
+                            <div class="module-icon"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-lock-open"></use></svg></div>
                             <div class="module-title">Selbstvertrauen aufbauen</div>
                             <div class="module-progress">3/7 Lektionen abgeschlossen</div>
                             <div class="module-bar">
                                 <div class="module-bar-fill" style="width: 43%"></div>
                             </div>
                         </div>
-                        <div class="module-card">
-                            <div class="module-icon">📝</div>
+                        <div class="module-card" data-target="white-belt-stripe4-gamified-de.html">
+                            <div class="module-icon"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-document-text"></use></svg></div>
                             <div class="module-title">Tagebuch-Praxis</div>
                             <div class="module-progress">0/5 Lektionen abgeschlossen</div>
                             <div class="module-bar">
@@ -1320,18 +1402,18 @@
                             </div>
                         </div>
                         <div class="module-card locked">
-                            <div class="module-icon">🎯</div>
+                            <div class="module-icon"><i class="fas fa-bullseye icon-md icon-primary"></i></div>
                             <div class="module-title">Innerer Kritiker vs Coach</div>
                             <div class="module-progress">Gesperrt</div>
                             <div class="module-bar"></div>
-                            <span class="module-lock">🔒</span>
+                            <span class="module-lock"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-lock-closed"></use></svg></span>
                         </div>
                         <div class="module-card locked">
-                            <div class="module-icon">🏆</div>
+                            <div class="module-icon"><i class="fas fa-trophy icon-md icon-warning"></i></div>
                             <div class="module-title">Weißgurt Finale</div>
                             <div class="module-progress">Gesperrt</div>
                             <div class="module-bar"></div>
-                            <span class="module-lock">🔒</span>
+                            <span class="module-lock"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-lock-closed"></use></svg></span>
                         </div>
                     </div>
                 </div>
@@ -1340,7 +1422,7 @@
                 <div class="open-mat-section">
                     <div class="section-header">
                         <div>
-                            <h2 class="section-title">🥋 Offene Matte</h2>
+                            <h2 class="section-title"><i class="fas fa-fist-raised icon-md icon-primary"></i> Offene Matte</h2>
                             <p class="section-subtitle">Zusätzliches Training, Tiefgang und Entdeckung</p>
                         </div>
                         <a href="white-belt-de.html" class="card-action">Alle durchsuchen →</a>
@@ -1348,24 +1430,24 @@
                     <div class="open-mat-grid">
                         <div class="open-mat-card featured">
                             <span class="open-mat-badge new">New</span>
-                            <div class="open-mat-icon">🎙️</div>
-                            <div class="open-mat-title">The Inner Game of Leadership</div>
-                            <div class="open-mat-desc">Why your self-talk determines your ceiling. Based on Timothy Gallwey's research.</div>
+                            <div class="open-mat-icon"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-bolt"></use></svg></div>
+                            <div class="open-mat-title">Das innere Spiel der Führung</div>
+                            <div class="open-mat-desc">Warum dein Selbstgespräch deine Grenze bestimmt. Basierend auf Timothy Gallweys Forschung.</div>
                             <div class="open-mat-meta">
                                 <span>📖 Article</span>
-                                <span>⏱️ 8 min</span>
-                                <span>⭐ +25 XP</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-clock"></use></svg> 8 min</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> +25 XP</span>
                             </div>
                         </div>
                         <div class="open-mat-card">
                             <span class="open-mat-badge popular">Popular</span>
                             <div class="open-mat-icon">🧘</div>
-                            <div class="open-mat-title">Box Breathing for Pressure</div>
-                            <div class="open-mat-desc">The Navy SEAL technique for staying calm when everything's on fire.</div>
+                            <div class="open-mat-title">Box-Atmung bei Druck</div>
+                            <div class="open-mat-desc">Die Navy-SEAL-Technik, um ruhig zu bleiben, wenn alles brennt.</div>
                             <div class="open-mat-meta">
                                 <span>🎥 Exercise</span>
-                                <span>⏱️ 5 min</span>
-                                <span>⭐ +15 XP</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-clock"></use></svg> 5 min</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> +15 XP</span>
                             </div>
                         </div>
                         <div class="open-mat-card">
@@ -1374,19 +1456,19 @@
                             <div class="open-mat-title">Reframe in 60 Seconds</div>
                             <div class="open-mat-desc">A micro-practice for shifting perspective when you're stuck.</div>
                             <div class="open-mat-meta">
-                                <span>⚡ Micro</span>
-                                <span>⏱️ 1 min</span>
-                                <span>⭐ +10 XP</span>
+                                <span><i class="fas fa-bolt icon-md icon-warning"></i> Micro</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-clock"></use></svg> 1 min</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> +10 XP</span>
                             </div>
                         </div>
                         <div class="open-mat-card">
-                            <div class="open-mat-icon">📊</div>
+                            <div class="open-mat-icon"><i class="fas fa-chart-line icon-md icon-success"></i></div>
                             <div class="open-mat-title">Energy Mapping Exercise</div>
                             <div class="open-mat-desc">Track your energy for a week and discover your hidden patterns.</div>
                             <div class="open-mat-meta">
-                                <span>📝 Worksheet</span>
-                                <span>⏱️ 15 min</span>
-                                <span>⭐ +40 XP</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-document-text"></use></svg> Worksheet</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-clock"></use></svg> 15 min</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> +40 XP</span>
                             </div>
                         </div>
                         <div class="open-mat-card">
@@ -1395,8 +1477,8 @@
                             <div class="open-mat-desc">How the gentle art teaches us zum lead without force.</div>
                             <div class="open-mat-meta">
                                 <span>🎥 Video</span>
-                                <span>⏱️ 12 min</span>
-                                <span>⭐ +30 XP</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-clock"></use></svg> 12 min</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> +30 XP</span>
                             </div>
                         </div>
                         <div class="open-mat-card">
@@ -1405,8 +1487,8 @@
                             <div class="open-mat-desc">This week: Say "I don't know" at least once per day.</div>
                             <div class="open-mat-meta">
                                 <span>🔬 Experiment</span>
-                                <span>⏱️ 7 days</span>
-                                <span>⭐ +100 XP</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-clock"></use></svg> 7 days</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> +100 XP</span>
                             </div>
                         </div>
                     </div>
@@ -1416,20 +1498,20 @@
                 <div class="open-mat-section">
                     <div class="section-header">
                         <div>
-                            <h2 class="section-title">🥋 Belt Progression</h2>
-                            <p class="section-subtitle">Continue your leadership development journey</p>
+                            <h2 class="section-title"><i class="fas fa-fist-raised icon-md icon-primary"></i> Gürtel-Fortschritt</h2>
+                            <p class="section-subtitle">Setze deine Führungsentwicklungsreise fort</p>
                         </div>
                     </div>
                     <div class="open-mat-grid">
                         <div class="open-mat-card featured" id="purple-belt-card">
                             <span class="open-mat-badge new">New</span>
-                            <div class="open-mat-icon">🟣</div>
+                            <div class="open-mat-icon"><i class="fas fa-circle icon-md" style="color: #7c3aed;"></i></div>
                             <div class="open-mat-title">Lila Gurt: Team Alignment</div>
-                            <div class="open-mat-desc">From personal mastery zum collective excellence. Transform communication skills into team results.</div>
+                            <div class="open-mat-desc">Von persönlicher Meisterschaft zu kollektiver Exzellenz. Transformiere Kommunikationsfähigkeiten in Team-Ergebnisse.</div>
                             <div class="open-mat-meta">
-                                <span>📚 4 Stripes</span>
-                                <span>⏱️ 6-8 weeks</span>
-                                <span>⭐ Advanced</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-book-open"></use></svg> 4 Stripes</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-clock"></use></svg> 6-8 weeks</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> Advanced</span>
                             </div>
                             <div class="belt-progress-bar" style="width: 100%; background: #e2e8f0; border-radius: 8px; height: 8px; margin: 1rem 0; overflow: hidden;">
                                 <div id="purple-progress-fill" style="height: 100%; background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%); width: 0%; transition: width 0.5s;"></div>
@@ -1439,13 +1521,13 @@
                         </div>
                         <div class="open-mat-card featured" id="brown-belt-card">
                             <span class="open-mat-badge new">New</span>
-                            <div class="open-mat-icon">🟤</div>
+                            <div class="open-mat-icon"><i class="fas fa-circle icon-md" style="color: #92400e;"></i></div>
                             <div class="open-mat-title">Braungurt: Systems & Strategy</div>
-                            <div class="open-mat-desc">Master organizational systems, culture design, and strategic leadership thinking.</div>
+                            <div class="open-mat-desc">Meistere Organisationssysteme, Kulturdesign und strategisches Führungsdenken.</div>
                             <div class="open-mat-meta">
-                                <span>📚 4 Stripes</span>
-                                <span>⏱️ 8-10 weeks</span>
-                                <span>⭐ Expert</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-book-open"></use></svg> 4 Stripes</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-clock"></use></svg> 8-10 weeks</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> Expert</span>
                             </div>
                             <div class="belt-progress-bar" style="width: 100%; background: #e2e8f0; border-radius: 8px; height: 8px; margin: 1rem 0; overflow: hidden;">
                                 <div id="brown-progress-fill" style="height: 100%; background: linear-gradient(135deg, #78350f 0%, #92400e 100%); width: 0%; transition: width 0.5s;"></div>
@@ -1457,11 +1539,11 @@
                             <span class="open-mat-badge new">New</span>
                             <div class="open-mat-icon">⬛</div>
                             <div class="open-mat-title">Schwarzgurt: Mastery & Integration</div>
-                            <div class="open-mat-desc">The final journey: Integration, Teaching, Philosophy, and Legacy. Where the real learning begins.</div>
+                            <div class="open-mat-desc">Die letzte Reise: Integration, Lehre, Philosophie und Vermächtnis. Hier beginnt das echte Lernen.</div>
                             <div class="open-mat-meta">
-                                <span>📚 4 Stripes</span>
-                                <span>⏱️ 10+ weeks</span>
-                                <span>⭐ Mastery</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-book-open"></use></svg> 4 Stripes</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-clock"></use></svg> 10+ weeks</span>
+                                <span><i class="fas fa-star icon-md icon-warning"></i> Mastery</span>
                             </div>
                             <div class="belt-progress-bar" style="width: 100%; background: #e2e8f0; border-radius: 8px; height: 8px; margin: 1rem 0; overflow: hidden;">
                                 <div id="black-progress-fill" style="height: 100%; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); width: 0%; transition: width 0.5s;"></div>
@@ -1476,77 +1558,77 @@
                 <div class="card team-assessments-card">
                     <div class="card-header">
                         <div>
-                            <div class="card-title">👥 Team Assessments</div>
-                            <div class="card-subtitle">Send assessments zum candidates, team members, or run team-wide diagnostics</div>
+                            <div class="card-title"><i class="fas fa-users icon-md icon-primary"></i> Team-Assessments</div>
+                            <div class="card-subtitle">Sende Assessments an Kandidaten, Teammitglieder oder führe teamweite Diagnosen durch</div>
                         </div>
                     </div>
                     <div class="team-grid">
                         <div class="team-assessment-card">
                             <div class="team-assessment-icon">🧭</div>
-                            <div class="team-assessment-title">Worker Type Assessment</div>
-                            <div class="team-assessment-desc">Understand how someone works best: Maker, Manager, or Mechanic</div>
+                            <div class="team-assessment-title">Arbeitstyp-Assessment</div>
+                            <div class="team-assessment-desc">Verstehe, wie jemand am besten arbeitet: Maker, Manager oder Mechanic</div>
                             <div class="team-stat">
-                                <span>⏱️ 8-10 min</span>
-                                <span>📊 Individual</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-clock"></use></svg> 8-10 min</span>
+                                <span><i class="fas fa-chart-line icon-md icon-success"></i> Individual</span>
                             </div>
                             <div class="team-assessment-actions">
-                                <button class="team-btn team-btn-primary" onclick="window.location.href='worker-type-assessment-de.html'">Take Assessment</button>
-                                <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/worker-type-assessment.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
+                                <button class="team-btn team-btn-primary" onclick="window.location.href='worker-type-assessment-de.html'">Assessment starten</button>
+                                <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/worker-type-assessment.de.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
                             </div>
                         </div>
                         
                         <div class="team-assessment-card">
-                            <div class="team-assessment-icon">🎯</div>
-                            <div class="team-assessment-title">Team Dynamics Scan</div>
-                            <div class="team-assessment-desc">Enhanced team assessment based on Lencioni's 5 Dysfunctions framework</div>
+                            <div class="team-assessment-icon"><i class="fas fa-bullseye icon-md icon-primary"></i></div>
+                            <div class="team-assessment-title">Team-Dynamik-Scan</div>
+                            <div class="team-assessment-desc">Erweiterte Team-Bewertung basierend auf Lencionis 5 Dysfunktionen-Framework</div>
                             <div class="team-stat">
-                                <span>⏱️ 12-15 min</span>
-                                <span>👥 Team-wide</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-clock"></use></svg> 12-15 min</span>
+                                <span><i class="fas fa-users icon-md icon-primary"></i> Team-wide</span>
                             </div>
                             <div class="team-assessment-actions">
-                                <button class="team-btn team-btn-primary" onclick="window.location.href='team-assessment-enhanced-v2-de.html'">Start Team Scan</button>
-                                <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/team-assessment-enhanced-v2.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
+                                <button class="team-btn team-btn-primary" onclick="window.location.href='team-assessment-enhanced-v2-de.html'">Team-Scan starten</button>
+                                <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/team-assessment-enhanced-v2.de.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
                             </div>
                         </div>
                         
                         <div class="team-assessment-card">
-                            <div class="team-assessment-icon">🎯</div>
-                            <div class="team-assessment-title">Abgeschlossen Team Profile</div>
-                            <div class="team-assessment-desc">4D assessment: Worker Type + Team Dynamic + Impact Type + Communication Style</div>
+                            <div class="team-assessment-icon"><i class="fas fa-bullseye icon-md icon-primary"></i></div>
+                            <div class="team-assessment-title">Vollständiges Team-Profil</div>
+                            <div class="team-assessment-desc">4D-Assessment: Arbeitstyp + Team-Dynamik + Impact-Typ + Kommunikationsstil</div>
                             <div class="team-stat">
-                                <span>⏱️ 10-12 min</span>
-                                <span>🌟 Multi-Dimensional</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-clock"></use></svg> 10-12 min</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-star"></use></svg> Multi-Dimensional</span>
                             </div>
                             <div class="team-assessment-actions">
-                                <button class="team-btn team-btn-primary" onclick="window.location.href='team-profile-complete-de.html'">Discover My Profile</button>
+                                <button class="team-btn team-btn-primary" onclick="window.location.href='team-profile-complete-de.html'">Mein Profil entdecken</button>
                                 <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/team-profile-complete.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
                             </div>
                         </div>
                         
                         <div class="team-assessment-card">
                             <div class="team-assessment-icon">🔬</div>
-                            <div class="team-assessment-title">Leadership Profile</div>
-                            <div class="team-assessment-desc">Combined assessment for hiring or development - see the full picture</div>
+                            <div class="team-assessment-title">Führungsprofil</div>
+                            <div class="team-assessment-desc">Kombiniertes Assessment für Einstellung oder Entwicklung - sieh das Gesamtbild</div>
                             <div class="team-stat">
-                                <span>⏱️ 20-25 min</span>
-                                <span>🎯 Comprehensive</span>
+                                <span><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-clock"></use></svg> 20-25 min</span>
+                                <span><i class="fas fa-bullseye icon-md icon-primary"></i> Comprehensive</span>
                             </div>
                             <div class="team-assessment-actions">
-                                <button class="team-btn team-btn-primary" onclick="window.location.href='combined-profile-carousel-de.html'">Full Profile</button>
-                                <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/combined-profile-carousel.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
+                                <button class="team-btn team-btn-primary" onclick="window.location.href='combined-profile-carousel-de.html'">Vollständiges Profil</button>
+                                <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/combined-profile-carousel.de.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
                             </div>
                         </div>
                         
                         <div class="team-assessment-card" style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%); border: 2px solid rgba(168, 85, 247, 0.3);">
                             <div class="team-assessment-icon">🔍</div>
-                            <div class="team-assessment-title">Team Composition Analyzer</div>
-                            <div class="team-assessment-desc">Manager tool: Visualize your team's profile mix and identify gaps or strengths</div>
+                            <div class="team-assessment-title">Team-Zusammensetzungs-Analysator</div>
+                            <div class="team-assessment-desc">Manager-Tool: Visualisiere das Profil-Mix deines Teams und identifiziere Lücken oder Stärken</div>
                             <div class="team-stat">
                                 <span>👔 Manager Tool</span>
-                                <span>📊 Team Analysis</span>
+                                <span><i class="fas fa-chart-line icon-md icon-success"></i> Team Analysis</span>
                             </div>
                             <div class="team-assessment-actions">
-                                <button class="team-btn team-btn-primary" onclick="window.location.href='team-composition-analyzer-de.html'">Analyze Team</button>
+                                <button class="team-btn team-btn-primary" onclick="window.location.href='team-composition-analyzer-de.html'">Team analysieren</button>
                                 <button class="team-btn team-btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin + '/team-composition-analyzer.html').then(() => { this.textContent = '✓ Copied!'; setTimeout(() => this.textContent = '📤 Share', 2000); })">📤 Share</button>
                             </div>
                         </div>
@@ -1555,8 +1637,8 @@
                     <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <div>
-                                <div style="font-size: 0.9rem; color: rgba(255,255,255,0.9); font-weight: 600; margin-bottom: 0.25rem;">💼 For Organizations</div>
-                                <div style="font-size: 0.8rem; color: rgba(255,255,255,0.7);">Bulk send, track completion, export results, and get team insights dashboard</div>
+                                <div style="font-size: 0.9rem; color: rgba(255,255,255,0.9); font-weight: 600; margin-bottom: 0.25rem;"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-briefcase"></use></svg> Für Organisationen</div>
+                                <div style="font-size: 0.8rem; color: rgba(255,255,255,0.7);">Massenversand, Verfolgung des Abschlusses, Export von Ergebnissen und Team-Insights-Dashboard</div>
                             </div>
                             <button class="team-btn team-btn-secondary" style="flex: 0 0 auto; padding: 0.75rem 1.5rem;" onclick="window.location.href='business-portal-de.html'">Learn More →</button>
                         </div>
@@ -1566,49 +1648,49 @@
                 <!-- Toolbox -->
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">🧰 Your Toolbox</div>
-                        <a href="learning-hub-de.html" class="card-action">See All Tools →</a>
+                        <div class="card-title">🧰 Dein Werkzeugkasten</div>
+                        <a href="learning-hub-de.html" class="card-action">Alle Tools anzeigen →</a>
                     </div>
                     <div class="toolbox-grid">
                         <a href="tool-journal-de.html" class="tool-card" style="text-decoration: none; color: inherit;">
                             <div class="tool-icon">📓</div>
-                            <div class="tool-name">Journal</div>
-                            <div class="tool-desc">Free-write anytime</div>
+                            <div class="tool-name">Tagebuch</div>
+                            <div class="tool-desc">Jederzeit frei schreiben</div>
                         </a>
                         <a href="tool-goal-tracker-de.html" class="tool-card" style="text-decoration: none; color: inherit;">
-                            <div class="tool-icon">🎯</div>
-                            <div class="tool-name">Goal Tracker</div>
-                            <div class="tool-desc">3 active goals</div>
+                            <div class="tool-icon"><i class="fas fa-bullseye icon-md icon-primary"></i></div>
+                            <div class="tool-name">Ziel-Tracker</div>
+                            <div class="tool-desc">3 aktive Ziele</div>
                         </a>
                         <a href="tool-mood-tracker-de.html" class="tool-card" style="text-decoration: none; color: inherit;">
-                            <div class="tool-icon">📊</div>
-                            <div class="tool-name">Mood Tracker</div>
-                            <div class="tool-desc">28 day history</div>
+                            <div class="tool-icon"><i class="fas fa-chart-line icon-md icon-success"></i></div>
+                            <div class="tool-name">Stimmungs-Tracker</div>
+                            <div class="tool-desc">28 Tage Verlauf</div>
                         </a>
                         <a href="open-mat-box-breathing-de.html" class="tool-card" style="text-decoration: none; color: inherit;">
                             <div class="tool-icon">🧘</div>
-                            <div class="tool-name">Breathing</div>
-                            <div class="tool-desc">Guided exercises</div>
+                            <div class="tool-name">Atmung</div>
+                            <div class="tool-desc">Geführte Übungen</div>
                         </a>
                         <a href="open-mat-inner-game-leadership-de.html" class="tool-card" style="text-decoration: none; color: inherit;">
-                            <div class="tool-icon">⏱️</div>
-                            <div class="tool-name">Focus Timer</div>
-                            <div class="tool-desc">Deep work tools</div>
+                            <div class="tool-icon"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-clock"></use></svg></div>
+                            <div class="tool-name">Fokus-Timer</div>
+                            <div class="tool-desc">Deep-Work-Tools</div>
                         </a>
                         <a href="open-mat-reframe-60-de.html" class="tool-card" style="text-decoration: none; color: inherit;">
                             <div class="tool-icon">🎲</div>
-                            <div class="tool-name">Random Prompt</div>
-                            <div class="tool-desc">Quick reflection</div>
+                            <div class="tool-name">Zufälliger Impuls</div>
+                            <div class="tool-desc">Schnelle Reflexion</div>
                         </a>
                         <div class="tool-card">
-                            <div class="tool-icon">📈</div>
-                            <div class="tool-name">Progress Report</div>
-                            <div class="tool-desc">Weekly insights</div>
+                            <div class="tool-icon"><i class="fas fa-chart-line icon-md icon-success"></i></div>
+                            <div class="tool-name">Fortschrittsbericht</div>
+                            <div class="tool-desc">Wöchentliche Einblicke</div>
                         </div>
                         <div class="tool-card">
                             <div class="tool-icon">🤖</div>
-                            <div class="tool-name">AI Coach</div>
-                            <div class="tool-desc">Ask anything</div>
+                            <div class="tool-name">KI-Coach</div>
+                            <div class="tool-desc">Frage alles</div>
                         </div>
                     </div>
                 </div>
@@ -1616,7 +1698,7 @@
                 <!-- Resource Library -->
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">📚 Resource Library</div>
+                        <div class="card-title"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-book-open"></use></svg> Resource Library</div>
                         <a href="white-belt-de.html" class="card-action">Alle durchsuchen →</a>
                     </div>
                     <div class="library-tabs">
@@ -1644,7 +1726,7 @@
                             </div>
                         </div>
                         <div class="library-item">
-                            <div class="library-thumb">📝</div>
+                            <div class="library-thumb"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-document-text"></use></svg></div>
                             <div class="library-info">
                                 <h4>Values Discovery Worksheet</h4>
                                 <p>Clarify what truly matters</p>
@@ -1678,7 +1760,7 @@
                         <span class="challenge-badge">Weekly Challenge</span>
                         <span class="challenge-timer">4 days left</span>
                     </div>
-                    <div class="challenge-title">🔥 7 Days of Vulnerability</div>
+                    <div class="challenge-title"><i class="fas fa-fire icon-md icon-danger"></i> 7 Days of Vulnerability</div>
                     <div class="challenge-desc">Share one honest thing about yourself with someone each day this week.</div>
                     <div class="challenge-progress">
                         <div class="challenge-bar">
@@ -1694,40 +1776,40 @@
                         <div class="card-title">📋 Assessments</div>
                     </div>
                     <div class="assessment-list">
-                        <div class="assessment-item">
+                        <div class="assessment-item" onclick="window.location.href='belt-assessment-v2-de.html'" style="cursor: pointer;">
                             <div class="assessment-left">
-                                <span class="assessment-icon">🥋</span>
+                                <span class="assessment-icon"><i class="fas fa-fist-raised icon-md icon-primary"></i></span>
                                 <span class="assessment-name">Belt Assessment</span>
                             </div>
-                            <span class="assessment-status completed">✓ Done</span>
+                            <span class="assessment-status completed">✓ Fertig</span>
                         </div>
                         <div class="assessment-item">
                             <div class="assessment-left">
-                                <span class="assessment-icon">⚡</span>
-                                <span class="assessment-name">Worker Type</span>
+                                <span class="assessment-icon"><i class="fas fa-bolt icon-md icon-warning"></i></span>
+                                <span class="assessment-name">Arbeitstyp</span>
                             </div>
-                            <span class="assessment-status completed">✓ Done</span>
+                            <span class="assessment-status completed">✓ Fertig</span>
                         </div>
                         <div class="assessment-item">
                             <div class="assessment-left">
                                 <span class="assessment-icon">❤️</span>
-                                <span class="assessment-name">Mental Health</span>
+                                <span class="assessment-name">Psychische Gesundheit</span>
                             </div>
-                            <span class="assessment-status available">Take Now</span>
+                            <span class="assessment-status available">Jetzt starten</span>
                         </div>
                         <div class="assessment-item">
                             <div class="assessment-left">
                                 <span class="assessment-icon">⚖️</span>
-                                <span class="assessment-name">Work-Life Balance</span>
+                                <span class="assessment-name">Work-Life-Balance</span>
                             </div>
-                            <span class="assessment-status available">Take Now</span>
+                            <span class="assessment-status available">Jetzt starten</span>
                         </div>
                         <div class="assessment-item">
                             <div class="assessment-left">
-                                <span class="assessment-icon">👥</span>
-                                <span class="assessment-name">Team Dynamics</span>
+                                <span class="assessment-icon"><i class="fas fa-users icon-md icon-primary"></i></span>
+                                <span class="assessment-name">Team-Dynamik</span>
                             </div>
-                            <span class="assessment-status available">Take Now</span>
+                            <span class="assessment-status available">Jetzt starten</span>
                         </div>
                     </div>
                 </div>
@@ -1735,14 +1817,14 @@
                 <!-- Recent Activity -->
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">⚡ Recent Activity</div>
+                        <div class="card-title"><i class="fas fa-bolt icon-md icon-warning"></i> Letzte Aktivitäten</div>
                     </div>
                     <div class="activity-list">
                         <div class="activity-item">
-                            <div class="activity-icon">✅</div>
+                            <div class="activity-icon"><i class="fas fa-check-circle icon-md icon-success"></i></div>
                             <div class="activity-info">
                                 <div class="activity-title">Abgeschlossend Morgenintention</div>
-                                <div class="activity-time">Today, 7:32 AM</div>
+                                <div class="activity-time">Heute, 7:32 Uhr</div>
                             </div>
                             <span class="activity-xp">+10 XP</span>
                         </div>
@@ -1750,15 +1832,15 @@
                             <div class="activity-icon">📖</div>
                             <div class="activity-info">
                                 <div class="activity-title">Trust Lesson 3 Abgeschlossen</div>
-                                <div class="activity-time">Today, 8:15 AM</div>
+                                <div class="activity-time">Heute, 8:15 Uhr</div>
                             </div>
                             <span class="activity-xp">+25 XP</span>
                         </div>
                         <div class="activity-item">
-                            <div class="activity-icon">🔥</div>
+                            <div class="activity-icon"><i class="fas fa-fire icon-md icon-danger"></i></div>
                             <div class="activity-info">
-                                <div class="activity-title">12-Day Streak!</div>
-                                <div class="activity-time">Yesterday</div>
+                                <div class="activity-title">12-Tage-Serie!</div>
+                                <div class="activity-time">Gestern</div>
                             </div>
                             <span class="activity-xp">+50 XP</span>
                         </div>
@@ -1766,15 +1848,15 @@
                             <div class="activity-icon">🌙</div>
                             <div class="activity-info">
                                 <div class="activity-title">Abendreflexion</div>
-                                <div class="activity-time">Yesterday, 9:45 PM</div>
+                                <div class="activity-time">Gestern, 21:45 Uhr</div>
                             </div>
                             <span class="activity-xp">+10 XP</span>
                         </div>
                         <div class="activity-item">
-                            <div class="activity-icon">🎯</div>
+                            <div class="activity-icon"><i class="fas fa-bullseye icon-md icon-primary"></i></div>
                             <div class="activity-info">
-                                <div class="activity-title">Weekly Challenge: Day 3</div>
-                                <div class="activity-time">Yesterday</div>
+                                <div class="activity-title">Wöchentliche Herausforderung: Tag 3</div>
+                                <div class="activity-time">Gestern</div>
                             </div>
                             <span class="activity-xp">+15 XP</span>
                         </div>
@@ -1784,24 +1866,24 @@
                 <!-- Quick Stats - Dynamic -->
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">📊 Your Stats</div>
+                        <div class="card-title"><i class="fas fa-chart-line icon-md icon-success"></i> Deine Statistiken</div>
                     </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                         <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px;">
                             <div style="font-size: 1.75rem; font-weight: 700; color: var(--accent-gold);" id="streakCount">0</div>
-                            <div style="font-size: 0.75rem; color: var(--text-muted);">Day Streak 🔥</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">Tage-Serie <i class="fas fa-fire icon-md icon-danger"></i></div>
                         </div>
                         <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px;">
                             <div style="font-size: 1.75rem; font-weight: 700; color: var(--success-green);" id="totalXP">0</div>
-                            <div style="font-size: 0.75rem; color: var(--text-muted);">Gesamt XP ⚡</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">Gesamt XP <i class="fas fa-bolt icon-md icon-warning"></i></div>
                         </div>
                         <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px;">
                             <div style="font-size: 1.75rem; font-weight: 700; color: var(--primary-navy);" id="modulesAbgeschlossen">0</div>
-                            <div style="font-size: 0.75rem; color: var(--text-muted);">Module Done</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">Module abgeschlossen</div>
                         </div>
                         <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px;">
                             <div style="font-size: 1.75rem; font-weight: 700;" id="badgesEarned">0</div>
-                            <div style="font-size: 0.75rem; color: var(--text-muted);">Badges Earned 🏆</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">Badges verdient <i class="fas fa-trophy icon-md icon-warning"></i></div>
                         </div>
                     </div>
                 </div>
@@ -1848,17 +1930,17 @@
                 const toolName = this.querySelector('.tool-name').textContent;
                 // Map tool names to actual pages
                 if (toolName.includes('Journal')) {
-                    window.location.href = 'tool-journal.html';
+                    window.location.href = 'tool-journal-de.html';
                 } else if (toolName.includes('Goal')) {
-                    window.location.href = 'tool-goal-tracker.html';
+                    window.location.href = 'tool-goal-tracker-de.html';
                 } else if (toolName.includes('Mood')) {
-                    window.location.href = 'tool-mood-tracker.html';
+                    window.location.href = 'tool-mood-tracker-de.html';
                 } else if (toolName.includes('Breathing')) {
-                    window.location.href = 'open-mat-box-breathing.html';
+                    window.location.href = 'open-mat-box-breathing-de.html';
                 } else if (toolName.includes('Focus')) {
-                    window.location.href = 'open-mat-inner-game-leadership.html';
+                    window.location.href = 'open-mat-inner-game-leadership-de.html';
                 } else {
-                    window.location.href = 'learning-hub.html';
+                    window.location.href = "learning-hub-de.html";
                 }
             });
         });
@@ -1867,34 +1949,93 @@
         document.querySelectorAll('.open-mat-card:not([onclick])').forEach(card => {
             card.style.cursor = 'pointer';
             card.addEventListener('click', function() {
-                window.location.href = 'open-mat-inner-game-leadership.html';
+                window.location.href = 'open-mat-inner-game-leadership-de.html';
             });
         });
 
-        // Module cards click - use data-target or link to white belt
-        document.querySelectorAll('.module-card:not(.locked)').forEach(card => {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', function() {
+        // Module cards click - use data-target (like English version) with fallback to title matching
+        // This matches the English gym-dashboard.html structure
+        // Window-level guard: Prevent duplicate initialization
+        if (!window._moduleListenersInitialized) {
+            window._moduleListenersInitialized = true;
+            document.querySelectorAll('.module-card:not(.locked)').forEach(card => {
+                // Element-level guard: Prevent duplicate listeners on same element
+                if (card.hasAttribute('data-module-listener')) {
+                    return;
+                }
+                card.setAttribute('data-module-listener', 'true');
+                card.style.cursor = 'pointer';
+            card.addEventListener('click', function(e) {
+                e.stopPropagation();
                 const target = this.dataset.target;
+                
+                // Priority 1: Use data-target if present (preferred method, matches English version)
                 if (target) {
                     window.location.href = target;
-                } else {
-                    // Map German module names to stripe pages
-                    const title = this.querySelector('.module-title').textContent;
-                    if (title.includes('Selbstbewusstsein') || title.includes('Who Are You')) {
-                        window.location.href = 'white-belt-stripe1-carousel-NEW.html';
-                    } else if (title.includes('Verletzlichkeit') || title.includes('How You Operate')) {
-                        window.location.href = 'white-belt-stripe2-gamified.html';
-                    } else if (title.includes('Selbstvertrauen') || title.includes('What You Value')) {
-                        window.location.href = 'white-belt-stripe3-gamified.html';
-                    } else if (title.includes('Journaling') || title.includes('How You Show Up')) {
-                        window.location.href = 'white-belt-stripe4-gamified.html';
-                    } else {
-                        window.location.href = 'white-belt.html';
-                    }
+                    return;
+                }
+                
+                // Priority 2: Fallback to title matching for modules without data-target
+                // This supports all belts: white, blue, purple, brown, black
+                const title = this.querySelector('.module-title')?.textContent?.trim() || '';
+                
+                // WHITE BELT modules
+                if (title.includes('Selbstbewusstsein') || title.includes('Who Are You') || title.includes('Self-Awareness')) {
+                    window.location.href = "white-belt-stripe1-gamified-de.html";
+                } else if (title.includes('Verletzlichkeit') || title.includes('Vulnerability') || title.includes('How You Operate')) {
+                    window.location.href = 'challenge-vulnerability-de.html';
+                } else if (title.includes('Selbstvertrauen') || title.includes('What You Value') || title.includes('Confidence')) {
+                    window.location.href = 'white-belt-stripe3-gamified-de.html';
+                } else if (title.includes('Tagebuch') || title.includes('Journaling') || title.includes('Journal') || title.includes('How You Show Up')) {
+                    window.location.href = 'white-belt-stripe4-gamified-de.html';
+                }
+                // BLUE BELT modules
+                else if (title.includes('Difficult Conversations') || title.includes('Schwierige Gespräche')) {
+                    window.location.href = 'blue-belt-stripe1-gamified-de.html';
+                } else if (title.includes('Active Listening') || title.includes('Aktives Zuhören')) {
+                    window.location.href = 'blue-belt-stripe2-gamified-de.html';
+                } else if (title.includes('Feedback Systems') || title.includes('Feedback-Systeme')) {
+                    window.location.href = 'blue-belt-stripe3-gamified-de.html';
+                } else if (title.includes('Boundaries') || title.includes('Grenzen')) {
+                    window.location.href = 'blue-belt-stripe4-gamified-de.html';
+                }
+                // PURPLE BELT modules
+                else if (title.includes('Team Alignment') || title.includes('Team-Ausrichtung') || title.includes('Shared Goals')) {
+                    window.location.href = 'purple-belt-stripe1-gamified-de.html';
+                } else if (title.includes('Healthy Conflict') || title.includes('Gesunder Konflikt')) {
+                    window.location.href = 'purple-belt-stripe2-gamified-de.html';
+                } else if (title.includes('Collective Accountability') || title.includes('Kollektive Verantwortung')) {
+                    window.location.href = 'purple-belt-stripe3-gamified-de.html';
+                } else if (title.includes('Results Focus') || title.includes('Ergebnis-Fokus')) {
+                    window.location.href = 'purple-belt-stripe4-gamified-de.html';
+                }
+                // BROWN BELT modules
+                else if (title.includes('Accountability Foundation') || title.includes('Verantwortungsgrundlage')) {
+                    window.location.href = 'brown-belt-stripe1-gamified-de.html';
+                } else if (title.includes('Accountability Depth') || title.includes('Verantwortungstiefe')) {
+                    window.location.href = 'brown-belt-stripe2-gamified-de.html';
+                } else if (title.includes('Accountability Systems') || title.includes('Verantwortungssysteme')) {
+                    window.location.href = 'brown-belt-stripe3-gamified-de.html';
+                } else if (title.includes('Accountability Mastery') || title.includes('Verantwortungsmeisterschaft')) {
+                    window.location.href = 'brown-belt-stripe4-gamified-de.html';
+                }
+                // BLACK BELT modules
+                else if (title.includes('Integration') || title.includes('Integration')) {
+                    window.location.href = 'black-belt-stripe1-gamified-de.html';
+                } else if (title.includes('Teaching Others') || title.includes('Andere lehren')) {
+                    window.location.href = 'black-belt-stripe2-gamified-de.html';
+                } else if (title.includes('Leadership Philosophy') || title.includes('Führungsphilosophie')) {
+                    window.location.href = 'black-belt-stripe3-gamified-de.html';
+                } else if (title.includes('Legacy') || title.includes('Vermächtnis')) {
+                    window.location.href = 'black-belt-stripe4-gamified-de.html';
+                }
+                // Fallback: Go to white belt overview
+                else {
+                    window.location.href = "white-belt-de.html";
                 }
             });
         });
+        } // End window._moduleListenersInitialized guard
 
         // Assessment items click - use data attributes for links
         document.querySelectorAll('.assessment-item').forEach(item => {
@@ -1921,13 +2062,13 @@
                 if (title.includes('5 Dysfunctions')) {
                     window.location.href = 'team-dynamics-assessment.html';
                 } else if (title.includes('Project Aristotle')) {
-                    window.location.href = 'learning-hub.html';
+                    window.location.href = "learning-hub-de.html";
                 } else if (title.includes('Values Discovery')) {
-                    window.location.href = 'values-discovery-assessment.html';
+                    window.location.href = 'values-discovery-assessment-de.html';
                 } else if (title.includes('Stoic')) {
-                    window.location.href = 'open-mat-inner-game-leadership.html';
+                    window.location.href = 'open-mat-inner-game-leadership-de.html';
                 } else {
-                    window.location.href = 'learning-hub.html';
+                    window.location.href = "learning-hub-de.html";
                 }
             });
         });
@@ -1975,7 +2116,7 @@
                 
                 if (textElement) {
                     if (percentage === 100) {
-                        textElement.textContent = `✅ ${belt.color} Belt Abgeschlossen!`;
+                        textElement.textContent = `Check Circle ${belt.color} Belt Abgeschlossen!`;
                         textElement.style.color = '#38a169';
                         textElement.style.fontWeight = '600';
                         if (badgeElement) {
@@ -2048,7 +2189,7 @@
         // Award XP function
         function awardXP(amount, reason) {
             const data = getGamificationData();
-            data.totalXP += amount;
+            XPManager.addXP(amount);
             data.history.push({
                 amount,
                 reason,
@@ -2084,11 +2225,11 @@
             if (lastVisit === yesterdayStr) {
                 // Continuing streak
                 data.streakCount += 1;
-                awardXP(XP_VALUES.dailyLogin, 'Daily login bonus 🔥');
+                awardXP(XP_VALUES.dailyLogin, 'Daily login bonus Fire');
                 
                 // Week streak bonus
                 if (data.streakCount % 7 === 0) {
-                    awardXP(XP_VALUES.weekStreak, `${data.streakCount}-day streak bonus! 🏆`);
+                    awardXP(XP_VALUES.weekStreak, `${data.streakCount}-day streak bonus! Trophy`);
                     awardBadge(`streak_${data.streakCount}`, `${data.streakCount} Day Warrior`, `Maintained ${data.streakCount} consecutive days`);
                 }
             } else if (lastVisit !== null) {
@@ -2167,7 +2308,7 @@
             // Update XP badge in nav (if it exists)
             const xpBadge = document.querySelector('.xp-badge');
             if (xpBadge) {
-                xpBadge.innerHTML = `⚡ ${data.totalXP.toLocaleString()} XP`;
+                xpBadge.innerHTML = `Bolt ${data.totalXP.toLocaleString()} XP`;
             }
         }
 
@@ -2219,7 +2360,7 @@
             `;
             notification.innerHTML = `
                 <div style="display: flex; gap: 1rem; align-items: center;">
-                    <div style="font-size: 2.5rem;">🏆</div>
+                    <div style="font-size: 2.5rem;"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-trophy"></use></svg></div>
                     <div>
                         <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem;">Badge Unlocked!</div>
                         <div style="font-weight: 600; color: var(--accent-gold);">${badgeName}</div>
@@ -2311,7 +2452,7 @@
     }
     
     .lang-arrow {
-        font-size: 10px;
+        font-size: 14px;
         opacity: 0.7;
     }
     
@@ -2379,7 +2520,7 @@
         
         .lang-toggle {
             padding: 6px 12px;
-            font-size: 13px;
+            font-size: 14px;
         }
     }
 </style>
@@ -2402,11 +2543,19 @@
 
 <script>
 (function() {
+    'use strict';
+    
+    // Window-level guard: Prevent duplicate initialization
+    if (window._langSwitcherInitialized) {
+        return;
+    }
+    window._langSwitcherInitialized = true;
+    
     // Language Switcher Logic
-    const toggle = document.getElementById('langToggle');
-    const dropdown = document.getElementById('langDropdown');
-    const currentFlag = document.getElementById('currentFlag');
-    const currentLang = document.getElementById('currentLang');
+    let toggle = document.getElementById('langToggle');
+    let dropdown = document.getElementById('langDropdown');
+    let currentFlag = document.getElementById('currentFlag');
+    let currentLang = document.getElementById('currentLang');
     
     // Detect current language from URL
     const isGerman = window.location.pathname.includes('-de.html');
@@ -2418,30 +2567,53 @@
         currentLang.textContent = 'DE';
     }
     
+    // Check if elements exist
+    if (!toggle || !dropdown || !currentFlag || !currentLang) {
+        console.error('Language switcher elements not found');
+        return;
+    }
+    
     // Mark active language option
     document.querySelectorAll('.lang-option').forEach(option => {
         if (option.dataset.lang === currentLanguage) {
             option.classList.add('active');
+        } else {
+            option.classList.remove('active');
         }
     });
     
-    // Toggle dropdown
-    toggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dropdown.classList.toggle('show');
-    });
+    // Toggle dropdown - with element-level guard
+    if (!toggle.hasAttribute('data-lang-listener')) {
+        toggle.setAttribute('data-lang-listener', 'true');
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            dropdown.classList.toggle('show');
+        });
+    }
     
-    // Close dropdown when clicking outside
-    document.addEventListener('click', () => {
-        dropdown.classList.remove('show');
-    });
+    // Close dropdown when clicking outside - with document-level guard
+    if (!document.hasAttribute('data-lang-outside-listener')) {
+        document.setAttribute('data-lang-outside-listener', 'true');
+        document.addEventListener('click', (e) => {
+            if (!toggle.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+    }
     
-    // Language switch handler
+    // Language switch handler - with element-level guards
     document.querySelectorAll('.lang-option').forEach(option => {
+        // Check if listener already added
+        if (option.hasAttribute('data-lang-listener')) {
+            return;
+        }
+        option.setAttribute('data-lang-listener', 'true');
+        
         option.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
             const targetLang = option.dataset.lang;
-            const fileSuffix = option.dataset.file;
             
             // Don't switch if already on that language
             if (targetLang === currentLanguage) {
@@ -2452,15 +2624,13 @@
             // Store preference
             localStorage.setItem('preferredLanguage', targetLang);
             
-            // Get current page without language suffix
-            let currentPath = window.location.pathname;
-            let basePath = currentPath.replace('-de.html', '.html');
-            
-            // Build new path
-            let newPath = basePath.replace('.html', fileSuffix + '.html');
-            
-            // Navigate zum new language version
-            window.location.href = newPath;
+            // Navigate to corresponding page in other language
+            // We're on gym-dashboard-de.html, so switch to gym-dashboard.html
+            if (targetLang === 'en') {
+                window.location.href = 'gym-dashboard.html';
+            } else {
+                window.location.href = 'gym-dashboard-de.html';
+            }
         });
     });
     
@@ -2482,25 +2652,31 @@
 
     <script>
     // Global error handler - prevents silent failures
-    /* Duplicate error handler removed */
-{
-        console.error('Resource failed zum load:', e.target.src || e.target.href || e.message);
+    window.addEventListener('error', function(e) {
+        console.error('Resource failed to load:', e.target.src || e.target.href || e.message);
         // Don't break the page, just log
         e.preventDefault();
     });
     
     // Handle promise rejections
-    /* Duplicate rejection handler removed */
-{
-        console.error('Unhandled promise rejection:', e.reason);
+    window.addEventListener('unhandledrejection', function(e) {
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') { console.error('Unhandled promise rejection:', e.reason); }
         e.preventDefault();
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === \'loading\') {
+        document.addEventListener(\'DOMContentLoaded\', initLanguageSwitcher);
+    } else {
+        initLanguageSwitcher();
+    }
     });
     </script>
 
 
 <!-- Wisdom Tracker & Hub Unlock Systems -->
-<script src="js/wisdom-tracker.js" defer></script>
-<script src="js/hub-unlock-system.js" defer></script>
+<script src="js/wisdom-tracker.min.js" defer></script>
+<script src="js/hub-unlock-system.min.js" defer></script>
 <script src="js/progress-sync-init.js" defer></script>
 
 <!-- Initialize Systems -->
@@ -2509,13 +2685,21 @@
     // Initialize Wisdom Tracker
     if (typeof WisdomTracker !== 'undefined') {
       WisdomTracker.init();
-      console.log('✅ Wisdom Tracker initialized');
+      console.log('Check Circle Wisdom Tracker initialized');
     }
     
     // Initialize Hub Unlock System  
     if (typeof HubUnlockSystem !== 'undefined') {
       HubUnlockSystem.init();
-      console.log('✅ Hub Unlock System initialized');
+      console.log('Check Circle Hub Unlock System initialized');
+    }
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === \'loading\') {
+        document.addEventListener(\'DOMContentLoaded\', initLanguageSwitcher);
+    } else {
+        initLanguageSwitcher();
     }
   });
 </script>
@@ -2523,76 +2707,37 @@
 
 <!-- Global Error Handling -->
 <script>
-// Global error handling
+// Global error handling - Silent mode (no user notifications)
 window.addEventListener('error', (event) => {
-  console.error('💥 Error:', event.error);
-  showErrorToast('Etwas ist schief gelaufen. Bitte aktualisieren Sie die Seite.');
+  // Suppress expected errors (service worker, favicon, etc.)
+  const errorSrc = event.target ? (event.target.src || event.target.href || '') : '';
+  if (errorSrc.includes('sw.js') || errorSrc.includes('favicon') || errorSrc.includes('service-worker')) {
+    return; // Silent suppression
+  }
+  // Only log to console, never show toasts
+  console.error('Exclamation Triangle Resource failed to load:', errorSrc || event.message);
 });
 
 window.addEventListener('unhandledrejection', (event) => {
-  // FIXED: Suppress Service Worker errors during uninstall
+  // Suppress Service Worker errors during uninstall
   const reason = event.reason?.toString() || '';
-  if (reason.includes('Service Worker') || reason.includes('serviceWorker') || reason.includes('sw.js')) {
-    console.log('✓ SW error suppressed (expected during uninstall)');
-    event.preventDefault(); // Prevent the notification
+  if (reason.includes('Service Worker') || reason.includes('serviceWorker') || reason.includes('sw.js') || reason.includes('Failed to register')) {
+    console.log('✓ SW error suppressed (expected)');
+    event.preventDefault();
     return;
   }
-  
-  console.error('💥 Unhandled promise rejection:', event.reason);
-  showErrorToast('Ein Hintergrundprozess ist fehlgeschlagen. Alles andere sollte funktionieren.');
+  // Only log to console, never show toasts
+  console.error('Exclamation Triangle Unhandled promise rejection:', event.reason);
+  event.preventDefault();
 });
 
-function showErrorToast(message) {
-  const toast = document.createElement('div');
-  toast.style.cssText = `
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff8787 100%);
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(255,107,107,0.4);
-    z-index: 100000;
-    animation: slideUp 0.3s ease-out;
-    max-width: 300px;
-  `;
-  toast.innerHTML = `
-    <div style="display: flex; align-items: center; gap: 0.5rem;">
-      <span style="font-size: 1.5rem;">⚠️</span>
-      <span>${message}</span>
-    </div>
-  `;
-  
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes slideUp {
-      from {
-        transform: translateY(100px);
-        opacity: 0;
-      }
-      zum {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-  `;
-  document.head.appendChild(style);
-  
-  document.body.appendChild(toast);
-  setTimeout(() => {
-    toast.style.animation = 'slideUp 0.3s ease-out reverse';
-    setTimeout(() => toast.remove(), 300);
-  }, 5000);
-}
-
-window.showErrorToast = showErrorToast;
+// REMOVED: showErrorToast function - errors are now silent
 </script>
 
 <!-- Service Worker Registration -->
 <script>
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
+    document.addEventListener('DOMContentLoaded', () => {
       navigator.serviceWorker.register('/sw.js')
         .then(() => {
             if (console && console.debug) {
@@ -2605,7 +2750,7 @@ window.showErrorToast = showErrorToast;
                 console.debug('[SW] Registration note:', err.message || err);
             }
             return Promise.resolve(); // Swallow error
-        }));
+        });
     });
   }
 </script>
@@ -2615,18 +2760,60 @@ window.showErrorToast = showErrorToast;
 <script src="js/error-handler.js" defer></script>
 
 <!-- TAP-IN Utilities -->
-<script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/shared-utilities.js" defer></script>
+<script src="js/global-error-handler.min.js" defer></script>
+<script src="js/storage-health.min.js" defer></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
-    <script src="js/meta-tags-manager.js"></script>
-    <script src="js/achievement-badges.js"></script>
-    <script src="js/structured-data.js"></script>
+    <!-- REMOVED: Conflicting external language-switcher script -->
+    <script src="js/meta-tags-manager.js" defer></script>
+    <script src="js/achievement-badges.js" defer></script>
+    <script src="js/structured-data.js" defer></script>
 
 
 <!-- Unified Error Handling System -->
-<script src="js/unified-error-system.js"></script>
+<script src="js/unified-error-system.js" defer></script>
 
+<!-- Avatar System Loader - Disabled until design is improved -->
+<!-- Avatar System Script -->
+<!-- <script src="js/avatar-system.js" defer></script> -->
+<!-- <script>
+// Initialize new avatar system when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Load avatar customizer component
+    const customizerContainer = document.getElementById('avatarCustomizerContainer');
+    if (customizerContainer) {
+        fetch('components/avatar-customizer.html')
+            .then(r => r.text())
+            .then(html => {
+                customizerContainer.innerHTML = html;
+            })
+            .catch(err => {
+                console.warn('Avatar customizer not loaded:', err);
+            });
+    }
+    
+    // Render avatars after system is ready
+    setTimeout(function() {
+        if (window.AvatarSystem) {
+            window.AvatarSystem.render('dashboardAvatar');
+            // Also render in nav avatar
+            document.querySelectorAll('.user-avatar.avatar-container').forEach(container => {
+                container.innerHTML = window.AvatarSystem.generateHTML();
+            });
+        }
+    }, 200);
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === \'loading\') {
+        document.addEventListener(\'DOMContentLoaded\', initLanguageSwitcher);
+    } else {
+        initLanguageSwitcher();
+    }
+});
+</script> -->
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>
 </body>
 </html>

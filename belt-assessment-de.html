@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
     <meta name="theme-color" content="#1a365d">
-    <title>Impact Belt Assessment - TAP-IN</title>
+    <title>Gürtel-Assessment - TAP-IN</title>
     <style>
         * {
             margin: 0;
@@ -435,15 +449,27 @@
     <link rel="stylesheet" href="css/accessibility.css">
 
 <body>
+    <!-- Language Switcher - Top Right -->
+    <div style="position: fixed; top: 20px; right: 20px; z-index: 10000;">
+        <button onclick="location.href='belt-assessment-v2.html'"
+                style="background: rgba(26,54,93,0.95); border: 2px solid white;
+                       color: white; padding: 10px 20px; border-radius: 8px;
+                       font-weight: 600; cursor: pointer; transition: all 0.2s;
+                       font-family: inherit; box-shadow: 0 4px 12px rgba(0,0,0,0.3);"
+                onmouseover="this.style.background='white'; this.style.color='#1a365d';"
+                onmouseout="this.style.background='rgba(26,54,93,0.95)'; this.style.color='white';">
+            🇬🇧 English Version
+        </button>
+    </div>
     <!-- Skip Links for Accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <a href="#navigation" class="skip-link">Skip to navigation</a>
 
     <div class="container">
         <div class="header">
-            <h1>🥋 Impact Belt Assessment</h1>
+            <h1><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> Impact Belt Assessment</h1>
             <p class="subtitle">Find your gaps, get your roadmap, earn your belts</p>
-            <div class="belt-icons">⚪ 🔵 🟣 🟤 ⚫</div>
+            <div class="belt-icons"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> Academic Cap Academic Cap Academic Cap Academic Cap</div>
         </div>
 
         <!-- Progress Bar -->
@@ -453,38 +479,87 @@
             </div>
             <div class="progress-text" id="progressText">Question 0 of 50</div>
             <div class="section-progress" id="sectionProgress">
-                <div class="section-item">⚪ White</div>
-                <div class="section-item">🔵 Blue</div>
-                <div class="section-item">🟣 Purple</div>
-                <div class="section-item">🟤 Brown</div>
-                <div class="section-item">⚫ Black</div>
+                <div class="section-item"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> White</div>
+                <div class="section-item"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> Blue</div>
+                <div class="section-item"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> Purple</div>
+                <div class="section-item"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> Brown</div>
+                <div class="section-item"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> Black</div>
             </div>
         </div>
 
         <!-- Intro Screen -->
         <div class="screen active" id="screen-intro">
             <div class="intro-box philosophy">
-                <h3>🎯 Most People Are Stuck</h3>
+                <h3><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-flag"></use></svg> Most People Are Stuck</h3>
                 <p><strong>You know you should be making more impact. You read the books. You take the courses. But something's missing.</strong></p>
                 <p>The gap between knowing what great impact looks like and <em>actually creating it</em> is where most people get stuck.</p>
                 <p>This assessment will show you exactly where that gap is—and how to close it.</p>
             </div>
 
             <div class="intro-box">
-                <h3>📊 What This Assessment Does</h3>
+                <h3><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-chart-bar"></use></svg> What This Assessment Does</h3>
                 <p>In 15 minutes, you'll get a comprehensive analysis of your impact potential across 5 critical dimensions:</p>
-                <ul>
-                    <li><strong>⚪ Trust:</strong> Can you be vulnerable and build real connections?</li>
-                    <li><strong>🔵 Conflict:</strong> Do you avoid or engage in healthy debate?</li>
-                    <li><strong>🟣 Commitment:</strong> Do you follow through and inspire buy-in?</li>
-                    <li><strong>🟤 Accountability:</strong> Do you hold yourself (and others) to standards?</li>
-                    <li><strong>⚫ Results:</strong> Does real impact matter more than looking good?</li>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 0.75rem;">
+                        <div class="icon-container icon-success icon-container-sm" style="flex-shrink: 0;">
+                            <svg class="hero-icon hero-icon-sm" aria-hidden="true">
+                                <use href="icons/sprite.svg#icon-heart"></use>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Trust:</strong> Can you be vulnerable and build real connections?
+                        </div>
+                    </li>
+                    
+                    <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 0.75rem;">
+                        <div class="icon-container icon-warning icon-container-sm" style="flex-shrink: 0;">
+                            <svg class="hero-icon hero-icon-sm" aria-hidden="true">
+                                <use href="icons/sprite.svg#icon-chat-bubble-left-right"></use>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Conflict:</strong> Do you avoid or engage in healthy debate?
+                        </div>
+                    </li>
+                    
+                    <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 0.75rem;">
+                        <div class="icon-container icon-goal icon-container-sm" style="flex-shrink: 0;">
+                            <svg class="hero-icon hero-icon-sm" aria-hidden="true">
+                                <use href="icons/sprite.svg#icon-flag"></use>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Commitment:</strong> Do you follow through and inspire buy-in?
+                        </div>
+                    </li>
+                    
+                    <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 0.75rem;">
+                        <div class="icon-container icon-analytics icon-container-sm" style="flex-shrink: 0;">
+                            <svg class="hero-icon hero-icon-sm" aria-hidden="true">
+                                <use href="icons/sprite.svg#icon-shield-check"></use>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Accountability:</strong> Do you hold yourself (and others) to standards?
+                        </div>
+                    </li>
+                    
+                    <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 0.75rem;">
+                        <div class="icon-container icon-trophy icon-container-sm" style="flex-shrink: 0;">
+                            <svg class="hero-icon hero-icon-sm" aria-hidden="true">
+                                <use href="icons/sprite.svg#icon-trophy"></use>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Results:</strong> Does real impact matter more than looking good?
+                        </div>
+                    </li>
                 </ul>
                 <p style="margin-top: 15px;"><strong>You won't just get a label.</strong> You'll get a personalized roadmap showing exactly what you need to work on to increase your impact.</p>
             </div>
 
             <div class="intro-box philosophy">
-                <h3>🥋 We Don't Hand Out Belts</h3>
+                <h3><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> We Don't Hand Out Belts</h3>
                 <p><strong>"A black belt is just a white belt who never gave up."</strong></p>
                 <p>In Brazilian Jiu-Jitsu, you earn belts through demonstrated mastery—not time served. A purple belt isn't "better" than a white belt. They've just mastered different techniques.</p>
                 <p><strong>This assessment is rigorous.</strong> Scoring 60% in Purple Belt doesn't unlock it—it shows you what you need to work on before you're ready. We'll tell you exactly what exercises and modules you need to complete first.</p>
@@ -492,7 +567,7 @@
             </div>
 
             <div class="intro-box">
-                <h3>⏱️ What to Expect</h3>
+                <h3><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-clock"></use></svg> What to Expect</h3>
                 <p><strong>50 questions across 5 belt levels</strong> (10 questions per belt)</p>
                 <p><strong>Time:</strong> 12-15 minutes</p>
                 <p><strong>Question types:</strong> Real scenarios, self-assessments, tough choices</p>
@@ -537,7 +612,7 @@
             </div>
             
             <div style="text-align: center; margin-top: 30px;">
-                <button class="btn-tap" onclick="showTapModal()">🥋 Tap</button>
+                <button class="btn-tap" onclick="showTapModal()"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> Tap</button>
                 <p style="color: #64748b; font-size: 0.9em; margin-top: 10px;">Ready to start training? Or need a break?</p>
             </div>
         </div>
@@ -545,12 +620,12 @@
         <!-- Tap Modal -->
         <div class="modal" id="tapModal" style="display: none;">
             <div class="modal-content">
-                <h2 style="color: #1a365d; margin-bottom: 10px;">🥋 Tap?</h2>
+                <h2 style="color: #1a365d; margin-bottom: 10px;"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> Tap?</h2>
                 <p style="color: #64748b; margin-bottom: 30px;">Choose your next move:</p>
                 
                 <div class="tap-out-options">
                     <div class="tap-out-option" onclick="showBeltSelector()">
-                        <div class="tap-out-icon">🎯</div>
+                        <div class="tap-out-icon"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-flag"></use></svg></div>
                         <h3>Tap → Start Training</h3>
                         <p>Stop the assessment and jump to a belt level to start learning</p>
                     </div>
@@ -569,36 +644,36 @@
         <!-- Belt Selector Modal -->
         <div class="modal" id="beltSelectorModal" style="display: none;">
             <div class="modal-content">
-                <h2 style="color: #1a365d; margin-bottom: 10px;">🥋 Choose Your Starting Belt</h2>
+                <h2 style="color: #1a365d; margin-bottom: 10px;"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> Choose Your Starting Belt</h2>
                 <p style="color: #64748b; margin-bottom: 30px;">Pick the belt you want to start training with:</p>
                 
                 <div class="belt-selector-grid">
-                    <div class="belt-selector-card" onclick="tapToBelt('white-belt.html')">
-                        <div class="belt-selector-icon">⚪</div>
+                    <div class="belt-selector-card" onclick="window.location.href = 'white-belt-de.html'")">
+                        <div class="belt-selector-icon"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-academic-cap"></use></svg></div>
                         <h3>White Belt</h3>
                         <p>Trust & Vulnerability</p>
                     </div>
                     
-                    <div class="belt-selector-card" onclick="tapToBelt('blue-belt.html')">
-                        <div class="belt-selector-icon">🔵</div>
+                    <div class="belt-selector-card" onclick="window.location.href = 'blue-belt-de.html'")">
+                        <div class="belt-selector-icon"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-academic-cap"></use></svg></div>
                         <h3>Blue Belt</h3>
                         <p>Healthy Conflict</p>
                     </div>
                     
-                    <div class="belt-selector-card" onclick="tapToBelt('purple-belt.html')">
-                        <div class="belt-selector-icon">🟣</div>
+                    <div class="belt-selector-card" onclick="window.location.href = 'purple-belt-de.html'")">
+                        <div class="belt-selector-icon"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-academic-cap"></use></svg></div>
                         <h3>Purple Belt</h3>
                         <p>Commitment & Buy-in</p>
                     </div>
                     
-                    <div class="belt-selector-card" onclick="tapToBelt('brown-belt.html')">
-                        <div class="belt-selector-icon">🟤</div>
+                    <div class="belt-selector-card" onclick="window.location.href = 'brown-belt-de.html'")">
+                        <div class="belt-selector-icon"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-academic-cap"></use></svg></div>
                         <h3>Brown Belt</h3>
                         <p>Accountability</p>
                     </div>
                     
-                    <div class="belt-selector-card" onclick="tapToBelt('black-belt.html')">
-                        <div class="belt-selector-icon">⚫</div>
+                    <div class="belt-selector-card" onclick="window.location.href = 'black-belt-de.html'")">
+                        <div class="belt-selector-icon"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-academic-cap"></use></svg></div>
                         <h3>Black Belt</h3>
                         <p>Results Focus</p>
                     </div>
@@ -612,24 +687,24 @@
         <div class="screen" id="screen-results">
             <div class="results-content">
                 <div class="belt-result">
-                    <h2 style="color: #1a365d; font-size: 2.5em; margin-bottom: 10px;">⚡ Your Belt Readiness Report</h2>
+                    <h2 style="color: #1a365d; font-size: 2.5em; margin-bottom: 10px;"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-bolt"></use></svg> Your Belt Readiness Report</h2>
                     <div class="subtitle" style="color: #64748b; font-size: 1.3em; margin-bottom: 30px;">Rigorous Standards. Real Gaps. Clear Path Forward.</div>
                 </div>
 
                 <div class="xp-earned">
-                    <div>🎯 Assessment Complete!</div>
+                    <div><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-flag"></use></svg> Assessment Complete!</div>
                     <div class="xp-amount">+500 XP</div>
                     <div>All belts evaluated</div>
                 </div>
 
-                <h3 style="color: #1a365d; margin: 40px 0 20px; font-size: 1.8em;">🥋 Your Belt-by-Belt Readiness</h3>
+                <h3 style="color: #1a365d; margin: 40px 0 20px; font-size: 1.8em;"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-academic-cap"></use></svg> Your Belt-by-Belt Readiness</h3>
                 <div id="beltReadinessCards"></div>
 
-                <h3 style="color: #1a365d; margin: 40px 0 20px; font-size: 1.8em;">📊 Your 5 Dysfunctions Breakdown</h3>
+                <h3 style="color: #1a365d; margin: 40px 0 20px; font-size: 1.8em;"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-chart-bar"></use></svg> Your 5 Dysfunctions Breakdown</h3>
                 <div class="dysfunction-scores" id="dysfunctionScores"></div>
 
                 <div class="next-steps">
-                    <h3>🎯 Your 90-Day Training Roadmap</h3>
+                    <h3><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-flag"></use></svg> Your 90-Day Training Roadmap</h3>
                     <div id="trainingRoadmap"></div>
                 </div>
 
@@ -643,7 +718,7 @@
     <script>
         // 40 Questions - 8 per dysfunction
         const questions = [
-            // ⚪ WHITE BELT - TRUST (10 questions)
+            // Academic Cap WHITE BELT - TRUST (10 questions)
             // Preview of White Belt: Vulnerability-based trust
             { 
                 id: 1, 
@@ -713,7 +788,7 @@
             {
                 type: 'enhancement',
                 section: 'white',
-                title: '💪 Strength in Asking',
+                title: 'Hand Raised Strength in Asking',
                 content: `
                     <p><strong>The ask-for-help advantage:</strong> Harvard research shows that people who actively ask for help are perceived as MORE competent, not less. Why? It signals confidence and self-awareness.</p>
                     <p><strong>💡 Did you know?</strong> Top performers ask for help 3x more often than average performers. They know that speed beats pride.</p>
@@ -793,7 +868,7 @@
                     <p><strong>Why vulnerability unlocks trust:</strong> Research by Dr. Brené Brown shows that leaders who openly admit mistakes create psychologically safe teams that outperform by 27% (Google's Project Aristotle).</p>
                     <p><strong>💡 Did you know?</strong> Teams where leaders share uncertainties first see 3x higher rates of peer vulnerability—creating a cascade of trust.</p>
                     <blockquote>"Vulnerability is not weakness; it's our greatest measure of courage." — Brené Brown</blockquote>
-                    <p><strong>⚡ Quick Win:</strong> This week, start one meeting by saying "Here's something I'm struggling with..." and ask for input. Watch what happens.</p>
+                    <p><strong><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-bolt"></use></svg> Quick Win:</strong> This week, start one meeting by saying "Here's something I'm struggling with..." and ask for input. Watch what happens.</p>
                 `
             },
 
@@ -946,7 +1021,7 @@
                     <p><strong>The conflict paradox:</strong> Teams that engage in passionate, ideological debate make better decisions 58% of the time compared to "polite" teams (Stanford Leadership Research).</p>
                     <p><strong>💡 Did you know?</strong> Pixar's "Braintrust" meetings—where brutal honesty is expected—are credited with saving every movie from mediocrity. Ed Catmull says conflict is "not a necessary evil, it's a necessary good."</p>
                     <blockquote>"If two people always agree, one of them is unnecessary." — William Wrigley Jr.</blockquote>
-                    <p><strong>⚡ Quick Win:</strong> Next time you disagree, try this: "I have a different view. Can I challenge that?" Then debate the idea, not the person.</p>
+                    <p><strong><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-bolt"></use></svg> Quick Win:</strong> Next time you disagree, try this: "I have a different view. Can I challenge that?" Then debate the idea, not the person.</p>
                 `
             },
 
@@ -1094,12 +1169,12 @@
             {
                 type: 'enhancement',
                 section: 'purple',
-                title: '🎯 The Commitment Edge',
+                title: 'Flag The Commitment Edge',
                 content: `
                     <p><strong>Why clarity creates velocity:</strong> Amazon's "Disagree and Commit" principle allows teams to move at high speed without consensus. Jeff Bezos says, "If you know the direction is roughly right, it's far better to be fast than perfect."</p>
                     <p><strong>💡 Did you know?</strong> Studies show that teams with clear commitments execute 2.3x faster than teams stuck in consensus-seeking. The key: debate fiercely, then commit fully.</p>
                     <blockquote>"If you have conviction on a particular direction, have the courage to disagree and commit." — Jeff Bezos</blockquote>
-                    <p><strong>⚡ Quick Win:</strong> After your next decision, practice saying: "I disagreed with this, but we decided—so I'm all in." Notice how it shifts your energy.</p>
+                    <p><strong><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-bolt"></use></svg> Quick Win:</strong> After your next decision, practice saying: "I disagreed with this, but we decided—so I'm all in." Notice how it shifts your energy.</p>
                 `
             },
 
@@ -1172,7 +1247,7 @@
             {
                 type: 'enhancement',
                 section: 'brown',
-                title: '🎯 Radical Candor Works',
+                title: 'Flag Radical Candor Works',
                 content: `
                     <p><strong>The candor advantage:</strong> Kim Scott's research at Google found that "Radical Candor"—caring personally while challenging directly—drives both performance and retention. Avoiding tough conversations is the real cruelty.</p>
                     <p><strong>💡 Did you know?</strong> Netflix's culture of "radical honesty" allows them to move faster than competitors. Reed Hastings says, "Adequate performance gets a generous severance package."</p>
@@ -1247,12 +1322,12 @@
             {
                 type: 'enhancement',
                 section: 'brown',
-                title: '⚡ Accountability Creates Safety',
+                title: 'Bolt Accountability Creates Safety',
                 content: `
                     <p><strong>The accountability paradox:</strong> Teams with high accountability report higher psychological safety, not lower. Why? Because people trust that standards are real and consistently applied.</p>
                     <p><strong>💡 Did you know?</strong> Kim Scott's research on "Radical Candor" shows that direct feedback—delivered with care—is a gift. Teams with candor cultures have 50% lower turnover and 3x innovation rates.</p>
                     <blockquote>"Clear is kind. Unclear is unkind." — Brené Brown</blockquote>
-                    <p><strong>⚡ Quick Win:</strong> Next time you notice something off, say: "I care about you and our work, so I need to tell you..." Then be direct and kind.</p>
+                    <p><strong><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-bolt"></use></svg> Quick Win:</strong> Next time you notice something off, say: "I care about you and our work, so I need to tell you..." Then be direct and kind.</p>
                 `
             },
 
@@ -1400,12 +1475,12 @@
             {
                 type: 'enhancement',
                 section: 'black',
-                title: '🏆 Results Over Ego',
+                title: 'Trophy Results Over Ego',
                 content: `
                     <p><strong>The results-first mindset:</strong> Research on high-performing teams reveals that obsession with collective outcomes (not individual glory) is the #1 predictor of sustained excellence.</p>
                     <p><strong>💡 Did you know?</strong> Bill Walsh transformed the 49ers by demanding "the score takes care of the ego." Teams that track collective goals daily outperform ego-driven teams by 44%.</p>
                     <blockquote>"When everyone is thinking alike, then no one is thinking." — Benjamin Franklin (on ego vs. outcome)</blockquote>
-                    <p><strong>⚡ Quick Win:</strong> Every morning this week, ask yourself: "What's the ONE thing I can do today that moves us toward our goal?" Then do it first.</p>
+                    <p><strong><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-bolt"></use></svg> Quick Win:</strong> Every morning this week, ask yourself: "What's the ONE thing I can do today that moves us toward our goal?" Then do it first.</p>
                 `
             }
         ];
@@ -1462,7 +1537,7 @@
             const q = item;
             
             // Update section header
-            const sectionIcons = { white: '⚪', blue: '🔵', purple: '🟣', brown: '🟤', black: '⚫', trust: '⚪', conflict: '🔵', commitment: '🟣', accountability: '🟤', results: '⚫' };
+            const sectionIcons = { white: 'Academic Cap', blue: 'Academic Cap', purple: 'Academic Cap', brown: 'Academic Cap', black: 'Academic Cap', trust: 'Academic Cap', conflict: 'Academic Cap', commitment: 'Academic Cap', accountability: 'Academic Cap', results: 'Academic Cap' };
             const sectionNames = { white: 'White Belt', blue: 'Blue Belt', purple: 'Purple Belt', brown: 'Brown Belt', black: 'Black Belt', trust: 'Trust', conflict: 'Conflict', commitment: 'Commitment', accountability: 'Accountability', results: 'Results' };
             
             document.getElementById('sectionIcon').textContent = sectionIcons[q.section];
@@ -1600,7 +1675,7 @@
             localStorage.setItem('assessmentProgress', currentQuestion);
             
             // Return to main page
-            window.location.href = 'index.html';
+            window.location.href = "index.de.html";
         }
 
         function calculateResults() {
@@ -1640,34 +1715,34 @@
 
             const beltData = {
                 white: {
-                    icon: '⚪',
+                    icon: 'Academic Cap',
                     name: 'White Belt',
                     theme: 'Vulnerability-Based Trust',
-                    link: 'white-belt.html'
+                    link: "white-belt-de.html"
                 },
                 blue: {
-                    icon: '🔵',
+                    icon: 'Academic Cap',
                     name: 'Blue Belt',
                     theme: 'Productive Conflict & Debate',
-                    link: 'blue-belt.html'
+                    link: "blue-belt-de.html"
                 },
                 purple: {
-                    icon: '🟣',
+                    icon: 'Academic Cap',
                     name: 'Purple Belt',
                     theme: 'Commitment & Clarity',
-                    link: 'purple-belt.html'
+                    link: "purple-belt-de.html"
                 },
                 brown: {
-                    icon: '🟤',
+                    icon: 'Academic Cap',
                     name: 'Brown Belt',
                     theme: 'Accountability & Standards',
-                    link: 'brown-belt.html'
+                    link: "brown-belt-de.html"
                 },
                 black: {
-                    icon: '⚫',
+                    icon: 'Academic Cap',
                     name: 'Black Belt',
                     theme: 'Results Over Ego',
-                    link: 'black-belt.html'
+                    link: "black-belt-de.html"
                 }
             };
 
@@ -1681,7 +1756,7 @@
                 
                 if (percentage < 60) {
                     readiness = 'locked';
-                    badge = '🔒 Locked';
+                    badge = 'Lock Closed Locked';
                     feedback = `You scored ${percentage.toFixed(0)}%. This belt is locked until you complete foundational work. Your current understanding of ${data.theme.toLowerCase()} needs significant development before you can train effectively here.`;
                     gaps = [
                         'Complete White Belt exercises if this is White Belt',
@@ -1690,7 +1765,7 @@
                     ];
                 } else if (percentage >= 60 && percentage < 75) {
                     readiness = 'conditional';
-                    badge = '⚠️ Conditional Access';
+                    badge = 'Exclamation Triangle Conditional Access';
                     feedback = `You scored ${percentage.toFixed(0)}%. You can START this belt, but significant gaps exist. Expect to struggle—this training will expose blind spots in ${data.theme.toLowerCase()}.`;
                     gaps = [
                         'Pay extra attention to scenarios that challenge you',
@@ -1699,7 +1774,7 @@
                     ];
                 } else if (percentage >= 75 && percentage < 85) {
                     readiness = 'ready';
-                    badge = '✅ Ready';
+                    badge = 'Check Circle Ready';
                     feedback = `You scored ${percentage.toFixed(0)}%. You're prepared for this belt. You have a solid foundation in ${data.theme.toLowerCase()}, and this training will deepen your mastery.`;
                     gaps = [
                         'Focus on nuance and advanced applications',
@@ -1708,7 +1783,7 @@
                     ];
                 } else {
                     readiness = 'mastery';
-                    badge = '🏆 Mastery Level';
+                    badge = 'Trophy Mastery Level';
                     feedback = `You scored ${percentage.toFixed(0)}%. You could skip this belt, but DON'T. Even masters need reminders. This training will sharpen what you already know about ${data.theme.toLowerCase()}.`;
                     gaps = [
                         'Look for 1-2 insights you\'ve missed',
@@ -1728,7 +1803,7 @@
                         </div>
                         <div class="feedback">${feedback}</div>
                         <div class="gaps">
-                            <div class="gaps-title">${readiness === 'mastery' ? '💡 How to Approach:' : readiness === 'ready' ? '🎯 Training Focus:' : '⚠️ What You Need:'}</div>
+                            <div class="gaps-title">${readiness === 'mastery' ? '💡 How to Approach:' : readiness === 'ready' ? 'Flag Training Focus:' : 'Exclamation Triangle What You Need:'}</div>
                             <ul>
                                 ${gaps.map(gap => `<li>${gap}</li>`).join('')}
                             </ul>
@@ -1777,7 +1852,7 @@
             
             const dysfunctionData = {
                 trust: {
-                    icon: '⚪',
+                    icon: 'Academic Cap',
                     name: 'Trust',
                     context: 'Vulnerability-based trust is the foundation. Without it, teams play politics instead of pursuing results.',
                     highInsight: 'You openly admit mistakes, ask for help, and assume positive intent. Keep modeling this.',
@@ -1785,7 +1860,7 @@
                     research: 'Google\'s Project Aristotle found psychological safety (trust) was the #1 predictor of team performance.'
                 },
                 conflict: {
-                    icon: '🔵',
+                    icon: 'Academic Cap',
                     name: 'Conflict',
                     context: 'Productive conflict mines for the best ideas. Artificial harmony leads to bad decisions.',
                     highInsight: 'You engage in passionate debate about ideas without taking it personally. Rare and valuable.',
@@ -1793,7 +1868,7 @@
                     research: 'Teams that engage in task conflict (not relationship conflict) make better decisions and innovate more.'
                 },
                 commitment: {
-                    icon: '🟣',
+                    icon: 'Academic Cap',
                     name: 'Commitment',
                     context: 'Clarity and buy-in. Teams need to know what\'s decided and commit fully—even when they disagreed.',
                     highInsight: 'You commit to decisions quickly and publicly support them. This speed is a competitive advantage.',
@@ -1801,7 +1876,7 @@
                     research: 'Eisenhower: "Plans are useless, but planning is everything." The act of deciding together creates commitment.'
                 },
                 accountability: {
-                    icon: '🟤',
+                    icon: 'Academic Cap',
                     name: 'Accountability',
                     context: 'Peer-to-peer accountability. The best teams call each other out on performance and behavior.',
                     highInsight: 'You address performance gaps directly and quickly. This creates a culture of high standards.',
@@ -1809,7 +1884,7 @@
                     research: 'Kim Scott (Radical Candor): "Care personally, challenge directly." Both are required for accountability.'
                 },
                 results: {
-                    icon: '⚫',
+                    icon: 'Academic Cap',
                     name: 'Results',
                     context: 'Collective results over individual ego. Great teams subjugate personal goals to team outcomes.',
                     highInsight: 'You prioritize collective wins over personal recognition. This selflessness is what makes black belts rare.',
@@ -1839,11 +1914,11 @@
                             <div class="dysfunction-card-back">
                                 <h4>${data.icon} ${data.name} - Deep Dive</h4>
                                 <div class="insight-section">
-                                    <div class="insight-title">📚 Why This Matters:</div>
+                                    <div class="insight-title"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-book-open"></use></svg> Why This Matters:</div>
                                     <div class="insight-text">${data.context}</div>
                                 </div>
                                 <div class="insight-section">
-                                    <div class="insight-title">🎯 Your Pattern:</div>
+                                    <div class="insight-title"><svg class="hero-icon hero-icon-md" aria-hidden="true"><use href="icons/sprite.svg#icon-flag"></use></svg> Your Pattern:</div>
                                     <div class="insight-text">${isHigh ? data.highInsight : data.lowInsight}</div>
                                 </div>
                                 <div class="insight-section">
@@ -1873,11 +1948,11 @@
             });
 
             const beltNames = {
-                white: '⚪ White Belt (Trust)',
-                blue: '🔵 Blue Belt (Conflict)',
-                purple: '🟣 Purple Belt (Commitment)',
-                brown: '🟤 Brown Belt (Accountability)',
-                black: '⚫ Black Belt (Results)'
+                white: 'Academic Cap White Belt (Trust)',
+                blue: 'Academic Cap Blue Belt (Conflict)',
+                purple: 'Academic Cap Purple Belt (Commitment)',
+                brown: 'Academic Cap Brown Belt (Accountability)',
+                black: 'Academic Cap Black Belt (Results)'
             };
 
             const beltOrder = ['white', 'blue', 'purple', 'brown', 'black'];
@@ -1937,21 +2012,27 @@
 
     <!-- Gamification System -->
     <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 
     <script src="js/gamification.js" defer></script>
     <script src="js/assessment-completion-helper.js" defer></script>
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/global-error-handler.min.js"></script>
+<script src="js/storage-health.min.js"></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
+    <script src="js/language-switcher.min.js"></script>
     <script src="js/meta-tags-manager.js"></script>
     <script src="js/achievement-badges.js"></script>
     <script src="js/structured-data.js"></script>
 
-    <script src="js/performance-monitor.js"></script>
+    <script src="js/performance-monitor.min.js"></script>
 
     <script src="js/keyboard-navigation.js" defer></script>
 
+
+    <!-- Focus Management for Accessibility -->
+    <script src="js/focus-management.js" defer></script>
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>

@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Drive results and execution excellence in Purple Belt Stripe 4. Learn to focus on outcomes and deliver consistent performance."><!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
     <!-- Open Graph / Facebook -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://tap-in-platform.netlify.app/purple-belt-stripe4-gamified.html">
@@ -384,6 +398,30 @@
     <link rel="canonical" href="https://tap-in-platform.netlify.app/purple-belt-stripe4-gamified.html">
 
 <body>
+    <!-- Stripe Sequential Unlock Check -->
+    <script>
+        (function() {
+            // Check if previous stripe is completed
+            const currentStripe = 4;
+            const previousStripeKey = 'purpleBeltStripe3Complete';
+            const previousComplete = localStorage.getItem(previousStripeKey) === 'true';
+            
+            if (!previousComplete) {
+                // Redirect to previous stripe or belt hub
+                const beltHub = 'purple-belt.html';
+                const previousStripe = 'purple-belt-stripe3-gamified.html';
+                
+                // Show message and redirect
+                alert(`🔒 Complete Stripe 3 first! You need to finish the previous stripe before continuing.`);
+                window.location.href = previousStripe;
+                return;
+            }
+            
+            // Allow access - previous stripe is complete
+            console.log(`✅ Stripe 3 complete, allowing access to Stripe 4`);
+        })();
+    </script>
+
     <div class="container">
         <div class="header">
             <div class="stripe-badge">🟣 Purple Belt • Stripe 4 of 4</div>
@@ -1613,8 +1651,13 @@
         function nextSection() { if (currentSection < totalSections) { document.getElementById(`section-${currentSection}`).classList.remove('active'); currentSection++; document.getElementById(`section-${currentSection}`).classList.add('active'); updateProgress(); window.scrollTo({ top: 0, behavior: 'smooth' }); if (currentSection === 4) completeStripe(); } }
         function prevSection() { if (currentSection > 1) { document.getElementById(`section-${currentSection}`).classList.remove('active'); currentSection--; document.getElementById(`section-${currentSection}`).classList.add('active'); updateProgress(); window.scrollTo({ top: 0, behavior: 'smooth' }); } }
         function updateProgress() { const progress = ((currentSection - 1) / (totalSections - 1)) * 100; document.getElementById('progress-fill').style.width = `${progress}%`; document.getElementById('progress-text').textContent = `${Math.round(progress)}%`; }
-        function completeStripe() { localStorage.setItem('purpleBeltStripe4Complete', 'true');
-                    window.dispatchEvent(new CustomEvent(\'lessonCompleted\')); localStorage.setItem('purpleBeltComplete', 'true'); ['metric', 'ego'].forEach(f => { const el = document.getElementById(f); if (el && el.value) localStorage.setItem(`results_${f}`, el.value); }); }
+        function completeStripe() { localStorage.setItem("purpleBeltBeltStripe4Complete", 'true');
+                    window.dispatchEvent(new CustomEvent(\'lessonCompleted\')); localStorage.setItem('purpleBeltComplete', 'true')
+            // Sync to backend
+            if (typeof ProgressSyncService !== 'undefined' && ProgressSyncService.syncStripeComplete) {
+                ProgressSyncService.syncStripeComplete('purple', 4, 200);
+            }
+; ['metric', 'ego'].forEach(f => { const el = document.getElementById(f); if (el && el.value) localStorage.setItem(`results_${f}`, el.value); }); }
         updateProgress();
     
         function getStripeNumber() {
@@ -1653,18 +1696,18 @@
         }</script>
     <!-- Gamification System -->
     <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 
 <script src=https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js></script>
 <script src=js/xp-level-system.js></script>
 <script src=js/gamification-celebrations.js></script>
     <script src="js/shared-quiz-system.js"></script>
     <script src="js/gamification.js" defer></script>
-    <script src="js/stripe-completion-helper.js" defer></script>
+    <script src="js/stripe-completion-helper.min.js" defer></script>
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/global-error-handler.min.js"></script>
+<script src="js/storage-health.min.js"></script>
 <script>
         // Quiz functionality
         let quizAnswers = [];
@@ -1872,16 +1915,16 @@
                 if (confirm('Quiz Complete! Continue to Stripe ' + nextStripe + '?')) {
                     window.location.href = 'purple-belt-stripe' + nextStripe + '-gamified.html';
                 } else {
-                    window.location.href = 'learning-hub.html';
+                    window.location.href = 'gym-dashboard.html';
                 }
             } else {
                 alert('🎉 Purple Belt Complete! Ready for the next level.');
-                window.location.href = 'learning-hub.html';
+                window.location.href = 'gym-dashboard.html';
             }
         }
 </script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
+    <script src="js/language-switcher.min.js"></script>
     <script src="js/meta-tags-manager.js"></script>
     <script src="js/achievement-badges.js"></script>
     <script src="js/structured-data.js"></script>
@@ -1889,3 +1932,6 @@
     <script src="js/dark-mode.js"></script>
 
 </html>
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>

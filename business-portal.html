@@ -3,6 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
     <!-- CACHE BUSTER - Load FIRST, before anything else -->
     <script src="cache-buster.js"></script>
 
@@ -296,6 +310,13 @@
       }
     }
   </style>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#c62828">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="TAP-IN">
+    <link rel="stylesheet" href="css/pwa-install-banner.css">
 </head>
 <body>
   <div class="container">
@@ -738,10 +759,10 @@
 
 <!-- Wisdom Tracker & Hub Unlock Systems -->
 <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 
-    <script src="js/wisdom-tracker.js" defer></script>
-<script src="js/hub-unlock-system.js" defer></script>
+    <script src="js/wisdom-tracker.min.js" defer></script>
+<script src="js/hub-unlock-system.min.js" defer></script>
 <script src="js/progress-sync-init.js" defer></script>
 
 <!-- Initialize Systems -->
@@ -773,6 +794,268 @@
   
   <div id="composition-results" style="margin-top: 2rem;"></div>
 </section>
+
+<!-- RECRUITING PROFILES SECTION -->
+<div class="card" id="recruiting-profiles" style="margin-top: 3rem;">
+    <div class="card-header">
+        <h2 class="card-title">🎯 Recruiting Profiles</h2>
+        <span class="badge new">NEW</span>
+    </div>
+    
+    <p style="color: #94a3b8; margin-bottom: 2rem; line-height: 1.6;">
+        Assess candidates using our proven two-stage system. Filter fast with Stage 1, 
+        deep-dive on top candidates with Stage 2, hire with confidence.
+    </p>
+
+    <div class="recruiting-grid">
+        <!-- Sales Profile -->
+        <div class="profile-card featured">
+            <div class="profile-header">
+                <span class="profile-icon">💰</span>
+                <h3>Sales Profile</h3>
+                <span class="profile-badge">2-Stage System</span>
+            </div>
+            
+            <p class="profile-description">
+                Identify top sales talent through behavioral assessment. 
+                Reduces bad hires by 60%, saves 25 hours per position.
+            </p>
+            
+            <div class="profile-stages">
+                <div class="stage">
+                    <span class="stage-number">1</span>
+                    <div class="stage-info">
+                        <strong>Quick Screen</strong>
+                        <span>10 questions • 3 min</span>
+                        <span class="stage-result">Filters 60% of candidates</span>
+                    </div>
+                </div>
+                
+                <div class="stage-divider">→</div>
+                
+                <div class="stage">
+                    <span class="stage-number">2</span>
+                    <div class="stage-info">
+                        <strong>Deep Profile</strong>
+                        <span>25 questions • 10 min</span>
+                        <span class="stage-result">Interview-ready insights</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-fit">
+                <strong>Ideal Profile:</strong>
+                <ul>
+                    <li>✅ Jogger/Sprinter work type</li>
+                    <li>✅ Assertive + Empathetic communication</li>
+                    <li>✅ Achievement-driven values</li>
+                    <li>✅ High resilience to rejection</li>
+                </ul>
+            </div>
+            
+            <div class="profile-actions">
+                <a href="sales-recruiting-stage1.html" class="btn btn-primary">
+                    Send Stage 1 Assessment
+                </a>
+                <a href="sales-recruiting-demo.html" class="btn btn-secondary">
+                    View Sample Profiles
+                </a>
+            </div>
+            
+            <div class="profile-stats">
+                <div class="stat">
+                    <span class="stat-value">85%</span>
+                    <span class="stat-label">Success Prediction</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">60%</span>
+                    <span class="stat-label">Bad Hire Reduction</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">25h</span>
+                    <span class="stat-label">Time Saved/Hire</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Engineering Profile (Coming Soon) -->
+        <div class="profile-card upcoming">
+            <div class="profile-header">
+                <span class="profile-icon">💻</span>
+                <h3>Engineering Profile</h3>
+                <span class="profile-badge coming-soon">Coming Soon</span>
+            </div>
+            
+            <p class="profile-description">
+                Find technical excellence through behavioral assessment.
+                Identifies problem-solvers and long-term thinkers.
+            </p>
+            
+            <div class="profile-fit">
+                <strong>Ideal Profile:</strong>
+                <ul>
+                    <li>✅ Jogger/Ultrarunner work type</li>
+                    <li>✅ Analytical + Clear communication</li>
+                    <li>✅ Mastery-focused values</li>
+                    <li>✅ Sustained focus patterns</li>
+                </ul>
+            </div>
+            
+            <div class="profile-actions">
+                <button class="btn btn-secondary" disabled>
+                    Available Q1 2025
+                </button>
+            </div>
+        </div>
+
+        <!-- Customer Success Profile (Coming Soon) -->
+        <div class="profile-card upcoming">
+            <div class="profile-header">
+                <span class="profile-icon">🤝</span>
+                <h3>Customer Success Profile</h3>
+                <span class="profile-badge coming-soon">Coming Soon</span>
+            </div>
+            
+            <p class="profile-description">
+                Select service champions through empathy and consistency assessment.
+                Predicts customer satisfaction and retention.
+            </p>
+            
+            <div class="profile-fit">
+                <strong>Ideal Profile:</strong>
+                <ul>
+                    <li>✅ Jogger consistency</li>
+                    <li>✅ Empathetic + Patient communication</li>
+                    <li>✅ Service-oriented values</li>
+                    <li>✅ Emotionally stable resilience</li>
+                </ul>
+            </div>
+            
+            <div class="profile-actions">
+                <button class="btn btn-secondary" disabled>
+                    Available Q1 2025
+                </button>
+            </div>
+        </div>
+
+        <!-- Operations Profile (Coming Soon) -->
+        <div class="profile-card upcoming">
+            <div class="profile-header">
+                <span class="profile-icon">⚙️</span>
+                <h3>Operations Profile</h3>
+                <span class="profile-badge coming-soon">Coming Soon</span>
+            </div>
+            
+            <p class="profile-description">
+                Discover process masters through systematic thinking assessment.
+                Identifies organizers and efficiency experts.
+            </p>
+            
+            <div class="profile-fit">
+                <strong>Ideal Profile:</strong>
+                <ul>
+                    <li>✅ Jogger process-focus</li>
+                    <li>✅ Structured + Diplomatic communication</li>
+                    <li>✅ Excellence-driven values</li>
+                    <li>✅ High stress tolerance</li>
+                </ul>
+            </div>
+            
+            <div class="profile-actions">
+                <button class="btn btn-secondary" disabled>
+                    Available Q1 2025
+                </button>
+            </div>
+        </div>
+
+        <!-- Leadership Profile (Coming Soon) -->
+        <div class="profile-card upcoming">
+            <div class="profile-header">
+                <span class="profile-icon">👔</span>
+                <h3>Leadership Profile</h3>
+                <span class="profile-badge coming-soon">Coming Soon</span>
+            </div>
+            
+            <p class="profile-description">
+                Identify future leaders through strategic thinking assessment.
+                Predicts management success and team impact.
+            </p>
+            
+            <div class="profile-fit">
+                <strong>Ideal Profile:</strong>
+                <ul>
+                    <li>✅ Balanced work type</li>
+                    <li>✅ Versatile communication</li>
+                    <li>✅ Vision + Impact values</li>
+                    <li>✅ Resilient + Balanced</li>
+                </ul>
+            </div>
+            
+            <div class="profile-actions">
+                <button class="btn btn-secondary" disabled>
+                    Available Q1 2025
+                </button>
+            </div>
+        </div>
+
+        <!-- Custom Profile Builder (Coming Soon) -->
+        <div class="profile-card upcoming">
+            <div class="profile-header">
+                <span class="profile-icon">🎨</span>
+                <h3>Custom Profile</h3>
+                <span class="profile-badge coming-soon">Coming Soon</span>
+            </div>
+            
+            <p class="profile-description">
+                Build your own assessment criteria for unique roles.
+                Full customization of weights, questions, and scoring.
+            </p>
+            
+            <div class="profile-fit">
+                <strong>Features:</strong>
+                <ul>
+                    <li>✅ Choose assessments to combine</li>
+                    <li>✅ Set custom weights</li>
+                    <li>✅ Define ideal profiles</li>
+                    <li>✅ Role-specific scoring</li>
+                </ul>
+            </div>
+            
+            <div class="profile-actions">
+                <button class="btn btn-secondary" disabled>
+                    Available Q1 2025
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Value Proposition Box -->
+    <div class="value-box">
+        <h4>🎯 Why Use TAP-IN Recruiting Profiles?</h4>
+        <div class="value-grid">
+            <div class="value-item">
+                <span class="value-icon">📊</span>
+                <strong>Proven System</strong>
+                <p>Same assessments used for leadership training across 20 countries</p>
+            </div>
+            <div class="value-item">
+                <span class="value-icon">⚡</span>
+                <strong>Fast Filtering</strong>
+                <p>Stage 1 eliminates 60% of mismatches in 3 minutes</p>
+            </div>
+            <div class="value-item">
+                <span class="value-icon">🎯</span>
+                <strong>Interview-Ready</strong>
+                <p>Stage 2 generates customized interview questions</p>
+            </div>
+            <div class="value-item">
+                <span class="value-icon">💰</span>
+                <strong>ROI-Positive</strong>
+                <p>Reduces bad hires by 60%, saves $50K+ per avoided mistake</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <style>
   .composition-chart {
@@ -810,6 +1093,323 @@
     padding: 1rem;
     margin: 0.5rem 0;
     border-radius: 8px;
+  }
+
+  /* RECRUITING PROFILES SECTION */
+  .recruiting-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .profile-card {
+    background: rgba(255,255,255,0.03);
+    border: 2px solid #3d4466;
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profile-card.featured {
+    background: linear-gradient(135deg, rgba(26, 54, 93, 0.2) 0%, rgba(19, 27, 47, 0.2) 100%);
+    border-color: #4a7c9c;
+    box-shadow: 0 8px 30px rgba(74, 124, 156, 0.2);
+  }
+
+  .profile-card.upcoming {
+    opacity: 0.6;
+  }
+
+  .profile-card:hover {
+    transform: translateY(-4px);
+    border-color: #4a7c9c;
+  }
+
+  .profile-card.upcoming:hover {
+    transform: none;
+    border-color: #3d4466;
+  }
+
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .profile-icon {
+    font-size: 2.5rem;
+  }
+
+  .profile-header h3 {
+    font-size: 1.5rem;
+    color: #e2e8f0;
+    margin: 0;
+    flex: 1;
+  }
+
+  .profile-badge {
+    background: rgba(74, 124, 156, 0.2);
+    color: #4a7c9c;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .profile-badge.coming-soon {
+    background: rgba(148, 163, 184, 0.2);
+    color: #94a3b8;
+  }
+
+  .badge.new {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .profile-description {
+    color: #94a3b8;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 0;
+  }
+
+  .profile-stages {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.02);
+    border-radius: 12px;
+  }
+
+  .stage {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  .stage-number {
+    background: linear-gradient(135deg, #4a7c9c 0%, #3d5f7d 100%);
+    color: white;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .stage-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stage-info strong {
+    color: #e2e8f0;
+    font-size: 1rem;
+  }
+
+  .stage-info span {
+    color: #94a3b8;
+    font-size: 0.85rem;
+  }
+
+  .stage-result {
+    color: #4a7c9c !important;
+    font-weight: 600 !important;
+    margin-top: 0.25rem;
+  }
+
+  .stage-divider {
+    color: #4a7c9c;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .profile-fit {
+    background: rgba(255,255,255,0.02);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+  }
+
+  .profile-fit strong {
+    color: #e2e8f0;
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  .profile-fit ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .profile-fit li {
+    color: #94a3b8;
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+  }
+
+  .profile-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .profile-actions .btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .profile-actions .btn-primary {
+    background: linear-gradient(135deg, #4a7c9c 0%, #3d5f7d 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .profile-actions .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 124, 156, 0.4);
+  }
+
+  .profile-actions .btn-secondary {
+    background: rgba(255,255,255,0.05);
+    color: #94a3b8;
+    border: 1px solid #3d4466;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .profile-actions .btn-secondary:hover:not(:disabled) {
+    background: rgba(255,255,255,0.08);
+    border-color: #4a7c9c;
+    color: #e2e8f0;
+  }
+
+  .profile-actions .btn-secondary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .profile-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .profile-stats .stat {
+    text-align: center;
+  }
+
+  .profile-stats .stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4a7c9c;
+    margin-bottom: 0.25rem;
+  }
+
+  .profile-stats .stat-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #94a3b8;
+  }
+
+  .value-box {
+    background: linear-gradient(135deg, rgba(26, 54, 93, 0.2) 0%, rgba(19, 27, 47, 0.2) 100%);
+    border: 2px solid #4a7c9c;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+
+  .value-box h4 {
+    color: #e2e8f0;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .value-item {
+    text-align: center;
+  }
+
+  .value-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .value-item strong {
+    display: block;
+    color: #e2e8f0;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .value-item p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .recruiting-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .profile-stages {
+      flex-direction: column;
+    }
+    
+    .stage-divider {
+      transform: rotate(90deg);
+    }
+    
+    .profile-actions {
+      flex-direction: column;
+    }
+    
+    .value-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 
@@ -926,13 +1526,42 @@ function analyzeTeam() {
 
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/global-error-handler.min.js"></script>
+<script src="js/storage-health.min.js"></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
+    <script src="js/language-switcher.min.js"></script>
     <script src="js/meta-tags-manager.js"></script>
     <script src="js/achievement-badges.js"></script>
     <script src="js/structured-data.js"></script>
 
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(function(registration) {
+                        console.log('Service Worker registered:', registration.scope);
+                        
+                        // Check for updates
+                        registration.addEventListener('updatefound', function() {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', function() {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New service worker available
+                                    console.log('New service worker available');
+                                }
+                            });
+                        });
+                    })
+                    .catch(function(error) {
+                        // Silent fail - not critical
+                    });
+            });
+        }
+    </script>
+    <script src="js/pwa-install-prompt.js"></script>
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>
 </body>
 </html>

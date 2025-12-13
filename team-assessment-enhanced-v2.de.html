@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Performance: Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
     <meta name="theme-color" content="#2d2d2d">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
@@ -148,7 +162,7 @@
     <!-- language switcher (EN / DE) -->
     <div id="lang-switch" style="position:fixed;top:16px;right:16px;z-index:1200;font-family:inherit;">
         <div style="background:white;border-radius:999px;padding:8px 12px;box-shadow:0 6px 20px rgba(0,0,0,0.15);font-size:0.95em;">
-            <a href="team-assessment-enhanced-v2.html" style="color:#333;text-decoration:none;font-weight:700;margin-right:10px;">EN</a>
+            <a href="team-assessment-enhanced-v2.de.html" style="color:#333;text-decoration:none;font-weight:700;margin-right:10px;">EN</a>
             <a href="team-assessment-enhanced-v2.de.html" style="color:#a93226;text-decoration:none;font-weight:700;border-left:1px solid #eee;padding-left:10px;margin-left:10px;">DE</a>
         </div>
     </div>
@@ -278,17 +292,9 @@
     </div>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Wait for i18n to be ready before rendering questions
-        function onI18nReady(cb, timeoutMs = 2000) {
-            const start = Date.now();
-            (function check() {
-                if (window.__i18n && typeof window.__i18n.t === 'function') return cb();
-                if (Date.now() - start > timeoutMs) return cb();
-                setTimeout(check, 30);
-            })();
-        }
+        // German page - no i18n needed (already in German)
         
-        // fallbackQuestions holds the English/default question set. We will try to load questions
-        // from the runtime translations (i18n) when available so pages can progressively translate.
+        // Questions are already in German - no translation needed
         const fallbackQuestions = [
             // TRUST (4 questions)
             {
@@ -387,17 +393,8 @@
             }
         ];
         function getQuestionsFromI18n(){
-            try{
-                const t = window.__i18n && window.__i18n.t ? window.__i18n.t.bind(window.__i18n) : null;
-                if(!t) return fallbackQuestions.slice();
-                const out = [];
-                for(let i=1;i<=20 && i<=fallbackQuestions.length;i++){
-                    const key = `team.q${i}`;
-                    let txt = t(key);
-                    if(typeof txt !== 'string' || !txt.trim()) txt = fallbackQuestions[i-1].question;
-                    out.push(Object.assign({}, fallbackQuestions[i-1], { question: txt }));
-                }
-                return out;
+            // German page - use hardcoded German questions directly (no i18n needed)
+            return fallbackQuestions.slice();
             }catch(e){ return fallbackQuestions.slice(); }
         }
         
@@ -532,10 +529,9 @@
                     }
                     
 
-        onI18nReady(function() {
-            questions = getQuestionsFromI18n();
-            renderQuestion();
-        });
+        // German page - load questions directly (no i18n wait needed)
+        questions = getQuestionsFromI18n();
+        renderQuestion();
         function renderQuestion() {
             if (!questions.length) return;
             const q = questions[currentQuestion];
@@ -1254,13 +1250,13 @@ Wie gesund ist EUER Team?`;
         
         html += '</table>
     <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/global-error-handler.min.js"></script>
+<script src="js/storage-health.min.js"></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
+    <script src="js/language-switcher.min.js"></script>
     <script src="js/meta-tags-manager.js"></script>
     <script src="js/achievement-badges.js"></script>
     <script src="js/structured-data.js"></script>
@@ -1442,7 +1438,13 @@ Wie gesund ist EUER Team?`;
     </script>
 <!-- TAP-IN Utilities -->
 <script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/global-error-handler.min.js"></script>
+<script src="js/storage-health.min.js"></script>
+
+    <!-- Focus Management for Accessibility -->
+    <script src="js/focus-management.js" defer></script>
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>
 </body>
 </html>

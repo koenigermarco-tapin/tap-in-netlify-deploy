@@ -1,0 +1,1012 @@
+{
+  "white": {
+    "stripe_1": [
+      {
+        "id": "white-stripe1-mc1",
+        "belt": "white",
+        "stripe": 1,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "white-stripe1-mc2",
+        "belt": "white",
+        "stripe": 1,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "white-stripe1-mc3",
+        "belt": "white",
+        "stripe": 1,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ],
+    "stripe_2": [
+      {
+        "id": "white-stripe2-mc1",
+        "belt": "white",
+        "stripe": 2,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "white-stripe2-mc2",
+        "belt": "white",
+        "stripe": 2,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "white-stripe2-mc3",
+        "belt": "white",
+        "stripe": 2,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ],
+    "stripe_3": [
+      {
+        "id": "white-stripe3-mc1",
+        "belt": "white",
+        "stripe": 3,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "white-stripe3-mc2",
+        "belt": "white",
+        "stripe": 3,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "white-stripe3-mc3",
+        "belt": "white",
+        "stripe": 3,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ],
+    "stripe_4": [
+      {
+        "id": "white-stripe4-mc1",
+        "belt": "white",
+        "stripe": 4,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "white-stripe4-mc2",
+        "belt": "white",
+        "stripe": 4,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "white-stripe4-mc3",
+        "belt": "white",
+        "stripe": 4,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ]
+  },
+  "blue": {
+    "stripe_1": [
+      {
+        "id": "blue-stripe1-mc1",
+        "belt": "blue",
+        "stripe": 1,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "blue-stripe1-mc2",
+        "belt": "blue",
+        "stripe": 1,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "blue-stripe1-mc3",
+        "belt": "blue",
+        "stripe": 1,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ],
+    "stripe_2": [
+      {
+        "id": "blue-stripe2-mc1",
+        "belt": "blue",
+        "stripe": 2,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "blue-stripe2-mc2",
+        "belt": "blue",
+        "stripe": 2,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "blue-stripe2-mc3",
+        "belt": "blue",
+        "stripe": 2,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ],
+    "stripe_3": [
+      {
+        "id": "blue-stripe3-mc1",
+        "belt": "blue",
+        "stripe": 3,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "blue-stripe3-mc2",
+        "belt": "blue",
+        "stripe": 3,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "blue-stripe3-mc3",
+        "belt": "blue",
+        "stripe": 3,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ],
+    "stripe_4": [
+      {
+        "id": "blue-stripe4-mc1",
+        "belt": "blue",
+        "stripe": 4,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "blue-stripe4-mc2",
+        "belt": "blue",
+        "stripe": 4,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "blue-stripe4-mc3",
+        "belt": "blue",
+        "stripe": 4,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ]
+  },
+  "purple": {
+    "stripe_1": [
+      {
+        "id": "purple-stripe1-mc1",
+        "belt": "purple",
+        "stripe": 1,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "purple-stripe1-mc2",
+        "belt": "purple",
+        "stripe": 1,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "purple-stripe1-mc3",
+        "belt": "purple",
+        "stripe": 1,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ],
+    "stripe_2": [
+      {
+        "id": "purple-stripe2-mc1",
+        "belt": "purple",
+        "stripe": 2,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "purple-stripe2-mc2",
+        "belt": "purple",
+        "stripe": 2,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "purple-stripe2-mc3",
+        "belt": "purple",
+        "stripe": 2,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ],
+    "stripe_3": [
+      {
+        "id": "purple-stripe3-mc1",
+        "belt": "purple",
+        "stripe": 3,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "purple-stripe3-mc2",
+        "belt": "purple",
+        "stripe": 3,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "purple-stripe3-mc3",
+        "belt": "purple",
+        "stripe": 3,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ],
+    "stripe_4": [
+      {
+        "id": "purple-stripe4-mc1",
+        "belt": "purple",
+        "stripe": 4,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "purple-stripe4-mc2",
+        "belt": "purple",
+        "stripe": 4,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "purple-stripe4-mc3",
+        "belt": "purple",
+        "stripe": 4,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ]
+  },
+  "brown": {
+    "stripe_1": [
+      {
+        "id": "brown-stripe1-mc1",
+        "belt": "brown",
+        "stripe": 1,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "brown-stripe1-mc2",
+        "belt": "brown",
+        "stripe": 1,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "brown-stripe1-mc3",
+        "belt": "brown",
+        "stripe": 1,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ],
+    "stripe_2": [
+      {
+        "id": "brown-stripe2-mc1",
+        "belt": "brown",
+        "stripe": 2,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "brown-stripe2-mc2",
+        "belt": "brown",
+        "stripe": 2,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "brown-stripe2-mc3",
+        "belt": "brown",
+        "stripe": 2,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ],
+    "stripe_3": [
+      {
+        "id": "brown-stripe3-mc1",
+        "belt": "brown",
+        "stripe": 3,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "brown-stripe3-mc2",
+        "belt": "brown",
+        "stripe": 3,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "brown-stripe3-mc3",
+        "belt": "brown",
+        "stripe": 3,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ],
+    "stripe_4": [
+      {
+        "id": "brown-stripe4-mc1",
+        "belt": "brown",
+        "stripe": 4,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "brown-stripe4-mc2",
+        "belt": "brown",
+        "stripe": 4,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "brown-stripe4-mc3",
+        "belt": "brown",
+        "stripe": 4,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ]
+  },
+  "black": {
+    "stripe_1": [
+      {
+        "id": "black-stripe1-mc1",
+        "belt": "black",
+        "stripe": 1,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "black-stripe1-mc2",
+        "belt": "black",
+        "stripe": 1,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "black-stripe1-mc3",
+        "belt": "black",
+        "stripe": 1,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ],
+    "stripe_2": [
+      {
+        "id": "black-stripe2-mc1",
+        "belt": "black",
+        "stripe": 2,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "black-stripe2-mc2",
+        "belt": "black",
+        "stripe": 2,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "black-stripe2-mc3",
+        "belt": "black",
+        "stripe": 2,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ],
+    "stripe_3": [
+      {
+        "id": "black-stripe3-mc1",
+        "belt": "black",
+        "stripe": 3,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "black-stripe3-mc2",
+        "belt": "black",
+        "stripe": 3,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "black-stripe3-mc3",
+        "belt": "black",
+        "stripe": 3,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ],
+    "stripe_4": [
+      {
+        "id": "black-stripe4-mc1",
+        "belt": "black",
+        "stripe": 4,
+        "question_number": 1,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "black-stripe4-mc2",
+        "belt": "black",
+        "stripe": 4,
+        "question_number": 2,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      },
+      {
+        "id": "black-stripe4-mc3",
+        "belt": "black",
+        "stripe": 4,
+        "question_number": 3,
+        "question_text": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": 0,
+        "explanation": "",
+        "related_lesson": ""
+      }
+    ]
+  }
+}

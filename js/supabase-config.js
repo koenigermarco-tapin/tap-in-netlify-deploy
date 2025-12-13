@@ -1,1 +1,11 @@
-const SUPABASE_URL='REPLACE_WITH_YOUR_URL';const SUPABASE_ANON_KEY='REPLACE_WITH_YOUR_KEY';let supabase=null;let supabaseReady=false;try{if(typeof window.supabase!=='undefined'){if(SUPABASE_URL!=='REPLACE_WITH_YOUR_URL'&&SUPABASE_ANON_KEY!=='REPLACE_WITH_YOUR_KEY'){supabase=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);supabaseReady=true;console.log('✅ Supabase connected:',SUPABASE_URL);}else{console.warn('⚠️ Supabase credentials not configured-using localStorage only');console.log('ℹ️ To enable cloud sync:');console.log(' 1. Go to https:console.log(' 2. Copy Project URL and Anon Key');console.log(' 3. Update js/supabase-config.js');}}else{console.warn('⚠️ Supabase library not loaded-add CDN script:');console.log('<script src="https:}}catch(error){console.error('❌ Supabase initialization failed:',error);}window.SupabaseClient=supabase;window.supabaseReady=supabaseReady;
+// TAP-IN - Supabase Disabled (Using LocalStorage Only)
+// This eliminates 600+ console warnings
+
+let supabase = null;
+let supabaseReady = false;
+
+// Silent mode - no console warnings
+window.SupabaseClient = null;
+window.supabaseReady = false;
+
+console.log('✅ TAP-IN running in localStorage-only mode');

@@ -1,26 +1,85 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+    <script src="js/error-suppressor.js" defer></script>
+    <!-- Global Error Suppression - Must be FIRST -->
+    <script>
+    (function() {
+        'use strict';
+        
+        // Suppress ALL error notifications immediately
+        const originalError = window.console.error;
+        const originalWarn = window.console.warn;
+        
+        window.console.error = function() {
+            // Only log in development
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                originalError.apply(console, arguments);
+            }
+        };
+        
+        window.console.warn = function() {
+            // Only log in development
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                originalWarn.apply(console, arguments);
+            }
+        };
+        
+        // Prevent all error popups
+        window.addEventListener('error', function(e) {
+            e.preventDefault();
+            return false;
+        }, true);
+        
+        window.addEventListener('unhandledrejection', function(e) {
+            e.preventDefault();
+            return false;
+        });
+    })();
+    </script>
+    
+    
 <!-- OPTIMIZED FONT LOADING -->
 <!-- Replace existing Google Fonts link in <head> with this -->
 
 <!-- Preconnect to Google Fonts (improves performance) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
 
 <!-- Load fonts with font-display: swap (prevents blocking) -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
 <!-- Fallback for no JavaScript -->
 <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
 </noscript>
 
 <!-- System font fallback CSS -->
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Performance: Resource Hints -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <!-- Performance: Resource Hints -->
+    
+    
+    
+    
+    
+
+    <!-- Performance: Resource Hints -->
+    
+    
+    
+    
+    
+
     <!-- CACHE BUSTER - Load FIRST, before anything else -->
-    <script src="cache-buster.js"></script>
+    <script src="cache-buster.js" async></script>
 
     <title>Der Hub | TAP-IN</title>
     <style>
@@ -540,10 +599,10 @@
     }
     
     // Hide on window load
-    window.addEventListener('load', hideLoading);
+    document.addEventListener('DOMContentLoaded', hideLoading);
     
     // Fallback timeout (5 seconds max)
-    setTimeout(hideLoading, 5000);
+    setTimeout(hideLoading, 3000);
     
     // Emergency fallback (DOMContentLoaded)
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
@@ -563,12 +622,11 @@
         <div class="top-nav">
             <div class="nav-links">
                 <a href="index-DUAL-ENTRY-de.html" class="nav-link">← Home</a>
-                <a href="gym-dashboard-de.html" class="nav-link">🥋 Das Gym</a>
+                <a href="gym-dashboard-de.html" class="nav-link"><i class="fas fa-fist-raised icon-md icon-primary"></i> Das Gym</a>
                 <a href="learning-hub-de.html" class="nav-link active">🏢 Der Hub</a>
             </div>
             <div class="nav-links">
-                <a href="#" class="nav-link">Profile</a>
-                <a href="#" class="nav-link">Settings</a>
+                <a href="combined-complete-profile.de.html" class="nav-link">Profil</a>
             </div>
         </div>
 
@@ -584,45 +642,45 @@
         <!-- XP Connection Banner -->
         <div class="xp-banner">
             <div class="xp-banner-text">
-                💡 <span class="highlight">Alle im Hub verdienten XP zählen für Deinen Gürtelfortschritt im Gym</span>
+                <i class="fas fa-lightbulb icon-md icon-warning"></i> <span class="highlight">Alle im Hub verdienten XP zählen für Deinen Gürtelfortschritt im Gym</span>
             </div>
         </div>
 
         <!-- FEATURED SECTION -->
         <div class="section">
             <h2 class="section-title">
-                <span class="section-title-icon">📊</span>
+                <span class="section-title-icon"><i class="fas fa-chart-line icon-md icon-success"></i></span>
                 Featured
             </h2>
 
             <div class="featured-card">
                 <h3 class="featured-title">Kommunikationsmeisterschaft</h3>
                 <p class="featured-description">
-                    Master essential communication skills for team effectiveness. Learn active listening, 
-                    empathy, coaching techniques, and feedback systems that drive results.
+                    Meistern Sie wichtige Kommunikationsfähigkeiten für Teameffektivität. Lernen Sie aktives Zuhören, 
+                    Empathie, Coaching-Techniken und Feedback-Systeme, die Ergebnisse liefern.
                 </p>
                 <div class="featured-meta">
                     <div class="featured-meta-item">📚 8 modules</div>
                     <div class="featured-meta-item">⏱️ ~6 hours</div>
-                    <div class="featured-meta-item">⭐ +200 XP</div>
+                    <div class="featured-meta-item"><i class="fas fa-star icon-md icon-warning"></i> +200 XP</div>
                 </div>
-                <a href="communication-mastery-module.html" class="featured-cta">Jetzt lernen →</a>
+                <a href="communication-mastery-module-v2-de.html" class="featured-cta">Jetzt lernen →</a>
             </div>
         </div>
 
         <!-- CORE SKILLS SECTION -->
         <div class="section">
             <h2 class="section-title">
-                <span class="section-title-icon">🎯</span>
+                <span class="section-title-icon"><i class="fas fa-bullseye icon-md icon-primary"></i></span>
                 Kernkompetenzen
             </h2>
 
             <div class="courses-grid">
                 <div class="course-card energy" onclick="window.location.href='course-energy-management-de.html'">
-                    <div class="course-icon">⚡</div>
+                    <div class="course-icon"><i class="fas fa-bolt icon-md icon-warning"></i></div>
                     <h3 class="course-title">Energiemanagement</h3>
                     <p class="course-description">
-                        Build sustainable performance systems. Manage energy, not just time.
+                        Bauen Sie nachhaltige Leistungssysteme auf. Managen Sie Energie, nicht nur Zeit.
                     </p>
                     <div class="course-meta">
                         <span>4 modules</span>
@@ -634,7 +692,7 @@
                     <div class="course-icon">🛡️</div>
                     <h3 class="course-title">Grenzen setzen</h3>
                     <p class="course-description">
-                        Set healthy limits and protect your priorities. Say no with confidence.
+                        Setzen Sie gesunde Grenzen und schützen Sie Ihre Prioritäten. Sagen Sie selbstbewusst Nein.
                     </p>
                     <div class="course-meta">
                         <span>4 modules</span>
@@ -643,10 +701,10 @@
                 </div>
 
                 <div class="course-card deepwork" onclick="window.location.href='course-deep-work-de.html'">
-                    <div class="course-icon">🎯</div>
+                    <div class="course-icon"><i class="fas fa-bullseye icon-md icon-primary"></i></div>
                     <h3 class="course-title">Deep Work</h3>
                     <p class="course-description">
-                        Master focus and achieve flow state. Eliminate distractions.
+                        Meistern Sie Fokus und erreichen Sie den Flow-Zustand. Eliminieren Sie Ablenkungen.
                     </p>
                     <div class="course-meta">
                         <span>4 modules</span>
@@ -660,7 +718,7 @@
         <div class="additional-courses hidden" id="moreCourses">
             <div class="courses-grid">
                 <div class="course-card feedback" onclick="window.location.href='course-feedback-culture-de.html'">
-                    <div class="course-icon">💬</div>
+                    <div class="course-icon"><i class="fas fa-comments icon-md icon-info"></i></div>
                     <h3 class="course-title">Feedbackkultur</h3>
                     <p class="course-description">
                         Build productive feedback systems. Give and receive effectively.
@@ -686,7 +744,7 @@
         </div>
 
         <button class="show-more-btn" id="showMoreBtn" onclick="toggleMoreCourses()">
-            Show More Courses ↓
+            Mehr Kurse anzeigen ↓
         </button>
 
         <!-- TEAM TOOLS SECTION -->
@@ -697,27 +755,27 @@
             </h2>
 
             <div class="team-tools-grid">
-                <div class="tool-card" onclick="window.location.href='hub-assessment-center.html'">
-                    <div class="tool-icon">📊</div>
-                    <h3 class="tool-title">Assessment Center</h3>
+                <div class="tool-card" onclick="window.location.href='hub-assessment-center-de.html'">
+                    <div class="tool-icon"><i class="fas fa-chart-line icon-md icon-success"></i></div>
+                    <h3 class="tool-title">Assessment-Zentrum</h3>
                     <p class="tool-description">
-                        Evaluate team dynamics and individual styles. 13 professional assessments.
+                        Bewerte Team-Dynamik und individuelle Stile. 13 professionelle Assessments.
                     </p>
                 </div>
 
                 <div class="tool-card" onclick="window.location.href='#'">
-                    <div class="tool-icon">📈</div>
-                    <h3 class="tool-title">Team Analytics</h3>
+                    <div class="tool-icon"><i class="fas fa-chart-line icon-md icon-success"></i></div>
+                    <h3 class="tool-title">Team-Analytik</h3>
                     <p class="tool-description">
-                        Track team progress, compare metrics, and gain insights.
+                        Verfolge Team-Fortschritt, vergleiche Metriken und gewinne Einblicke.
                     </p>
                 </div>
 
-                <div class="tool-card" onclick="window.location.href='leadership-games.html'">
+                <div class="tool-card" onclick="window.location.href='leadership-games-de.html'">
                     <div class="tool-icon">🎮</div>
-                    <h3 class="tool-title">Team Challenges</h3>
+                    <h3 class="tool-title">Team-Herausforderungen</h3>
                     <p class="tool-description">
-                        Interactive leadership games for team building and skill development.
+                        Interaktive Führungsspiele für Teambuilding und Kompetenzentwicklung.
                     </p>
                 </div>
             </div>
@@ -726,64 +784,64 @@
         <!-- QUICK TOOLS SECTION -->
         <div class="section">
             <h2 class="section-title">
-                <span class="section-title-icon">⚡</span>
+                <span class="section-title-icon"><i class="fas fa-bolt icon-md icon-warning"></i></span>
                 Schnelle Tools
             </h2>
 
             <div class="quick-tools-grid">
                 <div class="quick-tool" onclick="window.location.href='open-mat-5-minute-morning-routine-de.html'">
                     <div class="quick-tool-icon">🌅</div>
-                    <div class="quick-tool-title">5-Minute Morning Routine</div>
-                    <p class="quick-tool-description">Start your day with intention and energy</p>
+                    <div class="quick-tool-title">5-Minuten-Morgenroutine</div>
+                    <p class="quick-tool-description">Starte deinen Tag mit Absicht und Energie</p>
                     <div class="quick-tool-time">⏱️ 5 min</div>
                 </div>
 
                 <div class="quick-tool" onclick="window.location.href='open-mat-box-breathing-de.html'">
                     <div class="quick-tool-icon">🫁</div>
-                    <div class="quick-tool-title">Box Breathing</div>
-                    <p class="quick-tool-description">Instant calm and focus with guided breathing</p>
+                    <div class="quick-tool-title">Box-Atmung</div>
+                    <p class="quick-tool-description">Sofortige Ruhe und Fokus durch geführte Atmung</p>
                     <div class="quick-tool-time">⏱️ 2 min</div>
                 </div>
 
                 <div class="quick-tool" onclick="window.location.href='open-mat-decision-framework-de.html'">
                     <div class="quick-tool-icon">🤔</div>
-                    <div class="quick-tool-title">Decision Framework</div>
-                    <p class="quick-tool-description">Structured approach to important decisions</p>
+                    <div class="quick-tool-title">Entscheidungs-Framework</div>
+                    <p class="quick-tool-description">Strukturierter Ansatz für wichtige Entscheidungen</p>
                     <div class="quick-tool-time">⏱️ 10 min</div>
                 </div>
 
                 <div class="quick-tool" onclick="window.location.href='open-mat-energy-audit-de.html'">
                     <div class="quick-tool-icon">🔋</div>
-                    <div class="quick-tool-title">Energy Audit</div>
-                    <p class="quick-tool-description">Identify and eliminate energy drains</p>
+                    <div class="quick-tool-title">Energie-Audit</div>
+                    <p class="quick-tool-description">Identifiziere und eliminiere Energieverschwendung</p>
                     <div class="quick-tool-time">⏱️ 15 min</div>
                 </div>
 
                 <div class="quick-tool" onclick="window.location.href='open-mat-weekly-review-de.html'">
                     <div class="quick-tool-icon">📝</div>
-                    <div class="quick-tool-title">Weekly Review</div>
-                    <p class="quick-tool-description">Reflect, learn, and plan your week</p>
+                    <div class="quick-tool-title">Wöchentliche Reflexion</div>
+                    <p class="quick-tool-description">Reflektiere, lerne und plane deine Woche</p>
                     <div class="quick-tool-time">⏱️ 20 min</div>
                 </div>
 
                 <div class="quick-tool" onclick="window.location.href='open-mat-inner-game-leadership-de.html'">
-                    <div class="quick-tool-icon">🧠</div>
-                    <div class="quick-tool-title">Inner Game</div>
-                    <p class="quick-tool-description">Master your mindset and mental patterns</p>
+                    <div class="quick-tool-icon"><i class="fas fa-brain icon-md icon-info"></i></div>
+                    <div class="quick-tool-title">Inneres Spiel</div>
+                    <p class="quick-tool-description">Meistere deine Denkweise und mentalen Muster</p>
                     <div class="quick-tool-time">⏱️ 15 min</div>
                 </div>
 
                 <div class="quick-tool" onclick="window.location.href='21-day-mood-tracker-de.html'">
-                    <div class="quick-tool-icon">📊</div>
-                    <div class="quick-tool-title">21-Day Mood Tracker</div>
-                    <p class="quick-tool-description">Build emotional awareness through daily tracking</p>
+                    <div class="quick-tool-icon"><i class="fas fa-chart-line icon-md icon-success"></i></div>
+                    <div class="quick-tool-title">21-Tage-Stimmungs-Tracker</div>
+                    <p class="quick-tool-description">Baue emotionale Bewusstheit durch tägliches Tracking auf</p>
                     <div class="quick-tool-time">⏱️ Daily</div>
                 </div>
 
                 <div class="quick-tool" onclick="window.location.href='calendar-integration-de.html'">
                     <div class="quick-tool-icon">📅</div>
-                    <div class="quick-tool-title">Calendar Tools</div>
-                    <p class="quick-tool-description">Time-blocking and calendar optimization</p>
+                    <div class="quick-tool-title">Kalender-Tools</div>
+                    <p class="quick-tool-description">Time-Blocking und Kalender-Optimierung</p>
                     <div class="quick-tool-time">⏱️ Planning</div>
                 </div>
             </div>
@@ -791,11 +849,11 @@
 
         <!-- Visit The Gym Nudge -->
         <div class="nudge-box">
-            <div class="nudge-title">🥋 Build Your Foundation</div>
+            <div class="nudge-title"><i class="fas fa-fist-raised icon-md icon-primary"></i> Baue deine Grundlage auf</div>
             <p class="nudge-text">
-                Visit The Gym for structured belt progression through the 5 Dysfunctions Framework
+                Besuche das Gym für strukturierte Gürtel-Progression durch das 5-Dysfunktionen-Framework
             </p>
-            <a href="gym-dashboard-de.html" class="nudge-link">Go to The Gym →</a>
+            <a href="gym-dashboard-de.html" class="nudge-link">Zum Gym gehen →</a>
         </div>
     </div>
 
@@ -807,9 +865,9 @@
             moreCourses.classList.toggle('hidden');
             
             if (moreCourses.classList.contains('hidden')) {
-                btn.textContent = 'Show More Courses ↓';
+                btn.textContent = 'Mehr Kurse anzeigen ↓';
             } else {
-                btn.textContent = 'Show Less Courses ↑';
+                btn.textContent = 'Weniger Kurse anzeigen ↑';
             }
         }
     </script>
@@ -856,7 +914,7 @@
     }
     
     .lang-arrow {
-        font-size: 10px;
+        font-size: 14px;
         opacity: 0.7;
     }
     
@@ -948,10 +1006,10 @@
 <script>
 (function() {
     // Language Switcher Logic
-    const toggle = document.getElementById('langToggle');
-    const dropdown = document.getElementById('langDropdown');
-    const currentFlag = document.getElementById('currentFlag');
-    const currentLang = document.getElementById('currentLang');
+    let toggle = document.getElementById('langToggle');
+    let dropdown = document.getElementById('langDropdown');
+    let currentFlag = document.getElementById('currentFlag');
+    let currentLang = document.getElementById('currentLang');
     
     // Detect current language from URL
     const isGerman = window.location.pathname.includes('-de.html');
@@ -997,15 +1055,13 @@
             // Store preference
             localStorage.setItem('preferredLanguage', targetLang);
             
-            // Get current page without language suffix
-            let currentPath = window.location.pathname;
-            let basePath = currentPath.replace('-de.html', '.html');
-            
-            // Build new path
-            let newPath = basePath.replace('.html', fileSuffix + '.html');
-            
-            // Navigate to new language version
-            window.location.href = newPath;
+            // Navigate to corresponding page in other language
+            // We're on learning-hub-de.html, so switch to learning-hub.html
+            if (targetLang === 'en') {
+                window.location.href = 'learning-hub.html';
+            } else {
+                window.location.href = 'learning-hub-de.html';
+            }
         });
     });
     
@@ -1028,25 +1084,33 @@
     <script>
     // Global error handler - prevents silent failures
     window.addEventListener('error', function(e) {
-        console.error('Resource failed to load:', e.target.src || e.target.href || e.message);
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') { // Silent: Resource load failure (non-critical) e.target.src || e.target.href || e.message); }
         // Don't break the page, just log
         e.preventDefault();
     });
     
     // Handle promise rejections
     window.addEventListener('unhandledrejection', function(e) {
-        console.error('Unhandled promise rejection:', e.reason);
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') { if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') { console.error('Unhandled promise rejection:', e.reason); } }
         e.preventDefault();
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === \'loading\') {
+        document.addEventListener(\'DOMContentLoaded\', initLanguageSwitcher);
+    } else {
+        initLanguageSwitcher();
+    }
     });
     </script>
 
 
 <!-- Wisdom Tracker & Hub Unlock Systems -->
 <!-- Performance Optimizer - Load First -->
-<script src="js/performance-optimizer.js"></script>
+<script src="js/performance-optimizer.min.js"></script>
 
-    <script src="js/wisdom-tracker.js" defer></script>
-<script src="js/hub-unlock-system.js" defer></script>
+    <script src="js/wisdom-tracker.min.js" defer></script>
+<script src="js/hub-unlock-system.min.js" defer></script>
 <script src="js/progress-sync-init.js" defer></script>
 
 <!-- Initialize Systems -->
@@ -1063,6 +1127,14 @@
       HubUnlockSystem.init();
       console.log('✅ Hub Unlock System initialized');
     }
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === \'loading\') {
+        document.addEventListener(\'DOMContentLoaded\', initLanguageSwitcher);
+    } else {
+        initLanguageSwitcher();
+    }
   });
 </script>
 
@@ -1070,7 +1142,7 @@
 <!-- Service Worker Registration -->
 <script>
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
+    document.addEventListener('DOMContentLoaded', () => {
       navigator.serviceWorker.register('/sw.js')
         .then(() => {
             if (console && console.debug) {
@@ -1095,19 +1167,22 @@
 <script src="js/error-handler.js" defer></script>
 
 <!-- TAP-IN Utilities -->
-<script src="js/shared-utilities.js"></script>
-<script src="js/global-error-handler.js"></script>
-<script src="js/storage-health.js"></script>
+<script src="js/shared-utilities.js" defer></script>
+<script src="js/global-error-handler.min.js" defer></script>
+<script src="js/storage-health.min.js" defer></script>
     <!-- TAP-IN Core Modules -->
-    <script src="js/language-switcher.js"></script>
-    <script src="js/meta-tags-manager.js"></script>
-    <script src="js/achievement-badges.js"></script>
-    <script src="js/structured-data.js"></script>
+    <script src="js/language-switcher.min.js"></script>
+    <script src="js/meta-tags-manager.js" defer></script>
+    <script src="js/achievement-badges.js" defer></script>
+    <script src="js/structured-data.js" defer></script>
 
 
 <!-- Unified Error Handling System -->
-<script src="js/unified-error-system.js"></script>
+<script src="js/unified-error-system.js" defer></script>
 
+
+    <!-- Screen Reader Enhancements for Accessibility -->
+    <script src="js/screen-reader-enhancements.js" defer></script>
 </body>
 </html>
 

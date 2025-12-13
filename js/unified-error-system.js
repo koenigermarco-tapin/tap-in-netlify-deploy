@@ -150,11 +150,11 @@
                     break;
                 
                 case this.SEVERITY.USER:
-                    // Only show to user if function exists and error is critical
-                    if (typeof showToast === 'function') {
-                        showToast('Something went wrong. Please refresh if the problem persists.', 'error');
+                    // SILENT: Never show error toasts - only log in development
+                    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                        console.error(`[${source} - USER FACING]`, errorInfo);
                     }
-                    console.error(`[${source} - USER FACING]`, errorInfo);
+                    // REMOVED: showToast call - errors are now completely silent
                     break;
             }
             

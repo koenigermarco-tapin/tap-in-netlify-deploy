@@ -1,0 +1,385 @@
+{
+  "summary": {
+    "total_files": 387,
+    "entry_points": 13,
+    "broken_links": 828,
+    "orphaned_files": 104,
+    "total_issues": 932
+  },
+  "entry_points": [
+    "index.html",
+    "learning-modules/index.html",
+    "learning-modules/energy-management/index.html",
+    "index-DUAL-ENTRY.html",
+    "gym-dashboard.html",
+    "learning-hub.html",
+    "belt-assessment-v2.html",
+    "hub-home-BUSINESS.html",
+    "hub-assessment-center.html",
+    "leadership-games.html",
+    "learning-hub-de.html",
+    "index-DUAL-ENTRY-de.html",
+    "gym-dashboard-de.html"
+  ],
+  "broken_links": [
+    {
+      "source": "white-belt-stripe1-carousel.html",
+      "link": "css/variables.css",
+      "resolved": "css/variables.css"
+    },
+    {
+      "source": "white-belt-stripe1-carousel.html",
+      "link": "css/core-styles.css",
+      "resolved": "css/core-styles.css"
+    },
+    {
+      "source": "white-belt-stripe1-carousel.html",
+      "link": "css/accessibility.css",
+      "resolved": "css/accessibility.css"
+    },
+    {
+      "source": "communication-mastery-3-feedback.html",
+      "link": "css/variables.css",
+      "resolved": "css/variables.css"
+    },
+    {
+      "source": "communication-mastery-3-feedback.html",
+      "link": "css/core-styles.css",
+      "resolved": "css/core-styles.css"
+    },
+    {
+      "source": "communication-mastery-3-feedback.html",
+      "link": "css/accessibility.css",
+      "resolved": "css/accessibility.css"
+    },
+    {
+      "source": "communication-mastery-3-feedback.html",
+      "link": "/manifest.json",
+      "resolved": "manifest.json"
+    },
+    {
+      "source": "communication-mastery-3-feedback.html",
+      "link": "/icon-192.png",
+      "resolved": "icon-192.png"
+    },
+    {
+      "source": "communication-mastery-3-feedback.html",
+      "link": "css/pwa-install-banner.css",
+      "resolved": "css/pwa-install-banner.css"
+    },
+    {
+      "source": "communication-mastery-3-feedback.html",
+      "link": "communication-mastery-v2.html",
+      "resolved": "communication-mastery-v2.html"
+    },
+    {
+      "source": "communication-mastery-3-feedback.html",
+      "link": "communication-mastery-2-clarity.html",
+      "resolved": "communication-mastery-2-clarity.html"
+    },
+    {
+      "source": "migration-wizard.html",
+      "link": "css/core-styles.css",
+      "resolved": "css/core-styles.css"
+    },
+    {
+      "source": "team-dashboard.html",
+      "link": "css/variables.css",
+      "resolved": "css/variables.css"
+    },
+    {
+      "source": "team-dashboard.html",
+      "link": "css/core-styles.css",
+      "resolved": "css/core-styles.css"
+    },
+    {
+      "source": "team-dashboard.html",
+      "link": "css/accessibility.css",
+      "resolved": "css/accessibility.css"
+    },
+    {
+      "source": "team-dashboard.html",
+      "link": "/manifest.json",
+      "resolved": "manifest.json"
+    },
+    {
+      "source": "team-dashboard.html",
+      "link": "/icon-192.png",
+      "resolved": "icon-192.png"
+    },
+    {
+      "source": "team-dashboard.html",
+      "link": "/",
+      "resolved": ""
+    },
+    {
+      "source": "team-dashboard.html",
+      "link": "/dashboard.html",
+      "resolved": "dashboard.html"
+    },
+    {
+      "source": "blue-belt-stripe1-gamified.html",
+      "link": "css/variables.css",
+      "resolved": "css/variables.css"
+    },
+    {
+      "source": "blue-belt-stripe1-gamified.html",
+      "link": "css/core-styles.css",
+      "resolved": "css/core-styles.css"
+    },
+    {
+      "source": "blue-belt-stripe1-gamified.html",
+      "link": "css/accessibility.css",
+      "resolved": "css/accessibility.css"
+    },
+    {
+      "source": "blue-belt-stripe1-gamified.html",
+      "link": "css/dark-mode.css",
+      "resolved": "css/dark-mode.css"
+    },
+    {
+      "source": "blue-belt-stripe1-gamified.html",
+      "link": "blue-belt-stripe",
+      "resolved": "blue-belt-stripe"
+    },
+    {
+      "source": "deep-work-3-protocols.html",
+      "link": "css/variables.css",
+      "resolved": "css/variables.css"
+    },
+    {
+      "source": "deep-work-3-protocols.html",
+      "link": "css/core-styles.css",
+      "resolved": "css/core-styles.css"
+    },
+    {
+      "source": "deep-work-3-protocols.html",
+      "link": "css/accessibility.css",
+      "resolved": "css/accessibility.css"
+    },
+    {
+      "source": "deep-work-3-protocols.html",
+      "link": "/manifest.json",
+      "resolved": "manifest.json"
+    },
+    {
+      "source": "deep-work-3-protocols.html",
+      "link": "/icon-192.png",
+      "resolved": "icon-192.png"
+    },
+    {
+      "source": "deep-work-3-protocols.html",
+      "link": "css/pwa-install-banner.css",
+      "resolved": "css/pwa-install-banner.css"
+    },
+    {
+      "source": "achievement-badges.html",
+      "link": "css/variables.css",
+      "resolved": "css/variables.css"
+    },
+    {
+      "source": "achievement-badges.html",
+      "link": "css/core-styles.css",
+      "resolved": "css/core-styles.css"
+    },
+    {
+      "source": "achievement-badges.html",
+      "link": "css/accessibility.css",
+      "resolved": "css/accessibility.css"
+    },
+    {
+      "source": "achievement-badges.html",
+      "link": "css/accessibility.css",
+      "resolved": "css/accessibility.css"
+    },
+    {
+      "source": "achievement-badges.html",
+      "link": "/dashboard.html",
+      "resolved": "dashboard.html"
+    },
+    {
+      "source": "black-belt-stripe2-carousel-NEW.html",
+      "link": "css/variables.css",
+      "resolved": "css/variables.css"
+    },
+    {
+      "source": "black-belt-stripe2-carousel-NEW.html",
+      "link": "css/core-styles.css",
+      "resolved": "css/core-styles.css"
+    },
+    {
+      "source": "black-belt-stripe2-carousel-NEW.html",
+      "link": "css/accessibility.css",
+      "resolved": "css/accessibility.css"
+    },
+    {
+      "source": "black-belt-stripe2-carousel-NEW.html",
+      "link": "/manifest.json",
+      "resolved": "manifest.json"
+    },
+    {
+      "source": "black-belt-stripe2-carousel-NEW.html",
+      "link": "/icon-192.png",
+      "resolved": "icon-192.png"
+    },
+    {
+      "source": "black-belt-stripe2-carousel-NEW.html",
+      "link": "css/pwa-install-banner.css",
+      "resolved": "css/pwa-install-banner.css"
+    },
+    {
+      "source": "communication-mastery-1.html",
+      "link": "css/variables.css",
+      "resolved": "css/variables.css"
+    },
+    {
+      "source": "communication-mastery-1.html",
+      "link": "css/core-styles.css",
+      "resolved": "css/core-styles.css"
+    },
+    {
+      "source": "communication-mastery-1.html",
+      "link": "css/accessibility.css",
+      "resolved": "css/accessibility.css"
+    },
+    {
+      "source": "communication-mastery-1.html",
+      "link": "/manifest.json",
+      "resolved": "manifest.json"
+    },
+    {
+      "source": "communication-mastery-1.html",
+      "link": "/icon-192.png",
+      "resolved": "icon-192.png"
+    },
+    {
+      "source": "communication-mastery-1.html",
+      "link": "css/pwa-install-banner.css",
+      "resolved": "css/pwa-install-banner.css"
+    },
+    {
+      "source": "communication-mastery-1.html",
+      "link": "communication-mastery-2.html",
+      "resolved": "communication-mastery-2.html"
+    },
+    {
+      "source": "index.de.html",
+      "link": "css/variables.css",
+      "resolved": "css/variables.css"
+    },
+    {
+      "source": "index.de.html",
+      "link": "css/core-styles.css",
+      "resolved": "css/core-styles.css"
+    }
+  ],
+  "orphaned_files": [
+    "white-belt-stripe1-carousel.html",
+    "boundaries-module.de.html",
+    "black-belt-stripe4.html",
+    "referral-dashboard.html",
+    "offline.html",
+    "tool-energy-audit.html",
+    "purple-belt-stripe1-carousel-NEW.html",
+    "tool-box-breathing.html",
+    "invite-landing.html",
+    "tool-energy-audit-de.html",
+    "boundaries-module-v2.html",
+    "deep-dive-assessment.de.html",
+    "expectation-management-module.de.html",
+    "language-switcher.html",
+    "contact-card-blackbelt.html",
+    "tool-weekly-review.html",
+    "tool-inner-game.html",
+    "blue-belt-assessment.de.html",
+    "gamification-showcase.html",
+    "challenge-vulnerability.html",
+    "belt-assessment-de.html",
+    "coaching-module-gamified.html",
+    "team-dynamics-start-de.html",
+    "white-belt-stripe3-interactive-FULL.html",
+    "challenge-vulnerability-de.html",
+    "create-pwa-icons.html",
+    "belt-level-assessment.html",
+    "brown-belt-assessment.de.html",
+    "white-belt-stripe3-gamified.html",
+    "lesson-viewer.html",
+    "white-belt-stripe4-gamified.html",
+    "purple-belt-assessment.de.html",
+    "black-belt-stripe1-carousel-NEW.html",
+    "feedback-module.de.html",
+    "white-belt-stripe1-interactive-FULL.html",
+    "tool-morning-routine.html",
+    "leadership-style-carousel-new.html",
+    "assessment-belt-landing.html",
+    "tap-out-button.html",
+    "login.html",
+    "tool-decision-framework-de.html",
+    "admin-dashboard.html",
+    "combined-carousel-template.html",
+    "black-belt-landing.html",
+    "DESIGN-PREVIEW.html",
+    "empathy-module-gamified.html",
+    "take-the-back-clean.html",
+    "stoic-tools-module.html",
+    "icon-generator.html",
+    "confession-poker-de.html"
+  ],
+  "belt_issues": [],
+  "navigation_issues": [
+    {
+      "type": "missing_next",
+      "file": "white-belt-stripe1-gamified.html",
+      "expected": "white-belt-stripe2-gamified.html"
+    },
+    {
+      "type": "missing_next",
+      "file": "white-belt-stripe2-gamified.html",
+      "expected": "white-belt-stripe3-gamified.html"
+    },
+    {
+      "type": "missing_next",
+      "file": "white-belt-stripe3-gamified.html",
+      "expected": "white-belt-stripe4-gamified.html"
+    },
+    {
+      "type": "missing_next",
+      "file": "purple-belt-stripe2-gamified.html",
+      "expected": "purple-belt-stripe3-gamified.html"
+    },
+    {
+      "type": "missing_next",
+      "file": "purple-belt-stripe3-gamified.html",
+      "expected": "purple-belt-stripe4-gamified.html"
+    },
+    {
+      "type": "missing_assessment",
+      "file": "blue-belt-stripe4-gamified.html",
+      "expected": "blue-belt-assessment.html"
+    },
+    {
+      "type": "missing_assessment",
+      "file": "purple-belt-stripe4-gamified.html",
+      "expected": "purple-belt-assessment.html"
+    },
+    {
+      "type": "missing_assessment",
+      "file": "brown-belt-stripe4-gamified.html",
+      "expected": "brown-belt-assessment.html"
+    },
+    {
+      "type": "missing_assessment",
+      "file": "black-belt-stripe4-gamified.html",
+      "expected": "black-belt-assessment.html"
+    }
+  ],
+  "back_link_issues": [],
+  "game_tool_issues": [
+    {
+      "type": "not_linked",
+      "category": "game",
+      "file": "confession-poker.html",
+      "from": "leadership-games.html"
+    }
+  ]
+}
