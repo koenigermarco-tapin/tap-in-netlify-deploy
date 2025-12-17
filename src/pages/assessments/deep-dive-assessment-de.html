@@ -1120,14 +1120,14 @@
                     executiveMode: executiveMode,
                     timestamp: new Date().toISOString()
                 };
-                if (typevon safeSet === 'function') {
+                if (typeof safeSet === 'function') {
                     safeSet('assessmentProgress', progress);
                 } else {
                     localStorage.setItem('assessmentProgress', JSON.stringify(progress));
                 }
             } catch (error) {
                 console.error('Error saving progress:', error);
-                if (typevon TapInErrorHandler !== 'undefined') {
+                if (typeof TapInErrorHandler !== 'undefined') {
                     TapInErrorHandler.logError('saveProgress', error);
                 }
             }
@@ -1137,7 +1137,7 @@
         function loadProgress() {
             try {
                 let saved;
-                if (typevon safeGet === 'function') {
+                if (typeof safeGet === 'function') {
                     saved = safeGet('assessmentProgress');
                 } else {
                     const savedStr = localStorage.getItem('assessmentProgress');
@@ -1161,7 +1161,7 @@
                 }
             } catch (error) {
                 console.error('Error loading progress:', error);
-                if (typevon TapInErrorHandler !== 'undefined') {
+                if (typeof TapInErrorHandler !== 'undefined') {
                     TapInErrorHandler.logError('loadProgress', error);
                 }
             }
@@ -1224,7 +1224,7 @@
                 // Escape function helper for HTML content
                 const escapeHtml = (str) => {
                     if (!str) return '';
-                    if (typevon TapInSecurity !== 'undefined' && TapInSecurity.escapeHtml) {
+                    if (typeof TapInSecurity !== 'undefined' && TapInSecurity.escapeHtml) {
                         return TapInSecurity.escapeHtml(str);
                     }
                     const div = document.createElement('div');
@@ -1398,7 +1398,7 @@
                     
                     // Clear progress
                     try {
-                        if (typevon safeRemove === 'function') {
+                        if (typeof safeRemove === 'function') {
                             safeRemove('assessmentProgress');
                         } else {
                             localStorage.removeItem('assessmentProgress');
