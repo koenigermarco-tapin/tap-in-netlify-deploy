@@ -527,9 +527,9 @@
                         <path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
                     </svg>
                 </div>
-                <h2 style="font-size: 2rem; margin-bottom: 10px;">Assessment Complete!</h2>
+                <h2 style="font-size: 2rem; margin-bottom: 10px;">Bewertung abgeschlossen!</h2>
                 <p style="color: var(--light-grey); margin-bottom: 20px;">You've earned <span id="totalXP" style="color: var(--purple); font-weight: 700;">0</span> XP</p>
-                <button class="btn btn-primary" onclick="closeCelebration()">View Results</button>
+                <button class="btn btn-primary" onclick="closeCelebration()">Ergebnisse anzeigen</button>
             </div>
         </div>
         
@@ -1411,7 +1411,7 @@
                     syncAssessmentToTeam(topType, topRhythm);
                     
                     TapInErrorHandler.hideLoading();
-                    TapInErrorHandler.showSuccess('Assessment Complete!', 'Viewing your results...');
+                    TapInErrorHandler.showSuccess('Bewertung abgeschlossen!', 'Ihre Ergebnisse werden angezeigt...');
                     
                     // Show celebration
                     document.getElementById('totalXP').textContent = GAMIFICATION.xp;
