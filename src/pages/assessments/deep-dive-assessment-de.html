@@ -499,7 +499,7 @@
         
         <div class="progress-container">
             <div class="progress-text">
-                <span>Question <span id="qNum">1</span> von <span id="totalQuestions">15</span></span>
+                <span>Question <span id="qNum">1</span> of <span id="totalQuestions">15</span></span>
                 <span id="progressPercent">0%</span>
             </div>
             <div class="progress-bar">
@@ -527,7 +527,7 @@
                         <path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
                     </svg>
                 </div>
-                <h2 style="font-size: 2rem; margin-bottom: 10px;">Assessment Abschließen!</h2>
+                <h2 style="font-size: 2rem; margin-bottom: 10px;">Assessment Complete!</h2>
                 <p style="color: var(--light-grey); margin-bottom: 20px;">You've earned <span id="totalXP" style="color: var(--purple); font-weight: 700;">0</span> XP</p>
                 <button class="btn btn-primary" onclick="closeCelebration()">View Results</button>
             </div>
@@ -560,11 +560,11 @@
                     <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;">
                         <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1"/>
                     </svg>
-                    Weiter zum Gym Dashboard
+                    Continue to Your Gym Dashboard
                     <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
                 <a href="../gym/gym-dashboard-de.html?v=2025-12-15" class="btn btn-secondary btn-lg" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-                    View Your Prvonile
+                    View Your Profile
                     <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
                 <a href="../../join-team.html" style="padding: 16px 28px; background: rgba(255,255,255,0.05); border: 2px solid var(--mid-grey); border-radius: 12px; color: var(--white); text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px;">
@@ -593,8 +593,8 @@
             achievements: {
                 'first_start': { icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z', name: 'DNA Explorer', desc: 'Started your leadership assessment', xp: 50, unlocked: false },
                 'halfway': { icon: 'M13 10V3L4 14h7v7l9-11h-7z', name: 'Halfway Hero', desc: 'Answered 8 questions', xp: 50, unlocked: false },
-                'Abschließen': { icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z', name: 'Leadership Master', desc: 'Abschließend the assessment', xp: 50, unlocked: false },
-                'speed_demon': { icon: 'M13 10V3L4 14h7v7l9-11h-7z', name: 'Speed Demon', desc: 'Abschließend in under 5 minutes', xp: 50, unlocked: false }
+                'complete': { icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z', name: 'Leadership Master', desc: 'Completed the assessment', xp: 50, unlocked: false },
+                'speed_demon': { icon: 'M13 10V3L4 14h7v7l9-11h-7z', name: 'Speed Demon', desc: 'Completed in under 5 minutes', xp: 50, unlocked: false }
             },
             startTime: Date.now(),
             load() {
@@ -700,7 +700,7 @@
                 stripe: parseInt(localStorage.getItem('currentStripe')) || 1,
                 xp: parseInt(localStorage.getItem('totalXP')) || 0,
                 lastActive: new Date().toISOString(),
-                assessmentAbschließend: true
+                assessmentCompleted: true
             };
             
             if (memberIndex >= 0) {
@@ -739,7 +739,7 @@
                             category: "Strategic Leadership",
                             text: "When presenting to the board or investors, your primary focus is...",
                             options: [
-                                { text: "Painting a compelling vision von future possibilities and market opportunities", type: "visionary" },
+                                { text: "Painting a compelling vision of future possibilities and market opportunities", type: "visionary" },
                                 { text: "Presenting detailed data, projections, and systematic analysis", type: "architect" },
                                 { text: "Building trust and demonstrating how the team is aligned and supported", type: "facilitator" },
                                 { text: "Showing concrete results, milestones achieved, and clear execution plan", type: "executor" }
@@ -811,7 +811,7 @@
                 questionCount.textContent = '15';
                 timeEstimate.textContent = '5';
                 
-                // If disabling executive mode and we're past regular questions, move Zurück
+                // If disabling executive mode and we're past regular questions, move back
                 if (currentQuestion >= questions.length) {
                     currentQuestion = questions.length - 1;
                 }
@@ -848,7 +848,7 @@
                 ],
                 insight: {
                     title: "Perceived Strengths",
-                    content: "Research shows that leaders who are aware von their perceived strengths are 40% more effective. Teams value different strengths: Visionaries inspire innovation, Architects create stability, Facilitators build culture, and Executors deliver results."
+                    content: "Research shows that leaders who are aware of their perceived strengths are 40% more effective. Teams value different strengths: Visionaries inspire innovation, Architects create stability, Facilitators build culture, and Executors deliver results."
                 }
             },
             {
@@ -856,7 +856,7 @@
                 text: "In team meetings, you're most likely to...",
                 options: [
                     { text: "Challenge the group to think about future opportunities and innovations", type: "visionary" },
-                    { text: "Ask clarifying questions and ensure we have structured notes and Weiter steps", type: "architect" },
+                    { text: "Ask clarifying questions and ensure we have structured notes and next steps", type: "architect" },
                     { text: "Make sure everyone's voice is heard and people feel included", type: "facilitator" },
                     { text: "Push for clear action items, deadlines, and accountable owners", type: "executor" }
                 ],
@@ -869,8 +869,8 @@
                 category: "Leadership Style",
                 text: "When a project falls behind schedule, your first instinct is to...",
                 options: [
-                    { text: "Remind everyone von the bigger picture and why this work matters", type: "visionary" },
-                    { text: "Dig into the data to find the root cause von the delays", type: "architect" },
+                    { text: "Remind everyone of the bigger picture and why this work matters", type: "visionary" },
+                    { text: "Dig into the data to find the root cause of the delays", type: "architect" },
                     { text: "Have 1:1 conversations to understand what's blocking people", type: "facilitator" },
                     { text: "Roll up your sleeves and help clear obstacles directly", type: "executor" }
                 ],
@@ -890,7 +890,7 @@
                 ],
                 insight: {
                     title: "Work Rhythm Patterns",
-                    content: "Understanding your work rhythm is crucial for peak performance. Sprinters excel at high-intensity projects, Joggers maintain steady progress, and Marathoners handle complex, long-term initiatives. The best teams have a mix von all three."
+                    content: "Understanding your work rhythm is crucial for peak performance. Sprinters excel at high-intensity projects, Joggers maintain steady progress, and Marathoners handle complex, long-term initiatives. The best teams have a mix of all three."
                 }
             },
             {
@@ -906,9 +906,9 @@
                 category: "Work Rhythm",
                 text: "After completing a major project, you typically...",
                 options: [
-                    { text: "Need significant downtime before diving into the Weiter big thing", type: "sprinter" },
+                    { text: "Need significant downtime before diving into the next big thing", type: "sprinter" },
                     { text: "Take a brief pause then continue at your normal pace", type: "jogger" },
-                    { text: "Feel energized and ready to start the Weiter challenge immediately", type: "marathoner" }
+                    { text: "Feel energized and ready to start the next challenge immediately", type: "marathoner" }
                 ]
             },
             // Communication (Q8-10)
@@ -942,7 +942,7 @@
             },
             {
                 category: "Communication",
-                text: "When giving feedZurück to a team member, you focus on...",
+                text: "When giving feedback to a team member, you focus on...",
                 options: [
                     { text: "How their growth connects to bigger opportunities ahead", type: "visionary" },
                     { text: "Specific behaviors and measurable improvements to make", type: "architect" },
@@ -950,8 +950,8 @@
                     { text: "What they need to do differently starting immediately", type: "executor" }
                 ],
                 insight: {
-                    title: "FeedZurück Effectiveness",
-                    content: "The most effective feedZurück includes all four elements: Future vision (why it matters), Specific behaviors (what to change), Emotional support (how they feel), and Immediate actions (what to do now). Leaders who combine all four see 60% better improvement rates."
+                    title: "Feedback Effectiveness",
+                    content: "The most effective feedback includes all four elements: Future vision (why it matters), Specific behaviors (what to change), Emotional support (how they feel), and Immediate actions (what to do now). Leaders who combine all four see 60% better improvement rates."
                 }
             },
             // Stress & Challenge (Q11-13)
@@ -974,7 +974,7 @@
                 text: "Your biggest frustration at work is usually...",
                 options: [
                     { text: "People who can't see beyond today's problems to future possibilities", type: "visionary" },
-                    { text: "Chaos, lack von clear processes, and disorganization", type: "architect" },
+                    { text: "Chaos, lack of clear processes, and disorganization", type: "architect" },
                     { text: "Conflict that damages relationships and team morale", type: "facilitator" },
                     { text: "Endless discussions and meetings with no concrete action", type: "executor" }
                 ],
@@ -1005,7 +1005,7 @@
                     { text: "Brainstorming new ideas and imagining what could be possible", type: "visionary" },
                     { text: "Solving complex problems with elegant, systematic solutions", type: "architect" },
                     { text: "Helping someone have a breakthrough or develop new skills", type: "facilitator" },
-                    { text: "Crossing major items vonf your list and seeing tangible progress", type: "executor" }
+                    { text: "Crossing major items off your list and seeing tangible progress", type: "executor" }
                 ],
                 insight: {
                     title: "Energy Sources",
@@ -1079,7 +1079,7 @@
                 return;
             }
             
-            // Remove Zurück score if changing answer
+            // Remove previous score if changing answer
             if (answers[currentQuestion] !== undefined) {
                 const prevIndex = answers[currentQuestion];
                 if (prevIndex >= 0 && prevIndex < q.options.length) {
@@ -1181,7 +1181,7 @@
                 
                 // Validate currentQuestion is in bounds
                 if (currentQuestion < 0 || currentQuestion >= allQuestions.length) {
-                    console.error('Question index out von bounds:', currentQuestion, 'von', allQuestions.length);
+                    console.error('Question index out of bounds:', currentQuestion, 'of', allQuestions.length);
                     currentQuestion = 0; // Reset to first question
                 }
                 
@@ -1293,11 +1293,11 @@
                 
                 // Update buttons
                 const prevBtn = document.getElementById('prevBtn');
-                const WeiterBtn = document.getElementById('WeiterBtn');
+                const nextBtn = document.getElementById('nextBtn');
                 if (prevBtn) prevBtn.disabled = currentQuestion === 0;
                 if (nextBtn) {
                     nextBtn.disabled = answers[currentQuestion] === undefined;
-                    nextBtn.textContent = currentQuestion === totalQuestions - 1 ? 'Ergebnisse anzeigen' : 'Fortsetzen';
+                    nextBtn.textContent = currentQuestion === totalQuestions - 1 ? 'See Results' : 'Continue';
                 }
             } catch (error) {
                 console.error('Error in renderQuestion:', error);
@@ -1307,7 +1307,7 @@
         }
 
 
-        // Make WeiterQuestion globally accessible for onclick handler
+        // Make nextQuestion globally accessible for onclick handler
         window.nextQuestion = function() {
             if (answers[currentQuestion] === undefined) return;
             
@@ -1344,7 +1344,7 @@
             const unanswered = allQuestions.filter((_, i) => answers[i] === undefined);
             if (unanswered.length > 0) {
                 TapInErrorHandler.showToast('VALIDATION_ERROR', 
-                    `Bitte beantworten Sie alle Fragen. ${unanswered.length} remaining.`);
+                    `Please answer all questions. ${unanswered.length} remaining.`);
                 // Go to first unanswered
                 currentQuestion = allQuestions.findIndex((_, i) => answers[i] === undefined);
                 renderQuestion();
@@ -1352,14 +1352,14 @@
             }
             
             // Show loading
-            TapInErrorHandler.showLoading('Ihre Antworten werden analysiert...');
+            TapInErrorHandler.showLoading('Analyzing your responses...');
             
             // Calculate results (simulate processing time for UX)
             setTimeout(() => {
                 try {
                     // Award completion XP and achievements
                     GAMIFICATION.addXP(GAMIFICATION.xpForCompletion);
-                    GAMIFICATION.unlockAchievement('Abschließen');
+                    GAMIFICATION.unlockAchievement('complete');
                     GAMIFICATION.checkSpeedDemon();
                     
                     const topType = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
@@ -1377,7 +1377,7 @@
                         timestamp: new Date().toISOString()
                     };
                     
-                    const prvonile = {
+                    const profile = {
                         leadershipType: topType,
                         secondaryType: secondType,
                         workerType: topRhythm,
@@ -1388,7 +1388,7 @@
                     
                     // Save with error handling
                     const saved = safeSet('tap_in_assessment_results', results) && 
-                                 safeSet('tap_in_prvonile', profile);
+                                 safeSet('tap_in_profile', profile);
                     
                     if (!saved) {
                         TapInErrorHandler.hideLoading();
@@ -1411,7 +1411,7 @@
                     syncAssessmentToTeam(topType, topRhythm);
                     
                     TapInErrorHandler.hideLoading();
-                    TapInErrorHandler.showSuccess('Assessment abgeschlossen!', 'Viewing Ihre Ergebnisse...');
+                    TapInErrorHandler.showSuccess('Assessment Complete!', 'Viewing your results...');
                     
                     // Show celebration
                     document.getElementById('totalXP').textContent = GAMIFICATION.xp;
@@ -1457,7 +1457,7 @@
         // Unregister old service workers first
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                for(let registration von registrations) {
+                for(let registration of registrations) {
                     registration.unregister();
                 }
                 // Clear all caches
@@ -1480,4 +1480,3 @@
     </script>
 </body>
 </html>
-<!-- Cache bust: 1765992573 -->
